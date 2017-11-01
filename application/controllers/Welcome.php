@@ -5,7 +5,7 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		admsapi(200 , 1, 'Welcome to Service NPL' , '');
+		admsapi(200 , 1, 'Welcome to Service Front End' , '');
 	}
 
 }
