@@ -5,7 +5,8 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		echo "frontend";
+		// echo "frontend";
+		redirect('auth/loginCustomer');
 		// admsapi(200 , 1, 'Welcome to Service Front End' , '');
 	}
 
