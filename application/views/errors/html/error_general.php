@@ -1,5 +1,16 @@
-<?php 
+<?php  
+// {
 
-echo json_encode(array('error' => "general"));
+//     "status": 1,
+//     "message": "Welcome to Service Front End",
+//     "data": ""
 
- ?>
+// }
+
+
+$respon = array(
+	'status'	=> 0,
+	'message'	=> $message,
+	'data'	=> []);
+
+echo  json_encode($respon); ?> 

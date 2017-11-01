@@ -380,9 +380,9 @@ $config['encryption_key'] = '';
 
 
 $config['sess_driver'] 				= 'database';
-$config['sess_cookie_name'] 		= 'SessionIbidAstra';
+$config['sess_cookie_name'] 		= 'seraastra';
 $config['sess_expiration'] 			= 7200;
-$config['sess_save_path'] 			= 'SessionIbidAstra';
+$config['sess_save_path'] 			= 'seraastra';
 
 
 // $config['sess_driver'] = 'database';
