@@ -1,5 +1,8 @@
-<?php 
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 
-echo json_encode(array('error' => 404));
-
- ?>
+echo "\nERROR: ",
+	$heading,
+	"\n\n",
+	$message,
+	"\n\n";
