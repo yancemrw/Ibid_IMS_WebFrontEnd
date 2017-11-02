@@ -17,7 +17,7 @@ class Twitter extends CI_Controller {
 			if($return['error']){
 				$return['error'];
 
-			}else{
+			} else {
 				header('location:'.$return['url']);
 				exit;
 			}
@@ -32,10 +32,7 @@ class Twitter extends CI_Controller {
 
 		if(isset($_GET['connected']) && @$_GET['connected'] == 'Y' ){
 			$objTwitterApi = new TwitterLoginAPI;
-			$return = $objTwitterApi->view();
-
-
-
+			$return = $objTwitterApi->view(); 
 			$array = array(
 				'namatwitter' 	=> @$return->name,
 				'usernametwitter' 	=> @$return->screen_name,
