@@ -8,8 +8,8 @@ class Callback extends CI_Controller {
 		require_once APPPATH.'../omni/twitter/twitter_class.php';
 		require_once APPPATH.'../omni/twitter/twitteroauth.php';
 		
-		if (isset(@$_REQUEST['oauth_token']) && @$_SESSION['oauth_token'] !== @$_REQUEST['oauth_token']) {
-			$_SESSION['oauth_status'] = 'oldtoken'; 
+		if (isset($_REQUEST['oauth_token']) && @$_SESSION['oauth_token'] !== @$_REQUEST['oauth_token']) {
+			@$_SESSION['oauth_status'] = 'oldtoken'; 
 			// header('Location: destroy.php');
 			redirect('auth/loginCustomer','refresh');
 		}else{
