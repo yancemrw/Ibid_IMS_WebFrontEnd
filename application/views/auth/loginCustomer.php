@@ -6,14 +6,14 @@
       <?php echo @$message; ?>
       <form class="form-type" action="<?php echo site_url('auth/loginCustomer'); ?>" method="post">
         <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" class="form-control" id="username" name="username">
+          <label for="username required">Email</label>
+          <input type="text" class="form-control" id="username" name="username" required="">
           <?php echo form_error('username'); ?>
         </div>
 
         <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" name="password">
+          <label for="password required">Password</label>
+          <input type="password" class="form-control" id="password" name="password" required="">
           <?php echo form_error('password'); ?>
         </div>
 
@@ -21,18 +21,18 @@
           <label class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" checked>
             <span class="custom-control-indicator"></span>
-            <span class="custom-control-description">Remember me</span>
+            <span class="custom-control-description">Ingat saya</span>
           </label>
 
-          <a class="text-muted hover-primary fs-13" href="<?php echo site_url('auth/forgot/') ?>">Forgot password?</a>
+          <a class="text-muted hover-primary fs-13" href="<?php echo site_url('auth/forgot/') ?>">Lupa Password ?</a>
         </div>
 
         <div class="form-group">
-          <button class="btn btn-bold btn-block btn-primary" type="submit">Login</button>
+          <button class="btn btn-bold btn-block btn-purple" type="submit">Login</button>
         </div>
       </form>
 
-      <div class="divider">Or Sign In With</div>
+      <div class="divider">atau login dengan</div>
       <div class="text-center">
         <a class="btn btn-square btn-facebook" href="<?php echo facebook(); ?>"><i class="fa fa-facebook"></i></a>
         <a class="btn btn-square btn-google" href="<?php echo google(); ?>"><i class="fa fa-google"></i></a>
@@ -42,7 +42,7 @@
 
       <hr class="w-30px">
 
-      <p class="text-center text-muted fs-13 mt-20">Don't have an account? <a class="text-primary fw-500" href="<?php echo site_url('auth/register') ?>">Sign up</a></p>
+      <p class="text-center text-muted fs-13 mt-20">Belum punya akun ? <a class="text-primary fw-500" href="<?php echo site_url('auth/register') ?>">Daftar</a></p>
     </div>
 
 

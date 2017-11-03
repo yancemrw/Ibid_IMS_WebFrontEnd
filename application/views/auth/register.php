@@ -8,27 +8,27 @@
   		<div class="register-box-body">
   			<form action="<?php echo site_url('auth/register'); ?>" method="post">
   				<div class="form-group has-feedback">
-  					<input type="text" value="" id="first_name" class="form-control" name="first_name" placeholder="first_name">
+  					<input type="text" value="" id="first_name" class="form-control" name="first_name" placeholder="first_name" required="">
   					<span class="glyphicon glyphicon-user form-control-feedback"></span>
   				</div>
   				<div class="form-group has-feedback">
-  					<input type="text" value="" id="last_name" class="form-control" name="last_name" placeholder="last_name">
+  					<input type="text" value="" id="last_name" class="form-control" name="last_name" placeholder="last_name" required="">
   					<span class="glyphicon glyphicon-user form-control-feedback"></span>
   				</div>
   				<div class="form-group has-feedback">
-  					<input type="text" value="" id="username" class="form-control" name="username" placeholder="username">
+  					<input type="text" value="" id="username" class="form-control" name="username" placeholder="username" required="">
   					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
   				</div>
   				<div class="form-group has-feedback">
-  					<input type="email" value="" id="email" class="form-control" name="email" placeholder="email">
+  					<input type="email" value="" id="email" class="form-control" name="email" placeholder="email" required="">
   					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
   				</div>
   				<div class="form-group has-feedback">
-  					<input type="password" id="password" class="form-control" name="password" placeholder="password" data-provide="pwstrength maxlength"  maxlength="8" data-threshold="4">
+  					<input type="password" id="password" class="form-control" name="password" placeholder="password" data-provide="pwstrength maxlength"  maxlength="8" data-threshold="4" required="">
   					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
   				</div>
   				<div class="form-group has-feedback">
-  					<input type="password" class="form-control" name="repassword" placeholder="Retype password" data-provide="pwstrength maxlength"  maxlength="8" data-threshold="4">
+  					<input type="password" class="form-control" name="repassword" placeholder="Retype password" data-provide="pwstrength maxlength"  maxlength="8" data-threshold="4" required="">
   					<span class="glyphicon glyphicon-log-in form-control-feedback"></span>
   				</div>
   				<div class="form-group has-feedback">
@@ -40,7 +40,7 @@
   				  
   			</form> 
 
-  			<a href="<?php echo site_url('auth/loginCustomer') ?>" class="text-center btn btn-default btn-block">I already have a membership</a>
+  			<a href="<?php echo site_url('auth/loginCustomer') ?>" class="text-center btn btn-purple btn-block">Login</a>
   		</div><!-- /.form-box --> 
   	</div>
 

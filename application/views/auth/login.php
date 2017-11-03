@@ -22,7 +22,7 @@
           <p><small>Sign into your account</small></p> 
           <form class="form-type"  action="<?php echo site_url('auth/login'); ?>" id="loginForm" method="post">
             <div class="form-group">
-              <label for="username">Username</label>
+              <label for="username">Email</label>
               <input type="text" class="form-control" id="username" placeholder="Masukan Username" name="username">
               <?php echo form_error('username'); ?>
             </div>
