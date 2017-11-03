@@ -47,7 +47,13 @@ class LoginCustomer extends CI_Controller {
 			$url = linkservice('account') ."auth/login/login";
 			$method = 'POST';
 			$responseApi = admsCurl($url, $dataLogin, $method);
+			// "id":5096,"email":"artbomberlutfi@gmail.com","name":"lutfi fars","groupname":"customer"
+			$tt = json_decode($responseApi['response'] , true);
+			$detail = $tt['data'];
+			// print_r($detail);
+			// echo "<br>";
 			
+			// exit();
 			// print_r($responseApi); 
 			
 			## redirect dan email(belum)
@@ -56,6 +62,18 @@ class LoginCustomer extends CI_Controller {
 			} else {
 				$responseApiInsert = json_decode($responseApi['response'], true);
 				if ($responseApiInsert['status'] == 1){
+					// nambahin session
+
+					$sesi = array(
+							'emailfront' => $detail[0]['email'],
+							'idfront' => $detail[0]['id'],
+							'namefront' => $detail[0]['name'],
+							'groupnamefront' => $detail[0]['groupname'],
+					);
+					
+					$this->session->set_userdata( $sesi ); 
+
+					// end
 					$this->session->set_flashdata('message', '<div class="alert alert-warning">'.$responseApiInsert['message'].'</div>');
 					redirect('afterlogin','refresh');
 				}
