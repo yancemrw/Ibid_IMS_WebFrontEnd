@@ -7,10 +7,10 @@
 </head>
 <body>
 	<h1 class="ac">Login with Account Kit</h1>
-	<p class="ac">This example shows you how to implement<br>Facebook Account Kit for web using PHP.</p>
+	<!-- <p class="ac">This example shows you how to implement<br>Facebook Account Kit for web using PHP.</p> -->
 	<div class="buttons">
 		<button onclick="phone_btn_onclick();">Login with SMS</button>
-		<button onclick="email_btn_onclick();">Login with Email</button>
+		<!-- <button onclick="email_btn_onclick();">Login with Email</button> -->
 	</div>
 	<form action="" method="POST" id="my_form">
 		<input type="hidden" name="code" id="code">
@@ -48,6 +48,10 @@ if (isset($_POST["code"])) {
 	curl_close($ch);
 	$result = json_decode($result);
 
+	echo "<pre>";
+	print_r($result);
+	echo "<br>";
+	echo "https://graph.accountkit.com/v1.0/me/?access_token=";
 	echo $info->access_token;
 }
 ?>
