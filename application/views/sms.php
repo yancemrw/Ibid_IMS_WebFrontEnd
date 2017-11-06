@@ -26,8 +26,8 @@ if (isset($_POST["code"])) {
 	$_SESSION["csrf_nonce"] = $_POST["csrf_nonce"];
 	$ch = curl_init();
     // Set url elements
-	$fb_app_id = '';
-	$ak_secret = '';
+	$fb_app_id = '1797631263599363';
+	$ak_secret = '0bac46e8e2c29681f5657b4433a775af';
 	$token = 'AA|' . $fb_app_id . '|' . $ak_secret;
     // Get access token
 	$url = 'https://graph.accountkit.com/v1.0/access_token?grant_type=authorization_code&code=' . $_POST["code"] . '&access_token=' . $token;
