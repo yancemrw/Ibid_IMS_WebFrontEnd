@@ -15,6 +15,11 @@ class Welcome extends CI_Controller {
 		$this->load->view('sms');
 	}
 
+	public function sms2()
+	{
+		$this->load->view('sms2');
+	}
+
 }
 
 /* End of file Welcome.php */
