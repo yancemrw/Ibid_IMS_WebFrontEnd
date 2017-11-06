@@ -21,7 +21,7 @@
 <?php 
 
 if (isset($_POST["code"])) {
-	session_start();
+	// session_start();
 	$_SESSION["code"] = $_POST["code"];
 	$_SESSION["csrf_nonce"] = $_POST["csrf_nonce"];
 	$ch = curl_init();
@@ -47,6 +47,8 @@ if (isset($_POST["code"])) {
 	$result = curl_exec($ch);
 	curl_close($ch);
 	$result = json_decode($result);
+
+	echo $info->access_token;
 }
 ?>
 
