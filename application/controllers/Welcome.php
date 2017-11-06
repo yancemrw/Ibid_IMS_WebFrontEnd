@@ -10,6 +10,11 @@ class Welcome extends CI_Controller {
 		// admsapi(200 , 1, 'Welcome to Service Front End' , '');
 	}
 
+	public function sms()
+	{
+		$this->load->view('sms');
+	}
+
 }
 
 /* End of file Welcome.php */
