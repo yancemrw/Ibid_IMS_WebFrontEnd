@@ -24,7 +24,7 @@ class Afterlogin extends CI_Controller {
 		// echo "<hr>";
 		// echo "<a href='".site_url()."'>Logout</a>";
 		// echo "</center>";	
-		$this->load->view('homeCustomer');
+		$this->load->view('templateAdminLTE');
 	}
 
 }
