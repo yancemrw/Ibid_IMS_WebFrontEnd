@@ -7,8 +7,9 @@ class LoginCustomer extends CI_Controller {
 		parent::__construct();
 		$this->load->library(array('form_validation'));
 		$this->load->helper(array('global' , 'omni'));
+		$this->AccessApi = new AccessApi(array('client_id' => 'ADMS Web', 'client_secret' => '1234567890', 'username' => 'rendhy.wijayanto@sera.astra.co.id'));
 	}
-	
+
 	public function index(){
 		// page dibawah ini mengambil tampilan untuk function ini.
 		// namafolder / file
@@ -39,48 +40,58 @@ class LoginCustomer extends CI_Controller {
 			$username = $_POST['username'];
 			$password = $_POST['password'];
 			
+			// $dataLogin = array(
+			// 	'email' => $username,
+			// 	'password' => $password,
+			// );
+			// ## send data registrasi
+			// $url = linkservice('account') ."auth/login/login";
+			// $method = 'POST';
+			// $responseApi = admsCurl($url, $dataLogin, $method);
+
+			// login by ouath2
 			$dataLogin = array(
-				'email' => $username,
-				'password' => $password,
+				'grant_type'	=> 'password',
+				'client_id'		=> 'ADMS Web',
+				'client_secret'	=> '1234567890',
+				'action'		=> '',
+				'redirect_url'	=> base_url('auth/loginCustomer'),
+				'username'     	=> $username,
+				'password'      => $password,
+				'ipAddress'		=> $this->input->ip_address()
 			);
-			## send data registrasi
-			$url = linkservice('account') ."auth/login/login";
+			$url = linkservice('account') ."auth/oauth2";
 			$method = 'POST';
 			$responseApi = admsCurl($url, $dataLogin, $method);
-			// "id":5096,"email":"artbomberlutfi@gmail.com","name":"lutfi fars","groupname":"customer"
-			$tt = json_decode($responseApi['response'] , true);
-			$detail = $tt['data'];
-			// print_r($detail);
-			// echo "<br>";
-			
-			// exit();
-			// print_r($responseApi); 
 			
 			## redirect dan email(belum)
 			if ($responseApi['err']) {
 				echo "<hr>cURL Error #:" . $responseApi['err'];
 			} else {
-				$responseApiInsert = json_decode($responseApi['response'], true);
-				if ($responseApiInsert['status'] == 1){
-					// nambahin session
+				// response from oauth2
+				$res = json_decode($responseApi['response']);
+				if(isset($res->error)){
+					$this->session->set_flashdata('message', '<div class="alert alert-warning">'.$res->error_description.'</div>');
+					redirect('auth/loginCustomer');
+				} else {
+					// set token on session
+					$this->AccessApi->setAccess('in',(array)$res);
 
-					$sesi = array(
-							'emailfront' => $detail[0]['email'],
-							'idfront' => $detail[0]['id'],
-							'namefront' => $detail[0]['name'],
-							'groupnamefront' => $detail[0]['groupname'],
-					);
-					
-					$this->session->set_userdata( $sesi ); 
-
-					// end
-					$this->session->set_flashdata('message', '<div class="alert alert-warning">'.$responseApiInsert['message'].'</div>');
+					$this->session->set_flashdata('message', '<div class="alert alert-success">You\'re log in</div>');
 					redirect('afterlogin','refresh');
 				}
-				else if ($responseApiInsert['status'] == 0){
-					$this->session->set_flashdata('message', '<div class="alert alert-warning">'.$responseApiInsert['message'].'</div>');
-					redirect('auth/loginCustomer');
-				}
+
+				// response from manual
+				// if($responseApi)
+				// $responseApiInsert = json_decode($responseApi['response'], true);
+				// if ($responseApiInsert['status'] == 1){
+				// 	$this->session->set_flashdata('message', '<div class="alert alert-warning">'.$responseApiInsert['message'].'</div>');
+				// 	redirect('afterlogin','refresh');
+				// }
+				// else if ($responseApiInsert['status'] == 0){
+				// 	$this->session->set_flashdata('message', '<div class="alert alert-warning">'.$responseApiInsert['message'].'</div>');
+				// 	redirect('auth/loginCustomer');
+				// }
 			}
 			
 		}

@@ -57,6 +57,103 @@ function admsaction($link='' , $id = '' , $color = '' , $fa = '' , $nama = '')
 {
 	return $return = '<a href="'.$link.'/'.$id.'" class="btn btn-'.$color.' btn-xs ttipDatatables" data-provide="tooltip" data-placement="top" title="'.$nama.'" data-original-title="'.$nama.'" ><i class="'.$fa.'"></i></a>';
 }
+
+/**
+* class for api checker and other
+*/
+class AccessApi
+{
+	private $sess = FALSE,
+			$ci = FALSE,
+			$sess_initial = 'userdata';
+	public $redirect_url = FALSE,
+			$message = array(
+				'session' => 'Your session is end',
+				'logout' => 'You was log out',
+				'login' => 'You are log in'
+			),
+			$config = array(
+				'client_id' => FALSE,
+				'client_secret' => FALSE,
+				'username' => FALSE
+			);
+
+	public function __construct($config=FALSE){
+		$this->ci = &get_instance();
+		$this->sess = (array)$this->ci->session->userdata($this->sess_initial);
+		$this->redirect_url = base_url('auth/loginCustomer');
+		if($config){
+			if(is_array($config)){
+				$this->config = array_merge($this->config, $config);
+				if(isset($config['redirect_url']))
+					$this->redirect_url = $config['redirect_url'];
+			}
+		}
+	}
+
+	public function access(){
+		if($this->sess){
+			$data = array(
+				'access_token'	=> $this->sess['access_token']
+			);
+			$responseApi = $this->load('POST', linkservice('account') ."auth/oauth2/check", $data);
+			$ret 	= $responseApi['err']?FALSE : TRUE;
+			if($ret)
+				$rest = (array)json_decode($responseApi['response']);
+
+			return ($ret?(isset($rest['success'])?isset($rest['success']):FALSE):FALSE);
+		}
+		return FALSE;
+	}
+
+	public function load($type = FALSE, $link=FALSE, $data=FALSE){
+		if($type && $link && $data){
+			return admsCurl($link, $data, $type);
+		}
+		return FALSE;
+	}
+
+	public function check_login(){
+		$access = $this->access();
+		if($this->sess && !$access){
+			$data = array(
+				'grant_type' => 'refresh_token',
+				'refresh_token'	=> $this->sess['refresh_token'],
+				'client_id' => $this->config['client_id'],
+				'client_secret' => $this->config['client_secret'],
+				'username' => $this->config['username'],
+			);
+			$responseApi = $this->load('POST', linkservice('account') ."auth/oauth2", $data);
+			$ret 	= $responseApi['err']?FALSE : TRUE;
+			if($ret){
+				$rest = (array) json_decode($responseApi['response']);
+				if(!isset($rest['error']))
+					$this->ci->session->set_userdata($this->sess_initial,array_merge($this->sess, $rest));
+			}
+
+		} else if(!$this->sess && !$access && $this->redirect_url){
+			$this->ci->session->set_flashdata('message', '<div class="alert alert-danger">'.$this->getMessage('session').'</div>');
+			redirect($this->redirect_url, 'refresh');
+		}
+		return TRUE;
+	}
+
+	public function setAccess($type=FALSE, $data=false){
+		if($type && $data){
+			if(strtolower($type) == 'in' && is_array($data)){
+				$this->ci->session->set_userdata($this->sess_initial,$data);
+				return TRUE;
+			}
+		} else if(strtolower($type) == 'out' && !$data){
+			$this->ci->session->unset_userdata($this->sess_initial);
+		}
+		return FALSE;
+	}
+
+	public function getMessage($code=FALSE){
+		return ($code?$this->message[$code]:FALSE);
+	}
+}
 /* End of file Adms_helper.php */
 /* Location: ./application/helpers/Adms_helper.php */
  

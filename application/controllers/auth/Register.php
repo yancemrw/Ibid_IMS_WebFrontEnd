@@ -32,12 +32,12 @@ class Register extends CI_Controller {
 
 		// end penambahan link 
 		
-		$this->form_validation->set_rules('first_name', 'first_name', 'required');
-		$this->form_validation->set_rules('last_name', 'last_name', 'required');
-		$this->form_validation->set_rules('username', 'username', 'required');
-		$this->form_validation->set_rules('password', 'password', 'required');
+		$this->form_validation->set_rules('first_name', 'First name', 'required');
+		$this->form_validation->set_rules('last_name', 'Last name', 'required');
+		$this->form_validation->set_rules('username', 'username', 'required|valid_email');
+		$this->form_validation->set_rules('password', 'password', 'required|min_length[8]');
 		$this->form_validation->set_rules('repassword', 'RePassword', 'required|matches[password]');
-		$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+		// $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
 		
 		if ($this->form_validation->run() == FALSE){
 			// if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -50,21 +50,43 @@ class Register extends CI_Controller {
 			$first_name = $_POST['first_name'];
 			$last_name = $_POST['last_name'];
 			$username = $_POST['username'];
-			$email = $_POST['email'];
+			$email = $_POST['username'];
 			$password = $_POST['password'];
 			$memberid = @$_POST['memberid'];
 			
-			$dataInsert = array(
-				'name' => $first_name.' '.$last_name,
-				'username' => $username,
-				'password' => $password,
-				'email' => $email,
-				'tipe' => '',
-				'sendmail' => TRUE,
-				'memberid' => $memberid,
-				);
+			// $dataInsert = array(
+			// 	'first_name' => $first_name,
+			// 	'last_name' => $last_name,
+			// 	'username' => $username,
+			// 	'password' => $password,
+			// 	'email' => $email,
+			// 	'tipe' => '',
+			// 	'sendmail' => TRUE,
+			// 	'memberid' => $memberid,
+			// 	);
 			
-			$url = linkservice('account') ."auth/register/register";
+			// $url = linkservice('account') ."auth/register/register";
+			// $method = 'POST';
+			// $responseApi = admsCurl($url, $dataInsert, $method);
+
+			$dataInsert = array(
+				'grant_type'	=> 'password',
+				'client_id'		=> 'ADMS Web',
+				'client_secret'	=> '1234567890',
+				'action'		=> 'register',
+				'redirect_url'	=> base_url('auth/loginCustomer'),
+				'username'     	=> $username,
+				'password'      => $password,
+				'first_name'   	=> $first_name,
+				'last_name'   	=> $last_name,
+				// member card
+				'MemberCardTMP' => $memberid,
+				'ipAddress'		=> $this->input->ip_address(),
+				'GroupId'		=> 9,
+				'createdOn'		=> time(), 
+			);
+
+			$url = linkservice('account') ."auth/oauth2";
 			$method = 'POST';
 			$responseApi = admsCurl($url, $dataInsert, $method);
 
@@ -74,8 +96,7 @@ class Register extends CI_Controller {
 			if ($responseApi['err']) {
 				echo "<hr>cURL Error #:" . $responseApi['err'];
 			} else {
-				// print_r($responseApi['response']);
-				// echo '<hr>beres';
+				// echo "<pre>"; print_r($responseApi); die();
 				redirect('auth/loginCustomer'); 
 			}
 
