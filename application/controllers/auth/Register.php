@@ -63,9 +63,7 @@ class Register extends CI_Controller {
 			// 	'tipe' => '',
 			// 	'sendmail' => TRUE,
 			// 	'memberid' => $memberid,
-			// 	);
-			
-<<<<<<< Updated upstream
+			// 	); 
 			// $url = linkservice('account') ."auth/register/register";
 			// $method = 'POST';
 			// $responseApi = admsCurl($url, $dataInsert, $method);
