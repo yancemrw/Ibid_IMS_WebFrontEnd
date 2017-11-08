@@ -74,6 +74,7 @@ class LoginCustomer extends CI_Controller {
 					redirect('auth/loginCustomer');
 				} else {
 					// set token on session
+					echo "<pre>"; print_r($res); die();
 					$this->AccessApi->setAccess('in',(array)$res);
 
 					$this->session->set_flashdata('message', '<div class="alert alert-success">You\'re log in</div>');
