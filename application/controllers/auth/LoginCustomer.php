@@ -69,7 +69,6 @@ class LoginCustomer extends CI_Controller {
 			} else {
 				// response from oauth2
 				$res = json_decode($responseApi['response']);
-			print_r($res); die();
 				if(isset($res->error)){
 					$this->session->set_flashdata('message', '<div class="alert alert-warning">'.$res->error_description.'</div>');
 					redirect('auth/loginCustomer');
@@ -77,7 +76,7 @@ class LoginCustomer extends CI_Controller {
 					// set token on session
 					$this->session->set_userdata('idfront', $res->UserId);
 					$this->session->set_userdata('namefront', $res->Name);
-					$this->session->set_userdata('namefront', $res->username);
+					$this->session->set_userdata('emailfront', $res->username);
 					$this->session->set_userdata('groupnamefront', $res->GroupName);
 					$this->AccessApi->setAccess('in',(array)$res);
 
