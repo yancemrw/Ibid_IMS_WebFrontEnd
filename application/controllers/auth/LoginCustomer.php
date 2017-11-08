@@ -63,6 +63,7 @@ class LoginCustomer extends CI_Controller {
 			$url = linkservice('account') ."auth/oauth2";
 			$method = 'POST';
 			$responseApi = admsCurl($url, $dataLogin, $method);
+			echo "<pre>"; print_r($responseApi); die();
 			## redirect dan email(belum)
 			if ($responseApi['err']) {
 				echo "<hr>cURL Error #:" . $responseApi['err'];
@@ -74,7 +75,6 @@ class LoginCustomer extends CI_Controller {
 					redirect('auth/loginCustomer');
 				} else {
 					// set token on session
-					echo "<pre>"; print_r($res); die();
 					$this->AccessApi->setAccess('in',(array)$res);
 
 					$this->session->set_flashdata('message', '<div class="alert alert-success">You\'re log in</div>');
