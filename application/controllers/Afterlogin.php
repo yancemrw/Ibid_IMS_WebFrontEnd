@@ -7,8 +7,8 @@ class Afterlogin extends CI_Controller {
 		parent::__construct();
 		$this->load->library(array('form_validation'));
 		$this->load->helper(array('global' , 'omni'));
-		$this->AccessApi = new AccessApi(array('client_id' => 'ADMS Web', 'client_secret' => '1234567890', 'username' => 'rendhy.wijayanto@sera.astra.co.id'));
-		$this->AccessApi->redirect_url = base_url('auth/loginCustomer');
+		$this->AccessApi = new AccessApi(array('client_id' => 'ADMS Web', 'client_secret' => '1234567890', 'username' => $this->session->userdata('userdata')->username));
+		$this->AccessApi->redirect_url = base_url('index.php/auth/loginCustomer');
 		$this->AccessApi->check_login();
 	}
 
