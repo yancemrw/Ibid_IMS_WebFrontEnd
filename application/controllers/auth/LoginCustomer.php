@@ -74,6 +74,7 @@ class LoginCustomer extends CI_Controller {
 					redirect('auth/loginCustomer');
 				} else {
 					// set token on session
+					print_r($res); die();
 					$this->session->set_userdata('idfront', $res->UserId);
 					$this->session->set_userdata('namefront', $res->Name);
 					$this->session->set_userdata('namefront', $res->username);
