@@ -3,6 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pembelian extends CI_Controller { 
 
+	function __construct() {
+        parent::__construct();
+        if (!@$_SESSION['idfront']){ redirect(base_url()); }
+    }
+	
 	function index(){
 		$this->load->library('cart');
 		

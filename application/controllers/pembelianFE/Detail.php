@@ -4,8 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Detail extends CI_Controller { 
 
 	function index($id){
-		$data['title']	= 'Counter Detail Pembelian NPL';
-		$data['page'] 	= 'counter/pembelian/detail';
+		$data['title']	= 'Detail Pembelian NPL';
+		$data['page'] 	= 'pembelian/detail';
 
 		$data['message'] = $this->session->flashdata('message');
 		
@@ -124,7 +124,7 @@ class Detail extends CI_Controller {
 		############################################################
 		$data['biodata'] = @$detailUsers;
 		
-		$this->load->view('templateadmin',$data);
+		$this->load->view('templateAdminLTE',$data);
 	}
 	function _remap($method){
 		$this->index($method);
