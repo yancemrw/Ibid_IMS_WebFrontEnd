@@ -23,17 +23,17 @@ class Biodata extends CI_Controller {
 			cek kelengkapan data awal
 			********************************
 		*/
-		if ($detailBiodata['Phone'] == '' || 
-			$detailBiodata['BankId'] == '' || 
-			$detailBiodata['BankAccountNumber'] == '' || 
-			$detailBiodata['BankAccountName'] == '' || 
-			
-			$detailBiodata['Name'] == '' || 
-			$detailBiodata['IdentityNumber'] == '' || 
-			$detailBiodata['NpwpNumber'] == '' 
-		){
-			
-			$data['page'] 	= 'biodata/ForNPL';
+			if ($detailBiodata['Phone'] == '' || 
+				$detailBiodata['BankId'] == '' || 
+				$detailBiodata['BankAccountNumber'] == '' || 
+				$detailBiodata['BankAccountName'] == '' || 
+
+				$detailBiodata['Name'] == '' || 
+				$detailBiodata['IdentityNumber'] == '' || 
+				$detailBiodata['NpwpNumber'] == '' 
+			){
+
+				$data['page'] 	= 'biodata/ForNPL';
 			$data['detailBiodata'] = $detailBiodata;
 			############################################################
 			## get list Bank
@@ -66,6 +66,75 @@ class Biodata extends CI_Controller {
 		$this->load->view('templateAdminLTE',$data);
 	}
 
+
+	public function otp()
+	{
+		// print_r($_POST);
+		$array = array(
+			'BiodataPembelianNPL' => $_POST
+		);
+
+		$otpsesi = substr(str_shuffle("0123456789"), -4);
+		$otpin = array(
+			'otpNPL' => $otpsesi
+		);
+		$this->session->set_userdata( $otpin );
+
+		if ($_POST['otpkirim']=='true') {
+				#########
+			$dataInsert =  array (
+				'type' => 'email',
+				'to' => @$this->session->userdata('emailfront'),
+				'cc' => 'lutfi.f.hidayat@gmail.com',
+				'subject' => 'OTP Pembelian NPL',
+				'body' => '
+				<p>Kode OTP</p>
+				<p><b> '.$otpsesi.'</b></p>
+				'
+			); 
+
+			$url 			= "http://ibidadmsdevservicenotification.azurewebsites.net/api/notification";
+			$method 		= 'POST';
+			$responseApi 	= admsCurl($url, $dataInsert, $method);
+
+			redirect('biodata/otpconfirm','refresh');
+
+		} else {
+			redirect('pembelian','refresh');
+		}
+
+				#######
+
+		// $this->session->set_userdata( $array );
+		// print_r($this->session->all_userdata());
+	}
+
+	public function otpconfirm()
+	{
+		// print_r($this->session->all_userdata());
+
+
+		if (isset($_POST['otp'])) {
+					// cek otp apakah benar
+			$hitung = count($_POST['otp']);
+			$otp = implode("", $_POST['otp']);  
+
+			if ($otp == $this->session->userdata('otpNPL')) {
+				// echo "token sama";
+				redirect('biodata/updateForNPL','refresh');
+
+			} else {
+				$this->session->set_flashdata('message', 'OTP tidak cocok');
+				redirect('biodata/otpconfirm','refresh');
+			}
+
+		}
+
+		$data['title']	= 'Pembelian NPL';
+		$data['page'] 	= 'pembelian/otp';  
+		$this->load->view('templateAdminLTE',$data);
+	}
+
 	function updateForNPL(){
 		############################################################
 		$id = trim($_SESSION['idfront']);
@@ -78,10 +147,14 @@ class Biodata extends CI_Controller {
 		}
 		$detailBiodata = @$dataApiDetail['data']['users'];
 		
+		// print_r($detailBiodata);
+		$sesi = $this->session->userdata();
+		
+
 		// update users
 		$dataPost['dataUpdate'] = array(
-			'Name' => $_POST['Name'],
-			'Phone' => $_POST['Phone'],
+			'Name' => $sesi['BiodataPembelianNPL']['Name'],
+			'Phone' => $sesi['BiodataPembelianNPL']['Phone'],
 		);
 		$dataPost['whereUpdate'] = array(
 			'UserId' => $id,
@@ -93,49 +166,63 @@ class Biodata extends CI_Controller {
 		/* ******************************** 
 			users biodata
 		*/
-		$usersBiodataArray = array(
-			'BiodataId' => $id,
-			'IdentityNumber' => $_POST['IdentityNumber'],
-			'NpwpNumber' => $_POST['NpwpNumber'],
-			'BankId' => $_POST['BankId'],
-			'BankAccountName' => $_POST['BankAccountName'],
-			'BankAccountNumber' => $_POST['BankAccountNumber'],
-		);
-		if ($detailBiodata['BiodataId'] == ''){
-			
-			
+		// 	echo "<pre>";
+		// print_r($this->session->all_userdata());
+		// $sesi = $this->session->userdata();
+
+		// $sesi['BiodataPembelianNPL']['Phone'];
+		// $sesi['BiodataPembelianNPL']['BankId'];
+		// $sesi['BiodataPembelianNPL']['BankAccountNumber'];
+		// $sesi['BiodataPembelianNPL']['BankAccountName'];
+		// $sesi['BiodataPembelianNPL']['Name'];
+		// $sesi['BiodataPembelianNPL']['IdentityNumber'];
+		// $sesi['BiodataPembelianNPL']['NpwpNumber'];
+
+		// exit();
+
+			$usersBiodataArray = array(
+				'BiodataId' => $id,
+				'IdentityNumber' => $sesi['BiodataPembelianNPL']['IdentityNumber'],
+				'NpwpNumber' => $sesi['BiodataPembelianNPL']['NpwpNumber'],
+				'BankId' => $sesi['BiodataPembelianNPL']['BankId'],
+				'BankAccountName' => $sesi['BiodataPembelianNPL']['BankAccountName'],
+				'BankAccountNumber' => $sesi['BiodataPembelianNPL']['BankAccountNumber']
+			);
+			if ($detailBiodata['BiodataId'] == ''){
+
+
 			// Insert Biodata
-			$url = linkservice('account') .'usersbiodata/add';
-			$method = 'POST';
-			$responseApi = admsCurl($url, $usersBiodataArray, $method);
-			if ($responseApi['err']) {
-				echo "<hr>cURL Error #:" . $responseApi['err'];
-			} else {
+				$url = linkservice('account') .'usersbiodata/add';
+				$method = 'POST';
+				$responseApi = admsCurl($url, $usersBiodataArray, $method);
+				if ($responseApi['err']) {
+					echo "<hr>cURL Error #:" . $responseApi['err'];
+				} else {
+				}
+
 			}
-			
-		}
-		else {
-			
+			else {
+
 			// UPDATE Biodata
-			$dataPostUsersBiodata['dataUpdate'] = $usersBiodataArray;
-			$dataPostUsersBiodata['whereUpdate'] = array('BiodataId' => $id);
-			
-			$url = linkservice('account') ."usersbiodata/updates";
-			$method = 'POST';
-			$responseApi = admsCurl($url, $dataPostUsersBiodata, $method);
-			if ($responseApi['err']) {
-				echo "<hr>cURL Error #:" . $responseApi['err'];
-			} else {
+				$dataPostUsersBiodata['dataUpdate'] = $usersBiodataArray;
+				$dataPostUsersBiodata['whereUpdate'] = array('BiodataId' => $id);
+
+				$url = linkservice('account') ."usersbiodata/updates";
+				$method = 'POST';
+				$responseApi = admsCurl($url, $dataPostUsersBiodata, $method);
+				if ($responseApi['err']) {
+					echo "<hr>cURL Error #:" . $responseApi['err'];
+				} else {
+				}
 			}
-		}
-		
-		redirect('pembelian');
+
+			redirect('pembelian');
 		// echo '<pre>';
 		// print_r($_POST);
 		// print_r($detailBiodata);
 		// echo '</pre>';
+		}
 	}
-}
 
-/* End of file Lists.php */
-/* Location: ./application/controllers/item/Lists.php */
+	/* End of file Lists.php */
+	/* Location: ./application/controllers/item/Lists.php */

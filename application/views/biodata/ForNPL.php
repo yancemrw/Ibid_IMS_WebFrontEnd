@@ -6,8 +6,10 @@
 			<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
 		</div>
 	</div>
-	
-	<form role="form" action="<?php echo site_url('biodata/updateForNPL'); ?>" method="POST">
+	<!-- updateForNPL -->
+	<form role="form" action="<?php echo site_url('biodata/otp'); ?>" method="POST">
+		<input type="hidden" name="otpkirim" value="true">
+
 		<div class="box-body">
 			<div class="form-group">
 				<input type="text" name="Phone" class="form-control" id="Phone" placeholder="Phone" value="<?php echo $detailBiodata['Name']; ?>">
