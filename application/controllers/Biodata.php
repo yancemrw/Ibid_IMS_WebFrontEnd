@@ -73,6 +73,7 @@ class Biodata extends CI_Controller {
 		$array = array(
 			'BiodataPembelianNPL' => $_POST
 		);
+		$this->session->set_userdata( $array );
 
 		$otpsesi = substr(str_shuffle("0123456789"), -4);
 		$otpin = array(
@@ -136,6 +137,11 @@ class Biodata extends CI_Controller {
 	}
 
 	function updateForNPL(){
+
+		// print_r($this->session->all_userdata());
+		// exit();
+
+
 		############################################################
 		$id = trim($_SESSION['idfront']);
 		## get detail users
