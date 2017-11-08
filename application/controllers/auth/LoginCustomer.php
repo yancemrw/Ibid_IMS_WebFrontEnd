@@ -64,12 +64,12 @@ class LoginCustomer extends CI_Controller {
 			$method = 'POST';
 			$responseApi = admsCurl($url, $dataLogin, $method);
 			## redirect dan email(belum)
-			print_r($responseApi); die();
 			if ($responseApi['err']) {
 				echo "<hr>cURL Error #:" . $responseApi['err'];
 			} else {
 				// response from oauth2
 				$res = json_decode($responseApi['response']);
+			print_r($res); die();
 				if(isset($res->error)){
 					$this->session->set_flashdata('message', '<div class="alert alert-warning">'.$res->error_description.'</div>');
 					redirect('auth/loginCustomer');
