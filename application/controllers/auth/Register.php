@@ -65,6 +65,7 @@ class Register extends CI_Controller {
 			// 	'memberid' => $memberid,
 			// 	);
 			
+<<<<<<< Updated upstream
 			// $url = linkservice('account') ."auth/register/register";
 			// $method = 'POST';
 			// $responseApi = admsCurl($url, $dataInsert, $method);
@@ -88,7 +89,7 @@ class Register extends CI_Controller {
 
 			$url = linkservice('account') ."auth/oauth2";
 			$method = 'POST';
-			$responseApi = admsCurl($url, $dataInsert, $method);
+			$responseApi = admsCurl($url, $dataInsert, $method); 
 
 			// print_r($responseApi);
 			// exit();
