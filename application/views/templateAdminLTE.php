@@ -211,6 +211,33 @@
           <!-- /.search form -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
+            <li class="header">Menu Dinamis</li>
+            <?php
+              // menu dinamic by role in session
+              $ci = &get_instance();
+              foreach ($ci->session->userdata('userdata')['Role'] as $i => $data) {
+                // for group menu
+            ?>
+            <li class="treeview">
+              <a href="#">
+                <?=(!empty($data->icon)?'<i class="'.$data->icon.'"></i>':'')?>
+                <span><?=$data->name?></span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+              <?php foreach ($data->child as $i => $child_data) { ?>
+                <li>
+                    <a href="<?=base_url($child_data->url)?>">
+                      <?=(!empty($child_data->icon)?'<i class="'.$child_data->icon.'"></i>':'')?>
+                      <span><?=$child_data->name?></span>
+                    </a>
+                </li>
+              <?php } ?>
+              </ul>
+            </li>
+            <?php
+              }
+              // end menu dinamic by role in session
+            ?>
             <li class="header">MAIN NAVIGATION</li>
 			
 			<li>
