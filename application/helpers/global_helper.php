@@ -138,6 +138,31 @@ class AccessApi
 		return TRUE;
 	}
 
+	public function checkApi(){
+		$access = $this->access();
+		if($this->sess && !$access){
+			$data = array(
+				'grant_type' => 'refresh_token',
+				'refresh_token'	=> $this->sess['refresh_token'],
+				'client_id' => $this->config['client_id'],
+				'client_secret' => $this->config['client_secret'],
+				'username' => $this->config['username'],
+			);
+			$responseApi = $this->load('POST', linkservice('account') ."auth/oauth2", $data);
+			$ret 	= $responseApi['err']?FALSE : TRUE;
+			if($ret){
+				$rest = (array) json_decode($responseApi['response']);
+				if(!isset($rest['error'])){
+					echo json_encode(array('response'=>array('allow' => true), 'err' => NULL));
+					die();
+				}
+			}
+		}
+		
+		echo json_encode(array('response'=>NULL, 'error' => $this->getMessage('notAllow')));
+		die();
+	}
+
 	public function setAccess($type=FALSE, $data=false){
 		if($type && $data){
 			if(strtolower($type) == 'in' && is_array($data)){
@@ -146,6 +171,7 @@ class AccessApi
 			}
 		} else if(strtolower($type) == 'out' && !$data){
 			$this->ci->session->unset_userdata($this->sess_initial);
+			return TRUE;
 		}
 		return FALSE;
 	}

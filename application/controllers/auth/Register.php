@@ -96,6 +96,22 @@ class Register extends CI_Controller {
 				echo "<hr>cURL Error #:" . $responseApi['err'];
 			} else {
 				// echo "<pre>"; print_r($responseApi); die();
+				$dataInsert =  array (
+					'type' => 'email',
+					'to' => $username,
+					'cc' => 'lutfi.f.hidayat@gmail.com',
+					'subject' => 'Email Verification IBID',
+					'body' => '
+					<p>Email Verifikasi </p>
+					<a href="'.linkservice('frontend').'auth/verify?email='.$username.'"> Klik Disini </a>
+					'
+				); 
+
+				$url 			= "http://ibidadmsdevservicenotification.azurewebsites.net/api/notification";
+				$method 		= 'POST';
+				$responseApi 	= admsCurl($url, $dataInsert, $method);
+
+
 				redirect('auth/loginCustomer'); 
 			}
 
