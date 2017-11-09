@@ -26,7 +26,7 @@ class Verify extends CI_Controller {
 				$responseApiInsert = json_decode($responseApi['response'], true);
 				if ($responseApiInsert['status'] == 1){
 					$this->session->set_flashdata('pesan', 'Berhasil di Aktivasi');
-					redirect('afterlogin','refresh');
+					redirect('auth/loginCustomer','refresh');
 
 				} else if ($responseApiInsert['status'] == 0){
 					echo $responseApiInsert['message']; 
