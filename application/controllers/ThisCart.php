@@ -84,7 +84,7 @@ class ThisCart extends CI_Controller {
 			$this->cart->update($dataUpdateCart);
 		}
 		
-		redirect('counter/pembelian/add/');
+		redirect('pembelian');
 		
 	}
 	function remove(){
