@@ -42,6 +42,7 @@
 				</table>
 			</div>
 			<div class="box-footer text-right">
+				<a href="<?php echo site_url('pembelian'); ?>" class="btn btn-default">Back</a>
 				<button class="btn btn-primary" type="submit">Finish</button>
 			</div>
 		</div>
