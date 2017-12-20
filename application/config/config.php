@@ -529,3 +529,28 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+
+/*
+|--------------------------------------------------------------------------
+| Oauth Configuration
+|--------------------------------------------------------------------------
+|
+| configuration for omni user
+*/
+$config['Oauth'] = array(
+					'client_id' => 'ADMS Web',
+					'client_secret' => '1234567890'
+				);
+
+/*
+|--------------------------------------------------------------------------
+| Omni Configuration
+|--------------------------------------------------------------------------
+|
+| configuration for omni user
+*/
+$config['fb'] = array(
+					'app_id' => '134216083922853',
+					'app_secret' => 'a2a640d1c3bfab92384700a92d02f1da'
+				);
