@@ -9,6 +9,8 @@ class Pembelian extends CI_Controller {
     }
 	
 	function index(){
+		// print_r($this->session->all_userdata());
+		// exit();
 		$this->load->library('cart');
 		
 		$data['message'] = $this->session->flashdata('message');
@@ -24,18 +26,20 @@ class Pembelian extends CI_Controller {
 		}
 		$detailBiodata = @$dataApiDetail['data']['users'];
 		
+		// print_r($detailBiodata);
+		// exit();
 		/* *******************************
 			cek kelengkapan data awal
 			********************************
 		*/
-		if ($detailBiodata['Phone'] == '' || 
+		if ($detailBiodata['Phone'] == '' ||
 			$detailBiodata['BankId'] == '' || 
 			$detailBiodata['BankAccountNumber'] == '' || 
-			$detailBiodata['BankAccountName'] == '' || 
+			$detailBiodata['BankAccountName'] == ''
 			
-			$detailBiodata['Name'] == '' || 
-			$detailBiodata['IdentityNumber'] == '' || 
-			$detailBiodata['NpwpNumber'] == '' 
+			// $detailBiodata['Name'] == '' || 
+			// $detailBiodata['IdentityNumber'] == '' || 
+			// $detailBiodata['NpwpNumber'] == '' 
 		){
 			
 			$data['page'] 	= 'biodata/ForNPL';
