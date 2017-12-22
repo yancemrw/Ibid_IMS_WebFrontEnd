@@ -301,10 +301,10 @@
             <div class="box-body">
               Start creating your amazing application!<hr>
               <?php 
-              echo $_SESSION['idfront']; echo '<br>';
-              echo $_SESSION['namefront']; echo '<br>';
-              echo $_SESSION['emailfront']; echo '<br>';
-              echo $_SESSION['groupnamefront']; echo '<br>';
+              echo $_SESSION['userdata']['idfront']; echo '<br>';
+              echo $_SESSION['userdata']['namefront']; echo '<br>';
+              echo $_SESSION['userdata']['emailfront']; echo '<br>';
+              echo $_SESSION['userdata']['groupnamefront']; echo '<br>';
  
               echo "<pre>";
  
