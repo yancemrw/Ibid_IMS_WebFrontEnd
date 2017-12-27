@@ -22,7 +22,6 @@ class Callback extends CI_Controller {
 			// print_r($this->googleplus->getUserInfo());
 			$data = $this->googleplus->getUserInfo(); 
 
-
 			$tmp = explode(" ", $data['name']);
             $dataLogin = array(
                 'grant_type'    => 'password',
@@ -42,9 +41,9 @@ class Callback extends CI_Controller {
             $resp = (array) json_decode($responseApi['response']);
             if(isset($resp['error'])){
                 $dataLogin = array_merge($dataLogin, array('action'=>'register', 'GroupId' => 9, 'Active' => 1));
-print_r($dataLogin);
-die();
                 $responseApi = admsCurl($url, $dataLogin, $method);
+print_r($responseApi);
+die();
                 $res = json_decode($responseApi['response']);
                 if(!isset($res['error'])){
                     $this->AccessApi->setAccess('in',(array)$res);
