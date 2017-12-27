@@ -40,10 +40,10 @@ class Callback extends CI_Controller {
             $method = 'POST';
             $responseApi = admsCurl($url, $dataLogin, $method);
             $resp = (array) json_decode($responseApi['response']);
-print_r($resp); print_r($responseApi);
-die();
             if(isset($resp['error'])){
                 $dataLogin = array_merge($dataLogin, array('action'=>'register', 'GroupId' => 9, 'Active' => 1));
+print_r($dataLogin);
+die();
                 $responseApi = admsCurl($url, $dataLogin, $method);
                 $res = json_decode($responseApi['response']);
                 if(!isset($res['error'])){
