@@ -8,7 +8,7 @@ class LoginCustomer extends CI_Controller {
 		$this->load->library(array('form_validation'));
 		$this->load->helper(array('global' , 'omni'));
 		$this->AccessApi = new AccessApi(array_merge($this->config->item('Oauth'),array('username' => 'rendhy.wijayanto@sera.astra.co.id')));
-		echo "<script>console.log(".json_decode($_SESSION).");</script>";
+		echo "<script>console.log(".json_encode($_SESSION).");</script>";
 	}
 
 	public function index(){
