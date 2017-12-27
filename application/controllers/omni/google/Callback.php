@@ -17,15 +17,47 @@ class Callback extends CI_Controller {
 			$data = $this->googleplus->getUserInfo(); 
 
 
-			$array = array(
-				'emailgoogle' 	=> @$data['email'],
-				'namegoogle' 	=> @$data['name'],
-			);
+			$tmp = explode(" ", @$data['name']);
+            $dataLogin = array(
+                'grant_type'    => 'password',
+                'client_id'     => 'ADMS Web',
+                'client_secret' => '1234567890',
+                'action'        => '',
+                'redirect_url'  => base_url('auth/loginCustomer'),
+                'username'      => @$data['email'],
+                'password'      => 'admsibid18',
+                'ipAddress'     => $this->input->ip_address(),
+                'first_name'    => $tmp[0],
+                'last_name'     => str_replace($tmp[0]." ","", @$data['name'])
+            );
+            $url = linkservice('account') ."auth/oauth2";
+            $method = 'POST';
+            $responseApi = admsCurl($url, $dataLogin, $method);
+            $resp = (array) json_decode($responseApi['response']);
+            if(isset($resp['error'])){
+                $dataLogin = array_merge($dataLogin, array('action'=>'register', 'GroupId' => 9, 'Active' => 1));
+                $responseApi = admsCurl($url, $dataLogin, $method);
+                $res = json_decode($responseApi['response']);
+                if(!isset($res['error'])){
+                    $this->AccessApi->setAccess('in',(array)$res);
+                    redirect('afterlogin','refresh');
+                } else
+                    redirect('auth/loginCustomer','refresh');
+                
+            } else {
+                $this->AccessApi->setAccess('in',$resp);
+                redirect('afterlogin','refresh');
+            }
+
+			// $array = array(
+			// 	'emailgoogle' 	=> @$data['email'],
+			// 	'namegoogle' 	=> @$data['name'],
+			// );
 			
-			$this->session->set_userdata( $array );
+			// $this->session->set_userdata( $array );
 
 
-			redirect('afterlogin','refresh');
+			// redirect('afterlogin','refresh');
 
 		} else {
 			//mengembalikan ke auth register
