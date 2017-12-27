@@ -42,8 +42,6 @@ class Callback extends CI_Controller {
             if(isset($resp['error'])){
                 $dataLogin = array_merge($dataLogin, array('action'=>'register', 'GroupId' => 9, 'Active' => 1));
                 $responseApi = admsCurl($url, $dataLogin, $method);
-print_r($responseApi);
-die();
                 $res = json_decode($responseApi['response']);
                 if(!isset($res['error'])){
                     $this->AccessApi->setAccess('in',(array)$res);
