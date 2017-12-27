@@ -20,14 +20,46 @@ class Callback extends CI_Controller {
 				$objTwitterApi = new TwitterLoginAPI;
 				$return = $objTwitterApi->view();  
 
-				$array = array(
-					'namatwitter' 	=> @$return->name,
-					'usernametwitter' 	=> @$return->screen_name,
-					'emailtwitter' 	=> @$return->email,
-				);
-				$this->session->set_userdata( $array );
+				$tmp = explode(" ", $return->name);
+	            $dataLogin = array(
+	                'grant_type'    => 'password',
+	                'client_id'     => 'ADMS Web',
+	                'client_secret' => '1234567890',
+	                'action'        => '',
+	                'redirect_url'  => base_url('auth/loginCustomer'),
+	                'username'      => $return->email,
+	                'password'      => 'admsibid18',
+	                'ipAddress'     => $this->input->ip_address(),
+	                'first_name'    => $tmp[0],
+	                'last_name'     => str_replace($tmp[0]." ","", $return->name)
+	            );
+	            $url = linkservice('account') ."auth/oauth2";
+	            $method = 'POST';
+	            $responseApi = admsCurl($url, $dataLogin, $method);
+	            $resp = (array) json_decode($responseApi['response']);
+	            if(isset($resp['error'])){
+	                $dataLogin = array_merge($dataLogin, array('action'=>'register', 'GroupId' => 9, 'Active' => 1));
+	                $responseApi = admsCurl($url, $dataLogin, $method);
+	                $res = (array) json_decode($responseApi['response']);
+	                if(!isset($res['error'])){
+	                    $this->AccessApi->setAccess('in',(array)$res);
+	                    redirect('afterlogin','refresh');
+	                } else
+	                    redirect('auth/loginCustomer','refresh');
+	                
+	            } else {
+	                $this->AccessApi->setAccess('in',$resp);
+	                redirect('afterlogin','refresh');
+	            }
 
-				redirect('afterlogin','refresh'); 
+				// $array = array(
+				// 	'namatwitter' 	=> @$return->name,
+				// 	'usernametwitter' 	=> @$return->screen_name,
+				// 	'emailtwitter' 	=> @$return->email,
+				// );
+				// $this->session->set_userdata( $array );
+
+				// redirect('afterlogin','refresh'); 
 
 				
 				// $objTwitterApi = new TwitterLoginAPI;
