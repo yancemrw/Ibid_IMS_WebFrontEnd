@@ -3,6 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Callback extends CI_Controller {
 
+	public function __construct(){
+        parent::__construct();
+        $this->load->helper(array('global'));
+        $this->AccessApi = new AccessApi(array_merge($this->config->item('Oauth'),array('username' => 'rendhy.wijayanto@sera.astra.co.id')));
+	}
+
 	public function index()
 	{
 		$this->load->library('googleplus');
