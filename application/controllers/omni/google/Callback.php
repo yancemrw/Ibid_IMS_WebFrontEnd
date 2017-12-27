@@ -23,8 +23,6 @@ class Callback extends CI_Controller {
 			$data = $this->googleplus->getUserInfo(); 
 
 
-print_r($data);
-die();
 			$tmp = explode(" ", $data['name']);
             $dataLogin = array(
                 'grant_type'    => 'password',
@@ -42,6 +40,8 @@ die();
             $method = 'POST';
             $responseApi = admsCurl($url, $dataLogin, $method);
             $resp = (array) json_decode($responseApi['response']);
+print_r($resp); print_r($responseApi);
+die();
             if(isset($resp['error'])){
                 $dataLogin = array_merge($dataLogin, array('action'=>'register', 'GroupId' => 9, 'Active' => 1));
                 $responseApi = admsCurl($url, $dataLogin, $method);
