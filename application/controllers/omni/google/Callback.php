@@ -23,18 +23,20 @@ class Callback extends CI_Controller {
 			$data = $this->googleplus->getUserInfo(); 
 
 
-			$tmp = explode(" ", @$data['name']);
+print_r($data);
+die();
+			$tmp = explode(" ", $data['name']);
             $dataLogin = array(
                 'grant_type'    => 'password',
                 'client_id'     => 'ADMS Web',
                 'client_secret' => '1234567890',
                 'action'        => '',
                 'redirect_url'  => base_url('auth/loginCustomer'),
-                'username'      => @$data['email'],
+                'username'      => $data['email'],
                 'password'      => 'admsibid18',
                 'ipAddress'     => $this->input->ip_address(),
                 'first_name'    => $tmp[0],
-                'last_name'     => str_replace($tmp[0]." ","", @$data['name'])
+                'last_name'     => str_replace($tmp[0]." ","", $data['name'])
             );
             $url = linkservice('account') ."auth/oauth2";
             $method = 'POST';
