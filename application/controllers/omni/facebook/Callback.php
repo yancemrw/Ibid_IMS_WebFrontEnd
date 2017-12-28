@@ -6,16 +6,19 @@ require_once  APPPATH.'../omni/facebook/php-sdk-v4/src/Facebook/autoload.php';
 
 Class Callback extends CI_Controller
 {
-	var $appid      = '1797631263599363';
-	var $app_secret = '4c4f11292235c85549f5d3eb5acadb3f'; 
+    public function __construct(){
+        parent::__construct();
+        $this->load->helper(array('global'));
+        $this->AccessApi = new AccessApi(array_merge($this->config->item('Oauth'),array('username' => 'rendhy.wijayanto@sera.astra.co.id')));
+    }
 
 	public function index()
 	{ 
 		// session_start();
 
 		$fb = new Facebook\Facebook([ 
-          'app_id' => $this->appid, // Replace {app-id} with your app id
-          'app_secret' => $this->app_secret,
+          'app_id' => $this->config->item('fb')['app_id'], // Replace {app-id} with your app id
+          'app_secret' => $this->config->item('fb')['app_secret'],
           'default_graph_version' => 'v2.2', 
           ]);
 
@@ -56,7 +59,7 @@ Class Callback extends CI_Controller
 		$tokenMetadata = $oAuth2Client->debugToken($accessToken); 
 
             // Validation (these will throw FacebookSDKException's when they fail)
-            $tokenMetadata->validateAppId($this->appid); // Replace {app-id} with your app id
+            $tokenMetadata->validateAppId($this->config->item('fb')['app_id']); // Replace {app-id} with your app id
             // If you know the user ID this access token belongs to, you can validate it here
             //$tokenMetadata->validateUserId('123');
             $tokenMetadata->validateExpiration();
@@ -94,22 +97,54 @@ Class Callback extends CI_Controller
  		
  			// jika email si pengguna facebook sudah pernah diregisterkan sebelumnya
 
+            // omni Oauth login
+            $tmp = explode(" ", $user['name']);
+            $dataLogin = array(
+                'grant_type'    => 'password',
+                'client_id'     => 'ADMS Web',
+                'client_secret' => '1234567890',
+                'action'        => '',
+                'redirect_url'  => base_url('auth/loginCustomer'),
+                'username'      => @$user['email'],
+                'password'      => 'admsibid18',
+                'ipAddress'     => $this->input->ip_address(),
+                'first_name'    => $tmp[0],
+                'last_name'     => str_replace($tmp[0]." ","", $user['name'])
+            );
+            $url = linkservice('account') ."auth/oauth2";
+            $method = 'POST';
+            $responseApi = admsCurl($url, $dataLogin, $method);
+            $resp = (array) json_decode($responseApi['response']);
+            if(isset($resp['error'])){
+                $dataLogin = array_merge($dataLogin, array('action'=>'register', 'GroupId' => 9, 'Active' => 1));
+                $responseApi = admsCurl($url, $dataLogin, $method);
+                $res = json_decode($responseApi['response']);
+                if(!isset($res['error'])){
+                    $this->AccessApi->setAccess('in',(array)$res);
+                    redirect('afterlogin','refresh');
+                } else
+                    redirect('auth/loginCustomer','refresh');
+                
+            } else {
+                $this->AccessApi->setAccess('in',$resp);
+                redirect('afterlogin','refresh');
+            }
 
             // mendaftarkan hasil callback ke session
-            $setfacebook = array(
-            	'tokenfb' => @$token,
-            	'namefb' => @$user['name'],
-            	'emailfb' => @$user['email'],
-            	'usernamefb' => @$user['username'],
-            );
+            // $setfacebook = array(
+            // 	'tokenfb' => @$token,
+            // 	'namefb' => @$user['name'],
+            // 	'emailfb' => @$user['email'],
+            // 	'usernamefb' => @$user['username'],
+            // );
             
-            $this->session->set_userdata( $setfacebook );
+            // $this->session->set_userdata( $setfacebook );
 
             // redirect ke halaman register facebook
             // redirect('omni/facebook/register','refresh');
 
 
-            redirect('afterlogin','refresh'); 
+            // redirect('afterlogin','refresh'); 
 
 
         }
