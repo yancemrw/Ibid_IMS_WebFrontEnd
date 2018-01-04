@@ -87,26 +87,40 @@ class Detail extends CI_Controller {
 		
 		
 		
-		
-		
 		############################################################
 		// Get detail schedule | $arrScheduleId = array();
+		// $url = linkservice('master')."schedule/GetArray";
+		// $method = 'POST';
+		// $responseApi = admsCurl($url, $arrScheduleId, $method);
+		// if ($responseApi['err']) { 
+			// echo "<hr>cURL Error #:" . $responseApi['err']; 
+		// } else {
+			// $dataApi = json_decode($responseApi['response'],true);
+			// $listJadwal = $dataApi['data'];
+		// }
+		
 		$listJadwal = array();
-		$url = linkservice('master')."schedule/GetArray";
-		$method = 'POST';
-		$responseApi = admsCurl($url, $arrScheduleId, $method);
-		if ($responseApi['err']) { 
-			echo "<hr>cURL Error #:" . $responseApi['err']; 
-		} else {
-			$dataApi = json_decode($responseApi['response'],true);
-			$listJadwal = $dataApi['data'];
+		for($i=0; $i<count($arrScheduleId); $i++){
+			$ScheduleId = $arrScheduleId[$i];
+			
+			$url = "http://ibid-ams-schedule.stagingapps.net/api/scheduledetail/".$ScheduleId;
+			$method = 'GET';
+			$responseApi = amsCurl($url, array(), $method);
+			if ($responseApi['err']) { 
+				echo "<hr>cURL Error #:" . $responseApi['err']; 
+			} else {
+				$dataApi = json_decode($responseApi['response'],true);
+				$listJadwal[] = $dataApi['data'];
+			}
 		}
 		
 		foreach($listJadwal as $row)
-			$schedule[$row['ScheduleId']] = $row;
+			$schedule[$row['id']] = $row;
 		############################################################
 		$data['schedule'] = @$schedule;
-		
+		// echo '<pre>';
+		// print_r($schedule);
+		// echo '</pre>';
 		
 		
 		
