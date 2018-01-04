@@ -17,16 +17,37 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="" class="col-sm-3 control-label">Jenis NPL</label>
+				<label for="" class="col-sm-3 control-label">Cabang IBID</label>
 				<div class="col-xs-12 col-sm-12 col-md-9">
-				<select name="NPLType" class="form-control" id="NPLType">
-					<option value="Regular">Regular</option>
-					<!-- option value="">Jenis NPL</option>
-					<option value="Unlimited">Unlimited</option -->
+				<select class="form-control getIdJadwal" id="CompanyId">
+					<option value="">-Pilih-</option>
+					<?php foreach($cabang as $row){ ?>
+					<option value="<?php echo $row['CompanyId']; ?>"><?php echo $row['CompanyName']; ?></option>
+					<?php } ?>
 				</select>
 				</div>
 			</div>
 			<div class="form-group">
+				<label for="" class="col-sm-3 control-label">Tipe Lelang </label>
+				<div class="col-xs-12 col-sm-12 col-md-9">
+				<select class="form-control getIdJadwal" id="tipeLelang">
+					<option value="">-Pilih-</option>
+					<option value="1">Online</option>
+					<option value="0">Live</option>
+				</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="" class="col-sm-3 control-label">Tanggal Lelang </label>
+				<div class="col-xs-12 col-sm-12 col-md-9">
+				<select class="form-control" id="idJadwal">
+					<option value="">-Pilih-</option>
+				</select>
+				</div>
+			</div>
+			<input type="hidden" name="getScheduleId" class="form-control" id="getScheduleId">
+			
+			<!-- div class="form-group">
 				<label for="" class="col-sm-3 control-label">Jadwal Lelang </label>
 				<div class="col-xs-12 col-sm-12 col-md-9">
 				<input type="text" name="getScheduleId" class="form-control" id="getScheduleId">
@@ -53,7 +74,7 @@
 				<div class="col-xs-12 col-sm-12 col-md-9">
 				<input type="text" class="form-control" id="Lokasi" readonly>
 				</div>
-			</div>
+			</div -->
 			<div class="form-group" id="formGroupQty">
 				<label for="" class="col-sm-3 control-label require">Qty</label>
 				<div class="col-xs-12 col-sm-12 col-md-9">
@@ -163,7 +184,7 @@ $(function(){
 		}
 	});
 	
-	$('#getScheduleId').autocomplete({
+	/* $('#getScheduleId').autocomplete({
 		source: function( request, response ) {
 			$('#thisFormAutocomplete').css('display','none');
 			$.ajax( {
@@ -202,18 +223,19 @@ $(function(){
 				// return false;
 			}
 		}
-	});
+	}); */
 	
 	$('#addToCart').click(function(){
 		itemLelang = $('#itemLelang').val();
-		ScheduleId = $('#ScheduleId').val();
+		tipeLelang = $("select#tipeLelang option:selected").text();
+		tipeLelangId = $('#tipeLelang').val();
+		ScheduleId = $('#idJadwal').val();
 		Qty = $('#Qty').val();
 		harga = $('#harga').val();
 		getScheduleId = $('#getScheduleId').val();
-		ItemName = $('#ItemName').val();
+		ItemName = $("select#itemLelang option:selected").text();
 		CompanyId = $('#CompanyId').val();
-		ObjectId = $('#ObjectId').val();
-		// NPLType = $('#NPLType').val();
+		ObjectId = $('#itemLelang').val();
 		
 		if(Qty == 0){
 			$('#formGroupQty').addClass('has-error');
@@ -226,14 +248,16 @@ $(function(){
 			type: "POST", 
 			data: {
 				itemLelang: itemLelang,
+				tipeLelang: tipeLelang,
+				tipeLelangId: tipeLelangId,
 				ScheduleId: ScheduleId,
 				Qty: Qty,
+				
 				harga: harga,
 				getScheduleId: getScheduleId,
 				ItemName: ItemName,
 				CompanyId: CompanyId,
 				ObjectId: ObjectId,
-				// NPLType: NPLType,
 			},
 			success: function( data ) {
 				console.log(data);
@@ -242,13 +266,13 @@ $(function(){
 				
 				$('#Qty').val('');
 				
-				$('#getScheduleId').val('');
-				$('#ScheduleId').val('');
-				$('#harga').val('');
-				$('#Tanggal').val('');
-				$('#Cabang').val('');
-				$('#Lokasi').val('');
-				$('#formGroupQty').removeClass('has-error');
+				// $('#getScheduleId').val('');
+				// $('#ScheduleId').val('');
+				// $('#harga').val('');
+				// $('#Tanggal').val('');
+				// $('#Cabang').val('');
+				// $('#Lokasi').val('');
+				// $('#formGroupQty').removeClass('has-error');
 			},
 		});
 	});
@@ -275,12 +299,61 @@ $(function(){
 		$('#thisFormAll').submit();
 	});
 	
+	$('.getIdJadwal').change(function(){
+		itemLelang = $('#itemLelang').val();
+		tipeLelang = $('#tipeLelang').val();
+		cabangId = $('#CompanyId').val();
+		// startdate = '<?php echo date('Y-m-d'); ?>';
+		startdate = '2018-01-01';
+		if (itemLelang != '' && tipeLelang != '' && cabangId != '')
+		$.ajax( {
+			url: "http://ibid-ams-schedule.stagingapps.net/api/schedulelist",
+			dataType: "json",
+			data: {
+				type: tipeLelang,
+				item: itemLelang,
+				company_id: cabangId,
+				startdate: startdate,
+			},
+			beforeSend: function( ) {
+				// $('.biodataLoading').css('display','block');
+			},
+			success: function( data ) {
+				$('#idJadwal option').remove();
+				$('#idJadwal')
+					.append($("<option></option>")
+					.attr("value",'')
+					.text("-Pilih-"));
+				
+				thisArr = data.data;
+				for(i=0; i<thisArr.length; i++){
+					row = thisArr[i];
+					$('#idJadwal')
+						.append($("<option></option>")
+						.attr("value",row.id)
+						.text(row.date + ' '+row.waktu.substring(0, 8)));
+						
+					console.log(thisArr[i]);
+					
+				}
+			},
+			complete: function(){
+				// $('.biodataLoading').css('display','none');
+			}
+		});
+	});
+	
+	$('#idJadwal').change(function(){
+		jadwal = $("select#idJadwal option:selected").text();
+		cabang = $("select#CompanyId option:selected").text();
+		$('#getScheduleId').val(cabang + ' ' + jadwal);
+	});
 });
 function thisremove(thisRowId){
 	// thisRowId = $(this).attr('thisrowid');
 	// alert(thisRowId);
 	$.ajax( {
-		url: "<?php echo site_url('counter/pembelian/ThisCart/remove'); ?>",
+		url: "<?php echo site_url('ThisCart/remove'); ?>",
 		dataType: "json",
 		type: "POST", 
 		data: {
