@@ -1,0 +1,299 @@
+  <footer>
+    <div class="container-fluid">
+     <div class="row">
+      <div class="col-md-4 social-media text-right">
+       <ul>
+        <li><a href=""><i class="fa fa-instagram"></i></a></li>
+        <li><a href=""><i class="fa fa-twitter"></i></a></li>
+        <li><a href=""><i class="fa fa-facebook"></i></a></li>
+        <li><a href=""><i class="fa fa-youtube-play"></i></a></li>
+      </ul>
+    </div>
+    <div class="col-md-4 footer-link text-center">
+     <ul>
+      <li><a href="tentang-ibid.html">Tentang Ibid</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="">Privacy Policy</a></li>
+    </ul>
+  </div>
+  <div class="col-md-4 copyright">
+   <p>PT BALAI LELANG SERASI &copy; 2017</p>
+ </div>
+</div>
+</div>
+</footer>
+<!-- LOGIN -->
+<div class="modal fade modal-login" id="login" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+ <div class="modal-dialog">
+  <div class="modal-content">
+   <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal"><i class="ic ic-Close"></i><span class="sr-only">Close</span></button>
+    <h3 class="modal-title" id="lineModalLabel">Log in</h3>
+  </div>
+  <div class="modal-body clearfix">
+    <div class="col-md-6 col-sm-6">
+     <form class="form-login">
+      <div class="form-group floating-label">
+       <input type="email" class="form-control input-custom" id="" >
+       <label for="">Email</label>
+     </div>
+     <div class="form-group floating-label">
+       <input type="password" class="form-control input-custom" id="" >
+       <label for="">Password</label>
+     </div>
+     <a href="forgot-password.html">Lupa password?</a>
+     <div class="form-group text-right">
+       <button class="btn btn-green" onclick="location.href='after-login.html'" type="button">Masuk</button>
+       <a href="register.html">Belum punya akun</a>
+     </div>
+     <span class="or">Or</span>
+   </form>
+ </div>
+ <div class="col-md-6 col-sm-6">
+   <div class="login-socialmedia">
+    <a href="<?php echo facebook(); ?>" class="login-facebook"><i class="ic ic-facebook"></i> Masuk melalui facebook</a>
+    <a href="<?php echo site_url('omni/twitter/twitter');?>" class="login-twitter"><i class="ic ic-twitter"></i> Masuk melalui twitter</a>
+    <a href="<?php echo google(); ?>" class="login-google"><i class="ic ic-Google"></i> Masuk melalui google</a>
+    <a href="<?php echo linkedin(); ?>" class="login-linkedin"><i class="ic ic-linkedin"></i> Masuk melalui Linkedin</a>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script src="<?php echo base_url('assetsfront/js/jquery-3.2.1.min.js');?>"></script>
+<script src="<?php echo base_url('assetsfront/js/bootstrap.min.js');?>"></script>
+<script src="<?php echo base_url('assetsfront/js/jquery.sticky.js');?>"></script>
+<script src="<?php echo base_url('assetsfront/js/select2.min.js');?>"></script>
+<script src="<?php echo base_url('assetsfront/js/slick.min.js');?>"></script>
+<script>
+ var preloader;
+ 
+ function preload(opacity) {
+   if(opacity <= 0) {
+     showContent();
+   }
+   else {
+     preloader.style.opacity = opacity;
+     window.setTimeout(function() { preload(opacity - 0.05) }, 100);
+   }
+ }
+
+ function showContent() {
+  preloader.style.display = 'none';
+  document.getElementById('content').style.visibility = 'visible';
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  preloader = document.getElementById('preloader');
+  preload(1);
+});
+$(document).ready(function(){
+  $("nav").sticky({
+   topSpacing:0
+ });
+
+  $(".select-custom").select2({
+   minimumResultsForSearch: -1
+ });
+  $(".select-type").select2({
+   minimumResultsForSearch: -1,
+   templateResult: formatState,
+   templateSelection: formatState
+ });
+  function formatState (state) {
+    if (!state.id) { return state.text; }
+    var $state = $(
+      '<span ><img sytle="display: inline-block;" src="http://sera-ibid.stagingapps.net/assets/images/icon/' + state.element.value.toLowerCase() + '.png" /> ' + state.text + '</span>'
+      );
+    return $state;
+  }
+  $('.why-ibid').slick({
+   dots: false,
+   infinite: false,
+   speed: 300,
+   slidesToShow: 6,
+   slidesToScroll: 6,
+   responsive: [
+   {
+    breakpoint: 1024,
+    settings: {
+     slidesToShow: 3,
+     slidesToScroll: 3,
+     infinite:false,
+     dots: true,
+
+     prevArrow: false,
+     nextArrow: false
+   }
+ },
+ {
+  breakpoint: 600,
+  settings: {
+   slidesToShow: 3,
+   slidesToScroll: 3,
+   dots: true,
+
+   prevArrow: false,
+   nextArrow: false
+ }
+},
+{
+  breakpoint: 480,
+  settings: {
+   slidesToShow: 3,
+   slidesToScroll: 3,
+   dots: true,
+
+   prevArrow: false,
+   nextArrow: false
+ }
+}
+]
+});
+  $('.howTo-bid').slick({
+   dots: false,
+   infinite: false,
+   speed: 300,
+   slidesToShow: 6,
+   slidesToScroll: 6,
+   responsive: [
+   {
+    breakpoint: 1024,
+    settings: {
+     slidesToShow: 3,
+     slidesToScroll: 3,
+     infinite:false,
+     dots: true,
+
+     prevArrow: false,
+     nextArrow: false
+   }
+ },
+ {
+  breakpoint: 600,
+  settings: {
+   slidesToShow: 3,
+   slidesToScroll: 3,
+   dots: true,
+
+   prevArrow: false,
+   nextArrow: false
+ }
+},
+{
+  breakpoint: 480,
+  settings: {
+   slidesToShow: 3,
+   slidesToScroll: 3,
+   dots: true,
+
+   prevArrow: false,
+   nextArrow: false
+ }
+}
+]
+});
+  $('.section-recommend').slick({
+   dots: false,
+   infinite: false,
+   speed: 300,
+
+   slidesToShow: 3,
+   slidesToScroll: 3,
+   responsive: [
+   {
+    breakpoint: 1024,
+    settings: {
+     slidesToShow: 3,
+     slidesToScroll: 3,
+     infinite:false,
+     dots: true,
+
+     prevArrow: false,
+     nextArrow: false
+   }
+ },
+ {
+   breakpoint: 800,
+   settings: {
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    dots: true,
+
+    prevArrow: false,
+    nextArrow: false
+  }
+},
+{
+  breakpoint: 600,
+  settings: {
+   slidesToShow: 1,
+   slidesToScroll: 1,
+   dots: true,
+
+   prevArrow: false,
+   nextArrow: false
+ }
+}
+]
+});
+  $('.testimoni-slide').slick({
+   dots: false,
+   infinite: false,
+   speed: 300,
+   slidesToShow: 3,
+   slidesToScroll: 3,
+   responsive: [
+   {
+    breakpoint: 1024,
+    settings: {
+     slidesToShow: 3,
+     slidesToScroll: 3,
+     infinite: false,
+     dots: true
+   }
+ },
+ {
+   breakpoint: 800,
+   settings: {
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    infinite: false,
+    dots: true
+  }
+},
+{ 
+  breakpoint: 480,
+  settings: {
+   slidesToShow: 1,
+   slidesToScroll: 1,
+   infinite: false,
+   dots: true
+ }
+}
+]
+});
+
+  $('#toggle-nav').click(function(){
+   $('.navbar-collapse.collapse').toggleClass('open')
+ })
+  $('.nav-close').click(function(){
+   $('.navbar-collapse.collapse').toggleClass('open')
+ })
+
+  $('.lang-mob a').click(function(){
+   $('.help-mob ul').removeClass('open')
+   $(this).toggleClass('opened')
+   $(this).siblings('ul').toggleClass('open')
+ })
+  $('.help-mob a').click(function(){
+   $('.lang-mob ul').removeClass('open')
+   $(this).toggleClass('opened')
+   $(this).siblings('ul').toggleClass('open')
+ })
+});
+</script>
+</body>
+</html>

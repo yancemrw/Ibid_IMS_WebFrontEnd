@@ -33,10 +33,11 @@ class LoginCustomer extends CI_Controller {
 		
 		$this->form_validation->set_rules('username', 'username', 'required');
 		$this->form_validation->set_rules('password', 'password', 'required|min_length[8]|max_length[20]');
+
 		if ($this->form_validation->run() == FALSE){
 			$this->load->view('auth/templateauthadmin',$data); 
 		}
-		else{
+		else {
 			$username = $_POST['username'];
 			$password = $_POST['password'];
 			
