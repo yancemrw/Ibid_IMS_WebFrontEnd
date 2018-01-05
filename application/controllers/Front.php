@@ -30,9 +30,61 @@ class Front extends CI_Controller {
 			$this->session->unset_userdata('usernametwitter');
 			$this->session->unset_userdata('emailtwitter');
 		}
-		## end
+		## end 
+
+
 		$view = "template/front";
-		template($view , $data);	
+		template($view , $data);
+
+
+		$this->form_validation->set_rules('username', 'username', 'required');
+		$this->form_validation->set_rules('password', 'password', 'required|min_length[8]|max_length[20]');
+
+		if ($this->form_validation->run() == FALSE){
+			// $this->load->view('auth/templateauthadmin',$data); 
+		}
+		else {
+			$username = $_POST['username'];
+			$password = $_POST['password']; 
+			// login by ouath2
+			$dataLogin = array(
+				'grant_type'	=> 'password',
+				'client_id'		=> 'ADMS Web',
+				'client_secret'	=> '1234567890',
+				'action'		=> '',
+				'redirect_url'	=> base_url('auth/loginCustomer'),
+				'username'     	=> $username,
+				'password'      => $password,
+				'ipAddress'		=> $this->input->ip_address()
+			);
+			$url = linkservice('account') ."auth/oauth2";
+			$method = 'POST';
+			$responseApi = admsCurl($url, $dataLogin, $method);
+			## redirect dan email(belum)
+			if ($responseApi['err']) {
+				echo "<hr>cURL Error #:" . $responseApi['err'];
+			} else {
+				// response from oauth2
+				$res = json_decode($responseApi['response']);
+				if(isset($res->error)){
+					// kalo gagal
+					$this->session->set_flashdata('message', array('error' , '' , 'Gagal'));
+					redirect();
+				} else {
+					// set token on session
+					$this->session->set_userdata('idfront', $res->UserId);
+					$this->session->set_userdata('namefront', $res->Name);
+					$this->session->set_userdata('emailfront', $res->username);
+					$this->session->set_userdata('groupnamefront', $res->GroupName);
+					$this->AccessApi->setAccess('in',(array)$res);
+
+					// kalo berhasil
+					$this->session->set_flashdata('message', array('success' , 'Berhasil Login' , 'Sukses'));
+					redirect();
+				} 
+			}
+			
+		}
 	}
 
 }

@@ -33,19 +33,19 @@
   </div>
   <div class="modal-body clearfix">
     <div class="col-md-6 col-sm-6">
-     <form class="form-login">
+     <form class="form-login" action="<?php echo site_url('front'); ?>" method="POST">
       <div class="form-group floating-label">
-       <input type="email" class="form-control input-custom" id="" >
+       <input type="email" class="form-control input-custom" id="username" name="username">
        <label for="">Email</label>
      </div>
      <div class="form-group floating-label">
-       <input type="password" class="form-control input-custom" id="" >
+       <input type="password" class="form-control input-custom" id="password" name="password">
        <label for="">Password</label>
      </div>
-     <a href="forgot-password.html">Lupa password?</a>
+     <a href="<?php echo site_url('forgot_password'); ?>">Lupa password?</a>
      <div class="form-group text-right">
-       <button class="btn btn-green" onclick="location.href='after-login.html'" type="button">Masuk</button>
-       <a href="register.html">Belum punya akun</a>
+       <button class="btn btn-green">Masuk</button>
+       <a href="<?php echo site_url('register'); ?>">Belum punya akun</a>
      </div>
      <span class="or">Or</span>
    </form>
@@ -67,61 +67,95 @@
 <script src="<?php echo base_url('assetsfront/js/jquery.sticky.js');?>"></script>
 <script src="<?php echo base_url('assetsfront/js/select2.min.js');?>"></script>
 <script src="<?php echo base_url('assetsfront/js/slick.min.js');?>"></script>
-<script>
- var preloader;
- 
- function preload(opacity) {
-   if(opacity <= 0) {
-     showContent();
+
+
+<script type="text/javascript" src="https://sweetalert.js.org/assets/sweetalert/sweetalert.min.js"></script>
+
+<!-- Notifikasi  -->
+<?php if ($this->session->flashdata('message')) { 
+
+  // echo ;
+  $message = $this->session->flashdata('message');
+
+  ?>
+  <script type="text/javascript">
+    $(document).ready(function() { 
+      swal("<?=@$message[2]?> ", "<?=@$message[1]?>" , "<?=@$message[0]?>");
+    });
+  </script>
+  <?php } ?>
+  <!-- End  -->
+
+  <script>
+   var preloader;
+
+   function preload(opacity) {
+     if(opacity <= 0) {
+       showContent();
+     }
+     else {
+       preloader.style.opacity = opacity;
+       window.setTimeout(function() { preload(opacity - 0.05) }, 100);
+     }
    }
-   else {
-     preloader.style.opacity = opacity;
-     window.setTimeout(function() { preload(opacity - 0.05) }, 100);
-   }
- }
 
- function showContent() {
-  preloader.style.display = 'none';
-  document.getElementById('content').style.visibility = 'visible';
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  preloader = document.getElementById('preloader');
-  preload(1);
-});
-$(document).ready(function(){
-  $("nav").sticky({
-   topSpacing:0
- });
-
-  $(".select-custom").select2({
-   minimumResultsForSearch: -1
- });
-  $(".select-type").select2({
-   minimumResultsForSearch: -1,
-   templateResult: formatState,
-   templateSelection: formatState
- });
-  function formatState (state) {
-    if (!state.id) { return state.text; }
-    var $state = $(
-      '<span ><img sytle="display: inline-block;" src="http://sera-ibid.stagingapps.net/assets/images/icon/' + state.element.value.toLowerCase() + '.png" /> ' + state.text + '</span>'
-      );
-    return $state;
+   function showContent() {
+    preloader.style.display = 'none';
+    document.getElementById('content').style.visibility = 'visible';
   }
-  $('.why-ibid').slick({
-   dots: false,
-   infinite: false,
-   speed: 300,
-   slidesToShow: 6,
-   slidesToScroll: 6,
-   responsive: [
+
+  document.addEventListener("DOMContentLoaded", function () {
+    preloader = document.getElementById('preloader');
+    preload(1);
+  });
+</script>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("nav").sticky({
+     topSpacing:0
+   });
+
+    $(".select-custom").select2({
+     minimumResultsForSearch: -1
+   });
+    $(".select-type").select2({
+     minimumResultsForSearch: -1,
+     templateResult: formatState,
+     templateSelection: formatState
+   });
+    function formatState (state) {
+      if (!state.id) { return state.text; }
+      var $state = $(
+        '<span ><img sytle="display: inline-block;" src="http://sera-ibid.stagingapps.net/assets/images/icon/' + state.element.value.toLowerCase() + '.png" /> ' + state.text + '</span>'
+        );
+      return $state;
+    }
+    $('.why-ibid').slick({
+     dots: false,
+     infinite: false,
+     speed: 300,
+     slidesToShow: 6,
+     slidesToScroll: 6,
+     responsive: [
+     {
+      breakpoint: 1024,
+      settings: {
+       slidesToShow: 3,
+       slidesToScroll: 3,
+       infinite:false,
+       dots: true,
+
+       prevArrow: false,
+       nextArrow: false
+     }
+   },
    {
-    breakpoint: 1024,
+    breakpoint: 600,
     settings: {
      slidesToShow: 3,
      slidesToScroll: 3,
-     infinite:false,
      dots: true,
 
      prevArrow: false,
@@ -129,17 +163,6 @@ $(document).ready(function(){
    }
  },
  {
-  breakpoint: 600,
-  settings: {
-   slidesToShow: 3,
-   slidesToScroll: 3,
-   dots: true,
-
-   prevArrow: false,
-   nextArrow: false
- }
-},
-{
   breakpoint: 480,
   settings: {
    slidesToShow: 3,
@@ -152,19 +175,30 @@ $(document).ready(function(){
 }
 ]
 });
-  $('.howTo-bid').slick({
-   dots: false,
-   infinite: false,
-   speed: 300,
-   slidesToShow: 6,
-   slidesToScroll: 6,
-   responsive: [
+    $('.howTo-bid').slick({
+     dots: false,
+     infinite: false,
+     speed: 300,
+     slidesToShow: 6,
+     slidesToScroll: 6,
+     responsive: [
+     {
+      breakpoint: 1024,
+      settings: {
+       slidesToShow: 3,
+       slidesToScroll: 3,
+       infinite:false,
+       dots: true,
+
+       prevArrow: false,
+       nextArrow: false
+     }
+   },
    {
-    breakpoint: 1024,
+    breakpoint: 600,
     settings: {
      slidesToShow: 3,
      slidesToScroll: 3,
-     infinite:false,
      dots: true,
 
      prevArrow: false,
@@ -172,17 +206,6 @@ $(document).ready(function(){
    }
  },
  {
-  breakpoint: 600,
-  settings: {
-   slidesToShow: 3,
-   slidesToScroll: 3,
-   dots: true,
-
-   prevArrow: false,
-   nextArrow: false
- }
-},
-{
   breakpoint: 480,
   settings: {
    slidesToShow: 3,
@@ -195,105 +218,105 @@ $(document).ready(function(){
 }
 ]
 });
-  $('.section-recommend').slick({
-   dots: false,
-   infinite: false,
-   speed: 300,
+    $('.section-recommend').slick({
+     dots: false,
+     infinite: false,
+     speed: 300,
 
-   slidesToShow: 3,
-   slidesToScroll: 3,
-   responsive: [
-   {
-    breakpoint: 1024,
-    settings: {
      slidesToShow: 3,
      slidesToScroll: 3,
-     infinite:false,
+     responsive: [
+     {
+      breakpoint: 1024,
+      settings: {
+       slidesToShow: 3,
+       slidesToScroll: 3,
+       infinite:false,
+       dots: true,
+
+       prevArrow: false,
+       nextArrow: false
+     }
+   },
+   {
+     breakpoint: 800,
+     settings: {
+      slidesToShow: 2,
+      slidesToScroll: 1,
+      dots: true,
+
+      prevArrow: false,
+      nextArrow: false
+    }
+  },
+  {
+    breakpoint: 600,
+    settings: {
+     slidesToShow: 1,
+     slidesToScroll: 1,
      dots: true,
 
      prevArrow: false,
      nextArrow: false
    }
- },
- {
-   breakpoint: 800,
-   settings: {
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    dots: true,
-
-    prevArrow: false,
-    nextArrow: false
-  }
-},
-{
-  breakpoint: 600,
-  settings: {
-   slidesToShow: 1,
-   slidesToScroll: 1,
-   dots: true,
-
-   prevArrow: false,
-   nextArrow: false
  }
-}
-]
+ ]
 });
-  $('.testimoni-slide').slick({
-   dots: false,
-   infinite: false,
-   speed: 300,
-   slidesToShow: 3,
-   slidesToScroll: 3,
-   responsive: [
-   {
-    breakpoint: 1024,
-    settings: {
+    $('.testimoni-slide').slick({
+     dots: false,
+     infinite: false,
+     speed: 300,
      slidesToShow: 3,
      slidesToScroll: 3,
+     responsive: [
+     {
+      breakpoint: 1024,
+      settings: {
+       slidesToShow: 3,
+       slidesToScroll: 3,
+       infinite: false,
+       dots: true
+     }
+   },
+   {
+     breakpoint: 800,
+     settings: {
+      slidesToShow: 2,
+      slidesToScroll: 1,
+      infinite: false,
+      dots: true
+    }
+  },
+  { 
+    breakpoint: 480,
+    settings: {
+     slidesToShow: 1,
+     slidesToScroll: 1,
      infinite: false,
      dots: true
    }
- },
- {
-   breakpoint: 800,
-   settings: {
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    infinite: false,
-    dots: true
-  }
-},
-{ 
-  breakpoint: 480,
-  settings: {
-   slidesToShow: 1,
-   slidesToScroll: 1,
-   infinite: false,
-   dots: true
  }
-}
-]
+ ]
 });
 
-  $('#toggle-nav').click(function(){
-   $('.navbar-collapse.collapse').toggleClass('open')
- })
-  $('.nav-close').click(function(){
-   $('.navbar-collapse.collapse').toggleClass('open')
- })
+    $('#toggle-nav').click(function(){
+     $('.navbar-collapse.collapse').toggleClass('open')
+   })
+    $('.nav-close').click(function(){
+     $('.navbar-collapse.collapse').toggleClass('open')
+   })
 
-  $('.lang-mob a').click(function(){
-   $('.help-mob ul').removeClass('open')
-   $(this).toggleClass('opened')
-   $(this).siblings('ul').toggleClass('open')
- })
-  $('.help-mob a').click(function(){
-   $('.lang-mob ul').removeClass('open')
-   $(this).toggleClass('opened')
-   $(this).siblings('ul').toggleClass('open')
- })
-});
+    $('.lang-mob a').click(function(){
+     $('.help-mob ul').removeClass('open')
+     $(this).toggleClass('opened')
+     $(this).siblings('ul').toggleClass('open')
+   })
+    $('.help-mob a').click(function(){
+     $('.lang-mob ul').removeClass('open')
+     $(this).toggleClass('opened')
+     $(this).siblings('ul').toggleClass('open')
+   })
+  });
 </script>
 </body>
 </html>
