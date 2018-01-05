@@ -71,7 +71,7 @@
 					<td><?php 
 						echo $schedule[$row['ScheduleId']]['CompanyName'];
 						echo '<br>';
-						echo substr($schedule[$row['ScheduleId']]['AuctionStartDate'],0,10);
+						echo substr($schedule[$row['ScheduleId']]['date'],0,10).' '.$schedule[$row['ScheduleId']]['waktu'];
 					?></td>
 					<td><?php echo $schedule[$row['ScheduleId']]['ItemName']; ?></td>
 					<td><?php echo $row['NPLType']; ?></td>
@@ -115,7 +115,7 @@
 				<tr>
 					<td><?php echo $row['NPLNumber']; ?></td>
 					<td><?php echo $schedule[$row['ScheduleId']]['CompanyName']; ?></td>
-					<td><?php echo substr($schedule[$row['ScheduleId']]['AuctionStartDate'],0,10); ?></td>
+					<td><?php echo substr($schedule[$row['ScheduleId']]['date'],0,10).' '.$schedule[$row['ScheduleId']]['waktu']; ?></td>
 					<td><?php echo $schedule[$row['ScheduleId']]['ItemName']; ?></td>
 					<td><?php echo $row['NPLType']; ?></td>
 					<td><?php echo $row['Active']; ?></td>

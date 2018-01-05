@@ -12,11 +12,27 @@ class ThisCart extends CI_Controller {
 		
 		$id = $ScheduleId;
 		$Qty = $_POST['Qty'];
-		$harga = $_POST['harga'];
+		$harga = @$_POST['harga'];
 		$name = $_POST['getScheduleId'];
 		$ItemName = $_POST['ItemName'];
+		$tipeLelang = $_POST['tipeLelang'];
+		$tipeLelangId = $_POST['tipeLelangId'];
 		$CompanyId = $_POST['CompanyId'];
-		$ObjectId = $_POST['ObjectId'];
+		$ObjectId = @$_POST['ObjectId'];
+		
+		################################
+		## get harga
+		$url = linkservice('master') .'item/detail/?itemid='.$itemLelang;
+		$method = 'GET';
+		$responseApi = admsCurl($url, array(), $method);
+		if ($responseApi['err']) {
+			echo "<hr>cURL Error #:" . $responseApi['err'];
+		} else {
+			$responseApi = json_decode($responseApi['response'], true);
+			$harga = $responseApi['data']['PriceNPL'];
+			$ObjectId = $responseApi['data']['ObjectId'];
+		}
+		################################
 		
 		// array data cart
 		$data = array(
@@ -26,12 +42,14 @@ class ThisCart extends CI_Controller {
 			'name'    => $name,
 			'options' => array(
 				'Item' => $ItemName, 
-				'Tipe NPL' => 'Regular',
+				'Tipe NPL' => $tipeLelang,
+				'tipeLelangId' => $tipeLelangId,
 				'ItemId' => $itemLelang,
 				'CompanyId' => $CompanyId,
 				'ObjectId' => $ObjectId,
 			),
 		);
+		
 		// insert to cart
 		$this->cart->insert($data);
 		$this->getCartList();

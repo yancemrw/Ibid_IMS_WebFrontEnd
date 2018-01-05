@@ -251,6 +251,7 @@ $isiemail .= "<table width='100%' cellspacing='0' cellpadding='0' border='0'>
 					'ScheduleId' => $items['id'],
 					'ItemId' => $items['options']['ItemId'],
 					'NPLType' => $items['options']['Tipe NPL'],
+					'tipeLelangId' => $items['options']['tipeLelangId'],
 					'QtyNPL' => $items['qty'],
 					'AmountNPL' => $items['price'],
 					'BiodataId' => $BiodataId,

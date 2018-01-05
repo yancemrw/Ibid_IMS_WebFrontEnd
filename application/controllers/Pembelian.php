@@ -78,6 +78,20 @@ class Pembelian extends CI_Controller {
 			$data['itemType'] = @$itemType;
 			############################################################
 			
+			############################################################
+			## get cabang
+			$url = linkservice('master')."cabang/get";  
+			$method = 'GET';
+			$responseApi = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
+			if ($responseApi['err']) { 
+				echo "<hr>cURL Error #:" . $responseApi['err']; 
+			} else {
+				$dataApi = json_decode($responseApi['response'],true);
+				$itemType = $dataApi['data'];
+			}
+			$data['cabang'] = @$itemType;
+			############################################################
+			
 		}
 		
 		
