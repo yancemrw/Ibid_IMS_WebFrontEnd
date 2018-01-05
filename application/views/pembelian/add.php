@@ -189,6 +189,7 @@ $(function(){
 			$('#thisFormAutocomplete').css('display','none');
 			$.ajax( {
 				url: "<?php echo linkservice('master');?>schedule/getschedule",
+				// url : "http://ibid-ams-schedule.stagingapps.net/api/scheduleList",
 				dataType: "json",
 				data: {
 					term: request.term,
@@ -220,10 +221,14 @@ $(function(){
 				$('#Tanggal').val('');
 				$('#Cabang').val('');
 				$('#Lokasi').val('');
-				// return false;
 			}
 		}
+<<<<<<< Updated upstream
 	}); */
+=======
+				// return false;
+	});
+>>>>>>> Stashed changes
 	
 	$('#addToCart').click(function(){
 		itemLelang = $('#itemLelang').val();
