@@ -121,10 +121,14 @@ class Biodata extends CI_Controller {
 			$otp = implode("", $_POST['otp']);  
 
 			if ($otp == $this->session->userdata('otpNPL')) {
+				// echo "beda 1";
+				// exit();
 				// echo "token sama";
 				redirect('biodata/updateForNPL','refresh');
 
 			} else {
+				// echo "beda 2";
+				// exit();
 				$this->session->set_flashdata('message', 'OTP tidak cocok');
 				redirect('biodata/otpconfirm','refresh');
 			}
@@ -144,6 +148,7 @@ class Biodata extends CI_Controller {
 
 		############################################################
 		$id = trim($_SESSION['idfront']);
+		// exit();
 		## get detail users
 		$url = linkservice('account') ."users/details/".$id;
 		$method = 'GET';
@@ -151,10 +156,10 @@ class Biodata extends CI_Controller {
 		if ($responseApi['err']) { echo "<hr>cURL Error #:" . $responseApi['err']; } else {
 			$dataApiDetail = json_decode($responseApi['response'],true);
 		}
-		$detailBiodata = @$dataApiDetail['data']['users'];
+		$detailBiodata = @$dataApiDetail['data'];
 		
 		// print_r($detailBiodata);
-		$sesi = $this->session->userdata();
+		$sesi = $this->session->all_userdata();
 		
 
 		// update users
@@ -169,6 +174,8 @@ class Biodata extends CI_Controller {
 		$method = 'POST';
 		$responseApi = admsCurl($url, $dataPost, $method);
 		
+		// print_r($responseApi);
+		// exit();
 		/* ******************************** 
 			users biodata
 		*/
@@ -190,11 +197,16 @@ class Biodata extends CI_Controller {
 				'BiodataId' => $id,
 				'IdentityNumber' => $sesi['BiodataPembelianNPL']['IdentityNumber'],
 				'NpwpNumber' => $sesi['BiodataPembelianNPL']['NpwpNumber'],
-				'BankId' => $sesi['BiodataPembelianNPL']['BankId'],
+				'BankId' => @$sesi['BiodataPembelianNPL']['BankId'],
 				'BankAccountName' => $sesi['BiodataPembelianNPL']['BankAccountName'],
 				'BankAccountNumber' => $sesi['BiodataPembelianNPL']['BankAccountNumber']
 			);
-			if ($detailBiodata['BiodataId'] == ''){
+
+			// print_r($usersBiodataArray);
+			// exit();
+
+
+			if ($detailBiodata['users']['BiodataId'] == ''){
 
 
 			// Insert Biodata
@@ -222,6 +234,7 @@ class Biodata extends CI_Controller {
 				}
 			}
 
+			// print_r($responseApi);
 			redirect('pembelian');
 		// echo '<pre>';
 		// print_r($_POST);

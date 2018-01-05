@@ -1,0 +1,560 @@
+/*HOMEPAGE*/
+.icn {
+    background-image: url(http://sera-ibid.stagingapps.net/assets/images/icon/icon-homepage.png);
+    background-repeat: no-repeat;
+    display: block;
+    margin: auto;
+}
+
+.icn-LOGO-IBID {
+    width: 87px;
+    height: 63px;
+    background-position: -10px -10px;
+}
+
+.icn-auto-bid {
+    width: 108px;
+    height: 94px;
+    background-position: -115px -10px;
+}
+
+.icn-bawa-mobil-dokumen {
+    width: 96px;
+    height: 90px;
+    background-position: -243px -10px;
+}
+
+.icn-car-valuation {
+    width: 94px;
+    height: 92px;
+    background-position: -243px -120px;
+}
+
+.icn-check-detail {
+    width: 95px;
+    height: 95px;
+    background-position: -10px -232px;
+}
+
+.icn-check-jadwal {
+    width: 93px;
+    height: 87px;
+    background-position: -125px -232px;
+}
+
+.icn-filter {
+    width: 16px;
+    height: 17px;
+    background-position: -359px -10px;
+}
+
+.icn-frekwensi {
+    width: 112px;
+    height: 90px;
+    background-position: -238px -232px;
+}
+
+.icn-google-play {
+    width: 169px;
+    height: 51px;
+    background-position: -125px -342px;
+}
+
+.icn-ikut-lelang {
+    width: 98px;
+    height: 86px;
+    background-position: -314px -342px;
+}
+
+.icn-jaringan-lelang {
+    width: 104px;
+    height: 92px;
+    background-position: -395px -10px;
+}
+
+.icn-map {
+    width: 86px;
+    height: 97px;
+    background-position: -370px -122px;
+}
+
+.icn-opsi-lelang {
+    width: 70px;
+    height: 94px;
+    background-position: -476px -122px;
+}
+
+.icn-pay-registration {
+    width: 82px;
+    height: 97px;
+    background-position: -476px -236px;
+}
+
+.icn-pelunasan {
+    width: 125px;
+    height: 83px;
+    background-position: -432px -353px;
+}
+
+.icn-pengambilan-kendaraan {
+    width: 94px;
+    height: 88px;
+    background-position: -10px -353px;
+}
+
+.icn-regis-login {
+    width: 81px;
+    height: 93px;
+    background-position: -124px -456px;
+}
+
+/*HOMEPAGE*/
+
+.ic {
+    background-image: url(../images/icon/icon-ibid.png);
+    background-repeat: no-repeat;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.ic-360 {
+    width: 145px;
+    height: 83px;
+    background-position: -10px -10px;
+}
+
+.ic-Attention {
+    width: 21px;
+    height: 22px;
+    background-position: -175px -10px;
+}
+
+.ic-Attention {
+    width: 23px;
+    height: 20px;
+    background-position: -216px -10px;
+}
+
+.ic-Attention-Beli-NPL {
+    width: 204px;
+    height: 132px;
+    background-position: -259px -10px;
+}
+
+.ic-Attention-NPL-Sudah-digunakan {
+    width: 137px;
+    height: 148px;
+    background-position: -483px -10px;
+}
+
+.ic-BCA {
+    width: 55px;
+    height: 17px;
+    background-position: -10px -178px;
+}
+
+.ic-BCA-KlikPay {
+    width: 41px;
+    height: 28px;
+    background-position: -85px -178px;
+}
+
+.ic-BNI {
+    width: 64px;
+    height: 18px;
+    background-position: -146px -178px;
+}
+
+.ic-BRI {
+    width: 77px;
+    height: 18px;
+    background-position: -230px -178px;
+}
+
+.ic-Bandingkan {
+    width: 28px;
+    height: 23px;
+    background-position: -327px -178px;
+}
+
+.ic-Bandingkan-green {
+    width: 19px;
+    height: 16px;
+    background-position: -375px -178px;
+}
+
+.ic-Bawa-kendaraan {
+    width: 96px;
+    height: 90px;
+    background-position: -414px -178px;
+}
+
+.ic-CIMB-Clicks {
+    width: 76px;
+    height: 12px;
+    background-position: -530px -178px;
+}
+
+.ic-Cepat {
+    width: 117px;
+    height: 62px;
+    background-position: -10px -288px;
+}
+
+.ic-Cepat-Terjual {
+    width: 103px;
+    height: 103px;
+    background-position: -530px -210px;
+}
+
+.ic-Chat-With {
+    width: 62px;
+    height: 50px;
+    background-position: -147px -333px;
+}
+
+.ic-Check-FAQ {
+    width: 49px;
+    height: 49px;
+    background-position: -229px -333px;
+}
+
+.ic-Close {
+    width: 14px;
+    height: 14px;
+    background-position: -298px -333px;
+}
+
+.ic-Deposit-100_ {
+    width: 107px;
+    height: 118px;
+    background-position: -332px -288px;
+}
+
+.ic-Download {
+    width: 13px;
+    height: 17px;
+    background-position: -459px -333px;
+}
+
+.ic-Favorite {
+    width: 25px;
+    height: 24px;
+    background-position: -492px -333px;
+}
+
+.ic-Gadget {
+    width: 62px;
+    height: 20px;
+    background-position: -537px -333px;
+}
+
+.ic-Gadget {
+    width: 27px;
+    height: 9px;
+    background-position: -10px -373px;
+}
+
+.ic-Gadget {
+    width: 68px;
+    height: 22px;
+    background-position: -57px -373px;
+}
+
+.ic-Gadget-Popup {
+    width: 65px;
+    height: 22px;
+    background-position: -537px -373px;
+}
+
+.ic-Google {
+    width: 24px;
+    height: 24px;
+    background-position: -10px -415px;
+    margin-right: 40px
+}
+
+.ic-HVE {
+    width: 35px;
+    height: 24px;
+    background-position: -54px -415px;
+}
+
+.ic-HVE {
+    width: 37px;
+    height: 24px;
+    background-position: -109px -415px;
+}
+
+.ic-HVE-white {
+    width: 17px;
+    height: 12px;
+    background-position: -166px -415px;
+}
+
+.ic-HVE-Popup {
+    width: 41px;
+    height: 30px;
+    background-position: -203px -415px;
+}
+
+.ic-Harga-Dasar {
+    width: 25px;
+    height: 25px;
+    background-position: -264px -415px;
+}
+
+.ic-Harga-Jual-Optimal {
+    width: 103px;
+    height: 103px;
+    background-position: -459px -415px;
+}
+
+.ic-Icon-Pengembalian {
+    width: 10px;
+    height: 16px;
+    background-position: -619px -333px;
+}
+
+.ic-Info-green {
+    width: 9px;
+    height: 9px;
+    background-position: -626px -178px;
+}
+
+.ic-Info {
+    width: 9px;
+    height: 9px;
+    background-position: -298px -369px;
+}
+
+.ic-Informasi-Tagihan-Lelang {
+    width: 32px;
+    height: 26px;
+    background-position: -582px -415px;
+}
+
+.ic-JCB {
+    width: 36px;
+    height: 26px;
+    background-position: -10px -461px;
+}
+
+.ic-Jadwal {
+    width: 16px;
+    height: 16px;
+    background-position: -66px -461px;
+}
+
+.ic-Mandiri {
+    width: 59px;
+    height: 17px;
+    background-position: -10px -538px;
+}
+
+.ic-Mandiri-Clickpay {
+    width: 50px;
+    height: 26px;
+    background-position: -102px -461px;
+}
+
+.ic-Mandiri-e-cash {
+    width: 57px;
+    height: 26px;
+    background-position: -89px -538px;
+}
+
+.ic-MasterCard {
+    width: 43px;
+    height: 26px;
+    background-position: -264px -461px;
+}
+
+.ic-Mobil {
+    width: 28px;
+    height: 11px;
+    background-position: -327px -461px;
+}
+
+.ic-Mobil {
+    width: 51px;
+    height: 18px;
+    background-position: -375px -461px;
+}
+
+.ic-Mobil-Popup {
+    width: 68px;
+    height: 25px;
+    background-position: -166px -538px;
+}
+
+.ic-Motor {
+    width: 40px;
+    height: 22px;
+    background-position: -582px -461px;
+}
+
+.ic-Motor {
+    width: 18px;
+    height: 11px;
+    background-position: -172px -503px;
+}
+
+.ic-Motor {
+    width: 41px;
+    height: 23px;
+    background-position: -327px -503px;
+}
+
+.ic-Motor-Popup {
+    width: 43px;
+    height: 25px;
+    background-position: -388px -503px;
+}
+
+.ic-Mudah {
+    width: 112px;
+    height: 98px;
+    background-position: -655px -128px;
+}
+
+.ic-NPL-Management {
+    width: 20px;
+    height: 27px;
+    background-position: -10px -128px;
+}
+
+.ic-No-NPL {
+    width: 108px;
+    height: 82px;
+    background-position: -653px -246px;
+}
+
+.ic-Notifikasi {
+    width: 16px;
+    height: 22px;
+    background-position: -50px -128px;
+}
+
+.ic-Notifikasi {
+    width: 25px;
+    height: 27px;
+    background-position: -86px -128px;
+}
+
+.ic-Pembayaran {
+    width: 27px;
+    height: 26px;
+    background-position: -131px -128px;
+}
+
+.ic-Pengambilan-Kendaraan {
+    width: 29px;
+    height: 24px;
+    background-position: -178px -128px;
+}
+
+.ic-Pengaturan {
+    width: 25px;
+    height: 27px;
+    background-position: -147px -246px;
+}
+
+.ic-Pilih-Jadwal {
+    width: 16px;
+    height: 16px;
+    background-position: -10px -246px;
+}
+
+.ic-Registrasi-data-diri {
+    width: 81px;
+    height: 93px;
+    background-position: -649px -348px;
+}
+
+.ic-Send-Mail {
+    width: 125px;
+    height: 67px;
+    background-position: -642px -461px;
+}
+
+.ic-Solusi-Jual-Aset {
+    width: 105px;
+    height: 104px;
+    background-position: -254px -548px;
+}
+
+.ic-Sort {
+    width: 11px;
+    height: 17px;
+    background-position: -227px -128px;
+}
+
+.ic-Sukses {
+    width: 126px;
+    height: 126px;
+    background-position: -379px -548px;
+}
+
+.ic-Tambah {
+    width: 17px;
+    height: 17px;
+    background-position: -46px -246px;
+}
+
+.ic-Tambah-Bandingkan {
+    width: 59px;
+    height: 59px;
+    background-position: -192px -246px;
+}
+
+.ic-Tentukan-jadwal {
+    width: 97px;
+    height: 90px;
+    background-position: -525px -548px;
+}
+
+.ic-Transaksi {
+    width: 20px;
+    height: 22px;
+    background-position: -83px -246px;
+}
+
+.ic-Transaksi {
+    width: 25px;
+    height: 27px;
+    background-position: -271px -246px;
+}
+
+.ic-VISA {
+    width: 52px;
+    height: 16px;
+    background-position: -316px -246px;
+}
+
+.ic-facebook {
+    width: 12px;
+    height: 26px;
+    background-position: -750px -348px;
+    margin-right: 40px
+}
+
+.ic-google-play {
+    width: 169px;
+    height: 51px;
+    background-position: -10px -658px;
+}
+
+.ic-linkedin {
+    width: 23px;
+    height: 23px;
+    background-position: -642px -548px;
+    margin-right: 40px
+}
+
+.ic-twitter {
+    width: 24px;
+    height: 21px;
+    background-position: -685px -548px;
+    margin-right: 40px
+}
