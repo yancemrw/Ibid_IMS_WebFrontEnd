@@ -212,10 +212,9 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">Menu Dinamis</li>
-            <?php
-              // menu dinamic by role in session
+           <!--  <?php
               $ci = &get_instance();
-              foreach ($ci->session->userdata('userdata')['Role'] as $i => $data) {
+              foreach (@$ci->session->userdata('userdata')['Role'] as $i => $data) {
                 // for group menu
             ?>
             <li class="treeview">
@@ -236,8 +235,7 @@
             </li>
             <?php
               }
-              // end menu dinamic by role in session
-            ?>
+            ?> -->
             <li class="header">MAIN NAVIGATION</li>
 			
 			<li>

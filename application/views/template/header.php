@@ -53,10 +53,15 @@
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/image-sprite-style.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/style.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/responsive.css') ?>">
+
+   <!-- sweetalert -->
+   
+
 </head>
 <body>
+
    <div id="preloader"></div>
-   <div id="content">
+   <div id="content"> 
 
       <!-- <header> -->
          <?php echo ( $this->uri->segment(1)=="" OR $this->uri->segment(1)=="front" ) ? "<header>" : ""; ?>
@@ -88,10 +93,131 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                      </button>
-                     <a class="navbar-brand icon_logo" alt="" href="index.html"><i class="icn icn-LOGO-IBID"></i></a>
+                     <a class="navbar-brand icon_logo" alt="" href="<?php echo site_url(); ?>"><i class="icn icn-LOGO-IBID"></i></a>
                      <div class="nav-header-right "> 
+                        <!-- <?php print_r($userdata = $this->session->userdata('userdata')); ?>  -->
+
+                        <?php $userdata = $this->session->userdata('userdata');
+                        if (count($userdata['UserId']) > 0) { ?>
+
+                        <ul class="user-nav clearfix">
+                           <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                 <p><img src="assets/images/icon/Transaksi.png" alt="" title="" width="" height=""></p>
+                              </a>
+                              <ul class="dropdown-menu dropdown-custom">
+                                 <li>
+                                    <p class="title-dropdown">Transaksi</p>
+                                 </li>
+                                 <li class="input-dropdown">
+                                    <h2>Butuh Tindakan</h2>
+                                    <form>
+                                       <div class="form-group floating-label">
+                                          <input type="name" name="" class="form-control" placeholder="">
+                                          <label class="label-schedule">Harga Dasar</label>
+                                       </div>
+                                       <div class="form-group floating-label">
+                                          <input type="name" name="" class="form-control" placeholder="">
+                                          <label class="label-schedule">Harga Dasar</label>
+                                       </div>
+                                       <div class="form-group floating-label">
+                                          <input type="name" name="" class="form-control" placeholder="">
+                                          <label class="label-schedule">Harga Dasar</label>
+                                       </div>
+                                    </form>
+                                    <h2>Transaksi Terakhir</h2>
+                                    <a href="">
+                                       <div class="transaction-image">
+                                          <img src="assets/images/background/3.jpg" alt="" title="">
+                                       </div>
+                                       <div class="transaction-content">
+                                          <h2>DAIHATSU LUXIO 1.5 X MINIBUS AT 2014</h2>
+                                          <p>No. NPL #002 <span>Rp. 418,000,000</span></p>
+                                       </div>
+                                    </a>
+                                 </li>
+                                 <li class="text-center">
+                                    <a href="" class="viewall-dropdown">Lihat Semua Transaksi</a>
+                                 </li>
+                              </ul>
+                           </li>
+                           <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                 <p><img src="assets/images/icon/Notifikasi.png" alt="" title="" width="" height=""> <span class="notification">10</span></p>
+                              </a>
+                              <ul class="dropdown-menu dropdown-custom">
+                                 <li>
+                                    <p class="title-dropdown">Notifikasi</p>
+                                 </li>
+                                 <li class="clearfix">
+                                    <a href="#">
+                                       <div class="media-image">
+                                          <img src="assets/images/icon/ic_notif_1.png" alt="" title="">
+                                       </div>
+                                       <div class="media-content">
+                                          <h2>1 Pesan Email</h2>
+                                          <p>Lorem Ipsum is simply dummy text of the printing <span>09/26/2017</span></p>
+                                       </div>
+                                    </a>
+                                 </li>
+                                 <li class="clearfix">
+                                    <a href="#">
+                                       <div class="media-image">
+                                          <img src="assets/images/icon/ic_notif_2.png" alt="" title="">
+                                       </div>
+                                       <div class="media-content">
+                                          <h2>1 Pesan Email</h2>
+                                          <p>Lorem Ipsum is simply dummy text of the printing <span>09/26/2017</span></p>
+                                       </div>
+                                    </a>
+                                 </li>
+                                 <li class="clearfix">
+                                    <a href="#">
+                                       <div class="media-image">
+                                          <img src="assets/images/icon/ic_notif_3.png" alt="" title="">
+                                       </div>
+                                       <div class="media-content">
+                                          <h2>1 Pesan Email</h2>
+                                          <p>Lorem Ipsum is simply dummy text of the printing <span>09/26/2017</span></p>
+                                       </div>
+                                    </a>
+                                 </li>
+                                 <li class="text-center">
+                                    <a href="" class="viewall-dropdown">Lihat Semua Transaksi</a>
+                                 </li>
+                              </ul>
+                           </li>
+                           <li class="dropdown">
+                              <a href="#" class="dropdown-toggle box-profile" data-toggle="dropdown">
+                                 <span class="photo-profile">
+                                    <img src="assets/images/background/slide-1.jpg" alt="" title="profile">
+                                 </span>
+                              </a>
+                              <ul class="dropdown-menu dropdown-profile">
+                                 <li class="clearfix">
+                                    <a href="am-ubah-profil.html" class="clearfix">
+                                       <div class="content-profile col-md-6">
+                                          <img src="assets/images/background/slide-1.jpg" alt="" title="profile">
+                                       </div>
+                                       <p class="col-md-6">Tangkas <span>Tangkas@Ibid.com</span></p>
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <hr />
+                                 </li>
+                                 <li class="text-center">
+                                    <button class="btn btn-logout" onclick="location.href='index.html'" type="button">Keluar</button>
+                                 </li>
+                              </ul>
+                           </li>
+                        </ul>
+
+                        <?php } else { ?>
+
                         <a href="" class="login" data-toggle="modal" data-target="#login">Masuk</a>
                         <a href="register.html" class="regis">Daftar</a>
+                        <?php } ?>
+
                      </div>
                   </div>
                   <div id="navbar" class="navbar-collapse collapse">
@@ -105,8 +231,130 @@
                         <li><a href="titip-lelang-form-required.html">Titip Lelang</a></li>
                         <li><a href="">Map</a></li>
                         <li><a href="tata-cara-lelang-onsite2.html">Prosedur</a></li>
+                        
+
+                        <?php if (count($userdata['UserId']) > 0) { ?>
+
+                        <li class="dropdown hidden-mob">
+                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                              <p><img src="http://sera-ibid.stagingapps.net/assets/images/icon/ic_transaction.png" alt="" title="" width="16px" height="22px"> <img src="http://sera-ibid.stagingapps.net/assets/images/icon/Transaksi.png" alt="" title="" width="" height="" class="ic_fixed"></p>
+                           </a>
+                           <ul class="dropdown-menu dropdown-custom">
+                              <li>
+                                 <p class="title-dropdown">Transaksi</p>
+                              </li>
+                              <li class="input-dropdown">
+                                 <h2>Butuh Tindakan</h2>
+                                 <form>
+                                    <div class="form-group floating-label">
+                                       <input type="name" name="" class="form-control" placeholder="">
+                                       <label class="label-schedule">Harga Dasar</label>
+                                    </div>
+                                    <div class="form-group floating-label">
+                                       <input type="name" name="" class="form-control" placeholder="">
+                                       <label class="label-schedule">Harga Dasar</label>
+                                    </div>
+                                    <div class="form-group floating-label">
+                                       <input type="name" name="" class="form-control" placeholder="">
+                                       <label class="label-schedule">Harga Dasar</label>
+                                    </div>
+                                 </form>
+                                 <h2>Transaksi Terakhir</h2>
+                                 <a href="">
+                                    <div class="transaction-image">
+                                       <img src="http://sera-ibid.stagingapps.net/assets/images/background/3.jpg" alt="" title="">
+                                    </div>
+                                    <div class="transaction-content">
+                                       <h2>DAIHATSU LUXIO 1.5 X MINIBUS AT 2014</h2>
+                                       <p>No. NPL #002 <span>Rp. 418,000,000</span></p>
+                                    </div>
+                                 </a>
+                              </li>
+                              <li class="text-center">
+                                 <a href="" class="viewall-dropdown">Lihat Semua Transaksi</a>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="dropdown hidden-mob">
+                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                              <p><img src="http://sera-ibid.stagingapps.net/assets/images/icon/bell.png" alt="" title="" width="16px" height="22px"><img src="http://sera-ibid.stagingapps.net/assets/images/icon/Notifikasi.png" alt="" title="" width="" height="" class="ic_fixed"> <span class="notification">10</span></p>
+                           </a>
+                           <ul class="dropdown-menu dropdown-custom">
+                              <li>
+                                 <p class="title-dropdown">Notifikasi</p>
+                              </li>
+                              <li class="clearfix">
+                                 <a href="#">
+                                    <div class="media-image">
+                                       <img src="http://sera-ibid.stagingapps.net/assets/images/icon/ic_notif_1.png" alt="" title="">
+                                    </div>
+                                    <div class="media-content">
+                                       <h2>1 Pesan Email</h2>
+                                       <p>Lorem Ipsum is simply dummy text of the printing <span>09/26/2017</span></p>
+                                    </div>
+                                 </a>
+                              </li>
+                              <li class="clearfix">
+                                 <a href="#">
+                                    <div class="media-image">
+                                       <img src="http://sera-ibid.stagingapps.net/assets/images/icon/ic_notif_2.png" alt="" title="">
+                                    </div>
+                                    <div class="media-content">
+                                       <h2>1 Pesan Email</h2>
+                                       <p>Lorem Ipsum is simply dummy text of the printing <span>09/26/2017</span></p>
+                                    </div>
+                                 </a>
+                              </li>
+                              <li class="clearfix">
+                                 <a href="#">
+                                    <div class="media-image">
+                                       <img src="http://sera-ibid.stagingapps.net/assets/images/icon/ic_notif_3.png" alt="" title="">
+                                    </div>
+                                    <div class="media-content">
+                                       <h2>1 Pesan Email</h2>
+                                       <p>Lorem Ipsum is simply dummy text of the printing <span>09/26/2017</span></p>
+                                    </div>
+                                 </a>
+                              </li>
+                              <li class="text-center">
+                                 <a href="" class="viewall-dropdown">Lihat Semua Transaksi</a>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="dropdown hidden-mob">
+                           <a href="#" class="dropdown-toggle box-profile" data-toggle="dropdown">
+                              <span class="photo-profile">
+                                 <img src="http://sera-ibid.stagingapps.net/assets/images/background/slide-1.jpg" alt="" title="profile">
+                              </span>
+                              <div class="profile-name">
+                                 Tangkas <span class="fa fa-angle-down"></span>
+                              </div>
+                           </a>
+                           <ul class="dropdown-menu dropdown-profile">
+                              <li class="clearfix">
+                                 <a href="am-ubah-profil.html" class="clearfix">
+                                    <div class="content-profile col-md-6">
+                                       <img src="http://sera-ibid.stagingapps.net/assets/images/background/slide-1.jpg" alt="" title="profile">
+                                    </div>
+                                    <p class="col-md-6"><?php echo $userdata['namefront'] ?> <span><?php echo $userdata['emailfront']; ?></span></p>
+                                 </a>
+                              </li>
+                              <li>
+                                 <hr />
+                              </li>
+                              <li class="text-center">
+                                 <button  class="btn btn-logout" onclick="location.href='<?php echo site_url('logout'); ?>'">Keluar</button >
+                              </li>
+                           </ul>
+                        </li>
+
+
+
+                        <?php } else { ?>
                         <li class="hidden-mob"><a href="" class="login" data-toggle="modal" data-target="#login">Masuk</a></li>
                         <li class="hidden-mob"><a href="register.html" class="regis">Daftar</a></li>
+
+                        <?php } ?>
                         <li class="lang-mob">
                            <a href="javascript:void(0)">Bahasa</a>
                            <ul>
