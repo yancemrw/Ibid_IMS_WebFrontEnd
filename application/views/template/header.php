@@ -54,6 +54,16 @@
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/style.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/responsive.css') ?>">
 
+   <!-- Header Js -->
+   <script src="<?php echo base_url('assetsfront/js/jquery-3.2.1.min.js');?>"></script>
+   <script src="<?php echo base_url('assetsfront/js/bootstrap.min.js');?>"></script>
+   <script src="<?php echo base_url('assetsfront/js/jquery.sticky.js');?>"></script>
+   <script src="<?php echo base_url('assetsfront/js/select2.min.js');?>"></script>
+   <script src="<?php echo base_url('assetsfront/js/slick.min.js');?>"></script>
+   <script src="<?php echo base_url('assetsfront/js/bootstrap-datepicker.min.js') ?>"></script>
+   <script src='https://www.google.com/recaptcha/api.js'></script>
+   <script type="text/javascript" src="https://sweetalert.js.org/assets/sweetalert/sweetalert.min.js"></script>
+
    <!-- sweetalert -->
    
 
