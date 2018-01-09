@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="id" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
 <head>
-   <title>IBID Lelang</title>
+   <title><?php echo @$title; ?></title>
    <meta charset="utf-8">
    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
    <link rel="shortcut icon" href="<?php echo base_url('assetsfront/images/favicon/favicon.ico'); ?>">
@@ -66,7 +66,7 @@
       <!-- <header> -->
          <?php echo ( $this->uri->segment(1)=="" OR $this->uri->segment(1)=="front" ) ? "<header>" : ""; ?>
 
-            <nav class="navbar navbar-custom">
+            <nav class="navbar navbar-custom <?php echo @$header_white; ?>">
                <div class="top-navbar text-right">
                   <form class="form-inline">
                      <div class="form-group language">
@@ -190,23 +190,23 @@
                            <li class="dropdown">
                               <a href="#" class="dropdown-toggle box-profile" data-toggle="dropdown">
                                  <span class="photo-profile">
-                                    <img src="assets/images/background/slide-1.jpg" alt="" title="profile">
+                                    <img src="<?php echo base_url('assetsfront/images/background/slide-1.jpg') ?>" alt="" title="profile">
                                  </span>
                               </a>
                               <ul class="dropdown-menu dropdown-profile">
                                  <li class="clearfix">
                                     <a href="am-ubah-profil.html" class="clearfix">
                                        <div class="content-profile col-md-6">
-                                          <img src="assets/images/background/slide-1.jpg" alt="" title="profile">
+                                          <img src="https://instagram.fjkt1-1.fna.fbcdn.net/t51.2885-15/e35/25023178_125021498293801_6299328116707819520_n.jpg" alt="" title="profile">
                                        </div>
-                                       <p class="col-md-6">Tangkas <span>Tangkas@Ibid.com</span></p>
+                                       <p class="col-md-6"><?php echo $userdata['namefront'] ?> <span><?php echo $userdata['emailfront']; ?></span></p>
                                     </a>
                                  </li>
                                  <li>
                                     <hr />
                                  </li>
                                  <li class="text-center">
-                                    <button class="btn btn-logout" onclick="location.href='index.html'" type="button">Keluar</button>
+                                    <button class="btn btn-logout" onclick="location.href='<?php echo site_url('logout'); ?>'" type="button">Keluar</button>
                                  </li>
                               </ul>
                            </li>
@@ -224,13 +224,13 @@
                      <ul class="nav navbar-nav navbar-right">
                         <li class="nav-close"><i class="fa fa-close"></i></li>
                         <li class="nav-title"><span class="nav-title">Home</span></li>
-                        <li><a href="halaman-cari-kendaraan.html">Cari Kendaraan</a></li>
-                        <li><a href="jadwal-lelang.html">Jadwal Lelang</a></li>
-                        <li><a href="halaman-pemilihan-kota.html">Live Auction</a></li>
-                        <li><a href="beli-npl-required.html">Beli Npl</a></li>
-                        <li><a href="titip-lelang-form-required.html">Titip Lelang</a></li>
-                        <li><a href="">Map</a></li>
-                        <li><a href="tata-cara-lelang-onsite2.html">Prosedur</a></li>
+                        <li><a href="<?php echo site_url('cari-kendaraan'); ?>">Cari Kendaraan</a></li>
+                        <li><a href="<?php echo site_url('jadwal-lelang'); ?>">Jadwal Lelang</a></li>
+                        <li><a href="<?php echo site_url('live-auction'); ?>">Live Auction</a></li>
+                        <li><a href="<?php echo site_url('beli-npl'); ?>">Beli Npl</a></li>
+                        <li><a href="<?php echo site_url('titip-lelang'); ?>">Titip Lelang</a></li>
+                        <li><a href="<?php echo site_url('market-auction-price'); ?>">Map</a></li>
+                        <li><a href="<?php echo site_url('tata-cara'); ?>">Prosedur</a></li>
                         
 
                         <?php if (count($userdata['UserId']) > 0) { ?>
@@ -286,7 +286,7 @@
                               <li class="clearfix">
                                  <a href="#">
                                     <div class="media-image">
-                                       <img src="http://sera-ibid.stagingapps.net/assets/images/icon/ic_notif_1.png" alt="" title="">
+                                       <img src="<?php echo base_url('assetsfront/images/icon/ic_notif_1.png');?>" alt="" title="">
                                     </div>
                                     <div class="media-content">
                                        <h2>1 Pesan Email</h2>
@@ -297,7 +297,7 @@
                               <li class="clearfix">
                                  <a href="#">
                                     <div class="media-image">
-                                       <img src="http://sera-ibid.stagingapps.net/assets/images/icon/ic_notif_2.png" alt="" title="">
+                                       <img src="<?php echo base_url('assetsfront/images/icon/ic_notif_2.png'); ?>" alt="" title="">
                                     </div>
                                     <div class="media-content">
                                        <h2>1 Pesan Email</h2>
@@ -308,7 +308,7 @@
                               <li class="clearfix">
                                  <a href="#">
                                     <div class="media-image">
-                                       <img src="http://sera-ibid.stagingapps.net/assets/images/icon/ic_notif_3.png" alt="" title="">
+                                       <img src="<?php echo base_url('assetsfront/images/icon/ic_notif_3.png'); ?>" alt="" title="">
                                     </div>
                                     <div class="media-content">
                                        <h2>1 Pesan Email</h2>
@@ -324,26 +324,27 @@
                         <li class="dropdown hidden-mob">
                            <a href="#" class="dropdown-toggle box-profile" data-toggle="dropdown">
                               <span class="photo-profile">
-                                 <img src="http://sera-ibid.stagingapps.net/assets/images/background/slide-1.jpg" alt="" title="profile">
+                                 <img src="https://instagram.fjkt1-1.fna.fbcdn.net/t51.2885-15/e35/25023178_125021498293801_6299328116707819520_n.jpg" alt="" title="profile">
                               </span>
                               <div class="profile-name">
-                                 Tangkas <span class="fa fa-angle-down"></span>
+                                 <?php echo @$userdata['namefront'] ?>
+                                 <span class="fa fa-angle-down"></span>
                               </div>
                            </a>
                            <ul class="dropdown-menu dropdown-profile">
                               <li class="clearfix">
-                                 <a href="am-ubah-profil.html" class="clearfix">
-                                    <div class="content-profile col-md-6">
-                                       <img src="http://sera-ibid.stagingapps.net/assets/images/background/slide-1.jpg" alt="" title="profile">
-                                    </div>
-                                    <p class="col-md-6"><?php echo $userdata['namefront'] ?> <span><?php echo $userdata['emailfront']; ?></span></p>
+                                 <a href="<?php echo site_url('akun/dasbor/') ?>" class="clearfix">
+                                    <!-- <div class="content-profile col-md-6">
+                                       <img src="<?php echo base_url('assetsfront/images/background/slide-1.jpg'); ?>" alt="" title="profile">
+                                    </div> -->
+                                    <p class="col-md-12"><?php echo $userdata['namefront'] ?> <span><?php echo $userdata['emailfront']; ?></span></p>
                                  </a>
                               </li>
                               <li>
                                  <hr />
                               </li>
                               <li class="text-center">
-                                 <button  class="btn btn-logout" onclick="location.href='<?php echo site_url('logout'); ?>'">Keluar</button >
+                                 <button  class="btn btn-logout" onclick="location.href='<?php echo site_url('logout'); ?>'">Keluar</button>
                               </li>
                            </ul>
                         </li>
@@ -352,7 +353,7 @@
 
                         <?php } else { ?>
                         <li class="hidden-mob"><a href="" class="login" data-toggle="modal" data-target="#login">Masuk</a></li>
-                        <li class="hidden-mob"><a href="register.html" class="regis">Daftar</a></li>
+                        <li class="hidden-mob"><a href="<?php echo site_url('register') ?>" class="regis">Daftar</a></li>
 
                         <?php } ?>
                         <li class="lang-mob">
