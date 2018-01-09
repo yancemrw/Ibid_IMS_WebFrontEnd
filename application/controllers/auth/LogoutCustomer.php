@@ -14,7 +14,7 @@ class LogoutCustomer extends CI_Controller {
 
 	public function index(){
 		if($this->AccessApi->setAccess('out')){
-			redirect(base_url('index.php/auth/loginCustomer'), 'refresh');
+			redirect(base_url(), 'refresh');
 		} else{
 			echo "<script>window.history.back(-1);</script>";
 		}

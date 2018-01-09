@@ -66,6 +66,9 @@
 }
 
 @media (max-width: 1024px) {
+	.image-empty img {
+	    width: 100%;
+	}
 	.box-recommend a h2 {
 	    width: 80%;
 	}
@@ -116,9 +119,11 @@
 	.box-recommend h2 {
 		margin-top: 10px
 	}
-	.object-type label,
+	.object-type label {
+		width: 100%
+	}
 	.object-type .form-group {
-		width: 100%;
+		width: calc(50% - 5px)
 	}
 	.action-bottom button {
 		font-size: 12px;
@@ -467,6 +472,9 @@
 		max-width: 48%;
 		margin-right: 2%;
 	}
+	.form-filter .form-group:last-child {
+		text-align: center;
+	}
 }
 
 @media(max-width: 950px) {
@@ -697,9 +705,9 @@
 	}
 	.tab-search .form-group:nth-child(1),
 	.tab-search .form-group:nth-child(2) {
-		width: 49.8%;
-		float: left;
-		margin: 0 2px 2px 0;
+		width: calc(50% - 1px);
+	    float: left;
+	    margin: 0 2px 2px 0;
 	}
 	.tab-search .form-group:nth-child(2) {
 		margin-right: 0
@@ -1008,23 +1016,17 @@
 	.info-ibid button:hover,
 	.info-ibid button:active,
 	.info-ibid button:focus {
-		width: 47%;
+		width: calc(50% - 10px);
 		float: left;
 		height: 30px;
 		padding: 0;
 		margin-bottom: 10px;
-		margin-right: 5px;
-		margin-left: 5px;
 		font-size: 12px;
 		border-radius: 3px
 	}
 	.info-ibid button:first-child {
 		margin-right: 2px;
 		margin-left: 8px
-	}
-	.info-ibid button:last-child {
-		margin-left: 2px;
-		margin-right: 0
 	}
 	.bidder {
 		display: none;
@@ -1124,6 +1126,12 @@
 		margin: 0;
 		width: 100%;
 	}
+	.content-profile {
+		margin: auto;
+	}
+	.dropdown-menu.dropdown-profile {
+		text-align: center;
+	}
 	.user-nav ul.dropdown-menu:before {
 		display: none;
 	}
@@ -1167,14 +1175,15 @@
 	.auction-info li .content-media p {
 		font-size: 12px;
 	}
-	.form-auction .kota {
+	.form-auction .kota,
+	.form-auction input[type=checkbox]+label p {
 		float: left;
-	    width: 41%;
+	    width: calc(50% - 15px);
 	    text-align: left;
-	    margin-right: 20px;
+	    margin-right: 0;
 	    margin-top: 25px;
 	    position: relative;
-	    left: 50px;
+	    left: 30px;
 	}
 	.form-auction input[type=checkbox]+label {
 		text-align: left;
@@ -1188,9 +1197,8 @@
 		margin: 5px 0 0;
 	}
 	.form-auction input[type=checkbox]+label p {
-		float: left;
-		width: 52%;
 		font-size: 13px;
+		width: calc(50% - 25px);
 	}
 	.section-auction h2 {
 	    margin: 0;
@@ -1514,6 +1522,9 @@
 	.content-autobid h2 {
 		text-align: center;
 	}
+	.main-right {
+		width: 100%
+	}
 }
 @media (max-width: 640px) {
 	.info-ibid button:first-child {
@@ -1614,13 +1625,6 @@
 	.tab-search .nav-tabs>li>a {
 		padding: 18px 21px;
 		margin-right: 0;
-	}
-	.tab-search .form-group:nth-child(1),
-	.tab-search .form-group:nth-child(2) {
-		width: 49.3%;
-		float: left;
-		margin: 0 5px 5px 0;
-		position: relative;
 	}
 	.tab-search .form-group:nth-child(2) {
 		margin-right: 0;
@@ -1753,10 +1757,14 @@
 	    color: #fff;
 	}
 	.section-auction h2 span.info-schedule {
-		display: none;
+		float: none;
+		display: block;
 	}
 	.filter-schedule {
 		margin-top: 15px
+	}
+	.filter-schedule .select-custom {
+		width: auto!important;
 	}
 	.product-mob .action-bottom .btn, .product-mob .action-wishlist .btn, .btn, .product-mob .action-wishlist a {
 	    font-size: 11px;
@@ -1951,10 +1959,6 @@
 	.box-success h2+p {
 		font-size: 20px;
 	}
-	.tab-search .form-group:nth-child(1),
-	.tab-search .form-group:nth-child(2) {
-		width: 49.2%;
-	}
 	.login-socialmedia a {
 		font-size: 12px;
 		margin-bottom: 5px;
@@ -2017,6 +2021,18 @@
 		font-size: 12px;
 		padding: 8px;
 	}
+	.detail-transport h1 {
+		padding: 15px 100px 15px 15px
+	}
+	.user-nav ul.dropdown-menu {
+		right: 0;
+		left: auto;
+		margin: 0;
+		width: 100%;
+		height: 500px;
+	    overflow-y: scroll;
+	    border-top: 0
+	}
 }
 
 @media (max-width: 360px) {
@@ -2047,9 +2063,6 @@
 	.grade-auction {
 	    bottom: 40px;
 	}
-	.detail-transport h1 {
-		padding: 15px 150px 15px 15px
-	}
 	.desc-row ul li p {
 		font-size: 12px
 	}
@@ -2069,9 +2082,6 @@
 	}
 	.box-info {
 		padding: 10px
-	}
-	.image-empty img {
-	    width: 100%;
 	}
 	.auction-empty {
 	    position: absolute;
@@ -2101,21 +2111,8 @@
 	.product-mob .action-wishlist  .delete-favorite {
 		width: 100%
 	}
-	.tab-search .form-group:nth-child(1),
-	.tab-search .form-group:nth-child(2) {
-		width: 49%;
-	}
 	.info-ibid button:first-child {
 	    margin-left: 7px;
-	}
-	.user-nav ul.dropdown-menu {
-		right: 0;
-		left: auto;
-		margin: 0;
-		width: 100%;
-		height: 300px;
-	    overflow-y: scroll;
-	    border-top: 0
 	}
 	.user-nav ul.dropdown-menu:before {
 		left: auto;

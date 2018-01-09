@@ -382,7 +382,7 @@
                </div>
             </nav>
 
-            <?php if ($this->uri->segment(1)=="" OR $this->uri->segment(1)=="front") { ?>
+            <?php if ($this->uri->segment(1)=="" OR $this->uri->segment(1)=="front") { ?> 
 
 
             <div class="hero-overlay">
