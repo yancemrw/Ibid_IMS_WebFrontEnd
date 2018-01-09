@@ -1,6 +1,6 @@
 /*HOMEPAGE*/
 .icn {
-    background-image: url(http://sera-ibid.stagingapps.net/assets/images/icon/icon-homepage.png);
+    background-image: url(../images/icon/icon-homepage.png);
     background-repeat: no-repeat;
     display: block;
     margin: auto;
@@ -111,7 +111,7 @@
 /*HOMEPAGE*/
 
 .ic {
-    background-image: url(http://sera-ibid.stagingapps.net/assets/images/icon/icon-ibid.png);
+    background-image: url(../images/icon/icon-ibid.png);
     background-repeat: no-repeat;
     display: inline-flex;
     vertical-align: middle;

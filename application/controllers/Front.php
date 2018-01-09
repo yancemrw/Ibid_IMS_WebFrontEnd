@@ -52,7 +52,7 @@ class Front extends CI_Controller {
 				'client_id'		=> 'ADMS Web',
 				'client_secret'	=> '1234567890',
 				'action'		=> '',
-				'redirect_url'	=> base_url('auth/loginCustomer'),
+				'redirect_url'	=> base_url(),
 				'username'     	=> $username,
 				'password'      => $password,
 				'ipAddress'		=> $this->input->ip_address()
