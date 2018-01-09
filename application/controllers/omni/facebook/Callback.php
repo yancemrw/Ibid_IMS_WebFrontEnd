@@ -116,8 +116,8 @@ Class Callback extends CI_Controller
             $responseApi = admsCurl($url, $dataLogin, $method);
             $resp = json_decode($responseApi['response'] , true);
 
-            print_r($resp);
-            exit();
+            // print_r($resp);
+            // exit();
 
 
             if(isset($resp['error'])){
@@ -126,9 +126,14 @@ Class Callback extends CI_Controller
                 $res = json_decode($responseApi['response']);
                 if(!isset($res['error'])){
                     $this->AccessApi->setAccess('in',(array)$res);
-                    redirect('afterlogin','refresh');
-                } else
-                    redirect('auth/loginCustomer','refresh');
+                    // redirect('afterlogin','refresh'); 
+                    echo "1";
+                    print_r($dataLogin);
+                } else {
+                    // redirect('auth/loginCustomer','refresh');
+                    echo "2";
+                    print_r($dataLogin);
+                }
                 
             } else {
                 $this->AccessApi->setAccess('in',$resp);
