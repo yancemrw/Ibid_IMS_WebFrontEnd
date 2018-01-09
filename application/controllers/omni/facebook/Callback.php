@@ -114,7 +114,12 @@ Class Callback extends CI_Controller
             $url = linkservice('account') ."auth/oauth2";
             $method = 'POST';
             $responseApi = admsCurl($url, $dataLogin, $method);
-            $resp = (array) json_decode($responseApi['response']);
+            $resp = json_decode($responseApi['response'] , true);
+
+            print_r($resp);
+            exit();
+
+
             if(isset($resp['error'])){
                 $dataLogin = array_merge($dataLogin, array('action'=>'register', 'GroupId' => 9, 'Active' => 1));
                 $responseApi = admsCurl($url, $dataLogin, $method);
