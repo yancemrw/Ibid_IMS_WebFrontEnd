@@ -38,11 +38,11 @@ class Callback extends CI_Controller {
             $url = linkservice('account') ."auth/oauth2";
             $method = 'POST';
             $responseApi = admsCurl($url, $dataLogin, $method);
-            $resp = (array) json_decode($responseApi['response']);
+            $resp =  json_decode($responseApi['response'] , true);
             if(isset($resp['error'])){
                 $dataLogin = array_merge($dataLogin, array('action'=>'register', 'GroupId' => 9, 'Active' => 1));
                 $responseApi = admsCurl($url, $dataLogin, $method);
-                $res = (array) json_decode($responseApi['response']);
+                $res =  json_decode($responseApi['response'],true);
                 if(!isset($res['error'])){
                     $this->AccessApi->setAccess('in',(array)$res);
                     redirect('afterlogin','refresh');
