@@ -1,17 +1,31 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pembelian extends CI_Controller { 
+class Beli extends CI_Controller {
 
-	function __construct() {
-        parent::__construct();
-        if (!@$_SESSION['idfront']){ redirect(base_url()); }
-        $this->load->helper(array('global' , 'omni'));
-    }
-	
-	function index(){
-		// print_r($this->session->all_userdata());
-		// exit();
+	public function __construct(){
+		parent::__construct();
+		$this->load->library(array('form_validation'));
+		$this->load->helper(array('global' , 'omni'));
+		$this->AccessApi = new AccessApi(array('client_id' => 'ADMS Web', 'client_secret' => '1234567890', 'username' => 'rendhy.wijayanto@sera.astra.co.id'));
+		$this->AccessApi->redirect_url = base_url('auth/loginCustomer');
+		$this->AccessApi->check_login();
+	}
+
+	public function index()
+	{
+
+		$data = array(
+			// header white untuk selain home, karena menggunakan header yang berwarna putih
+			'header_white' => "header-white",
+			'userdata'	=> $this->session->userdata('userdata'),
+			'title' => 'Beli Nomor Peserta Lelang ( NPL )'
+		);
+
+
+
+
+		### diambil dari frontend lama
 		$this->load->library('cart');
 		
 		$data['message'] = $this->session->flashdata('message');
@@ -25,19 +39,19 @@ class Pembelian extends CI_Controller {
 		if ($responseApi['err']) { echo "<hr>cURL Error #:" . $responseApi['err']; } else {
 			$dataApiDetail = json_decode($responseApi['response'],true);
 		}
-		$detailBiodata = @$dataApiDetail['data']['users'];  
+		$detailBiodata = @$dataApiDetail['data']['users']; 
 
 		/* *******************************
 			cek kelengkapan data awal
 			********************************
 		*/
-		if ($detailBiodata['Phone'] == '' ||
-			$detailBiodata['BankId'] == '' || 
-			$detailBiodata['BankAccountNumber'] == '' || 
-			$detailBiodata['BankAccountName'] == '' 
-		){
-			
-			$data['page'] 	= 'biodata/ForNPL';
+			if ($detailBiodata['Phone'] == '' ||
+				$detailBiodata['BankId'] == '' || 
+				$detailBiodata['BankAccountNumber'] == '' || 
+				$detailBiodata['BankAccountName'] == '' 
+			){
+
+				$data['page'] 	= 'biodata/ForNPL';
 			$data['detailBiodata'] = $detailBiodata;
 			############################################################
 			## get list Bank
@@ -56,10 +70,9 @@ class Pembelian extends CI_Controller {
 			
 		} 
 		else {
-			$data['title']	= 'Pembelian NPL';
-			// $view 			= 'pembelian/add';
 
-			$view 			= 'npl/pemesanan_view';
+			$data['title']	= 'Pembelian NPL';
+			$data['page'] 	= 'pembelian/add';
 			
 			############################################################
 			## get list Item Type
@@ -89,18 +102,16 @@ class Pembelian extends CI_Controller {
 			$data['cabang'] = @$itemType;
 			############################################################
 			
-		} 
-
-		// $this->load->view('templateAdminLTE',$data);
-
+		}
 		
-		$data['header_white']= "header-white";
-		$data['userdata']= $this->session->userdata('userdata');
+		
 
+
+		$view = "npl/npl_view";
 		template($view , $data);
 	}
 
 }
 
-/* End of file Lists.php */
-/* Location: ./application/controllers/item/Lists.php */
+/* End of file Beli.php */
+/* Location: ./application/controllers/npl/Beli.php */

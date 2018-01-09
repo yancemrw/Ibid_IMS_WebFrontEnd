@@ -62,14 +62,7 @@
 </div>
 </div>
 </div>
-<script src="<?php echo base_url('assetsfront/js/jquery-3.2.1.min.js');?>"></script>
-<script src="<?php echo base_url('assetsfront/js/bootstrap.min.js');?>"></script>
-<script src="<?php echo base_url('assetsfront/js/jquery.sticky.js');?>"></script>
-<script src="<?php echo base_url('assetsfront/js/select2.min.js');?>"></script>
-<script src="<?php echo base_url('assetsfront/js/slick.min.js');?>"></script>
 
-
-<script type="text/javascript" src="https://sweetalert.js.org/assets/sweetalert/sweetalert.min.js"></script>
 
 <!-- Notifikasi  -->
 <?php if ($this->session->flashdata('message')) { 

@@ -54,5 +54,14 @@ $route['default_controller'] = 'front';
 // seputar authentification
 $route['logout'] = 'auth/logoutCustomer';
 
+// menu bagian header
+$route['beli-npl'] = 'npl/beli';
+
+
+// bagian akun
+$route['akun/dasbor'] = 'akun/dasbor';
+$route['akun'] = 'akun/dasbor';
+
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
