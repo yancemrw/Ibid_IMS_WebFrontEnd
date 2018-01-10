@@ -70,7 +70,7 @@
 </head>
 <body>
 
-   <div id="preloader"></div>
+   <div id="preloader" style="display:none"></div>
    <div id="content"> 
 
       <!-- <header> -->
