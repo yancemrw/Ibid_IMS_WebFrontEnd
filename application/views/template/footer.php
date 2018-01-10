@@ -35,11 +35,11 @@
     <div class="col-md-6 col-sm-6">
      <form class="form-login" action="<?php echo site_url('front'); ?>" method="POST">
       <div class="form-group floating-label">
-       <input type="email" class="form-control input-custom" id="username" name="username">
+       <input type="email" class="form-control floating-handle" id="username" name="username">
        <label for="">Email</label>
      </div>
      <div class="form-group floating-label">
-       <input type="password" class="form-control input-custom" id="password" name="password">
+       <input type="password" class="form-control floating-handle" id="password" name="password">
        <label for="">Password</label>
      </div>
      <a href="<?php echo site_url('forgot_password'); ?>">Lupa password?</a>
@@ -105,20 +105,48 @@
 
 
 <script type="text/javascript">
-  $(document).ready(function(){
+  $(document).ready(function() {
+    
+    // ***** handle floating placeholder input field *****
+    $('.floating-handle').blur(function() {
+      tmpval = $(this).val();
+      if(tmpval == '') {
+         $(this).addClass('empty').removeClass('not-empty');
+      }
+      else {
+         $(this).addClass('not-empty').removeClass('empty');
+      }
+
+      // for date
+      if($(this).parent().hasClass('date') === true) {
+         $(this).css('border', 'none');
+         $(this).parent().css('border', '1px solid #dc3545');
+      }
+    });
+    // **************************************************
+
+    // ***** class number only *****
+    $('.only-number').keypress(function(event) {
+      var charCode = (event.which) ? event.which : event.keyCode;
+      return (charCode >= 48 && charCode <= 57);
+    });
+    // *****************************
+
     $("nav").sticky({
-     topSpacing:0
-   });
+      topSpacing:0
+    });
 
     $(".select-custom").select2({
-     minimumResultsForSearch: -1
-   });
+      minimumResultsForSearch: -1
+    });
+    
     $(".select-type").select2({
-     minimumResultsForSearch: -1,
-     templateResult: formatState,
-     templateSelection: formatState
-   });
-    function formatState (state) {
+      minimumResultsForSearch: -1,
+      templateResult: formatState,
+      templateSelection: formatState
+    });
+
+    function formatState(state) {
       if (!state.id) { return state.text; }
       var $state = $(
         '<span ><img sytle="display: inline-block;" src="http://sera-ibid.stagingapps.net/assets/images/icon/' + state.element.value.toLowerCase() + '.png" /> ' + state.text + '</span>'

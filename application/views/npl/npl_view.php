@@ -31,7 +31,7 @@
                 <div class="booking-schedule">
                     <h2>Perbaharui Data Anda <span>Hanya di Isi Untuk User Baru</span></h2>
 
-                    <form class="form-filter" action="<?php echo site_url('biodata/otp'); ?>" method="POST">
+                    <form class="form-filter" action="<?php echo site_url('biodata/otp'); ?>" method="POST" data-provide="validation">
 
                         <input type="hidden" name="otpkirim" value="true">
 
@@ -85,7 +85,7 @@
                             <input type="checkbox" name="checkbox" id="agree-required">
                             <label for="agree-required">Dengan melakukan pendaftaran, saya setuju dengan <a href="">Kebijakan Privasi</a> dan <a href="">Syarat & Ketentuan</a> IBID.</label>
                         </div>
-                        <button class="btn btn-green">KIRIM</button>
+                        <button class="btn btn-green" id="btn-kirim">KIRIM</button>
                     </form>
 
                 </div>
@@ -97,25 +97,26 @@
 
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
         $("nav").sticky({
             topSpacing:0
         });
 
         $(".select-custom").select2({
            minimumResultsForSearch: -1
-       });
+        });
 
         $('.input-group.date').datepicker({
            format: "dd//mm/yyyy"
-       });
+        });
 
         $("input[name$='tipe-object']").click(function() {
            var test = $(this).val();
 
            $(".desc-object").hide();
            $("#object" + test).show();
-       });
+        });
+
         $('.auction-info').slick({
            dots: false,
            infinite: false,
@@ -137,7 +138,7 @@
                }
            }
            ]
-       });
+        });
         $('input').blur(function(){
            tmpval = $(this).val();
            if(tmpval == '') {
@@ -147,45 +148,50 @@
                $(this).addClass('not-empty');
                $(this).removeClass('empty');
            }
-       });
+        });
 
         $('#toggle-nav').click(function(){
           $('.navbar-collapse.collapse').toggleClass('open')
-      })
+        })
         $('.nav-close').click(function(){
           $('.navbar-collapse.collapse').toggleClass('open')
-      })
+        })
 
         $('.lang-mob a').click(function(){
           $('.help-mob ul').removeClass('open')
           $(this).toggleClass('opened')
           $(this).siblings('ul').toggleClass('open')
-      })
+        })
         $('.help-mob a').click(function(){
           $('.lang-mob ul').removeClass('open')
           $(this).toggleClass('opened')
           $(this).siblings('ul').toggleClass('open')
-      })
+        })
 
 
         $("#notif-rekening").on("focus", function( e ) {
-            $('.help-info-2').show();
+          $('.help-info-2').show();
         });
         $("#notif-telepon").on("focus", function( e ) {
-            $('.help-info-1').show();
+          $('.help-info-1').show();
         });
 
-                       // input identity
-                       $(function () {
-                          $("#biodata").change(function () {
-                             if ($(this).val() == "k") {
-                                $("#ktp").show() && $("#npwp").hide();
-                            } else if ($(this).val() == "n") {
-                                $("#npwp").show() && $("#ktp").hide(); 
-                            } else {
-                               $("#npwp").hide() && $("#ktp").hide();
-                           }
-                       });
-                      });
-                   });
-               </script>
+        // input identity
+        $(function() {
+          $("#biodata").change(function() {
+            if ($(this).val() == "k") {
+              $("#ktp").show() && $("#npwp").hide();
+            } else if ($(this).val() == "n") {
+              $("#npwp").show() && $("#ktp").hide();
+            } else {
+              $("#npwp").hide() && $("#ktp").hide();
+            }
+          });
+        });
+
+        // handle button kirim
+        $('#btn-kirim').click(function(e) {
+          e.preventDefault();
+        });
+});
+</script>
