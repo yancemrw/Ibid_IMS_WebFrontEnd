@@ -5,7 +5,7 @@
             <div class="menu-account">
                <div class="avatar-account">
                   <div class="photo-account">
-                     <img src="https://instagram.fjkt1-1.fna.fbcdn.net/t51.2885-15/e35/25023178_125021498293801_6299328116707819520_n.jpg" alt="">
+                     <img src="<?php echo $img_link; ?>">
                   </div>
                   <h3><?php echo @$userdata['namefront']; ?></h3>
                </div>
@@ -29,7 +29,7 @@
                   <div class="change-avatar bg-grey">
                      <div class="avatar-bg">
                         <div class="avatar">
-                           <img src="https://instagram.fjkt1-1.fna.fbcdn.net/t51.2885-15/e35/25023178_125021498293801_6299328116707819520_n.jpg" alt="">
+                           <img src="<?php echo $img_link; ?>">
                         </div>
                         <a href="" class="icon-camera">
                            <img src="assets/images/icon/ic_camera.png" alt="">
