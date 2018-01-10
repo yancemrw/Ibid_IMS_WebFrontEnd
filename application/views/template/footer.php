@@ -63,7 +63,6 @@
 </div>
 </div>
 
-
 <!-- Notifikasi  -->
 <?php if ($this->session->flashdata('message')) { 
 
@@ -111,16 +110,22 @@
     $('.floating-handle').blur(function() {
       tmpval = $(this).val();
       if(tmpval == '') {
-         $(this).addClass('empty').removeClass('not-empty');
+        $(this).addClass('empty').removeClass('not-empty');
       }
       else {
-         $(this).addClass('not-empty').removeClass('empty');
+        $(this).addClass('not-empty').removeClass('empty');
       }
 
       // for date
       if($(this).parent().hasClass('date') === true) {
-         $(this).css('border', 'none');
-         $(this).parent().css('border', '1px solid #dc3545');
+        if($(this).val() === '') {
+          $(this).css('border', 'none');
+          $(this).parent().css('border', '1px solid #dc3545');
+        }
+        else {
+          $(this).css('border', '1px solid #CCC');
+          $(this).parent().css('border', 'none');
+        }
       }
     });
     // **************************************************
@@ -132,6 +137,10 @@
     });
     // *****************************
 
+    // ***** disabled color *****
+    $('input:disabled').css({'background':'#E0E0E0', 'z-index':'2'});
+    // **************************
+
     $("nav").sticky({
       topSpacing:0
     });
@@ -139,7 +148,7 @@
     $(".select-custom").select2({
       minimumResultsForSearch: -1
     });
-    
+
     $(".select-type").select2({
       minimumResultsForSearch: -1,
       templateResult: formatState,

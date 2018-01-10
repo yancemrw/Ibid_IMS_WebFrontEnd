@@ -48,34 +48,30 @@
                               <label class="label-schedule">Nama</label>
                            </div>
                            <div class="form-group floating-label">
-                              <input type="email" name="" class="form-control floating-handle input-custom">
-                              <label class="label-schedule">Email *</label>
-                           </div>
-                           <div class="form-group floating-label">
-                              <input type="text" name="" class="form-control floating-handle input-custom">
-                              <label class="label-schedule">No Telepon *</label>
+                              <input type="email" name="" class="form-control floating-handle" disabled>
+                              <label class="label-schedule">Email</label>
                            </div>
                            <div class="form-group floating-label">
                               <input type="text" id="ktp" name="ktp" class="form-control floating-handle only-number">
-                              <label class="label-schedule">No KTP <span></span></label>
+                              <label class="label-schedule">No KTP <span>*</span></label>
                            </div>
                            <div class="form-group floating-label">
-                              <input type="text" name="" class="form-control floating-handle input-custom">
+                              <input type="text" name="" class="form-control floating-handle input-custom only-number">
                               <label class="label-schedule">No Telepon *</label>
                            </div>
                            <div class="form-group floating-label">
                               <input type="text" id="npwp" name="npwp" class="form-control floating-handle only-number">
-                              <label class="label-schedule">NPWP <span></span></label>
+                              <label class="label-schedule">NPWP <span>*</span></label>
                            </div>
                            <div class="form-group floating-label">
-                              <input type="text" name="" id="id-card" class="form-control floating-handle floating-handle">
-                              <label class="label-schedule">Nomor Kartu Anggota *</label>
+                              <input type="text" name="" id="id-card" class="form-control floating-handle">
+                              <label class="label-schedule">Nomor Kartu Anggota</label>
                               <div class="help-info">
                                  <i class="fa fa-info"></i> Kartu anggota yang dimiliki oleh pnegguna IBID yang telah terdaftar sebelumnya
                               </div>
                            </div>
                            <div class="form-group floating-label">
-                              <select class="form-control select-custom">
+                              <select class="form-control font-theme select-custom">
                                  <option>Tipe identitas *</option>
                                  <option>1</option>
                                  <option>2</option>
@@ -86,7 +82,7 @@
                         <div class="col-md-6">
                            <h4>Akun Bank</h4>
                            <div class="form-group floating-label">
-                              <select class="form-control select-custom">
+                              <select class="form-control font-theme select-custom">
                                  <option>Bank</option>
                                  <option>BCA</option>
                                  <option>MANDIRI</option>
@@ -111,7 +107,7 @@
                         <div class="col-md-6">
                            <h4>Biodata</h4>
                            <div class="form-group floating-label">
-                              <select class="form-control select-custom">
+                              <select class="form-control font-theme select-custom">
                                  <option>Jenis Kelamin</option>
                                  <option>Laki-laki</option>
                                  <option>Perempuan</option>
@@ -154,16 +150,15 @@
 <script>
    // ***** handle ktp and npwp *****
    if($('#ktp').val() !== '') {
-      $('#npwp').prop('disabled', true).css({'background':'#CCC', 'z-index':'1'});
-      $('#npwp');
+      $('#npwp').prop('disabled', true).css({'background':'#E0E0E0', 'z-index':'1'});
    }
    else if($('#npwp').val() !== '') {
-      $('#ktp').prop('disabled', true).css({'background':'#CCC', 'z-index':'1'});
+      $('#ktp').prop('disabled', true).css({'background':'#E0E0E0', 'z-index':'1'});
    }
 
    $('#ktp').blur(function() {
       if($(this).val() !== '') {
-         $('#npwp').prop('disabled', true).css({'background':'#CCC', 'z-index':'1'});
+         $('#npwp').prop('disabled', true).css({'background':'#E0E0E0', 'z-index':'1'});
       }
       else {
          $('#npwp').prop('disabled', false).css({'background':'none', 'z-index':'8'});
@@ -172,7 +167,7 @@
 
    $('#npwp').blur(function() {
       if($(this).val() !== '') {
-         $('#ktp').prop('disabled', true).css({'background':'#CCC', 'z-index':'1'});
+         $('#ktp').prop('disabled', true).css({'background':'#E0E0E0', 'z-index':'1'});
       }
       else {
          $('#ktp').prop('disabled', false).css({'background':'none', 'z-index':'8'});
