@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dasbor extends CI_Controller {
 	
-	public function __construct(){
+	public function __construct() {
 		parent::__construct();
 		$this->load->library(array('form_validation'));
 		$this->load->helper(array('global' , 'omni'));
@@ -12,19 +12,14 @@ class Dasbor extends CI_Controller {
 		$this->AccessApi->check_login();
 	}
 
-
-	public function index()
-	{
+	public function index() {
 		$data = array(
 			'header_white' => "header-white",
 			'userdata'	=> $this->session->userdata('userdata')
 		);
 
-
-
 		$view = "akun/dasbor_view";
 		template($view , $data);
-		
 	}
 
 }
