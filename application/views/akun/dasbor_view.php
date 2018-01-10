@@ -52,7 +52,7 @@
                               <label class="label-schedule">Email</label>
                            </div>
                            <div class="form-group floating-label">
-                              <input type="text" id="ktp" name="ktp" class="form-control floating-handle only-number">
+                              <input type="text" id="ktp" name="ktp" class="form-control floating-handle input-custom only-number">
                               <label class="label-schedule">No KTP <span>*</span></label>
                            </div>
                            <div class="form-group floating-label">
@@ -60,7 +60,7 @@
                               <label class="label-schedule">No Telepon *</label>
                            </div>
                            <div class="form-group floating-label">
-                              <input type="text" id="npwp" name="npwp" class="form-control floating-handle only-number">
+                              <input type="text" id="npwp" name="npwp" class="form-control floating-handle input-custom only-number">
                               <label class="label-schedule">NPWP <span>*</span></label>
                            </div>
                            <div class="form-group floating-label">
@@ -90,11 +90,11 @@
                               </select>
                            </div>
                            <div class="form-group floating-label">
-                              <input type="text" name="" class="form-control floating-handle">
+                              <input type="text" name="" class="form-control floating-handle input-custom only-number">
                               <label class="label-schedule">Nomor Rekening</label>
                            </div>
                            <div class="form-group floating-label">
-                              <input type="text" name="" class="form-control floating-handle">
+                              <input type="text" name="" class="form-control floating-handle input-custom">
                               <label class="label-schedule">Atas Nama</label>
                            </div>
                            <div class="form-group floating-label">
