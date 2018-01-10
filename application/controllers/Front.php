@@ -32,6 +32,10 @@ class Front extends CI_Controller {
 		}
 		## end 
 
+		$data = array(
+			'title'	=> 'IBID - Balai Lelang Serasi '
+		);
+
 
 		$view = "template/front";
 		template($view , $data);
