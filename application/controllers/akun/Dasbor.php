@@ -17,7 +17,7 @@ class Dasbor extends CI_Controller {
 			'header_white' => "header-white",
 			'userdata'	=> $this->session->userdata('userdata')
 		);
-
+		$data['img_link'] = 'https://instagram.fjkt1-1.fna.fbcdn.net/t51.2885-15/e35/25023178_125021498293801_6299328116707819520_n.jpg';
 		$view = "akun/dasbor_view";
 		template($view , $data);
 	}
