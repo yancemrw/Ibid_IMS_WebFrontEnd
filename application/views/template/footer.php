@@ -78,34 +78,20 @@
   <?php } ?>
   <!-- End  -->
 
-  <script>
-   var preloader;
-
-   function preload(opacity) {
-     if(opacity <= 0) {
-       showContent();
-     }
-     else {
-       preloader.style.opacity = opacity;
-       window.setTimeout(function() { preload(opacity - 0.05) }, 100);
-     }
-   }
-
-   function showContent() {
-    preloader.style.display = 'none';
+<script type="text/javascript">
+  function showContent() {
+    document.getElementById('preloader').style.display = 'none';
     document.getElementById('content').style.visibility = 'visible';
   }
 
-  document.addEventListener("DOMContentLoaded", function () {
-    preloader = document.getElementById('preloader');
-    preload(1);
-  });
-</script>
+  setTimeout(function() {
+    if(document.getElementById('preloader').style.display === 'none') {
+      showContent();
+    }
+  }, 1000);
 
-
-<script type="text/javascript">
   $(document).ready(function() {
-    
+
     // ***** handle floating placeholder input field *****
     $('.floating-handle').blur(function() {
       tmpval = $(this).val();

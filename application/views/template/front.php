@@ -1,4 +1,3 @@
- 
 <section class="section section-search bg-grey">
    <div class="tab-search tab-search-mobile">
       <ul class="nav nav-tabs" role="tablist">
@@ -384,3 +383,19 @@
    </div>
 </section>
 
+<script>
+   function preload(opacity) {
+      if(opacity <= 0) {
+         showContent();
+      }
+      else {
+         document.getElementById('preloader').style.opacity = opacity;
+         window.setTimeout(function() { preload(opacity - 0.05) }, 100);
+      }
+   }
+
+   document.addEventListener("DOMContentLoaded", function () {
+      document.getElementById('preloader').style.display = 'block';
+      preload(1);
+   });
+</script>
