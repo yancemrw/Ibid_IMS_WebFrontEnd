@@ -57,11 +57,12 @@ $route['logout'] = 'auth/logoutCustomer';
 // menu bagian header
 $route['beli-npl'] = 'npl/beli';
 
-
 // bagian akun
 $route['akun/dasbor'] = 'akun/dasbor';
 $route['akun'] = 'akun/dasbor';
 
+// menu auction
+$route['live_auction'] = 'auction/live';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

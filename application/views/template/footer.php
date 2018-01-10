@@ -81,13 +81,15 @@
 <script type="text/javascript">
   function showContent() {
     document.getElementById('preloader').style.display = 'none';
-    document.getElementById('content').style.visibility = 'visible';
+    if(document.getElementById('preloaderAuction').style.display === 'none') {
+      document.getElementById('content').style.visibility = 'visible'; 
+    }
   }
 
-  setTimeout(function() {
+  setTimeout(function() { console.log();
     if(document.getElementById('preloader').style.display === 'none') {
       showContent();
-    }
+    } 
   }, 1000);
 
   $(document).ready(function() {
