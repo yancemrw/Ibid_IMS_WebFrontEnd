@@ -61,6 +61,9 @@ $route['beli-npl'] = 'npl/beli';
 $route['akun/dasbor'] = 'akun/dasbor';
 $route['akun'] = 'akun/dasbor';
 
+// menu jadwal lelang
+$route['jadwal_lelang'] = 'auction/auction_date';
+
 // menu auction
 $route['live_auction'] = 'auction/live';
 $route['detail_auction'] = 'auction/details';

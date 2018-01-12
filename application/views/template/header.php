@@ -236,7 +236,7 @@
                         <li class="nav-close"><i class="fa fa-close"></i></li>
                         <li class="nav-title"><span class="nav-title">Home</span></li>
                         <li><a href="<?php echo site_url('cari-kendaraan'); ?>">Cari Kendaraan</a></li>
-                        <li><a href="<?php echo site_url('jadwal-lelang'); ?>">Jadwal Lelang</a></li>
+                        <li><a href="<?php echo site_url('jadwal_lelang'); ?>">Jadwal Lelang</a></li>
                         <li><a href="<?php echo site_url('live_auction'); ?>">Live Auction</a></li>
                         <li><a href="<?php echo site_url('beli-npl'); ?>">Beli Npl</a></li>
                         <li><a href="<?php echo site_url('titip-lelang'); ?>">Titip Lelang</a></li>

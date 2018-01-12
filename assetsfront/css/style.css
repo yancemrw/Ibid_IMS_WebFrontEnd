@@ -6712,3 +6712,6 @@ input.input-custom.empty {
     left: -15px;
     top: 9px;
 }
+.cursor-pointer {
+    cursor: pointer;
+}
