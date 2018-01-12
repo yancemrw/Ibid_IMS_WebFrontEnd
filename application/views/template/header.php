@@ -63,6 +63,8 @@
    <script src="<?php echo base_url('assetsfront/js/slick.min.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/js/bootstrap-datepicker.min.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/js/moment.min.js'); ?>"></script>
+   <script src="<?php echo base_url('assetsfront/js/jquery.jscroll.js'); ?>"></script>
+   <script src="<?php echo base_url('assetsfront/js/Chart.min.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/js/fullcalendar.min.js'); ?>"></script>
    <script src='https://www.google.com/recaptcha/api.js'></script>
    <script type="text/javascript" src="https://sweetalert.js.org/assets/sweetalert/sweetalert.min.js"></script>
