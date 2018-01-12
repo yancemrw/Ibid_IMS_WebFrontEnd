@@ -90,6 +90,19 @@ function admsaction($link='' , $id = '' , $color = '' , $fa = '' , $nama = '')
 	return $return = '<a href="'.$link.'/'.$id.'" class="btn btn-'.$color.' btn-xs ttipDatatables" data-provide="tooltip" data-placement="top" title="'.$nama.'" data-original-title="'.$nama.'" ><i class="'.$fa.'"></i></a>';
 }
 
+function curlGenerate($param, $callback = 'data') {
+	$json_decode = json_decode($param['response']);
+	if($callback === 'status') {
+		return $json_decode->status;
+	}
+	else if($callback === 'description') {
+		return $json_decode->description;
+	}
+	else if($callback === 'data') {
+		return $json_decode->data;
+	}
+}
+
 /**
 * class for api checker and other
 */

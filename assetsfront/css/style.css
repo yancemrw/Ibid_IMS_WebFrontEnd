@@ -235,7 +235,8 @@ header:before {
 .navbar-custom {
     -webkit-transition: all 0.2s ease;
     -o-transition: all 0.2s ease;
-    transition: all 0.2s ease
+    transition: all 0.2s ease;
+    height: 80px;
 }
 
 .navbar-custom .navbar-right {
@@ -1395,7 +1396,7 @@ footer p {
     background: transparent;
     border-bottom: 4px solid #81be2a;
     color: #81be2a;
-    padding-bottom: 20px
+    padding-bottom: 20px; 
 }
 .header-white .nav>li.dropdown>a:focus,
 .header-white .nav>li.dropdown>a:hover {
@@ -5486,7 +5487,8 @@ form.form-inline.form-auction {
     position: relative;
     border: 1px solid #d8d8d8;
     text-align: center;
-    margin: 0 25px 25px 0;
+    /*margin: 0 25px 25px 0;*/
+    margin: 0 9px 25px 9px;
     padding: 45px 15px;
     background: #fff;
     width: 250px;
@@ -5574,8 +5576,22 @@ form.form-inline.form-auction {
 
 .more-button {
     margin: 45px auto 65px auto;
+    width: 100%;
+}
+
+.more-button button {
     width: 300px;
-    float: none;
+    margin: 0 auto;
+}
+
+.more-button button:focus {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.more-button button:hover {
+    width: 300px;
+    margin: 0 auto;
 }
 
 .video-info {

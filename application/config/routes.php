@@ -63,6 +63,7 @@ $route['akun'] = 'akun/dasbor';
 
 // menu auction
 $route['live_auction'] = 'auction/live';
+$route['detail_auction'] = 'auction/details';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

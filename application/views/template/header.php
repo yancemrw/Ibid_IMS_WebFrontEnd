@@ -68,7 +68,7 @@
    
 
 </head>
-<body>
+<body class="bg-grey">
 
    <div id="preloader" style="display:none"></div>
    <div id="preloaderAuction" style="display:none"></div>
