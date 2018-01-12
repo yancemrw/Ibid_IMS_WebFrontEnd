@@ -21,6 +21,9 @@
 
 
 /*all style*/
+.nav>li {
+    height: 42px;
+}
 
 .clear {
     clear: both;
@@ -189,6 +192,7 @@ header:before {
 .is-sticky .container-fluid,
 .is-sticky #navbar {
     padding: 0;
+    height: 42px !important;
 }
 
 .header-white .nav>li>a.login {
@@ -196,7 +200,7 @@ header:before {
 }
 
 .header-white .top-navbar .select2-container--default .select2-selection--single .select2-selection__rendered {
-    color: #333
+    color: #333;
 }
 
 .header-white .top-navbar .select-custom~.select2-container--default .select2-selection--single .select2-selection__arrow b {
@@ -204,7 +208,7 @@ header:before {
 }
 
 .is-sticky .top-navbar .select2-container--default .select2-selection--single .select2-selection__rendered {
-    color: #333
+    color: #333;
 }
 
 .top-navbar .select-custom~.select2-container--default .select2-selection--single .select2-selection__arrow {
@@ -240,7 +244,8 @@ header:before {
 }
 
 .navbar-custom .navbar-right {
-    margin-right: 0
+    margin-right: 0;
+    height: 42px;
 }
 
 .is-sticky .navbar-custom {
@@ -499,7 +504,8 @@ header:before {
 }
 
 .tab-search .nav-tabs {
-    border-bottom: 0
+    border-bottom: 0;
+    height: 57px;
 }
 
 .tab-search .nav-tabs>li>a {
@@ -1396,7 +1402,7 @@ footer p {
     background: transparent;
     border-bottom: 4px solid #81be2a;
     color: #81be2a;
-    padding-bottom: 20px; 
+    padding-bottom: 10px; 
 }
 .header-white .nav>li.dropdown>a:focus,
 .header-white .nav>li.dropdown>a:hover {
@@ -6705,4 +6711,7 @@ input.input-custom.empty {
     position: absolute;
     left: -15px;
     top: 9px;
+}
+.cursor-pointer {
+    cursor: pointer;
 }
