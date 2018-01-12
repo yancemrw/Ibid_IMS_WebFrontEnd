@@ -100,233 +100,178 @@
       </div>
    </div>
 </div>
-<script src="<?php echo base_url(); ?>assetsfront/js/jquery.sticky.js"></script>
-<script src="<?php echo base_url(); ?>assetsfront/js/moment.min.js"></script>
-<script src="<?php echo base_url(); ?>assetsfront/js/fullcalendar.min.js"></script>
 <script>
-   $(document).ready(function() {
+$(document).ready(function() {
    var even_cal = [{ 
-           title: 'JKT T',
-           start: '2017-11-10',
-   
-           end: '2017-11-10',
-           allDay: false,
-           className: 'car-event',
-           tip: 'Personal tip 1'
-           
-       }, { 
-           title: 'JKT T',
-           start: '2017-11-10',
-   
-           end: '2017-11-10',
-           allDay: false,
-           className: 'car-event',
-           
-       }, { 
-           title: 'JKT T',
-          start: '2017-11-10',
-   
-           end: '2017-11-10',
-           allDay: false,
-           className: 'car-event',
-           
-       }, { 
-           title: 'JKT T',
-           start: '2017-11-10',
-   
-           end: '2017-11-10',
-           allDay: false,
-           className: 'car-event',
-           
-       }, {
-           title: 'JKT S',
-          start: '2017-11-10',
-   
-           end: '2017-11-10',
-           allDay: false,
-            className: 'motor-event',
-       }, {
-           title: 'JKT S',
-          start: '2017-11-10',
-   
-           end: '2017-11-10',
-           allDay: false,
-            className: 'motor-event',
-       }, {
-           title: 'JKT S',
-           start: '2017-11-10',
-   
-           end: '2017-11-10',
-           allDay: false,
-           className: 'motor-event',
-       }, {
-           title: 'JKT S',
-           start: '2017-11-10',
-   
-           end: '2017-11-10',
-           allDay: false,
-            className: 'motor-event',
-       }, {
-           title: 'JKT S',
-           start: '2017-11-10',
-   
-           end: '2017-11-10',
-           allDay: false,
-             className: 'hve-event',
-       }, { 
-           title: 'JKT T',
-           start:'2017-11-03',
-   
-           end: '2017-11-03',
-           allDay: false,
-           className: 'car-event',
-           
-       }, { 
-           title: 'JKT T',
-          start: '2017-11-03',
-   
-           end: '2017-11-03',
-           allDay: false,
-           className: 'car-event',
-           
-       }, { 
-           title: 'JKT T',
-          start: '2017-11-03',
-   
-           end: '2017-11-03',
-           allDay: false,
-           className: 'car-event',
-           
-       }, { 
-           title: 'JKT T',
-          start: '2017-11-03',
-   
-           end: '2017-11-03',
-           allDay: false,
-           className: 'car-event',
-           
-       }, {
-           title: 'JKT S',
-          start: '2017-11-03',
-   
-           end: '2017-11-03',
-           allDay: false,
-            className: 'motor-event',
-       }, {
-           title: 'JKT S',
-           start: '2017-11-03',
-   
-           end: '2017-11-10',
-           allDay: false,
-            className: 'motor-event',
-       },{
-           title: 'JKT S',
-        start:'2017-11-03',
-   
-           end: '2017-11-03',
-           allDay: false,
-            className: 'motor-event',
-       },{
-           title: 'JKT S',
-         start: '2017-11-03',
-   
-           end: '2017-11-03',
-           allDay: false,
-             className: 'hve-event',
-       },
-       {
-           title: 'JKT T',
-           start: '2017-11-24',
-   
-           end: '2017-11-24',
-           allDay: false,
-           className: 'gadget-event',
-       },
-       {
-           title: 'JKT T',
-           start: '2017-11-24',
-   
-           end: '2017-11-24',
-           allDay: false,
-           className: 'gadget-event',
-       },
-       {
-           title: 'JKT T',
-           start: '2017-11-24',
-   
-           end: '2017-11-24',
-           allDay: false,
-           className: 'gadget-event',
-       }];
+      title: 'JKT T',
+      start: '2017-11-10',
+      end: '2017-11-10',
+      allDay: false,
+      className: 'car-event',
+      tip: 'Personal tip 1'
+   }, { 
+      title: 'JKT T',
+      start: '2017-11-10',
+      end: '2017-11-10',
+      allDay: false,
+      className: 'car-event',
+   }, { 
+      title: 'JKT T',
+      start: '2017-11-10',
+      end: '2017-11-10',
+      allDay: false,
+      className: 'car-event',
+   }, { 
+      title: 'JKT T',
+      start: '2017-11-10',
+      end: '2017-11-10',
+      allDay: false,
+      className: 'car-event',
+   }, {
+      title: 'JKT S',
+      start: '2017-11-10',
+      end: '2017-11-10',
+      allDay: false,
+      className: 'motor-event',
+   }, {
+      title: 'JKT S',
+      start: '2017-11-10',
+      end: '2017-11-10',
+      allDay: false,
+      className: 'motor-event',
+   }, {
+      title: 'JKT S',
+      start: '2017-11-10',
+      end: '2017-11-10',
+      allDay: false,
+      className: 'motor-event',
+   }, {
+      title: 'JKT S',
+      start: '2017-11-10',
+      end: '2017-11-10',
+      allDay: false,
+      className: 'motor-event',
+   }, {
+      title: 'JKT S',
+      start: '2017-11-10',
+      end: '2017-11-10',
+      allDay: false,
+      className: 'hve-event',
+   }, { 
+      title: 'JKT T',
+      start:'2017-11-03',
+      end: '2017-11-03',
+      allDay: false,
+      className: 'car-event',
+   }, { 
+      title: 'JKT T',
+      start: '2017-11-03',
+      end: '2017-11-03',
+      allDay: false,
+      className: 'car-event',
+   }, { 
+      title: 'JKT T',
+      start: '2017-11-03',
+      end: '2017-11-03',
+      allDay: false,
+      className: 'car-event',
+   }, { 
+      title: 'JKT T',
+      start: '2017-11-03',
+      end: '2017-11-03',
+      allDay: false,
+      className: 'car-event',
+   }, {
+      title: 'JKT S',
+      start: '2017-11-03',
+      end: '2017-11-03',
+      allDay: false,
+      className: 'motor-event',
+   }, {
+      title: 'JKT S',
+      start: '2017-11-03',
+      end: '2017-11-10',
+      allDay: false,
+      className: 'motor-event',
+   },{
+      title: 'JKT S',
+      start:'2017-11-03',
+      end: '2017-11-03',
+      allDay: false,
+      className: 'motor-event',
+   }, {
+      title: 'JKT S',
+      start: '2017-11-03',
+      end: '2017-11-03',
+      allDay: false,
+      className: 'hve-event',
+   }, {
+      title: 'JKT T',
+      start: '2017-11-24',
+      end: '2017-11-24',
+      allDay: false,
+      className: 'gadget-event',
+   }, {
+      title: 'JKT T',
+      start: '2017-11-24',
+      end: '2017-11-24',
+      allDay: false,
+      className: 'gadget-event',
+   }, {
+      title: 'JKT T',
+      start: '2017-11-24',
+      end: '2017-11-24',
+      allDay: false,
+      className: 'gadget-event',
+   }];
    
    $('#calendar').fullCalendar({
-       header: {
-           left: 'prev,next today',
-           center: 'title',
-           right: 'month,agendaWeek,agendaDay,listMonth'
-       },
-       height:'auto',
-       defaultDate: '2017-11-12',
-       navLinks: true, // can click day/week names to navigate views
-       businessHours: true, // display business hours
-       editable: false,
-       events: even_cal,
-       dayRender: function(date, cell){
+      header: {
+         left: 'prev,next today',
+         center: 'title',
+         right: 'month,agendaWeek,agendaDay,listMonth'
+      },
+      height:'auto',
+      defaultDate: '2017-11-12',
+      navLinks: true, // can click day/week names to navigate views
+      businessHours: true, // display business hours
+      editable: false,
+      events: even_cal,
+      dayRender: function(date, cell) {
          var parseDate = moment(cell.attr("data-date")).format('dddd');
          $("td.fc-day-top[data-date='" + cell.attr("data-date") + "']").append("<span>" + parseDate + "</span>");
-         $("td.fc-day-top[data-date='" + cell.attr("data-date") + "']").append("<a class='link' data-toggle='modal' data-target='#modal-jadwal'>Selengkapnya</a>");
-           $("td.fc-day.fc-widget-content[data-date='" + cell.attr("data-date") + "']").append("<a class='link' data-toggle='modal' data-target='#modal-jadwal'>Selengkapnya</a>")
-       },
-       eventRender: function(event, element) {
-        element.attr('title', event.tip);
+         $("td.fc-day-top[data-date='" + cell.attr("data-date") + "']").append("<a class='link cursor-pointer' data-toggle='modal' data-target='#modal-jadwal'>Selengkapnya</a>");
+         $("td.fc-day.fc-widget-content[data-date='" + cell.attr("data-date") + "']").append("<a class='link cursor-pointer' data-toggle='modal' data-target='#modal-jadwal'>Selengkapnya</a>")
+      },
+      eventRender: function(event, element) {
+         element.attr('title', event.tip);
          var dataToFind = moment(event.start).format('YYYY-MM-DD');
          $("td[data-date='" + dataToFind + "']").append(element);
-   
-       },
-       eventAfterAllRender: function(view) {
+      },
+      eventAfterAllRender: function(view) {
          $("td.fc-event-container").find("a").remove()
-       }
+      }
    });
-      
-   });
+});
    
-   function getDates(startDate, endDate) {
+function getDates(startDate, endDate) {
    var now = startDate,
    dates = [];
-   
+
    while (now.format('YYYY-MM-DD') <= endDate.format('YYYY-MM-DD')) {
-   dates.push(now.format('YYYY-MM-DD'));
-   now.add('days', 1);
+      dates.push(now.format('YYYY-MM-DD'));
+      now.add('days', 1);
    }
    return dates;
-   };
+}
    
-   $(document).ready(function(){
+$(document).ready(function() {
    $("nav").sticky({
-       topSpacing:0
+      topSpacing: 0
    });
-   
+
    $(".select-custom").select2({
-       minimumResultsForSearch: -1
+      minimumResultsForSearch: -1
    });
-   
-    $('#toggle-nav').click(function(){
-          $('.navbar-collapse.collapse').toggleClass('open')
-        })
-        $('.nav-close').click(function(){
-          $('.navbar-collapse.collapse').toggleClass('open')
-        })
-    
-        $('.lang-mob a').click(function(){
-          $('.help-mob ul').removeClass('open')
-          $(this).toggleClass('opened')
-          $(this).siblings('ul').toggleClass('open')
-        })
-        $('.help-mob a').click(function(){
-          $('.lang-mob ul').removeClass('open')
-          $(this).toggleClass('opened')
-          $(this).siblings('ul').toggleClass('open')
-        })
-   
-   });
+});
 </script>

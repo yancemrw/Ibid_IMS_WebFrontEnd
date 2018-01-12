@@ -5,10 +5,10 @@
    <meta charset="utf-8">
    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
    <link rel="shortcut icon" href="<?php echo base_url('assetsfront/images/favicon/favicon.ico'); ?>">
-   <link rel="icon" type="image/png" href="assets/images/icon/favicon/favicon-160x160.png" sizes="">
-   <link rel="icon" type="image/png" href="assets/images/icon/favicon/favicon-96x96.png" sizes="">
-   <link rel="icon" type="image/png" href="assets/images/icon/favicon/favicon-16x16.png" sizes="">
-   <link rel="icon" type="image/png" href="assets/images/icon/favicon/favicon-32x32.png" sizes="">
+   <link rel="icon" type="image/png" href="<?php echo base_url('assetsfront/images/icon/favicon/favicon-160x160.png') ?>" sizes="">
+   <link rel="icon" type="image/png" href="<?php echo base_url('assetsfront/images/icon/favicon/favicon-96x96.png'); ?>" sizes="">
+   <link rel="icon" type="image/png" href="<?php echo base_url('assetsfront/images/icon/favicon/favicon-16x16.png'); ?>" sizes="">
+   <link rel="icon" type="image/png" href="<?php echo base_url('assetsfront/images/icon/favicon/favicon-32x32.png'); ?>" sizes="">
    <meta name="description" content=""> 
    <meta name="title" content="">
    <meta name="image_src" content="">
@@ -53,17 +53,19 @@
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/image-sprite-style.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/style.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/responsive.css') ?>">
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/fullcalendar.min.css') ?>">
 
    <!-- Header Js -->
-   <script src="<?php echo base_url('assetsfront/js/jquery-3.2.1.min.js');?>"></script>
-   <script src="<?php echo base_url('assetsfront/js/bootstrap.min.js');?>"></script>
-   <script src="<?php echo base_url('assetsfront/js/jquery.sticky.js');?>"></script>
-   <script src="<?php echo base_url('assetsfront/js/select2.min.js');?>"></script>
-   <script src="<?php echo base_url('assetsfront/js/slick.min.js');?>"></script>
-   <script src="<?php echo base_url('assetsfront/js/bootstrap-datepicker.min.js') ?>"></script>
+   <script src="<?php echo base_url('assetsfront/js/jquery-3.2.1.min.js'); ?>"></script>
+   <script src="<?php echo base_url('assetsfront/js/bootstrap.min.js'); ?>"></script>
+   <script src="<?php echo base_url('assetsfront/js/jquery.sticky.js'); ?>"></script>
+   <script src="<?php echo base_url('assetsfront/js/select2.min.js'); ?>"></script>
+   <script src="<?php echo base_url('assetsfront/js/slick.min.js'); ?>"></script>
+   <script src="<?php echo base_url('assetsfront/js/bootstrap-datepicker.min.js'); ?>"></script>
+   <script src="<?php echo base_url('assetsfront/js/moment.min.js'); ?>"></script>
+   <script src="<?php echo base_url('assetsfront/js/fullcalendar.min.js'); ?>"></script>
    <script src='https://www.google.com/recaptcha/api.js'></script>
    <script type="text/javascript" src="https://sweetalert.js.org/assets/sweetalert/sweetalert.min.js"></script>
-
    <!-- sweetalert -->
    
 
