@@ -65,11 +65,11 @@ $route['akun'] = 'akun/dasbor';
 $route['cari_lelang'] = 'auction/find_unit';
 
 // menu jadwal lelang
-$route['jadwal_lelang'] = 'auction/auction_date';
+$route['jadwal-lelang'] = 'auction/auction_date';
 
 // menu auction
-$route['live_auction'] = 'auction/live';
-$route['detail_auction'] = 'auction/details';
+$route['live-auction'] = 'auction/live';
+$route['detail-auction'] = 'auction/details';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
