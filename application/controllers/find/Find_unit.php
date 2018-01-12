@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Auction_date extends CI_Controller {
+class Find_unit extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
@@ -12,13 +12,14 @@ class Auction_date extends CI_Controller {
 		$data = array(
 			'header_white' => "header-white",
 			'userdata'	=> $this->session->userdata('userdata'),
-			'title' => 'Jadwal Lelang',
+			'title' => 'Cari Kendaraan',
+			'img' => base_url('assetsfront/images/background/img-recommend-1.jpg')
 		);
-		$view = "auction/auction_date";
+		$view = "find/find_unit";
 		template($view, $data);
 	}
 
 }
 
-/* End of file auction_date.php */
-/* Location: ./application/controllers/auction/auction_date.php */
+/* End of file find_unit.php */
+/* Location: ./application/controllers/find/find_unit.php */
