@@ -15,7 +15,7 @@ class Details extends CI_Controller {
 			'title' => 'Halaman Lelang',
 			'img1' => base_url().'assetsfront/images/background/img-recommend-1.jpg',
 			'img2' => base_url().'assetsfront/images/background/img-recommend-2.jpg',
-			'img3' => base_url().'assetsfront/images/background/img-recommend-3.jpg'
+			'img3' => base_url().'assetsfront/images/background/img-recommend-3.jpg',
 		);
 		$view = "auction/details";
 		template($view, $data);

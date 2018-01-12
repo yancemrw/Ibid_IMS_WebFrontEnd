@@ -62,7 +62,7 @@ $route['akun/dasbor'] = 'akun/dasbor';
 $route['akun'] = 'akun/dasbor';
 
 // menu cari kendaraan
-$route['cari_lelang'] = 'auction/find_unit';
+$route['cari_lelang'] = 'find/find_unit';
 
 // menu jadwal lelang
 $route['jadwal_lelang'] = 'auction/auction_date';

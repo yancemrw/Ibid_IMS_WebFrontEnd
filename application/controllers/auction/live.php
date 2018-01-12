@@ -37,7 +37,7 @@ class Live extends CI_Controller {
 			'userdata'	=> $this->session->userdata('userdata'),
 			'title' => 'Lelang Langsung',
 			'data' => $arrData,
-			'data_unit' => curlGenerate($cunit)
+			'data_unit' => curlGenerate($cunit),
 		);
 		$view = "auction/live";
 		template($view, $data);
