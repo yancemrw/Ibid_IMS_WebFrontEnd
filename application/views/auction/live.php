@@ -5,112 +5,32 @@
 				<h2>Live Auction</h2>
 				<p>Pilih Jadwal Lelang Yang Ingin Anda Ikuti Maksimal 4</p>
 			</div>
-			<div class="col-md-6  col-sm-6 text-right">
+			<div class="col-md-6 col-sm-6 text-right">
 				<select class="form-control select-custom">
-					<option>MOBIL</option>
-					<option>MOTOR</option>
-					<option>GADGET</option>
-					<option>HVE</option>
+					<?php foreach($data_unit as $ukey => $uvalue) {
+						echo '<option value="'.$uvalue->ItemId.'">'.$uvalue->ItemName.'</option>';
+					} ?>
 				</select>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-12 clearfix">
 				<form class="form-inline form-auction">
+					<?php foreach($data as $key => $value) { ?>
 					<div class="form-group">
-						<input type="checkbox" name="object-lelang" id="obj-1" class="input-hidden" checked />
-						<label for="obj-1">
-							<span class="kota"> Jakarta <span>Motor</span></span>
-							<p>Pool IBID Jl. Bintaro Mulia I / 3 (Jl. RC Veteran) Bintaro Pesanggrahan, Jakarta Selatan
-								<span>25 Oktober 2017</span>
+						<input type="checkbox" name="object-lelang" id="obj-<?php echo $key; ?>" class="input-hidden" value="<?php echo $value->id ?>" />
+						<label for="obj-<?php echo $key; ?>" class="pull-left">
+							<span class="kota"><?php echo $value->CompanyName; ?><span><?php echo $value->ItemName; ?></span></span>
+							<p><?php echo $value->Address; ?>
+								<span><?php echo date('d F Y H:i:s', strtotime($value->date.$value->waktu)); ?></span>
 							</p>
 						</label>
 					</div>
-					<div class="form-group">
-						<input type="checkbox" name="object-lelang" id="obj-2" class="input-hidden" checked />
-						<label for="obj-2">
-							<span class="kota"> Jakarta <span>Motor</span></span>
-							<p>Pool IBID Jl. Bintaro Mulia I / 3 (Jl. RC Veteran) Bintaro Pesanggrahan, Jakarta Selatan
-								<span>25 Oktober 2017</span>
-							</p>
-						</label>
-					</div>
-					<div class="form-group">
-						<input type="checkbox" name="object-lelang" id="obj-3" class="input-hidden" checked />
-						<label for="obj-3">
-							<span class="kota"> Jakarta <span>Motor</span></span>
-							<p>Pool IBID Jl. Bintaro Mulia I / 3 (Jl. RC Veteran) Bintaro Pesanggrahan, Jakarta Selatan
-								<span>25 Oktober 2017</span>
-							</p>
-						</label>
-					</div>
-                        <div class="form-group">
-                           <input type="checkbox" name="object-lelang" id="obj-4" class="input-hidden" checked />
-                           <label for="obj-4" class="mr-0">
-                              <span class="kota"> Jakarta <span>Motor</span></span>
-                              <p>Pool IBID Jl. Bintaro Mulia I / 3 (Jl. RC Veteran) Bintaro Pesanggrahan, Jakarta Selatan
-                                 <span>25 Oktober 2017</span>
-                              </p>
-                           </label>
-                        </div>
-                        <div class="form-group">
-                           <input type="checkbox" name="object-lelang" id="obj-5" class="input-hidden" />
-                           <label for="obj-5">
-                              <span class="kota"> Jakarta <span>Motor</span></span>
-                              <p>Pool IBID Jl. Bintaro Mulia I / 3 (Jl. RC Veteran) Bintaro Pesanggrahan, Jakarta Selatan
-                                 <span>25 Oktober 2017</span>
-                              </p>
-                           </label>
-                        </div>
-                        <div class="form-group">
-                           <input type="checkbox" name="object-lelang" id="obj-6" class="input-hidden" />
-                           <label for="obj-6">
-                              <span class="kota"> Jakarta <span>Motor</span></span>
-                              <p>Pool IBID Jl. Bintaro Mulia I / 3 (Jl. RC Veteran) Bintaro Pesanggrahan, Jakarta Selatan
-                                 <span>25 Oktober 2017</span>
-                              </p>
-                           </label>
-                        </div>
-                        <div class="form-group">
-                           <input type="checkbox" name="object-lelang" id="obj-7" class="input-hidden" />
-                           <label for="obj-7">
-                              <span class="kota"> Jakarta <span>Motor</span></span>
-                              <p>Pool IBID Jl. Bintaro Mulia I / 3 (Jl. RC Veteran) Bintaro Pesanggrahan, Jakarta Selatan
-                                 <span>25 Oktober 2017</span>
-                              </p>
-                           </label>
-                        </div>
-                        <div class="form-group">
-                           <input type="checkbox" name="object-lelang" id="obj-8" class="input-hidden" />
-                           <label for="obj-8" class="mr-0">
-                              <span class="kota"> Jakarta <span>Motor</span></span>
-                              <p>Pool IBID Jl. Bintaro Mulia I / 3 (Jl. RC Veteran) Bintaro Pesanggrahan, Jakarta Selatan
-                                 <span>25 Oktober 2017</span>
-                              </p>
-                           </label>
-                        </div>
-                        <div class="form-group">
-                           <input type="checkbox" name="object-lelang" id="obj-9" class="input-hidden" />
-                           <label for="obj-9">
-                              <span class="kota"> Jakarta <span>Motor</span></span>
-                              <p>Pool IBID Jl. Bintaro Mulia I / 3 (Jl. RC Veteran) Bintaro Pesanggrahan, Jakarta Selatan
-                                 <span>25 Oktober 2017</span>
-                              </p>
-                           </label>
-                        </div>
-                        <div class="form-group">
-                           <input type="checkbox" name="object-lelang" id="obj-10" class="input-hidden" />
-                           <label for="obj-10">
-                              <span class="kota"> Jakarta <span>Motor</span></span>
-                              <p>Pool IBID Jl. Bintaro Mulia I / 3 (Jl. RC Veteran) Bintaro Pesanggrahan, Jakarta Selatan
-                                 <span>25 Oktober 2017</span>
-                              </p>
-                           </label>
-                        </div>
+					<?php } ?>
 				</form>
 			</div>
 			<div class="col-md-12 text-center more-button">
-				<button class="btn btn-green" onclick="location.href='live-auction.html'" type="button">Selanjutnya</button>
+				<button type="button" id="btn-next" class="btn btn-s btn-green" disabled>Selanjutnya</button>
 			</div>
 		</div>
 	</div>
@@ -136,6 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	document.getElementById('preloaderAuction').style.display = 'block';
 	preload(1);
 });
+
 $(document).ready(function() {
 	$("nav").sticky({
 		topSpacing: 0
@@ -143,6 +64,28 @@ $(document).ready(function() {
 
 	$(".select-custom").select2({
 		minimumResultsForSearch: -1
+	});
+
+	// handle button if auction not select
+	$("input[type='checkbox']").click(function() {
+		if($('input[name="object-lelang"]:checked').length > 0) {
+			$('#btn-next').prop('disabled', false);
+		}
+		else {
+			$('#btn-next').prop('disabled', true);
+		}
+	});
+
+	$('#btn-next').click(function() {
+		if($('input[name="object-lelang"]:checked').length < 5) {
+			$('input[name="object-lelang"]:checked').each(function() {
+				console.log($(this).val());
+				location.href = '<?php echo base_url()."index.php/detail_auction" ?>';
+			});
+		}
+		else {
+			alert('Maksimal 5 Jadwal Lelang');
+		}
 	});
 });
 </script>
