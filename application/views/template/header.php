@@ -48,12 +48,12 @@
    
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/bootstrap.min.css'); ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/font-awesome/css/font-awesome.min.css') ?>">
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/slick.css') ?>">
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/select2.min.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/image-sprite-style.css') ?>">
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/select2.min.css') ?>">
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/fullcalendar.min.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/style.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/responsive.css') ?>">
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/fullcalendar.min.css') ?>">
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/slick.css') ?>">
 
    <!-- Header Js -->
    <script src="<?php echo base_url('assetsfront/js/jquery-3.2.1.min.js'); ?>"></script>
@@ -237,7 +237,7 @@
                      <ul class="nav navbar-nav navbar-right">
                         <li class="nav-close"><i class="fa fa-close"></i></li>
                         <li class="nav-title"><span class="nav-title">Home</span></li>
-                        <li><a href="<?php echo site_url('cari-kendaraan'); ?>">Cari Kendaraan</a></li>
+                        <li><a href="<?php echo site_url('cari_lelang'); ?>">Cari Kendaraan</a></li>
                         <li><a href="<?php echo site_url('jadwal_lelang'); ?>">Jadwal Lelang</a></li>
                         <li><a href="<?php echo site_url('live_auction'); ?>">Live Auction</a></li>
                         <li><a href="<?php echo site_url('beli-npl'); ?>">Beli Npl</a></li>
