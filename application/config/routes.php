@@ -62,15 +62,19 @@ $route['akun/dasbor'] = 'akun/dasbor';
 $route['akun'] = 'akun/dasbor';
 
 // menu cari kendaraan
-$route['cari_lelang'] = 'find/find_unit';
-$route['detail_lelang'] = 'find/find_details';
+$route['cari-lelang'] = 'find/find_unit';
+$route['detail-lelang'] = 'find/find_details';
 
 // menu jadwal lelang
-$route['jadwal_lelang'] = 'auction/auction_date';
+$route['jadwal-lelang'] = 'auction/auction_date';
 
 // menu auction
-$route['live_auction'] = 'auction/live';
-$route['detail_auction'] = 'auction/details';
+$route['live-auction'] = 'auction/live';
+$route['detail-auction'] = 'auction/details';
+
+// Menu panduan
+$route['panduan-lelang'] = 'userguide/guide/index/onsite';
+$route['panduan-lelang/(:any)'] = 'userguide/guide/index/$1';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

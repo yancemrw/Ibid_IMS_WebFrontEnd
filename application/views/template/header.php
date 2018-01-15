@@ -66,6 +66,8 @@
    <script src="<?php echo base_url('assetsfront/js/jquery.jscroll.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/js/Chart.min.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/js/fullcalendar.min.js'); ?>"></script>
+   <script src="<?php echo base_url('assetsfront/js/jquery.sticky-kit.min.js'); ?>"></script>
+   <script src="<?php echo base_url('assetsfront/js/jquery.scrollto.js'); ?>"></script>
    <script src='https://www.google.com/recaptcha/api.js'></script>
    <script type="text/javascript" src="https://sweetalert.js.org/assets/sweetalert/sweetalert.min.js"></script>
    <!-- sweetalert -->
@@ -239,13 +241,13 @@
                      <ul class="nav navbar-nav navbar-right">
                         <li class="nav-close"><i class="fa fa-close"></i></li>
                         <li class="nav-title"><span class="nav-title">Home</span></li>
-                        <li><a href="<?php echo site_url('cari_lelang'); ?>">Cari Kendaraan</a></li>
-                        <li><a href="<?php echo site_url('jadwal_lelang'); ?>">Jadwal Lelang</a></li>
-                        <li><a href="<?php echo site_url('live_auction'); ?>">Live Auction</a></li>
+                        <li><a href="<?php echo site_url('cari-lelang'); ?>">Cari Kendaraan</a></li>
+                        <li><a href="<?php echo site_url('jadwal-lelang'); ?>">Jadwal Lelang</a></li>
+                        <li><a href="<?php echo site_url('live-auction'); ?>">Live Auction</a></li>
                         <li><a href="<?php echo site_url('beli-npl'); ?>">Beli Npl</a></li>
                         <li><a href="<?php echo site_url('titip-lelang'); ?>">Titip Lelang</a></li>
                         <li><a href="<?php echo site_url('market-auction-price'); ?>">Map</a></li>
-                        <li><a href="<?php echo site_url('tata-cara'); ?>">Prosedur</a></li>
+                        <li><a href="<?php echo site_url('panduan-lelang'); ?>">Prosedur</a></li>
                         
 
                         <?php if (count($userdata['UserId']) > 0) { ?>
