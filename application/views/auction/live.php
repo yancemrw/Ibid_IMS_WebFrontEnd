@@ -6,7 +6,7 @@
 				<p>Pilih Jadwal Lelang Yang Ingin Anda Ikuti Maksimal 4</p>
 			</div>
 			<div class="col-md-6 col-sm-6 text-right">
-				<select class="form-control select-custom">
+				<select id="thisSelectItem" class="form-control select-custom">
 					<?php foreach($data_unit as $ukey => $uvalue) {
 						echo '<option value="'.$uvalue->ItemId.'">'.$uvalue->ItemName.'</option>';
 					} ?>
@@ -17,7 +17,7 @@
 			<div class="col-md-12 clearfix">
 				<form class="form-inline form-auction">
 					<?php foreach($data as $key => $value) { ?>
-					<div class="form-group">
+					<div class="form-group thisAllItem thisItemId<?php echo $value->item_id; ?>">
 						<input type="checkbox" name="object-lelang" id="obj-<?php echo $key; ?>" class="input-hidden" value="<?php echo $value->id ?>" />
 						<label for="obj-<?php echo $key; ?>" class="pull-left">
 							<span class="kota"><?php echo $value->CompanyName; ?><span><?php echo $value->ItemName; ?></span></span>
@@ -87,5 +87,12 @@ $(document).ready(function() {
 			alert('Maksimal 5 Jadwal Lelang');
 		}
 	});
+	
+	$('#thisSelectItem').change(function(){
+		$('.thisAllItem').css('display','none');
+		thisVal = $(this).val();
+		$('.thisItemId'+thisVal).css('display','block');
+	});
+	$('#thisSelectItem').change();
 });
 </script>
