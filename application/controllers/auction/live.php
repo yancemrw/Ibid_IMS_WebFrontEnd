@@ -17,8 +17,9 @@ class Live extends CI_Controller {
 		// Get company list
 		$link1 = 'http://ibidadmsdevservicemasterdata.azurewebsites.net/index.php/cabang/get';
 		$company_list = admsCurl($link1, array(), 'GET');
+		$data_company = curlGenerate($company_list);
 		$arrCompany = array();
-		foreach(curlGenerate($company_list) as $key => $value) {
+		foreach($data_company as $key => $value) {
 			$arrCompany[$value->CompanyId]['CompanyName'] = $value->CompanyName;
 			$arrCompany[$value->CompanyId]['Address'] = $value->Address;
 		}
