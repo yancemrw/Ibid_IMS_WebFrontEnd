@@ -75,13 +75,67 @@
 
 </head>
 <body class="bg-grey">
-
+   <!-- handle header between procedure page and other page -->
+   <?php if($this->uri->segment(1) === "panduan-lelang") { ?>
+      <header class="header-min" style="background: url(<?php echo base_url('assetsfront/images/background/bg-homepage.jpg'); ?>)no-repeat fixed;">
+         <nav class="navbar navbar-custom">
+            <div class="top-navbar text-right">
+               <form class="form-inline">
+                  <div class="form-group language">
+                     <select class="select-custom form-control">
+                        <option>Bahasa</option>
+                        <option>Indonesia</option>
+                        <option>English</option>
+                     </select>
+                  </div>
+                  <div class="form-group help">
+                     <select class="select-custom form-control">
+                        <option>Bantuan</option>
+                        <option>-</option>
+                        <option>-</option>
+                     </select>
+                  </div>
+               </form>
+            </div>
+               <div class="container-fluid">
+                 <div class="navbar-header">
+                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                     </button>
+                     <a class="navbar-brand icon_logo" alt="" href="index.html"><i class="icn icn-LOGO-IBID"></i></a>
+                 </div>
+                 <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="nav-close"><i class="fa fa-close"></i></li>
+                        <li class="nav-title"><span class="nav-title">Home</span></li>
+                        <li><a href="<?php echo site_url('cari-lelang'); ?>">Cari Kendaraan</a></li>
+                        <li><a href="<?php echo site_url('jadwal-lelang'); ?>">Jadwal Lelang</a></li>
+                        <li><a href="<?php echo site_url('live-auction'); ?>">Live Auction</a></li>
+                        <li><a href="<?php echo site_url('beli-npl'); ?>">Beli Npl</a></li>
+                        <li><a href="<?php echo site_url('titip-lelang'); ?>">Titip Lelang</a></li>
+                        <li><a href="<?php echo site_url('market-auction-price'); ?>">Map</a></li>
+                        <li><a href="<?php echo site_url('panduan-lelang'); ?>">Prosedur</a></li>
+                        <li><a href="" class="login" data-toggle="modal" data-target="#login">Masuk</a></li>
+                        <li><a href="register.html" class="regis">Daftar</a></li>
+                    </ul>
+                 </div>
+               </div>
+          </nav>
+          <div class="hero-overlay text-center">
+            <h2>Tata cara lelang On Site</h2>
+          </div>
+      </header>
+      <div class="container-fluid">
+   <?php } else { ?>
    <div id="preloader" style="display:none"></div>
    <div id="preloaderAuction" style="display:none"></div>
-   <div id="content"> 
+   <div id="content">
 
       <!-- <header> -->
-         <?php echo ( $this->uri->segment(1)=="" OR $this->uri->segment(1)=="front" ) ? "<header>" : ""; ?>
+         <?php echo ($this->uri->segment(1) === "" || $this->uri->segment(1) === "front") ? '<header>' : ''; ?>
 
             <nav class="navbar navbar-custom <?php echo @$header_white; ?>">
                <div class="top-navbar text-right">
@@ -400,12 +454,11 @@
                </div>
             </nav>
 
-            <?php if ($this->uri->segment(1)=="" OR $this->uri->segment(1)=="front") { ?> 
-
-
+         <?php if($this->uri->segment(1)=="" OR $this->uri->segment(1)=="front") { ?> 
             <div class="hero-overlay">
                <h1>Search, Bid <span>&</span> Buy From <br>Anywhere on Any Device</h1>
                <p>IBID-Balai Lelang Serasi merupakan balai lelang terbesar di Indonesia. Temukan lebih dari 5000 kendaraan dengan beragam tipe dan merek yang rutin dilelang tiap bulan.</p>
             </div>
          </header>
          <?php } ?>
+<?php } ?>

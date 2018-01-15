@@ -21,7 +21,6 @@ class Guide extends CI_Controller {
 		}
 
 		$data = array(
-			'header_white'		=> "header-white",
 			'userdata'			=> $this->session->userdata('userdata'),
 			'title'				=> 'Tata Cara Titip Lelang',
 			'side_menu'			=> $this->side_menu($page_name),
