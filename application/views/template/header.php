@@ -105,7 +105,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                      </button>
-                     <a class="navbar-brand icon_logo" alt="" href="index.html"><i class="icn icn-LOGO-IBID"></i></a>
+                     <a class="navbar-brand icon_logo" alt="" href="<?php echo base_url(); ?>"><i class="icn icn-LOGO-IBID"></i></a>
                  </div>
                  <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -135,7 +135,7 @@
    <div id="content">
 
       <!-- <header> -->
-         <?php echo ($this->uri->segment(1) === "" || $this->uri->segment(1) === "front") ? '<header>' : ''; ?>
+         <?php echo ($this->uri->segment(1) == "" || $this->uri->segment(1) == "front") ? '<header>' : ''; ?>
 
             <nav class="navbar navbar-custom <?php echo @$header_white; ?>">
                <div class="top-navbar text-right">
@@ -174,7 +174,7 @@
                         <ul class="user-nav clearfix">
                            <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                 <p><img src="assets/images/icon/Transaksi.png" alt="" title="" width="" height=""></p>
+                                 <p><img src="<?php echo base_url('assetsfront/images/icon/Transaksi.png'); ?>" alt="" title="" width="" height=""></p>
                               </a>
                               <ul class="dropdown-menu dropdown-custom">
                                  <li>
@@ -214,7 +214,7 @@
                            </li>
                            <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                 <p><img src="assets/images/icon/Notifikasi.png" alt="" title="" width="" height=""> <span class="notification">10</span></p>
+                                 <p><img src="<?php base_url('assetsfront/images/icon/Notifikasi.png'); ?>" alt="" title="" width="" height=""> <span class="notification">10</span></p>
                               </a>
                               <ul class="dropdown-menu dropdown-custom">
                                  <li>
