@@ -65,9 +65,9 @@
                <li >
                   <a href="" class="car-event"> <span>JKT T</span></a>
                </li>
-               <li >
+               <!-- li >
                   <a href="" class="car-event"> <span>JKT T</span></a>
-               </li>
+               </li -->
                <li>
                   <a href="" class="motor-event"> <span>JKT T</span></a>
                </li>
@@ -232,15 +232,15 @@ $(document).ready(function() {
          right: 'month,agendaWeek,agendaDay,listMonth'
       },
       height:'auto',
-      defaultDate: '2017-11-12',
+      defaultDate: '<?php echo date('Y-m-d'); ?>', //'2017-11-12',
       navLinks: true, // can click day/week names to navigate views
       businessHours: true, // display business hours
       editable: false,
-      events: even_cal,
+      // events: even_cal,
       dayRender: function(date, cell) {
          var parseDate = moment(cell.attr("data-date")).format('dddd');
          $("td.fc-day-top[data-date='" + cell.attr("data-date") + "']").append("<span>" + parseDate + "</span>");
-         $("td.fc-day-top[data-date='" + cell.attr("data-date") + "']").append("<a class='link cursor-pointer' data-toggle='modal' data-target='#modal-jadwal'>Selengkapnya</a>");
+         $("td.fc-day-top[data-date='" + cell.attr("data-date") + "']").append("<a class='link cursor-pointer thisDate' data-toggle='modal' data-target='#modal-jadwal' thisDate='" + cell.attr("data-date") + "'>Selengkapnya</a>");
          $("td.fc-day.fc-widget-content[data-date='" + cell.attr("data-date") + "']").append("<a class='link cursor-pointer' data-toggle='modal' data-target='#modal-jadwal'>Selengkapnya</a>")
       },
       eventRender: function(event, element) {
@@ -250,6 +250,30 @@ $(document).ready(function() {
       },
       eventAfterAllRender: function(view) {
          $("td.fc-event-container").find("a").remove()
+      },
+      events: function(start, end, timezone, callback) {
+        $.ajax({
+          url: 'http://localhost:55/02.JOB/IBID/Ibid_IMS_WebFrontEnd/index.php/auction/Get_schedule',
+          dataType: 'json',
+          data: {
+            start: start.unix(),
+            end: end.unix(),
+          },
+          success: function(doc) {
+            var events = [];
+            for(var i=0; i<doc.length; i++){
+              console.log(doc[i]);
+              events.push({
+                title: doc[i].title,
+                start: doc[i].start,
+                end: doc[i].end,
+                allDay: false,
+                className: doc[i].className,
+              });
+            }
+            callback(events);
+          }
+        });
       }
    });
 });
@@ -272,6 +296,13 @@ $(document).ready(function() {
 
    $(".select-custom").select2({
       minimumResultsForSearch: -1
+   });
+   
+   $('.thisDate').click(function(){
+	   thisDate = $(this).attr('thisDate');
+	   console.log(thisDate);
+	   $('#myModalLabel').html(thisDate);
+	   // return false;
    });
 });
 </script>
