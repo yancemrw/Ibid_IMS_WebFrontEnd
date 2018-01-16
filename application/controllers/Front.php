@@ -11,9 +11,10 @@ class Front extends CI_Controller {
 	}
 
 	public function index() {
+		$userdata = $this->session->userdata('userdata');
 		$data = array(
-			'title'	=> 'IBID - Balai Lelang Serasi',
-			'pp' => 'https://instagram.fjkt1-1.fna.fbcdn.net/t51.2885-15/e35/25023178_125021498293801_6299328116707819520_n.jpg'
+			'title'		=> 'IBID - Balai Lelang Serasi',
+			'form_auth'	=> login_Status_form($userdata)
 		);
 		$view = "template/front";
 		template($view, $data);

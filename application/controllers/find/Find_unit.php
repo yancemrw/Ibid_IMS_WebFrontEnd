@@ -9,10 +9,12 @@ class Find_unit extends CI_Controller {
 	}
 
 	public function index() {
+		$userdata = $this->session->userdata('userdata');
 		$data = array(
 			'header_white' => "header-white",
-			'userdata'	=> $this->session->userdata('userdata'),
+			'userdata'	=> $userdata,
 			'title' => 'Cari Kendaraan',
+			'form_auth'	=> login_Status_form($userdata),
 			'img' => base_url('assetsfront/images/background/img-recommend-1.jpg'),
 			'link_detail' => base_url('index.php/detail-lelang')
 		);

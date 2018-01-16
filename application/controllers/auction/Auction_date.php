@@ -9,10 +9,12 @@ class Auction_date extends CI_Controller {
 	}
 
 	public function index() {
+		$userdata = $this->session->userdata('userdata');
 		$data = array(
 			'header_white' => "header-white",
-			'userdata'	=> $this->session->userdata('userdata'),
+			'userdata'	=> $userdata,
 			'title' => 'Jadwal Lelang',
+			'form_auth'	=> login_Status_form($userdata)
 		);
 		$view = "auction/auction_date";
 		template($view, $data);

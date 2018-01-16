@@ -118,8 +118,7 @@
                         <li><a href="<?php echo site_url('titip-lelang'); ?>">Titip Lelang</a></li>
                         <li><a href="<?php echo site_url('market-auction-price'); ?>">Map</a></li>
                         <li><a href="<?php echo site_url('panduan-lelang'); ?>">Prosedur</a></li>
-                        <li><a href="#" class="login" data-toggle="modal" data-target="#login">Masuk</a></li>
-                        <li><a href="<?php echo site_url('register'); ?>" class="regis">Daftar</a></li>
+                        <?php echo @$form_auth; ?>
                     </ul>
                  </div>
                </div>
@@ -132,7 +131,7 @@
    <?php } else { ?>
    <div id="preloader" style="display:none"></div>
    <div id="preloaderAuction" style="display:none"></div>
-   <div id="content">
+   <?php echo ($this->uri->segment(1) != "akun") ? '<div id="content">' : ''; ?>
 
       <!-- <header> -->
          <?php echo ($this->uri->segment(1) == "" || $this->uri->segment(1) == "front") ? '<header>' : ''; ?>
@@ -166,129 +165,7 @@
                      </button>
                      <a class="navbar-brand icon_logo" alt="" href="<?php echo site_url(); ?>"><i class="icn icn-LOGO-IBID"></i></a>
                      <div class="nav-header-right"> 
-                        <!-- <?php print_r($userdata = $this->session->userdata('userdata')); ?>  -->
-
-                        <?php $userdata = $this->session->userdata('userdata');
-                        if (count($userdata['UserId']) > 0) { ?>
-
-                        <ul class="user-nav clearfix">
-                           <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                 <p><img src="<?php echo base_url('assetsfront/images/icon/Transaksi.png'); ?>" alt="" title="" width="" height=""></p>
-                              </a>
-                              <ul class="dropdown-menu dropdown-custom">
-                                 <li>
-                                    <p class="title-dropdown">Transaksi</p>
-                                 </li>
-                                 <li class="input-dropdown">
-                                    <h2>Butuh Tindakan</h2>
-                                    <form>
-                                       <div class="form-group floating-label">
-                                          <input type="name" name="" class="form-control" placeholder="">
-                                          <label class="label-schedule">Harga Dasar</label>
-                                       </div>
-                                       <div class="form-group floating-label">
-                                          <input type="name" name="" class="form-control" placeholder="">
-                                          <label class="label-schedule">Harga Dasar</label>
-                                       </div>
-                                       <div class="form-group floating-label">
-                                          <input type="name" name="" class="form-control" placeholder="">
-                                          <label class="label-schedule">Harga Dasar</label>
-                                       </div>
-                                    </form>
-                                    <h2>Transaksi Terakhir</h2>
-                                    <a href="">
-                                       <div class="transaction-image">
-                                          <img src="assets/images/background/3.jpg" alt="" title="">
-                                       </div>
-                                       <div class="transaction-content">
-                                          <h2>DAIHATSU LUXIO 1.5 X MINIBUS AT 2014</h2>
-                                          <p>No. NPL #002 <span>Rp. 418,000,000</span></p>
-                                       </div>
-                                    </a>
-                                 </li>
-                                 <li class="text-center">
-                                    <a href="" class="viewall-dropdown">Lihat Semua Transaksi</a>
-                                 </li>
-                              </ul>
-                           </li>
-                           <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                 <p><img src="<?php base_url('assetsfront/images/icon/Notifikasi.png'); ?>" alt="" title="" width="" height=""> <span class="notification">10</span></p>
-                              </a>
-                              <ul class="dropdown-menu dropdown-custom">
-                                 <li>
-                                    <p class="title-dropdown">Notifikasi</p>
-                                 </li>
-                                 <li class="clearfix">
-                                    <a href="#">
-                                       <div class="media-image">
-                                          <img src="<?php echo base_url('assetsfront/images/icon/ic_notif_1.png'); ?>" alt="" title="">
-                                       </div>
-                                       <div class="media-content">
-                                          <h2>1 Pesan Email</h2>
-                                          <p>Lorem Ipsum is simply dummy text of the printing <span>09/26/2017</span></p>
-                                       </div>
-                                    </a>
-                                 </li>
-                                 <li class="clearfix">
-                                    <a href="#">
-                                       <div class="media-image">
-                                          <img src="<?php echo base_url('assetsfront/images/icon/ic_notif_2.png'); ?>" alt="" title="">
-                                       </div>
-                                       <div class="media-content">
-                                          <h2>1 Pesan Email</h2>
-                                          <p>Lorem Ipsum is simply dummy text of the printing <span>09/26/2017</span></p>
-                                       </div>
-                                    </a>
-                                 </li>
-                                 <li class="clearfix">
-                                    <a href="#">
-                                       <div class="media-image">
-                                          <img src="<?php echo base_url('assetsfront/images/icon/ic_notif_3.png'); ?>" alt="" title="">
-                                       </div>
-                                       <div class="media-content">
-                                          <h2>1 Pesan Email</h2>
-                                          <p>Lorem Ipsum is simply dummy text of the printing <span>09/26/2017</span></p>
-                                       </div>
-                                    </a>
-                                 </li>
-                                 <li class="text-center">
-                                    <a href="" class="viewall-dropdown">Lihat Semua Transaksi</a>
-                                 </li>
-                              </ul>
-                           </li>
-                           <li class="dropdown">
-                              <a href="#" class="dropdown-toggle box-profile" data-toggle="dropdown">
-                                 <span class="photo-profile">
-                                    <img src="<?php echo @$pp; ?>" alt="" title="profile">
-                                 </span>
-                              </a>
-                              <ul class="dropdown-menu dropdown-profile">
-                                 <li class="clearfix">
-                                    <a href="am-ubah-profil.html" class="clearfix">
-                                       <div class="content-profile col-md-6">
-                                          <img src="<?php echo $pp; ?>">
-                                       </div>
-                                       <p class="col-md-6"><?php echo $userdata['namefront'] ?> <span><?php echo $userdata['emailfront']; ?></span></p>
-                                    </a>
-                                 </li>
-                                 <li>
-                                    <hr />
-                                 </li>
-                                 <li class="text-center">
-                                    <button class="btn btn-logout" onclick="location.href='<?php echo site_url('logout'); ?>'" type="button">Keluar</button>
-                                 </li>
-                              </ul>
-                           </li>
-                        </ul>
-
-                        <?php } else { ?>
-
-                        <a href="#" class="login" data-toggle="modal" data-target="#login">Masuk</a>
-                        <a href="<?php echo site_url('register'); ?>" class="regis">Daftar</a>
-                        <?php } ?>
-
+                        <?php echo $form_auth; ?>
                      </div>
                   </div>
                   <div id="navbar" class="navbar-collapse collapse">
@@ -302,131 +179,7 @@
                         <li><a href="<?php echo site_url('titip-lelang'); ?>">Titip Lelang</a></li>
                         <li><a href="<?php echo site_url('market-auction-price'); ?>">Map</a></li>
                         <li><a href="<?php echo site_url('panduan-lelang'); ?>">Prosedur</a></li>
-                        
-
-                        <?php if (count($userdata['UserId']) > 0) { ?>
-
-                        <li class="dropdown hidden-mob">
-                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                              <p><img src="<?php echo base_url('assetsfront/images/icon/ic_transaction.png'); ?>" alt="" title="" width="16px" height="22px"> <img src="<?php echo base_url('assetsfront/images/icon/Transaksi.png'); ?>" alt="" title="" width="" height="" class="ic_fixed"></p>
-                           </a>
-                           <ul class="dropdown-menu dropdown-custom">
-                              <li>
-                                 <p class="title-dropdown">Transaksi</p>
-                              </li>
-                              <li class="input-dropdown">
-                                 <h2>Butuh Tindakan</h2>
-                                 <form>
-                                    <div class="form-group floating-label">
-                                       <input type="name" name="" class="form-control" placeholder="">
-                                       <label class="label-schedule">Harga Dasar</label>
-                                    </div>
-                                    <div class="form-group floating-label">
-                                       <input type="name" name="" class="form-control" placeholder="">
-                                       <label class="label-schedule">Harga Dasar</label>
-                                    </div>
-                                    <div class="form-group floating-label">
-                                       <input type="name" name="" class="form-control" placeholder="">
-                                       <label class="label-schedule">Harga Dasar</label>
-                                    </div>
-                                 </form>
-                                 <h2>Transaksi Terakhir</h2>
-                                 <a href="">
-                                    <div class="transaction-image">
-                                       <img src="<?php echo base_url('assetsfront/images/background/3.jpg'); ?>" alt="" title="">
-                                    </div>
-                                    <div class="transaction-content">
-                                       <h2>DAIHATSU LUXIO 1.5 X MINIBUS AT 2014</h2>
-                                       <p>No. NPL #002 <span>Rp. 418,000,000</span></p>
-                                    </div>
-                                 </a>
-                              </li>
-                              <li class="text-center">
-                                 <a href="" class="viewall-dropdown">Lihat Semua Transaksi</a>
-                              </li>
-                           </ul>
-                        </li>
-                        <li class="dropdown hidden-mob">
-                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                              <p><img src="<?php echo base_url('assetsfront/images/icon/bell.png'); ?>" alt="" title="" width="16px" height="22px"><img src="<?php echo base_url('assetsfront/images/icon/Notifikasi.png'); ?>" alt="" title="" width="" height="" class="ic_fixed"> <span class="notification">10</span></p>
-                           </a>
-                           <ul class="dropdown-menu dropdown-custom">
-                              <li>
-                                 <p class="title-dropdown">Notifikasi</p>
-                              </li>
-                              <li class="clearfix">
-                                 <a href="#">
-                                    <div class="media-image">
-                                       <img src="<?php echo base_url('assetsfront/images/icon/ic_notif_1.png');?>" alt="" title="">
-                                    </div>
-                                    <div class="media-content">
-                                       <h2>1 Pesan Email</h2>
-                                       <p>Lorem Ipsum is simply dummy text of the printing <span>09/26/2017</span></p>
-                                    </div>
-                                 </a>
-                              </li>
-                              <li class="clearfix">
-                                 <a href="#">
-                                    <div class="media-image">
-                                       <img src="<?php echo base_url('assetsfront/images/icon/ic_notif_2.png'); ?>" alt="" title="">
-                                    </div>
-                                    <div class="media-content">
-                                       <h2>1 Pesan Email</h2>
-                                       <p>Lorem Ipsum is simply dummy text of the printing <span>09/26/2017</span></p>
-                                    </div>
-                                 </a>
-                              </li>
-                              <li class="clearfix">
-                                 <a href="#">
-                                    <div class="media-image">
-                                       <img src="<?php echo base_url('assetsfront/images/icon/ic_notif_3.png'); ?>" alt="" title="">
-                                    </div>
-                                    <div class="media-content">
-                                       <h2>1 Pesan Email</h2>
-                                       <p>Lorem Ipsum is simply dummy text of the printing <span>09/26/2017</span></p>
-                                    </div>
-                                 </a>
-                              </li>
-                              <li class="text-center">
-                                 <a href="" class="viewall-dropdown">Lihat Semua Transaksi</a>
-                              </li>
-                           </ul>
-                        </li>
-                        <li class="dropdown hidden-mob">
-                           <a href="#" class="dropdown-toggle box-profile" data-toggle="dropdown">
-                              <span class="photo-profile">
-                                 <img src="<?php echo @$pp; ?>" alt="" title="profile">
-                              </span>
-                              <div class="profile-name">
-                                 <?php echo @$userdata['namefront'] ?>
-                                 <span class="fa fa-angle-down"></span>
-                              </div>
-                           </a>
-                           <ul class="dropdown-menu dropdown-profile">
-                              <li class="clearfix">
-                                 <a href="<?php echo site_url('akun/dasbor/') ?>" class="clearfix">
-                                    <!-- <div class="content-profile col-md-6">
-                                       <img src="<?php echo base_url('assetsfront/images/background/slide-1.jpg'); ?>" alt="" title="profile">
-                                    </div> -->
-                                    <p class="col-md-12"><?php echo $userdata['namefront'] ?> <span><?php echo $userdata['emailfront']; ?></span></p>
-                                 </a>
-                              </li>
-                              <li>
-                                 <hr />
-                              </li>
-                              <li class="text-center">
-                                 <button  class="btn btn-logout" onclick="location.href='<?php echo site_url('logout'); ?>'">Keluar</button>
-                              </li>
-                           </ul>
-                        </li>
-
-
-
-                        <?php } else { ?>
-                        <li class="hidden-mob"><a href="#" class="login" data-toggle="modal" data-target="#login">Masuk</a></li>
-                        <li class="hidden-mob"><a href="<?php echo site_url('register'); ?>" class="regis">Daftar</a></li>
-
-                        <?php } ?>
+                        <?php echo $form_auth; ?>
                         <li class="lang-mob">
                            <a href="javascript:void(0)">Bahasa</a>
                            <ul>
@@ -454,11 +207,12 @@
                </div>
             </nav>
 
-         <?php if($this->uri->segment(1)=="" OR $this->uri->segment(1)=="front") { ?> 
+         <?php if($this->uri->segment(1) == "" || $this->uri->segment(1) == "front") { ?> 
             <div class="hero-overlay">
                <h1>Search, Bid <span>&</span> Buy From <br>Anywhere on Any Device</h1>
                <p>IBID-Balai Lelang Serasi merupakan balai lelang terbesar di Indonesia. Temukan lebih dari 5000 kendaraan dengan beragam tipe dan merek yang rutin dilelang tiap bulan.</p>
             </div>
          </header>
          <?php } ?>
+   <?php echo ($this->uri->segment(1) != "akun") ? '<div>' : ''; ?>
 <?php } ?>

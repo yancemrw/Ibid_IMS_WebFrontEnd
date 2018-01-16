@@ -9,10 +9,12 @@ class Find_details extends CI_Controller {
 	}
 
 	public function index() {
+		$userdata = $this->session->userdata('userdata');
 		$data = array(
 			'header_white' => "header-white",
-			'userdata'	=> $this->session->userdata('userdata'),
+			'userdata'	=> $userdata,
 			'title' => 'Rincian Kendaraan',
+			'form_auth'	=> login_Status_form($userdata),
 			'link_detail' => base_url('index.php/detail_lelang'),
 			'img1' => base_url('assetsfront/images/background/image-header-1.jpg'),
 			'img2' => base_url('assetsfront/images/background/image-header-2.jpg'),
