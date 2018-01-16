@@ -86,10 +86,12 @@
     }
   }
 
-  setTimeout(function() { console.log();
-    if(document.getElementById('preloader').style.display === 'none') {
-      showContent();
-    } 
+  setTimeout(function() {
+    if(document.getElementById('preloader') !== null) {
+      if(document.getElementById('preloader').style.display === 'none') {
+        showContent();
+      }
+    }
   }, 1000);
 
   $(document).ready(function() {

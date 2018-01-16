@@ -76,7 +76,7 @@
 </head>
 <body class="bg-grey">
    <!-- handle header between procedure page and other page -->
-   <?php if($this->uri->segment(1) === "panduan-lelang") { ?>
+   <?php if(@$menu_pages === "panduan-lelang") { ?>
       <header class="header-min" style="background: url(<?php echo base_url('assetsfront/images/background/bg-homepage.jpg'); ?>)no-repeat fixed;">
          <nav class="navbar navbar-custom">
             <div class="top-navbar text-right">
@@ -125,7 +125,7 @@
                </div>
           </nav>
           <div class="hero-overlay text-center">
-            <h2>Tata cara lelang On Site</h2>
+            <h2><?php echo $menu_title; ?></h2>
           </div>
       </header>
       <div class="container-fluid">
