@@ -6,10 +6,10 @@ class Register extends CI_Controller {
 	public function __construct() {
 		parent::__construct(); 
 		$this->load->library(array('form_validation'));
-		$this->load->helper(array('global' , 'omni'));
+		$this->load->helper(array('global', 'omni'));
 	}
 	
-	public function index(){
+	public function index() {
 
 		// membersihkan token session dari facebook
 		// penambahan by lutfi
@@ -43,7 +43,14 @@ class Register extends CI_Controller {
 			// if ($_SERVER['REQUEST_METHOD'] == 'POST')
 				// $this->session->set_flashdata('itemFlashGagal','Harap Melengkapi Form yang Telah Disediakan');
 			// $this->load->view('auth/template',$data);
-			$this->load->view('auth/templateauthadmin',$data);
+			//$this->load->view('auth/templateauthadmin',$data);
+			$data = array(
+				'header_white'	=> "header-white",
+				'userdata'		=> $this->session->userdata('userdata'),
+				'title'			=> 'Pendaftaran'
+			);
+			$view = "auth/register";
+			template($view, $data);
 		}
 		else{
 			// print_r(@$_POST);

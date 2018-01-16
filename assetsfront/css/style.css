@@ -4889,6 +4889,14 @@ a.delete-favorite {
 
 
 /*REGISTER*/
+.login-socialmedia.logins-socialmedia {
+    margin: 80px auto 0;
+}
+
+.login-socialmedia.logins-socialmedia a {
+    font-size: 24px;
+    padding: 8px 40px;
+}
 
 .login-socialmedia.register-socialmedia {
     max-width: 326px;
@@ -4955,6 +4963,13 @@ a.delete-favorite {
     background-position: top center;
     background-size: cover;
     min-height: 843px;
+}
+
+.logins-socialmedia p {
+    margin: 0 0 50px;
+    font-family: "OpenSansBold", Helvetica, Sans-serif;
+    font-size: 24px;
+    color: #333
 }
 
 .register-socialmedia p {

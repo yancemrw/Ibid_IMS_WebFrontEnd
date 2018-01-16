@@ -1,4 +1,4 @@
-<?php
+ <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Front extends CI_Controller {
@@ -6,14 +6,19 @@ class Front extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->library(array('form_validation'));
-		$this->load->helper(array('global' , 'omni','template'));
+		$this->load->helper(array('global', 'omni', 'template'));
 		$this->AccessApi = new AccessApi(array_merge($this->config->item('Oauth'),array('username' => 'rendhy.wijayanto@sera.astra.co.id')));
 	}
 
-	public function index()
-	{
-		$data = array();
+	public function index() {
+		$data = array(
+			'title'	=> 'IBID - Balai Lelang Serasi',
+			'pp' => 'https://instagram.fjkt1-1.fna.fbcdn.net/t51.2885-15/e35/25023178_125021498293801_6299328116707819520_n.jpg'
+		);
+		$view = "template/front";
+		template($view, $data);
 
+		/*$data = array();
 		## hapus session by sosmed yang balik lagi 
 		if (@$this->input->get('clear')) {
 			$this->session->unset_userdata('OAUTH_ACCESS_TOKEN');
@@ -25,27 +30,17 @@ class Front extends CI_Controller {
 			$this->session->unset_userdata('namelinkedin');
 			$this->session->unset_userdata('emailgoogle');
 			$this->session->unset_userdata('namegoogle');
-
 			$this->session->unset_userdata('namatwitter');
 			$this->session->unset_userdata('usernametwitter');
 			$this->session->unset_userdata('emailtwitter');
 		}
 		## end 
 
-		$data = array(
-			'title'	=> 'IBID - Balai Lelang Serasi '
-		);
-
-
-		$view = "template/front";
-		template($view , $data);
-
-
 		$this->form_validation->set_rules('username', 'username', 'required');
 		$this->form_validation->set_rules('password', 'password', 'required|min_length[8]|max_length[20]');
 
-		if ($this->form_validation->run() == FALSE){
-			// $this->load->view('auth/templateauthadmin',$data); 
+		if($this->form_validation->run() == FALSE) {
+			$this->load->view('auth/templateauthadmin',$data);
 		}
 		else {
 			$username = $_POST['username'];
@@ -87,8 +82,7 @@ class Front extends CI_Controller {
 					redirect();
 				} 
 			}
-			
-		}
+		}*/
 	}
 
 }

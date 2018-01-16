@@ -33,7 +33,7 @@
   </div>
   <div class="modal-body clearfix">
     <div class="col-md-6 col-sm-6">
-     <form class="form-login" action="<?php echo site_url('front'); ?>" method="POST">
+     <form class="form-login" action="<?php echo site_url('login'); ?>" method="POST">
       <div class="form-group floating-label">
        <input type="email" class="form-control floating-handle" id="username" name="username">
        <label for="">Email</label>

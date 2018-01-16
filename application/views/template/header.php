@@ -118,8 +118,8 @@
                         <li><a href="<?php echo site_url('titip-lelang'); ?>">Titip Lelang</a></li>
                         <li><a href="<?php echo site_url('market-auction-price'); ?>">Map</a></li>
                         <li><a href="<?php echo site_url('panduan-lelang'); ?>">Prosedur</a></li>
-                        <li><a href="" class="login" data-toggle="modal" data-target="#login">Masuk</a></li>
-                        <li><a href="register.html" class="regis">Daftar</a></li>
+                        <li><a href="#" class="login" data-toggle="modal" data-target="#login">Masuk</a></li>
+                        <li><a href="<?php echo site_url('register'); ?>" class="regis">Daftar</a></li>
                     </ul>
                  </div>
                </div>
@@ -223,7 +223,7 @@
                                  <li class="clearfix">
                                     <a href="#">
                                        <div class="media-image">
-                                          <img src="assets/images/icon/ic_notif_1.png" alt="" title="">
+                                          <img src="<?php echo base_url('assetsfront/images/icon/ic_notif_1.png'); ?>" alt="" title="">
                                        </div>
                                        <div class="media-content">
                                           <h2>1 Pesan Email</h2>
@@ -234,7 +234,7 @@
                                  <li class="clearfix">
                                     <a href="#">
                                        <div class="media-image">
-                                          <img src="assets/images/icon/ic_notif_2.png" alt="" title="">
+                                          <img src="<?php echo base_url('assetsfront/images/icon/ic_notif_2.png'); ?>" alt="" title="">
                                        </div>
                                        <div class="media-content">
                                           <h2>1 Pesan Email</h2>
@@ -245,7 +245,7 @@
                                  <li class="clearfix">
                                     <a href="#">
                                        <div class="media-image">
-                                          <img src="assets/images/icon/ic_notif_3.png" alt="" title="">
+                                          <img src="<?php echo base_url('assetsfront/images/icon/ic_notif_3.png'); ?>" alt="" title="">
                                        </div>
                                        <div class="media-content">
                                           <h2>1 Pesan Email</h2>
@@ -261,14 +261,14 @@
                            <li class="dropdown">
                               <a href="#" class="dropdown-toggle box-profile" data-toggle="dropdown">
                                  <span class="photo-profile">
-                                    <img src="<?php echo base_url('assetsfront/images/background/slide-1.jpg') ?>" alt="" title="profile">
+                                    <img src="<?php echo @$pp; ?>" alt="" title="profile">
                                  </span>
                               </a>
                               <ul class="dropdown-menu dropdown-profile">
                                  <li class="clearfix">
                                     <a href="am-ubah-profil.html" class="clearfix">
                                        <div class="content-profile col-md-6">
-                                          <img src="https://instagram.fjkt1-1.fna.fbcdn.net/t51.2885-15/e35/25023178_125021498293801_6299328116707819520_n.jpg" alt="" title="profile">
+                                          <img src="<?php echo $pp; ?>">
                                        </div>
                                        <p class="col-md-6"><?php echo $userdata['namefront'] ?> <span><?php echo $userdata['emailfront']; ?></span></p>
                                     </a>
@@ -285,8 +285,8 @@
 
                         <?php } else { ?>
 
-                        <a href="" class="login" data-toggle="modal" data-target="#login">Masuk</a>
-                        <a href="register.html" class="regis">Daftar</a>
+                        <a href="#" class="login" data-toggle="modal" data-target="#login">Masuk</a>
+                        <a href="<?php echo site_url('register'); ?>" class="regis">Daftar</a>
                         <?php } ?>
 
                      </div>
@@ -308,7 +308,7 @@
 
                         <li class="dropdown hidden-mob">
                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                              <p><img src="http://sera-ibid.stagingapps.net/assets/images/icon/ic_transaction.png" alt="" title="" width="16px" height="22px"> <img src="http://sera-ibid.stagingapps.net/assets/images/icon/Transaksi.png" alt="" title="" width="" height="" class="ic_fixed"></p>
+                              <p><img src="<?php echo base_url('assetsfront/images/icon/ic_transaction.png'); ?>" alt="" title="" width="16px" height="22px"> <img src="<?php echo base_url('assetsfront/images/icon/Transaksi.png'); ?>" alt="" title="" width="" height="" class="ic_fixed"></p>
                            </a>
                            <ul class="dropdown-menu dropdown-custom">
                               <li>
@@ -333,7 +333,7 @@
                                  <h2>Transaksi Terakhir</h2>
                                  <a href="">
                                     <div class="transaction-image">
-                                       <img src="http://sera-ibid.stagingapps.net/assets/images/background/3.jpg" alt="" title="">
+                                       <img src="<?php echo base_url('assetsfront/images/background/3.jpg'); ?>" alt="" title="">
                                     </div>
                                     <div class="transaction-content">
                                        <h2>DAIHATSU LUXIO 1.5 X MINIBUS AT 2014</h2>
@@ -348,7 +348,7 @@
                         </li>
                         <li class="dropdown hidden-mob">
                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                              <p><img src="http://sera-ibid.stagingapps.net/assets/images/icon/bell.png" alt="" title="" width="16px" height="22px"><img src="http://sera-ibid.stagingapps.net/assets/images/icon/Notifikasi.png" alt="" title="" width="" height="" class="ic_fixed"> <span class="notification">10</span></p>
+                              <p><img src="<?php echo base_url('assetsfront/images/icon/bell.png'); ?>" alt="" title="" width="16px" height="22px"><img src="<?php echo base_url('assetsfront/images/icon/Notifikasi.png'); ?>" alt="" title="" width="" height="" class="ic_fixed"> <span class="notification">10</span></p>
                            </a>
                            <ul class="dropdown-menu dropdown-custom">
                               <li>
@@ -395,7 +395,7 @@
                         <li class="dropdown hidden-mob">
                            <a href="#" class="dropdown-toggle box-profile" data-toggle="dropdown">
                               <span class="photo-profile">
-                                 <img src="https://instagram.fjkt1-1.fna.fbcdn.net/t51.2885-15/e35/25023178_125021498293801_6299328116707819520_n.jpg" alt="" title="profile">
+                                 <img src="<?php echo @$pp; ?>" alt="" title="profile">
                               </span>
                               <div class="profile-name">
                                  <?php echo @$userdata['namefront'] ?>
@@ -423,8 +423,8 @@
 
 
                         <?php } else { ?>
-                        <li class="hidden-mob"><a href="" class="login" data-toggle="modal" data-target="#login">Masuk</a></li>
-                        <li class="hidden-mob"><a href="<?php echo site_url('register') ?>" class="regis">Daftar</a></li>
+                        <li class="hidden-mob"><a href="#" class="login" data-toggle="modal" data-target="#login">Masuk</a></li>
+                        <li class="hidden-mob"><a href="<?php echo site_url('register'); ?>" class="regis">Daftar</a></li>
 
                         <?php } ?>
                         <li class="lang-mob">
