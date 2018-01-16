@@ -129,7 +129,7 @@
                      <a href="">
                         <div class="thumbnail">
                            <div class="thumbnail-custom">
-                              <img src="http://sera-ibid.stagingapps.net/assets/images/background/img-recommend-1.jpg" title="" alt="" >
+                              <img src="<?php echo base_url('assetsfront/images/background/img-recommend-1.jpg'); ?>" title="" alt="" />
                            </div>
                            <div class="overlay-grade">
                               Grade <span>A</span>
@@ -147,7 +147,7 @@
                      <a href="">
                         <div class="thumbnail">
                            <div class="thumbnail-custom">
-                              <img src="http://sera-ibid.stagingapps.net/assets/images/background/img-recommend-2.jpg" title="" alt="" >
+                              <img src="<?php echo base_url('assetsfront/images/background/img-recommend-2.jpg'); ?>" title="" alt="" />
                            </div>
                            <div class="overlay-grade">
                               Grade <span>B</span>
@@ -165,7 +165,7 @@
                      <a href="">
                         <div class="thumbnail">
                            <div class="thumbnail-custom">
-                              <img src="http://sera-ibid.stagingapps.net/assets/images/background/img-recommend-3.jpg" title="" alt="" >
+                              <img src="<?php echo base_url('assetsfront/images/background/img-recommend-3.jpg'); ?>" title="" alt="" />
                            </div>
                            <div class="overlay-grade">
                               Grade <span>C</span>

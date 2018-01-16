@@ -52,6 +52,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'front';
 
 // seputar authentification
+$route['register'] = 'auth/register';
+$route['login'] = 'auth/login';
 $route['logout'] = 'auth/logoutCustomer';
 
 // menu bagian header

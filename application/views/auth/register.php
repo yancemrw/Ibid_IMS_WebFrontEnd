@@ -1,53 +1,91 @@
-  <body class="min-h-fullscreen bg-img center-vh p-20" style="background-image: url(https://sera.astra.co.id/uploads/contents/1487930089_9j8r7v6bXZ.png);" data-overlay="7">
+<section class="section-register">
+    <div class="container">
+        <div class="row position-repative">
+            <div class="col-md-4 col-sm-6 pull-right">
+                <div class="form-register">
+                    <h2>Registrasi</h2>
+                    <form>
+                        <h3>Create Account</h3>
+                         <div class="form-group floating-label">
+                            <input type="text" name="" class="form-control input-custom is-invalid" required>
+                            <label class="label-schedule">Nama</label>
+                          </div>
+                        <div class="form-group floating-label">
+                            <input type="email" name="" class="form-control input-custom is-invalid" required>
+                             <label class="label-schedule">Email</label>
+                        </div>
+                         <div class="form-group floating-label">
+                            <input type="password" name="" class="form-control input-custom" required>
+                             <label class="label-schedule">Password</label>
+                        </div>
+                          <div class="form-group floating-label">
+                            <input type="password" name="" class="form-control input-custom" required>
+                             <label class="label-schedule">Confirm Password</label>
+                        </div>
+                          <div class="form-group floating-label">
+                            <input type="text" name="" id="id-card" class="form-control input-custom">
+                            <label class="label-schedule">Kartu Anggota</label>
+                            <div class="help-info">
+                              <i class="fa fa-info"></i> Kartu anggota yang dimiliki oleh pnegguna IBID yang telah terdaftar sebelumnya
+                            </div>
+                        </div>
+                        <div class="g-recaptcha" data-theme="light" data-sitekey="XXXXXXXXXXXXX" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;">
+                            </div>
+                        <div class="form-group text-right">
+                            <button class="btn btn-green">Daftar</button>
+                            <a href="">Sudah punya akun?</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-6 text-center pull-left">
+                <div class="login-socialmedia register-socialmedia">
+                    <p>Atau masuk melalui</p>
+                    <a href="" class="login-facebook"><span class="ic ic-facebook"></span>facebook</a>
+                    <a href="" class="login-twitter"><span class="ic ic-twitter"></span>twitter</a>
+                    <a href="" class="login-google"><span class="ic ic-Google"></span>google</a>
+                    <a href="" class="login-linkedin"><span class="ic ic-linkedin"></span>Linkedin</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-  	<div class="card card-round card-shadowed px-50 py-30 w-400px mb-0" style="max-width: 100%">
-  		<h5 class="text-uppercase"><?php echo @$title; ?></h5>
-  		<br>
-  		<?php echo @$message; ?>
+<script>
+    $(document).ready(function() {
+        $("nav").sticky({
+            topSpacing:0
+        });
 
-  		<div class="register-box-body">
-  			<form action="<?php echo site_url('auth/register'); ?>" method="post">
-  				<div class="form-group has-feedback">
-  					<input type="text" value="" id="first_name" class="form-control" name="first_name" placeholder="First name">
-  					<span class="glyphicon glyphicon-user form-control-feedback"></span>
-  				</div>
-  				<div class="form-group has-feedback">
-  					<input type="text" value="" id="last_name" class="form-control" name="last_name" placeholder="Last name">
-  					<span class="glyphicon glyphicon-user form-control-feedback"></span>
-  				</div>
-  				<!-- <div class="form-group has-feedback">
-  					<input type="text" value="" id="username" class="form-control" name="username" placeholder="username">
-  					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-  				</div> -->
-  				<div class="form-group has-feedback">
-  					<input type="email" value="" id="email" class="form-control" name="username" placeholder="email">
-  					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-  				</div>
-  				<div class="form-group has-feedback">
-  					<input type="password" id="password" class="form-control" name="password" placeholder="password" data-provide="pwstrength maxlength"  maxlength="8" data-threshold="4">
-  					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
-  				</div>
-  				<div class="form-group has-feedback">
-  					<input type="password" class="form-control" name="repassword" placeholder="Retype password" data-provide="pwstrength maxlength"  maxlength="8" data-threshold="4">
-  					<span class="glyphicon glyphicon-log-in form-control-feedback"></span>
-  				</div>
-  				<div class="form-group has-feedback">
-  					<input type="text" value="" class="form-control" name="memberid" placeholder="Member Id (not mandatory)">
-  				</div>
-  				<div class="form-group has-feedback">
-  					<button type="submit" class="btn btn-success btn-block">Register</button>
-  				</div>
-  				  
-  			</form> 
+        $("#id-card").on("focus", function(e) {
+          $('.help-info').show();
+        });
 
-  			<a href="<?php echo site_url('auth/loginCustomer') ?>" class="text-center btn btn-default btn-block">I already have a membership</a>
-  		</div><!-- /.form-box --> 
-  	</div>
+        $(".select-custom").select2({
+            minimumResultsForSearch: -1
+        });
+         
+		$('.lang-mob a').click(function() {
+			$('.help-mob ul').removeClass('open');
+			$(this).toggleClass('opened');
+			$(this).siblings('ul').toggleClass('open');
+		});
+		$('.help-mob a').click(function() {
+			$('.lang-mob ul').removeClass('open');
+			$(this).toggleClass('opened');
+			$(this).siblings('ul').toggleClass('open');
+		})
+		$('input').blur(function() {
+		tmpval = $(this).val();
+		if(tmpval == '') {
+			$(this).addClass('empty');
+			$(this).removeClass('not-empty');
+		}
+		else {
+			$(this).addClass('not-empty');
+			$(this).removeClass('empty');
+		}
+		});
 
-
-  </div><!-- /.register-box -->
-
-</div>
-
-</body>
-</html>
+    });
+</script>

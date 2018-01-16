@@ -7,6 +7,7 @@ class Login extends CI_Controller {
 		parent::__construct();
 		$this->load->library(array('form_validation'));
 		$this->load->helper(array('global' , 'omni'));
+		$this->AccessApi = new AccessApi(array_merge($this->config->item('Oauth'),array('username' => 'rendhy.wijayanto@sera.astra.co.id')));
 	}
 	
 	public function index(){
@@ -27,42 +28,56 @@ class Login extends CI_Controller {
 		
 		$this->form_validation->set_rules('username', 'username', 'required');
 		$this->form_validation->set_rules('password', 'password', 'required|min_length[8]|max_length[20]');
-		if ($this->form_validation->run() == FALSE){
-			$this->load->view('auth/templateauthadmin',$data); 
+		if ($this->form_validation->run() == FALSE) {
+			//$this->load->view('auth/templateauthadmin',$data);
+			$data = array(
+				'header_white'	=> "header-white",
+				'userdata'		=> $this->session->userdata('userdata'),
+				'title'			=> 'Login'
+			);
+			$view = "auth/login";
+			template($view, $data);
 		}
 		else{
 			$username = $_POST['username'];
 			$password = $_POST['password'];
 			
+			// login by ouath2
 			$dataLogin = array(
-				'email' => $username,
-				'password' => $password,
+				'grant_type'	=> 'password',
+				'client_id'		=> 'ADMS Web',
+				'client_secret'	=> '1234567890',
+				'action'		=> '',
+				'redirect_url'	=> base_url(),
+				'username'     	=> $username,
+				'password'      => $password,
+				'ipAddress'		=> $this->input->ip_address()
 			);
-			## send data registrasi
-			$url = linkservice('account') ."auth/login/login";
+			$url = linkservice('account') ."auth/oauth2";
 			$method = 'POST';
 			$responseApi = admsCurl($url, $dataLogin, $method);
-			
-			// print_r($responseApi); 
-			
 			## redirect dan email(belum)
 			if ($responseApi['err']) {
 				echo "<hr>cURL Error #:" . $responseApi['err'];
 			} else {
-				$responseApiInsert = json_decode($responseApi['response'], true);
-				if ($responseApiInsert['status'] == 1){
-					// print_r($responseApiInsert['data']);
-					if ($responseApiInsert['data'][0]['groupname'] == 'members' || $responseApiInsert['data'][0]['groupname'] == 'admin'){
-						$this->session->set_flashdata('message', '<div class="alert alert-warning">'.$responseApiInsert['message'].'</div>');
-						redirect('users/lists','refresh');
-					} else{
-						redirect('afterlogin','refresh');
-					}
-				}
-				else if ($responseApiInsert['status'] == 0){
-					$this->session->set_flashdata('message', '<div class="alert alert-warning">'.$responseApiInsert['message'].'</div>');
-					redirect('auth/login');
-				}
+				// response from oauth2
+				$res = json_decode($responseApi['response']);
+				if(isset($res->error)){
+					// kalo gagal
+					$this->session->set_flashdata('message', array('error' , '' , 'Gagal'));
+					redirect();
+				} else {
+					// set token on session
+					$this->session->set_userdata('idfront', $res->UserId);
+					$this->session->set_userdata('namefront', $res->Name);
+					$this->session->set_userdata('emailfront', $res->username);
+					$this->session->set_userdata('groupnamefront', $res->GroupName);
+					$this->AccessApi->setAccess('in',(array)$res);
+
+					// kalo berhasil
+					$this->session->set_flashdata('message', array('success' , 'Berhasil Login' , 'Sukses'));
+					redirect();
+				} 
 			}
 			
 		}
