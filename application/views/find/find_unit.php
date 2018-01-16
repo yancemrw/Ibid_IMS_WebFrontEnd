@@ -712,24 +712,5 @@ $(document).ready(function() {
          },500)
       }
    });
-
-   $('#toggle-nav').click(function() {
-      $('.navbar-collapse.collapse').toggleClass('open')
-   })
-   $('.nav-close').click(function() {
-      $('.navbar-collapse.collapse').toggleClass('open')
-   })
-
-   $('.lang-mob a').click(function() {
-      $('.help-mob ul').removeClass('open')
-      $(this).toggleClass('opened')
-      $(this).siblings('ul').toggleClass('open')
-   })
-   $('.help-mob a').click(function() {
-      $('.lang-mob ul').removeClass('open')
-      $(this).toggleClass('opened')
-      $(this).siblings('ul').toggleClass('open')
-   })
-   $('.sidemenu-left').height($('.am-right').height() - 100)
 });
 </script>
