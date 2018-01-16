@@ -192,7 +192,7 @@ header:before {
 .is-sticky .container-fluid,
 .is-sticky #navbar {
     padding: 0;
-    height: 42px !important;
+    /*max-height: 42px !important;*/
 }
 
 .header-white .nav>li>a.login {
@@ -240,7 +240,7 @@ header:before {
     -webkit-transition: all 0.2s ease;
     -o-transition: all 0.2s ease;
     transition: all 0.2s ease;
-    height: 80px;
+    max-height: 80px;
 }
 
 .navbar-custom .navbar-right {

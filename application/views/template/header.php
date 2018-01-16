@@ -99,7 +99,7 @@
             </div>
                <div class="container-fluid">
                  <div class="navbar-header">
-                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                     <button type="button" class="navbar-toggle collapsed" id="toggle-nav">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -165,7 +165,7 @@
                         <span class="icon-bar"></span>
                      </button>
                      <a class="navbar-brand icon_logo" alt="" href="<?php echo site_url(); ?>"><i class="icn icn-LOGO-IBID"></i></a>
-                     <div class="nav-header-right "> 
+                     <div class="nav-header-right"> 
                         <!-- <?php print_r($userdata = $this->session->userdata('userdata')); ?>  -->
 
                         <?php $userdata = $this->session->userdata('userdata');
