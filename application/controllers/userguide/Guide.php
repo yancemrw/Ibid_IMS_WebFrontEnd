@@ -6,6 +6,9 @@ class Guide extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->helper(array('global', 'omni'));
+		$this->AccessApi = new AccessApi(array('client_id' => 'ADMS Web', 'client_secret' => '1234567890', 'username' => 'rendhy.wijayanto@sera.astra.co.id'));
+		$this->AccessApi->redirect_url = base_url('auth/loginCustomer');
+		$this->AccessApi->check_login();
 	}
 
 	public function index($page_name = '') {
@@ -20,11 +23,13 @@ class Guide extends CI_Controller {
 			case '': $page_site = $this->panduan_lelang_onsite(); $menu_title = 'Tata Cara Lelang On Site'; break;
 		}
 
+		$userdata = $this->session->userdata('userdata');
 		$data = array(
 			'menu_pages'		=> 'panduan-lelang',
 			'menu_title'		=> $menu_title,
-			'userdata'			=> $this->session->userdata('userdata'),
+			'userdata'			=> $userdata,
 			'title'				=> 'Tata Cara Titip Lelang',
+			'form_auth'			=> login_Status_form($userdata),
 			'side_menu'			=> $this->side_menu($page_name),
 			'content_panduan'	=> $page_site,
 			'page_name'			=> $page_name

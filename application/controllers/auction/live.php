@@ -33,10 +33,12 @@ class Live extends CI_Controller {
 			$arrData[$keys]->Address = $arrCompany[$values->company_id]['Address'];
 		}
 
+		$userdata = $this->session->userdata('userdata');
 		$data = array(
 			'header_white' => "header-white",
-			'userdata'	=> $this->session->userdata('userdata'),
+			'userdata'	=> $userdata,
 			'title' => 'Lelang Langsung',
+			'form_auth'	=> login_Status_form($userdata),
 			'data' => $arrData,
 			'data_unit' => curlGenerate($cunit),
 		);

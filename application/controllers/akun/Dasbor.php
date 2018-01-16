@@ -13,8 +13,10 @@ class Dasbor extends CI_Controller {
 	}
 
 	public function index() {
+		$userdata = $this->session->userdata('userdata');
 		$data = array(
 			'header_white' => "header-white",
+			'form_auth'	=> login_Status_form($userdata),
 			'userdata'	=> $this->session->userdata('userdata')
 		);
 		$data['img_link'] = 'https://instagram.fjkt1-1.fna.fbcdn.net/t51.2885-15/e35/25023178_125021498293801_6299328116707819520_n.jpg';
