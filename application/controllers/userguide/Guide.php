@@ -10,17 +10,19 @@ class Guide extends CI_Controller {
 
 	public function index($page_name = '') {
 		switch($page_name) {
-			case 'onsite': $page_site = $this->panduan_lelang_onsite(); break;
-			case 'online': $page_site = $this->panduan_lelang_online(); break;
-			case 'live': $page_site = $this->panduan_lelang_live(); break;
-			case 'entrusted': $page_site = $this->panduan_titip_lelang(); break;
-			case 'npl': $page_site = $this->beli_npl(); break;
-			case 'paid': $page_site = $this->pelunasan_biaya(); break;
-			case 'general': $page_site = $this->ketentuan_umum(); break;
-			case '': $page_site = $this->panduan_lelang_onsite(); break;
+			case 'onsite': $page_site = $this->panduan_lelang_onsite(); $menu_title = 'Tata Cara Lelang On Site'; break;
+			case 'online': $page_site = $this->panduan_lelang_online(); $menu_title = 'Tata Cara Lelang Online'; break;
+			case 'live': $page_site = $this->panduan_lelang_live(); $menu_title = 'Tata Cara Live Auction'; break;
+			case 'entrusted': $page_site = $this->panduan_titip_lelang(); $menu_title = 'Tata Titip Lelang'; break;
+			case 'npl': $page_site = $this->beli_npl(); $menu_title = 'Cara Beli NPL'; break;
+			case 'paid': $page_site = $this->pelunasan_biaya(); $menu_title = 'Cara Pelunasan Biaya'; break;
+			case 'general': $page_site = $this->ketentuan_umum(); $menu_title = 'Ketentuan Umum'; break;
+			case '': $page_site = $this->panduan_lelang_onsite(); $menu_title = 'Tata Cara Lelang On Site'; break;
 		}
 
 		$data = array(
+			'menu_pages'		=> 'panduan-lelang',
+			'menu_title'		=> $menu_title,
 			'userdata'			=> $this->session->userdata('userdata'),
 			'title'				=> 'Tata Cara Titip Lelang',
 			'side_menu'			=> $this->side_menu($page_name),
