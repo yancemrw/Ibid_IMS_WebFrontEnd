@@ -414,9 +414,6 @@ header:before {
     width: 100%!important
 }
 
-.select2-dropdown.select2-dropdown--below {
-    top: 47px !important;
-}
 
 .select2-container--default .select2-selection--single .select2-selection__arrow b {
     border: none;
