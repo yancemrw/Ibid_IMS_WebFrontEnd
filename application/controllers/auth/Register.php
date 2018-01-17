@@ -58,7 +58,7 @@ class Register extends CI_Controller {
 				// 'client_id'		=> 'ADMS Web',
 				// 'client_secret'	=> '1234567890',
 				// 'action'		=> 'register',
-				'redirect_url'	=> base_url('auth/login'),
+				// 'redirect_url'	=> base_url('auth/login'),
 				'username'		=> $this->input->post('email'),
 				'email'			=> $this->input->post('email'),
 				'name'			=> $this->input->post('name'),
@@ -66,41 +66,31 @@ class Register extends CI_Controller {
 				//'last_name'   	=> '',
 				// 'MemberCardTMP' => $this->input->post('idcard'), //member card
 				// 'ipAddress'		=> $this->input->ip_address(),
-				//'GroupId'		=> 9,
-				//'createdOn'		=> time(), 
+				// 'GroupId'		=> 9,
+				// 'createdOn'		=> time(), 
 			);
 
-			$url = linkservice('account')."auth/register";
+			$url = linkservice('account')."auth/register/register";
 			$method = 'POST';
-			$responseApi = admsCurl($url, $dataInsert, $method);echo "<pre>"; print_r($responseApi); exit;
-			$callback = curlGenerate($responseApi);
-			
+			$responseApi = admsCurl($url, $dataInsert, $method);			
 
-			// print_r($responseApi);
-			// exit();
-			
 			if ($responseApi['err']) {
-				echo "<hr>cURL Error #:" . $responseApi['err'];
+				echo "<hr>cURL Error #:".$responseApi['err'];
 			}
 			else {
-				// echo "<pre>"; print_r($responseApi); die();
 				$dataInsert =  array (
-					'type' => 'email',
-					'to' => $username,
-					'cc' => 'lutfi.f.hidayat@gmail.com',
-					'subject' => 'Email Verification IBID',
-					'body' => '
-					<p>Email Verifikasi </p>
-					<a href="'.linkservice('frontend').'auth/verify?email='.$username.'"> Klik Disini </a>
-					'
+					'type'		=> 'email',
+					'to'		=> $this->input->post('email'),
+					'cc'		=> 'goro_hansamu@yahoo.com',
+					'subject'	=> 'Email Verification IBID',
+					'body'		=> '<p>Email Verifikasi </p><a href="'.linkservice('frontend').'auth/verify?email='.$this->input->post('email').'"> Klik Disini </a>'
 				); 
 
 				$url 			= "http://ibidadmsdevservicenotification.azurewebsites.net/api/notification";
 				$method 		= 'POST';
-				$responseApi 	= admsCurl($url, $dataInsert, $method);
+				$responseSend 	= admsCurl($url, $dataInsert, $method);
 
-
-				redirect('auth/login'); 
+				redirect(); 
 			}
 
 		}
