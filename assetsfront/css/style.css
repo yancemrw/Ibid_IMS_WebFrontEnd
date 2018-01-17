@@ -414,6 +414,10 @@ header:before {
     width: 100%!important
 }
 
+.select2-dropdown.select2-dropdown--below {
+    top: 47px !important;
+}
+
 .select2-container--default .select2-selection--single .select2-selection__arrow b {
     border: none;
 }
@@ -462,7 +466,7 @@ header:before {
 .hero-overlay {
     position: relative;
     top: 10rem;
-    max-width: 1090px;
+    max-width: 600px;
     width: 100%;
     margin: auto;
 }
@@ -4889,15 +4893,6 @@ a.delete-favorite {
 
 
 /*REGISTER*/
-.login-socialmedia.logins-socialmedia {
-    margin: 80px auto 0;
-}
-
-.login-socialmedia.logins-socialmedia a {
-    font-size: 24px;
-    padding: 8px 40px;
-}
-
 .login-socialmedia.register-socialmedia {
     max-width: 326px;
     margin: 200px auto 0;
@@ -4963,13 +4958,6 @@ a.delete-favorite {
     background-position: top center;
     background-size: cover;
     min-height: 843px;
-}
-
-.logins-socialmedia p {
-    margin: 0 0 50px;
-    font-family: "OpenSansBold", Helvetica, Sans-serif;
-    font-size: 24px;
-    color: #333
 }
 
 .register-socialmedia p {
@@ -6695,29 +6683,36 @@ input.input-custom.empty {
     transform-origin:0 0;
     -webkit-transform-origin:0 0;
 }
+
 .fc-day .link {
     display: none;
 }
+
 .info-contact .box-info:before {
     display: none;
 }
+
 .info-contact .box-info ul li {
     display: block;
     width: 100%;
     margin-bottom: 15px
 }
+
 .contact-us button {
     padding: 10px
 }
+
 .heading-contact h3 {
     padding-left: 10px
 }
+
 .location .box-location {
     position: relative;
     margin-bottom: 20px;
     display: inline-block;
     width: calc(50% - 10px)
 }
+
 .location .box-location:before {
     content: "\f041";
     font-family: FontAwesome;
@@ -6727,6 +6722,11 @@ input.input-custom.empty {
     left: -15px;
     top: 9px;
 }
+
 .cursor-pointer {
     cursor: pointer;
+}
+
+.margin-top-80px {
+    margin-top: 80px !important;
 }

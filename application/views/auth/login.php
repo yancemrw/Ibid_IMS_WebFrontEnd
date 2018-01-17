@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="col-md-8 col-sm-6 text-center pull-left">
-                <div class="login-socialmedia logins-socialmedia">
+                <div class="login-socialmedia register-socialmedia margin-top-80px">
                     <p>Atau masuk melalui</p>
                     <a href="" class="login-facebook"><span class="ic ic-facebook"></span>facebook</a>
                     <a href="" class="login-twitter"><span class="ic ic-twitter"></span>twitter</a>

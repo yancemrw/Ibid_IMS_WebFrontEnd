@@ -30,10 +30,12 @@ class Login extends CI_Controller {
 		$this->form_validation->set_rules('password', 'password', 'required|min_length[8]|max_length[20]');
 		if ($this->form_validation->run() == FALSE) {
 			//$this->load->view('auth/templateauthadmin',$data);
+			$userdata = $this->session->userdata('userdata');
 			$data = array(
 				'header_white'	=> "header-white",
 				'userdata'		=> $this->session->userdata('userdata'),
-				'title'			=> 'Login'
+				'title'			=> 'Login',
+				'form_auth'		=> login_Status_form($userdata)
 			);
 			$view = "auth/login";
 			template($view, $data);
