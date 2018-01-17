@@ -44,10 +44,12 @@ class Register extends CI_Controller {
 				// $this->session->set_flashdata('itemFlashGagal','Harap Melengkapi Form yang Telah Disediakan');
 			// $this->load->view('auth/template',$data);
 			//$this->load->view('auth/templateauthadmin',$data);
+			$userdata = $this->session->userdata('userdata');
 			$data = array(
 				'header_white'	=> "header-white",
 				'userdata'		=> $this->session->userdata('userdata'),
-				'title'			=> 'Pendaftaran'
+				'title'			=> 'Pendaftaran',
+				'form_auth'		=> login_Status_form($userdata)
 			);
 			$view = "auth/register";
 			template($view, $data);
