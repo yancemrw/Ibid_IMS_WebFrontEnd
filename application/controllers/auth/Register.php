@@ -31,19 +31,17 @@ class Register extends CI_Controller {
 		$data['linkgoogle'] = google();
 
 		// end penambahan link 
-		
-		$this->form_validation->set_rules('first_name', 'First name', 'required');
-		$this->form_validation->set_rules('last_name', 'Last name', 'required');
-		$this->form_validation->set_rules('username', 'username', 'required|valid_email');
-		$this->form_validation->set_rules('password', 'password', 'required|min_length[8]');
-		$this->form_validation->set_rules('repassword', 'RePassword', 'required|matches[password]');
+		$this->form_validation->set_rules('name', 'Nama', 'required');
+		$this->form_validation->set_rules('email', 'Mail', 'required|valid_email');
+		$this->form_validation->set_rules('pass', 'Sandi', 'required|min_length[8]');
+		$this->form_validation->set_rules('repass', 'Ulangi Sandi', 'required|matches[pass]');
 		// $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
 		
-		if ($this->form_validation->run() == FALSE){
+		if($this->form_validation->run() === FALSE) {
 			// if ($_SERVER['REQUEST_METHOD'] == 'POST')
-				// $this->session->set_flashdata('itemFlashGagal','Harap Melengkapi Form yang Telah Disediakan');
+			// $this->session->set_flashdata('itemFlashGagal','Harap Melengkapi Form yang Telah Disediakan');
 			// $this->load->view('auth/template',$data);
-			//$this->load->view('auth/templateauthadmin',$data);
+			// $this->load->view('auth/templateauthadmin',$data);
 			$userdata = $this->session->userdata('userdata');
 			$data = array(
 				'header_white'	=> "header-white",
@@ -54,56 +52,37 @@ class Register extends CI_Controller {
 			$view = "auth/register";
 			template($view, $data);
 		}
-		else{
-			// print_r(@$_POST);
-			$first_name = $_POST['first_name'];
-			$last_name = $_POST['last_name'];
-			$username = $_POST['username'];
-			$email = $_POST['username'];
-			$password = $_POST['password'];
-			$memberid = @$_POST['memberid'];
-			
-			// $dataInsert = array(
-			// 	'first_name' => $first_name,
-			// 	'last_name' => $last_name,
-			// 	'username' => $username,
-			// 	'password' => $password,
-			// 	'email' => $email,
-			// 	'tipe' => '',
-			// 	'sendmail' => TRUE,
-			// 	'memberid' => $memberid,
-			// 	); 
-			// $url = linkservice('account') ."auth/register/register";
-			// $method = 'POST';
-			// $responseApi = admsCurl($url, $dataInsert, $method);
-
+		else {
 			$dataInsert = array(
-				'grant_type'	=> 'password',
-				'client_id'		=> 'ADMS Web',
-				'client_secret'	=> '1234567890',
-				'action'		=> 'register',
-				'redirect_url'	=> base_url('auth/loginCustomer'),
-				'username'     	=> $username,
-				'password'      => $password,
-				'first_name'   	=> $first_name,
-				'last_name'   	=> $last_name,
-				// member card
-				'MemberCardTMP' => $memberid,
-				'ipAddress'		=> $this->input->ip_address(),
-				'GroupId'		=> 9,
-				'createdOn'		=> time(), 
+				// 'grant_type'	=> 'password',
+				// 'client_id'		=> 'ADMS Web',
+				// 'client_secret'	=> '1234567890',
+				// 'action'		=> 'register',
+				'redirect_url'	=> base_url('auth/login'),
+				'username'		=> $this->input->post('email'),
+				'email'			=> $this->input->post('email'),
+				'name'			=> $this->input->post('name'),
+				'password'		=> $this->input->post('pass')
+				//'last_name'   	=> '',
+				// 'MemberCardTMP' => $this->input->post('idcard'), //member card
+				// 'ipAddress'		=> $this->input->ip_address(),
+				//'GroupId'		=> 9,
+				//'createdOn'		=> time(), 
 			);
 
-			$url = linkservice('account') ."auth/oauth2";
+			$url = linkservice('account')."auth/register";
 			$method = 'POST';
-			$responseApi = admsCurl($url, $dataInsert, $method); 
+			$responseApi = admsCurl($url, $dataInsert, $method);echo "<pre>"; print_r($responseApi); exit;
+			$callback = curlGenerate($responseApi);
+			
 
 			// print_r($responseApi);
 			// exit();
 			
 			if ($responseApi['err']) {
 				echo "<hr>cURL Error #:" . $responseApi['err'];
-			} else {
+			}
+			else {
 				// echo "<pre>"; print_r($responseApi); die();
 				$dataInsert =  array (
 					'type' => 'email',
@@ -121,7 +100,7 @@ class Register extends CI_Controller {
 				$responseApi 	= admsCurl($url, $dataInsert, $method);
 
 
-				redirect('auth/loginCustomer'); 
+				redirect('auth/login'); 
 			}
 
 		}
