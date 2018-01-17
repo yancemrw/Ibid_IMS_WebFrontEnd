@@ -12,10 +12,40 @@ class Front extends CI_Controller {
 
 	public function index() {
 		$userdata = $this->session->userdata('userdata');
+        
 		$data = array(
 			'title'		=> 'IBID - Balai Lelang Serasi',
 			'form_auth'	=> login_Status_form($userdata)
 		);
+        
+        ############################################################
+        ## get list Item Type
+        $url = linkservice('master')."item/get";  
+        $method = 'GET';
+        $responseApi = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
+        if ($responseApi['err']) { 
+            echo "<hr>cURL Error #:" . $responseApi['err']; 
+        } else {
+            $dataApi = json_decode($responseApi['response'],true);
+            $itemType = $dataApi['data'];
+        }
+        $data['itemType'] = @$itemType;
+        ############################################################
+        
+        ############################################################
+        ## get cabang
+        $url = linkservice('master')."cabang/get";  
+        $method = 'GET';
+        $responseApi = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
+        if ($responseApi['err']) { 
+            echo "<hr>cURL Error #:" . $responseApi['err']; 
+        } else {
+            $dataApi = json_decode($responseApi['response'],true);
+            $cabang = $dataApi['data'];
+        }
+        $data['cabang'] = @$cabang;
+        ############################################################
+        
 		$view = "template/front";
 		template($view, $data);
 
