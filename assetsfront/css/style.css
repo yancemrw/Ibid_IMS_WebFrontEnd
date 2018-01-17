@@ -460,6 +460,10 @@ header:before {
     height: 45px
 }
 
+.hero-overlay-home {
+    max-width: 1090px !important;
+}
+
 .hero-overlay {
     position: relative;
     top: 10rem;
@@ -4875,10 +4879,20 @@ a.delete-favorite {
     z-index: 99;
 }
 
-.form-login a {
+.form-login .forgot {
+    text-align: left;
     margin: 15px 0;
+}
+
+.form-login .forgot a {
     color: #81be2a;
     text-decoration: none;
+    width: 110px;
+}
+
+.form-login .none {
+    text-align: right;
+    margin-top: 15px;
 }
 
 .form-login button,
@@ -4935,7 +4949,7 @@ a.delete-favorite {
 .form-register button:hover,
 .form-register button:active {
     padding: 8px 14px;
-    width: 165px;
+    width: 165px !important;
     max-width: 100%;
     margin-bottom: 5px;
     font-family: 'OpenSansRegular';
@@ -6726,6 +6740,13 @@ input.input-custom.empty {
     position: absolute;
     left: -15px;
     top: 9px;
+}
+
+.recaptcha {
+    transform: scale(0.77);
+    -webkit-transform: scale(0.77);
+    transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
 }
 
 .cursor-pointer {

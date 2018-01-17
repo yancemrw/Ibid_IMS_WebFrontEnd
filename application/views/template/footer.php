@@ -1,66 +1,68 @@
-  <footer>
-    <div class="container-fluid">
-     <div class="row">
+<footer>
+  <div class="container-fluid">
+    <div class="row">
       <div class="col-md-4 social-media text-right">
-       <ul>
-        <li><a href=""><i class="fa fa-instagram"></i></a></li>
-        <li><a href=""><i class="fa fa-twitter"></i></a></li>
-        <li><a href=""><i class="fa fa-facebook"></i></a></li>
-        <li><a href=""><i class="fa fa-youtube-play"></i></a></li>
-      </ul>
+        <ul>
+          <li><a href=""><i class="fa fa-instagram"></i></a></li>
+          <li><a href=""><i class="fa fa-twitter"></i></a></li>
+          <li><a href=""><i class="fa fa-facebook"></i></a></li>
+          <li><a href=""><i class="fa fa-youtube-play"></i></a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 footer-link text-center">
+        <ul>
+          <li><a href="tentang-ibid.html">Tentang Ibid</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 copyright">
+        <p>PT BALAI LELANG SERASI &copy; 2017</p>
+      </div>
     </div>
-    <div class="col-md-4 footer-link text-center">
-     <ul>
-      <li><a href="tentang-ibid.html">Tentang Ibid</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="">Privacy Policy</a></li>
-    </ul>
   </div>
-  <div class="col-md-4 copyright">
-   <p>PT BALAI LELANG SERASI &copy; 2017</p>
- </div>
-</div>
-</div>
 </footer>
 <!-- LOGIN -->
 <div class="modal fade modal-login" id="login" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
- <div class="modal-dialog">
-  <div class="modal-content">
-   <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal"><i class="ic ic-Close"></i><span class="sr-only">Close</span></button>
-    <h3 class="modal-title" id="lineModalLabel">Log in</h3>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><i class="ic ic-Close"></i><span class="sr-only">Close</span></button>
+        <h3 class="modal-title" id="lineModalLabel">Log in</h3>
+      </div>
+      <div class="modal-body clearfix">
+        <div class="col-md-6 col-sm-6">
+          <form class="form-login" id="form-login" action="<?php echo site_url('login'); ?>" method="POST" data-provide="validation">
+            <div class="form-group floating-label">
+              <input type="email" class="form-control floating-handle input-custom is-invalid" id="usernamex" name="username"
+                      oninvalid="this.setCustomValidity('Email tidak boleh kosong')" oninput="setCustomValidity('')" required />
+              <label for="">Email</label>
+            </div>
+            <div class="form-group floating-label">
+              <input type="password" class="form-control floating-handle input-custom is-invalid" id="passwordx" name="password" 
+                      oninvalid="this.setCustomValidity('Password tidak boleh kosong')" oninput="setCustomValidity('')" required />
+              <label for="">Password</label>
+            </div>
+            <div class="forgot"><a href="<?php echo site_url('forgot_password'); ?>">Lupa password?</a></div>
+            <div class="form-group text-right">
+              <div class="inis"><button class="btn btn-green" id="btn-loginx">Masuk</button></div>
+              <div class="none"><a href="<?php echo site_url('register'); ?>">Belum punya akun</a></div>
+            </div>
+            <span class="or">Or</span>
+          </form>
+        </div>
+        <div class="col-md-6 col-sm-6">
+          <div class="login-socialmedia">
+            <a href="<?php echo facebook(); ?>" class="login-facebook"><i class="ic ic-facebook"></i> Masuk melalui facebook</a>
+            <a href="<?php echo site_url('omni/twitter/twitter');?>" class="login-twitter"><i class="ic ic-twitter"></i> Masuk melalui twitter</a>
+            <a href="<?php echo google(); ?>" class="login-google"><i class="ic ic-Google"></i> Masuk melalui google</a>
+            <a href="<?php echo linkedin(); ?>" class="login-linkedin"><i class="ic ic-linkedin"></i> Masuk melalui Linkedin</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="modal-body clearfix">
-    <div class="col-md-6 col-sm-6">
-     <form class="form-login" action="<?php echo site_url('login'); ?>" method="POST">
-      <div class="form-group floating-label">
-       <input type="email" class="form-control floating-handle" id="username" name="username">
-       <label for="">Email</label>
-     </div>
-     <div class="form-group floating-label">
-       <input type="password" class="form-control floating-handle" id="password" name="password">
-       <label for="">Password</label>
-     </div>
-     <a href="<?php echo site_url('forgot_password'); ?>">Lupa password?</a>
-     <div class="form-group text-right">
-       <button class="btn btn-green">Masuk</button>
-       <a href="<?php echo site_url('register'); ?>">Belum punya akun</a>
-     </div>
-     <span class="or">Or</span>
-   </form>
- </div>
- <div class="col-md-6 col-sm-6">
-   <div class="login-socialmedia">
-    <a href="<?php echo facebook(); ?>" class="login-facebook"><i class="ic ic-facebook"></i> Masuk melalui facebook</a>
-    <a href="<?php echo site_url('omni/twitter/twitter');?>" class="login-twitter"><i class="ic ic-twitter"></i> Masuk melalui twitter</a>
-    <a href="<?php echo google(); ?>" class="login-google"><i class="ic ic-Google"></i> Masuk melalui google</a>
-    <a href="<?php echo linkedin(); ?>" class="login-linkedin"><i class="ic ic-linkedin"></i> Masuk melalui Linkedin</a>
-  </div>
-</div>
-</div>
-</div>
-</div>
 </div>
 
 <!-- Notifikasi  -->
@@ -79,6 +81,22 @@
   <!-- End  -->
 
 <script type="text/javascript">
+  // handle login
+  $('#btn-login').click(function() {
+    var user = $('#username').val(), pass = $('password').val();
+    if(user !== '' && pass !== '') {
+      e.preventDefault();
+      $('#form-login').submit();
+    }
+  });
+  $('#btn-loginx').click(function() {
+    var userx = $('#usernamex').val(), passx = $('passwordx').val();
+    if(userx !== '' && passx !== '') {
+      e.preventDefault();
+      $('#form-login').submit();
+    }
+  });
+
   function showContent() {
     document.getElementById('preloader').style.display = 'none';
     if(document.getElementById('preloaderAuction').style.display === 'none') {
