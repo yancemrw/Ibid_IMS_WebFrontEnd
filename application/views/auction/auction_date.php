@@ -253,7 +253,7 @@ $(document).ready(function() {
       },
       events: function(start, end, timezone, callback) {
         $.ajax({
-          url: 'http://localhost:55/02.JOB/IBID/Ibid_IMS_WebFrontEnd/index.php/auction/Get_schedule',
+          url: '<?php echo linkservice('FRONTEND') ."auction/Get_schedule"; ?>',
           dataType: 'json',
           data: {
             start: start.unix(),
