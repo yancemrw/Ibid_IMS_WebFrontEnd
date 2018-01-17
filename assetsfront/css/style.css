@@ -4981,6 +4981,14 @@ a.delete-favorite {
     font-size: 10px;
 }
 
+.alerts-info {
+    background: transparent;
+    border: unset;
+    display: none;
+    color: red;
+    font-size: 10px;
+}
+
 /*BLANK SITE*/
 
 .error-message {
