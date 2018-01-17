@@ -6732,6 +6732,10 @@ input.input-custom.empty {
     cursor: pointer;
 }
 
+.font-red {
+    color: #C62828;
+}
+
 .margin-top-80px {
     margin-top: 80px !important;
 }

@@ -28,9 +28,9 @@ class Login extends CI_Controller {
 		
 		$this->form_validation->set_rules('username', 'username', 'required');
 		$this->form_validation->set_rules('password', 'password', 'required|min_length[8]|max_length[20]');
-		if ($this->form_validation->run() == FALSE) {
-			//$this->load->view('auth/templateauthadmin',$data);
-			$userdata = $this->session->userdata('userdata');
+		$userdata = $this->session->userdata('userdata');
+		if(@$this->input->get('status')) {
+			$this->session->set_flashdata('message', array('error', '', 'Harap Login Terlebih Dahulu!'));
 			$data = array(
 				'header_white'	=> "header-white",
 				'userdata'		=> $this->session->userdata('userdata'),
@@ -40,7 +40,18 @@ class Login extends CI_Controller {
 			$view = "auth/login";
 			template($view, $data);
 		}
-		else{
+		else if($this->form_validation->run() == FALSE) {
+			//$this->load->view('auth/templateauthadmin',$data);
+			$data = array(
+				'header_white'	=> "header-white",
+				'userdata'		=> $this->session->userdata('userdata'),
+				'title'			=> 'Login',
+				'form_auth'		=> login_Status_form($userdata)
+			);
+			$view = "auth/login";
+			template($view, $data);
+		}
+		else {
 			$username = $_POST['username'];
 			$password = $_POST['password'];
 			
@@ -55,20 +66,22 @@ class Login extends CI_Controller {
 				'password'      => $password,
 				'ipAddress'		=> $this->input->ip_address()
 			);
-			$url = linkservice('account') ."auth/oauth2";
+			$url = linkservice('account')."auth/oauth2";
 			$method = 'POST';
 			$responseApi = admsCurl($url, $dataLogin, $method);
 			## redirect dan email(belum)
 			if ($responseApi['err']) {
-				echo "<hr>cURL Error #:" . $responseApi['err'];
-			} else {
+				echo "<hr>cURL Error #:".$responseApi['err'];
+			}
+			else {
 				// response from oauth2
 				$res = json_decode($responseApi['response']);
-				if(isset($res->error)){
+				if(isset($res->error)) {
 					// kalo gagal
-					$this->session->set_flashdata('message', array('error' , '' , 'Gagal'));
+					$this->session->set_flashdata('message', array('error', '', 'Gagal'));
 					redirect();
-				} else {
+				}
+				else {
 					// set token on session
 					$this->session->set_userdata('idfront', $res->UserId);
 					$this->session->set_userdata('namefront', $res->Name);

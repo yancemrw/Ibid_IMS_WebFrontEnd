@@ -6,15 +6,14 @@
                     <form>
                         <h3>Masuk Akun</h3>
                          <div class="form-group floating-label">
-                            <input type="text" name="" class="form-control input-custom is-invalid" required>
+                            <input type="email" id="email" name="email" class="form-control input-custom is-invalid" required>
                             <label class="label-schedule">Nama</label>
                           </div>
                         <div class="form-group floating-label">
-                            <input type="email" name="" class="form-control input-custom is-invalid" required>
+                            <input type="password" id="pass" name="pass" class="form-control input-custom is-invalid" required>
                              <label class="label-schedule">Email</label>
                         </div>
-                        <div class="g-recaptcha" data-theme="light" data-sitekey="XXXXXXXXXXXXX" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;">
-                            </div>
+                        <!--div class="g-recaptcha" data-theme="light" data-sitekey="XXXXXXXXXXXXX" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;"></div-->
                         <div class="form-group text-right">
                             <button class="btn btn-green">Masuk</button>
                             <a href="">Sudah punya akun?</a>
