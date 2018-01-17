@@ -30,15 +30,18 @@
          <div role="tabpanel" class="tab-pane" id="tab-mobile-2">
             <form class="form-inline clearfix">
                <div class="form-group">
-                  <select class="select-custom form-control">
+                  <select class="select-custom form-control filterJadwal" id="thisCabang">
                      <option value ="" ></option>
                      <option value ="" >Bandung</option>
                      <option value ="" >Jakarta</option>
+                     <?php foreach($cabang as $row){ ?>
+                     <option value="<?php echo $row['CompanyId']; ?>" ><?php echo $row['CompanyName']; ?></option>
+                     <?php } ?>
                   </select>
                   <label>Kota</label>
                </div>
                <div class="form-group clearfix">
-                  <select class="select-custom form-control select-type">
+                  <select class="select-custom form-control select-type filterJadwal" id="thisItem">
                      <option value="car-type"></option>
                      <option value="hve-type"></option>
                      <option value="motorcycle-type"></option>
@@ -46,7 +49,7 @@
                   </select>
                </div>
                <div class="form-group">
-                  <select class="select-custom form-control">
+                  <select class="select-custom form-control" id="thisDate">
                      <option value ="" ></option>
                      <option value ="" >Jakarta Barat, Jl. Bintaro Mulia, 14/09</option>
                      <option value ="" >Jakarta Barat, Jl. Bintaro Mulia, 14/09</option>
@@ -398,4 +401,49 @@
       document.getElementById('preloader').style.display = 'block';
       preload(1);
    });
+   
+    Number.prototype.padLeft = function(base,chr){
+        var  len = (String(base || 10).length - String(this).length)+1;
+        return len > 0? new Array(len).join(chr || '0')+this : this;
+    }
+   
+$(function(){
+    
+    $('.filterJadwal').change(function(){
+        thisCabang = $('#thisCabang').val();
+        thisItem = $('#thisItem').val();
+        
+        if (thisItem == 'car-type') item = 6;
+        else if (thisItem == 'motorcycle-type') item = 7;
+        else if (thisItem == 'gadget-type') item = 12;
+        else if (thisItem == 'hve-type') item = 14;
+        else item = 0;
+        
+        d = new Date();
+        dformat = [d.getFullYear(), (d.getMonth()+1).padLeft(), d.getDate().padLeft()].join('-');
+        // dformat = '2018-01-01';
+        
+        if (thisCabang != '' && item > 0){
+            $.ajax({
+                url: 'http://ibid-ams-schedule.stagingapps.net/api/schedulelist',
+                dataType: 'json',
+                method: 'GET',
+                data: {
+                    item: item,
+                    company_id: thisCabang,
+                    startdate: dformat,
+                },
+                success: function(doc) {
+                    html = "";
+                    thisOption = doc.data;
+                    for(i=0; i<thisOption.length; i++){
+                        html = html + '<option value="'+thisOption[i].id+'">'+thisOption[i].date+' '+(thisOption[i].waktu).substring(0, 8);+'</option>';
+                    }
+                    $('#thisDate').html(html);
+                }
+            });
+        }
+        
+    });
+})
 </script>
