@@ -90,7 +90,7 @@ class Register extends CI_Controller {
 				$method 		= 'POST';
 				$responseSend 	= admsCurl($url, $dataInsert, $method);
 
-				redirect(); 
+				redirect('auth/login?status=registered'); 
 			}
 
 		}

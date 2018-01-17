@@ -4,7 +4,7 @@
             <div class="col-md-4 col-sm-6 pull-right">
                 <div class="form-register">
                     <h2>Registrasi</h2>
-                    <form action="<?php echo site_url('register'); ?>" method="post" data-provide="validation">
+                    <form action="<?php echo site_url('register'); ?>" id="form-reg" method="post" data-provide="validation">
                         <h3>Create Account</h3>
                         <div class="form-group floating-label">
                             <input type="text" id="name" name="name" class="form-control input-custom" 
@@ -39,9 +39,9 @@
                                 <i class="fa fa-info"></i> Kartu anggota yang dimiliki oleh pnegguna IBID yang telah terdaftar sebelumnya
                             </div>
                         </div>
-                        <!--div class="g-recaptcha" data-sitekey="6LeAE0EUAAAAAPlf9nE8fDAHuER0fldmmoD0-LGF" data-theme="light" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;"></div-->
+                        <div class="g-recaptcha recaptcha" id="idrecaptcha" required></div>
                         <div class="form-group text-right">
-                            <button class="btn btn-green">Daftar</button>
+                            <button class="btn btn-green" id="btn-daftar">Daftar</button>
                             <a href="">Sudah punya akun?</a>
                         </div>
                     </form>
@@ -134,6 +134,24 @@
                 $('#type-repass').html('');
                 $('#type-repass').hide();
                 return;
+            }
+        });
+
+        // button submit
+        $('#btn-daftar').click(function(e) {
+            var name = $('#name').val(), 
+                mail = $('#email').val(), 
+                pass = $('#pass').val(), 
+                repass = $('#repass').val(), 
+                recaptcha = $('#e8df0fade2ce52c6a8cf8c8d2309d08a').val();
+            if(name !== '' && mail !== '' && pass !== '' && repass !== '') {
+                e.preventDefault();
+                if(recaptcha !== '') {
+                    $('#form-reg').submit();
+                }
+                else {
+                    alert('Captcha harus di isi!');
+                }
             }
         });
     });

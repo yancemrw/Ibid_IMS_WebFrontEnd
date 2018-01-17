@@ -30,12 +30,8 @@
             <div class="col-md-5">
                 <div class="booking-schedule">
                     <h2>Perbaharui Data Anda <span>Hanya di Isi Untuk User Baru</span></h2>
-
                     <form class="form-filter" action="<?php echo site_url('biodata/otp'); ?>" method="POST" data-provide="validation">
-
                         <input type="hidden" name="otpkirim" value="true">
-
-                        
                         <div class="form-group floating-label">
                             <input type="number" name="Phone" id="notif-telepon" class="form-control input-custom"  value="<?php echo @$detailBiodata['Name']; ?>">
                             <label class="label-schedule">No Telepon</label>

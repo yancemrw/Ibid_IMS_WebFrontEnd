@@ -45,9 +45,9 @@ class Beli extends CI_Controller {
 				$detailBiodata['BankId'] == '' || 
 				$detailBiodata['BankAccountNumber'] == '' || 
 				$detailBiodata['BankAccountName'] == '' 
-			){
+			) {
 
-				$data['page'] 	= 'biodata/ForNPL';
+			$data['page'] 	= 'biodata/ForNPL';
 			$data['detailBiodata'] = $detailBiodata;
 			############################################################
 			## get list Bank

@@ -3,19 +3,21 @@
         <div class="row position-repative">
             <div class="col-md-4 col-sm-6 pull-right">
                 <div class="form-register">
-                    <form>
+                    <form id="form-login" action="<?php echo site_url('login'); ?>" method="POST" data-provide="validation">
                         <h3>Masuk Akun</h3>
-                         <div class="form-group floating-label">
-                            <input type="email" id="email" name="email" class="form-control input-custom is-invalid" required>
-                            <label class="label-schedule">Nama</label>
-                          </div>
                         <div class="form-group floating-label">
-                            <input type="password" id="pass" name="pass" class="form-control input-custom is-invalid" required>
-                             <label class="label-schedule">Email</label>
+                            <input type="email" id="username" name="username" class="form-control input-custom is-invalid" 
+                                    oninvalid="this.setCustomValidity('Email tidak boleh kosong')" oninput="setCustomValidity('')" required />
+                            <label class="label-schedule">Email</label>
+                        </div>
+                        <div class="form-group floating-label">
+                            <input type="password" id="password" name="password" class="form-control input-custom is-invalid" 
+                                    oninvalid="this.setCustomValidity('Password tidak boleh kosong')" oninput="setCustomValidity('')" required />
+                            <label class="label-schedule">Password</label>
                         </div>
                         <!--div class="g-recaptcha" data-theme="light" data-sitekey="XXXXXXXXXXXXX" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;"></div-->
                         <div class="form-group text-right">
-                            <button class="btn btn-green">Masuk</button>
+                            <button class="btn btn-green" id="btn-login">Masuk</button>
                             <a href="">Sudah punya akun?</a>
                         </div>
                     </form>
@@ -36,8 +38,9 @@
 
 <script>
     $(document).ready(function() {
+
         $("nav").sticky({
-            topSpacing:0
+            topSpacing: 0
         });
 
         $("#id-card").on("focus", function(e) {

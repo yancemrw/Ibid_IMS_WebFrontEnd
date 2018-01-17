@@ -10,7 +10,7 @@ class Login extends CI_Controller {
 		$this->AccessApi = new AccessApi(array_merge($this->config->item('Oauth'),array('username' => 'rendhy.wijayanto@sera.astra.co.id')));
 	}
 	
-	public function index(){
+	public function index() {
 		// page dibawah ini mengambil tampilan untuk function ini.
 		// namafolder / file
 		$data['title'] = 'Login Admin ADMS';
@@ -30,7 +30,11 @@ class Login extends CI_Controller {
 		$this->form_validation->set_rules('password', 'password', 'required|min_length[8]|max_length[20]');
 		$userdata = $this->session->userdata('userdata');
 		if(@$this->input->get('status')) {
-			$this->session->set_flashdata('message', array('error', '', 'Harap Login Terlebih Dahulu!'));
+			switch($this->input->get('status')) {
+				case 'registered': $this->session->set_flashdata('message', array('success', 'Akun anda sudah terdaftar, Silahkan verifikasi email dari kami', 'Perhatian')); break;
+				case 'must_login': $this->session->set_flashdata('message', array('error', 'Harap Login Terlebih Dahulu!', 'Perhatian')); break;
+			}
+			
 			$data = array(
 				'header_white'	=> "header-white",
 				'userdata'		=> $this->session->userdata('userdata'),
@@ -70,7 +74,7 @@ class Login extends CI_Controller {
 			$method = 'POST';
 			$responseApi = admsCurl($url, $dataLogin, $method);
 			## redirect dan email(belum)
-			if ($responseApi['err']) {
+			if($responseApi['err']) {
 				echo "<hr>cURL Error #:".$responseApi['err'];
 			}
 			else {
@@ -78,7 +82,7 @@ class Login extends CI_Controller {
 				$res = json_decode($responseApi['response']);
 				if(isset($res->error)) {
 					// kalo gagal
-					$this->session->set_flashdata('message', array('error', '', 'Gagal'));
+					$this->session->set_flashdata('message', array('error', 'Gagal Login', 'Gagal'));
 					redirect();
 				}
 				else {
