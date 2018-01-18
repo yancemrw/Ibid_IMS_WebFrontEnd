@@ -13,7 +13,7 @@
 
         <div class="form-group">
             <button class="btn btn-success">Submit</button>
-            <a href="<?php echo site_url('auth/loginCustomer') ?>" class="btn btn-default ">Cancel</a>
+            <a href="<?php echo site_url('auth/login') ?>" class="btn btn-default ">Cancel</a>
         </div>
       </form> 
     </div>

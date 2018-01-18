@@ -56,7 +56,7 @@ class Forgot extends CI_Controller {
 					// echo "<br>";
 
 					// echo $data['link'];
-					redirect('auth/loginCustomer','refresh');
+					redirect('auth/login', 'refresh');
 
 				} else if ($responseApiInsert['status'] == 0){ 
 

@@ -57,7 +57,7 @@ class Newpassword extends CI_Controller {
 
 					echo $responseApiInsert['message'];
 
-					echo anchor('auth/loginCustomer', 'Login Disini', '');
+					echo anchor('auth/login', 'Login Disini', '');
 
 				} else if ($responseApiInsert['status'] == 0){ 
 

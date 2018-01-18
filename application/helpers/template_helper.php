@@ -111,7 +111,7 @@ function login_Status_form($userdata) {
        </a>
        <ul class="dropdown-menu dropdown-profile">
           <li class="clearfix">
-             <a href="'.site_url('akun/dasbor/').'" class="clearfix">
+             <a href="'.site_url('akun/dasbor').'" class="clearfix">
                 <!-- <div class="content-profile col-md-6">
                    <img src="'.base_url('assetsfront/images/background/slide-1.jpg').'" alt="" title="profile">
                 </div> -->

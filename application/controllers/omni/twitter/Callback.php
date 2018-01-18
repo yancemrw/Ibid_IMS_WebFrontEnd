@@ -17,7 +17,7 @@ class Callback extends CI_Controller {
 		if (isset($_REQUEST['oauth_token']) && @$_SESSION['oauth_token'] !== @$_REQUEST['oauth_token']) {
 			@$_SESSION['oauth_status'] = 'oldtoken'; 
 			// header('Location: destroy.php');
-			redirect('auth/loginCustomer','refresh');
+			redirect('auth/login','refresh');
 		}else{
 			$objTwitterApi = new TwitterLoginAPI;
 			$connection = $objTwitterApi->twitter_callback();
@@ -32,7 +32,7 @@ class Callback extends CI_Controller {
 	                'client_id'     => 'ADMS Web',
 	                'client_secret' => '1234567890',
 	                'action'        => '',
-	                'redirect_url'  => base_url('auth/loginCustomer'),
+	                'redirect_url'  => base_url('auth/login'),
 	                'username'      => $return->email,
 	                'password'      => 'admsibid18',
 	                'ipAddress'     => $this->input->ip_address(),
@@ -51,7 +51,7 @@ class Callback extends CI_Controller {
 	                    $this->AccessApi->setAccess('in',(array)$res);
 	                    redirect('afterlogin','refresh');
 	                } else
-	                    redirect('auth/loginCustomer','refresh');
+	                    redirect('auth/login','refresh');
 	                
 	            } else {
 	                $this->AccessApi->setAccess('in',$resp);
@@ -87,7 +87,7 @@ class Callback extends CI_Controller {
 			} else {
 				// header("Location: twitter?connected=F");
 				$this->session->set_flashdata('message', '<div class="alert alert-warning"> Kesalahan Terjadi, Silahkan diulangi kembali. </div>');
-				redirect('auth/loginCustomer','refresh');
+				redirect('auth/login','refresh');
 				exit;
 			}
 		}
