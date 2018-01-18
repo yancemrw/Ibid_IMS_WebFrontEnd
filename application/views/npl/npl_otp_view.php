@@ -29,25 +29,21 @@
             </div> 
             <div class="col-md-5 col-sm-6">      
                 <div class="verification-otp">
-
-                    <form role="form" action="<?php echo site_url('biodata/otpconfirm'); ?>" method="POST">
-                        
-                    <div class="input-code">
-                        <h2>Verifikasi No. HP (OTP)</h2>
-                        <h3>Masukan Kode Verifikasi  di Sini</h3>
-                        <div class="vcode" id="vcode">
-                            <input type="phone" class="vcode-input" maxlength="1" id="vcode1" name="otp[]">
-                            <input type="phone" class="vcode-input" maxlength="1" name="otp[]">
-                            <input type="phone" class="vcode-input" maxlength="1" name="otp[]">
-                            <input type="phone" class="vcode-input" maxlength="1" name="otp[]">
-                            <input type="phone" class="vcode-input" maxlength="1" name="otp[]">
+                    <form role="form" action="<?php echo site_url('biodata/otpconfirm'); ?>" method="POST" data-provide="validation">
+                        <div class="input-code">
+                            <h2>Verifikasi No. HP (OTP)</h2>
+                            <h3>Masukan Kode Verifikasi  di Sini</h3>
+                            <div class="vcode" id="vcode">
+                                <input type="phone" class="vcode-input" maxlength="1" id="vcode1" name="otp[]" required />
+                                <input type="phone" class="vcode-input" maxlength="1" name="otp[]" required />
+                                <input type="phone" class="vcode-input" maxlength="1" name="otp[]" required />
+                                <input type="phone" class="vcode-input" maxlength="1" name="otp[]" required />
+                                <input type="phone" class="vcode-input" maxlength="1" name="otp[]" required />
+                            </div>
+                            <p>Mohon tunggu 1 menit sebelum mencoba kirim ulang kode verifikasi</p>
                         </div>
-                        <p>Mohon tunggu 1 menit sebelum mencoba kirim ulang kode verifikasi</p>
-                    </div>
-                    <button class="btn btn-green">Submit</button>
-                    
+                        <button class="btn btn-green">Submit</button>
                     </form>
-
                     <a href="<?php echo site_url('biodata/otp?otpkirim=yes')?>">Kirim ulang kode verifikasi</a>
                 </div>
             </div>
