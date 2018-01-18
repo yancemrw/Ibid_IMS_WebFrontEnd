@@ -282,15 +282,15 @@
       <div class="row">
          <div class="col-md-6 auction-left">
             <div class="overlay-live-auction">
-               <h2>Market Auction <br>Price</h2>
-               <p>Bingung menentukan harga tawar ataupun harga titip kendaraan? Jangan khawatir, IBID memiliki data harga pasar terkini semua merek kendaraan sebagai acuan Anda.</p>
+               <h2><?php echo $content->map->Title;?></h2>
+               <?php echo $content->map->Content; ?>
                <button class="btn btn-lg btn-outline">Info Detail</button>
             </div>
          </div>
          <div class="col-md-6 auction-right">
             <div class="overlay-live-auction">
-               <h2>Astra Car <br>Valuation</h2>
-               <p>Ingin mengetahui kondisi dan harga kendaraan untuk di jual/dibeli? IBID akan melakukan inspeksi kendaraan secara scientific dengan Astra Car Valuation. Hasil inspeksi kendaraan transparan, akurat & komprehensif.</p>
+               <h2><?php echo $content->icar->Title;?></h2>
+               <?php echo $content->icar->Content;?>
                <button class="btn btn-lg btn-outline">Info Detail</button>
             </div>
          </div>
@@ -305,62 +305,22 @@
          </div>
          <div class="col-md-12">
             <div class="testimoni-slide">
+               <?php foreach($content->testimoni as $keyTesti => $valTesti) { ?>
                <div class="item clearfix active">
                   <div class="content-testimoni">
                      <a href="#">
                         <div class="box-img-slide">
-                           <img alt="" src="http://sera-ibid.stagingapps.net/assets/images/background/slide-1.jpg" class="img-responsive">
+                           <img alt="" src="<?php echo linkservice('cms').'uploads/contents/'.$valTesti->Photo; ?>" class="img-responsive">
                         </div>
-                        <h2>Tangkas <span>IBID</span></h2>
+                        <h2><?php echo $valTesti->Title; ?> <span>IBID</span></h2>
                         <p>
-                           <span>3 November 2017</span>
-                           “Dengan adanya IBID Lelang online, aku tak perlu susah-susah mengunjungi lokasi. Tinggal buka laptop, daftar, beli NPL, lihat jadwal lelang, dan langsung deh mulai mengikuti lelang. Mantep deh IBID”
+                           <span><?php echo date('d F Y', strtotime($valTesti->Tanggal)); ?></span>
+                           <?php echo $valTesti->Content; ?>
                         </p>
                      </a>
                   </div>
                </div>
-               <div class="item clearfix">
-                  <div class="content-testimoni">
-                     <a href="#">
-                        <div class="box-img-slide">
-                           <img alt="" src="http://sera-ibid.stagingapps.net/assets/images/background/slide-2.jpg" class="img-responsive">
-                        </div>
-                        <h2>Tangkas <span>IBID</span></h2>
-                        <p>
-                           <span>3 November 2017</span>
-                           “Dengan adanya IBID Lelang online, aku tak perlu susah-susah mengunjungi lokasi. Tinggal buka laptop, daftar, beli NPL, lihat jadwal lelang, dan langsung deh mulai mengikuti lelang. Mantep deh IBID”
-                        </p>
-                     </a>
-                  </div>
-               </div>
-               <div class="item clearfix">
-                  <div class="content-testimoni">
-                     <a href="#">
-                        <div class="box-img-slide">
-                           <img alt="" src="http://sera-ibid.stagingapps.net/assets/images/background/slide-3.jpg" class="img-responsive">
-                        </div>
-                        <h2>Tangkas <span>IBID</span></h2>
-                        <p>
-                           <span>3 November 2017</span>
-                           “Dengan adanya IBID Lelang online, aku tak perlu susah-susah mengunjungi lokasi. Tinggal buka laptop, daftar, beli NPL, lihat jadwal lelang, dan langsung deh mulai mengikuti lelang. Mantep deh IBID”
-                        </p>
-                     </a>
-                  </div>
-               </div>
-               <div class="item clearfix">
-                  <div class="content-testimoni">
-                     <a href="#">
-                        <div class="box-img-slide">
-                           <img alt="" src="http://sera-ibid.stagingapps.net/assets/images/background/slide-1.jpg" class="img-responsive">
-                        </div>
-                        <h2>Tangkas <span>IBID</span></h2>
-                        <p>
-                           <span>3 November 2017</span>
-                           “Dengan adanya IBID Lelang online, aku tak perlu susah-susah mengunjungi lokasi. Tinggal buka laptop, daftar, beli NPL, lihat jadwal lelang, dan langsung deh mulai mengikuti lelang. Mantep deh IBID”
-                        </p>
-                     </a>
-                  </div>
-               </div>
+               <?php } ?>
             </div>
          </div>
       </div>

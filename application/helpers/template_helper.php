@@ -1,6 +1,12 @@
 <?php  
 
 function template($view = '' , $data = '') {
+
+  $url = linkservice('cms')."api/logo";
+  $method = 'GET';
+  $res = admsCurl($url, array(), $method);
+  $logo = curlGenerate($res);
+  $data['logo'] = @$logo->Photo;
 	$ci =& get_instance();
 	$ci->load->view('template/header', $data);
 	$ci->load->view($view , $data); // content

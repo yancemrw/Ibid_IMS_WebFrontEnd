@@ -11,10 +11,17 @@ class Front extends CI_Controller {
 	}
 
 	public function index() {
+
+		$url = linkservice('cms')."api/home";
+		$method = 'GET';
+		$res = admsCurl($url, array(), $method);
+		$generate = curlGenerate($res);
+
 		$userdata = $this->session->userdata('userdata');
 		$data = array(
 			'title'		=> 'IBID - Balai Lelang Serasi',
-			'form_auth'	=> login_Status_form($userdata)
+			'form_auth'	=> login_Status_form($userdata),
+			'content'	=> $generate
 		);
 		$view = "template/front";
 		template($view, $data);
