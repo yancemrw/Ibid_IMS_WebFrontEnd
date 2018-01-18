@@ -13,11 +13,20 @@ class Dasbor extends CI_Controller {
 	}
 
 	public function index() {
+		$this->form_validation->set_rules('upd_name', 'Nama', 'required');
+
+		$userdata = $this->session->userdata('userdata');
+		$url = linkservice('account')."users/details/".$userdata['UserId'];
+		$method = 'GET';
+		$responseApi = admsCurl($url, array(), $method);
+		$generate = curlGenerate($responseApi);
+
 		$userdata = $this->session->userdata('userdata');
 		$data = array(
-			'header_white' => "header-white",
-			'form_auth'	=> login_Status_form($userdata),
-			'userdata'	=> $this->session->userdata('userdata')
+			'header_white'	=> "header-white",
+			'form_auth'		=> login_Status_form($userdata),
+			'userdata'		=> $userdata,
+			'content'		=> $generate
 		);
 		$data['img_link'] = 'https://instagram.fjkt1-1.fna.fbcdn.net/t51.2885-15/e35/25023178_125021498293801_6299328116707819520_n.jpg';
 		$view = "akun/dasbor_view";

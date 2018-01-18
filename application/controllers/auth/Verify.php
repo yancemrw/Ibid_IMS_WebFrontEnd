@@ -9,8 +9,7 @@ class Verify extends CI_Controller {
 		$this->load->helper(array('global' , 'omni'));
 	}
 
-	public function index()
-	{
+	public function index() {
 
 		$dataInsert =  array (
 			'email' => @$this->input->get('email')
@@ -20,15 +19,16 @@ class Verify extends CI_Controller {
 		$method 		= 'POST';
 		$responseApi 	= admsCurl($url, $dataInsert, $method); 
 		
-		if ($responseApi['err']) {
+		if($responseApi['err']) {
 				echo "<hr>cURL Error #:" . $responseApi['err'];
-			} else {
+			}
+			else {
 				$responseApiInsert = json_decode($responseApi['response'], true);
 				if ($responseApiInsert['status'] == 1){
 					$this->session->set_flashdata('pesan', 'Berhasil di Aktivasi');
-					redirect('auth/login', 'refresh');
-
-				} else if ($responseApiInsert['status'] == 0){
+					redirect('http://alpha.ibid.astra.co.id/auth/login', 'refresh');
+				}
+				else if ($responseApiInsert['status'] == 0) {
 					echo $responseApiInsert['message']; 
 				}
 			}  

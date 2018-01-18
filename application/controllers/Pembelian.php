@@ -13,6 +13,7 @@ class Pembelian extends CI_Controller {
 		// print_r($this->session->all_userdata());
 		// exit();
 		$this->load->library('cart');
+		$userdata = $this->session->userdata('userdata');
 		
 		$data['message'] = $this->session->flashdata('message');
 
@@ -94,10 +95,11 @@ class Pembelian extends CI_Controller {
 		// $this->load->view('templateAdminLTE',$data);
 
 		
-		$data['header_white']= "header-white";
-		$data['userdata']= $this->session->userdata('userdata');
+		$data['header_white']	= "header-white";
+		$data['userdata']		= $userdata;
+		$data['form_auth']		= login_Status_form($userdata);
 
-		template($view , $data);
+		template($view, $data);
 	}
 
 }

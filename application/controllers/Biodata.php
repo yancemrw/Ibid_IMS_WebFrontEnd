@@ -154,12 +154,13 @@ class Biodata extends CI_Controller {
 
 		$data['title']	= 'Pembelian NPL';
 		// $data['page'] 	= 'pembelian/otp';
-
+		$userdata = $this->session->userdata('userdata');
 		$data = array(
 			// header white untuk selain home, karena menggunakan header yang berwarna putih
-			'header_white' => "header-white",
-			'userdata'	=> $this->session->userdata('userdata'),
-			'title' => 'Beli Nomor Peserta Lelang ( NPL )'
+			'header_white'	=> "header-white",
+			'userdata'		=> $userdata,
+			'title'			=> 'Beli Nomor Peserta Lelang ( NPL )',
+			'form_auth'		=> login_Status_form($userdata)
 		);
 		
 		$view	= 'npl/npl_otp_view';  

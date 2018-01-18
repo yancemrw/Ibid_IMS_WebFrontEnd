@@ -4657,6 +4657,7 @@ ul.notification li p {
 
 .setting-profile {
     margin-top: 35px;
+    margin-bottom: 10px;
     background: #fff;
     border: 1px solid #d8d8d8;
     border-radius: 5px;
@@ -4666,7 +4667,7 @@ ul.notification li p {
 }
 
 .setting-profile form {
-    padding: 0 15px 35px 15px
+    padding: 0 15px 35px 15px;
 }
 
 .setting-profile h3 {
@@ -6759,4 +6760,8 @@ input.input-custom.empty {
 
 .margin-top-80px {
     margin-top: 80px !important;
+}
+
+.padding-10px {
+    padding: 10px;
 }
