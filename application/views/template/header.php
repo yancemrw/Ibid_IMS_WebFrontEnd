@@ -89,7 +89,7 @@
    <input type="hidden" id="e8df0fade2ce52c6a8cf8c8d2309d08a" />
    <!-- handle header between procedure page and other page -->
    <?php if(@$menu_pages === "panduan-lelang") { ?>
-      <header class="header-min" style="background: url(<?php echo base_url('assetsfront/images/background/bg-homepage.jpg'); ?>)no-repeat fixed;">
+      <header class="header-min" style="background: url(<?php echo linkservice('cms').'uploads/contents/'.$logo; ?>)no-repeat fixed;">
          <nav class="navbar navbar-custom">
             <div class="top-navbar text-right">
                <form class="form-inline">
@@ -221,8 +221,8 @@
 
          <?php if($this->uri->segment(1) == "" || $this->uri->segment(1) == "front") { ?> 
             <div class="hero-overlay hero-overlay-home">
-               <h1>Search, Bid <span>&</span> Buy From <br>Anywhere on Any Device</h1>
-               <p>IBID-Balai Lelang Serasi merupakan balai lelang terbesar di Indonesia. Temukan lebih dari 5000 kendaraan dengan beragam tipe dan merek yang rutin dilelang tiap bulan.</p>
+               <?php echo $content->tagline->Title; ?>
+               <?php echo $content->tagline->Content; ?>
             </div>
          </header>
          <?php } ?>
