@@ -126,7 +126,7 @@ class AccessApi
 	public function __construct($config=FALSE){
 		$this->ci = &get_instance();
 		$this->sess = (array)$this->ci->session->userdata($this->sess_initial);
-		$this->redirect_url = base_url('auth/loginCustomer');
+		$this->redirect_url = base_url('auth/login');
 		if($config){
 			if(is_array($config)){
 				$this->config = array_merge($this->config, $config);

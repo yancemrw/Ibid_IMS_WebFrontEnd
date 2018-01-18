@@ -61,7 +61,7 @@ class Register extends CI_Controller {
 				// 'redirect_url'	=> base_url('auth/login'),
 				'username'		=> $this->input->post('email'),
 				'email'			=> $this->input->post('email'),
-				'name'			=> $this->input->post('name'),
+				'first_name'	=> $this->input->post('name'),
 				'password'		=> $this->input->post('pass')
 				//'last_name'   	=> '',
 				// 'MemberCardTMP' => $this->input->post('idcard'), //member card
@@ -70,26 +70,14 @@ class Register extends CI_Controller {
 				// 'createdOn'		=> time(), 
 			);
 
-			$url = linkservice('account')."auth/register/register";
+			$url = linkservice('account')."auth/RegisterFrontEnd/register";
 			$method = 'POST';
-			$responseApi = admsCurl($url, $dataInsert, $method);			
+			$responseApi = admsCurl($url, $dataInsert, $method);
 
 			if ($responseApi['err']) {
 				echo "<hr>cURL Error #:".$responseApi['err'];
 			}
 			else {
-				$dataInsert =  array (
-					'type'		=> 'email',
-					'to'		=> $this->input->post('email'),
-					'cc'		=> 'goro_hansamu@yahoo.com',
-					'subject'	=> 'Email Verification IBID',
-					'body'		=> '<p>Email Verifikasi </p><a href="'.linkservice('frontend').'auth/verify?email='.$this->input->post('email').'"> Klik Disini </a>'
-				); 
-
-				$url 			= "http://ibidadmsdevservicenotification.azurewebsites.net/api/notification";
-				$method 		= 'POST';
-				$responseSend 	= admsCurl($url, $dataInsert, $method);
-
 				redirect('auth/login?status=registered'); 
 			}
 

@@ -92,7 +92,7 @@ class Linkedin extends CI_Controller {
                 'client_id'     => 'ADMS Web',
                 'client_secret' => '1234567890',
                 'action'        => '',
-                'redirect_url'  => base_url('auth/loginCustomer'),
+                'redirect_url'  => base_url('auth/login'),
                 'username'      => $user->emailAddress,
                 'password'      => 'admsibid18',
                 'ipAddress'     => $this->input->ip_address(),
@@ -111,7 +111,7 @@ class Linkedin extends CI_Controller {
                     $this->AccessApi->setAccess('in',(array)$res);
                     redirect('afterlogin','refresh');
                 } else
-                    redirect('auth/loginCustomer','refresh');
+                    redirect('auth/login','refresh');
                 
             } else {
                 $this->AccessApi->setAccess('in',$resp);

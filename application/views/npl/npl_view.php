@@ -75,7 +75,7 @@
                             <input type="text" name="NpwpNumber" class="form-control input-custom" value="<?php echo @$detailBiodata['NpwpNumber']; ?>">
                             <label class="label-schedule">NPWP</label>
                         </div>
-                        <div class="g-recaptcha" data-theme="light" data-sitekey="6Lee4z8UAAAAAG8bdnCYM-ZKfsRa6fniZlq5HTRn" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;">
+                        <div class="g-recaptcha recaptcha" id="idrecaptcha" required></div>
                         </div>
                         <div class="input-group agree-required">
                             <input type="checkbox" name="checkbox" id="agree-required">

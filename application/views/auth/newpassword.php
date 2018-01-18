@@ -28,7 +28,7 @@
                          
             </form> 
 
-            <a href="<?php echo site_url('auth/loginCustomer') ?>" class="text-center btn btn-default btn-block">I already have a membership</a>
+            <a href="<?php echo site_url('auth/login') ?>" class="text-center btn btn-default btn-block">I already have a membership</a>
         </div><!-- /.form-box --> 
     </div>
 

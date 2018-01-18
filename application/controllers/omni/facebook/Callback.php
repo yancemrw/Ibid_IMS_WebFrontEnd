@@ -104,7 +104,7 @@ Class Callback extends CI_Controller
                 'client_id'     => 'ADMS Web',
                 'client_secret' => '1234567890',
                 'action'        => '',
-                'redirect_url'  => base_url('auth/loginCustomer'),
+                'redirect_url'  => base_url('auth/login'),
                 'username'      => @$user['email'],
                 'password'      => 'admsibid18',
                 'ipAddress'     => $this->input->ip_address(),
@@ -130,7 +130,7 @@ Class Callback extends CI_Controller
                     // echo "1";
                     // print_r($dataLogin);
                 } else {
-                    redirect('auth/loginCustomer','refresh');
+                    redirect('auth/login','refresh');
                     // echo "2";
                     // print_r($dataLogin);
                 }
