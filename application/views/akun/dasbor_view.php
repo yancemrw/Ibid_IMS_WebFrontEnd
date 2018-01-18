@@ -25,6 +25,7 @@
             <div class="main-management">
                <h2>Pengaturan</h2>
                <div class="setting-profile">
+               <form class="clearfix" action="<?php echo site_url('dasbor'); ?>" id="form-dashboard" method="post" data-provide="validation">
                   <h3>Ubah Foto Profil</h3>
                   <div class="change-avatar bg-grey">
                      <div class="avatar-bg">
@@ -36,110 +37,120 @@
                         </a>
                      </div>
                   </div>
-                  <form class="clearfix">
-
-                     <?php /*print_r(@$userdata);*/ ?>
-
-                     <div class="row">
-                        <div class="col-md-6">
-                           <h4>Akun Pengguna</h4>
-                           <div class="form-group floating-label">
-                              <input type="name" name="" class="form-control floating-handle">
-                              <label class="label-schedule">Nama</label>
-                           </div>
-                           <div class="form-group floating-label">
-                              <input type="email" name="" class="form-control floating-handle" disabled>
-                              <label class="label-schedule">Email</label>
-                           </div>
-                           <div class="form-group floating-label">
-                              <input type="text" id="ktp" name="ktp" class="form-control floating-handle input-custom only-number">
-                              <label class="label-schedule">No KTP <span>*</span></label>
-                           </div>
-                           <div class="form-group floating-label">
-                              <input type="text" name="" class="form-control floating-handle input-custom only-number">
-                              <label class="label-schedule">No Telepon *</label>
-                           </div>
-                           <div class="form-group floating-label">
-                              <input type="text" id="npwp" name="npwp" class="form-control floating-handle input-custom only-number">
-                              <label class="label-schedule">NPWP <span>*</span></label>
-                           </div>
-                           <div class="form-group floating-label">
-                              <input type="text" name="" id="id-card" class="form-control floating-handle">
-                              <label class="label-schedule">Nomor Kartu Anggota</label>
-                              <div class="help-info">
-                                 <i class="fa fa-info"></i> Kartu anggota yang dimiliki oleh pnegguna IBID yang telah terdaftar sebelumnya
-                              </div>
-                           </div>
-                           <div class="form-group floating-label">
-                              <select class="form-control font-theme select-custom">
-                                 <option>Tipe identitas *</option>
-                                 <option>1</option>
-                                 <option>2</option>
-                                 <option>3</option>
-                              </select>
+                  <div class="row">
+                     <div class="col-md-6">
+                        <h4>Akun Pengguna</h4>
+                        <div class="form-group floating-label">
+                           <input type="name" name="upd_name" id="upd_name" class="form-control floating-handle" 
+                                    value="<?php echo $content->users->first_name.' '.$content->users->last_name; ?>">
+                           <label class="label-schedule">Nama</label>
+                        </div>
+                        <div class="form-group floating-label">
+                           <input type="email" name="upd_email" id="upd_email" class="form-control floating-handle" 
+                                    value="<?php echo $content->users->Email; ?>" disabled />
+                           <label class="label-schedule">Email</label>
+                        </div>
+                        <div class="form-group floating-label">
+                           <input type="text" name="ktp" id="ktp" class="form-control floating-handle input-custom only-number" 
+                                    oninvalid="this.setCustomValidity('KTP tidak boleh kosong')" 
+                                    oninput="setCustomValidity('')" required />
+                           <label class="label-schedule">No KTP <span class="font-red">*</span></label>
+                        </div>
+                        <div class="form-group floating-label">
+                           <input type="text" name="upd_phone" id="upd_phone" class="form-control floating-handle input-custom only-number" 
+                                    value="<?php echo $content->users->Phone; ?>" 
+                                    oninvalid="this.setCustomValidity('No Telepon tidak boleh kosong')" 
+                                    oninput="setCustomValidity('')" required />
+                           <label class="label-schedule">No Telepon <span class="font-red">*</span></label>
+                        </div>
+                        <div class="form-group floating-label">
+                           <input type="text" id="npwp" name="npwp" class="form-control floating-handle input-custom only-number" 
+                                    oninvalid="this.setCustomValidity('NPWP tidak boleh kosong')" 
+                                    oninput="setCustomValidity('')" required />
+                           <label class="label-schedule">NPWP <span class="font-red">*</span></label>
+                        </div>
+                        <div class="form-group floating-label">
+                           <input type="text" name="idcard" id="idcard" class="form-control floating-handle" 
+                                    value="<?php echo $content->users->MemberCardTMP; ?>" />
+                           <label class="label-schedule">Nomor Kartu Anggota</label>
+                           <div class="help-info">
+                              <i class="fa fa-info"></i> Kartu anggota yang dimiliki oleh pnegguna IBID yang telah terdaftar sebelumnya
                            </div>
                         </div>
-                        <div class="col-md-6">
-                           <h4>Akun Bank</h4>
-                           <div class="form-group floating-label">
-                              <select class="form-control font-theme select-custom">
-                                 <option>Bank</option>
-                                 <option>BCA</option>
-                                 <option>MANDIRI</option>
-                                 <option>BRI</option>
-                              </select>
-                           </div>
-                           <div class="form-group floating-label">
-                              <input type="text" name="" class="form-control floating-handle input-custom only-number">
-                              <label class="label-schedule">Nomor Rekening</label>
-                           </div>
-                           <div class="form-group floating-label">
-                              <input type="text" name="" class="form-control floating-handle input-custom">
-                              <label class="label-schedule">Atas Nama</label>
-                           </div>
-                           <div class="form-group floating-label">
-                              <input type="text" name="" class="form-control floating-handle">
-                              <label class="label-schedule">Kantor Cabang</label>
-                           </div>
+                        <div class="form-group floating-label">
+                           <select class="form-control font-theme select-custom">
+                              <option>Tipe identitas <span class="font-red">*</span></option>
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                           </select>
                         </div>
                      </div>
-                     <div class="row">
-                        <div class="col-md-6">
-                           <h4>Biodata</h4>
-                           <div class="form-group floating-label">
-                              <select class="form-control font-theme select-custom">
-                                 <option>Jenis Kelamin</option>
-                                 <option>Laki-laki</option>
-                                 <option>Perempuan</option>
-                              </select>
-                           </div>
-                           <div class="form-group">
-                              <div class="input-group date">
-                                 <input type="text" class="form-control floating-handle input-custom" placeholder="Tanggal Lahir *">
-                                 <span class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                                 </span>
-                              </div>
-                           </div>
-                           <div class="form-group floating-label">
-                              <input type="text" name="" class="form-control floating-handle">
-                              <label class="label-schedule">Kota</label>
-                           </div>
-                           <div class="form-group floating-label">
-                              <input type="text" name="" class="form-control floating-handle">
-                              <label class="label-schedule">Alamat</label>
-                           </div>
-                           <div class="form-group floating-label">
-                              <input type="text" name="" class="form-control floating-handle">
-                              <label class="label-schedule">Okupasi</label>
-                           </div>
+                     <div class="col-md-6">
+                        <h4>Akun Bank</h4>
+                        <div class="form-group floating-label">
+                           <select class="form-control font-theme select-custom">
+                              <option>Bank</option>
+                              <option>BCA</option>
+                              <option>MANDIRI</option>
+                              <option>BRI</option>
+                           </select>
+                        </div>
+                        <div class="form-group floating-label">
+                           <input type="text" name="" class="form-control floating-handle input-custom only-number" 
+                                    value="<?php echo $content->users->BankAccountNumber; ?>" />
+                           <label class="label-schedule">Nomor Rekening</label>
+                        </div>
+                        <div class="form-group floating-label">
+                           <input type="text" name="" class="form-control floating-handle input-custom" value="<?php echo $content->users->BankAccountName; ?>" />
+                           <label class="label-schedule">Atas Nama</label>
+                        </div>
+                        <div class="form-group floating-label">
+                           <input type="text" name="" class="form-control floating-handle" />
+                           <label class="label-schedule">Kantor Cabang</label>
                         </div>
                      </div>
-                  </form>
-               </div>
-               <div class="form-button text-right">
-                  <button class="btn btn-grey bg-grey">Reset</button>
-                  <button class="btn btn-green">Simpan</button>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-6">
+                        <h4>Biodata</h4>
+                        <div class="form-group floating-label">
+                           <select class="form-control font-theme select-custom">
+                              <option>Jenis Kelamin</option>
+                              <option <?php echo ($content->users->Gender === '1') ? 'selected' : ''; ?>>Laki-laki</option>
+                              <option <?php echo ($content->users->Gender === '2') ? 'selected' : ''; ?>>Perempuan</option>
+                           </select>
+                        </div>
+                        <div class="form-group">
+                           <div class="input-group date">
+                              <input type="text" class="form-control floating-handle input-custom" 
+                                       placeholder="Tanggal Lahir *" data-provide="datepicker" data-date-format="yyyy-mm-dd" 
+                                       oninvalid="this.setCustomValidity('Tanggal lahir tidak boleh kosong')" 
+                                       oninput="setCustomValidity('')" required />
+                              <span class="input-group-addon">
+                                 <i class="fa fa-calendar"></i>
+                              </span>
+                           </div>
+                        </div>
+                        <div class="form-group floating-label">
+                           <input type="text" name="city" class="form-control floating-handle">
+                           <label class="label-schedule" value="<?php echo $content->users->City; ?>">Kota</label>
+                        </div>
+                        <div class="form-group floating-label">
+                           <input type="text" name="addr" class="form-control floating-handle">
+                           <label class="label-schedule" value="<?php echo $content->users->Address; ?>">Alamat</label>
+                        </div>
+                        <div class="form-group floating-label">
+                           <input type="text" name="okup" class="form-control floating-handle">
+                           <label class="label-schedule">Okupasi</label>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="form-button text-right">
+                     <button class="btn btn-grey bg-grey">Reset</button>
+                     <button class="btn btn-green" id="btn-update">Simpan</button>
+                  </div>
+               </form>
                </div>
             </div>
          </div>
@@ -174,4 +185,11 @@
       }
    });
    // *******************************
+
+   // handle field
+   $('input').each(function() {
+      if($(this).val() !== '') {
+         $(this).addClass('not-empty');
+      }
+   });
 </script>

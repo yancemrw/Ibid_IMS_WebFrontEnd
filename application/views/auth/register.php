@@ -3,9 +3,9 @@
         <div class="row position-repative">
             <div class="col-md-4 col-sm-6 pull-right">
                 <div class="form-register">
-                    <h2>Registrasi</h2>
+                    <h2>Daftar</h2>
                     <form action="<?php echo site_url('register'); ?>" id="form-reg" method="post" data-provide="validation">
-                        <h3>Create Account</h3>
+                        <h3>Buat Akun</h3>
                         <div class="form-group floating-label">
                             <input type="text" id="name" name="name" class="form-control input-custom" 
                                     oninvalid="this.setCustomValidity('Nama tidak boleh kosong')" 
