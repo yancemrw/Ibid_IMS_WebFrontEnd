@@ -46,8 +46,8 @@
                                     oninvalid="this.setCustomValidity('Tipe bank tidak boleh kosong')" 
                                     oninput="setCustomValidity('')" required>
                                 <option value="">Bank <span class="font-red">*</span></option>
-                                <?php foreach($listBank  as $row){ ?>
-                                <option value="<?php echo $row['BankId']; ?>" <?php echo $detailBiodata['BankId'] == $row['BankId'] ? 'selected' : ''; ?>><?php echo $row['BankName']; ?></option>
+                                <?php foreach($listBank as $row){ ?>
+                                <option value="<?php echo $row->BankId; ?>" <?php echo ($detailBiodata['BankId'] == $row->BankId) ? 'selected' : ''; ?>><?php echo $row->BankName; ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -229,6 +229,13 @@
     $('input[name="NpwpNumber"]').keypress(function(event) {
       var charCode = (event.which) ? event.which : event.keyCode;
       return ((charCode >= 48 && charCode <= 57) || charCode === 46);
+    });
+
+    // handle input if exists data
+    $('input').each(function() {
+      if($(this).val() !== '') {
+        $(this).addClass('not-empty');
+      }
     });
   });
 </script>
