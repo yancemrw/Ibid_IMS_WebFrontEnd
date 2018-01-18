@@ -60,7 +60,7 @@ class Beli extends CI_Controller {
 				$dataApi = json_decode($responseApi['response'],true);
 				$listBank = $dataApi['data'];
 			}
-			$data['listBank'] = @$listBank;
+			$data['listBank'] = @$listBank; echo "<pre>"; print_r($listBank); exit;
 			############################################################
 			
 			
@@ -99,9 +99,6 @@ class Beli extends CI_Controller {
 			############################################################
 			
 		}
-		
-		
-
 
 		$view = "npl/npl_view";
 		template($view , $data);
