@@ -47,7 +47,7 @@
                                     oninput="setCustomValidity('')" required>
                                 <option value="">Bank <span class="font-red">*</span></option>
                                 <?php foreach($listBank as $row){ ?>
-                                <option value="<?php echo $row->BankId; ?>" <?php echo ($detailBiodata['BankId'] == $row->BankId) ? 'selected' : ''; ?>><?php echo $row->BankName; ?></option>
+                                <option value="<?php echo $row->BankId; ?>" <?php echo (@$detailBiodata['BankId'] == $row->BankId) ? 'selected' : ''; ?>><?php echo $row->BankName; ?></option>
                                 <?php } ?>
                             </select>
                         </div>

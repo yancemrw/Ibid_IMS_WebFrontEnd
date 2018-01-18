@@ -54,16 +54,9 @@ class Beli extends CI_Controller {
 			$url = linkservice('master')."bank/get";
 			$method = 'GET';
 			$responseApi = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
-			if ($responseApi['err']) { 
-				echo "<hr>cURL Error #:" . $responseApi['err']; 
-			} else {
-				$dataApi = json_decode($responseApi['response'],true);
-				$listBank = $dataApi['data'];
-			}
+			$listBank = curlGenerate($responseApi);
 			$data['listBank'] = @$listBank;
 			############################################################
-			
-			
 		}
 		else {
 
@@ -78,7 +71,8 @@ class Beli extends CI_Controller {
 			$responseApi1 = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
 			if ($responseApi1['err']) { 
 				echo "<hr>cURL Error #:" . $responseApi1['err']; 
-			} else {
+			}
+			else {
 				$dataApi = json_decode($responseApi['response'],true);
 				$itemType = $dataApi['data'];
 			}
