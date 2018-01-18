@@ -35,17 +35,17 @@ class Beli extends CI_Controller {
 		if ($responseApi['err']) { echo "<hr>cURL Error #:" . $responseApi['err']; } else {
 			$dataApiDetail = json_decode($responseApi['response'],true);
 		}
-		$detailBiodata = @$dataApiDetail['data']['users']; 
+		$detailBiodata = @$dataApiDetail['data']['users'];
 
 		/* *******************************
 			cek kelengkapan data awal
 			********************************
 		*/
-			if ($detailBiodata['Phone'] == '' ||
-				$detailBiodata['BankId'] == '' || 
-				$detailBiodata['BankAccountNumber'] == '' || 
-				$detailBiodata['BankAccountName'] == '' 
-			) {
+		if ($detailBiodata['Phone'] == '' ||
+			$detailBiodata['BankId'] == '' || 
+			$detailBiodata['BankAccountNumber'] == '' || 
+			$detailBiodata['BankAccountName'] == '' 
+		) {
 
 			$data['page'] 	= 'biodata/ForNPL';
 			$data['detailBiodata'] = $detailBiodata;
@@ -60,28 +60,37 @@ class Beli extends CI_Controller {
 				$dataApi = json_decode($responseApi['response'],true);
 				$listBank = $dataApi['data'];
 			}
-			$data['listBank'] = @$listBank; echo "<pre>"; print_r($listBank); exit;
+			$data['listBank'] = @$listBank;
 			############################################################
 			
 			
-		} 
+		}
 		else {
 
 			$data['title']	= 'Pembelian NPL';
 			$data['page'] 	= 'pembelian/add';
+			$data['detailBiodata'] = $detailBiodata;
 			
 			############################################################
 			## get list Item Type
 			$url = linkservice('master')."item/get";  
 			$method = 'GET';
-			$responseApi = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
-			if ($responseApi['err']) { 
-				echo "<hr>cURL Error #:" . $responseApi['err']; 
+			$responseApi1 = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
+			if ($responseApi1['err']) { 
+				echo "<hr>cURL Error #:" . $responseApi1['err']; 
 			} else {
 				$dataApi = json_decode($responseApi['response'],true);
 				$itemType = $dataApi['data'];
 			}
 			$data['itemType'] = @$itemType;
+			############################################################
+
+			############################################################
+			$url2 = linkservice('master')."bank/get";
+			$method2 = 'GET';
+			$responseApi2 = admsCurl($url2, array('tipePengambilan'=>'dropdownlist'), $method2);
+			$listBank = curlGenerate($responseApi2);
+			$data['listBank'] = @$listBank;
 			############################################################
 			
 			############################################################
@@ -101,7 +110,7 @@ class Beli extends CI_Controller {
 		}
 
 		$view = "npl/npl_view";
-		template($view , $data);
+		template($view, $data);
 	}
 
 }
