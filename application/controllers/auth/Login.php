@@ -39,6 +39,7 @@ class Login extends CI_Controller {
 				'header_white'	=> "header-white",
 				'userdata'		=> $this->session->userdata('userdata'),
 				'title'			=> 'Login',
+				'form_auth_mobile' => login_status_form_mobile($userdata),
 				'form_auth'		=> login_Status_form($userdata)
 			);
 			$view = "auth/login";
@@ -50,6 +51,7 @@ class Login extends CI_Controller {
 				'header_white'	=> "header-white",
 				'userdata'		=> $this->session->userdata('userdata'),
 				'title'			=> 'Login',
+				'form_auth_mobile' => login_status_form_mobile($userdata),
 				'form_auth'		=> login_Status_form($userdata)
 			);
 			$view = "auth/login";

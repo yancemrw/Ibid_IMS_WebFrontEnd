@@ -14,6 +14,7 @@ class Find_unit extends CI_Controller {
 			'header_white' => "header-white",
 			'userdata'	=> $userdata,
 			'title' => 'Cari Kendaraan',
+			'form_auth_mobile' => login_status_form_mobile($userdata),
 			'form_auth'	=> login_Status_form($userdata),
 			'img' => base_url('assetsfront/images/background/img-recommend-1.jpg'),
 			'link_detail' => base_url('index.php/detail-lelang')

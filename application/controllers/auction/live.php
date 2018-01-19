@@ -38,6 +38,7 @@ class Live extends CI_Controller {
 			'header_white' => "header-white",
 			'userdata'	=> $userdata,
 			'title' => 'Lelang Langsung',
+			'form_auth_mobile' => login_status_form_mobile($userdata),
 			'form_auth'	=> login_Status_form($userdata),
 			'data' => $arrData,
 			'data_unit' => curlGenerate($cunit),

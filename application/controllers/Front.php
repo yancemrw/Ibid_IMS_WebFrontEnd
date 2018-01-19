@@ -20,6 +20,7 @@ class Front extends CI_Controller {
 		$userdata = $this->session->userdata('userdata');
 		$data = array(
 			'title'		=> 'IBID - Balai Lelang Serasi',
+			'form_auth_mobile' => login_status_form_mobile($userdata),
 			'form_auth'	=> login_Status_form($userdata),
 			'content'	=> $generate
 		);

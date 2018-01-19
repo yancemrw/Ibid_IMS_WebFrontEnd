@@ -19,6 +19,7 @@ class Beli extends CI_Controller {
 			'header_white' => "header-white",
 			'userdata'	=> $userdata,
 			'title' => 'Beli Nomor Peserta Lelang ( NPL )',
+			'form_auth_mobile' => login_status_form_mobile($userdata),
 			'form_auth'	=> login_Status_form($userdata)
 		);
 

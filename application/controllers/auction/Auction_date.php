@@ -14,6 +14,7 @@ class Auction_date extends CI_Controller {
 			'header_white' => "header-white",
 			'userdata'	=> $userdata,
 			'title' => 'Jadwal Lelang',
+			'form_auth_mobile' => login_status_form_mobile($userdata),
 			'form_auth'	=> login_Status_form($userdata)
 		);
 		$view = "auction/auction_date";

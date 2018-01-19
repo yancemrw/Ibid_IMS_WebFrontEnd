@@ -9,6 +9,8 @@ class Callback extends CI_Controller {
 		// namafolder / file
 		$data['page'] 	= 'auth/callback';
 		$data['title'] 	= 'Meneruskan register dari social media';
+		$data['form_auth_mobile'] => login_status_form_mobile($userdata);
+		$data['form_auth'] => login_status_form($userdata);
 		$this->load->view('auth/template',$data); 
 
 		
