@@ -13,6 +13,8 @@ class Details extends CI_Controller {
 			'header_white' => "header-white",
 			'userdata'	=> $this->session->userdata('userdata'),
 			'title' => 'Halaman Lelang',
+			'form_auth_mobile' => login_status_form_mobile($userdata),
+			'form_auth'	=> login_Status_form($userdata),
 			'img1' => base_url().'assetsfront/images/background/img-recommend-1.jpg',
 			'img2' => base_url().'assetsfront/images/background/img-recommend-2.jpg',
 			'img3' => base_url().'assetsfront/images/background/img-recommend-3.jpg',

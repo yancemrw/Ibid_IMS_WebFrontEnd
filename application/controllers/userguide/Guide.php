@@ -26,6 +26,7 @@ class Guide extends CI_Controller {
 			'menu_title'		=> $menu_title,
 			'userdata'			=> $userdata,
 			'title'				=> 'Tata Cara Titip Lelang',
+			'form_auth_mobile'	=> login_status_form_mobile($userdata),
 			'form_auth'			=> login_Status_form($userdata),
 			'side_menu'			=> $this->side_menu($page_name),
 			'content_panduan'	=> $page_site,

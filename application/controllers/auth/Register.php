@@ -47,6 +47,7 @@ class Register extends CI_Controller {
 				'header_white'	=> "header-white",
 				'userdata'		=> $this->session->userdata('userdata'),
 				'title'			=> 'Pendaftaran',
+				'form_auth_mobile' => login_status_form_mobile($userdata),
 				'form_auth'		=> login_Status_form($userdata)
 			);
 			$view = "auth/register";

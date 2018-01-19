@@ -35,6 +35,7 @@ class Dasbor extends CI_Controller {
 				'header_white'	=> "header-white",
 				'userdata'		=> $userdata,
 				'title'			=> 'Data Diri',
+				'form_auth_mobile' => login_status_form_mobile($userdata),
 				'form_auth'		=> login_Status_form($userdata),
 				'content'		=> $generate,
 				'listBank'		=> @$listBank

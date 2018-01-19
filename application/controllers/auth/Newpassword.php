@@ -18,6 +18,8 @@ class Newpassword extends CI_Controller {
 		$data['page'] 		= 'auth/newpassword';
 		$data['title'] 		= 'Password Baru';
 		$data['message'] 	= $this->session->flashdata('message');
+		$data['form_auth_mobile'] => login_status_form_mobile($userdata);
+		$data['form_auth'] => login_status_form($userdata);
 
 		$this->form_validation->set_rules('password', 'Password', 'required');  
 		$this->form_validation->set_rules('confirmpassword', 'Confirm Password', 'required|matches[password]');  

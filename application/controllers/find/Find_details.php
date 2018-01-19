@@ -14,6 +14,7 @@ class Find_details extends CI_Controller {
 			'header_white' => "header-white",
 			'userdata'	=> $userdata,
 			'title' => 'Rincian Kendaraan',
+			'form_auth_mobile' => login_status_form_mobile($userdata),
 			'form_auth'	=> login_Status_form($userdata),
 			'link_detail' => base_url('index.php/detail_lelang'),
 			'img1' => base_url('assetsfront/images/background/image-header-1.jpg'),

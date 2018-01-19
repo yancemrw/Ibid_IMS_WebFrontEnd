@@ -176,8 +176,8 @@
                         <span class="icon-bar"></span>
                      </button>
                      <a class="navbar-brand icon_logo" alt="" href="<?php echo site_url(); ?>"><i class="icn icn-LOGO-IBID"></i></a>
-                     <div class="nav-header-right"> 
-                        <?php echo $form_auth; ?>
+                     <div class="nav-header-right">
+                        <?php echo $form_auth_mobile; ?>
                      </div>
                   </div>
                   <div id="navbar" class="navbar-collapse collapse">

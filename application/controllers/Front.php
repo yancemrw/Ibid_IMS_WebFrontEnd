@@ -21,6 +21,7 @@ class Front extends CI_Controller {
         
 		$data = array(
 			'title'		=> 'IBID - Balai Lelang Serasi',
+			'form_auth_mobile' => login_status_form_mobile($userdata),
 			'form_auth'	=> login_Status_form($userdata),
 			'content'	=> $generate
 		);

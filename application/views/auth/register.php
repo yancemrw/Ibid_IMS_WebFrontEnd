@@ -33,7 +33,7 @@
                             <div class="alerts-info" id="type-repass"></div>
                         </div>
                         <div class="form-group floating-label">
-                            <input type="text" id="idcard" name="idcard" class="form-control input-custom" />
+                            <input type="text" id="idcard" name="idcard" class="form-control" />
                             <label class="label-schedule">Kartu Anggota</label>
                             <div class="help-info">
                                 <i class="fa fa-info"></i> Kartu anggota yang dimiliki oleh pnegguna IBID yang telah terdaftar sebelumnya
@@ -50,10 +50,10 @@
             <div class="col-md-8 col-sm-6 text-center pull-left">
                 <div class="login-socialmedia register-socialmedia">
                     <p>Atau masuk melalui</p>
-                    <a href="" class="login-facebook"><span class="ic ic-facebook"></span>facebook</a>
-                    <a href="" class="login-twitter"><span class="ic ic-twitter"></span>twitter</a>
-                    <a href="" class="login-google"><span class="ic ic-Google"></span>google</a>
-                    <a href="" class="login-linkedin"><span class="ic ic-linkedin"></span>Linkedin</a>
+                    <a href="<?php echo facebook(); ?>" class="login-facebook"><span class="ic ic-facebook"></span>facebook</a>
+                    <a href="<?php echo site_url('omni/twitter/twitter');?>" class="login-twitter"><span class="ic ic-twitter"></span>twitter</a>
+                    <a href="<?php echo google(); ?>" class="login-google"><span class="ic ic-Google"></span>google</a>
+                    <a href="<?php echo linkedin(); ?>" class="login-linkedin"><span class="ic ic-linkedin"></span>Linkedin</a>
                 </div>
             </div>
         </div>
