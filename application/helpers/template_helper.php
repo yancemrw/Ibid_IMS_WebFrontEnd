@@ -17,7 +17,7 @@ function template($view = '' , $data = '') {
 
 function login_Status_form($userdata) {
 	$pp = 'https://instagram.fjkt1-1.fna.fbcdn.net/t51.2885-15/e35/25023178_125021498293801_6299328116707819520_n.jpg';
-	if(count($userdata['UserId']) > 0) {
+	if(count(@$userdata['UserId']) > 0) {
 
     $html = '<li class="dropdown hidden-mob">
        <a href="#" class="dropdown-toggle" data-toggle="dropdown">

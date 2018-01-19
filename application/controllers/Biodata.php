@@ -9,7 +9,7 @@ class Biodata extends CI_Controller {
 		$this->load->helper(array('global' , 'omni'));
 	}
 
-	function index(){
+	function index() {
 		$this->load->library('cart');
 		
 		$data['message'] = $this->session->flashdata('message');
@@ -73,8 +73,7 @@ class Biodata extends CI_Controller {
 	}
 
 
-	public function otp()
-	{
+	public function otp() {
 		// echo "<pre>";
 		// print_r($_POST);
 		// exit();
@@ -146,7 +145,7 @@ class Biodata extends CI_Controller {
 			} else {
 				// echo "beda 2";
 				// exit();
-				$this->session->set_flashdata('message', 'OTP tidak cocok');
+				$this->session->set_flashdata('message', array('error', 'OTP tidak cocok', 'Perhatian'));
 				redirect('biodata/otpconfirm','refresh');
 			}
 
