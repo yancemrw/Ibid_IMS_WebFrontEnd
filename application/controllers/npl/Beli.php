@@ -28,7 +28,7 @@ class Beli extends CI_Controller {
 		$data['message'] = $this->session->flashdata('message');
 
 		############################################################
-		$id = trim($_SESSION['idfront']);
+		$id = trim(@$_SESSION['idfront']);
 		## get detail users
 		$url = linkservice('account') ."users/details/".$id;
 		$method = 'GET';
