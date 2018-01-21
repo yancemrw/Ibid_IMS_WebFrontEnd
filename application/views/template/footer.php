@@ -112,230 +112,229 @@
     }
   }, 1000);
 
-  $(document).ready(function() {
+$(document).ready(function() {
 
-    // ***** handle floating placeholder input field *****
-    $('.floating-handle').blur(function() {
-      tmpval = $(this).val();
-      if(tmpval == '') {
-        $(this).addClass('empty').removeClass('not-empty');
+  // ***** handle floating placeholder input field *****
+  $('.floating-handle').blur(function() {
+    tmpval = $(this).val();
+    if(tmpval == '') {
+      $(this).addClass('empty').removeClass('not-empty');
+    }
+    else {
+      $(this).addClass('not-empty').removeClass('empty');
+    }
+
+    // for date
+    if($(this).parent().hasClass('date') === true) {
+      if($(this).val() === '') {
+        $(this).css('border', 'none');
+        $(this).parent().css('border', '1px solid #dc3545');
       }
       else {
-        $(this).addClass('not-empty').removeClass('empty');
+        $(this).css('border', '1px solid #CCC');
+        $(this).parent().css('border', 'none');
       }
+    }
+  });
+  // **************************************************
 
-      // for date
-      if($(this).parent().hasClass('date') === true) {
-        if($(this).val() === '') {
-          $(this).css('border', 'none');
-          $(this).parent().css('border', '1px solid #dc3545');
+  // ***** class number only *****
+  $('.only-number').keypress(function(event) {
+    var charCode = (event.which) ? event.which : event.keyCode;
+    return (charCode >= 48 && charCode <= 57);
+  });
+  // *****************************
+
+  // ***** disabled color *****
+  $('input:disabled').css({'background':'#E0E0E0', 'z-index':'2'});
+  // **************************
+
+  $("nav").sticky({
+    topSpacing:0
+  });
+
+  $(".select-custom").select2({
+    minimumResultsForSearch: -1
+  });
+
+  $(".select-type").select2({
+    minimumResultsForSearch: -1,
+    templateResult: formatState,
+    templateSelection: formatState
+  });
+
+  function formatState(state) {
+    if (!state.id) { return state.text; }
+    var $state = $(
+    '<span ><img sytle="display: inline-block;" src="<?php echo base_url('assetsfront/images/icon/'); ?>' + state.element.value.toLowerCase() + '.png" /> ' + state.text + '</span>'
+    );
+    return $state;
+  }
+  $('.why-ibid').slick({
+    dots: false,
+    infinite: false,
+    speed: 300,
+    slidesToShow: 6,
+    slidesToScroll: 6,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite:false,
+          dots: true,
+
+          prevArrow: false,
+          nextArrow: false
         }
-        else {
-          $(this).css('border', '1px solid #CCC');
-          $(this).parent().css('border', 'none');
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          dots: true,
+
+          prevArrow: false,
+          nextArrow: false
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          dots: true,
+
+          prevArrow: false,
+          nextArrow: false
         }
       }
-    });
-    // **************************************************
+    ]
+  });
+  $('.howTo-bid').slick({
+    dots: false,
+    infinite: false,
+    speed: 300,
+    slidesToShow: 6,
+    slidesToScroll: 6,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite:false,
+          dots: true,
 
-    // ***** class number only *****
-    $('.only-number').keypress(function(event) {
-      var charCode = (event.which) ? event.which : event.keyCode;
-      return (charCode >= 48 && charCode <= 57);
-    });
-    // *****************************
+          prevArrow: false,
+          nextArrow: false
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          dots: true,
 
-    // ***** disabled color *****
-    $('input:disabled').css({'background':'#E0E0E0', 'z-index':'2'});
-    // **************************
+          prevArrow: false,
+          nextArrow: false
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          dots: true,
 
-    $("nav").sticky({
-      topSpacing:0
-    });
+          prevArrow: false,
+          nextArrow: false
+        }
+      }
+    ]
+  });
+  $('.section-recommend').slick({
+    dots: false,
+    infinite: false,
+    speed: 300,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite:false,
+          dots: true,
 
-    $(".select-custom").select2({
-      minimumResultsForSearch: -1
-    });
+          prevArrow: false,
+          nextArrow: false
+        }
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          dots: true,
 
-    $(".select-type").select2({
-      minimumResultsForSearch: -1,
-      templateResult: formatState,
-      templateSelection: formatState
-    });
+          prevArrow: false,
+          nextArrow: false
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: true,
 
-    function formatState(state) {
-      if (!state.id) { return state.text; }
-      var $state = $(
-        '<span ><img sytle="display: inline-block;" src="<?php base_url('assets/images/icon/'); ?>' + state.element.value.toLowerCase() + '.png" /> ' + state.text + '</span>'
-        );
-      return $state;
-    }
-    $('.why-ibid').slick({
-     dots: false,
-     infinite: false,
-     speed: 300,
-     slidesToShow: 6,
-     slidesToScroll: 6,
-     responsive: [
-     {
-      breakpoint: 1024,
-      settings: {
-       slidesToShow: 3,
-       slidesToScroll: 3,
-       infinite:false,
-       dots: true,
-
-       prevArrow: false,
-       nextArrow: false
-     }
-   },
-   {
-    breakpoint: 600,
-    settings: {
-     slidesToShow: 3,
-     slidesToScroll: 3,
-     dots: true,
-
-     prevArrow: false,
-     nextArrow: false
-   }
- },
- {
-  breakpoint: 480,
-  settings: {
-   slidesToShow: 3,
-   slidesToScroll: 3,
-   dots: true,
-
-   prevArrow: false,
-   nextArrow: false
- }
-}
-]
-});
-    $('.howTo-bid').slick({
-     dots: false,
-     infinite: false,
-     speed: 300,
-     slidesToShow: 6,
-     slidesToScroll: 6,
-     responsive: [
-     {
-      breakpoint: 1024,
-      settings: {
-       slidesToShow: 3,
-       slidesToScroll: 3,
-       infinite:false,
-       dots: true,
-
-       prevArrow: false,
-       nextArrow: false
-     }
-   },
-   {
-    breakpoint: 600,
-    settings: {
-     slidesToShow: 3,
-     slidesToScroll: 3,
-     dots: true,
-
-     prevArrow: false,
-     nextArrow: false
-   }
- },
- {
-  breakpoint: 480,
-  settings: {
-   slidesToShow: 3,
-   slidesToScroll: 3,
-   dots: true,
-
-   prevArrow: false,
-   nextArrow: false
- }
-}
-]
-});
-    $('.section-recommend').slick({
-     dots: false,
-     infinite: false,
-     speed: 300,
-
-     slidesToShow: 3,
-     slidesToScroll: 3,
-     responsive: [
-     {
-      breakpoint: 1024,
-      settings: {
-       slidesToShow: 3,
-       slidesToScroll: 3,
-       infinite:false,
-       dots: true,
-
-       prevArrow: false,
-       nextArrow: false
-     }
-   },
-   {
-     breakpoint: 800,
-     settings: {
-      slidesToShow: 2,
-      slidesToScroll: 1,
-      dots: true,
-
-      prevArrow: false,
-      nextArrow: false
-    }
-  },
-  {
-    breakpoint: 600,
-    settings: {
-     slidesToShow: 1,
-     slidesToScroll: 1,
-     dots: true,
-
-     prevArrow: false,
-     nextArrow: false
-   }
- }
- ]
-});
-    $('.testimoni-slide').slick({
-     dots: false,
-     infinite: false,
-     speed: 300,
-     slidesToShow: 3,
-     slidesToScroll: 3,
-     responsive: [
-     {
-      breakpoint: 1024,
-      settings: {
-       slidesToShow: 3,
-       slidesToScroll: 3,
-       infinite: false,
-       dots: true
-     }
-   },
-   {
-     breakpoint: 800,
-     settings: {
-      slidesToShow: 2,
-      slidesToScroll: 1,
-      infinite: false,
-      dots: true
-    }
-  },
-  { 
-    breakpoint: 480,
-    settings: {
-     slidesToShow: 1,
-     slidesToScroll: 1,
-     infinite: false,
-     dots: true
-   }
- }
- ]
-});
+          prevArrow: false,
+          nextArrow: false
+        }
+      }
+    ]
+  });
+  $('.testimoni-slide').slick({
+    dots: false,
+    infinite: false,
+    speed: 300,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: false,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: false,
+          dots: true
+        }
+      },
+      { 
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: false,
+          dots: true
+        }
+      }
+    ]
+  });
 
   $('#toggle-nav').click(function() {
     $('.navbar-collapse.collapse').toggleClass('open')
@@ -355,7 +354,7 @@
     $('.lang-mob ul').removeClass('open');
     $(this).toggleClass('opened');
     $(this).siblings('ul').toggleClass('open');
-  })
+  });
 });
 </script>
 </body>
