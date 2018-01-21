@@ -166,7 +166,7 @@
     function formatState(state) {
       if (!state.id) { return state.text; }
       var $state = $(
-        '<span ><img sytle="display: inline-block;" src="http://sera-ibid.stagingapps.net/assets/images/icon/' + state.element.value.toLowerCase() + '.png" /> ' + state.text + '</span>'
+        '<span ><img sytle="display: inline-block;" src="<?php base_url('assets/images/icon/'); ?>' + state.element.value.toLowerCase() + '.png" /> ' + state.text + '</span>'
         );
       return $state;
     }
