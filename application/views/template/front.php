@@ -339,7 +339,7 @@
                <a href="" class="icn icn-google-play"></a>
             </div>
             <div class="col-md-5">
-               <img alt="" src="http://sera-ibid.stagingapps.net/assets/images/background/bg-hand.png" class="image-footer img-responsive">
+               <img alt="" src="<?php echo base_url('assetsfront/images/background/bg-hand.png'); ?>" class="image-footer img-responsive" />
             </div>
          </div>
       </div>
