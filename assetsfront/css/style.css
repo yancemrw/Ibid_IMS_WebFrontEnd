@@ -6430,9 +6430,9 @@ td.bg-Grey {
 }
 
 .header-aboutus {
-    background: url(../images/background/bg-about-us.jpg) no-repeat fixed;
-    background-size: cover;
-    background-position: center bottom -20px
+    /*background: url(../images/background/bg-about-us.jpg) no-repeat fixed;*/
+    background-size: cover !important;
+    background-position: center bottom -20px !important;
 }
 
 .map-network {
@@ -6520,6 +6520,10 @@ td.bg-Grey {
     font-size: 14px;
     color: #333;
     margin: 0 0 10px;
+}
+
+.footer-section-aboutus button {
+    max-width: 150px;
 }
 
 .box-slide-appreciation {

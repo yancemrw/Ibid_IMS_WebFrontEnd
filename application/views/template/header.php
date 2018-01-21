@@ -54,6 +54,7 @@
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/style.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/responsive.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/slick.css') ?>">
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/jquery.flipster.min.css'); ?>">
 
    <!-- Header Js -->
    <script src="<?php echo base_url('assetsfront/js/jquery-3.2.1.min.js'); ?>"></script>
@@ -68,6 +69,7 @@
    <script src="<?php echo base_url('assetsfront/js/fullcalendar.min.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/js/jquery.sticky-kit.min.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/js/jquery.scrollto.js'); ?>"></script>
+   <script src="<?php echo base_url('assetsfront/js/jquery.flipster.min.js'); ?>"></script>
    <script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit' async defer></script>
    <script type="text/javascript" src="https://sweetalert.js.org/assets/sweetalert/sweetalert.min.js"></script>
    <!-- sweetalert -->
@@ -88,8 +90,8 @@
 <body class="bg-grey">
    <input type="hidden" id="e8df0fade2ce52c6a8cf8c8d2309d08a" />
    <!-- handle header between procedure page and other page -->
-   <?php if(@$menu_pages === "panduan-lelang") { ?>
-      <header class="header-min" style="background: url(<?php echo linkservice('cms').'uploads/contents/'.$logo; ?>)no-repeat fixed;">
+   <?php if(@$menu_pages === 'panduan-lelang' || @$menu_pages === 'about') { ?>
+      <header class="header-min <?php echo $class_header; ?>" style="background: url(<?php echo $bgheader; ?>)no-repeat fixed;">
          <nav class="navbar navbar-custom">
             <div class="top-navbar text-right">
                <form class="form-inline">
@@ -118,6 +120,9 @@
                         <span class="icon-bar"></span>
                      </button>
                      <a class="navbar-brand icon_logo" alt="" href="<?php echo base_url(); ?>"><i class="icn icn-LOGO-IBID"></i></a>
+                     <div class="nav-header-right">
+                        <?php echo $form_auth_mobile; ?>
+                     </div>
                  </div>
                  <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
