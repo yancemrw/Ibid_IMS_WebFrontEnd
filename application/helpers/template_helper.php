@@ -1,18 +1,31 @@
 <?php  
 
 function template($view = '' , $data = '') {
-
+  // get logo site
   $url = linkservice('cms')."api/logo";
   $method = 'GET';
   $res = admsCurl($url, array(), $method);
   $logo = curlGenerate($res);
   $data['logo'] = @$logo->Photo;
+
+  // get header image
+  if(@$data['menu_pages'] === 'panduan-lelang') {
+    $data['bgheader'] = base_url('assetsfront/images/background/bg-auction-3.jpg');
+    $data['class_header'] = '';
+  }
+  else if(@$data['menu_pages'] === 'about') {
+    $data['bgheader'] = base_url('assetsfront/images/background/bg-about-us.jpg');
+    $data['class_header'] = 'header-aboutus';
+  }
+  else {
+    $data['bgheader'] = '';
+    $data['class_header'] = '';
+  }
+  
 	$ci =& get_instance();
 	$ci->load->view('template/header', $data);
-	$ci->load->view($view , $data); // content
+	$ci->load->view($view, $data);
 	$ci->load->view('template/footer', $data);
-	// $ci->load->view('template/menubar' , $data);
-	// $ci->load->view('template/footer' , $data); // content
 }
 
 function login_status_form_mobile($userdata) {
@@ -21,7 +34,7 @@ function login_status_form_mobile($userdata) {
     $html = '<ul class="user-nav clearfix">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <p><img src="assets/images/icon/Transaksi.png" alt="" title="" width="" height=""></p>
+                        <p><img src="'.base_url('assetsfront/images/icon/Transaksi.png').'" alt="" title="" width="" height=""></p>
                     </a>
                     <ul class="dropdown-menu dropdown-custom">
                         <li>
@@ -46,7 +59,7 @@ function login_status_form_mobile($userdata) {
                             <h2>Transaksi Terakhir</h2>
                             <a href="">
                                 <div class="transaction-image">
-                                    <img src="assets/images/background/3.jpg" alt="" title="">
+                                    <img src="'.base_url('assetsfront/images/background/3.jpg').'" alt="" title="">
                                 </div>
                                 <div class="transaction-content">
                                     <h2>DAIHATSU LUXIO 1.5 X MINIBUS AT 2014</h2>

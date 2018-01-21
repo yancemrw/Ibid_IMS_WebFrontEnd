@@ -11,9 +11,9 @@
       </div>
       <div class="col-md-4 footer-link text-center">
         <ul>
-          <li><a href="tentang-ibid.html">Tentang Ibid</a></li>
+          <li><a href="<?php echo site_url('about'); ?>">Tentang Ibid</a></li>
           <li><a href="faq.html">FAQ</a></li>
-          <li><a href="blog.html">Blog</a></li>
+          <li><a href="<?php echo site_url('blog'); ?>">Blog</a></li>
           <li><a href="">Privacy Policy</a></li>
         </ul>
       </div>
