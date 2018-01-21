@@ -134,11 +134,12 @@
                         </div>
                         <div class="form-group floating-label">
                            <textarea type="text" name="address" class="form-control floating-handle" rows="5"><?php echo $content->users->Address; ?></textarea>
+                           <label class="label-schedule">Alamat</label>
                         </div>
-                        <!--div class="form-group floating-label">
+                        <div class="form-group floating-label">
                            <input type="text" name="okup" class="form-control floating-handle">
                            <label class="label-schedule">Okupasi</label>
-                        </div-->
+                        </div>
                      </div>
                   </div>
                   <div class="form-button text-right">

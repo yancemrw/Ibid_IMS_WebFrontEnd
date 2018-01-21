@@ -33,7 +33,7 @@ function template($view = '' , $data = '') {
 }
 
 function login_status_form_mobile($userdata) {
-  $pp = 'https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1445228/1160/772/m1/fpnw/wm0/worker-avatar-icon-01-.jpg?1468316818&s=0a2c0a0c3c5be6e8ee9af2c982d578e9';
+  $pp = base_url('assetsfront/images/background/slide-1.jpg');
   if(count(@$userdata['UserId']) > 0) {
     $html = '<ul class="user-nav clearfix">
                 <li class="dropdown">
@@ -163,7 +163,7 @@ function login_status_form_mobile($userdata) {
 }
 
 function login_Status_form($userdata) {
-	$pp = 'https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1445228/1160/772/m1/fpnw/wm0/worker-avatar-icon-01-.jpg?1468316818&s=0a2c0a0c3c5be6e8ee9af2c982d578e9';
+	$pp = base_url('assetsfront/images/background/slide-1.jpg');
 	if(count(@$userdata['UserId']) > 0) {
 
     $html = '<li class="dropdown hidden-mob">
