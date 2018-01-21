@@ -90,7 +90,7 @@
 <body class="bg-grey">
    <input type="hidden" id="e8df0fade2ce52c6a8cf8c8d2309d08a" />
    <!-- handle header between procedure page and other page -->
-   <?php if(@$menu_pages === 'panduan-lelang' || @$menu_pages === 'about') { ?>
+   <?php if(@$menu_pages) { ?>
       <header class="header-min <?php echo $class_header; ?>" style="background: url(<?php echo $bgheader; ?>)no-repeat fixed;">
          <nav class="navbar navbar-custom">
             <div class="top-navbar text-right">
@@ -233,3 +233,6 @@
          <?php } ?>
    <?php echo ($this->uri->segment(1) != "akun") ? '<div>' : ''; ?>
 <?php } ?>
+<?php if(@$menu_pages) {
+   echo '</div>';
+ } ?>
