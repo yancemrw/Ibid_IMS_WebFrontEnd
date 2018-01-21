@@ -50,8 +50,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'front';
+
+// about
 $route['about'] = 'about/me';
 $route['blog'] = 'about/blog';
+$route['faq'] = 'about/ours/faq';
+$route['ourloc'] = 'about/ours/ourloc';
+$route['contactus'] = 'about/ours/contactus';
 
 // seputar authentification
 $route['register'] = 'auth/register';
