@@ -1346,7 +1346,8 @@ footer p {
 }
 
 .header-white .nav>li>a {
-    color: #333
+    color: #333;
+    height: 100%;
 }
 
 .header-white .top-navbar select {
