@@ -14,8 +14,11 @@ class Dasbor extends CI_Controller {
 
 	public function index() {
 		$this->form_validation->set_rules('upd_name', 'Nama', 'required');
+		$this->form_validation->set_rules('ktp', 'No KTP', 'required');
 		$this->form_validation->set_rules('upd_phone', 'No Telepon', 'required');
-		$this->form_validation->set_rules('dob', 'Tanggal Lahir', 'required');
+		$this->form_validation->set_rules('bankid', 'BANK', 'required');
+		$this->form_validation->set_rules('norek', 'No Rekening', 'required');
+		$this->form_validation->set_rules('rekname', 'Nama Rekening', 'required');
 
 		if($this->form_validation->run() === FALSE) {
 
@@ -51,13 +54,14 @@ class Dasbor extends CI_Controller {
 			$dataUpdate = array(
 				'UserId'			=> $this->input->post('UserId'),
 				'name'				=> $this->input->post('upd_name'),
-				'email'				=> $this->input->post('upd_email'),
+				'email'				=> $this->input->input_stream('upd_email'),
 				'phone'				=> $this->input->post('upd_phone'),
 				'memberid'			=> $this->input->post('idcard'),
-				'Gender'			=> $this->input->post('gender'),
+				'gender'			=> ($this->input->post('gender') !== "") ? $this->input->post('gender') : NULL,
 				'dob'				=> $this->input->post('dob'),
 				'city'				=> $this->input->post('city'),
 				'address'			=> $this->input->post('address'),
+				'occupation'		=> $this->input->post('okup'),
 				'nonpwp' 			=> $this->input->post('npwp'),
 				'noktp'				=> $this->input->post('ktp'),
 				'address' 			=> $this->input->post('address'),
@@ -75,6 +79,7 @@ class Dasbor extends CI_Controller {
 				echo "<hr>cURL Error #:".$responseApi['err'];
 			}
 			else {
+				$this->session->set_flashdata('message', array('success', 'Akun Sudah Berhasil Diubah', 'Sukses'));
 				redirect('akun/Dasbor'); 
 			}
 

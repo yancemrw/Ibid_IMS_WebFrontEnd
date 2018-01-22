@@ -6758,12 +6758,30 @@ input.input-custom.empty {
     -webkit-transform-origin: 0 0;
 }
 
+.border-radius-none {
+    border-radius: 0 !important;
+}
+
 .cursor-pointer {
     cursor: pointer;
 }
 
+.disabled {
+    background: #E0E0E0 !important;
+    cursor: no-drop !important;
+}
+
+.disabled:focus {
+    border: 1px solid #ccc !important;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075) !important;
+}
+
 .font-red {
     color: #C62828;
+}
+
+.height-50px {
+    height: 50px !important;
 }
 
 .margin-top-80px {
