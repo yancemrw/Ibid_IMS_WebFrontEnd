@@ -42,39 +42,36 @@
                      <div class="col-md-6">
                         <h4>Akun Pengguna</h4>
                         <div class="form-group floating-label">
-                           <input type="text" name="upd_name" id="upd_name" class="form-control floating-handle" 
-                                    value="<?php echo @$content->users->first_name.' '.$content->users->last_name; ?>">
+                           <input type="text" name="upd_name" id="upd_name" class="form-control floating-handle input-custom" 
+                                    value="<?php echo @$content->users->first_name.' '.$content->users->last_name; ?>" 
+                                    oninvalid="this.setCustomValidity('Nama tidak boleh kosong')" oninput="setCustomValidity('')" required />
                            <label class="label-schedule">Nama <span class="font-red">*</span></label>
                         </div>
                         <div class="form-group floating-label">
-                           <input type="text" id="upd_email" class="form-control floating-handle" 
-                                    value="<?php echo @$content->users->Email; ?>" disabled />
-                           <input type="hidden" name="upd_email" value="<?php echo @$content->users->Email; ?>">
+                           <input type="text" name="upd_email" id="upd_email" class="border-radius-none disabled form-control floating-handle" 
+                                    value="<?php echo @$content->users->Email; ?>" 
+                                    oninvalid="this.setCustomValidity('Email tidak boleh kosong')" oninput="setCustomValidity('')" readonly />
                            <label class="label-schedule">Email <span class="font-red">*</span></label>
                         </div>
                         <div class="form-group floating-label">
                            <input type="text" name="ktp" id="ktp" class="form-control floating-handle input-custom only-number" 
                                     value="<?php echo @$content->users->IdentityNumber; ?>" 
-                                    oninvalid="this.setCustomValidity('KTP tidak boleh kosong')" 
-                                    oninput="setCustomValidity('')" required />
+                                    oninvalid="this.setCustomValidity('KTP tidak boleh kosong')" oninput="setCustomValidity('')" required />
                            <label class="label-schedule">No KTP <span class="font-red">*</span></label>
                         </div>
                         <div class="form-group floating-label">
                            <input type="text" name="upd_phone" id="upd_phone" class="form-control floating-handle input-custom only-number" 
                                     value="<?php echo @$content->users->Phone; ?>" 
-                                    oninvalid="this.setCustomValidity('No Telepon tidak boleh kosong')" 
-                                    oninput="setCustomValidity('')" required />
+                                    oninvalid="this.setCustomValidity('No Telepon tidak boleh kosong')" oninput="setCustomValidity('')" required />
                            <label class="label-schedule">No Telepon <span class="font-red">*</span></label>
                         </div>
                         <div class="form-group floating-label">
-                           <input type="text" id="npwp" name="npwp" class="form-control floating-handle input-custom only-number" 
-                                    value="<?php echo @$content->users->NpwpNumber; ?>" 
-                                    oninvalid="this.setCustomValidity('NPWP tidak boleh kosong')" 
-                                    oninput="setCustomValidity('')" required />
-                           <label class="label-schedule">NPWP <span class="font-red">*</span></label>
+                           <input type="text" id="npwp" name="npwp" class="border-radius-none form-control floating-handle only-number" 
+                                    value="<?php echo @$content->users->NpwpNumber; ?>" />
+                           <label class="label-schedule">NPWP</label>
                         </div>
                         <div class="form-group floating-label">
-                           <input type="text" name="idcard" id="idcard" class="form-control floating-handle" 
+                           <input type="text" name="idcard" id="idcard" class="border-radius-none form-control floating-handle" 
                                     value="<?php echo @$content->users->MemberCardTMP; ?>" />
                            <label class="label-schedule">Nomor Kartu Anggota</label>
                            <div class="help-info">
@@ -85,23 +82,28 @@
                      <div class="col-md-6">
                         <h4>Akun Bank</h4>
                         <div class="form-group floating-label">
-                           <select class="form-control font-theme select-custom" name="bankid">
-                           <?php foreach($listBank as $row) { ?>
-                             <option value="<?php echo $row->BankId; ?>" <?php echo (@$content->users->BankId == $row->BankId) ? 'selected' : ''; ?>><?php echo $row->BankName; ?></option>
-                           <?php } ?>
+                           <select class="form-control font-theme select-custom" name="bankid"
+                                    oninvalid="this.setCustomValidity('Pilih bank')" oninput="setCustomValidity('')" required>
+                              <option>Pilih <span class="font-red">*</span></option>
+                              <?php foreach($listBank as $row) { ?>
+                              <option value="<?php echo $row->BankId; ?>" <?php echo (@$content->users->BankId == $row->BankId) ? 'selected' : ''; ?>><?php echo $row->BankName; ?></option>
+                              <?php } ?>
                            </select>
                         </div>
                         <div class="form-group floating-label">
                            <input type="text" name="norek" class="form-control floating-handle input-custom only-number" 
-                                    value="<?php echo $content->users->BankAccountNumber; ?>" />
-                           <label class="label-schedule">Nomor Rekening</label>
+                                    value="<?php echo @$content->users->BankAccountNumber; ?>"
+                                    oninvalid="this.setCustomValidity('Nomor rekening tidak boleh kosong')" oninput="setCustomValidity('')" required />
+                           <label class="label-schedule">Nomor Rekening <span class="font-red">*</span></label>
                         </div>
                         <div class="form-group floating-label">
-                           <input type="text" name="rekname" class="form-control floating-handle input-custom" value="<?php echo $content->users->BankAccountName; ?>" />
-                           <label class="label-schedule">Atas Nama</label>
+                           <input type="text" name="rekname" class="form-control floating-handle input-custom" 
+                                    value="<?php echo @$content->users->BankAccountName; ?>" 
+                                    oninvalid="this.setCustomValidity('Atas nama tidak boleh kosong')" oninput="setCustomValidity('')" required />
+                           <label class="label-schedule">Atas Nama <span class="font-red">*</span></label>
                         </div>
                         <div class="form-group floating-label">
-                           <input type="text" name="" class="form-control floating-handle" />
+                           <input type="text" name="" class="border-radius-none form-control floating-handle" />
                            <label class="label-schedule">Kantor Cabang</label>
                         </div>
                      </div>
@@ -111,39 +113,37 @@
                         <h4>Biodata</h4>
                         <div class="form-group floating-label">
                            <select class="form-control font-theme select-custom" name="gender">
-                              <option>Jenis Kelamin</option>
-                              <option <?php echo ($content->users->Gender === '1') ? 'selected' : ''; ?>>Laki-laki</option>
-                              <option <?php echo ($content->users->Gender === '2') ? 'selected' : ''; ?>>Perempuan</option>
+                              <option value="">Jenis Kelamin</option>
+                              <option value="1" <?php echo (@$content->users->Gender === 1) ? 'selected' : ''; ?>>Laki-laki</option>
+                              <option value="2" <?php echo (@$content->users->Gender === 2) ? 'selected' : ''; ?>>Perempuan</option>
                            </select>
                         </div>
                         <div class="form-group">
                            <div class="input-group date">
-                              <input type="text" class="form-control floating-handle input-custom" id="tgl-lahir" name="dob" 
-                                       placeholder="Tanggal Lahir *" data-provide="datepicker" data-date-format="yyyy-mm-dd" 
-                                       value="<?php echo $content->users->Birthdate; ?>" 
-                                       oninvalid="this.setCustomValidity('Tanggal lahir tidak boleh kosong')" 
-                                       oninput="setCustomValidity('')" required />
+                              <input type="text" class="border-radius-none disabled form-control floating-handle height-50px" id="tgl-lahir" name="dob" 
+                                       placeholder="Tanggal Lahir" data-provide="datepicker" data-date-format="yyyy-mm-dd" 
+                                       value="<?php echo @$content->users->Birthdate; ?>" readonly />
                               <span class="input-group-addon">
                                  <i class="fa fa-calendar"></i>
                               </span>
                            </div>
                         </div>
                         <div class="form-group floating-label">
-                           <input type="text" name="city" class="form-control floating-handle" value="<?php echo $content->users->City; ?>">
+                           <input type="text" name="city" class="border-radius-none form-control floating-handle" value="<?php echo @$content->users->City; ?>">
                            <label class="label-schedule">Kota</label>
                         </div>
                         <div class="form-group floating-label">
-                           <textarea type="text" name="address" class="form-control floating-handle" rows="5"><?php echo $content->users->Address; ?></textarea>
+                           <input type="text" name="address" class="border-radius-none form-control floating-handle" value="<?php echo @$content->users->Address; ?>">
                            <label class="label-schedule">Alamat</label>
                         </div>
                         <div class="form-group floating-label">
-                           <input type="text" name="okup" class="form-control floating-handle">
+                           <input type="text" name="okup" class="border-radius-none form-control floating-handle" value="<?php echo @$content->users->Occupation; ?>">
                            <label class="label-schedule">Okupasi</label>
                         </div>
                      </div>
                   </div>
                   <div class="form-button text-right">
-                     <button class="btn btn-grey bg-grey">Reset</button>
+                     <button class="btn btn-grey bg-grey" id="btn-reset">Reset</button>
                      <button class="btn btn-green" id="btn-update">Simpan</button>
                   </div>
                </form>
@@ -155,37 +155,28 @@
 </section> 
 
 <script>
-   // ***** handle ktp and npwp *****
-   if($('#ktp').val() !== '') {
-      $('#npwp').prop('disabled', true).css({'background':'#E0E0E0', 'z-index':'1'});
-   }
-   else if($('#npwp').val() !== '') {
-      $('#ktp').prop('disabled', true).css({'background':'#E0E0E0', 'z-index':'1'});
-   }
-
-   $('#ktp').blur(function() {
-      if($(this).val() !== '') {
-         $('#npwp').prop('disabled', true).css({'background':'#E0E0E0', 'z-index':'1'});
-      }
-      else {
-         $('#npwp').prop('disabled', false).css({'background':'none', 'z-index':'8'});
-      }
-   });
-
-   $('#npwp').blur(function() {
-      if($(this).val() !== '') {
-         $('#ktp').prop('disabled', true).css({'background':'#E0E0E0', 'z-index':'1'});
-      }
-      else {
-         $('#ktp').prop('disabled', false).css({'background':'none', 'z-index':'8'});
-      }
-   });
-   // *******************************
-
    // handle field
    $('input').each(function() {
       if($(this).val() !== '') {
          $(this).addClass('not-empty');
       }
+   });
+
+   $('#btn-reset').click(function() {
+      $('input').each(function() {
+         if(!$(this).is('[readonly]')) {
+            $(this).val('');
+
+            if($(this).hasClass('not-empty') === true) {
+               $(this).removeClass('not-empty');
+            }
+         }
+      });
+
+      $('input').each(function() {
+         if($(this).val() === '') {
+            $(this).addClass('empty');
+         }
+      });
    });
 </script>

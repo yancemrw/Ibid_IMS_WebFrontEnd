@@ -98,9 +98,11 @@
   });
 
   function showContent() {
-    document.getElementById('preloader').style.display = 'none';
-    if(document.getElementById('preloaderAuction').style.display === 'none') {
-      document.getElementById('content').style.visibility = 'visible'; 
+    if(document.getElementById('content') !== null) {
+      document.getElementById('preloader').style.display = 'none';
+      if(document.getElementById('preloaderAuction').style.display === 'none') {
+        document.getElementById('content').style.visibility = 'visible'; 
+      }
     }
   }
 
@@ -125,16 +127,18 @@ $(document).ready(function() {
     }
 
     // for date
-    if($(this).parent().hasClass('date') === true) {
+    /*if($(this).parent().hasClass('date') === true) {
       if($(this).val() === '') {
         $(this).css('border', 'none');
         $(this).parent().css('border', '1px solid #dc3545');
+        $('.input-group-addon').css('border', 'none');
       }
       else {
         $(this).css('border', '1px solid #CCC');
         $(this).parent().css('border', 'none');
+        $('.input-group-addon').css({'border-top':'1px solid #ccc', 'border-right':'1px solid #ccc', 'border-bottom':'1px solid #ccc'});
       }
-    }
+    }*/
   });
   // **************************************************
 
