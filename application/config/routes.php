@@ -80,6 +80,7 @@ $route['jadwal-lelang'] = 'auction/auction_date';
 // menu auction
 $route['live-auction'] = 'auction/live';
 $route['detail-auction'] = 'auction/details';
+$route['titip-lelang'] = 'auction/entrusted';
 
 // Menu panduan
 $route['panduan-lelang'] = 'userguide/guide/index/onsite';

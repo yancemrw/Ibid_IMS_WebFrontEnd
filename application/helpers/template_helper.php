@@ -1,6 +1,6 @@
 <?php  
 
-function template($view = '' , $data = '') {
+function template($view = '', $data = '') {
   // get logo site
   $url = linkservice('cms')."api/logo";
   $method = 'GET';
