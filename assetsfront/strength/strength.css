@@ -1,0 +1,35 @@
+.strength0 {
+	width: 50px;
+	height: 5px;
+	background: #fff;
+}
+
+.strength1 {
+	width: 10px;
+	height: 5px;
+	background: #ff0000;
+}
+
+.strength2 {
+	width: 20px;	
+	height: 5px;
+	background: #FFEB3B;
+}
+
+.strength3 {
+	width: 30px;
+	height: 5px;
+	background: #56e500;
+}
+
+.strength4 {
+	width: 40px;
+	height: 5px;
+	background: #4dcd00;
+}
+
+.strength5 {
+	width: 50px;
+	height: 5px;
+	background: #01579B;
+}

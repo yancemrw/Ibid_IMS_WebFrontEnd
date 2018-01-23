@@ -84,8 +84,8 @@ class Login extends CI_Controller {
 				$res = json_decode($responseApi['response']);
 				if(isset($res->error)) {
 					// kalo gagal
-					$this->session->set_flashdata('message', array('error', 'Email / Password Salah', 'Gagal'));
-					redirect();
+					$this->session->set_flashdata('message', array('error', $res->error_description, 'Gagal'));
+					redirect('login');
 				}
 				else {
 					// set token on session
@@ -97,7 +97,7 @@ class Login extends CI_Controller {
 
 					// kalo berhasil
 					$this->session->set_flashdata('message', array('success' , 'Berhasil Login' , 'Sukses'));
-					redirect();
+					redirect('akun/dasbor');
 				} 
 			}
 			
