@@ -28,6 +28,10 @@ class Dasbor extends CI_Controller {
 			$responseApi = admsCurl($url, array(), $method);
 			$generate = curlGenerate($responseApi);
 
+			// ubah date format
+			$split = explode('-', $generate->users->Birthdate);
+			$generate->users->Birthdate = $split[2].'/'.$split[1].'/'.$split[0];
+
 			$url = linkservice('master')."bank/get";
 			$method = 'GET';
 			$responseApi = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
@@ -44,13 +48,13 @@ class Dasbor extends CI_Controller {
 				'listBank'		=> @$listBank
 			);
 			//$data['img_link'] = 'https://instagram.fjkt1-1.fna.fbcdn.net/t51.2885-15/e35/25023178_125021498293801_6299328116707819520_n.jpg';
-			$data['img_link'] = base_url('assetsfront/images/background/slide-1.jpg');
+			$data['img_link'] = base_url('assetsfront/images/icon/ic_avatar.png');
 			$view = "akun/dasbor_view";
 			template($view, $data);
 
 		}
 		else {
-
+			$tmpDob = explode("/", $this->input->post('dob'));
 			$dataUpdate = array(
 				'UserId'			=> $this->input->post('UserId'),
 				'name'				=> $this->input->post('upd_name'),
@@ -58,7 +62,7 @@ class Dasbor extends CI_Controller {
 				'phone'				=> $this->input->post('upd_phone'),
 				'memberid'			=> $this->input->post('idcard'),
 				'gender'			=> ($this->input->post('gender') !== "") ? $this->input->post('gender') : NULL,
-				'dob'				=> $this->input->post('dob'),
+				'dob'				=> sprintf("%04d",$tmpDob[2])."-".sprintf("%02d",$tmpDob[1])."-".sprintf("%02d",$tmpDob[0]),
 				'city'				=> $this->input->post('city'),
 				'address'			=> $this->input->post('address'),
 				'occupation'		=> $this->input->post('okup'),
@@ -82,7 +86,6 @@ class Dasbor extends CI_Controller {
 				$this->session->set_flashdata('message', array('success', 'Akun Sudah Berhasil Diubah', 'Sukses'));
 				redirect('akun/Dasbor'); 
 			}
-
 		}
 	}
 

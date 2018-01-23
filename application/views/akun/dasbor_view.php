@@ -1,3 +1,7 @@
+<link rel="stylesheet" href="<?php echo base_url('assetsfront/air-datepicker/dist/css/datepicker.min.css'); ?>">
+<script src="<?php echo base_url('assetsfront/air-datepicker/dist/js/datepicker.min.js'); ?>"></script>
+<script src="<?php echo base_url('assetsfront/air-datepicker/dist/js/i18n/datepicker.en.js'); ?>"></script>
+
 <section>
    <div class="container-fluid">
       <div class="row bg-white">
@@ -15,7 +19,7 @@
                   </li>
                   <li class="acc_transaction"><a href="am-transaksi.html"> <span class="ic_menu"><i ></i></span> Transaksi</a></li>
                   <li class="acc_npl"><a href="am-management.html"> <span class="ic_menu"><i ></i></span>  NPL Management</a></li>
-                  <li class="acc_setting active"><a href="am-ubah-profil.html"> <span class="ic_menu"><i ></i></span>  Pengaturan</a></li>
+                  <li class="acc_setting active"><a href="<?php echo site_url('akun/dasbor'); ?>"> <span class="ic_menu"><i ></i></span>  Pengaturan</a></li>
                   <li class="acc_favorite"><a href="am-whislist.html">  <span class="ic_menu"><i ></i></span> Favorit</a></li>
                   <li class="acc_price"><a href="am-harga-dasar.html">  <span class="ic_menu"><i ></i></span>  Harga Dasar</a></li>
                </ul>
@@ -34,7 +38,7 @@
                            <img src="<?php echo $img_link; ?>">
                         </div>
                         <a href="" class="icon-camera">
-                           <img src="assets/images/icon/ic_camera.png" alt="">
+                           <img src="<?php echo base_url('assetsfront/images/icon/ic_camera.png'); ?>" alt="">
                         </a>
                      </div>
                   </div>
@@ -54,16 +58,16 @@
                            <label class="label-schedule">Email <span class="font-red">*</span></label>
                         </div>
                         <div class="form-group floating-label">
-                           <input type="text" name="ktp" id="ktp" class="form-control floating-handle input-custom only-number" 
-                                    value="<?php echo @$content->users->IdentityNumber; ?>" 
-                                    oninvalid="this.setCustomValidity('KTP tidak boleh kosong')" oninput="setCustomValidity('')" required />
-                           <label class="label-schedule">No KTP <span class="font-red">*</span></label>
-                        </div>
-                        <div class="form-group floating-label">
                            <input type="text" name="upd_phone" id="upd_phone" class="form-control floating-handle input-custom only-number" 
                                     value="<?php echo @$content->users->Phone; ?>" 
                                     oninvalid="this.setCustomValidity('No Telepon tidak boleh kosong')" oninput="setCustomValidity('')" required />
                            <label class="label-schedule">No Telepon <span class="font-red">*</span></label>
+                        </div>
+                        <div class="form-group floating-label">
+                           <input type="text" name="ktp" id="ktp" class="form-control floating-handle input-custom only-number" 
+                                    value="<?php echo @$content->users->IdentityNumber; ?>" 
+                                    oninvalid="this.setCustomValidity('KTP tidak boleh kosong')" oninput="setCustomValidity('')" required />
+                           <label class="label-schedule">No KTP <span class="font-red">*</span></label>
                         </div>
                         <div class="form-group floating-label">
                            <input type="text" id="npwp" name="npwp" class="border-radius-none form-control floating-handle only-number" 
@@ -120,10 +124,9 @@
                         </div>
                         <div class="form-group">
                            <div class="input-group date">
-                              <input type="text" class="border-radius-none disabled form-control floating-handle height-50px" id="tgl-lahir" name="dob" 
-                                       placeholder="Tanggal Lahir" data-provide="datepicker" data-date-format="yyyy-mm-dd" 
-                                       value="<?php echo @$content->users->Birthdate; ?>" readonly />
-                              <span class="input-group-addon">
+                              <input type="text" class="border-radius-none disabled-white form-control floating-handle height-50px" id="tgl-lahir" name="dob" 
+                                       placeholder="Tanggal Lahir" value="<?php echo @$content->users->Birthdate; ?>" readonly>
+                              <span class="input-group-addon cursor-pointer" id="tgl-lahir-span">
                                  <i class="fa fa-calendar"></i>
                               </span>
                            </div>
@@ -152,7 +155,16 @@
          </div>
       </div>
    </div>
-</section> 
+</section>
+
+<style>
+   .datepicker--cell.-current- {
+      color: #8BC34A !important;
+   }
+   .datepicker--cell.-selected- {
+      background: #8BC34A !important;
+   }
+</style>
 
 <script>
    // handle field
@@ -178,5 +190,16 @@
             $(this).addClass('empty');
          }
       });
+   });
+
+   // datepicker
+   $('#tgl-lahir').datepicker({
+      language: 'en',
+      maxDate: new Date(),
+      dateFormat: 'dd/mm/yyyy',
+      autoClose: true
+   });
+   $('#tgl-lahir-span').click(function() {
+      $('#tgl-lahir').focus();
    });
 </script>

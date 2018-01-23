@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="<?php echo base_url('assetsfront/strength/strength.css'); ?>">
+<script src="<?php echo base_url('assetsfront/strength/strength.js'); ?>"></script>
+
 <section class="section-register">
     <div class="container">
         <div class="row position-repative">
@@ -23,14 +26,16 @@
                                     oninvalid="this.setCustomValidity('Kata sandi tidak boleh kosong')" 
                                     oninput="setCustomValidity('')" required />
                             <label class="label-schedule">Kata Sandi <span class="font-red">*</span></label>
-                            <div class="alerts-info" id="type-pass"></div>
+                            <div id="strength-desc" class="alerts-strength"></div>
+                            <div id="strength-gauge" class="strength0"></div>
+                            <div class="help-info" id="type-pass"></div>
                         </div>
                         <div class="form-group floating-label">
                             <input type="password" id="repass" name="repass" class="form-control input-custom" 
                                     oninvalid="this.setCustomValidity('Ulangi sandi tidak boleh kosong')" 
                                     oninput="setCustomValidity('')" required />
                             <label class="label-schedule">Ulangi Sandi <span class="font-red">*</span></label>
-                            <div class="alerts-info" id="type-repass"></div>
+                            <div class="help-info" id="type-repass"></div>
                         </div>
                         <div class="form-group floating-label">
                             <input type="text" id="idcard" name="idcard" class="form-control" />
@@ -102,7 +107,7 @@
         $('#pass').blur(function() {
             var pass = $(this).val(), repass = $('#repass').val();
             if($(this).val().length < 8) {
-                $('#type-pass').html('Password kurang dari 8');
+                $('#type-pass').html('<i class="fa fa-info"></i> Password kurang dari 8');
                 $('#type-pass').show();
                 return;
             }
@@ -113,7 +118,7 @@
             }
 
             if(pass !== repass) {
-                $('#type-repass').html('Password tidak sama');
+                $('#type-repass').html('<i class="fa fa-info"></i> Password tidak sama');
                 $('#type-repass').show();
                 return;
             }
@@ -126,7 +131,7 @@
         $('#repass').blur(function() {
             var pass = $('#pass').val(), repass = $(this).val();
             if(pass !== repass) {
-                $('#type-repass').html('Password tidak sama');
+                $('#type-repass').html('<i class="fa fa-info"></i> Password tidak sama');
                 $('#type-repass').show();
                 return;
             }
@@ -153,6 +158,12 @@
                     alert('Captcha harus di isi!');
                 }
             }
+        });
+
+        $('#pass').keyup(function() {
+            var values = $(this).val(), the_return = passwordStrength(values); console.log(the_return);
+            document.getElementById("strength-desc").innerHTML = the_return.descstrength;
+            document.getElementById("strength-gauge").className = the_return.strength;
         });
     });
 </script>

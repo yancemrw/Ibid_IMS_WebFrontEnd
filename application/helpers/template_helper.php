@@ -164,6 +164,7 @@ function login_status_form_mobile($userdata) {
 
 function login_Status_form($userdata) {
 	$pp = base_url('assetsfront/images/background/slide-1.jpg');
+  $profile_name = @(strlen($userdata['namefront']) > 10) ? substr($userdata['namefront'], 0, 20) : '';
 	if(count(@$userdata['UserId']) > 0) {
 
     $html = '<li class="dropdown hidden-mob">
@@ -258,17 +259,17 @@ function login_Status_form($userdata) {
              <img src="'.@$pp.'" alt="" title="profile">
           </span>
           <div class="profile-name">
-             '.@$userdata['namefront'].'
+             '.$profile_name.'
              <span class="fa fa-angle-down"></span>
           </div>
        </a>
        <ul class="dropdown-menu dropdown-profile">
           <li class="clearfix">
              <a href="'.site_url('akun/dasbor').'" class="clearfix">
-                <!-- <div class="content-profile col-md-6">
-                   <img src="'.base_url('assetsfront/images/background/slide-1.jpg').'" alt="" title="profile">
-                </div> -->
-                <p class="col-md-12">'.$userdata['namefront'].'<span>'.$userdata['emailfront'].'</span></p>
+                <div class="content-profile col-md-6">
+                   <img src="'.$pp.'" alt="" title="profile">
+                </div>
+                <p class="col-md-6">'.$profile_name.'<span>'.$userdata['emailfront'].'</span></p>
              </a>
           </li>
           <li>
