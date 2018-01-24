@@ -1,4 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); 
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
 if(!isset($_SESSION)) 
 { 
     session_start(); 
@@ -99,7 +102,7 @@ $tokenMetadata = $oAuth2Client->debugToken($accessToken);
             }
             $user = $response->getGraphUser();
             // end
-            
+
  			// jika email si pengguna facebook sudah pernah diregisterkan sebelumnya
 
             // omni Oauth login
