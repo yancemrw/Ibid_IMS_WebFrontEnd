@@ -7,28 +7,30 @@
       <div class="tab-content">
          <div role="tabpanel" class="tab-pane search-transport active" id="tab-mobile-1">
             <form class="form-inline clearfix">
-            <div class="form-group clearfix">
-              <select id="ItemId" class="select-custom form-control">
-                <?php foreach($itemType as $row){ ?>
-                <option value="<?php echo $row['ItemId']; ?>"><?php echo $row['ItemName']; ?></option>
-                <?php } ?>
-              </select>
-            </div>
-            <div id="thisSearchBrand" class="form-group clearfix">
-               <div class="form-group clearfix">
-                 <select class="select-custom form-control">
-                   <option>Merk</option>
-                 </select>
-               </div>
-               <div class="form-group clearfix">
-                 <select class="select-custom form-control">
-                   <option>Seri</option>
-                 </select>
-               </div>
-            </div>
-            <div class="form-group">
-              <button class="btn btn-lg btn-green btn-search">Cari</button>
-            </div>
+
+				<div class="form-group clearfix">
+				  <select id="ItemId" class="select-custom form-control">
+					 <?php foreach($itemType as $row){ ?>
+					 <option value="<?php echo $row['ItemId']; ?>"><?php echo $row['ItemName']; ?></option>
+					 <?php } ?>
+				  </select>
+				</div>
+				<div id="thisSearchBrand" class="form-group clearfix">
+					<div class="form-group clearfix">
+					  <select class="select-custom form-control">
+						 <option>Merk</option>
+					  </select>
+					</div>
+					<div class="form-group clearfix">
+					  <select class="select-custom form-control">
+						 <option>Seri</option>
+					  </select>
+					</div>
+				</div>
+				<div class="form-group">
+				  <button class="btn btn-lg btn-green btn-search">Cari</button>
+				</div>
+
             </form>
          </div>
          <div role="tabpanel" class="tab-pane" id="tab-mobile-2">
@@ -408,25 +410,26 @@ $(function(){
             });
         }
         
-    });
-   
-   $('#ItemId').change(function(){
-      thisVal = $(this).val();
-      $.ajax({
-         url : '<?php echo linkservice('stock') ."item/add/Getsearchfront"; ?>',
-         data : {
-            id : thisVal
-         },
-         // crossDomain : true,
-         // async : false,
-         success : function(ret) {
-            $('#thisSearchBrand').html(ret[0]);
-         }
-         // error : function(e) {
-            // callback({err:e.statusText});
-         // }
-      });
-   });
-   $('#ItemId').change();
+    }); 
+	
+	$('#ItemId').change(function(){
+		thisVal = $(this).val();
+		$.ajax({
+			url : '<?php echo linkservice('stock') ."item/add/Getsearchfront"; ?>',
+			data : {
+				id : thisVal
+			},
+			// crossDomain : true,
+			// async : false,
+			success : function(ret) {
+				$('#thisSearchBrand').html(ret[0]);
+			}
+			// error : function(e) {
+				// callback({err:e.statusText});
+			// }
+		});
+	});
+	$('#ItemId').change();
+
 });
 </script>

@@ -30,7 +30,7 @@ class Dasbor extends CI_Controller {
 
 			// ubah date format
 			$split = explode('-', $generate->users->Birthdate);
-			$generate->users->Birthdate = $split[2].'/'.$split[1].'/'.$split[0];
+			$generate->users->Birthdate = @$generate->users->Birthdate != "" ? (@$split[2].'/'.@$split[1].'/'.@$split[0]) : '';
 
 			$url = linkservice('master')."bank/get";
 			$method = 'GET';

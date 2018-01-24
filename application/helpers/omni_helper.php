@@ -42,7 +42,7 @@ function facebook()
     // $loginUrl = $helper->getLoginUrl('http://localhost:8888/ibiddevelopment/ibiddevwebapp/ibidadmsuser/ibid_webapp/index.php/omni/facebook/callback/index', $permissions); 
     // $loginUrl = $helper->getLoginUrl('http://localhost:8888/ibiddevelopment/admsui/Ibid_ADMS_WebBackend/index.php/omni/facebook/callback/index', $permissions);
     // $loginUrl = $helper->getLoginUrl('http://localhost:55/02.JOB/ATS/IBID/Ibid_ADMS_WebBackend/index.php/omni/facebook/callback/index', $permissions);
-    $loginUrl = $helper->getLoginUrl('http://ibidadmsdevwebfront.azurewebsites.net/index.php/omni/facebook/callback/index', $permissions);
+    $loginUrl = $helper->getLoginUrl('http://alpha.ibid.astra.co.id/index.php/omni/facebook/callback/index', $permissions);
 
       // print_r(expression)
     return htmlspecialchars($loginUrl); 

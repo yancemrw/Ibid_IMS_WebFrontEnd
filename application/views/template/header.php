@@ -226,8 +226,8 @@
 
          <?php if($this->uri->segment(1) == "" || $this->uri->segment(1) == "front") { ?> 
             <div class="hero-overlay hero-overlay-home">
-               <?php echo $content->tagline->Title; ?>
-               <?php echo $content->tagline->Content; ?>
+               <?php echo @$content->tagline->Title; ?>
+               <?php echo @$content->tagline->Content; ?>
             </div>
          </header>
          <?php } ?>
