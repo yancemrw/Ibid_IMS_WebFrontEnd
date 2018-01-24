@@ -4,12 +4,15 @@
          <div class="col-md-12">
             <h2>Jadwal Lelang <span class="info-schedule"><i>i</i> Klik Kode Kota untuk Detail Lelang</span></h2>
             <div class="filter-schedule">
-               <form class="form-inline">
+               <form id="thisFormCalendar" class="form-inline">
                   <div class="form-group">
                      <label>Kota</label>
-                     <select class="select-custom form-control">
-                        <option value ="" >Bandung</option>
-                        <option value ="" >Jakarta</option>
+                     <select id="thisCabang" class="select-custom form-control">
+                        <!-- option value ="" >Bandung</option>
+                        <option value ="" >Jakarta</option -->
+						<?php foreach($cabang as $row){ ?>
+						<option value="<?php echo $row['CompanyId']; ?>" ><?php echo substr($row['CompanyName'],4); ?></option>
+						<?php } ?>
                      </select>
                   </div>
                   <div class="form-group">
@@ -18,30 +21,30 @@
                         <label class="car-type ">
                            <div class="ic ic-Mobil">
                            </div>
-                           <input type="checkbox" class="checkbox-custom cursor-pointer" />
+                           <input type="checkbox" class="checkbox-custom cursor-pointer" name="cbCar" id="cbCar" value="1" />
                            <span>Mobil</span>
                         </label>
                         <label class="motorcycle-type">
                            <div class=" ic ic-Motor">
                            </div>
-                           <input type="checkbox" class="checkbox-custom cursor-pointer" />
+                           <input type="checkbox" class="checkbox-custom cursor-pointer" name="cbMtr" id="cbMtr" value="1" />
                            <span>Motor</span>
                         </label>
                         <label class="hve-type">
                            <div class=" ic ic-HVE">
                            </div>
-                           <input type="checkbox" class="checkbox-custom cursor-pointer" />
+                           <input type="checkbox" class="checkbox-custom cursor-pointer" name="cbHve" id="cbHve" value="1" />
                            <span>HVE</span>
                         </label>
                         <label class="gadget-type">
                            <div class=" ic ic-Gadget">
                            </div>
-                           <input type="checkbox" class="checkbox-custom cursor-pointer" />
+                           <input type="checkbox" class="checkbox-custom cursor-pointer" name="cbGad" id="cbGad" value="1" />
                            <span>Gadget</span>
                         </label>
                      </div>
                   </div>
-                  <button class="btn btn-green">Cari</button>
+                  <button type="button" id="btnCariJadwal" class="btn btn-green">Cari</button>
                </form>
             </div>
             <div id="calendar" class="action-schedule"></div>
@@ -101,6 +104,83 @@
    </div>
 </div>
 <script>
+function getDates(startDate, endDate) {
+   var now = startDate,
+   dates = [];
+
+   while (now.format('YYYY-MM-DD') <= endDate.format('YYYY-MM-DD')) {
+      dates.push(now.format('YYYY-MM-DD'));
+      now.add('days', 1);
+   }
+   return dates;
+}
+function getCalendar(){
+	$('#calendar').fullCalendar({
+      header: {
+         left: 'prev,next today',
+         center: 'title',
+         right: 'month,agendaWeek,agendaDay,listMonth'
+      },
+      height:'auto',
+      defaultDate: '<?php echo date('Y-m-d'); ?>', //'2017-11-12',
+      navLinks: true, // can click day/week names to navigate views
+      businessHours: true, // display business hours
+      editable: false,
+      // events: even_cal,
+      dayRender: function(date, cell) {
+         var parseDate = moment(cell.attr("data-date")).format('dddd');
+         $("td.fc-day-top[data-date='" + cell.attr("data-date") + "']").append("<span>" + parseDate + "</span>");
+         $("td.fc-day-top[data-date='" + cell.attr("data-date") + "']").append("<a class='link cursor-pointer thisDate' data-toggle='modal' data-target='#modal-jadwal' thisDate='" + cell.attr("data-date") + "'>Selengkapnya</a>");
+         $("td.fc-day.fc-widget-content[data-date='" + cell.attr("data-date") + "']").append("<a class='link cursor-pointer' data-toggle='modal' data-target='#modal-jadwal'>Selengkapnya</a>")
+      },
+      eventRender: function(event, element) {
+         element.attr('title', event.tip);
+         var dataToFind = moment(event.start).format('YYYY-MM-DD');
+         $("td[data-date='" + dataToFind + "']").append(element);
+      },
+      eventAfterAllRender: function(view) {
+         $("td.fc-event-container").find("a").remove()
+      },
+      events: function(start, end, timezone, callback) {
+        $.ajax({
+          url: '<?php echo linkservice('FRONTEND') ."auction/Get_schedule"; ?>',
+          dataType: 'json',
+          data: {
+            start: start.unix(),
+            end: end.unix(),
+            thisCabang: $('#thisCabang').val(),
+            cbCar: $('#cbCar:checked').val(),
+            cbMtr: $('#cbMtr:checked').val(),
+            cbHve: $('#cbHve:checked').val(),
+            cbGad: $('#cbGad:checked').val(),
+          },
+          success: function(doc) {
+            var events = [];
+            for(var i=0; i<doc.length; i++){
+              // console.log(doc[i]);
+              events.push({
+                title: doc[i].title,
+                start: doc[i].start,
+                end: doc[i].end,
+                allDay: false,
+                className: doc[i].className,
+              });
+            }
+            callback(events);
+          },
+		  beforeSend: function(){
+			  // console.log('masuk sini');
+		  },
+		  complete: function(){
+			  // console.log('masuk sana');
+		  },
+        });
+      }
+   });
+
+}
+
+
 $(document).ready(function() {
    var even_cal = [{ 
       title: 'JKT T',
@@ -225,71 +305,7 @@ $(document).ready(function() {
       className: 'gadget-event',
    }];
    
-   $('#calendar').fullCalendar({
-      header: {
-         left: 'prev,next today',
-         center: 'title',
-         right: 'month,agendaWeek,agendaDay,listMonth'
-      },
-      height:'auto',
-      defaultDate: '<?php echo date('Y-m-d'); ?>', //'2017-11-12',
-      navLinks: true, // can click day/week names to navigate views
-      businessHours: true, // display business hours
-      editable: false,
-      // events: even_cal,
-      dayRender: function(date, cell) {
-         var parseDate = moment(cell.attr("data-date")).format('dddd');
-         $("td.fc-day-top[data-date='" + cell.attr("data-date") + "']").append("<span>" + parseDate + "</span>");
-         $("td.fc-day-top[data-date='" + cell.attr("data-date") + "']").append("<a class='link cursor-pointer thisDate' data-toggle='modal' data-target='#modal-jadwal' thisDate='" + cell.attr("data-date") + "'>Selengkapnya</a>");
-         $("td.fc-day.fc-widget-content[data-date='" + cell.attr("data-date") + "']").append("<a class='link cursor-pointer' data-toggle='modal' data-target='#modal-jadwal'>Selengkapnya</a>")
-      },
-      eventRender: function(event, element) {
-         element.attr('title', event.tip);
-         var dataToFind = moment(event.start).format('YYYY-MM-DD');
-         $("td[data-date='" + dataToFind + "']").append(element);
-      },
-      eventAfterAllRender: function(view) {
-         $("td.fc-event-container").find("a").remove()
-      },
-      events: function(start, end, timezone, callback) {
-        $.ajax({
-          url: '<?php echo linkservice('FRONTEND') ."auction/Get_schedule"; ?>',
-          dataType: 'json',
-          data: {
-            start: start.unix(),
-            end: end.unix(),
-          },
-          success: function(doc) {
-            var events = [];
-            for(var i=0; i<doc.length; i++){
-              console.log(doc[i]);
-              events.push({
-                title: doc[i].title,
-                start: doc[i].start,
-                end: doc[i].end,
-                allDay: false,
-                className: doc[i].className,
-              });
-            }
-            callback(events);
-          }
-        });
-      }
-   });
-});
    
-function getDates(startDate, endDate) {
-   var now = startDate,
-   dates = [];
-
-   while (now.format('YYYY-MM-DD') <= endDate.format('YYYY-MM-DD')) {
-      dates.push(now.format('YYYY-MM-DD'));
-      now.add('days', 1);
-   }
-   return dates;
-}
-   
-$(document).ready(function() {
    $("nav").sticky({
       topSpacing: 0
    });
@@ -300,9 +316,20 @@ $(document).ready(function() {
    
    $('.thisDate').click(function(){
 	   thisDate = $(this).attr('thisDate');
-	   console.log(thisDate);
+	   // console.log(thisDate);
 	   $('#myModalLabel').html(thisDate);
 	   // return false;
    });
+   
+   $('#btnCariJadwal').click(function(){
+	   $('#calendar').fullCalendar('destroy');
+	   getCalendar();
+	   // alert('masuk');
+	   // $('#calendar').fullCalendar('removeEvents',event._id);
+	   // $('#calendar').fullCalendar( 'renderEvent' );
+	   // getCalendar();
+   });
+   
+   getCalendar();
 });
 </script>

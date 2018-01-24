@@ -10,6 +10,25 @@ class Get_schedule extends CI_Controller {
 	}
 
 	public function index() {
+		// http://ibid-ams-schedule.stagingapps.net/api/schedulelist?company_id=2&startdate=2017-01-03&enddate=2017-12-22&
+		// print_r($_REQUEST);
+		$startdate = date('Y-m-d', @$_REQUEST['start']);
+		$enddate = date('Y-m-d', @$_REQUEST['end']);
+		$company_id = @$_REQUEST['thisCabang'];
+		
+		$cbCar = @$_REQUEST['cbCar'];
+		$cbMtr = @$_REQUEST['cbMtr'];
+		$cbHve = @$_REQUEST['cbHve'];
+		$cbGad = @$_REQUEST['cbGad'];
+		
+		if ($cbCar == '' && $cbMtr == '' && $cbHve == '' && $cbGad == '' ){
+			$cbCar = 1;
+			$cbMtr = 1;
+			$cbHve = 1;
+			$cbGad = 1;
+		}
+		
+		
 		// Get unit
 		$lunit = 'http://ibidadmsdevservicemasterdata.azurewebsites.net/index.php/item/get';
 		$cunit = admsCurl($lunit, array(), 'GET');
@@ -24,7 +43,8 @@ class Get_schedule extends CI_Controller {
 		}
 
 		// Get schedule list
-		$link2 = 'http://ibid-ams-schedule.stagingapps.net/api/schedulelist?untilnextmonth=1';
+		// $link2 = 'http://ibid-ams-schedule.stagingapps.net/api/schedulelist?untilnextmonth=1';
+		$link2 = 'http://ibid-ams-schedule.stagingapps.net/api/schedulelist?company_id='.$company_id.'&startdate='.$startdate.'&enddate='.$enddate;
 		$schedule = amsCurl($link2, '', 'GET');
 		$data_schedule = curlGenerate($schedule);
 		
@@ -40,22 +60,22 @@ class Get_schedule extends CI_Controller {
 				'allDay' => false,
 			);
 			
-			if ($values->ItemName == 'MOTOR'){
-				$evenCall['className'] = 'motor-event';
-				if (count(@$eventMotor) < 4)
-					$eventMotor[] = $evenCall;
-			}
-			else if ($values->ItemName == 'MOBIL'){
+			if ($values->ItemName == 'MOBIL' && $cbCar == 1){
 				$evenCall['className'] = 'car-event';
 				if (count(@$eventMobil) < 4)
 					$eventMobil[] = $evenCall;
 			}
-			else if ($values->ItemName == 'HVE'){
+			if ($values->ItemName == 'MOTOR' && $cbMtr == 1){
+				$evenCall['className'] = 'motor-event';
+				if (count(@$eventMotor) < 4)
+					$eventMotor[] = $evenCall;
+			}
+			if ($values->ItemName == 'HVE' && $cbHve == 1){
 				$evenCall['className'] = 'hve-event';
 				if (count(@$eventHve) < 4)
 					$eventHve[] = $evenCall;
 			}
-			else if ($values->ItemName == 'GADGET'){
+			if ($values->ItemName == 'GADGET' && $cbGad == 1){
 				$evenCall['className'] = 'gadget-event';
 				if (count(@$eventGadget) < 4)
 					$eventGadget[] = $evenCall;
