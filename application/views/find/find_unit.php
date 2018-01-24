@@ -4,7 +4,7 @@
          <div class="col-md-12">
             <form>
                <div class="form-group search-product">
-                  <input type="text" class="form-control" placeholder="Cari Berdasarkan Merk, Model, atau Kata Kunci, Contoh : “Acura Sedan”">
+                  <input type="text" class="form-control" placeholder="Cari berdasarkan merek, tipe, atau kata kunci lain, contoh: acura sedan">
                   <i class="fa fa-search"></i>
                </div>
             </form>
