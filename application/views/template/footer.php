@@ -29,7 +29,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><i class="ic ic-Close"></i><span class="sr-only">Close</span></button>
-        <h3 class="modal-title" id="lineModalLabel">Log in</h3>
+        <h3 class="modal-title" id="lineModalLabel">Login</h3>
       </div>
       <div class="modal-body clearfix">
         <div class="col-md-6 col-sm-6">
@@ -49,14 +49,14 @@
               <div class="inis"><button class="btn btn-green" id="btn-loginx">Masuk</button></div>
               <div class="none"><a href="<?php echo site_url('register'); ?>">Belum punya akun</a></div>
             </div>
-            <span class="or">Or</span>
+            <span class="or">Atau</span>
           </form>
         </div>
         <div class="col-md-6 col-sm-6">
           <div class="login-socialmedia">
-            <a href="<?php echo facebook(); ?>" class="login-facebook"><i class="ic ic-facebook"></i> Masuk melalui facebook</a>
-            <a href="<?php echo site_url('omni/twitter/twitter');?>" class="login-twitter"><i class="ic ic-twitter"></i> Masuk melalui twitter</a>
-            <a href="<?php echo google(); ?>" class="login-google"><i class="ic ic-Google"></i> Masuk melalui google</a>
+            <a href="<?php echo facebook(); ?>" class="login-facebook"><i class="ic ic-facebook"></i> Masuk melalui Facebook</a>
+            <a href="<?php echo site_url('omni/twitter/twitter');?>" class="login-twitter"><i class="ic ic-twitter"></i> Masuk melalui Twitter</a>
+            <a href="<?php echo google(); ?>" class="login-google"><i class="ic ic-Google"></i> Masuk melalui Google</a>
             <a href="<?php echo linkedin(); ?>" class="login-linkedin"><i class="ic ic-linkedin"></i> Masuk melalui Linkedin</a>
           </div>
         </div>
