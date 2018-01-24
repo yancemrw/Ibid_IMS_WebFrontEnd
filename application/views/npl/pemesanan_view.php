@@ -31,7 +31,8 @@
                 <h2>Beli NPL</h2> 
 
                 <div class="booking-schedule buying-npl">
-                    <img src="<?php echo base_url('assetsfront/images/icon/favorit-blank-slate.png'); ?>" width="100%">
+                    <!--img src="<?php echo base_url('assetsfront/images/icon/favorit-blank-slate.png'); ?>" width="100%"-->
+                    <img src="<?php echo base_url('assetsfront/images/background/coming-soon.png'); ?>" width="100%" />
                     <center><h2>Segera Hadir</h2></center>
                 </div>
             </div>

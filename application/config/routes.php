@@ -72,15 +72,16 @@ $route['notification'] = 'akun/notification';
 $route['transaction'] = 'akun/transaction';
 $route['npl_dashboard'] = 'akun/npl_manage';
 $route['favorite'] = 'akun/whislist';
-$route['basic_price'] = 'akun/basic_price';
+$route['basic-price'] = 'akun/basic_price';
 
 // menu cari kendaraan
 $route['cari-lelang'] = 'find/find_unit';
 $route['detail-lelang'] = 'find/find_details';
+$route['cari-lelang-iscomming'] = 'find/find_unit/iscomming';
 
 // menu jadwal lelang
 $route['jadwal-lelang'] = 'auction/auction_date';
-$route['jadwal-lelang-iscoming'] = 'auction/auction_date/iscoming';
+$route['jadwal-lelang-iscomming'] = 'auction/auction_date/iscomming';
 
 // menu auction
 $route['live-auction'] = 'auction/live';
