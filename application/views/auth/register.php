@@ -8,7 +8,7 @@
                 <div class="form-register">
                     <h2>Daftar</h2>
                     <form action="<?php echo site_url('register'); ?>" id="form-reg" method="post" data-provide="validation">
-                        <h3>Buat Akun</h3>
+                        <h3>Buat Akun Baru</h3>
                         <div class="form-group floating-label">
                             <input type="text" id="name" name="name" class="form-control input-custom" 
                                     oninvalid="this.setCustomValidity('Nama tidak boleh kosong')" 
@@ -41,7 +41,7 @@
                             <input type="text" id="idcard" name="idcard" class="form-control" />
                             <label class="label-schedule">Kartu Anggota</label>
                             <div class="help-info">
-                                <i class="fa fa-info"></i> Kartu anggota yang dimiliki oleh pnegguna IBID yang telah terdaftar sebelumnya
+                                <i class="fa fa-info"></i> Hanya diisi bila memiliki kartu anggota IBID
                             </div>
                         </div>
                         <div class="g-recaptcha recaptcha" id="idrecaptcha" required></div>
@@ -54,10 +54,10 @@
             </div>
             <div class="col-md-8 col-sm-6 text-center pull-left">
                 <div class="login-socialmedia register-socialmedia">
-                    <p>Atau masuk melalui</p>
-                    <a href="<?php echo facebook(); ?>" class="login-facebook"><span class="ic ic-facebook"></span>facebook</a>
-                    <a href="<?php echo site_url('omni/twitter/twitter');?>" class="login-twitter"><span class="ic ic-twitter"></span>twitter</a>
-                    <a href="<?php echo google(); ?>" class="login-google"><span class="ic ic-Google"></span>google</a>
+                    <p>Atau registrasi melalui</p>
+                    <a href="<?php echo facebook(); ?>" class="login-facebook"><span class="ic ic-facebook"></span>Facebook</a>
+                    <a href="<?php echo site_url('omni/twitter/twitter');?>" class="login-twitter"><span class="ic ic-twitter"></span>Twitter</a>
+                    <a href="<?php echo google(); ?>" class="login-google"><span class="ic ic-Google"></span>Google</a>
                     <a href="<?php echo linkedin(); ?>" class="login-linkedin"><span class="ic ic-linkedin"></span>Linkedin</a>
                 </div>
             </div>

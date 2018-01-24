@@ -43,7 +43,7 @@
          </div>
          <div class="col-md-9 col-sm-9 am-right">
             <div class="main-management">
-               <h2>Pengaturan</h2>
+               <h2>Pengaturan Akun</h2>
                <div class="setting-profile">
                <form class="clearfix" action="<?php echo site_url('akun/dasbor'); ?>" id="form-dashboard" method="post" data-provide="validation">
                   <input type="hidden" name="UserId" value="<?php echo $content->users->UserId; ?>" />
@@ -60,7 +60,7 @@
                   </div>
                   <div class="row">
                      <div class="col-md-6">
-                        <h4>Akun Pengguna</h4>
+                        <h4>Biodata Diri</h4>
                         <div class="form-group floating-label">
                            <input type="text" name="upd_name" id="upd_name" class="form-control floating-handle input-custom" 
                                     value="<?php echo @$content->users->first_name.' '.$content->users->last_name; ?>" 
@@ -75,7 +75,7 @@
                         </div>
                         <div class="form-group floating-label">
                            <input type="text" name="upd_phone" id="upd_phone" class="form-control floating-handle input-custom only-number" 
-                                    value="<?php echo @$content->users->Phone; ?>" 
+                                    value="<?php echo @$content->users->Phone; ?>" title="Pastikan nomor dapat menerima SMS" 
                                     oninvalid="this.setCustomValidity('No Telepon tidak boleh kosong')" oninput="setCustomValidity('')" required />
                            <label class="label-schedule">No Telepon <span class="font-red">*</span></label>
                         </div>
@@ -92,7 +92,7 @@
                         </div>
                         <div class="form-group floating-label">
                            <input type="text" name="idcard" id="idcard" class="border-radius-none form-control floating-handle" 
-                                    value="<?php echo @$content->users->MemberCardTMP; ?>" />
+                                    value="<?php echo @$content->users->MemberCardTMP; ?>" title="Hanya diisi bila memiliki kartu anggota IBID" />
                            <label class="label-schedule">Nomor Kartu Anggota</label>
                            <div class="help-info">
                               <i class="fa fa-info"></i> Kartu anggota yang dimiliki oleh pnegguna IBID yang telah terdaftar sebelumnya
@@ -157,7 +157,7 @@
                         </div>
                         <div class="form-group floating-label">
                            <input type="text" name="okup" class="border-radius-none form-control floating-handle" value="<?php echo @$content->users->Occupation; ?>">
-                           <label class="label-schedule">Okupasi</label>
+                           <label class="label-schedule">Pekerjaan</label>
                         </div>
                      </div>
                   </div>
