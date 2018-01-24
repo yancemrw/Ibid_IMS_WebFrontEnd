@@ -102,6 +102,18 @@ class Pembelian extends CI_Controller {
 		template($view, $data);
 	}
 
+	public function beli()
+	{
+		$userdata = $this->session->userdata('userdata');
+		$data['form_auth_mobile'] = login_status_form_mobile($userdata);
+		$view 			= 'npl/pemesanan_view_base';
+		$data['header_white']	= "header-white";
+		$data['userdata']		= $userdata;
+		$data['form_auth']		= login_Status_form($userdata);
+
+		template($view, $data);
+	}
+
 }
 
 /* End of file Lists.php */
