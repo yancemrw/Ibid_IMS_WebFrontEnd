@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); 
- 
+
 
 // meload omni facebook untuk keperluan access token
 require_once  APPPATH.'../omni/facebook/php-sdk-v4/src/Facebook/autoload.php';
@@ -13,51 +13,52 @@ Class Callback extends CI_Controller
         $this->AccessApi = new AccessApi(array_merge($this->config->item('Oauth'),array('username' => 'rendhy.wijayanto@sera.astra.co.id')));
     }
 
-	public function index()
-	{ 
-		session_start();
+    public function index()
+    { 
+      session_start();
 
-		$fb = new Facebook\Facebook([ 
+      $fb = new Facebook\Facebook([ 
           'app_id' => $this->config->item('fb')['app_id'], // Replace {app-id} with your app id
           'app_secret' => $this->config->item('fb')['app_secret'],
           'default_graph_version' => 'v2.2', 
-          ]);
+          'persistent_data_handler'=>'session'
+      ]);
 
-		$helper = $fb->getRedirectLoginHelper();
+      $helper = $fb->getRedirectLoginHelper();
 
         // Trick below will avoid "Cross-site request forgery validation failed. Required param "state" missing." from Facebook
-		$_SESSION['FBRLH_state'] = @$_REQUEST['state']; 
+      $_SESSION['FBRLH_state'] = @$_REQUEST['state']; 
 
-		try {
-			$accessToken = $helper->getAccessToken();
-		} catch(Facebook\Exceptions\FacebookResponseException $e) {
+      try {
+         $accessToken = $helper->getAccessToken();
+     } catch(Facebook\Exceptions\FacebookResponseException $e) {
               // When Graph returns an error
-			echo $pesan = 'Graph returned an error: ' . $e->getMessage();
-			exit;
-		} catch(Facebook\Exceptions\FacebookSDKException $e) {
+         echo $pesan = 'Graph returned an error: ' . $e->getMessage();
+         exit;
+     } catch(Facebook\Exceptions\FacebookSDKException $e) {
               // When validation fails or other local issues
-			echo $pesan = 'Facebook SDK returned an error: ' . $e->getMessage();
-			exit;
-		}
+         echo $pesan = 'Facebook SDK returned an error: ' . $e->getMessage();
+         exit;
+     }
 
-		if (! isset($accessToken)) {
-			if ($helper->getError()) {
-				header('HTTP/1.0 401 Unauthorized');
-				echo "Error: " . $helper->getError() . "\n";
-				echo "Error Code: " . $helper->getErrorCode() . "\n";
-				echo "Error Reason: " . $helper->getErrorReason() . "\n";
-				echo "Error Description: " . $helper->getErrorDescription() . "\n";
-			} else {
-				header('HTTP/1.0 400 Bad Request');
-				echo 'Bad request';
-			} 
-			exit;
-		} 
+     if (! isset($accessToken)) {
+         if ($helper->getError()) {
+            header('HTTP/1.0 401 Unauthorized');
+            echo "Error: " . $helper->getError() . "\n";
+            echo "Error Code: " . $helper->getErrorCode() . "\n";
+            echo "Error Reason: " . $helper->getErrorReason() . "\n";
+            echo "Error Description: " . $helper->getErrorDescription() . "\n";
+        } else {
+            header('HTTP/1.0 400 Bad Request');
+            echo 'Bad request';
+        } 
+        exit;
+    } 
                     // The OAuth 2.0 client handler helps us manage access tokens
-		$oAuth2Client = $fb->getOAuth2Client();
+    $oAuth2Client = $fb->getOAuth2Client();
 
                     // Get the access token metadata from /debug_token
-		$tokenMetadata = $oAuth2Client->debugToken($accessToken); 
+    $tokenMetadata = $oAuth2Client->debugToken($accessToken); 
 
             // Validation (these will throw FacebookSDKException's when they fail)
             $tokenMetadata->validateAppId($this->config->item('fb')['app_id']); // Replace {app-id} with your app id
@@ -95,7 +96,7 @@ Class Callback extends CI_Controller
             }
             $user = $response->getGraphUser();
             // end
- 		
+            
  			// jika email si pengguna facebook sudah pernah diregisterkan sebelumnya
 
             // omni Oauth login
