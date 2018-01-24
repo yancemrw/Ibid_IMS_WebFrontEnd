@@ -33,7 +33,7 @@ function template($view = '', $data = '') {
 }
 
 function login_status_form_mobile($userdata) {
-  $pp = base_url('assetsfront/images/background/slide-1.jpg');
+  $pp = base_url('assetsfront/images/icon/ic_avatar.png');
   if(count(@$userdata['UserId']) > 0) {
     $html = '<ul class="user-nav clearfix">
                 <li class="dropdown">
@@ -163,7 +163,7 @@ function login_status_form_mobile($userdata) {
 }
 
 function login_Status_form($userdata) {
-	$pp = base_url('assetsfront/images/background/slide-1.jpg');
+	$pp = base_url('assetsfront/images/icon/ic_avatar.png');
   $profile_name = @(strlen($userdata['namefront']) > 10) ? substr($userdata['namefront'], 0, 20) : '';
 	if(count(@$userdata['UserId']) > 0) {
 
