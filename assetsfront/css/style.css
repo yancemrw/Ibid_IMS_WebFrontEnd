@@ -5685,7 +5685,7 @@ a.toggle-aside {
 }
 
 .nav-procedure.stick {
-    width: 75%;
+    width: 74%;
     margin: auto;
     display: block;
     top: 200px !important;
@@ -5707,7 +5707,7 @@ a.toggle-aside {
     font-family: "OpenSansBold", helvetica, Sans-serif;
     font-size: 24px;
     color: #fff;
-    margin-right: 83px;
+    margin-right: 50px;
     z-index: 2
 }
 

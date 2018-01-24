@@ -80,6 +80,7 @@ $route['detail-lelang'] = 'find/find_details';
 
 // menu jadwal lelang
 $route['jadwal-lelang'] = 'auction/auction_date';
+$route['jadwal-lelang-iscoming'] = 'auction/auction_date/iscoming';
 
 // menu auction
 $route['live-auction'] = 'auction/live';
