@@ -13,19 +13,19 @@
                             <input type="text" id="name" name="name" class="form-control input-custom" 
                                     oninvalid="this.setCustomValidity('Nama tidak boleh kosong')" 
                                     oninput="setCustomValidity('')" required />
-                            <label class="label-schedule">Nama <span class="font-red">*</span></label>
+                            <label class="label-schedule">Nama *</label>
                         </div>
                         <div class="form-group floating-label">
                             <input type="email" id="email" name="email" class="form-control input-custom" 
                                     oninvalid="this.setCustomValidity('Email tidak boleh kosong')"
                                     oninput="setCustomValidity('')" required />
-                            <label class="label-schedule">Email <span class="font-red">*</span></label>
+                            <label class="label-schedule">Email *</label>
                         </div>
                         <div class="form-group floating-label">
                             <input type="password" id="pass" name="pass" class="form-control input-custom" 
                                     oninvalid="this.setCustomValidity('Kata sandi tidak boleh kosong')" 
                                     oninput="setCustomValidity('')" required />
-                            <label class="label-schedule">Kata Sandi <span class="font-red">*</span></label>
+                            <label class="label-schedule">Kata Sandi *</label>
                             <div id="strength-desc" class="alerts-strength"></div>
                             <div id="strength-gauge" class="strength0"></div>
                             <div class="help-info" id="type-pass"></div>
@@ -34,7 +34,7 @@
                             <input type="password" id="repass" name="repass" class="form-control input-custom" 
                                     oninvalid="this.setCustomValidity('Ulangi sandi tidak boleh kosong')" 
                                     oninput="setCustomValidity('')" required />
-                            <label class="label-schedule">Ulangi Sandi <span class="font-red">*</span></label>
+                            <label class="label-schedule">Ulangi Sandi *</label>
                             <div class="help-info" id="type-repass"></div>
                         </div>
                         <div class="form-group floating-label">
