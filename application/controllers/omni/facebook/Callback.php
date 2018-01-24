@@ -31,6 +31,8 @@ Class Callback extends CI_Controller
       ]);
 
       $helper = $fb->getRedirectLoginHelper();
+       // $helper = $fb->getRedirectLoginHelper(); 
+       if (isset($_GET['state'])) { $helper->getPersistentDataHandler()->set('state', $_GET['state']); }
 
         // Trick below will avoid "Cross-site request forgery validation failed. Required param "state" missing." from Facebook
       $_SESSION['FBRLH_state'] = @$_REQUEST['state']; 
