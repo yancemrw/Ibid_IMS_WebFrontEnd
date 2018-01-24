@@ -9,7 +9,7 @@
             <form class="form-inline clearfix">
                <div class="form-group clearfix">
                   <select class="select-custom form-control">
-                     <option>Brand</option>
+                     <option>Merek</option>
                   </select>
                </div>
                <div class="form-group clearfix">
@@ -65,7 +65,7 @@
    <div class="container-fluid">
       <div class="row">
          <div class="col-md-12">
-            <h2 class="title">Kenapa IBID</h2>
+            <h2 class="title">Kenapa IBID?</h2>
          </div>
          <div class="col-md-12">
             <div class="why-ibid">
@@ -191,7 +191,7 @@
       <div class="row">
          <div class="overlay-live-auction">
             <h2>Live Auction</h2>
-            <p>Berhalangan hadir ke lokasi lelang? <span>Dengan opsi Live Auction Anda dapat mengikuti lelang dari mana saja cukup melalui gadget secara real time.</span></p>
+            <p>Berhalangan hadir dilokasi lelang? <span>Manfaatkan opsi Live Auction untuk mengikuti lelang dari mana saja melalui gadget secara real time.</span></p>
             <button class="btn btn-lg btn-outline">Informasi Detail</button>
          </div>
       </div>
@@ -206,7 +206,7 @@
          <div class="tab-lelang">
             <ul class="nav nav-tabs" role="tablist">
                <li role="presentation" class="active"><a href="#tab-lelang-1" aria-controls="tab-lelang-1" role="tab" data-toggle="tab">Cara Ikut Lelang</a></li>
-               <li role="presentation"><a href="#tab-lelang-2" aria-controls="tab-lelang-2" role="tab" data-toggle="tab">Titip Jual</a></li>
+               <li role="presentation"><a href="#tab-lelang-2" aria-controls="tab-lelang-2" role="tab" data-toggle="tab">Cara Titip Jual</a></li>
             </ul>
             <div class="tab-content clearfix">
                <div role="tabpanel" class="tab-pane active clearfix" id="tab-lelang-1">
@@ -214,7 +214,7 @@
                      <div class="item col-md-2">
                         <div class="box-section">
                            <div class="box-image icn icn-check-jadwal"></div>
-                           <h2>Cek jadwal lelang dan cari kendaraan</h2>
+                           <h2>Cek kendaraan dan cek jadwal lelang</h2>
                         </div>
                      </div>
                      <div class="item col-md-2">
@@ -238,13 +238,13 @@
                      <div class="item col-md-2">
                         <div class="box-section">
                            <div class="box-image icn icn-pelunasan"></div>
-                           <h2>Pelunasan atau Pengambilan Biaya</h2>
+                           <h2>Pelunasan atau Pengambilan deposit</h2>
                         </div>
                      </div>
                      <div class="item col-md-2">
                         <div class="box-section">
                            <div class="box-image icn icn-pengambilan-kendaraan"></div>
-                           <h2>Pengambilan Kendaraan</h2>
+                           <h2>Ambil kendaraan</h2>
                         </div>
                      </div>
                   </div>
@@ -253,19 +253,19 @@
                   <div class="col-md-2">
                      <div class="box-section">
                         <div class="box-image icn icn-regis-login"></div>
-                        <h2>Register/login</h2>
+                        <h2>Register atau login</h2>
                      </div>
                   </div>
                   <div class="col-md-2">
                      <div class="box-section">
                         <div class="box-image icn icn-check-jadwal"></div>
-                        <h2>Daftar Mobil dan Jadwal</h2>
+                        <h2>Daftarkan kendaraan dan pilih jadwal inspeksi</h2>
                      </div>
                   </div>
                   <div class="col-md-2">
                      <div class="box-section">
                         <div class="box-image icn icn-bawa-mobil-dokumen"></div>
-                        <h2>Bawa Mobil dan Dokumen</h2>
+                        <h2>Bawa kendaraan & dokumen ke IBID</h2>
                      </div>
                   </div>
                </div>
