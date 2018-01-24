@@ -99,7 +99,7 @@ function curlGenerate($param, $callback = 'data') {
 		return $json_decode->description;
 	}
 	else if($callback === 'data') {
-		return $json_decode->data;
+		return @$json_decode->data;
 	}
 }
 
