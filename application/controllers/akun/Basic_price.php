@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Entrusted extends CI_Controller {
+class Basic_price extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
@@ -15,17 +15,18 @@ class Entrusted extends CI_Controller {
 
 	public function index() {
 		$data = array(
-			'header_white'	=> "header-white",
-			'userdata'		=> $this->userdata,
-			'title'			=> 'Titip Lelang',
-			'form_auth_mobile' => login_status_form_mobile($this->userdata),
-			'form_auth'		=> login_Status_form($this->userdata)
+			'header_white'		=> "header-white",
+			'userdata'			=> $this->userdata,
+			'title'				=> 'Data Diri',
+			'form_auth_mobile'	=> login_status_form_mobile($this->userdata),
+			'form_auth'			=> login_Status_form($this->userdata)
 		);
-		$view = "auction/entrusted";
+		$data['img_link'] = base_url('assetsfront/images/icon/ic_avatar.png');
+		$view = "akun/basic_price";
 		template($view, $data);
 	}
 
 }
 
-/* End of file Entrusted.php */
-/* Location: ./application/controllers/auction/Entrusted.php */
+/* End of file Basic_price.php */
+/* Location: ./application/controllers/akun/Basic_price.php */

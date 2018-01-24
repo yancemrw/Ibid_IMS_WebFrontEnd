@@ -67,8 +67,12 @@ $route['logout'] = 'auth/logoutCustomer';
 $route['beli-npl'] = 'npl/beli';
 
 // bagian akun
-$route['akun/dasbor'] = 'akun/dasbor';
-$route['akun'] = 'akun/dasbor';
+$route['dashboard'] = 'akun/dasbor';
+$route['notification'] = 'akun/notification';
+$route['transaction'] = 'akun/transaction';
+$route['npl_dashboard'] = 'akun/npl_manage';
+$route['favorite'] = 'akun/whislist';
+$route['basic_price'] = 'akun/basic_price';
 
 // menu cari kendaraan
 $route['cari-lelang'] = 'find/find_unit';

@@ -14,14 +14,30 @@
                   <h3><?php echo @$userdata['namefront']; ?></h3>
                </div>
                <ul>
-                  <li class="acc_notif"><a href="am-notifikasi.html">
+                  <li class="acc_notif">
+                     <a href="<?php echo site_url('notification'); ?>">
                      <span class="ic_menu"><i ></i></span> Notifikasi <span>10</span></a>
                   </li>
-                  <li class="acc_transaction"><a href="am-transaksi.html"> <span class="ic_menu"><i ></i></span> Transaksi</a></li>
-                  <li class="acc_npl"><a href="am-management.html"> <span class="ic_menu"><i ></i></span>  NPL Management</a></li>
-                  <li class="acc_setting active"><a href="<?php echo site_url('akun/dasbor'); ?>"> <span class="ic_menu"><i ></i></span>  Pengaturan</a></li>
-                  <li class="acc_favorite"><a href="am-whislist.html">  <span class="ic_menu"><i ></i></span> Favorit</a></li>
-                  <li class="acc_price"><a href="am-harga-dasar.html">  <span class="ic_menu"><i ></i></span>  Harga Dasar</a></li>
+                  <li class="acc_transaction">
+                     <a href="<?php echo site_url('transaction'); ?>">
+                     <span class="ic_menu"><i ></i></span> Transaksi</a>
+                  </li>
+                  <li class="acc_npl">
+                     <a href="<?php echo site_url('npl_dashboard'); ?>">
+                     <span class="ic_menu"><i ></i></span> NPL Management</a>
+                  </li>
+                  <li class="acc_setting active">
+                     <a href="<?php echo site_url('dashboard'); ?>">
+                     <span class="ic_menu"><i ></i></span> Pengaturan</a>
+                  </li>
+                  <li class="acc_favorite">
+                     <a href="<?php echo site_url('favorite'); ?>">
+                     <span class="ic_menu"><i ></i></span> Favorit</a>
+                  </li>
+                  <li class="acc_price">
+                     <a href="<?php echo site_url('basic_price'); ?>">
+                     <span class="ic_menu"><i ></i></span> Harga Dasar</a>
+                  </li>
                </ul>
             </div>
          </div>
