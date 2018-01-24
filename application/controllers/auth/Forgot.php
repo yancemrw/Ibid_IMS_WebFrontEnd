@@ -19,12 +19,23 @@ class Forgot extends CI_Controller {
 		$data['page'] = 'auth/forgot'; 
 
 		$data['message'] = $this->session->flashdata('message'); 
+		
+		$userdata = $this->session->userdata('userdata');
+		$data['form_auth_mobile'] = login_status_form_mobile($userdata);
+		$view 					= 'auth/forgot';
+		$data['header_white']	= "header-white";
+		$data['userdata']		= $userdata;
+		$data['form_auth']		= login_Status_form($userdata);
 
 		$this->form_validation->set_rules('email', 'Email', 'required');  
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			$this->load->view('auth/templateauthadmin',$data);	 
+			// $this->load->view('auth/templateauthadmin',$data);	 
+
+
+			template($view, $data);
+
 		}
 		else
 		{    
@@ -46,7 +57,7 @@ class Forgot extends CI_Controller {
 				// print_r($responseApi);
 				$responseApiInsert = json_decode($responseApi['response'], true);
 				if ($responseApiInsert['status'] == 1){
- 
+
 					$this->session->set_flashdata('message', '<div class="alert alert-success">'.$responseApiInsert['message'].'</div>');
 					// redirect('role/lists','refresh');
 
