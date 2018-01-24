@@ -551,6 +551,6 @@ $config['Oauth'] = array(
 | configuration for omni user
 */
 $config['fb'] = array(
-					'app_id' => '134216083922853',
-					'app_secret' => 'a2a640d1c3bfab92384700a92d02f1da'
+					'app_id' => '1797631263599363',
+					'app_secret' => '4c4f11292235c85549f5d3eb5acadb3f'
 				);
