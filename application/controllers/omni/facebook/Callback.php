@@ -21,13 +21,13 @@ Class Callback extends CI_Controller
 
     public function index()
     { 
-      session_start();
+      // session_start();
 
       $fb = new Facebook\Facebook([ 
           'app_id' => $this->config->item('fb')['app_id'], // Replace {app-id} with your app id
           'app_secret' => $this->config->item('fb')['app_secret'],
           'default_graph_version' => 'v2.2', 
-          'persistent_data_handler'=>'session'
+          // 'persistent_data_handler'=>'session'
       ]);
 
       $helper = $fb->getRedirectLoginHelper();
