@@ -1,11 +1,11 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); 
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
+// error_reporting(E_ALL);
+// ini_set("display_errors", 1);
 
-if(!isset($_SESSION)) 
-{ 
-    session_start(); 
-} 
+// if(!isset($_SESSION)) 
+// { 
+//     session_start(); 
+// } 
 
 // meload omni facebook untuk keperluan access token
 require_once  APPPATH.'../omni/facebook/php-sdk-v4/src/Facebook/autoload.php';
@@ -21,7 +21,7 @@ Class Callback extends CI_Controller
 
     public function index()
     { 
-      // session_start();
+      session_start();
 
       $fb = new Facebook\Facebook([ 
           'app_id' => $this->config->item('fb')['app_id'], // Replace {app-id} with your app id
