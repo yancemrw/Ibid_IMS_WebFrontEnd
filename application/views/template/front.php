@@ -14,27 +14,7 @@
 					 <?php } ?>
 				  </select>
 				</div>
-				<div id="thisSearchBrand" class="form-group clearfix">
-				<?php /* foreach($formDinamis as $row){ ?>
-				<?php echo $row['typeInput']; ?>
-				<?php } */ ?>
-				
-					<div class="form-group clearfix">
-					  <select class="select-custom form-control">
-						 <option>Merk</option>
-					  </select>
-					</div>
-					<div class="form-group clearfix">
-					  <select class="select-custom form-control">
-						 <option>Seri</option>
-					  </select>
-					</div>
-					<!-- div class="form-group">
-					  <select class="select-custom form-control">
-						 <option>Tahun</option>
-					  </select>
-					</div -->
-				</div>
+				<div id="thisSearchBrand" class="form-group clearfix"></div>
 				<div class="form-group">
 				  <button class="btn btn-lg btn-green btn-search">Cari</button>
 				</div>
@@ -430,7 +410,8 @@ $(function(){
 			// async : false,
 			success : function(ret) {
 				// $('#dinamisForm').html(ret);
-				$('#thisSearchBrand').html(ret);
+				// console.log(ret);
+				$('#thisSearchBrand').html(ret[0]);
 			}
 			// error : function(e) {
 				// callback({err:e.statusText});
