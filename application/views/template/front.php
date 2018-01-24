@@ -89,7 +89,7 @@
                   <div class="box-section">
                      <div class="box-image icn icn-jaringan-lelang"></div>
                      <h2>Jaringan Lelang</h2>
-                     <p>Jaringan lelang di 30 kota</p>
+                     <p>Jaringan lelang Lebih dari 30 kota</p>
                   </div>
                </div>
                <div class="item">
@@ -103,7 +103,7 @@
                   <div class="box-section">
                      <div class="box-image icn icn-car-valuation"></div>
                      <h2>Astra Car Valuation</h2>
-                     <p>Inspeksi kendaraan secara Scientific </p>
+                     <p>Inspeksi kendaraan secara saintifik.</p>
                   </div>
                </div>
                <div class="item ">
@@ -117,7 +117,7 @@
                   <div class="box-section">
                      <div class="box-image icn icn-auto-bid"></div>
                      <h2>Auto BID</h2>
-                     <p>Tawar harga sebelum lelang</p>
+                     <p>Tawar harga sebelum lelang dimulai!</p>
                   </div>
                </div>
             </div>
@@ -200,7 +200,7 @@
       <div class="row">
          <div class="overlay-live-auction">
             <h2>Live Auction</h2>
-            <p>Berhalangan hadir dilokasi lelang? <span>Manfaatkan opsi Live Auction untuk mengikuti lelang dari mana saja melalui gadget secara real time.</span></p>
+            <p>Berhalangan hadir di lokasi lelang? <span>Manfaatkan opsi Live Auction untuk mengikuti lelang dari mana saja melalui gadget secara real time.</span></p>
             <button class="btn btn-lg btn-outline">Informasi Detail</button>
          </div>
       </div>
@@ -223,7 +223,7 @@
                      <div class="item col-md-2">
                         <div class="box-section">
                            <div class="box-image icn icn-check-jadwal"></div>
-                           <h2>Cek kendaraan dan cek jadwal lelang</h2>
+                           <h2>Cari kendaraan dan cek jadwal lelang</h2>
                         </div>
                      </div>
                      <div class="item col-md-2">
@@ -247,7 +247,7 @@
                      <div class="item col-md-2">
                         <div class="box-section">
                            <div class="box-image icn icn-pelunasan"></div>
-                           <h2>Pelunasan atau Pengambilan deposit</h2>
+                           <h2>Pelunasan atau Pengembalian deposit</h2>
                         </div>
                      </div>
                      <div class="item col-md-2">
@@ -262,7 +262,7 @@
                   <div class="col-md-2">
                      <div class="box-section">
                         <div class="box-image icn icn-regis-login"></div>
-                        <h2>Register atau login</h2>
+                        <h2>Registrasi atau login</h2>
                      </div>
                   </div>
                   <div class="col-md-2">
@@ -341,7 +341,9 @@
          <div class="content-autobid clearfix">
             <div class="col-md-7">
                <h2>Auto BID</h2>
-               <p>Amankan kendaraan favorit dengan menawar dahulu sebelum lelang dimulai! Dengan Auto Bid , Anda dapat menawar lebih awal jumlah harga maksimum yang diinginkan. Rasakan kemudahan Auto Bid, hanya via aplikasi kami. <span>Download sekarang!</span></p>
+               <p>Amankan kendaraan favorit Anda! Dengan Auto Bid, Anda dapat menentukan harga
+                  tawar maksimal yang Anda mau sebelum lelang dimulai. Nikmati kemudahan Auto Bid
+                  dalam genggaman Anda hanya lewat aplikasi IBID. <span>Download sekarang!</span></p>
                <a href="" class="icn icn-google-play"></a>
             </div>
             <div class="col-md-5">
