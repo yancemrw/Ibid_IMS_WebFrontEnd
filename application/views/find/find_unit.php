@@ -40,7 +40,7 @@
                      <option>Jadwal</option>
                   </select>
                </div>
-               <h2>Tipe Objek Lelang</h2>
+               <h2>Jenis Objek Lelang</h2>
                <div class="object-type clearfix">
                   <div class="form-group">
                      <input type="radio" name="tipe-object" id="type_1" class="input-hidden" value="1" />
@@ -220,14 +220,15 @@
          <div class="col-md-9 pl-0">
             <div class="main-right">
                <div class="title-header clearfix">
-                  <p>Menampilkan <span>2.240</span> Barang Untuk “<b>Mobil</b>” ( <b>1-9</b> dari <b>2.240</b> )</p>
+                  <p>Menampilkan <span>2.240</span> objek lelang untuk “<b>acura sedan</b>” ( <b>1-9</b> dari <b>2.240</b> )</p>
                   <div class="action-header">
                      <button class="btn"><i class="fa fa-download"></i> Download</button>
                      <button class="btn"><i class="fa fa-sort"></i> Sort</button>
                   </div>
                </div>
-               <p class="notice clearfix"><span><i class="fa fa-exclamation-circle"></i> Produk Telah di Masukan Kedalam Daftar Perbandingan</span></p>
+               <p class="notice clearfix"><span><i class="fa fa-exclamation-circle"></i> Produk telah dimasukkan ke dalam daftar perbandingan</span></p>
                <div class="content-right product-mob content-load clearfix">
+                  <?php for ($i=0; $i < 9; $i++) { ?>
                   <div class="col-md-4">
                      <div class="list-product box-recommend">
                         <a href="<?php echo $link_detail; ?>">
@@ -242,7 +243,7 @@
                            </div>
                            <div class="boxright-mobile">
                               <h2>DAIHATSU LUXIO 1.5 X MINIBUS AT </h2>
-                              <span>2014</span> <span class="price">Rp. 72,000,000</span>
+                              <span>2014</span> <span class="price">Rp. 72.000.000</span>
                               <p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>04 September 2017</span></p>
                               <p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Jakarta</span></p>
                            </div>
@@ -253,206 +254,7 @@
                         </div>
                      </div>
                   </div>
-                  <div class="col-md-4">
-                     <div class="list-product box-recommend">
-                        <a href="halaman-detail-kendaraan-hybrid.html">
-                           <div class="thumbnail">
-                              <div class="thumbnail-custom">
-                                 <img alt="" src="<?php echo $img; ?>">
-                              </div>
-                              <div class="overlay-grade">
-                                 Grade <span>A</span>
-                              </div>
-                              <p class="overlay-lot">LOT 170</p>
-                           </div>
-                           <div class="boxright-mobile">
-                              <h2>DAIHATSU LUXIO 1.5 X MINIBUS AT </h2>
-                              <span>2014</span> <span class="price">Rp. 72,000,000</span>
-                              <p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>04 September 2017</span></p>
-                              <p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Jakarta</span></p>
-                           </div>
-                        </a>
-                        <div class="action-bottom">
-                           <button class="btn"><i class="fa fa-heart"></i> <span>Favorit</span></button>
-                           <button class="btn btn-compare"><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-md-4">
-                     <div class="list-product box-recommend">
-                        <a href="halaman-cari-kendaraan-empty.html">
-                           <div class="thumbnail">
-                              <div class="thumbnail-custom">
-                                 <img alt="" src="<?php echo $img; ?>">
-                              </div>
-                              <div class="overlay-grade">
-                                 Grade <span>A</span>
-                              </div>
-                              <p class="overlay-lot">LOT 170</p>
-                           </div>
-                           <div class="boxright-mobile">
-                              <h2>DAIHATSU LUXIO 1.5 X MINIBUS AT </h2>
-                              <span>2014</span> <span class="price">Rp. 72,000,000</span>
-                              <p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>04 September 2017</span></p>
-                              <p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Jakarta</span></p>
-                           </div>
-                        </a>
-                        <div class="action-bottom">
-                           <button class="btn"><i class="fa fa-heart"></i> <span>Favorit</span></button>
-                           <button class="btn btn-compare"><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-md-4">
-                     <div class="list-product box-recommend">
-                        <a href="<?php echo $link_detail; ?>">
-                           <div class="thumbnail">
-                              <div class="thumbnail-custom">
-                                 <img alt="" src="<?php echo $img; ?>">
-                              </div>
-                              <div class="overlay-grade">
-                                 Grade <span>A</span>
-                              </div>
-                              <p class="overlay-lot">LOT 170</p>
-                           </div>
-                           <div class="boxright-mobile">
-                              <h2>DAIHATSU LUXIO 1.5 X MINIBUS AT </h2>
-                              <span>2014</span> <span class="price">Rp. 72,000,000</span>
-                              <p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>04 September 2017</span></p>
-                              <p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Jakarta</span></p>
-                           </div>
-                        </a>
-                        <div class="action-bottom">
-                           <button class="btn"><i class="fa fa-heart"></i> <span>Favorit</span></button>
-                           <button class="btn btn-compare"><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-md-4">
-                     <div class="list-product box-recommend">
-                        <a href="<?php echo $link_detail; ?>">
-                           <div class="thumbnail">
-                              <div class="thumbnail-custom">
-                                 <img alt="" src="<?php echo $img; ?>">
-                              </div>
-                              <div class="overlay-grade">
-                                 Grade <span>A</span>
-                              </div>
-                              <p class="overlay-lot">LOT 170</p>
-                           </div>
-                           <div class="boxright-mobile">
-                              <h2>DAIHATSU LUXIO 1.5 X MINIBUS AT </h2>
-                              <span>2014</span> <span class="price">Rp. 72,000,000</span>
-                              <p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>04 September 2017</span></p>
-                              <p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Jakarta</span></p>
-                           </div>
-                        </a>
-                        <div class="action-bottom">
-                           <button class="btn"><i class="fa fa-heart"></i> <span>Favorit</span></button>
-                           <button class="btn btn-compare"><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-md-4">
-                     <div class="list-product box-recommend">
-                        <a href="<?php echo $link_detail; ?>">
-                           <div class="thumbnail">
-                              <div class="thumbnail-custom">
-                                 <img alt="" src="<?php echo $img; ?>">
-                              </div>
-                              <div class="overlay-grade">
-                                 Grade <span>A</span>
-                              </div>
-                              <p class="overlay-lot">LOT 170</p>
-                           </div>
-                           <div class="boxright-mobile">
-                              <h2>DAIHATSU LUXIO 1.5 X MINIBUS AT </h2>
-                              <span>2014</span> <span class="price">Rp. 72,000,000</span>
-                              <p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>04 September 2017</span></p>
-                              <p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Jakarta</span></p>
-                           </div>
-                        </a>
-                        <div class="action-bottom">
-                           <button class="btn"><i class="fa fa-heart"></i> <span>Favorit</span></button>
-                           <button class="btn btn-compare"><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-md-4">
-                     <div class="list-product box-recommend">
-                        <a href="<?php echo $link_detail; ?>">
-                           <div class="thumbnail">
-                              <div class="thumbnail-custom">
-                                 <img alt="" src="<?php echo $img; ?>">
-                              </div>
-                              <div class="overlay-grade">
-                                 Grade <span>A</span>
-                              </div>
-                              <p class="overlay-lot">LOT 170</p>
-                           </div>
-                           <div class="boxright-mobile">
-                              <h2>DAIHATSU LUXIO 1.5 X MINIBUS AT </h2>
-                              <span>2014</span> <span class="price">Rp. 72,000,000</span>
-                              <p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>04 September 2017</span></p>
-                              <p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Jakarta</span></p>
-                           </div>
-                        </a>
-                        <div class="action-bottom">
-                           <button class="btn"><i class="fa fa-heart"></i> <span>Favorit</span></button>
-                           <button class="btn btn-compare"><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-md-4">
-                     <div class="list-product box-recommend">
-                        <a href="<?php echo $link_detail; ?>">
-                           <div class="thumbnail">
-                              <div class="thumbnail-custom">
-                                 <img alt="" src="<?php echo $img; ?>">
-                              </div>
-                              <div class="overlay-grade">
-                                 Grade <span>A</span>
-                              </div>
-                              <p class="overlay-lot">LOT 170</p>
-                           </div>
-                           <div class="boxright-mobile">
-                              <h2>DAIHATSU LUXIO 1.5 X MINIBUS AT </h2>
-                              <span>2014</span> <span class="price">Rp. 72,000,000</span>
-                              <p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>04 September 2017</span></p>
-                              <p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Jakarta</span></p>
-                           </div>
-                        </a>
-                        <div class="action-bottom">
-                           <button class="btn"><i class="fa fa-heart"></i> <span>Favorit</span></button>
-                           <button class="btn btn-compare"><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-md-4">
-                     <div class="list-product box-recommend">
-                        <a href="<?php echo $link_detail; ?>">
-                           <div class="thumbnail">
-                              <div class="thumbnail-custom">
-                                 <img alt="" src="<?php echo $img; ?>">
-                              </div>
-                              <div class="overlay-grade">
-                                 Grade <span>A</span>
-                              </div>
-                              <p class="overlay-lot">LOT 170</p>
-                           </div>
-                           <div class="boxright-mobile">
-                              <h2>DAIHATSU LUXIO 1.5 X MINIBUS AT </h2>
-                              <span>2014</span> <span class="price">Rp. 72,000,000</span>
-                              <p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>04 September 2017</span></p>
-                              <p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Jakarta</span></p>
-                           </div>
-                        </a>
-                        <div class="action-bottom">
-                           <button class="btn"><i class="fa fa-heart"></i> <span>Favorit</span></button>
-                           <button class="btn btn-compare"><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>
-                        </div>
-                     </div>
-                  </div>
+                  <?php } ?>
                   <div class="clear"></div>
                   <a href="sample-content-scroll-1.html" class="hidden-content"></a>
                   <a href="sample-content-scroll-2.html" class="hidden-content"></a>
@@ -465,7 +267,7 @@
 
 <form class="form-filter filter-mobile clearfix">
    <div class="header-side">
-      <a href="halaman-cari-kendaraan.html" class="close-side"><i class="fa fa-times"></i> Filter</a>
+      <a href="" class="close-side"><i class="fa fa-times"></i> Filter</a>
    </div>
    <div class="form-mobile">
       <h1><span class="icon_ic-filter"></span> Filters</h1>
@@ -494,7 +296,7 @@
             <option>Jadwal</option>
          </select>
       </div>
-      <h2>Tipe Objek Lelang</h2>
+      <h2>Jenis Objek Lelang</h2>
       <div class="object-type clearfix">
          <div class="form-group">
             <input type="radio" name="tipe-object" id="type_1" class="input-hidden" value="1" />

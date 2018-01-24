@@ -1053,7 +1053,7 @@ h2.title {
 
 .auction-left:before {
     content: "";
-    background: rgba(0, 0, 0, 0.28);
+    background: rgba(0, 0, 0, 0.5);
     position: absolute;
     top: 0;
     width: 100%;
@@ -1068,7 +1068,7 @@ h2.title {
 
 .auction-right:before {
     content: "";
-    background: rgba(0, 0, 0, 0.28);
+    background: rgba(0, 0, 0, 0.5);
     position: absolute;
     top: 0;
     width: 100%;
