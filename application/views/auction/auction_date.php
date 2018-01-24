@@ -104,6 +104,7 @@
    </div>
 </div>
 <script>
+var arrHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
 function getDates(startDate, endDate) {
    var now = startDate,
    dates = [];
@@ -121,6 +122,7 @@ function getCalendar(){
          center: 'title',
          right: 'month,agendaWeek,agendaDay,listMonth'
       },
+	  monthNames:['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
       height:'auto',
       defaultDate: '<?php echo date('Y-m-d'); ?>', //'2017-11-12',
       navLinks: true, // can click day/week names to navigate views
@@ -128,8 +130,9 @@ function getCalendar(){
       editable: false,
       // events: even_cal,
       dayRender: function(date, cell) {
-         var parseDate = moment(cell.attr("data-date")).format('dddd');
-         $("td.fc-day-top[data-date='" + cell.attr("data-date") + "']").append("<span>" + parseDate + "</span>");
+         var parseDate = moment(cell.attr("data-date")).format('e');
+		 var thisHari = arrHari[parseDate];
+         $("td.fc-day-top[data-date='" + cell.attr("data-date") + "']").append("<span>" + thisHari + "</span>");
          $("td.fc-day-top[data-date='" + cell.attr("data-date") + "']").append("<a class='link cursor-pointer thisDate' data-toggle='modal' data-target='#modal-jadwal' thisDate='" + cell.attr("data-date") + "'>Selengkapnya</a>");
          $("td.fc-day.fc-widget-content[data-date='" + cell.attr("data-date") + "']").append("<a class='link cursor-pointer' data-toggle='modal' data-target='#modal-jadwal'>Selengkapnya</a>")
       },
