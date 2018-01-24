@@ -7,45 +7,38 @@
       <div class="tab-content">
          <div role="tabpanel" class="tab-pane search-transport active" id="tab-mobile-1">
             <form class="form-inline clearfix">
-            <div class="form-group clearfix">
-              <select id="ItemId" class="select-custom form-control">
-                <?php foreach($itemType as $row){ ?>
-                <option value="<?php echo $row['ItemId']; ?>"><?php echo $row['ItemName']; ?></option>
-                <?php } ?>
-              </select>
-            </div>
-            <div id="thisSearchBrand" class="form-group clearfix">
                <div class="form-group clearfix">
-                 <select class="select-custom form-control">
-                   <option>Merk</option>
-                 </select>
+                  <select class="select-custom form-control">
+                     <option>Merek</option>
+                  </select>
                </div>
                <div class="form-group clearfix">
-                 <select class="select-custom form-control">
-                   <option>Seri</option>
-                 </select>
+                  <select class="select-custom form-control">
+                     <option>Tipe</option>
+                  </select>
                </div>
-            </div>
-            <div class="form-group">
-              <button class="btn btn-lg btn-green btn-search">Cari</button>
-            </div>
+               <div class="form-group">
+                  <select class="select-custom form-control">
+                     <option>Tahun</option>
+                  </select>
+               </div>
+               <div class="form-group">
+                  <button class="btn btn-lg btn-green btn-search">Cari</button>
+               </div>
             </form>
          </div>
          <div role="tabpanel" class="tab-pane" id="tab-mobile-2">
             <form class="form-inline clearfix">
                <div class="form-group">
-                  <select class="select-custom form-control filterJadwal" id="thisCabang">
+                  <select class="select-custom form-control">
                      <option value ="" ></option>
                      <option value ="" >Bandung</option>
                      <option value ="" >Jakarta</option>
-                     <?php foreach($cabang as $row){ ?>
-                     <option value="<?php echo $row['CompanyId']; ?>" ><?php echo $row['CompanyName']; ?></option>
-                     <?php } ?>
                   </select>
                   <label>Kota</label>
                </div>
                <div class="form-group clearfix">
-                  <select class="select-custom form-control select-type filterJadwal" id="thisItem">
+                  <select class="select-custom form-control select-type">
                      <option value="car-type"></option>
                      <option value="hve-type"></option>
                      <option value="motorcycle-type"></option>
@@ -53,7 +46,7 @@
                   </select>
                </div>
                <div class="form-group">
-                  <select class="select-custom form-control" id="thisDate">
+                  <select class="select-custom form-control">
                      <option value ="" ></option>
                      <option value ="" >Jakarta Barat, Jl. Bintaro Mulia, 14/09</option>
                      <option value ="" >Jakarta Barat, Jl. Bintaro Mulia, 14/09</option>
@@ -365,68 +358,4 @@
       document.getElementById('preloader').style.display = 'block';
       preload(1);
    });
-   
-    Number.prototype.padLeft = function(base,chr){
-        var  len = (String(base || 10).length - String(this).length)+1;
-        return len > 0? new Array(len).join(chr || '0')+this : this;
-    }
-   
-$(function(){
-    
-    $('.filterJadwal').change(function(){
-        thisCabang = $('#thisCabang').val();
-        thisItem = $('#thisItem').val();
-        
-        if (thisItem == 'car-type') item = 6;
-        else if (thisItem == 'motorcycle-type') item = 7;
-        else if (thisItem == 'gadget-type') item = 12;
-        else if (thisItem == 'hve-type') item = 14;
-        else item = 0;
-        
-        d = new Date();
-        dformat = [d.getFullYear(), (d.getMonth()+1).padLeft(), d.getDate().padLeft()].join('-');
-        // dformat = '2018-01-01';
-        
-        if (thisCabang != '' && item > 0){
-            $.ajax({
-                url: 'http://ibid-ams-schedule.stagingapps.net/api/schedulelist',
-                dataType: 'json',
-                method: 'GET',
-                data: {
-                    item: item,
-                    company_id: thisCabang,
-                    startdate: dformat,
-                },
-                success: function(doc) {
-                    html = "";
-                    thisOption = doc.data;
-                    for(i=0; i<thisOption.length; i++){
-                        html = html + '<option value="'+thisOption[i].id+'">'+thisOption[i].date+' '+(thisOption[i].waktu).substring(0, 8);+'</option>';
-                    }
-                    $('#thisDate').html(html);
-                }
-            });
-        }
-        
-    });
-   
-   $('#ItemId').change(function(){
-      thisVal = $(this).val();
-      $.ajax({
-         url : '<?php echo linkservice('stock') ."item/add/Getsearchfront"; ?>',
-         data : {
-            id : thisVal
-         },
-         // crossDomain : true,
-         // async : false,
-         success : function(ret) {
-            $('#thisSearchBrand').html(ret[0]);
-         }
-         // error : function(e) {
-            // callback({err:e.statusText});
-         // }
-      });
-   });
-   $('#ItemId').change();
-});
 </script>
