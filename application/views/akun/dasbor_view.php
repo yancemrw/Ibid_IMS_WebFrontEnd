@@ -35,7 +35,7 @@
                      <span class="ic_menu"><i ></i></span> Favorit</a>
                   </li>
                   <li class="acc_price">
-                     <a href="<?php echo site_url('basic_price'); ?>">
+                     <a href="<?php echo site_url('basic-price'); ?>">
                      <span class="ic_menu"><i ></i></span> Harga Dasar</a>
                   </li>
                </ul>
