@@ -133,7 +133,7 @@
                         <li><a href="<?php echo site_url('live-auction'); ?>">Live Auction</a></li>
                         <li><a href="<?php echo site_url('beli-npl'); ?>">Beli Npl</a></li>
                         <li><a href="<?php echo site_url('titip-lelang'); ?>">Titip Lelang</a></li>
-                        <li><a href="<?php echo site_url('market-auction-price'); ?>">Map</a></li>
+                        <li><a href="<?php echo site_url('basic_price'); ?>">Map</a></li>
                         <li><a href="<?php echo site_url('panduan-lelang'); ?>">Prosedur</a></li>
                         <?php echo @$form_auth; ?>
                     </ul>
@@ -194,7 +194,7 @@
                         <li><a href="<?php echo site_url('live-auction'); ?>">Live Auction</a></li>
                         <li><a href="<?php echo site_url('beli-npl'); ?>">Beli Npl</a></li>
                         <li><a href="<?php echo site_url('titip-lelang'); ?>">Titip Lelang</a></li>
-                        <li><a href="<?php echo site_url('market-auction-price'); ?>">Map</a></li>
+                        <li><a href="<?php echo site_url('basic_price'); ?>">Map</a></li>
                         <li><a href="<?php echo site_url('panduan-lelang'); ?>">Prosedur</a></li>
                         <?php echo $form_auth; ?>
                         <li class="lang-mob">
