@@ -28,7 +28,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-				  <button class="btn btn-lg btn-green btn-search">Cari</button>
+				  <button class="btn btn-lg btn-green btn-search" disabled>Cari</button>
 				</div>
 
             </form>
@@ -63,7 +63,7 @@
                   <label>Jadwal</label>
                </div>
                <div class="form-group">
-                  <button class="btn btn-lg btn-green btn-search">Cari</button>
+                  <button class="btn btn-lg btn-green btn-search" disabled>Cari</button>
                </div>
             </form>
          </div>
@@ -190,7 +190,7 @@
             </div>
          </div>
          <div class="col-md-12 text-center show-more hidden-xs">
-            <button class="btn btn-lg btn-green">Lihat Semua</button>
+            <button class="btn btn-lg btn-green" disabled>Lihat Semua</button>
          </div>
       </div>
    </div>
@@ -201,7 +201,7 @@
          <div class="overlay-live-auction">
             <h2>Live Auction</h2>
             <p>Berhalangan hadir di lokasi lelang? <span>Manfaatkan opsi Live Auction untuk mengikuti lelang dari mana saja melalui gadget secara real time.</span></p>
-            <button class="btn btn-lg btn-outline">Informasi Detail</button>
+            <button class="btn btn-lg btn-outline" disabled>Informasi Detail</button>
          </div>
       </div>
    </div>
@@ -281,7 +281,7 @@
             </div>
          </div>
          <div class="col-md-12 text-center show-more">
-            <button class="btn btn-lg btn-green">Info Detail</button>
+            <button class="btn btn-lg btn-green" disabled>Info Detail</button>
          </div>
       </div>
    </div>
@@ -293,14 +293,14 @@
             <div class="overlay-live-auction">
                <h2><?php echo $content->map->Title;?></h2>
                <?php echo $content->map->Content; ?>
-               <button class="btn btn-lg btn-outline">Info Detail</button>
+               <button class="btn btn-lg btn-outline" disabled>Info Detail</button>
             </div>
          </div>
          <div class="col-md-6 auction-right">
             <div class="overlay-live-auction">
                <h2><?php echo $content->icar->Title;?></h2>
                <?php echo $content->icar->Content;?>
-               <button class="btn btn-lg btn-outline">Info Detail</button>
+               <button class="btn btn-lg btn-outline" disabled>Info Detail</button>
             </div>
          </div>
       </div>
