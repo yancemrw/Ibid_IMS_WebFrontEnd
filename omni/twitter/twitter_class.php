@@ -6,7 +6,7 @@ class TwitterLoginAPI
 	// protected  $consumer_secret	 = 'AfDHm0kxdILjMHaHVPgc9Lb7MfRF4c1Kev6QRiwR2Bp1slUUXj'; 
 	protected  $consumer_secret	 = 'OZmLtsKQPc7EsFasn9zZZt8NvxWKkxtrsubz77Cbi2nPPGQE0L'; //Your Consumer Secret Key
 	// protected  $oauth_callback	 = 'http://demo.stepblogging.com/twitter-oauth/callback.php';
-	protected  $oauth_callback	 = 'http://alpha.ibid.astra.co.id/index.php/omni/twitter/callback';
+	protected  $oauth_callback	 = 'http://alpha.ibid.astra.co.id/omni/twitter/callback';
 	
 	function login_twitter($twitter_connect = ''){
 		if ($this->consumer_key === '' || $this->consumer_secret === '') {
@@ -21,6 +21,7 @@ class TwitterLoginAPI
 			
 			// print_r($request_token);
 			// exit();
+			// session_start();
 
 			@$_SESSION['oauth_token'] = $token = $request_token['oauth_token'];
 			@$_SESSION['oauth_token_secret'] = $request_token['oauth_token_secret'];

@@ -11,6 +11,7 @@ class Callback extends CI_Controller {
 
 	public function index()
 	{
+		// session_start();
 		require_once APPPATH.'../omni/twitter/twitter_class.php';
 		require_once APPPATH.'../omni/twitter/twitteroauth.php';
 		
@@ -65,8 +66,11 @@ class Callback extends CI_Controller {
 				exit;
 			} else {
 				// header("Location: twitter?connected=F");
-				$this->session->set_flashdata('message', '<div class="alert alert-warning"> Kesalahan Terjadi, Silahkan diulangi kembali. </div>');
-				redirect('dashboard','refresh');
+ 
+				// $this->session->set_flashdata('message', '<div class="alert alert-warning"> Kesalahan Terjadi, Silahkan diulangi kembali. </div>');
+				$this->session->set_flashdata('message', array('error' , 'Kesalahan Terjadi' , 'Gagal'));
+				redirect('auth/login','refresh');
+
 				exit;
 			}
 		}
