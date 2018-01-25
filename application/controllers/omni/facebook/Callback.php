@@ -136,7 +136,7 @@ $tokenMetadata = $oAuth2Client->debugToken($accessToken);
                 $res = json_decode($responseApi['response'] , true);
                 if(!isset($res['error'])){
                     $this->AccessApi->setAccess('in',(array)$res);
-                    redirect('afterlogin','refresh'); 
+                    redirect('dashboard','refresh'); 
                     // echo "1";
                     // print_r($dataLogin);
                 } else {
@@ -147,7 +147,7 @@ $tokenMetadata = $oAuth2Client->debugToken($accessToken);
                 
             } else {
                 $this->AccessApi->setAccess('in',$resp);
-                redirect('afterlogin','refresh');
+                redirect('dashboard','refresh');
             }
 
             // mendaftarkan hasil callback ke session
