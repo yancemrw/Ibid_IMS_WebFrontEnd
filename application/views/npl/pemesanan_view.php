@@ -30,11 +30,11 @@
             <div class="col-md-5">      
                 <h2>Beli NPL</h2> 
 
-                <div class="booking-schedule buying-npl">
+                <div class="coming-soon">
                     <!--img src="<?php echo base_url('assetsfront/images/icon/favorit-blank-slate.png'); ?>" width="100%"-->
                     <img src="<?php echo base_url('assetsfront/images/background/coming-soon.png'); ?>" width="100%" />
-                    <div style="text-align: center; font-weight: bolder; font-size: 28px;">Coming Soon</div>
-                    <div style="text-align: center; font-weight: bolder;">Fitur ini baru akan dapat digunakan dalam beberapa hari kedepan</div>
+                    <h2>Coming Soon </h2>
+                    <p>Fitur ini baru akan dapat digunakan dalam beberapa hari kedepan</p>
                 </div>
             </div>
         </div>

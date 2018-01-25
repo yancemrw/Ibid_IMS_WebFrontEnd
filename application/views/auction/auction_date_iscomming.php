@@ -44,10 +44,12 @@
                   <button class="btn btn-green" disabled>Cari</button>
                </form>
             </div>
-            <div style="max-width: 600px; margin: 0 auto;">
-            	<img src="<?php echo base_url('assetsfront/images/background/coming-soon.png'); ?>" width="100%" />
-               <div style="text-align: center; font-weight: bolder; font-size: 28px;">Coming Soon</div>
-               <div style="text-align: center; font-weight: bolder;">Fitur ini baru akan dapat digunakan dalam beberapa hari kedepan</div>
+            <div class="content-right product-mob clearfix">
+               <div class="coming-soon">
+                  <img src="<?php echo base_url('assetsfront/images/background/coming-soon.png'); ?>" alt="" title="">
+                   <h2>Coming Soon </h2>
+                   <p>Fitur ini baru akan dapat digunakan dalam beberapa hari kedepan</p>
+               </div>
             </div>
          </div>
       </div>
