@@ -47,7 +47,7 @@ class TwitterLoginAPI
 	
 	function twitter_callback(){
 		$connection = new TwitterOAuth($this->consumer_key, $this->consumer_secret, @$_SESSION['oauth_token'], @$_SESSION['oauth_token_secret']);
-		$access_token = $connection->getAccessToken($_REQUEST['oauth_verifier']);	
+		$access_token = $connection->getAccessToken($_GET['oauth_verifier']);	
 		@$_SESSION['access_token'] = $access_token;
 		unset($_SESSION['oauth_token']);
 		unset($_SESSION['oauth_token_secret']);
