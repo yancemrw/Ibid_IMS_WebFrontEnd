@@ -21,6 +21,7 @@ class TwitterLoginAPI
 			
 			// print_r($request_token);
 			// exit();
+			session_start();
 
 			@$_SESSION['oauth_token'] = $token = $request_token['oauth_token'];
 			@$_SESSION['oauth_token_secret'] = $request_token['oauth_token_secret'];
