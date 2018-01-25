@@ -14,13 +14,18 @@ class Callback extends CI_Controller {
 		require_once APPPATH.'../omni/twitter/twitter_class.php';
 		require_once APPPATH.'../omni/twitter/twitteroauth.php';
 		
-		if (isset($_REQUEST['oauth_token']) && @$_SESSION['oauth_token'] !== @$_REQUEST['oauth_token']) {
+		if (isset($_GET['oauth_token']) && @$_SESSION['oauth_token'] !== @$_GET['oauth_token']) {
 			@$_SESSION['oauth_status'] = 'oldtoken'; 
 			// header('Location: destroy.php');
 			redirect('auth/login','refresh');
 		}else{
 			$objTwitterApi = new TwitterLoginAPI;
 			$connection = $objTwitterApi->twitter_callback();
+
+			print_r($connection);
+			exit();
+
+
 			if( $connection == 'connected'){
 
 				$objTwitterApi = new TwitterLoginAPI;
@@ -56,33 +61,7 @@ class Callback extends CI_Controller {
 	            } else {
 	                $this->AccessApi->setAccess('in',$resp);
 	                redirect('afterlogin','refresh');
-	            }
-
-				// $array = array(
-				// 	'namatwitter' 	=> @$return->name,
-				// 	'usernametwitter' 	=> @$return->screen_name,
-				// 	'emailtwitter' 	=> @$return->email,
-				// );
-				// $this->session->set_userdata( $array );
-
-				// redirect('afterlogin','refresh'); 
-
-				
-				// $objTwitterApi = new TwitterLoginAPI;
-				// $return = $objTwitterApi->view();
-
-				// $array = array(
-				// 	'namatwitter' 	=> @$return['name'],
-				// 	'usernametwitter' 	=> @$return['screen_name'],
-				// 	'emailtwitter' 	=> @$return['email'],
-				// );
-
-				// $this->session->set_userdata( $array );
-
-				// redirect('afterlogin','refresh'); 
-
-				// header("Location: twitter?connected=Y");
-				// redirect('omni/twitter/twitter?connected=Y','refresh');
+	            } 
 				exit;
 			} else {
 				// header("Location: twitter?connected=F");
