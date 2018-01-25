@@ -218,10 +218,10 @@
             </form>
          </div>
          <div class="col-md-9 pl-0">
-            <div class="main-right" style="max-width: 600px; margin: 0 auto;">
-               <img src="<?php echo base_url('assetsfront/images/background/coming-soon.png'); ?>" width="100%" />
-               <div style="text-align: center; font-weight: bolder; font-size: 28px;">Coming Soon</div>
-               <div style="text-align: center; font-weight: bolder;">Fitur ini baru akan dapat digunakan dalam beberapa hari kedepan</div>
+            <div class="coming-soon">
+               <img src="<?php echo base_url('assetsfront/images/background/coming-soon.png'); ?>" alt="" title="">
+               <h2>Coming Soon </h2>
+               <p>Fitur ini baru akan dapat digunakan dalam beberapa hari kedepan</p>
             </div>
          </div>
       </div>
