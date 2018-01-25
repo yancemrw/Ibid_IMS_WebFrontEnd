@@ -55,20 +55,22 @@ class Callback extends CI_Controller {
 	                $res = (array) json_decode($responseApi['response']);
 	                if(!isset($res['error'])){
 	                    $this->AccessApi->setAccess('in',(array)$res);
-	                    redirect('afterlogin','refresh');
+	                    redirect('dashboard','refresh');
 	                } else
 	                    redirect('auth/login','refresh');
 	                
 	            } else {
 	                $this->AccessApi->setAccess('in',$resp);
-	                redirect('afterlogin','refresh');
+	                redirect('dashboard','refresh');
 	            } 
 				exit;
 			} else {
 				// header("Location: twitter?connected=F");
+ 
 				// $this->session->set_flashdata('message', '<div class="alert alert-warning"> Kesalahan Terjadi, Silahkan diulangi kembali. </div>');
 				$this->session->set_flashdata('message', array('error' , 'Kesalahan Terjadi' , 'Gagal'));
 				redirect('auth/login','refresh');
+
 				exit;
 			}
 		}
