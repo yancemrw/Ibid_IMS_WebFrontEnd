@@ -40,7 +40,7 @@
                         <div class="form-group floating-label">
                             <input type="text" id="idcard" name="idcard" class="form-control" />
                             <label class="label-schedule">Kartu Anggota</label>
-                            <div class="help-info">
+                            <div class="help-info" id="idcard-info">
                                 <i class="fa fa-info"></i> Hanya diisi bila memiliki kartu anggota IBID
                             </div>
                         </div>
@@ -72,7 +72,7 @@
         });
 
         $("#idcard").on("focus", function(e) {
-          $('.help-info').show();
+          $('#idcard-info').show();
         });
 
         $(".select-custom").select2({
