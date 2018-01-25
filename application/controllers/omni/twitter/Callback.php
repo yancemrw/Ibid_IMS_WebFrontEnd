@@ -88,7 +88,8 @@ class Callback extends CI_Controller {
 				exit;
 			} else {
 				// header("Location: twitter?connected=F");
-				$this->session->set_flashdata('message', '<div class="alert alert-warning"> Kesalahan Terjadi, Silahkan diulangi kembali. </div>');
+				// $this->session->set_flashdata('message', '<div class="alert alert-warning"> Kesalahan Terjadi, Silahkan diulangi kembali. </div>');
+				$this->session->set_flashdata('message', array('error' , 'Kesalahan Terjadi' , 'Gagal'));
 				redirect('auth/login','refresh');
 				exit;
 			}
