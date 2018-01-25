@@ -11,6 +11,8 @@ class Callback extends CI_Controller {
 
 	public function index()
 	{
+		session_start();
+		
 		require_once APPPATH.'../omni/twitter/twitter_class.php';
 		require_once APPPATH.'../omni/twitter/twitteroauth.php';
 		

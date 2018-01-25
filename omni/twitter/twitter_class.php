@@ -19,7 +19,7 @@ class TwitterLoginAPI
 			$connection = new TwitterOAuth($this->consumer_key, $this->consumer_secret);// Key and Sec
 			$request_token = $connection->getRequestToken($this->oauth_callback);// Retrieve Temporary credentials. 
 			
-			// print_r($request_token);
+			print_r($request_token);
 			// exit();
 			session_start();
 
