@@ -23,8 +23,8 @@ class Callback extends CI_Controller {
 			$objTwitterApi = new TwitterLoginAPI;
 			$connection = $objTwitterApi->twitter_callback();
 
-			print_r($connection);
-			exit();
+			// print_r($connection);
+			// exit();
 
 
 			if( $connection == 'connected'){
