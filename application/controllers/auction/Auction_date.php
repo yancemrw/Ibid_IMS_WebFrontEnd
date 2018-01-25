@@ -6,16 +6,16 @@ class Auction_date extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->helper(array('global', 'omni'));
+		$this->userdata = $this->session->userdata('userdata');
 	}
 
 	public function index() {
-		$userdata = $this->session->userdata('userdata');
 		$data = array(
 			'header_white' => "header-white",
-			'userdata'	=> $userdata,
+			'userdata'	=> $this->userdata,
 			'title' => 'Jadwal Lelang',
-			'form_auth_mobile' => login_status_form_mobile($userdata),
-			'form_auth'	=> login_Status_form($userdata)
+			'form_auth_mobile' => login_status_form_mobile($this->userdata),
+			'form_auth'	=> login_Status_form($this->userdata)
 		);
 		
 		############################################################
@@ -33,6 +33,18 @@ class Auction_date extends CI_Controller {
         ############################################################
 		
 		$view = "auction/auction_date";
+		template($view, $data);
+	}
+
+	public function iscomming() {
+		$data = array(
+			'header_white' => "header-white",
+			'userdata'	=> $this->userdata,
+			'title' => 'Jadwal Lelang',
+			'form_auth_mobile' => login_status_form_mobile($this->userdata),
+			'form_auth'	=> login_Status_form($this->userdata)
+		);
+		$view = "auction/auction_date_iscomming";
 		template($view, $data);
 	}
 
