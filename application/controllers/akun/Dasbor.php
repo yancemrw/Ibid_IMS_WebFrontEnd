@@ -50,6 +50,9 @@ class Dasbor extends CI_Controller {
 			//$data['img_link'] = 'https://instagram.fjkt1-1.fna.fbcdn.net/t51.2885-15/e35/25023178_125021498293801_6299328116707819520_n.jpg';
 			$data['img_link'] = base_url('assetsfront/images/icon/ic_avatar.png');
 			$view = "akun/dasbor_view";
+			if(isset($_POST)){
+				echo "<pre>"; print_r($_POST); die();
+			}
 			template($view, $data);
 
 		}
