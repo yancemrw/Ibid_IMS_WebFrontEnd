@@ -97,7 +97,8 @@ class Linkedin extends CI_Controller {
                 'password'      => 'admsibid18',
                 'ipAddress'     => $this->input->ip_address(),
                 'first_name'    => $tmp[0],
-                'last_name'     => str_replace($tmp[0]." ","", $user->formattedName)
+                'last_name'     => str_replace($tmp[0]." ","", $user->formattedName),
+                'ByOmni'        => 'linkedin'
             );
             $url = linkservice('account') ."auth/oauth2";
             $method = 'POST';
