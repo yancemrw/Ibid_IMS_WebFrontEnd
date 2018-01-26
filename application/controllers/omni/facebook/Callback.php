@@ -119,7 +119,8 @@ $tokenMetadata = $oAuth2Client->debugToken($accessToken);
                 'password'      => 'admsibid18',
                 'ipAddress'     => $this->input->ip_address(),
                 'first_name'    => $tmp[0],
-                'last_name'     => str_replace($tmp[0]." ","", $user['name'])
+                'last_name'     => str_replace($tmp[0]." ","", $user['name']),
+                'ByOmni'        => 'facebook'
             );
             $url = linkservice('account') ."auth/oauth2";
             $method = 'POST';
