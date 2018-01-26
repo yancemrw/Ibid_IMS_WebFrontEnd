@@ -57,8 +57,9 @@ class Dasbor extends CI_Controller {
 			$tmpDob = explode("/", $this->input->post('dob'));
 			$dataUpdate = array(
 				'UserId'			=> $this->input->post('UserId'),
-				'name'				=> $this->input->post('upd_name'),
-				'email'				=> $this->input->input_stream('upd_email'),
+				'first_name'		=> $this->input->post('first_name'),
+				'last_name'			=> $this->input->post('last_name'),
+				'email'				=> $this->input->post('upd_email'),
 				'phone'				=> $this->input->post('upd_phone'),
 				'memberid'			=> $this->input->post('idcard'),
 				'gender'			=> ($this->input->post('gender') !== "") ? $this->input->post('gender') : NULL,
