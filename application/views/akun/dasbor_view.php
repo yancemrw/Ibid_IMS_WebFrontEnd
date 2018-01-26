@@ -62,10 +62,14 @@
                      <div class="col-md-6">
                         <h4>Biodata Diri</h4>
                         <div class="form-group floating-label">
-                           <input type="text" name="upd_name" id="upd_name" class="form-control floating-handle input-custom" 
-                                    value="<?php echo @$content->users->first_name.' '.$content->users->last_name; ?>" 
-                                    oninvalid="this.setCustomValidity('Nama tidak boleh kosong')" oninput="setCustomValidity('')" required />
-                           <label class="label-schedule">Nama <span class="font-red">*</span></label>
+                           <input type="text" name="first_name" id="first_name" class="form-control floating-handle" 
+                                    value="<?php echo @$content->users->first_name; ?>">
+                           <label class="label-schedule">Nama Depan <span class="font-red">*</span></label>
+                        </div>
+                        <div class="form-group floating-label">
+                           <input type="text" name="last_name" id="last_name" class="form-control floating-handle" 
+                                    value="<?php echo @$content->users->first_name; ?>">
+                           <label class="label-schedule">Nama Belakang <span class="font-red">*</span></label>
                         </div>
                         <div class="form-group floating-label">
                            <input type="text" name="upd_email" id="upd_email" class="border-radius-none disabled form-control floating-handle" 
