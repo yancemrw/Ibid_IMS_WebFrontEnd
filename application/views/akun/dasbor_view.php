@@ -68,7 +68,7 @@
                         </div>
                         <div class="form-group floating-label">
                            <input type="text" name="last_name" id="last_name" class="form-control floating-handle" 
-                                    value="<?php echo @$content->users->first_name; ?>">
+                                    value="<?php echo @$content->users->last_name; ?>">
                            <label class="label-schedule">Nama Belakang <span class="font-red">*</span></label>
                         </div>
                         <div class="form-group floating-label">
