@@ -13,7 +13,7 @@ class Dasbor extends CI_Controller {
 	}
 
 	public function index() {
-		$this->form_validation->set_rules('upd_name', 'Nama', 'required');
+		$this->form_validation->set_rules('first_name', 'Nama Depan', 'required');
 		$this->form_validation->set_rules('ktp', 'No KTP', 'required');
 		$this->form_validation->set_rules('upd_phone', 'No Telepon', 'required');
 		$this->form_validation->set_rules('bankid', 'BANK', 'required');
@@ -75,7 +75,7 @@ class Dasbor extends CI_Controller {
 				'accountnumber'		=> $this->input->post('norek'),
 				'accountname'		=> $this->input->post('rekname')
 			);
-
+echo "<pre>"; print_r($dataUpdate); die();
 			$url = linkservice('account')."userfrontend/Edit";
 			$method = 'POST';
 			$responseApi = admsCurl($url, $dataUpdate, $method);
