@@ -53,7 +53,23 @@ class Front extends CI_Controller {
         }
         $data['cabang'] = @$cabang;
         ############################################################
-        
+		
+        ############################################################
+		$ItemId = 6;
+		$url = linkservice('stock') ."item/add/Getsearchfront?id=".$ItemId;
+		$method = 'GET';
+		$responseApi = admsCurl($url, array(), $method);
+		if ($responseApi['err']) { echo "<hr>cURL Error #:" . $responseApi['err']; } else { 
+			$dataApiDetails = json_decode($responseApi['response'],true); 
+		} 
+		$data['formDinamis'] = @$dataApiDetails['formDinamis']; 
+        ############################################################
+        // print_r($data['formDinamis']); 
+		// foreach($data['formDinamis'] as $row){
+			// print_r($row);
+			// echo '<hr>';
+		// }
+		// die();
 		$view = "template/front";
 		template($view, $data);
 
