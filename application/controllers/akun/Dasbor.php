@@ -28,6 +28,9 @@ class Dasbor extends CI_Controller {
 			$responseApi = admsCurl($url, array(), $method);
 			$generate = curlGenerate($responseApi);
 
+if(isset($_POST)){
+	echo "<pre>"; print_r($_POST); die();
+}
 			// ubah date format
 			$split = explode('-', $generate->users->Birthdate);
 			$generate->users->Birthdate = @$generate->users->Birthdate != "" ? (@$split[2].'/'.@$split[1].'/'.@$split[0]) : '';
