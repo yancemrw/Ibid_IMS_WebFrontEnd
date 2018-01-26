@@ -14,11 +14,11 @@ class Dasbor extends CI_Controller {
 
 	public function index() {
 		$this->form_validation->set_rules('first_name', 'Nama Depan', 'required');
-		$this->form_validation->set_rules('ktp', 'No KTP', 'required');
-		$this->form_validation->set_rules('upd_phone', 'No Telepon', 'required');
+		$this->form_validation->set_rules('noktp', 'No KTP', 'required');
+		$this->form_validation->set_rules('phone', 'No Telepon', 'required');
 		$this->form_validation->set_rules('bankid', 'BANK', 'required');
-		$this->form_validation->set_rules('norek', 'No Rekening', 'required');
-		$this->form_validation->set_rules('rekname', 'Nama Rekening', 'required');
+		$this->form_validation->set_rules('accountnumber', 'No Rekening', 'required');
+		$this->form_validation->set_rules('accountname', 'Nama Rekening', 'required');
 
 		if($this->form_validation->run() === FALSE) {
 
@@ -28,9 +28,6 @@ class Dasbor extends CI_Controller {
 			$responseApi = admsCurl($url, array(), $method);
 			$generate = curlGenerate($responseApi);
 
-if(isset($_POST)){
-	echo "<pre>"; print_r($_POST); die();
-}
 			// ubah date format
 			$split = explode('-', $generate->users->Birthdate);
 			$generate->users->Birthdate = @$generate->users->Birthdate != "" ? (@$split[2].'/'.@$split[1].'/'.@$split[0]) : '';
@@ -57,7 +54,7 @@ if(isset($_POST)){
 
 		}
 		else {
-			$tmpDob = explode("/", $this->input->post('dob'));
+			$tmpDob = !empty($this->input->post('dob'))?explode("/", $this->input->post('dob')):false;
 			$dataUpdate = array(
 				'UserId'			=> $this->input->post('UserId'),
 				'first_name'		=> $this->input->post('first_name'),
@@ -66,7 +63,7 @@ if(isset($_POST)){
 				'phone'				=> $this->input->post('upd_phone'),
 				'memberid'			=> $this->input->post('idcard'),
 				'gender'			=> ($this->input->post('gender') !== "") ? $this->input->post('gender') : NULL,
-				'dob'				=> sprintf("%04d",$tmpDob[2])."-".sprintf("%02d",$tmpDob[1])."-".sprintf("%02d",$tmpDob[0]),
+				'dob'				=> $tmpDob?(sprintf("%04d",$tmpDob[2])."-".sprintf("%02d",$tmpDob[1])."-".sprintf("%02d",$tmpDob[0])):NULL,
 				'city'				=> $this->input->post('city'),
 				'address'			=> $this->input->post('address'),
 				'occupation'		=> $this->input->post('okup'),
