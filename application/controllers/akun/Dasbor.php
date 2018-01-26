@@ -20,10 +20,6 @@ class Dasbor extends CI_Controller {
 		$this->form_validation->set_rules('norek', 'No Rekening', 'required');
 		$this->form_validation->set_rules('rekname', 'Nama Rekening', 'required');
 
-		if(isset($_POST['first_name'])){
-			echo "<pre>Status : ".($this->form_validation->run()?"benar": "salah")."<br>"; print_r($_POST); die();
-		}
-
 		if($this->form_validation->run() === TRUE) {
 			$tmpDob = !empty($this->input->post('dob'))?explode("/", $this->input->post('dob')):false;
 			$dataUpdate = array(
