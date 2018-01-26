@@ -14,11 +14,11 @@ class Dasbor extends CI_Controller {
 
 	public function index() {
 		$this->form_validation->set_rules('first_name', 'Nama Depan', 'required');
-		$this->form_validation->set_rules('noktp', 'No KTP', 'required');
-		$this->form_validation->set_rules('phone', 'No Telepon', 'required');
+		$this->form_validation->set_rules('ktp', 'No KTP', 'required');
+		$this->form_validation->set_rules('upd_phone', 'No Telepon', 'required');
 		$this->form_validation->set_rules('bankid', 'BANK', 'required');
-		$this->form_validation->set_rules('accountnumber', 'No Rekening', 'required');
-		$this->form_validation->set_rules('accountname', 'Nama Rekening', 'required');
+		$this->form_validation->set_rules('norek', 'No Rekening', 'required');
+		$this->form_validation->set_rules('rekname', 'Nama Rekening', 'required');
 
 		if(isset($_POST['first_name'])){
 			echo "<pre>Status : ".($this->form_validation->run()?"benar": "salah")."<br>"; print_r($_POST); die();
