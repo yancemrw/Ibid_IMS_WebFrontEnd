@@ -30,11 +30,6 @@ class Login extends CI_Controller {
 		$this->form_validation->set_rules('password', 'password', 'required|min_length[8]|max_length[20]');
 		$userdata = $this->session->userdata('userdata');
 		if(@$this->input->get('status')) {
-			switch($this->input->get('status')) {
-				case 'registered': $this->session->set_flashdata('message', array('success', 'Akun anda sudah terdaftar, Silahkan verifikasi email dari kami', 'Perhatian')); break;
-				case 'must_login': $this->session->set_flashdata('message', array('error', 'Harap Login Terlebih Dahulu!', 'Perhatian')); break;
-			}
-			
 			$data = array(
 				'header_white'	=> "header-white",
 				'userdata'		=> $this->session->userdata('userdata'),

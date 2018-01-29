@@ -152,12 +152,12 @@
                            </div>
                         </div>
                         <div class="form-group floating-label">
-                           <input type="text" name="city" class="border-radius-none form-control floating-handle" value="<?php echo @$content->users->City; ?>">
-                           <label class="label-schedule">Kota</label>
-                        </div>
-                        <div class="form-group floating-label">
                            <input type="text" name="address" class="border-radius-none form-control floating-handle" value="<?php echo @$content->users->Address; ?>">
                            <label class="label-schedule">Alamat</label>
+                        </div>
+                        <div class="form-group floating-label">
+                           <input type="text" name="city" class="border-radius-none form-control floating-handle" value="<?php echo @$content->users->City; ?>">
+                           <label class="label-schedule">Kota</label>
                         </div>
                         <div class="form-group floating-label">
                            <input type="text" name="okup" class="border-radius-none form-control floating-handle" value="<?php echo @$content->users->Occupation; ?>">

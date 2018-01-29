@@ -1,3 +1,4 @@
+<script type="text/javascript" src="<?php echo base_url('assetsfront/js/countdown.js'); ?>"></script>
 <section class="section section-auction">
     <div class="container">
         <div class="row">
@@ -34,17 +35,29 @@
                             <h2>Verifikasi No. HP (OTP)</h2>
                             <h3>Masukan Kode Verifikasi  di Sini</h3>
                             <div class="vcode" id="vcode">
-                                <input type="phone" class="vcode-input" maxlength="1" id="vcode1" name="otp[]" required />
-                                <input type="phone" class="vcode-input" maxlength="1" name="otp[]" required />
-                                <input type="phone" class="vcode-input" maxlength="1" name="otp[]" required />
-                                <input type="phone" class="vcode-input" maxlength="1" name="otp[]" required />
-                                <input type="phone" class="vcode-input" maxlength="1" name="otp[]" required />
+                                <input type="phone" class="vcode-input" maxlength="1" 
+                                        oninvalid="this.setCustomValidity('Harus diisi')"
+                                        oninput="setCustomValidity('')" id="vcode1" name="otp[]" required />
+                                <input type="phone" class="vcode-input" maxlength="1" 
+                                        oninvalid="this.setCustomValidity('Harus diisi')" 
+                                        oninput="setCustomValidity('')" name="otp[]" required />
+                                <input type="phone" class="vcode-input" maxlength="1" 
+                                        oninvalid="this.setCustomValidity('Harus diisi')" 
+                                        oninput="setCustomValidity('')" name="otp[]" required />
+                                <input type="phone" class="vcode-input" maxlength="1" 
+                                        oninvalid="this.setCustomValidity('Harus diisi')" 
+                                        oninput="setCustomValidity('')" name="otp[]" required />
+                                <input type="phone" class="vcode-input" maxlength="1" 
+                                        oninvalid="this.setCustomValidity('Harus diisi')" 
+                                        oninput="setCustomValidity('')" name="otp[]" required />
                             </div>
                             <p>Mohon tunggu 1 menit sebelum mencoba kirim ulang kode verifikasi</p>
                         </div>
-                        <button class="btn btn-green">Submit</button>
+                        <div id="countdown-id">
+                            <button class="btn btn-green">Submit</button>
+                        </div>
                     </form>
-                    <a href="<?php echo site_url('biodata/otp?otpkirim=yes')?>">Kirim ulang kode verifikasi</a>
+                    <a id="reotp" href="<?php echo site_url('biodata/otp?otpkirim=yes')?>">Kirim ulang kode verifikasi</a>
                 </div>
             </div>
         </div>
@@ -52,6 +65,8 @@
 </section>
 
 <script>
+    countdown(); // call countdown
+
     $("input").keyup(function () {
         if(this.value.length == this.maxLength) {
           $(this).next('input').focus();
@@ -59,7 +74,7 @@
     });
 
     $('input').keydown(function(e) {
-        if ((e.which == 8 || e.which == 46) && $(this).val() =='') {
+        if ((e.which == 8 || e.which == 46) && $(this).val() == '') {
             $(this).prev('input').focus();
         }
     });
