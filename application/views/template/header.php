@@ -105,8 +105,7 @@
                   <div class="form-group help">
                      <select class="select-custom form-control" id="help-select">
                         <option value="">Bantuan</option>
-                        <option value="1">Hubungi Kami</option>
-                        <option value="2">FAQ</option>
+                        <option value="1">FAQ</option>
                      </select>
                   </div>
                </form>
@@ -166,8 +165,7 @@
                      <div class="form-group help">
                         <select class="select-custom form-control" id="help-select">
                            <option value="">Bantuan</option>
-                           <option value="1">Hubungi Kami</option>
-                           <option value="2">FAQ</option>
+                           <option value="1">FAQ</option>
                         </select>
                      </div>
                   </form>
@@ -240,9 +238,6 @@
 <script>
    $('#help-select').change(function() {
       if($(this).val() === '1') {
-         location.href = '<?php echo site_url('contactus'); ?>';
-      }
-      else if($(this).val() === '2') {
          location.href = '<?php echo site_url('faq'); ?>';
       }
    });
