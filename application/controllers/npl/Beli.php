@@ -8,7 +8,7 @@ class Beli extends CI_Controller {
 		$this->load->library(array('form_validation'));
 		$this->load->helper(array('global', 'omni'));
 		$this->AccessApi = new AccessApi(array('client_id' => 'ADMS Web', 'client_secret' => '1234567890', 'username' => 'rendhy.wijayanto@sera.astra.co.id'));
-		$this->AccessApi->redirect_url = site_url('auth/login?status=must_login');
+		$this->AccessApi->redirect_url = site_url('auth/login');
 		$this->AccessApi->check_login();
 	}
 

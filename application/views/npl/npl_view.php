@@ -33,10 +33,10 @@
                     <form class="form-filter" id="beli-npl" action="<?php echo site_url('biodata/otp'); ?>" method="POST" data-provide="validation">
                         <input type="hidden" name="otpkirim" value="true">
                         <div class="form-group floating-label">
-                            <input type="number" name="Phone" id="notif-telepon" class="form-control input-custom" value="<?php echo @$detailBiodata['Name']; ?>"
+                            <input type="text" name="Phone" id="notif-telepon" class="form-control input-custom" value="<?php echo @$detailBiodata['Name']; ?>"
                                     oninvalid="this.setCustomValidity('No telepon tidak boleh kosong')" 
                                     oninput="setCustomValidity('')" maxlength="13" required />
-                            <label class="label-schedule">No Telepon <span class="font-red">*</span></label>
+                            <label class="label-schedule">No Telepon *</label>
                             <div class="help-info help-info-1">
                                 <i class="fa fa-info"></i> Pastikan nomor handphone yang Anda masukan aktif
                             </div>
@@ -44,8 +44,8 @@
                         <div class="form-group">
                             <select class="form-control select-custom" name="BankId" 
                                     oninvalid="this.setCustomValidity('Tipe bank tidak boleh kosong')" 
-                                    oninput="setCustomValidity('')" required>
-                                <option value="">Bank <span class="font-red">*</span></option>
+                                    oninput="setCustomValidity('')">
+                                <option value="">Bank *</option>
                                 <?php foreach($listBank as $row){ ?>
                                 <option value="<?php echo $row->BankId; ?>" <?php echo (@$detailBiodata['BankId'] == $row->BankId) ? 'selected' : ''; ?>><?php echo $row->BankName; ?></option>
                                 <?php } ?>
@@ -55,8 +55,8 @@
                             <input type="text" name="BankAccountNumber" id="notif-rekening" class="form-control input-custom" 
                                     value="<?php echo @$detailBiodata['BankAccountNumber']; ?>" 
                                     oninvalid="this.setCustomValidity('Nomor rekening tidak boleh kosong')" 
-                                    oninput="setCustomValidity('')" maxlength="13" required />
-                            <label class="label-schedule">Nomor Rekening <span class="font-red">*</span></label>
+                                    oninput="setCustomValidity('')" maxlength="16" required />
+                            <label class="label-schedule">Nomor Rekening *</label>
                             <div class="help-info help-info-2">
                                 <i class="fa fa-info"></i> Nomor rekening merupakan nomor rekening yang di gunakan 
                                 ibid untuk pengembalian deposit. mohon periksa nomor 
@@ -67,9 +67,9 @@
                             <input type="text" name="BankAccountName" class="form-control input-custom" 
                                     value="<?php echo @$detailBiodata['BankAccountName']; ?>" oninvalid="this.setCustomValidity('Atas nama tidak boleh kosong')" 
                                     oninput="setCustomValidity('')" required />
-                            <label class="label-schedule">Atas Nama <span class="font-red">*</span></label>
+                            <label class="label-schedule">Atas Nama *</label>
                         </div>
-                        <div class="form-group">
+                        <!--div class="form-group">
                             <select class="form-control select-custom" id="biodata" name="Identitas" 
                                     oninvalid="this.setCustomValidity('Tipe identitas tidak boleh kosong')" 
                                     oninput="setCustomValidity('')" required>
@@ -77,15 +77,18 @@
                                 <option value="k">Pilih Ktp</option>
                                 <option value="n">Pilih Npwp</option>
                             </select>
+                        </div-->
+                        <div class="form-group floating-label" id="ktp">
+                            <input type="text" name="IdentityNumber" class="form-control input-custom" maxlength="16" 
+                                    value="<?php echo @$detailBiodata['IdentityNumber']; ?>"
+                                    oninvalid="this.setCustomValidity('Nomor KTP tidak boleh kosong')" 
+                                    oninput="setCustomValidity('')" required />
+                            <label class="label-schedule">Nomor KTP *</label>
                         </div>
-                        <div class="form-group floating-label" id="ktp" style="display: none;">
-                            <input type="text" name="IdentityNumber" class="form-control input-custom" value="<?php echo @$detailBiodata['IdentityNumber']; ?>">
-                            <label class="label-schedule">Nomor KTP <span class="font-red">*</span></label>
-                        </div>
-                        <div class="form-group floating-label" id="npwp" style="display: none;">
+                        <!--div class="form-group floating-label" id="npwp" style="display: none;">
                             <input type="text" name="NpwpNumber" class="form-control input-custom" value="<?php echo @$detailBiodata['NpwpNumber']; ?>">
                             <label class="label-schedule">NPWP <span class="font-red">*</span></label>
-                        </div>
+                        </div-->
                         <div class="g-recaptcha recaptcha" id="idrecaptcha" required></div>
                         <div class="input-group agree-required">
                             <input type="checkbox" name="checkbox" id="agree-required">
@@ -155,6 +158,13 @@
        }
     });
 
+    // handle input if exists data
+    $('input').each(function() {
+      if($(this).val() !== '') {
+        $(this).addClass('not-empty');
+      }
+    });
+
     $('.lang-mob a').click(function(){
       $('.help-mob ul').removeClass('open')
       $(this).toggleClass('opened')
@@ -189,24 +199,34 @@
 
     // handle button kirim
     $('#btn-kirim').click(function(e) {
-      var phone     = $('input[name="Phone"]').val(), 
-          bankid    = $('select[name="BankId"]').val(), 
-          bankacc   = $('input[name="BankAccountNumber"]').val(), 
-          bankname  = $('input[name="BankAccountName"]').val(),
-          identity  = $('select[name="Identitas"]').val(),
-          ktp       = $('input[name="IdentityNumber"]'),
-          recaptcha = $('#e8df0fade2ce52c6a8cf8c8d2309d08a').val();
+        var phone     = $('input[name="Phone"]').val(), 
+            bankid    = $('select[name="BankId"]').val(), 
+            bankacc   = $('input[name="BankAccountNumber"]').val(), 
+            bankname  = $('input[name="BankAccountName"]').val(),
+            identity  = $('select[name="Identitas"]').val(),
+            ktp       = $('input[name="IdentityNumber"]'),
+            recaptcha = $('#e8df0fade2ce52c6a8cf8c8d2309d08a').val();
         if(phone !== '' && bankid !== '' && bankacc !== '' && bankname !== '' && identity !== '' && ktp !== '') {
-          e.preventDefault();
-          if($('#agree-required').is(":checked") === false) {
-              alert('Anda harus setuju dengan syarat dan ketentuan dari kami!');
-          }
-          else if(recaptcha !== '') {
-              $('#beli-npl').submit();
-          }
-          else {
-              alert('Captcha harus di isi!');
-          }
+            e.preventDefault();
+            if($('#agree-required').is(":checked") === false) {
+                alert('Anda harus setuju dengan syarat dan ketentuan dari kami!');
+                return;
+            }
+            else if(ktp.val().length < 16) {
+                alert('Nomor KTP harus 16 angka!');
+                return;
+            }
+            else if(bankid === '') {
+                alert('BANK harus diisi!');
+                return;
+            }
+            else if(recaptcha !== '') {
+                $('#beli-npl').submit();
+                return;
+            }
+            else {
+                alert('Captcha harus di isi!');
+            }
         }
     });
 
@@ -226,16 +246,9 @@
       return ((charCode >= 48 && charCode <= 57) || charCode === 46);
     });
 
-    $('input[name="NpwpNumber"]').keypress(function(event) {
+    /*$('input[name="NpwpNumber"]').keypress(function(event) {
       var charCode = (event.which) ? event.which : event.keyCode;
       return ((charCode >= 48 && charCode <= 57) || charCode === 46);
-    });
-
-    // handle input if exists data
-    $('input').each(function() {
-      if($(this).val() !== '') {
-        $(this).addClass('not-empty');
-      }
-    });
+    });*/
   });
 </script>

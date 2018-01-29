@@ -9,12 +9,11 @@ class Pembelian extends CI_Controller {
         $this->load->helper(array('global' , 'omni'));
     }
 	
-	function index(){
+	function index() {
 		// print_r($this->session->all_userdata());
 		// exit();
 		$this->load->library('cart');
 		$userdata = $this->session->userdata('userdata');
-		
 		$data['message'] = $this->session->flashdata('message');
 
 		############################################################
@@ -54,7 +53,7 @@ class Pembelian extends CI_Controller {
 			$data['listBank'] = @$listBank;
 			############################################################
 			
-			
+			redirect();
 		} 
 		else {
 			$data['title']	= 'Pembelian NPL';
@@ -90,10 +89,7 @@ class Pembelian extends CI_Controller {
 			$data['cabang'] = @$itemType;
 			############################################################
 			
-		} 
-
-		// $this->load->view('templateAdminLTE',$data);
-
+		}
 		
 		$data['header_white']	= "header-white";
 		$data['userdata']		= $userdata;
@@ -102,14 +98,13 @@ class Pembelian extends CI_Controller {
 		template($view, $data);
 	}
 
-	public function beli()
-	{
-		$userdata = $this->session->userdata('userdata');
-		$data['form_auth_mobile'] = login_status_form_mobile($userdata);
-		$view 			= 'npl/pemesanan_view_base';
-		$data['header_white']	= "header-white";
-		$data['userdata']		= $userdata;
-		$data['form_auth']		= login_Status_form($userdata);
+	public function beli() {
+		$userdata 					= $this->session->userdata('userdata');
+		$data['form_auth_mobile'] 	= login_status_form_mobile($userdata);
+		$view 						= 'npl/pemesanan_view_base';
+		$data['header_white']		= "header-white";
+		$data['userdata']			= $userdata;
+		$data['form_auth']			= login_Status_form($userdata);
 
 		template($view, $data);
 	}
