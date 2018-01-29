@@ -344,7 +344,7 @@
                <p>Amankan kendaraan favorit Anda! Dengan Auto Bid, Anda dapat menentukan harga
                   tawar maksimal yang Anda mau sebelum lelang dimulai. Nikmati kemudahan Auto Bid
                   dalam genggaman Anda hanya lewat aplikasi IBID. <span>Download sekarang!</span></p>
-               <a href="" class="icn icn-google-play"></a>
+               <a href="javascript:void(0)" class="icn icn-google-play link-disabled"></a>
             </div>
             <div class="col-md-5">
                <img alt="" src="<?php echo base_url('assetsfront/images/background/bg-hand.png'); ?>" class="image-footer img-responsive" />

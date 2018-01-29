@@ -6827,6 +6827,10 @@ input.input-custom.empty {
     padding: 10px;
 }
 
+.link-disabled {
+    cursor: no-drop;
+}
+
 .recaptcha {
     transform: scale(0.77);
     -webkit-transform: scale(0.77);
@@ -6839,7 +6843,13 @@ input.input-custom.empty {
     max-width: 680px;
     height: auto;
     margin: auto;
-    overflow: hidden;
+    padding-bottom: 30px;
+}
+
+.coming-soon div {
+    max-width: 680px;
+    margin: auto;
+    height: auto;
     padding-bottom: 30px;
 }
 

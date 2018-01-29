@@ -44,11 +44,11 @@
                   <button class="btn btn-green" disabled>Cari</button>
                </form>
             </div>
-            <div class="content-right product-mob clearfix">
-               <div class="coming-soon">
+            <div class="content-right product-mob coming-soon">
+               <div>
                   <img src="<?php echo base_url('assetsfront/images/background/coming-soon.png'); ?>" alt="" title="">
-                   <h2>Coming Soon </h2>
-                   <p>Fitur ini baru akan dapat digunakan dalam beberapa hari kedepan</p>
+                  <h2>Coming Soon</h2>
+                  <p>Fitur ini baru akan dapat digunakan dalam beberapa hari kedepan</p>
                </div>
             </div>
          </div>
