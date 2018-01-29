@@ -8,7 +8,8 @@
          <div role="tabpanel" class="tab-pane search-transport active" id="tab-mobile-1">
             <form class="form-inline clearfix">
 
-				<div class="form-group clearfix">
+				<?php foreach($formDinamis as $row){ echo $row['typeInput']; } ?>
+				<!-- div class="form-group clearfix"> namaLabel idInput
 				  <select id="ItemId" class="select-custom form-control">
 					 <?php foreach($itemType as $row){ ?>
 					 <option value="<?php echo $row['ItemId']; ?>"><?php echo $row['ItemName']; ?></option>
@@ -26,7 +27,7 @@
 						 <option>Seri</option>
 					  </select>
 					</div>
-				</div>
+				</div -->
 				<div class="form-group">
 				  <button class="btn btn-lg btn-green btn-search" disabled>Cari</button>
 				</div>
@@ -37,11 +38,11 @@
             <form class="form-inline clearfix">
                <div class="form-group">
                   <select class="select-custom form-control filterJadwal" id="thisCabang">
-                     <option value ="" ></option>
+                     <!-- option value ="" ></option>
                      <option value ="" >Bandung</option>
-                     <option value ="" >Jakarta</option>
+                     <option value ="" >Jakarta</option -->
                      <?php foreach($cabang as $row){ ?>
-                     <option value="<?php echo $row['CompanyId']; ?>" ><?php echo $row['CompanyName']; ?></option>
+                     <option value="<?php echo $row['CompanyId']; ?>" ><?php echo substr($row['CompanyName'], 4); ?></option>
                      <?php } ?>
                   </select>
                   <label>Kota</label>
@@ -57,8 +58,8 @@
                <div class="form-group">
                   <select class="select-custom form-control" id="thisDate">
                      <option value ="" ></option>
-                     <option value ="" >Jakarta Barat, Jl. Bintaro Mulia, 14/09</option>
-                     <option value ="" >Jakarta Barat, Jl. Bintaro Mulia, 14/09</option>
+                     <!-- option value ="" >Jakarta Barat, Jl. Bintaro Mulia, 14/09</option>
+                     <option value ="" >Jakarta Barat, Jl. Bintaro Mulia, 14/09</option -->
                   </select>
                   <label>Jadwal</label>
                </div>
@@ -414,6 +415,7 @@ $(function(){
         
     }); 
 	
+	/* 
 	$('#ItemId').change(function(){
 		thisVal = $(this).val();
 		$.ajax({
@@ -421,17 +423,13 @@ $(function(){
 			data : {
 				id : thisVal
 			},
-			// crossDomain : true,
-			// async : false,
 			success : function(ret) {
 				$('#thisSearchBrand').html(ret[0]);
 			}
-			// error : function(e) {
-				// callback({err:e.statusText});
-			// }
 		});
 	});
 	$('#ItemId').change();
+	*/
 
 });
 </script>
