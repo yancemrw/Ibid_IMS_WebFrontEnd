@@ -30,7 +30,7 @@
             </div> 
             <div class="col-md-5 col-sm-6">      
                 <div class="verification-otp">
-                    <form role="form" action="<?php echo site_url('biodata/otpconfirm'); ?>" method="POST" data-provide="validation">
+                    <!--form role="form" action="<?php echo site_url('biodata/otpconfirm'); ?>" method="POST" data-provide="validation"-->
                         <div class="input-code">
                             <h2>Verifikasi No. HP (OTP)</h2>
                             <h3>Masukan Kode Verifikasi  di Sini</h3>
@@ -54,9 +54,9 @@
                             <p>Mohon tunggu 1 menit sebelum mencoba kirim ulang kode verifikasi</p>
                         </div>
                         <div id="countdown-id">
-                            <button class="btn btn-green">Submit</button>
+                            <button class="btn btn-green" id="btn-submit">Submit</button>
                         </div>
-                    </form>
+                    <!--/form-->
                     <a id="reotp" href="<?php echo site_url('biodata/otp?otpkirim=yes')?>">Kirim ulang kode verifikasi</a>
                 </div>
             </div>
@@ -65,11 +65,62 @@
 </section>
 
 <script>
-    countdown(); // call countdown
+    $('#btn-submit').click(function() {
+        var arrOTP = new Array(), checkField = false;
+        $('input[name^="otp"]').each(function() {
+            arrOTP.push($(this).val());
 
-    $("input").keyup(function () {
+            if($(this).val() === '') {
+                checkField = true;
+                return;
+            }
+        });
+
+        if(checkField === true) {
+            alert('Lengkapi Kode Verifikasi!');
+            return;
+        }
+        else {
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo site_url('biodata/otpconfirm'); ?>',
+                data: 'otp='+JSON.stringify(arrOTP),
+                beforeSend: function() {
+                    $('#btn-submit').prop('disabled', true);
+                },
+                success: function(data) {                    
+                    if(data === 'cocok') {
+                        deleteCookieCountdown('WRG');
+                        location.href = '<?php echo site_url('biodata/updateForNPL'); ?>';
+                    }
+                    else {
+                        alert(data);
+                        var cookie_false = document.cookie.indexOf('WRG=');
+                        if(cookie_false === -1) {
+                            document.cookie = "WRG=1; Path=/;";
+                            $('#btn-submit').prop('disabled', false);
+                        }
+                        else {
+                            var getCount = getCookieFalse('WRG'), count = 0;
+                            count = parseInt(getCount) + 1;
+                            document.cookie = "WRG="+count+"; Path=/;";
+                            console.log(count);
+                            switch(count) {
+                                case 3: countdown(1);
+                                case 6: countdown(1);
+                                case 9: countdown(5);
+                            }
+                            $('#btn-submit').prop('disabled', false);
+                        }
+                    }
+                }
+            });
+        }
+    });
+
+    $("input").keyup(function() {
         if(this.value.length == this.maxLength) {
-          $(this).next('input').focus();
+            $(this).next('input').focus();
         }
     });
 
@@ -78,4 +129,18 @@
             $(this).prev('input').focus();
         }
     });
+
+    function getCookieFalse(name) {
+        var pattern = RegExp(name + "=.[^;]*")
+        matched = document.cookie.match(pattern)
+        if(matched) {
+            var cookie = matched[0].split('=')
+            return cookie[1]
+        }
+        return false
+    }
+
+    function deleteCookieFalse(name) {
+        document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    }
 </script>

@@ -1,7 +1,7 @@
-function countdown() {
+function countdown(setTimer) {
 	// config with cookie
-	var countDownDate, setTimer1 = 1;
-	var cookie_name = document.cookie.indexOf('countdown_cookie=');
+	var countDownDate;
+	var cookie_name = document.cookie.indexOf('CODOCK=');
 	if(cookie_name === -1) {
 		// set 5 minute from now
 		var rightnow = new Date();
@@ -10,11 +10,11 @@ function countdown() {
 			return this;
 		};
 		
-		countDownDate = new Date(rightnow.addMinutes(setTimer1)).getTime();
-		document.cookie = "countdown_cookie="+countDownDate+"; Path=/;";
+		countDownDate = new Date(rightnow.addMinutes(setTimer)).getTime();
+		document.cookie = "CODOCK="+countDownDate+"; Path=/;";
 	}
 	else {
-		countDownDate = getCookieCountdown('countdown_cookie');
+		countDownDate = getCookieCountdown('CODOCK');
 	}
 	
 	// hide link
@@ -39,7 +39,7 @@ function countdown() {
 		// If the count down is over, write some text 
 		if(distance < 0) {
 			clearInterval(x);
-			deleteCookieCountdown('countdown_cookie');
+			deleteCookieCountdown('CODOCK');
 			document.getElementById("countdown-id").innerHTML = '<button class="btn btn-green" id="btn-submit">Submit</button>';
 			document.getElementById('reotp').style.display = 'block';
 		}

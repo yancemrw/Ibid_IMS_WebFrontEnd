@@ -39,7 +39,7 @@ class Biodata extends CI_Controller {
 				$detailBiodata['NpwpNumber'] == '' 
 			){
 
-				$data['page'] 	= 'biodata/ForNPL';
+			$data['page'] 	= 'biodata/ForNPL';
 			$data['detailBiodata'] = $detailBiodata;
 			############################################################
 			## get list Bank
@@ -132,27 +132,27 @@ class Biodata extends CI_Controller {
 
 
 		if (isset($_POST['otp'])) {
-					// cek otp apakah benar
-			$hitung = count($_POST['otp']);
-			$otp = implode("", $_POST['otp']);  
+			// ubah format data otp dari string menjadi array, karena menggunakan javascript POST datanya
+			$otpconv = json_decode($_POST['otp']);
 
-			if ($otp == $this->session->userdata('otpNPL')) {
-				// echo "beda 1";
-				// exit();
-				// echo "token sama";
-				redirect('biodata/updateForNPL','refresh');
+			// cek otp apakah benar
+			$hitung = count($otpconv);
+			$otp = implode("", $otpconv);  
+
+			if($otp == $this->session->userdata('otpNPL')) {
+				echo "cocok";
+				exit;
+				//redirect('biodata/updateForNPL','refresh');
 
 			} else {
-				// echo "beda 2";
-				// exit();
-				$this->session->set_flashdata('message', array('error', 'OTP tidak cocok', 'Perhatian'));
-				redirect('biodata/otpconfirm','refresh');
+				echo "OTP tidak cocok";
+				exit;
+				//$this->session->set_flashdata('message', array('error', 'OTP tidak cocok', 'Perhatian'));
+				//redirect('biodata/otpconfirm','refresh');
 			}
-
 		}
 
 		$data['title']	= 'Pembelian NPL';
-		// $data['page'] 	= 'pembelian/otp';
 		$userdata = $this->session->userdata('userdata');
 		$data = array(
 			// header white untuk selain home, karena menggunakan header yang berwarna putih
@@ -165,7 +165,6 @@ class Biodata extends CI_Controller {
 		$view	= 'npl/npl_otp_view';  
 		// $view = "npl/npl_view";
 		template($view , $data);
-		// $this->load->view('templateAdminLTE',$data);
 	}
 
 	function updateForNPL(){
