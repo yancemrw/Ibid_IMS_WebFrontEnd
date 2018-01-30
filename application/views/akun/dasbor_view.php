@@ -15,15 +15,15 @@
                </div>
                <ul>
                   <li class="acc_notif">
-                     <a href="<?php echo site_url('notification'); ?>">
-                     <span class="ic_menu"><i ></i></span> Notifikasi <span>10</span></a>
+                     <a href="javascript:void(0)">
+                     <span class="ic_menu"><i ></i></span> Notifikasi <!--span>10</span--></a>
                   </li>
                   <li class="acc_transaction">
-                     <a href="<?php echo site_url('transaction'); ?>">
+                     <a href="javascript:void(0)">
                      <span class="ic_menu"><i ></i></span> Transaksi</a>
                   </li>
                   <li class="acc_npl">
-                     <a href="<?php echo site_url('npl_dashboard'); ?>">
+                     <a href="javascript:void(0)">
                      <span class="ic_menu"><i ></i></span> NPL Management</a>
                   </li>
                   <li class="acc_setting active">
@@ -31,11 +31,11 @@
                      <span class="ic_menu"><i ></i></span> Pengaturan</a>
                   </li>
                   <li class="acc_favorite">
-                     <a href="<?php echo site_url('favorite'); ?>">
+                     <a href="javascript:void(0)">
                      <span class="ic_menu"><i ></i></span> Favorit</a>
                   </li>
                   <li class="acc_price">
-                     <a href="<?php echo site_url('basic-price'); ?>">
+                     <a href="javascript:void(0)">
                      <span class="ic_menu"><i ></i></span> Harga Dasar</a>
                   </li>
                </ul>
@@ -62,32 +62,32 @@
                      <div class="col-md-6">
                         <h4>Biodata Diri</h4>
                         <div class="form-group floating-label">
-                           <input type="text" name="first_name" id="first_name" class="form-control floating-handle" 
+                           <input type="text" name="first_name" id="first_name" class="form-control floating-handle border-radius-none" 
                                     value="<?php echo @$content->users->first_name; ?>">
-                           <label class="label-schedule">Nama Depan <span class="font-red">*</span></label>
+                           <label class="label-schedule">Nama Depan *</label>
                         </div>
                         <div class="form-group floating-label">
-                           <input type="text" name="last_name" id="last_name" class="form-control floating-handle" 
+                           <input type="text" name="last_name" id="last_name" class="form-control floating-handle border-radius-none" 
                                     value="<?php echo @$content->users->last_name; ?>">
-                           <label class="label-schedule">Nama Belakang <!-- <span class="font-red">*</span> --></label>
+                           <label class="label-schedule">Nama Belakang</label>
                         </div>
                         <div class="form-group floating-label">
                            <input type="text" name="upd_email" id="upd_email" class="border-radius-none disabled form-control floating-handle" 
                                     value="<?php echo @$content->users->Email; ?>" 
                                     oninvalid="this.setCustomValidity('Email tidak boleh kosong')" oninput="setCustomValidity('')" readonly />
-                           <label class="label-schedule">Email <span class="font-red">*</span></label>
+                           <label class="label-schedule">Email *</label>
                         </div>
                         <div class="form-group floating-label">
                            <input type="text" name="upd_phone" id="upd_phone" class="form-control floating-handle input-custom only-number" 
-                                    value="<?php echo @$content->users->Phone; ?>" title="Pastikan nomor dapat menerima SMS" 
+                                    value="<?php echo @$content->users->Phone; ?>" title="Pastikan nomor dapat menerima SMS" maxlength="13"
                                     oninvalid="this.setCustomValidity('No Telepon tidak boleh kosong')" oninput="setCustomValidity('')" required />
-                           <label class="label-schedule">No Telepon <span class="font-red">*</span></label>
+                           <label class="label-schedule">No Telepon *</label>
                         </div>
                         <div class="form-group floating-label">
                            <input type="text" name="ktp" id="ktp" class="form-control floating-handle input-custom only-number" 
-                                    value="<?php echo @$content->users->IdentityNumber; ?>" 
+                                    value="<?php echo @$content->users->IdentityNumber; ?>" maxlength="16"
                                     oninvalid="this.setCustomValidity('KTP tidak boleh kosong')" oninput="setCustomValidity('')" required />
-                           <label class="label-schedule">No KTP <span class="font-red">*</span></label>
+                           <label class="label-schedule">No KTP *</label>
                         </div>
                         <div class="form-group floating-label">
                            <input type="text" id="npwp" name="npwp" class="border-radius-none form-control floating-handle only-number" 
@@ -106,9 +106,8 @@
                      <div class="col-md-6">
                         <h4>Akun Bank</h4>
                         <div class="form-group floating-label">
-                           <select class="form-control font-theme select-custom" name="bankid"
-                                    oninvalid="this.setCustomValidity('Pilih bank')" oninput="setCustomValidity('')" required>
-                              <option>Pilih <span class="font-red">*</span></option>
+                           <select class="form-control font-theme select-custom" name="bankid" id="bankid">
+                              <option value="">Pilih *</option>
                               <?php foreach($listBank as $row) { ?>
                               <option value="<?php echo $row->BankId; ?>" <?php echo (@$content->users->BankId == $row->BankId) ? 'selected' : ''; ?>><?php echo $row->BankName; ?></option>
                               <?php } ?>
@@ -116,18 +115,19 @@
                         </div>
                         <div class="form-group floating-label">
                            <input type="text" name="norek" class="form-control floating-handle input-custom only-number" 
-                                    value="<?php echo @$content->users->BankAccountNumber; ?>"
+                                    value="<?php echo @$content->users->BankAccountNumber; ?>" id="norek" maxlength="16"
                                     oninvalid="this.setCustomValidity('Nomor rekening tidak boleh kosong')" oninput="setCustomValidity('')" required />
-                           <label class="label-schedule">Nomor Rekening <span class="font-red">*</span></label>
+                           <label class="label-schedule">Nomor Rekening *</label>
                         </div>
                         <div class="form-group floating-label">
                            <input type="text" name="rekname" class="form-control floating-handle input-custom" 
-                                    value="<?php echo @$content->users->BankAccountName; ?>" 
+                                    value="<?php echo @$content->users->BankAccountName; ?>" id="atna"
                                     oninvalid="this.setCustomValidity('Atas nama tidak boleh kosong')" oninput="setCustomValidity('')" required />
-                           <label class="label-schedule">Atas Nama <span class="font-red">*</span></label>
+                           <label class="label-schedule">Atas Nama *</label>
                         </div>
                         <div class="form-group floating-label">
-                           <input type="text" name="" class="border-radius-none form-control floating-handle" />
+                           <input type="text" name="branchbank" class="border-radius-none form-control floating-handle"
+                                    value="<?php echo @$content->users->BankBranch; ?>" />
                            <label class="label-schedule">Kantor Cabang</label>
                         </div>
                      </div>
@@ -191,6 +191,30 @@
    $('input').each(function() {
       if($(this).val() !== '') {
          $(this).addClass('not-empty');
+      }
+   });
+
+   $('#btn-update').click(function(e) {
+      var firstName  = $('#first_name').val(),
+            notlp    = $('#upd_phone').val(),
+            ktp      = $('#ktp').val(),
+            bankid   = $('#bankid').val(),
+            norek    = $('#norek').val(),
+            atasnama = $('#atna').val();
+      if(firstName !== '' && notlp !== '' && ktp !== '' && norek !== '' && atasnama !== '') {
+         e.preventDefault();
+         if(bankid == '') {
+            alert('Nama BANK harus diisi');
+            return;
+         }
+         else if(ktp.length < 16) {
+            alert('No KTP harus diisi 16 angka');
+            return;
+         }
+         else {
+            $('#form-dashboard').submit();
+            return;
+         }
       }
    });
 

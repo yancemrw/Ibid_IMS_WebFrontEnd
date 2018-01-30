@@ -21,7 +21,7 @@ class Dasbor extends CI_Controller {
 		$this->form_validation->set_rules('rekname', 'Nama Rekening', 'required');
 
 		if($this->form_validation->run() === TRUE) {
-			$tmpDob = !empty($this->input->post('dob'))?explode("/", $this->input->post('dob')):false;
+			$tmpDob = !empty($this->input->post('dob')) ? explode("/", $this->input->post('dob')) : false;
 			$dataUpdate = array(
 				'UserId'			=> $this->input->post('UserId'),
 				'first_name'		=> $this->input->post('first_name'),
@@ -30,7 +30,7 @@ class Dasbor extends CI_Controller {
 				'phone'				=> $this->input->post('upd_phone'),
 				'memberid'			=> $this->input->post('idcard'),
 				'gender'			=> ($this->input->post('gender') !== "") ? $this->input->post('gender') : NULL,
-				'dob'				=> $tmpDob?(sprintf("%04d",$tmpDob[2])."-".sprintf("%02d",$tmpDob[1])."-".sprintf("%02d",$tmpDob[0])):NULL,
+				'dob'				=> $tmpDob ? (sprintf("%04d",$tmpDob[2])."-".sprintf("%02d",$tmpDob[1])."-".sprintf("%02d",$tmpDob[0])) : NULL,
 				'city'				=> $this->input->post('city'),
 				'address'			=> $this->input->post('address'),
 				'occupation'		=> $this->input->post('okup'),
@@ -40,7 +40,8 @@ class Dasbor extends CI_Controller {
 				'city' 				=> $this->input->post('city'),
 				'bankid' 			=> $this->input->post('bankid'),
 				'accountnumber'		=> $this->input->post('norek'),
-				'accountname'		=> $this->input->post('rekname')
+				'accountname'		=> $this->input->post('rekname'),
+				'branchbank'		=> $this->input->post('branchbank')
 			);
 
 			$url = linkservice('account')."userfrontend/Edit";
@@ -72,13 +73,13 @@ class Dasbor extends CI_Controller {
 
 		$userdata = $this->session->userdata('userdata');
 		$data = array(
-			'header_white'	=> "header-white",
-			'userdata'		=> $userdata,
-			'title'			=> 'Data Diri',
-			'form_auth_mobile' => login_status_form_mobile($userdata),
-			'form_auth'		=> login_Status_form($userdata),
-			'content'		=> $generate,
-			'listBank'		=> @$listBank
+			'header_white'		=> "header-white",
+			'userdata'			=> $userdata,
+			'title'				=> 'Data Diri',
+			'form_auth_mobile'	=> login_status_form_mobile($userdata),
+			'form_auth'			=> login_Status_form($userdata),
+			'content'			=> $generate,
+			'listBank'			=> @$listBank
 		);
 		//$data['img_link'] = 'https://instagram.fjkt1-1.fna.fbcdn.net/t51.2885-15/e35/25023178_125021498293801_6299328116707819520_n.jpg';
 		$data['img_link'] = base_url('assetsfront/images/icon/ic_avatar.png');
