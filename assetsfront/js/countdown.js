@@ -40,7 +40,7 @@ function countdown() {
 		if(distance < 0) {
 			clearInterval(x);
 			deleteCookieCountdown('countdown_cookie');
-			document.getElementById("countdown-id").innerHTML = '<button class="btn btn-green">Submit</button>';
+			document.getElementById("countdown-id").innerHTML = '<button class="btn btn-green" id="btn-submit">Submit</button>';
 			document.getElementById('reotp').style.display = 'block';
 		}
 	}, 1000);
