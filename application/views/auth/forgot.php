@@ -8,7 +8,9 @@
             <h2>Forgot Your Password</h2>
             <p>Masukkan email anda</p>
             <div class="form-group floating-label">
-              <input type="email" id="email" name="email" class="form-control input-custom" required />
+              <input type="email" id="email" name="email" class="form-control input-custom"
+                      pattern="[^@]*@[^@]" oninvalid="this.setCustomValidity('Email tidak boleh kosong')"
+                      oninput="setCustomValidity('')" required />
               <label class="label-schedule">Email</label>
             </div>
             <button class="btn btn-green" id="btn-kirim">Kirim</button>

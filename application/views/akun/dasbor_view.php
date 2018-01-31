@@ -212,6 +212,7 @@
             return;
          }
          else {
+            $('#btn-update').attr('disabled', true);
             $('#form-dashboard').submit();
             return;
          }
