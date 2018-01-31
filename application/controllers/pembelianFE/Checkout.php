@@ -73,13 +73,13 @@ class Checkout extends CI_Controller {
 				if ($responseApiInsert['status'] == 1){
                     $TransactionId = $responseApiInsert['data'][0];
 
-					$this->session->set_flashdata('message', '<div class="alert alert-success">'.$responseApiInsert['message'].'</div>');
+					$this->session->set_flashdata('message', array('success', $responseApiInsert['message']));
                     
 					redirect('counter/pembelian/lists/','refresh');
 
 				} else if ($responseApiInsert['status'] == 0){ 
 
-					$this->session->set_flashdata('message', '<div class="alert alert-warning">'.$responseApiInsert['message'].'</div>');
+					$this->session->set_flashdata('message', array('warning', $responseApiInsert['message']));
 					redirect('counter/pembelian/add/','refresh');
 
 				}

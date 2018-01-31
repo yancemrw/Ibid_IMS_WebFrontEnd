@@ -79,7 +79,7 @@ class Register extends CI_Controller {
 				echo "<hr>cURL Error #:".$responseApi['err'];
 			}
 			else {
-				$this->session->set_flashdata('message', array('success', 'Akun anda sudah terdaftar, Silahkan verifikasi email dari kami', 'Perhatian'));
+				$this->session->set_flashdata('message', array('success', 'Akun anda sudah terdaftar, Silahkan verifikasi email dari kami'));
 				redirect(); 
 			}
 

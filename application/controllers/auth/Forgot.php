@@ -58,7 +58,7 @@ class Forgot extends CI_Controller {
 				$responseApiInsert = json_decode($responseApi['response'], true);
 				if ($responseApiInsert['status'] == 1){
 
-					$this->session->set_flashdata('message', '<div class="alert alert-success">'.$responseApiInsert['message'].'</div>');
+					$this->session->set_flashdata('message', array('success', $responseApiInsert['message']));
 					// redirect('role/lists','refresh');
 
 					$responseApiInsert['message'];
@@ -71,7 +71,7 @@ class Forgot extends CI_Controller {
 
 				} else if ($responseApiInsert['status'] == 0){ 
 
-					$this->session->set_flashdata('message', '<div class="alert alert-warning">'.$responseApiInsert['message'].'</div>');
+					$this->session->set_flashdata('message', array('warning', $responseApiInsert['message']));
 					redirect('auth/forgot','refresh');
 
 				}

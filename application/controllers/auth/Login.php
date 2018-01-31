@@ -79,7 +79,7 @@ class Login extends CI_Controller {
 				$res = json_decode($responseApi['response']);
 				if(isset($res->error)) {
 					// kalo gagal
-					$this->session->set_flashdata('message', array('error', $res->error_description, 'Gagal'));
+					$this->session->set_flashdata('message', array('danger', $res->error_description));
 					redirect('login');
 				}
 				else {
@@ -91,7 +91,7 @@ class Login extends CI_Controller {
 					$this->AccessApi->setAccess('in',(array)$res);
 
 					// kalo berhasil
-					$this->session->set_flashdata('message', array('success' , 'Berhasil Login' , 'Sukses'));
+					$this->session->set_flashdata('message', array('success', 'Berhasil Login'));
 					redirect('akun/dasbor');
 				} 
 			}

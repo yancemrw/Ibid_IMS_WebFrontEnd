@@ -178,7 +178,7 @@ class AccessApi
 
 		} else if(!$this->sess && !$access && $this->redirect_url){
 			//$this->ci->session->set_flashdata('message', '<div class="alert alert-danger">'.$this->getMessage('session').'</div>');
-			$this->ci->session->set_flashdata('message', array('error', 'Harap Login Terlebih Dahulu!', 'Perhatian'));
+			$this->ci->session->set_flashdata('message', array('danger', 'Harap Login Terlebih Dahulu!'));
 			redirect($this->redirect_url, 'refresh');
 		}
 		return TRUE;

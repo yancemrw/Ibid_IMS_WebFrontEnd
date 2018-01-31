@@ -52,7 +52,7 @@ class Dasbor extends CI_Controller {
 				echo "<hr>cURL Error #:".$responseApi['err'];
 			}
 			else {
-				$this->session->set_flashdata('message', array('success', 'Akun Sudah Berhasil Diubah', 'Sukses')); 
+				$this->session->set_flashdata('message', array('success', 'Akun Sudah Berhasil Diubah')); 
 			}
 		}
 

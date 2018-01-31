@@ -284,14 +284,14 @@ $isiemail .= "<table width='100%' cellspacing='0' cellpadding='0' border='0'>
 				if ($responseApiInsert['status'] == 1){
                     $TransactionId = $responseApiInsert['data'][0];
 
-					$this->session->set_flashdata('message', '<div class="alert alert-success">'.$responseApiInsert['message'].'</div>');
+					$this->session->set_flashdata('message', array('success', $responseApiInsert['message']));
                     
 					$this->cart->destroy();
 					redirect('afterlogin','refresh');
 
 				} else if ($responseApiInsert['status'] == 0){ 
 
-					$this->session->set_flashdata('message', '<div class="alert alert-warning">'.$responseApiInsert['message'].'</div>');
+					$this->session->set_flashdata('message', array('warning', $responseApiInsert['message']));
 					redirect('pembelian/add/','refresh');
 
 				}
