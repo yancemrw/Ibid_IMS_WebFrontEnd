@@ -1,8 +1,26 @@
-function countdown(setTimer) {
+var less = getCookieCountdown('CODOCK'), checkpoint = getCookieCountdown('WRG');
+if(less !== false) {
+	countdown(0, less);
+}
+
+if(checkpoint === '9') {
+	setTimeout(function() {
+		var isbtn = document.getElementById("btn-submit");
+		if(isbtn !== null) {
+			document.getElementById("countdown-id").innerHTML = '<div style="margin: 40px 0;">OTP sudah kadaluarsa<br />Silahkan hubungi customer service kami</div>';
+			document.getElementById('reotp').style.display = 'none';
+		}
+	}, 1000);
+}
+	
+function countdown(setTimer, timerCookie = false) {
 	// config with cookie
 	var countDownDate;
 	var cookie_name = document.cookie.indexOf('CODOCK=');
-	if(cookie_name === -1) {
+	if(timerCookie === true) {
+		countDownDate = timerCookie;
+	}
+	else if(cookie_name === -1) {
 		// set 5 minute from now
 		var rightnow = new Date();
 		Date.prototype.addMinutes = function(minutes) {
@@ -16,12 +34,11 @@ function countdown(setTimer) {
 	else {
 		countDownDate = getCookieCountdown('CODOCK');
 	}
-	
-	// hide link
-	document.getElementById('reotp').style.display = 'none';
 
 	// Update the count down every 1 second
 	var x = setInterval(function() {
+		// hide link
+		document.getElementById('reotp').style.display = 'none';
 
 		// Get todays date and time
 		var now = new Date().getTime();
@@ -40,8 +57,12 @@ function countdown(setTimer) {
 		if(distance < 0) {
 			clearInterval(x);
 			deleteCookieCountdown('CODOCK');
-			document.getElementById("countdown-id").innerHTML = '<button class="btn btn-green" id="btn-submit">Submit</button>';
-			document.getElementById('reotp').style.display = 'block';
+			var checkpoint2 = getCookieCountdown('WRG');console.log(checkpoint2);
+			switch(checkpoint2) {
+				case '9': document.getElementById("countdown-id").innerHTML = '<div style="margin: 40px 0;">OTP sudah kadaluarsa<br />Silahkan hubungi customer service kami</div>';
+				case '3': document.getElementById("countdown-id").innerHTML = '<div style="margin: 40px 0;">Sedang reload halaman</div>'; location.reload();
+				case '6': document.getElementById("countdown-id").innerHTML = '<div style="margin: 40px 0;">Sedang reload halaman</div>'; location.reload();
+			}			
 		}
 	}, 1000);
 }

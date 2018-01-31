@@ -82,18 +82,30 @@
 
 <script type="text/javascript">
   // handle login
-  $('#btn-login').click(function() {
-    var user = $('#username').val(), pass = $('password').val();
+  $('#btn-login').click(function(e) {
+    var user = $('#username').val(), pass = $('#password').val();
     if(user !== '' && pass !== '') {
       e.preventDefault();
-      $('#form-login').submit();
+      if(pass.length < 8) {
+        alert('Tidak boleh kurang dari 8 karakter');
+      }
+      else {
+        $('#btn-login').attr('disabled', true);
+        $('#form-logins').submit();
+      }
     }
   });
-  $('#btn-loginx').click(function() {
-    var userx = $('#usernamex').val(), passx = $('passwordx').val();
+  $('#btn-loginx').click(function(e) {
+    var userx = $('#usernamex').val(), passx = $('#passwordx').val();
     if(userx !== '' && passx !== '') {
       e.preventDefault();
-      $('#form-login').submit();
+      if(passx.length < 8) {
+        alert('Tidak boleh kurang dari 8 karakter');
+      }
+      else {
+        $('#btn-loginx').attr('disabled', true);
+        $('#form-login').submit();
+      }
     }
   });
 

@@ -3,7 +3,7 @@
         <div class="row position-repative">
             <div class="col-md-4 col-sm-6 pull-right">
                 <div class="form-register">
-                    <form id="form-login" action="<?php echo site_url('login'); ?>" method="POST" data-provide="validation">
+                    <form id="form-logins" action="<?php echo site_url('login'); ?>" method="POST" data-provide="validation">
                         <h3>Masuk Akun</h3>
                         <div class="form-group floating-label">
                             <input type="email" id="username" name="username" class="form-control input-custom is-invalid" 
@@ -18,7 +18,7 @@
                         <!--div class="g-recaptcha" data-theme="light" data-sitekey="XXXXXXXXXXXXX" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;"></div-->
                         <div class="form-group text-right">
                             <button class="btn btn-green" id="btn-login">Masuk</button>
-                            <a href="">Sudah punya akun?</a>
+                            <a href="<?php echo site_url('register'); ?>">Sudah punya akun?</a>
                         </div>
                     </form>
                 </div>
@@ -74,6 +74,18 @@
 				$(this).removeClass('empty');
 			}
 		});
+
+        $('#username').keypress(function(e) {
+            if(e.which == 13) {
+                $('#btn-login').click();
+            }
+        });
+
+        $('#password').keypress(function(e) {
+            if(e.which == 13) {
+                $('#btn-login').click();
+            }
+        });
 
     });
 </script>
