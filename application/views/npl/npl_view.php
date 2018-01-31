@@ -33,7 +33,7 @@
                     <form class="form-filter" id="beli-npl" action="<?php echo site_url('biodata/otp'); ?>" method="POST" data-provide="validation">
                         <input type="hidden" name="otpkirim" value="true">
                         <div class="form-group floating-label">
-                            <input type="text" name="Phone" id="notif-telepon" class="form-control input-custom" value="<?php echo @$detailBiodata['Name']; ?>"
+                            <input type="text" name="Phone" id="notif-telepon" class="form-control input-custom" value="<?php echo @$detailBiodata['Phone']; ?>"
                                     oninvalid="this.setCustomValidity('No telepon tidak boleh kosong')" 
                                     oninput="setCustomValidity('')" maxlength="13" required />
                             <label class="label-schedule">No Telepon *</label>
@@ -91,8 +91,8 @@
                         </div-->
                         <div class="g-recaptcha recaptcha" id="idrecaptcha" required></div>
                         <div class="input-group agree-required">
-                            <input type="checkbox" name="checkbox" id="agree-required">
-                            <label for="agree-required">Dengan melakukan pendaftaran, saya setuju dengan <a href="">Kebijakan Privasi</a> dan <a href="">Syarat & Ketentuan</a> IBID.</label>
+                            <input type="checkbox" name="checkbox" id="agree-required" class="cursor-pointer">
+                            <label for="agree-required">Dengan melakukan pendaftaran, saya setuju dengan <a href="javascript:void(0)">Kebijakan Privasi</a> dan <a href="javascript:void(0)">Syarat & Ketentuan</a> IBID.</label>
                         </div>
                         <button class="btn btn-green" id="btn-kirim">KIRIM</button>
                     </form>
