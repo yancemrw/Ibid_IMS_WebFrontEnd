@@ -129,12 +129,12 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="nav-close"><i class="fa fa-close"></i></li>
                         <li class="nav-title"><span class="nav-title">Home</span></li>
-                        <li><a href="<?php echo site_url('cari-lelang-iscomming'); ?>">Cari Kendaraan</a></li>
-                        <li><a href="<?php echo site_url('jadwal-lelang-iscomming'); ?>">Jadwal Lelang</a></li>
+                        <li><a href="<?php echo site_url('comingsoon'); ?>">Cari Kendaraan</a></li>
+                        <li><a href="<?php echo site_url('comingsoon'); ?>">Jadwal Lelang</a></li>
                         <li><a href="<?php echo site_url('live-auction'); ?>">Live Auction</a></li>
                         <li><a href="<?php echo site_url('beli-npl'); ?>">Beli Npl</a></li>
                         <li><a href="<?php echo site_url('titip-lelang'); ?>">Titip Lelang</a></li>
-                        <li><a href="<?php echo site_url('basic-price'); ?>">Map</a></li>
+                        <li><a href="<?php echo site_url('comingsoon'); ?>">Map</a></li>
                         <li><a href="<?php echo site_url('panduan-lelang'); ?>">Prosedur</a></li>
                         <?php echo @$form_auth; ?>
                     </ul>
@@ -189,12 +189,12 @@
                      <ul class="nav navbar-nav navbar-right">
                         <li class="nav-close"><i class="fa fa-close"></i></li>
                         <li class="nav-title"><span class="nav-title">Home</span></li>
-                        <li><a href="<?php echo site_url('cari-lelang-iscomming'); ?>">Cari Kendaraan</a></li>
-                        <li><a href="<?php echo site_url('jadwal-lelang-iscomming'); ?>">Jadwal Lelang</a></li>
+                        <li><a href="<?php echo site_url('comingsoon'); ?>">Cari Kendaraan</a></li>
+                        <li><a href="<?php echo site_url('comingsoon'); ?>">Jadwal Lelang</a></li>
                         <li><a href="<?php echo site_url('live-auction'); ?>">Live Auction</a></li>
                         <li><a href="<?php echo site_url('beli-npl'); ?>">Beli Npl</a></li>
                         <li><a href="<?php echo site_url('titip-lelang'); ?>">Titip Lelang</a></li>
-                        <li><a href="<?php echo site_url('basic-price'); ?>">Map</a></li>
+                        <li><a href="<?php echo site_url('comingsoon'); ?>">Map</a></li>
                         <li><a href="<?php echo site_url('panduan-lelang'); ?>">Prosedur</a></li>
                         <?php echo $form_auth; ?>
                         <li class="lang-mob">
@@ -212,10 +212,7 @@
                            <a href="javascript:void(0)">Bantuan</a>
                            <ul>
                               <li>
-                                 <a href="">Telepon</a>
-                              </li>
-                              <li>
-                                 <a href="">Contact</a>
+                                 <a href="<?php echo site_url('faq'); ?>">FAQ</a>
                               </li>
                            </ul>
                         </li>

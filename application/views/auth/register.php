@@ -18,7 +18,7 @@
                         <div class="form-group floating-label">
                             <input type="email" id="email" name="email" class="form-control input-custom" 
                                     oninvalid="this.setCustomValidity('Email tidak boleh kosong')"
-                                    oninput="setCustomValidity('')" required />
+                                    oninput="setCustomValidity('')" pattern="[^@]*@[^@]" required />
                             <label class="label-schedule">Email *</label>
                         </div>
                         <div class="form-group floating-label">
@@ -26,8 +26,8 @@
                                     oninvalid="this.setCustomValidity('Kata sandi tidak boleh kosong')" 
                                     oninput="setCustomValidity('')" required />
                             <label class="label-schedule">Kata Sandi *</label>
-                            <div id="strength-desc" class="alerts-strength"></div>
-                            <div id="strength-gauge" class="strength0"></div>
+                            <!--div id="strength-desc" class="alerts-strength"></div>
+                            <div id="strength-gauge" class="strength0"></div-->
                             <div class="help-info" id="type-pass"></div>
                         </div>
                         <div class="form-group floating-label">
@@ -47,7 +47,7 @@
                         <div class="g-recaptcha recaptcha" id="idrecaptcha" required></div>
                         <div class="form-group text-right">
                             <button class="btn btn-green" id="btn-daftar">Daftar</button>
-                            <a href="">Sudah punya akun?</a>
+                            <a href="<?php echo site_url('register'); ?>">Sudah punya akun?</a>
                         </div>
                     </form>
                 </div>
@@ -67,6 +67,7 @@
 
 <script>
     $(document).ready(function() {
+        var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
         $("nav").sticky({
             topSpacing: 0
         });
@@ -107,31 +108,41 @@
         $('#pass').blur(function() {
             var pass = $(this).val(), repass = $('#repass').val();
             if($(this).val().length < 8) {
-                $('#type-pass').html('<i class="fa fa-info"></i> Password kurang dari 8');
+                $('#type-pass').html('<i class="fa fa-info"></i> Kata sandi kurang dari 8');
                 $('#type-pass').show();
                 return;
             }
-            else {
-                $('#type-pass').html('');
-                $('#type-pass').hide();
-                return;
-            }
-
-            if(pass !== repass) {
-                $('#type-repass').html('<i class="fa fa-info"></i> Password tidak sama');
+            else if(pass !== repass) {
+                $('#type-repass').html('<i class="fa fa-info"></i> Kata sandi tidak sama');
                 $('#type-repass').show();
                 return;
             }
+            else if(format.test($(this).val())) {
+                $('#type-pass').html('<i class="fa fa-info"></i> Kata sandi terdapat symbol');
+                $('#type-pass').show();
+            }
+            else if($(this).val().length >= 8) {
+                $('#type-pass').html('');
+                $('#type-pass').hide();
+            }
             else {
-                $('#type-repass').html('');
-                $('#type-repass').hide();
+                $('#type-pass').html('');
+                $('#type-pass').show();
                 return;
             }
         });
         $('#repass').blur(function() {
             var pass = $('#pass').val(), repass = $(this).val();
+            if($(this).val().length >= 8) {
+                $('#type-pass').html('');
+                $('#type-pass').hide();
+            }
+            if(format.test($(this).val())) {
+                $('#type-pass').html('<i class="fa fa-info"></i> Kata sandi terdapat symbol');
+                $('#type-pass').show();
+            }
             if(pass !== repass) {
-                $('#type-repass').html('<i class="fa fa-info"></i> Password tidak sama');
+                $('#type-repass').html('<i class="fa fa-info"></i> Kata sandi tidak sama');
                 $('#type-repass').show();
                 return;
             }
@@ -148,10 +159,15 @@
                 mail = $('#email').val(), 
                 pass = $('#pass').val(), 
                 repass = $('#repass').val(), 
-                recaptcha = $('#e8df0fade2ce52c6a8cf8c8d2309d08a').val();
+                recaptcha = $('#e8df0fade2ce52c6a8cf8c8d2309d08a').val(),
+                letters = /^[0-9a-zA-Z]+$/;
             if(name !== '' && mail !== '' && pass !== '' && repass !== '') {
                 e.preventDefault();
-                if(recaptcha !== '') {
+                if(!pass.match(letters)) {
+                    alert('Kata sandi hanya boleh menggunakan karakter dan angka');
+                }
+                else if(recaptcha !== '') {
+                    $('#btn-daftar').attr('disabled', true);
                     $('#form-reg').submit();
                 }
                 else {
@@ -160,10 +176,26 @@
             }
         });
 
-        $('#pass').keyup(function() {
-            var values = $(this).val(), the_return = passwordStrength(values); console.log(the_return);
-            document.getElementById("strength-desc").innerHTML = the_return.descstrength;
-            document.getElementById("strength-gauge").className = the_return.strength;
+        $('#pass').focus(function() {
+            $('#type-pass').html('<i class="fa fa-info"></i> Kata sandi harus karakter dan angka');
+            $('#type-pass').show();
+        });
+
+        $('#pass').keypress(function(event) {
+            var charCode = (event.which) ? event.which : event.keyCode;
+            if(charCode === 8) {
+                $('#type-pass').html('<i class="fa fa-info"></i> Kata sandi harus karakter dan angka');
+            }
+        }).keyup(function() {
+            if(format.test($(this).val())) {
+                $('#type-pass').html('<i class="fa fa-info"></i> Kata sandi terdapat symbol');
+                $('#type-pass').show();
+            }
+            else {
+                var values = $(this).val(), the_return = passwordStrength(values);
+                //document.getElementById("strength-desc").innerHTML = the_return.descstrength;
+                //document.getElementById("strength-gauge").className = the_return.strength;
+            }
         });
     });
 </script>
