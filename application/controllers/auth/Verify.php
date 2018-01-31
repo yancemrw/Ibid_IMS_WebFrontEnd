@@ -25,8 +25,8 @@ class Verify extends CI_Controller {
 			else {
 				$responseApiInsert = json_decode($responseApi['response'], true);
 				if ($responseApiInsert['status'] == 1){
-					$this->session->set_flashdata('pesan', 'Berhasil di Aktivasi');
-					redirect('http://alpha.ibid.astra.co.id/auth/login', 'refresh');
+					$this->session->set_flashdata('pesan', array('success', 'Berhasil di Aktivasi'));
+					redirect('auth/login', 'refresh');
 				}
 				else if ($responseApiInsert['status'] == 0) {
 					echo $responseApiInsert['message']; 

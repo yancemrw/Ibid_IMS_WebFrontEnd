@@ -55,6 +55,7 @@
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/responsive.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/slick.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/jquery.flipster.min.css'); ?>">
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/bootoast/bootoast.min.css'); ?>">
 
    <!-- Header Js -->
    <script src="<?php echo base_url('assetsfront/js/jquery-3.2.1.min.js'); ?>"></script>
@@ -71,7 +72,8 @@
    <script src="<?php echo base_url('assetsfront/js/jquery.scrollto.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/js/jquery.flipster.min.js'); ?>"></script>
    <script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit' async defer></script>
-   <script type="text/javascript" src="https://sweetalert.js.org/assets/sweetalert/sweetalert.min.js"></script>
+   <script src="<?php echo base_url('assetsfront/bootoast/bootoast.min.js'); ?>"></script>
+   <!--script type="text/javascript" src="https://sweetalert.js.org/assets/sweetalert/sweetalert.min.js"></script-->
    <!-- sweetalert -->
    <script>
       var verifyCallback = function(response) {

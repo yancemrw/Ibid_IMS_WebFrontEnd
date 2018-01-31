@@ -44,7 +44,7 @@
                       oninvalid="this.setCustomValidity('Password tidak boleh kosong')" oninput="setCustomValidity('')" required />
               <label for="">Password</label>
             </div>
-            <div class="forgot"><a href="<?php echo site_url('forgot_password'); ?>">Lupa password?</a></div>
+            <div class="forgot"><a href="<?php echo site_url('forgot'); ?>">Lupa password?</a></div>
             <div class="form-group text-right">
               <div class="inis"><button class="btn btn-green" id="btn-loginx">Masuk</button></div>
               <div class="none"><a href="<?php echo site_url('register'); ?>">Belum punya akun</a></div>
@@ -74,7 +74,11 @@
   ?>
   <script type="text/javascript">
     $(document).ready(function() { 
-      swal("<?=@$message[2]?> ", "<?=@$message[1]?>" , "<?=@$message[0]?>");
+      bootoast.toast({
+        message: '<b><?=@$message[1]?></b>',
+        type: '<?=@$message[0]?>',
+        position: 'top-center'
+      });
     });
   </script>
   <?php } ?>

@@ -54,7 +54,7 @@ class Newpassword extends CI_Controller {
 				// print_r($responseApiInsert);
 				if ($responseApiInsert['status'] == 1){
 
-					$this->session->set_flashdata('message', '<div class="alert alert-success">'.$responseApiInsert['message'].'</div>');
+					$this->session->set_flashdata('message', array('success', $responseApiInsert['message']));
 					// redirect('role/lists','refresh'); 
 
 					echo $responseApiInsert['message'];
@@ -63,7 +63,7 @@ class Newpassword extends CI_Controller {
 
 				} else if ($responseApiInsert['status'] == 0){ 
 
-					$this->session->set_flashdata('message', '<div class="alert alert-warning">'.$responseApiInsert['message'].'</div>');
+					$this->session->set_flashdata('message', array('warning', $responseApiInsert['message']));
 					// redirect('auth/newpassword','refresh');
 					$this->load->view('auth/template',$data);	
 
