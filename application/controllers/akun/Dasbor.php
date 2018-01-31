@@ -52,40 +52,42 @@ class Dasbor extends CI_Controller {
 				echo "<hr>cURL Error #:".$responseApi['err'];
 			}
 			else {
-				$this->session->set_flashdata('message', array('success', 'Akun Sudah Berhasil Diubah')); 
+				$this->session->set_flashdata('message', array('success', 'Akun Sudah Berhasil Diubah'));
+				redirect('akun/dasbor', 'refresh');
 			}
 		}
+		else {
+			$userdata = $this->session->userdata('userdata');
+			$url = linkservice('account')."users/details/".$userdata['UserId'];
+			$method = 'GET';
+			$responseApi = admsCurl($url, array(), $method);
+			$generate = curlGenerate($responseApi);
 
-		$userdata = $this->session->userdata('userdata');
-		$url = linkservice('account')."users/details/".$userdata['UserId'];
-		$method = 'GET';
-		$responseApi = admsCurl($url, array(), $method);
-		$generate = curlGenerate($responseApi);
+			// ubah date format
+			$split = explode('-', $generate->users->Birthdate);
+			$generate->users->Birthdate = @$generate->users->Birthdate != "" ? (@$split[2].'/'.@$split[1].'/'.@$split[0]) : '';
 
-		// ubah date format
-		$split = explode('-', $generate->users->Birthdate);
-		$generate->users->Birthdate = @$generate->users->Birthdate != "" ? (@$split[2].'/'.@$split[1].'/'.@$split[0]) : '';
+			$url = linkservice('master')."bank/get";
+			$method = 'GET';
+			$responseApi = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
+			$listBank = curlGenerate($responseApi);
 
-		$url = linkservice('master')."bank/get";
-		$method = 'GET';
-		$responseApi = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
-		$listBank = curlGenerate($responseApi);
+			$userdata = $this->session->userdata('userdata');
+			$data = array(
+				'header_white'		=> "header-white",
+				'userdata'			=> $userdata,
+				'title'				=> 'Data Diri',
+				'form_auth_mobile'	=> login_status_form_mobile($userdata),
+				'form_auth'			=> login_Status_form($userdata),
+				'content'			=> $generate,
+				'listBank'			=> @$listBank
+			);
+			//$data['img_link'] = 'https://instagram.fjkt1-1.fna.fbcdn.net/t51.2885-15/e35/25023178_125021498293801_6299328116707819520_n.jpg';
+			$data['img_link'] = base_url('assetsfront/images/icon/ic_avatar.png');
+			$view = "akun/dasbor_view";
 
-		$userdata = $this->session->userdata('userdata');
-		$data = array(
-			'header_white'		=> "header-white",
-			'userdata'			=> $userdata,
-			'title'				=> 'Data Diri',
-			'form_auth_mobile'	=> login_status_form_mobile($userdata),
-			'form_auth'			=> login_Status_form($userdata),
-			'content'			=> $generate,
-			'listBank'			=> @$listBank
-		);
-		//$data['img_link'] = 'https://instagram.fjkt1-1.fna.fbcdn.net/t51.2885-15/e35/25023178_125021498293801_6299328116707819520_n.jpg';
-		$data['img_link'] = base_url('assetsfront/images/icon/ic_avatar.png');
-		$view = "akun/dasbor_view";
-
-		template($view, $data);
+			template($view, $data);
+		}
 	}
 
 }
