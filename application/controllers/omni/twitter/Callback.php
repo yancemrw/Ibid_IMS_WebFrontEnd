@@ -56,13 +56,13 @@ class Callback extends CI_Controller {
 	                $res = (array) json_decode($responseApi['response']);
 	                if(!isset($res['error'])){
 	                    $this->AccessApi->setAccess('in',(array)$res);
-	                    redirect('dashboard','refresh');
+	                    redirect(site_url(),'refresh');
 	                } else
 	                    redirect('auth/login','refresh');
 	                
 	            } else {
 	                $this->AccessApi->setAccess('in',$resp);
-	                redirect('dashboard','refresh');
+	                redirect(site_url(),'refresh');
 	            } 
 				exit;
 			} else {

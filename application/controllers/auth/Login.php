@@ -92,7 +92,7 @@ class Login extends CI_Controller {
 
 					// kalo berhasil
 					$this->session->set_flashdata('message', array('success', 'Berhasil Login'));
-					redirect('akun/dasbor');
+					redirect(site_url());
 				} 
 			}
 			

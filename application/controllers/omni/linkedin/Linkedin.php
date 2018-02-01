@@ -110,13 +110,13 @@ class Linkedin extends CI_Controller {
                 $res = (array) json_decode($responseApi['response']);
                 if(!isset($res['error'])){
                     $this->AccessApi->setAccess('in',(array)$res);
-                    redirect('akun/dasbor','refresh');
+                    redirect(site_url(),'refresh');
                 } else
                     redirect('auth/login','refresh');
                 
             } else {
                 $this->AccessApi->setAccess('in',$resp);
-                redirect('akun/dasbor','refresh');
+                redirect(site_url(),'refresh');
             }
 			
 			// $array = array(
