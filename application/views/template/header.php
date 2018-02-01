@@ -192,7 +192,7 @@
                         <li class="nav-title"><span class="nav-title">Home</span></li>
                         <li><a href="<?php echo site_url('comingsoon'); ?>">Cari Kendaraan</a></li>
                         <li><a href="<?php echo site_url('comingsoon'); ?>">Jadwal Lelang</a></li>
-                        <li><a href="<?php echo site_url('live-auction'); ?>">Live Auction</a></li>
+                        <li><a href="<?php echo site_url('comingsoon'); ?>">Live Auction</a></li>
                         <li><a href="<?php echo site_url('beli-npl'); ?>">Beli Npl</a></li>
                         <li><a href="<?php echo site_url('titip-lelang'); ?>">Titip Lelang</a></li>
                         <li><a href="<?php echo site_url('comingsoon'); ?>">Map</a></li>
