@@ -1,0 +1,10 @@
+.or {
+	width: auto !important;
+	padding: 2px !important;
+}
+
+@media(max-width: 768px) {
+	.or {
+		width: 40px !important;
+	}
+}

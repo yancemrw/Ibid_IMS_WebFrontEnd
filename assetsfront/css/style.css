@@ -4872,11 +4872,13 @@ a.delete-favorite {
 .or {
     position: absolute;
     top: 120px;
-    right: -29px;
+    right: -24px;
+    width: 27px;
+    height: 27px;
     border: 1px solid #ccc;
     background: #fff;
     text-align: center;
-    padding: 3px;
+    padding-top: 3px;
     z-index: 99;
 }
 

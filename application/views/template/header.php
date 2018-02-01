@@ -56,6 +56,7 @@
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/slick.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/jquery.flipster.min.css'); ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/bootoast/bootoast.min.css'); ?>">
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/overwrite.css'); ?>">
 
    <!-- Header Js -->
    <script src="<?php echo base_url('assetsfront/js/jquery-3.2.1.min.js'); ?>"></script>
