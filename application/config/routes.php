@@ -63,6 +63,7 @@ $route['register'] = 'auth/register';
 $route['login'] = 'auth/login';
 $route['logout'] = 'auth/logoutCustomer';
 $route['forgot'] = 'auth/forgot';
+$route['newpassword'] = 'auth/newpassword';
 
 // menu bagian header
 $route['beli-npl'] = 'npl/beli';

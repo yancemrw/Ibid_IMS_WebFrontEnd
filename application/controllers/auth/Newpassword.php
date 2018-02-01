@@ -6,39 +6,32 @@ class Newpassword extends CI_Controller {
 	public function __construct() {
 		parent::__construct(); 
 		$this->load->library(array('form_validation'));
-		$this->load->helper(array('global' , 'omni'));
+		$this->load->helper(array('global', 'omni'));
+		$this->userdata = $this->session->userdata('userdata');
 	}
-
-
 
 	public function index()
 	{
-		// page dibawah ini mengambil tampilan untuk function ini.
-		// namafolder / file
-		$data['page'] 		= 'auth/newpassword';
-		$data['title'] 		= 'Password Baru';
-		$data['message'] 	= $this->session->flashdata('message');
-		$data['form_auth_mobile'] => login_status_form_mobile($userdata);
-		$data['form_auth'] => login_status_form($userdata);
+		$data['page']				= 'auth/newpassword';
+		$data['title']				= 'Password Baru';
+		$data['header_white']		= "header-white";
+		$data['message']			= $this->session->flashdata('message');
+		$data['form_auth_mobile']	= login_status_form_mobile($this->userdata);
+		$data['form_auth']			= login_status_form($this->userdata);
 
 		$this->form_validation->set_rules('password', 'Password', 'required');  
 		$this->form_validation->set_rules('confirmpassword', 'Confirm Password', 'required|matches[password]');  
 
-		if ($this->form_validation->run() == FALSE)
-		{
-			$this->load->view('auth/templateauthadmin',$data);	 
+		if($this->form_validation->run() == FALSE) {
+			template('auth/newpassword', $data);	 
 		}
-		else
-		{    
+		else {    
 			$dataInsert = array(
 				'password' => $this->input->post('password'),
 				'confirmpassword' => $this->input->post('confirmpassword'),
 				'email' => @$this->input->post('email'),
 				'tokenforgot' => @$this->input->post('changepassword')
-				);
-			
-			// print_r($dataInsert);
-			// exit();
+			);
 
 			$url =  linkservice('account') ."auth/forgotprosess/";
 			$method = 'POST';
@@ -47,26 +40,17 @@ class Newpassword extends CI_Controller {
 			## redirect dan email(belum)
 			if ($responseApi['err']) {
 				echo "<hr>cURL Error #:" . $responseApi['err'];
-			} else {
-				// print_r($responseApi);
+			}
+			else {
 				$responseApiInsert = json_decode($responseApi['response'], true);
-
-				// print_r($responseApiInsert);
-				if ($responseApiInsert['status'] == 1){
-
+				if ($responseApiInsert['status'] == 1) {
 					$this->session->set_flashdata('message', array('success', $responseApiInsert['message']));
-					// redirect('role/lists','refresh'); 
-
 					echo $responseApiInsert['message'];
-
 					echo anchor('auth/login', 'Login Disini', '');
-
-				} else if ($responseApiInsert['status'] == 0){ 
-
+				}
+				else if ($responseApiInsert['status'] == 0) { 
 					$this->session->set_flashdata('message', array('warning', $responseApiInsert['message']));
-					// redirect('auth/newpassword','refresh');
 					$this->load->view('auth/template',$data);	
-
 				} 
 			} 
 		}

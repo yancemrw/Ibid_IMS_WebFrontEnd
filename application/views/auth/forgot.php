@@ -3,14 +3,14 @@
     <div class="row">
       <div class="col-md-12 text-center">
         <div class="box-forgot-pass">
-          <form name="formSubmit" id="form-submit" method="POST" data-provide="validation">
+          <form name="formSubmit" id="form-submit" method="POST" action="<?php echo site_url('forgot'); ?>" data-provide="validation">
             <img src="<?php echo base_url('assetsfront/images/icon/ic-forgot-pass.png') ?>">
             <h2>Forgot Your Password</h2>
             <p>Masukkan email anda</p>
             <div class="form-group floating-label">
               <input type="email" id="email" name="email" class="form-control input-custom"
-                      pattern="[^@]*@[^@]" oninvalid="this.setCustomValidity('Email tidak boleh kosong')"
-                      oninput="setCustomValidity('')" required />
+                      pattern="[^@]*@[^@]" oninput="setCustomValidity('')"
+                      oninvalid="this.setCustomValidity('Email tidak boleh kosong')" required />
               <label class="label-schedule">Email</label>
             </div>
             <button class="btn btn-green" id="btn-kirim">Kirim</button>
@@ -23,9 +23,17 @@
 
 <script>
   $('#btn-kirim').click(function(e) {
-    if($('#email').val() !== '') {
+    var email = $('#email').val();
+    if(email !== '') {
       e.preventDefault();
-      $('#btn-kirim').attr('disabled', true);
+      if(validateEmail(email)) {
+        $('#form-submit').submit();
+        $('#btn-kirim').attr('disabled', true);
+      }
+      else {
+        alert('Format email tidak valid');
+        $('#btn-kirim').attr('disabled', false);
+      }
     }
   });
 
@@ -36,8 +44,13 @@
       $(this).removeClass('not-empty');
     }
     else {
-      $(this).addClass('not-empty');
+      $(this).addClass('not-empty');  
       $(this).removeClass('empty');
     }
   });
+
+  function validateEmail(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+  }
 </script>
