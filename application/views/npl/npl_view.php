@@ -204,7 +204,7 @@
             bankacc   = $('input[name="BankAccountNumber"]').val(), 
             bankname  = $('input[name="BankAccountName"]').val(),
             identity  = $('select[name="Identitas"]').val(),
-            ktp       = $('input[name="IdentityNumber"]'),
+            ktp       = $('input[name="IdentityNumber"]').val(),
             recaptcha = $('#e8df0fade2ce52c6a8cf8c8d2309d08a').val();
         if(phone !== '' && bankid !== '' && bankacc !== '' && bankname !== '' && identity !== '' && ktp !== '') {
             e.preventDefault();
@@ -212,7 +212,7 @@
                 alert('Anda harus setuju dengan syarat dan ketentuan dari kami!');
                 return;
             }
-            else if(ktp.val().length < 16) {
+            else if(ktp.length < 16) {
                 alert('Nomor KTP harus 16 angka!');
                 return;
             }
