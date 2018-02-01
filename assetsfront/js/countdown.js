@@ -59,9 +59,9 @@ function countdown(setTimer, timerCookie = false) {
 			deleteCookieCountdown('CODOCK');
 			var checkpoint2 = getCookieCountdown('WRG');console.log(checkpoint2);
 			switch(checkpoint2) {
-				case '9': document.getElementById("countdown-id").innerHTML = '<div style="margin: 40px 0;">OTP sudah kadaluarsa<br />Silahkan hubungi customer service kami</div>';
-				case '3': document.getElementById("countdown-id").innerHTML = '<div style="margin: 40px 0;">Sedang reload halaman</div>'; location.reload();
-				case '6': document.getElementById("countdown-id").innerHTML = '<div style="margin: 40px 0;">Sedang reload halaman</div>'; location.reload();
+				case '3': document.getElementById("countdown-id").innerHTML = '<div style="margin: 40px 0;">OTP sudah kadaluarsa<br />Silahkan hubungi customer service kami</div>';
+				case '1': document.getElementById("countdown-id").innerHTML = '<div style="margin: 40px 0;">Sedang reload halaman</div>'; location.reload();
+				case '2': document.getElementById("countdown-id").innerHTML = '<div style="margin: 40px 0;">Sedang reload halaman</div>'; location.reload();
 			}			
 		}
 	}, 1000);
