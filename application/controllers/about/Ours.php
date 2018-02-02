@@ -122,7 +122,7 @@ class Ours extends CI_Controller {
 						</a>
 					  	<div id="collapse-rules'.$key.'" class="panel-collapse collapse">
 					    	<div class="panel-body bg-grey">
-					    		<p>'.$value['content'].'</p>
+					    		<p class="font-14px">'.$value['content'].'</p>
 					    	</div>
 					  	</div>
 					</div>';

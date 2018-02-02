@@ -31,7 +31,11 @@
         $('#btn-kirim').attr('disabled', true);
       }
       else {
-        alert('Format email tidak valid');
+        bootoast.toast({
+          message: 'Format email tidak valid',
+          type: 'warning',
+          position: 'top-right'
+        });
         $('#btn-kirim').attr('disabled', false);
       }
     }
