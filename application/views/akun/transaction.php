@@ -46,176 +46,19 @@
                     </ul>
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="tab-1">
-                            <div class="filter-table">
-                                <form class="form-inline">
-                                    <div class="form-group">
-                                        <input type="text" name="" class="form-control input-custom" placeholder="Search">
-                                        <i class="fa fa-search"></i>
-                                    </div>
-                                    <div class="filter-right">
-                                        <div class="form-group">
-                                            <select class="form-control select-custom">
-                                                <option>Filter by jadwal</option>
-                                                <option>jakarta timur</option>
-                                                <option>jakarta timur</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <select class="form-control select-custom">
-                                                <option>Jenis lelang</option>
-                                                <option>Hybrid</option>
-                                                <option>Hybrid</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Show</label>
-                                            <select class="form-control select-custom">
-                                                <option>10</option>
-                                                <option>15</option>
-                                                <option>20</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="table-responsive table-container table-transaction">
-                                <table class="table table-striped table-custom table-custom-transaction">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>No NPL</th>
-                                            <th>No Pol/Serial Number</th>
-                                            <th>Nama Barang</th>
-                                            <th>Jenis</th>
-                                            <th>Harga</th>
-                                            <th>Tanggal</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    	<?php for($i = 1; $i < 7; $i++) { ?>
-                                        <tr>
-                                            <td>1</td>
-                                            <td><?php echo '#00'.$i ?> <span>Unlimited</span></td>
-                                            <td class="color-car">B1158PHD</td>
-                                            <td>DAIHATSU LUXIO 1.5 X MINIBUS AT 2014</td>
-                                            <td>Mobil</td>
-                                            <td>Rp. 339,000,000</td>
-                                            <td>Jakarta, 26/09/2017</td>
-                                            <td>
-                                                <a href="" class="step-transaction" data-toggle="modal" data-target="#modal-transaction">
-                                                    <ul>
-                                                        <li><img src="<?php echo base_url('assetsfront/images/icon/ic_transaction_step_1.png'); ?>" alt=""></li>
-                                                        <li><img src="<?php echo base_url('assetsfront/images/icon/ic_transaction_step_2.png'); ?>" alt=""></li>
-                                                        <li><img src="<?php echo base_url('assetsfront/images/icon/ic_transaction_step_3.png'); ?>" alt=""></li>
-                                                        <li><img src="<?php echo base_url('assetsfront/images/icon/ic_transaction_step_4.png'); ?>" alt=""></li>
-                                                        <p>Pembayaran Hasil Lelang Kepada Penitip Lelang</p>
-                                                    </ul>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <?php } ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="col-md-12 text-center">
-                                <ul class="pagination">
-                                    <li class="page-item"><a class="page-link arrow-page" href="#"><i class="fa fa-angle-left"></i></a></li>
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">...</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">20</a></li>
-                                    <li class="page-item"><a class="page-link arrow-page" href="#"><i class="fa fa-angle-right"></i></a></li>
-                                </ul>
+                            <div class="table-responsive table-container table-transaction content-empty">
+                                <div class="product-empty">
+                                    <img src="<?php echo base_url('assetsfront/images/icon/ic-transaction-empty.png'); ?>" alt="" title="">
+                                </div>
+                                <p>Oops.... <span>Data Belum Tersedia.</span></p>
                             </div>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="tab-2">
-                            <div class="filter-table">
-                                <form class="form-inline">
-                                    <div class="form-group">
-                                        <input type="text" name="" class="form-control input-custom" placeholder="Search">
-                                        <i class="fa fa-search"></i>
-                                    </div>
-                                    <div class="filter-right">
-                                        <div class="form-group">
-                                            <select class="form-control select-custom">
-                                                <option>Filter by jadwal</option>
-                                                <option>jakarta timur</option>
-                                                <option>jakarta timur</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <select class="form-control select-custom">
-                                                <option>Jenis lelang</option>
-                                                <option>Hybrid</option>
-                                                <option>Hybrid</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Show</label>
-                                            <select class="form-control select-custom">
-                                                <option>10</option>
-                                                <option>15</option>
-                                                <option>20</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="table-responsive table-container table-transaction">
-                                <table class="table table-striped table-custom table-custom-transaction">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>No NPL</th>
-                                            <th>No Pol/Serial Number</th>
-                                            <th>Nama Barang</th>
-                                            <th>Jenis</th>
-                                            <th>Harga</th>
-                                            <th>Tanggal</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    	<?php for($i = 1; $i < 7; $i++) { ?>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>#001 <span>Unlimited</span></td>
-                                            <td class="color-car">B1158PHD</td>
-                                            <td>DAIHATSU LUXIO 1.5 X MINIBUS AT 2014</td>
-                                            <td>Mobil</td>
-                                            <td>Rp. 339,000,000</td>
-                                            <td>Jakarta, 26/09/2017</td>
-                                            <td>
-                                                <a href="" class="step-transaction" data-toggle="modal" data-target="#modal-transaction-pembelian">
-                                                    <ul>
-                                                        <li><img src="<?php echo base_url('assetsfront/images/icon/ic_transaction_step_1.png'); ?>" alt=""></li>
-                                                        <li><img src="<?php echo base_url('assetsfront/images/icon/ic_transaction_step_2.png'); ?>" alt=""></li>
-                                                        <li><img src="<?php echo base_url('assetsfront/images/icon/ic_transaction_step_3.png'); ?>" alt=""></li>
-                                                        <li><img src="<?php echo base_url('assetsfront/images/icon/ic_transaction_step_4.png'); ?>" alt=""></li>
-                                                        <li><img src="<?php echo base_url('assetsfront/images/icon/ic_transaction_step_4.png'); ?>" alt=""></li>
-                                                        <p>Pembayaran Hasil Lelang Kepada Penitip Lelang</p>
-                                                    </ul>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <?php } ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="col-md-12 text-center">
-                                <ul class="pagination">
-                                    <li class="page-item"><a class="page-link arrow-page" href="#"><i class="fa fa-angle-left"></i></a></li>
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">...</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">20</a></li>
-                                    <li class="page-item"><a class="page-link arrow-page" href="#"><i class="fa fa-angle-right"></i></a></li>
-                                </ul>
+                            <div class="table-responsive table-container table-transaction content-empty">
+                                <div class="product-empty">
+                                    <img src="<?php echo base_url('assetsfront/images/icon/ic-transaction-empty.png'); ?>" alt="" title="">
+                                </div>
+                                <p>Oops.... <span>Data Belum Tersedia.</span></p>
                             </div>
                         </div>
                     </div>

@@ -15,7 +15,7 @@
                                     oninvalid="this.setCustomValidity('Password tidak boleh kosong')" oninput="setCustomValidity('')" required />
                             <label class="label-schedule">Password</label>
                         </div>
-                        <!--div class="g-recaptcha" data-theme="light" data-sitekey="XXXXXXXXXXXXX" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;"></div-->
+                        <div class="forgot"><a href="<?php echo site_url('forgot'); ?>">Lupa password?</a></div>
                         <div class="form-group text-right">
                             <button class="btn btn-green" id="btn-login">Masuk</button>
                             <a href="<?php echo site_url('register'); ?>">Sudah punya akun?</a>

@@ -40,62 +40,12 @@
             <div class="col-md-9 col-sm-9 am-right">
                 <div class="main-management">
                     <h2>Notifikasi</h2>
-                    <ul class="notification">
-                        <li>
-                            <div class="notif-image">
-                                <img src="assets/images/icon/ic_notif_1.png" alt="">
-                            </div>
-                            <div class="notif-desc">
-                                <h3>1 Pesan Email <span>09/26/2017</span></h3>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="notif-image">
-                                <img src="assets/images/icon/ic_notif_2.png" alt="">
-                            </div>
-                            <div class="notif-desc">
-                                <h3>1 Pesan Email <span>09/26/2017</span></h3>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="notif-image">
-                                <img src="assets/images/icon/ic_notif_3.png" alt="">
-                            </div>
-                            <div class="notif-desc">
-                                <h3>1 Pesan Email <span>09/26/2017</span></h3>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="notif-image">
-                                <img src="assets/images/icon/ic_notif_1.png" alt="">
-                            </div>
-                            <div class="notif-desc">
-                                <h3>1 Pesan Email <span>09/26/2017</span></h3>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="notif-image">
-                                <img src="assets/images/icon/ic_notif_2.png" alt="">
-                            </div>
-                            <div class="notif-desc">
-                                <h3>1 Pesan Email <span>09/26/2017</span></h3>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="notif-image">
-                                <img src="assets/images/icon/ic_notif_3.png" alt="">
-                            </div>
-                            <div class="notif-desc">
-                                <h3>1 Pesan Email <span>09/26/2017</span></h3>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-                            </div>
-                        </li>
-                    </ul>
+                    <div class="table-responsive table-container table-transaction content-empty">
+                        <div class="product-empty">
+                            <img src="<?php echo base_url('assetsfront/images/icon/ic-transaction-empty.png'); ?>" alt="" title="">
+                        </div>
+                        <p>Oops.... <span>Data Belum Tersedia.</span></p>
+                    </div>
                 </div>
             </div>
         </div>
