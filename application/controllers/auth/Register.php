@@ -71,16 +71,26 @@ class Register extends CI_Controller {
 				// 'createdOn'		=> time(), 
 			);
 
-			$url = linkservice('account')."auth/RegisterFrontEnd/register";
-			$method = 'POST';
-			$responseApi = admsCurl($url, $dataInsert, $method);
+			// cek email first, if exists cannot register
+			$urls = linkservice('account')."auth/checkemail";
+			$meth = 'POST';
+			$resps = admsCurl($urls, $dataInsert, $meth);
+			if($resps[response] === '0') {
+				$url = linkservice('account')."auth/RegisterFrontEnd/register";
+				$method = 'POST';
+				$responseApi = admsCurl($url, $dataInsert, $method);
 
-			if ($responseApi['err']) {
-				echo "<hr>cURL Error #:".$responseApi['err'];
+				if ($responseApi['err']) {
+					echo "<hr>cURL Error #:".$responseApi['err'];
+				}
+				else {
+					$this->session->set_flashdata('message', array('success', 'Akun anda sudah terdaftar, Silahkan verifikasi email dari kami'));
+					redirect(); 
+				}
 			}
 			else {
-				$this->session->set_flashdata('message', array('success', 'Akun anda sudah terdaftar, Silahkan verifikasi email dari kami'));
-				redirect(); 
+				$this->session->set_flashdata('message', array('success', 'Email sudah terdaftar'));
+				redirect('register', 'refresh');
 			}
 
 		}

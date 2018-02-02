@@ -42,7 +42,7 @@
                      <option value ="" >Bandung</option>
                      <option value ="" >Jakarta</option -->
                      <?php foreach($cabang as $row){ ?>
-                     <option value="<?php echo $row['CompanyId']; ?>" ><?php echo substr(ucfirst($row['CompanyName']), 4); ?></option>
+                     <option value="<?php echo $row['CompanyId']; ?>" ><?php echo ucwords(substr(strtolower($row['CompanyName']), 4)); ?></option>
                      <?php } ?>
                   </select>
                   <label>Kota</label>
