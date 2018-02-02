@@ -99,6 +99,30 @@ class Biodata extends CI_Controller {
 
 		if ($_POST['otpkirim']=='true') {
 			#########
+			// get user data
+			$id = trim($_SESSION['idfront']);
+			$url 			= linkservice('account')."usersbiodata/details/".$id;
+			$method 		= 'POST';
+			$responseApi 	= admsCurl($url, [], $method);
+			if ($responseApi['err']) { echo "<hr>cURL Error #:" . $responseApi['err']; } else {
+				$dataApiDetail = json_decode($responseApi['response'],true);
+			}
+			$detailBiodata = @$dataApiDetail['data'];
+
+			// send to sms
+			$dataInsert =  array (
+				'type' => 'sms',
+				'msisdn' => @$detailBiodata['Handphone'],
+				'message' => '[IBID] OTP anda : '.$otpsesi,
+				'description' => 'Ini adalah OTP IBID',
+				'schedule' => date("d/m/Y H:i",strtotime("+2 Minutes",NOW())),
+				'campaign' => 'OTP'
+			);
+			$url 			= linkservice('notif')."api/notification";
+			$method 		= 'POST';
+			$responseApi 	= admsCurl($url, $dataInsert, $method);
+
+			
 			$dataInsert =  array (
 				'type' => 'email',
 				'to' => @$this->session->userdata('emailfront'),
