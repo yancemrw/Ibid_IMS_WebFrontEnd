@@ -233,6 +233,7 @@
                 return;
             }
             else if(recaptcha !== '') {
+                $('#btn-kirim').attr('disabled', true);
                 $('#beli-npl').submit();
                 return;
             }
