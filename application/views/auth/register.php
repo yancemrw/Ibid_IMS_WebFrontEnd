@@ -173,7 +173,11 @@
             if(name !== '' && mail !== '' && pass !== '' && repass !== '') {
                 e.preventDefault();
                 if(!pass.match(letters)) {
-                    alert('Kata sandi hanya boleh menggunakan karakter dan angka');
+                    bootoast.toast({
+                        message: 'Kata sandi hanya boleh menggunakan karakter dan angka',
+                        type: 'danger',
+                        position: 'top-center'
+                    });
                 }
                 else if(recaptcha !== '') {
                     $('#btn-daftar').attr('disabled', true);
