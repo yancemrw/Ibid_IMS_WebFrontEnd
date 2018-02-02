@@ -209,15 +209,27 @@
         if(phone !== '' && bankid !== '' && bankacc !== '' && bankname !== '' && identity !== '' && ktp !== '') {
             e.preventDefault();
             if($('#agree-required').is(":checked") === false) {
-                alert('Anda harus setuju dengan syarat dan ketentuan dari kami!');
+                bootoast.toast({
+                    message: 'Anda harus setuju dengan syarat dan ketentuan dari kami!',
+                    type: 'danger',
+                    position: 'top-center'
+                });
                 return;
             }
             else if(ktp.length < 16) {
-                alert('Nomor KTP harus 16 angka!');
+                bootoast.toast({
+                    message: 'Nomor KTP harus 16 angka!',
+                    type: 'danger',
+                    position: 'top-center'
+                });
                 return;
             }
             else if(bankid === '') {
-                alert('BANK harus diisi!');
+                bootoast.toast({
+                    message: 'BANK harus diisi!',
+                    type: 'danger',
+                    position: 'top-center'
+                });
                 return;
             }
             else if(recaptcha !== '') {
@@ -225,7 +237,11 @@
                 return;
             }
             else {
-                alert('Captcha harus di isi!');
+                bootoast.toast({
+                    message: 'Captcha harus di isi!',
+                    type: 'danger',
+                    position: 'top-center'
+                });
             }
         }
     });

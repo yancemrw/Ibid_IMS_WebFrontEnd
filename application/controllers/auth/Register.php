@@ -74,13 +74,14 @@ class Register extends CI_Controller {
 			// cek email first, if exists cannot register
 			$urls = linkservice('account')."auth/checkemail";
 			$meth = 'POST';
-			$resps = admsCurl($urls, $dataInsert, $meth);
-			if($resps[response] === '0') {
+			$resp = admsCurl($urls, $dataInsert, $meth);
+			$jsondec = json_decode($resp['response']);
+			if($jsondec->status === 0) {
 				$url = linkservice('account')."auth/RegisterFrontEnd/register";
 				$method = 'POST';
 				$responseApi = admsCurl($url, $dataInsert, $method);
 
-				if ($responseApi['err']) {
+				if($responseApi['err']) {
 					echo "<hr>cURL Error #:".$responseApi['err'];
 				}
 				else {
@@ -89,7 +90,7 @@ class Register extends CI_Controller {
 				}
 			}
 			else {
-				$this->session->set_flashdata('message', array('success', 'Email sudah terdaftar'));
+				$this->session->set_flashdata('message', array('danger', 'Email sudah terdaftar'));
 				redirect('register', 'refresh');
 			}
 
