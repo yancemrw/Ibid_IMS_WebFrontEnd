@@ -115,14 +115,14 @@ class Biodata extends CI_Controller {
 				'msisdn' => @$detailBiodata['Handphone'],
 				'message' => '[IBID] OTP anda : '.$otpsesi,
 				'description' => 'Ini adalah OTP IBID',
-				'schedule' => date("d/m/Y H:i",strtotime("+2 Minutes",NOW())),
+				'schedule' => date("d/m/Y H:i",strtotime(NOW()."+2 Minutes")),
 				'campaign' => 'OTP'
 			);
 			$url 			= linkservice('notif')."api/notification";
 			$method 		= 'POST';
 			$responseApi 	= admsCurl($url, $dataInsert, $method);
 
-			
+
 			$dataInsert =  array (
 				'type' => 'email',
 				'to' => @$this->session->userdata('emailfront'),
