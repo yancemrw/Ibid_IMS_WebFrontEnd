@@ -15,15 +15,15 @@
                </div>
                <ul>
                   <li class="acc_notif">
-                     <a href="javascript:void(0)">
+                     <a href="<?php echo site_url('notification'); ?>">
                      <span class="ic_menu"><i ></i></span> Notifikasi <!--span>10</span--></a>
                   </li>
                   <li class="acc_transaction">
-                     <a href="javascript:void(0)">
+                     <a href="<?php echo site_url('transaction'); ?>">
                      <span class="ic_menu"><i ></i></span> Transaksi</a>
                   </li>
                   <li class="acc_npl">
-                     <a href="javascript:void(0)">
+                     <a href="<?php echo site_url('npl_dashboard'); ?>">
                      <span class="ic_menu"><i ></i></span> NPL Management</a>
                   </li>
                   <li class="acc_setting active">
@@ -31,11 +31,11 @@
                      <span class="ic_menu"><i ></i></span> Pengaturan</a>
                   </li>
                   <li class="acc_favorite">
-                     <a href="javascript:void(0)">
+                     <a href="<?php echo site_url('favorite'); ?>">
                      <span class="ic_menu"><i ></i></span> Favorit</a>
                   </li>
                   <li class="acc_price">
-                     <a href="javascript:void(0)">
+                     <a href="<?php echo site_url('basic-price'); ?>">
                      <span class="ic_menu"><i ></i></span> Harga Dasar</a>
                   </li>
                </ul>

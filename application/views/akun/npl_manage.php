@@ -50,15 +50,11 @@
                                 <div class="form-group">
                                     <select class="form-control select-custom">
                                         <option>Filter by jadwal</option>
-                                        <option>jakarta timur</option>
-                                        <option>jakarta timur</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <select class="form-control select-custom">
                                         <option>Jenis lelang</option>
-                                        <option>Hybrid</option>
-                                        <option>Hybrid</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -72,45 +68,11 @@
                             </div>
                         </form>
                     </div>
-                    <div class="table-responsive table-container">
-                        <table class="table table-striped table-custom">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>No NPL</th>
-                                    <th>Objk Lelang</th>
-                                    <th>Jenis NPL</th>
-                                    <th>Tanggal</th>
-                                    <th>Status</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            	<?php for($i=0; $i < 7; $i++) { ?>
-                                <tr>
-                                    <td><?php $i; ?></td>
-                                    <td>#001</td>
-                                    <td>Mobile</td>
-                                    <td>Unlimited</td>
-                                    <td>Jakarta, 26/09/2017</td>
-                                    <td class="status">Sudah Digunakan</td>
-                                    <td><a href="" class="action-npl"><img src="<?php echo base_url('assetsfront/images/icon/ic_action_npl.png'); ?>" alt=""></a></td>
-                                </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-md-12 text-center">
-                        <ul class="pagination">
-                            <li class="page-item"><a class="page-link arrow-page" href="#"><i class="fa fa-angle-left"></i></a></li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">4</a></li>
-                            <li class="page-item"><a class="page-link" href="#">...</a></li>
-                            <li class="page-item"><a class="page-link" href="#">20</a></li>
-                            <li class="page-item"><a class="page-link arrow-page" href="#"><i class="fa fa-angle-right"></i></a></li>
-                        </ul>
+                    <div class="table-responsive table-container table-transaction content-empty">
+                        <div class="product-empty">
+                            <img src="<?php echo base_url('assetsfront/images/icon/ic-transaction-empty.png'); ?>" alt="" title="">
+                        </div>
+                        <p>Oops.... <span>Data Belum Tersedia.</span></p>
                     </div>
                 </div>
             </div>

@@ -40,34 +40,11 @@
             <div class="col-md-9 col-sm-9 am-right">
                 <div class="main-management clearfix">
                     <h2>Favorit</h2>
-                    <div class="whislist product-mob clearfix">
-                        <div class="row">
-                        	<?php for ($i=0; $i < 9; $i++) { ?>
-                            <div class="col-md-4">
-                                <div class="list-product box-recommend list-compare">
-                                    <a href="">
-                                        <div class="thumbnail">
-                                            <img alt="" src="<?php echo base_url('assetsfront/images/background/img-recommend-1.jpg'); ?>">
-                                            <div class="overlay-grade">
-                                                Grade <span>A</span>
-                                            </div>
-                                            <p class="overlay-lot">LOT 170</p>
-                                        </div>
-                                        <div class="boxright-mobile">
-                                            <h2>DAIHATSU LUXIO 1.5 X MINIBUS AT </h2>
-                                            <span>2014</span> <span class="price">Rp. 72,000,000</span>
-                                            <p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>04 September 2017</span></p>
-                                            <p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Jakarta</span></p>
-                                        </div>
-                                    </a>
-                                    <div class="action-wishlist">
-                                        <button class="btn btn-green"><i class="fa fa-files-o"></i> Bandingkan</button>
-                                        <a href="" class="delete-favorite">Hapus Favorit</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php } ?>
+                    <div class="table-responsive table-container table-transaction content-empty">
+                        <div class="product-empty">
+                            <img src="<?php echo base_url('assetsfront/images/icon/ic-transaction-empty.png'); ?>" alt="" title="">
                         </div>
+                        <p>Oops.... <span>Data Belum Tersedia.</span></p>
                     </div>
                 </div>
             </div>
