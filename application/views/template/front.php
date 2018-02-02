@@ -37,18 +37,18 @@
          <div role="tabpanel" class="tab-pane" id="tab-mobile-2">
             <form class="form-inline clearfix">
                <div class="form-group">
-                  <select class="select-custom form-control filterJadwal" id="thisCabang">
+                  <select class="select-custom form-control" id="thisCabang">
                      <!-- option value ="" ></option>
                      <option value ="" >Bandung</option>
                      <option value ="" >Jakarta</option -->
                      <?php foreach($cabang as $row){ ?>
-                     <option value="<?php echo $row['CompanyId']; ?>" ><?php echo substr($row['CompanyName'], 4); ?></option>
+                     <option value="<?php echo $row['CompanyId']; ?>" ><?php echo ucwords(substr(strtolower($row['CompanyName']), 4)); ?></option>
                      <?php } ?>
                   </select>
                   <label>Kota</label>
                </div>
                <div class="form-group clearfix">
-                  <select class="select-custom form-control select-type filterJadwal" id="thisItem">
+                  <select class="select-custom form-control select-type" id="thisItem">
                      <option value="car-type"></option>
                      <option value="hve-type"></option>
                      <option value="motorcycle-type"></option>

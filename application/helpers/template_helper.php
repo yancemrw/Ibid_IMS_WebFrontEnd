@@ -10,7 +10,7 @@ function template($view = '', $data = '') {
 
   // get header image
   if(@$data['menu_pages'] === 'panduan-lelang') {
-    $data['bgheader'] = base_url('assetsfront/images/background/bg-auction-3.jpg');
+    $data['bgheader'] = 'https://sera.astra.co.id/uploads/contents/1487930089_9j8r7v6bXZ.png';
     $data['class_header'] = '';
   }
   else if(@$data['menu_pages'] === 'about') {

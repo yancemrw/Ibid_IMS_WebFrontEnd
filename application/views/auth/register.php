@@ -46,7 +46,7 @@
                         </div>
                         <div class="g-recaptcha recaptcha" id="idrecaptcha" required></div>
                         <div class="form-group text-right">
-                            <button class="btn btn-green" id="btn-daftar">Daftar</button>
+                            <button class="btn btn-green" id="btn-daftar" disabled>Daftar</button>
                             <a href="<?php echo site_url('register'); ?>">Sudah punya akun?</a>
                         </div>
                     </form>
@@ -101,6 +101,15 @@
             else {
                 $(this).addClass('not-empty');
                 $(this).removeClass('empty');
+            }
+
+            var name = $('#name').val(), 
+                mail = $('#email').val(), 
+                pass = $('#pass').val(), 
+                repass = $('#repass').val();
+
+            if(name !== '' && mail !== '' && pass !== '' && repass !== '') {
+                $('#btn-daftar').prop('disabled', false);
             }
 		});
 
@@ -158,7 +167,7 @@
             var name = $('#name').val(), 
                 mail = $('#email').val(), 
                 pass = $('#pass').val(), 
-                repass = $('#repass').val(), 
+                repass = $('#repass').val(),
                 recaptcha = $('#e8df0fade2ce52c6a8cf8c8d2309d08a').val(),
                 letters = /^[0-9a-zA-Z]+$/;
             if(name !== '' && mail !== '' && pass !== '' && repass !== '') {
@@ -171,7 +180,11 @@
                     $('#form-reg').submit();
                 }
                 else {
-                    alert('Captcha harus di isi!');
+                    bootoast.toast({
+                        message: 'Captcha harus di isi!',
+                        type: 'danger',
+                        position: 'top-center'
+                    });
                 }
             }
         });
