@@ -12,7 +12,7 @@
                     <ul>
                         <li class="acc_notif">
                         	<a href="<?php echo site_url('notification'); ?>">
-                            <span class="ic_menu"><i ></i></span> Notifikasi <span>10</span></a>
+                            <span class="ic_menu"><i ></i></span> Notifikasi<!--span>10</span--></a>
                         </li>
                         <li class="acc_transaction active">
                         	<a href="<?php echo site_url('transaction'); ?>">
