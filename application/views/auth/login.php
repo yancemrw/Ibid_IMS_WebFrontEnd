@@ -17,7 +17,7 @@
                         </div>
                         <div class="form-group text-right">
                             <button class="btn btn-green" id="btn-login">Masuk</button>
-                            <div>
+                            <div class="login-forgot">
                                 <a href="<?php echo site_url('register'); ?>" class="float-left">Sudah punya akun?</a>
                                 <span class="float-left">atau</span>
                                 <a href="<?php echo site_url('forgot'); ?>" class="float-left">Lupa password?</a>

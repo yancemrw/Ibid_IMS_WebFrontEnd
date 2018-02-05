@@ -75,9 +75,10 @@
   <script type="text/javascript">
     $(document).ready(function() { 
       bootoast.toast({
-        message: '<b><?=@$message[1]?></b>',
+        message: '<?=@$message[1]?>',
         type: '<?=@$message[0]?>',
-        position: 'top-center'
+        position: 'top-center',
+        timeout: 5
       });
     });
   </script>
@@ -91,7 +92,12 @@
     if(user !== '' && pass !== '') {
       e.preventDefault();
       if(pass.length < 8) {
-        alert('Tidak boleh kurang dari 8 karakter');
+        bootoast.toast({
+          message: 'Tidak boleh kurang dari 8 karakter',
+          type: 'warning',
+          position: 'top-center',
+          timeout: 5
+        });
       }
       else {
         $('#btn-login').attr('disabled', true);
@@ -104,7 +110,12 @@
     if(userx !== '' && passx !== '') {
       e.preventDefault();
       if(passx.length < 8) {
-        alert('Tidak boleh kurang dari 8 karakter');
+        bootoast.toast({
+          message: 'Tidak boleh kurang dari 8 karakter',
+          type: 'warning',
+          position: 'top-center',
+          timeout: 5
+        });
       }
       else {
         $('#btn-loginx').attr('disabled', true);

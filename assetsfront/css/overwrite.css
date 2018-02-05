@@ -90,6 +90,20 @@
     cursor: no-drop !important;
 }
 
+.login-forgot {
+	display: inline-block;
+	margin: 10px 0 0 0;
+	text-align: center;
+}
+
+.login-forgot a {
+	margin: 0 5px;
+}
+
+.login-forgot span {
+	font-size: 11px;
+}
+
 .recaptcha {
     transform: scale(0.77) !important;
     -webkit-transform: scale(0.77) !important;

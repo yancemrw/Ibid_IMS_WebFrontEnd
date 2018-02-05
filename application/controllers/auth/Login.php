@@ -79,7 +79,7 @@ class Login extends CI_Controller {
 				$res = json_decode($responseApi['response']);
 				if(isset($res->error)) {
 					// kalo gagal
-					$this->session->set_flashdata('message', array('danger', $res->error_description));
+					$this->session->set_flashdata('message', array('warning', $res->error_description));
 					redirect('login');
 				}
 				else {

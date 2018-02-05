@@ -190,7 +190,8 @@
                     bootoast.toast({
                         message: 'Kata sandi hanya boleh menggunakan karakter dan angka',
                         type: 'warning',
-                        position: 'top-center'
+                        position: 'top-center',
+                        timeout: 5
                     });
                 }
                 else if(recaptcha !== '') {
@@ -201,7 +202,8 @@
                     bootoast.toast({
                         message: 'Captcha harus di isi!',
                         type: 'warning',
-                        position: 'top-center'
+                        position: 'top-center',
+                        timeout: 5
                     });
                 }
             }
