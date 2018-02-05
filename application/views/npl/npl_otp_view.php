@@ -1,4 +1,7 @@
 <script type="text/javascript" src="<?php echo base_url('assetsfront/js/countdown.js'); ?>"></script>
+<script>
+    var linked = '<?php echo site_url("biodata/otp?otpkirim=yes")?>';
+</script>
 <section class="section section-auction">
     <div class="container">
         <div class="row">
@@ -92,27 +95,17 @@
                 },
                 success: function(data) {                    
                     if(data === 'cocok') {
-                        deleteCookieCountdown('WRG');
+                        deleteCookieCountdown('CHKPT');
                         location.href = '<?php echo site_url('biodata/updateForNPL'); ?>';
                     }
                     else {
-                        alert(data);
-                        var cookie_false = document.cookie.indexOf('WRG=');
-                        if(cookie_false === -1) {
-                            document.cookie = "WRG=1; Path=/;";
-                            $('#btn-submit').prop('disabled', false);
-                        }
-                        else {
-                            var getCount = getCookieFalse('WRG'), count = 0;
-                            count = parseInt(getCount) + 1;
-                            document.cookie = "WRG="+count+"; Path=/;";
-                            switch(count) {
-                                case 3: countdown(1, false);
-                                case 6: countdown(1, false);
-                                case 9: countdown(5, false);
-                            }
-                            $('#btn-submit').prop('disabled', false);
-                        }
+                        bootoast.toast({
+                            message: data,
+                            type: 'warning',
+                            position: 'top-center',
+                            timeout: 4
+                        });
+                        $('#btn-submit').prop('disabled', false);
                     }
                 }
             });
