@@ -13,16 +13,21 @@ class Entrusted extends CI_Controller {
 		$this->userdata = $this->session->userdata('userdata');
 	}
 
-	public function index() {
-		$data = array(
-			'header_white'	=> "header-white",
-			'userdata'		=> $this->userdata,
-			'title'			=> 'Titip Lelang',
-			'form_auth_mobile' => login_status_form_mobile($this->userdata),
-			'form_auth'		=> login_Status_form($this->userdata)
-		);
-		$view = "auction/entrusted";
-		template($view, $data);
+	public function index($not_comming = '') {
+		if($not_comming === '') {
+			redirect('comingsoon', 'refresh');
+		}
+		else {
+			$data = array(
+				'header_white'	=> "header-white",
+				'userdata'		=> $this->userdata,
+				'title'			=> 'Titip Lelang',
+				'form_auth_mobile' => login_status_form_mobile($this->userdata),
+				'form_auth'		=> login_Status_form($this->userdata)
+			);
+			$view = "auction/entrusted";
+			template($view, $data);
+		}
 	}
 
 }

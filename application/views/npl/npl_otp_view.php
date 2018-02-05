@@ -51,13 +51,15 @@
                                         oninvalid="this.setCustomValidity('Harus diisi')" 
                                         oninput="setCustomValidity('')" name="otp[]" required />
                             </div>
-                            <p>Mohon tunggu 1 menit sebelum mencoba kirim ulang kode verifikasi</p>
+                            <p>Mohon tunggu 2 menit sebelum mencoba kirim ulang kode verifikasi</p>
                         </div>
                         <div id="countdown-id">
                             <button class="btn btn-green" id="btn-submit">Submit</button>
                         </div>
                     <!--/form-->
-                    <a id="reotp" href="<?php echo site_url('biodata/otp?otpkirim=yes')?>">Kirim ulang kode verifikasi</a>
+                    <div id="divreotp">
+                        <a id="reotp" href="<?php echo site_url('biodata/otp?otpkirim=yes')?>">Kirim ulang kode verifikasi</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -105,9 +107,9 @@
                             count = parseInt(getCount) + 1;
                             document.cookie = "WRG="+count+"; Path=/;";
                             switch(count) {
-                                case 3: countdown(1);
-                                case 6: countdown(1);
-                                case 9: countdown(5);
+                                case 3: countdown(1, false);
+                                case 6: countdown(1, false);
+                                case 9: countdown(5, false);
                             }
                             $('#btn-submit').prop('disabled', false);
                         }

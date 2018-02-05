@@ -52,6 +52,10 @@
     box-shadow: inset 0 1px 1px rgba(0,0,0,0.075) !important;
 }
 
+.float-left {
+	float: left;
+}
+
 .font-red {
     color: #C62828 !important;
 }
@@ -62,6 +66,12 @@
 
 .font-14px {
 	font-size: 14px;
+}
+
+.form-register button,
+.form-register button:hover,
+.form-register button:active {
+    margin-top: 1px !important;
 }
 
 .height-50px {
