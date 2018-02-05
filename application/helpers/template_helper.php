@@ -36,7 +36,7 @@ function login_status_form_mobile($userdata) {
   $pp = base_url('assetsfront/images/icon/ic_avatar.png');
   if(count(@$userdata['UserId']) > 0) {
     $html = '<ul class="user-nav clearfix">
-                <li class="dropdown">
+                <!--li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <p><img src="'.base_url('assetsfront/images/icon/Transaksi.png').'" alt="" title="" width="" height=""></p>
                     </a>
@@ -121,7 +121,7 @@ function login_status_form_mobile($userdata) {
                             <a href="" class="viewall-dropdown">Lihat Semua Transaksi</a>
                         </li>
                     </ul>
-                </li>
+                </li-->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle box-profile" data-toggle="dropdown">
                     <span class="photo-profile">
@@ -164,10 +164,10 @@ function login_status_form_mobile($userdata) {
 
 function login_Status_form($userdata) {
 	$pp = base_url('assetsfront/images/icon/ic_avatar.png');
-  $profile_name = @(strlen($userdata['namefront']) > 10) ? substr($userdata['namefront'], 0, 20) : '';
+  $profile_name = @(strlen($userdata['namefront']) > 10) ? substr($userdata['namefront'], 0, 20)+'...' : $userdata['namefront'];
 	if(count(@$userdata['UserId']) > 0) {
 
-    $html = '<li class="dropdown hidden-mob">
+    $html = '<!--li class="dropdown hidden-mob">
        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           <p><img src="'.base_url('assetsfront/images/icon/ic_transaction.png').'" alt="" title="" width="16px" height="22px"> <img src="'.base_url('assetsfront/images/icon/Transaksi.png').'" alt="" title="" width="" height="" class="ic_fixed"></p>
        </a>
@@ -252,7 +252,7 @@ function login_Status_form($userdata) {
              <a href="" class="viewall-dropdown">Lihat Semua Transaksi</a>
           </li>
        </ul>
-    </li>
+    </li-->
     <li class="dropdown">
        <a href="#" class="dropdown-toggle box-profile" data-toggle="dropdown">
           <span class="photo-profile">
