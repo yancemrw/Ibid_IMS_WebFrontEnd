@@ -70,51 +70,63 @@
 </section>
 
 <script>
-    $('#btn-submit').click(function() {
-        var arrOTP = new Array(), checkField = false;
-        $('input[name^="otp"]').each(function() {
-            arrOTP.push($(this).val());
 
-            if($(this).val() === '') {
-                checkField = true;
-                return;
-            }
-        });
+function refresh_button() {
+    var arrOTP = new Array(), checkField = false;
+    $('input[name^="otp"]').each(function() {
+        arrOTP.push($(this).val());
 
-        if(checkField === true) {
-            alert('Lengkapi Kode Verifikasi!');
-            return;
-        }
-        else {
-            $.ajax({
-                type: 'POST',
-                url: '<?php echo site_url('biodata/otpconfirm'); ?>',
-                data: 'otp='+JSON.stringify(arrOTP),
-                beforeSend: function() {
-                    $('#btn-submit').prop('disabled', true);
-                },
-                success: function(data) {                    
-                    if(data === 'cocok') {
-                        deleteCookieCountdown('CHKPT');
-                        location.href = '<?php echo site_url('biodata/updateForNPL'); ?>';
-                    }
-                    else {
-                        bootoast.toast({
-                            message: data,
-                            type: 'warning',
-                            position: 'top-center',
-                            timeout: 4
-                        });
-                        $('#btn-submit').prop('disabled', false);
-                    }
-                }
-            });
+        if($(this).val() === '') {
+            checkField = true;
+            return false;
         }
     });
 
-    $("input").keyup(function() {
+    if(checkField === true) {
+        bootoast.toast({
+            message: 'Lengkapi Kode Verifikasi',
+            type: 'warning',
+            position: 'top-center',
+            timeout: 3
+        });
+        return false;
+    }
+    else {
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo site_url('biodata/otpconfirm'); ?>',
+            data: 'otp='+JSON.stringify(arrOTP),
+            async: false,
+            beforeSend: function() {
+                $('#btn-submit').attr('disabled', true);
+            },
+            success: function(data) {                    
+                if(data === 'cocok') {
+                    deleteCookieCountdown('CHKPT');
+                    location.href = '<?php echo site_url('biodata/updateForNPL'); ?>';
+                }
+                else {
+                    bootoast.toast({
+                        message: data,
+                        type: 'warning',
+                        position: 'top-center',
+                        timeout: 3
+                    });
+                    $('#btn-submit').attr('disabled', false);
+                }
+            }
+        });
+    }
+    
+}
+
+    $("input").keyup(function(e) {
         if(this.value.length == this.maxLength) {
             $(this).next('input').focus();
+        }
+
+        if(e.which === 13) {
+            refresh_button();
         }
     });
 
