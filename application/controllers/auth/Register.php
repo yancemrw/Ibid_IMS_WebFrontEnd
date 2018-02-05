@@ -90,7 +90,7 @@ class Register extends CI_Controller {
 				}
 			}
 			else {
-				$this->session->set_flashdata('message', array('danger', 'Email sudah terdaftar'));
+				$this->session->set_flashdata('message', array('warning', 'Email sudah terdaftar'));
 				redirect('register', 'refresh');
 			}
 

@@ -1,7 +1,21 @@
 <link rel="stylesheet" href="<?php echo base_url('assetsfront/strength/strength.css'); ?>">
+<script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit' async defer></script>
 <script src="<?php echo base_url('assetsfront/strength/strength.js'); ?>"></script>
+<script>
+    var verifyCallback = function(response) {
+        $('#e8df0fade2ce52c6a8cf8c8d2309d08a').val(response);
+    };
+    var onloadCallback = function() {
+        grecaptcha.render('idrecaptcha', {
+            'sitekey'   : '6Lee4z8UAAAAAG8bdnCYM-ZKfsRa6fniZlq5HTRn',
+            'callback'  : verifyCallback,
+            'theme'     : 'light'
+        });
+    };
+</script>
 
 <section class="section-register">
+    <input type="hidden" id="e8df0fade2ce52c6a8cf8c8d2309d08a" />
     <div class="container">
         <div class="row position-repative">
             <div class="col-md-4 col-sm-6 pull-right">
@@ -175,7 +189,7 @@
                 if(!pass.match(letters)) {
                     bootoast.toast({
                         message: 'Kata sandi hanya boleh menggunakan karakter dan angka',
-                        type: 'danger',
+                        type: 'warning',
                         position: 'top-center'
                     });
                 }
@@ -186,7 +200,7 @@
                 else {
                     bootoast.toast({
                         message: 'Captcha harus di isi!',
-                        type: 'danger',
+                        type: 'warning',
                         position: 'top-center'
                     });
                 }
