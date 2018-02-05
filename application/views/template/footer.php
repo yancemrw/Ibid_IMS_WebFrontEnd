@@ -87,13 +87,13 @@
 
 <script type="text/javascript">
   // handle login
-  $('#btn-login').click(function(e) {
+  $('#btn-login').click(function(e) {console.log('login');
     var user = $('#username').val(), pass = $('#password').val();
     if(user !== '' && pass !== '') {
       e.preventDefault();
       if(pass.length < 8) {
         bootoast.toast({
-          message: 'Tidak boleh kurang dari 8 karakter',
+          message: 'Sandi tidak boleh kurang dari 8 karakter',
           type: 'warning',
           position: 'top-center',
           timeout: 5
@@ -105,13 +105,13 @@
       }
     }
   });
-  $('#btn-loginx').click(function(e) {
+  $('#btn-loginx').click(function(e) {console.log('loginx');
     var userx = $('#usernamex').val(), passx = $('#passwordx').val();
     if(userx !== '' && passx !== '') {
       e.preventDefault();
       if(passx.length < 8) {
         bootoast.toast({
-          message: 'Tidak boleh kurang dari 8 karakter',
+          message: 'Sandi tidak boleh kurang dari 8 karakter',
           type: 'warning',
           position: 'top-center',
           timeout: 5

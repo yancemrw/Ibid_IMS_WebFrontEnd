@@ -322,7 +322,7 @@
                         <div class="box-img-slide">
                            <img alt="" src="<?php echo linkservice('cms').'uploads/contents/'.$valTesti->Photo; ?>" class="img-responsive">
                         </div>
-                        <h2><?php echo $valTesti->Title; ?> <span>IBID</span></h2>
+                        <h2><?php echo $valTesti->Title; ?></h2>
                         <p>
                            <span><?php echo date('d F Y', strtotime($valTesti->Tanggal)); ?></span>
                            <?php echo $valTesti->Content; ?>

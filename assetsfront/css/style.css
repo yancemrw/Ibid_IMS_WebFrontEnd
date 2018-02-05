@@ -241,6 +241,10 @@ header:before {
     -o-transition: all 0.2s ease;
     transition: all 0.2s ease;
     max-height: 80px;
+
+    width: 1349px !important;
+    position: absolute !important;
+    top: 0 !important;
 }
 
 .navbar-custom .navbar-right {
