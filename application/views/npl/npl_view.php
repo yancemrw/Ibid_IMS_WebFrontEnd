@@ -45,7 +45,7 @@
             <div class="col-md-5">
                 <div class="booking-schedule">
                     <h2>Perbaharui Data Anda <span>Hanya di Isi Untuk User Baru</span></h2>
-                    <form class="form-filter" id="beli-npl" method="POST" data-provide="validation">
+                    <form class="form-filter" id="beli-npl" method="POST" data-provide="validation" action="<?php echo site_url("biodata/otp"); ?>">
                         <input type="hidden" name="otpkirim" value="true">
                         <div class="form-group floating-label">
                             <input type="text" name="Phone" id="notif-telepon" class="form-control input-custom" value="<?php echo @$detailBiodata['Phone']; ?>"
@@ -59,7 +59,7 @@
                         <div class="form-group">
                             <select class="form-control select-custom" name="BankId" 
                                     oninvalid="this.setCustomValidity('Tipe bank tidak boleh kosong')" 
-                                    oninput="setCustomValidity('')" required>
+                                    onchange="setCustomValidity('')" required>
                                 <option value="">Bank *</option>
                                 <?php foreach($listBank as $row){ ?>
                                 <option value="<?php echo $row->BankId; ?>" <?php echo (@$detailBiodata['BankId'] == $row->BankId) ? 'selected' : ''; ?>><?php echo $row->BankName; ?></option>
@@ -207,43 +207,36 @@
             bankname  = $('input[name="BankAccountName"]').val(),
             ktp       = $('input[name="IdentityNumber"]').val(),
             recaptcha = $('#e8df0fade2ce52c6a8cf8c8d2309d08a').val();
-
-        if(phone === '') {
-            $('input[name="Phone"]')[0].setCustomValidity('No telepon tidak boleh kosong');
-            return;
-        }
-        else if($('select[name="BankId"]').valid()) {
-            bootoast.toast({
-                message: 'BANK harus diisi!',
-                type: 'warning',
-                position: 'top-center'
-            });
-        }
-        else if(ktp.length < 16) {
-            bootoast.toast({
-                message: 'Nomor KTP harus 16 angka!',
-                type: 'warning',
-                position: 'top-center'
-            });
-        }
-        else if($('#agree-required').is(":checked") === false) {
-            bootoast.toast({
-                message: 'Anda harus setuju dengan syarat dan ketentuan dari kami!',
-                type: 'warning',
-                position: 'top-center'
-            });
-        }
-        else if(recaptcha !== '') {
-            $('#btn-kirim').attr('disabled', true);
-            //$('#beli-npl').attr('action', '<?php echo site_url("biodata/otp"); ?>');
-            //$('#beli-npl').submit();
-        }
-        else {
-            bootoast.toast({
-                message: 'Captcha harus di isi!',
-                type: 'warning',
-                position: 'top-center'
-            });
+        if(phone !== '' && bankid !== '' && bankacc !== '' && bankname !== '' && ktp !== '') {
+            if(ktp.length < 16) {
+                bootoast.toast({
+                    message: 'Nomor KTP harus 16 angka!',
+                    type: 'warning',
+                    position: 'top-center'
+                });
+                return false;
+            }
+            else if($('#agree-required').is(":checked") === false) {
+                bootoast.toast({
+                    message: 'Anda harus setuju dengan syarat dan ketentuan dari kami!',
+                    type: 'warning',
+                    position: 'top-center'
+                });
+                return false;
+            }
+            else if(recaptcha === '') {
+                bootoast.toast({
+                    message: 'Captcha harus di isi!',
+                    type: 'warning',
+                    position: 'top-center'
+                });
+                return false;
+            }
+            else {
+                $('#btn-kirim').attr('disabled', true);
+                $('#beli-npl').submit();
+                return false;
+            }
         }
     });
 

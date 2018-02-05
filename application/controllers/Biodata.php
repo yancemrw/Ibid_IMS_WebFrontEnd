@@ -106,7 +106,7 @@ class Biodata extends CI_Controller {
 		// ########### add by mas andi supervisor
 		date_default_timezone_set('Asia/Jakarta');
 		// send to sms
-		/*$dataInsert =  array (
+		$dataInsert =  array (
 			'type'			=> 'sms',
 			'msisdn'		=> @$_POST['Phone'],
 			'message'		=> 'IBID OTP anda : '.$otpsesi,
@@ -116,7 +116,7 @@ class Biodata extends CI_Controller {
 		);
 		$url 			= linkservice('notif')."api/notification";
 		$method 		= 'POST';
-		$responseApi 	= admsCurl($url, $dataInsert, $method);*/
+		$responseApi 	= admsCurl($url, $dataInsert, $method);
 		// ########################################
 
 		if ($_POST['otpkirim']=='true') {
