@@ -87,15 +87,37 @@ class Biodata extends CI_Controller {
 		);
 		$this->session->set_userdata( $otpin );
 
+		// cek if phone is set
+		if(@$this->input->post('Phone')) {
+			$this->session->set_userdata('Phone', $this->input->post('Phone'));
+		}
+
 		// jika difrontend pengguna meminta mengirimkan lagi otp nya.
 		if (@$this->input->get('otpkirim')=='yes') {
-			$_POST['otpkirim'] = 'true';			
+			$_POST['otpkirim'] = 'true';
+			$_POST['Phone'] = $this->session->userdata('Phone');
 		} else {
 			$array = array(
 				'BiodataPembelianNPL' => @$_POST
 			);
 			$this->session->set_userdata( $array );
 		}
+
+		// ########### add by mas andi supervisor
+		date_default_timezone_set('Asia/Jakarta');
+		// send to sms
+		/*$dataInsert =  array (
+			'type'			=> 'sms',
+			'msisdn'		=> @$_POST['Phone'],
+			'message'		=> 'IBID OTP anda : '.$otpsesi,
+			'description'	=> 'OTP IBID',
+			'schedule'		=> date("d/m/Y H:i",strtotime(date("Y-m-d H:i:s")."+1 Minutes")),
+			'campaign'		=> 'OTP'
+		);
+		$url 			= linkservice('notif')."api/notification";
+		$method 		= 'POST';
+		$responseApi 	= admsCurl($url, $dataInsert, $method);*/
+		// ########################################
 
 		if ($_POST['otpkirim']=='true') {
 			#########
@@ -138,10 +160,10 @@ class Biodata extends CI_Controller {
 			$method 		= 'POST';
 			$responseApi 	= admsCurl($url, $dataInsert, $method);
 
-			redirect('biodata/otpconfirm','refresh');
+			redirect('biodata/otpconfirm', 'refresh');
 
 		} else {
-			redirect('pembelian','refresh');
+			redirect('pembelian', 'refresh');
 		}
 
 				#######
@@ -183,7 +205,8 @@ class Biodata extends CI_Controller {
 			'header_white'	=> "header-white",
 			'userdata'		=> $userdata,
 			'title'			=> 'Beli Nomor Peserta Lelang ( NPL )',
-			'form_auth'		=> login_Status_form($userdata)
+			'form_auth'		=> login_Status_form($userdata),
+			'phone'			=> ''
 		);
 		
 		$view	= 'npl/npl_otp_view';  

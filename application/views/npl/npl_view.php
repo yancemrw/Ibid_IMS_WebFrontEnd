@@ -45,7 +45,7 @@
             <div class="col-md-5">
                 <div class="booking-schedule">
                     <h2>Perbaharui Data Anda <span>Hanya di Isi Untuk User Baru</span></h2>
-                    <form class="form-filter" id="beli-npl" action="<?php echo site_url('biodata/otp'); ?>" method="POST" data-provide="validation">
+                    <form class="form-filter" id="beli-npl" method="POST" data-provide="validation">
                         <input type="hidden" name="otpkirim" value="true">
                         <div class="form-group floating-label">
                             <input type="text" name="Phone" id="notif-telepon" class="form-control input-custom" value="<?php echo @$detailBiodata['Phone']; ?>"
@@ -59,7 +59,7 @@
                         <div class="form-group">
                             <select class="form-control select-custom" name="BankId" 
                                     oninvalid="this.setCustomValidity('Tipe bank tidak boleh kosong')" 
-                                    oninput="setCustomValidity('')">
+                                    oninput="setCustomValidity('')" required>
                                 <option value="">Bank *</option>
                                 <?php foreach($listBank as $row){ ?>
                                 <option value="<?php echo $row->BankId; ?>" <?php echo (@$detailBiodata['BankId'] == $row->BankId) ? 'selected' : ''; ?>><?php echo $row->BankName; ?></option>
@@ -84,15 +84,6 @@
                                     oninput="setCustomValidity('')" required />
                             <label class="label-schedule">Atas Nama *</label>
                         </div>
-                        <!--div class="form-group">
-                            <select class="form-control select-custom" id="biodata" name="Identitas" 
-                                    oninvalid="this.setCustomValidity('Tipe identitas tidak boleh kosong')" 
-                                    oninput="setCustomValidity('')" required>
-                                <option value="0">Tipe Identitas Diri</option>
-                                <option value="k">Pilih Ktp</option>
-                                <option value="n">Pilih Npwp</option>
-                            </select>
-                        </div-->
                         <div class="form-group floating-label" id="ktp">
                             <input type="text" name="IdentityNumber" class="form-control input-custom" maxlength="16" 
                                     value="<?php echo @$detailBiodata['IdentityNumber']; ?>"
@@ -100,10 +91,6 @@
                                     oninput="setCustomValidity('')" required />
                             <label class="label-schedule">Nomor KTP *</label>
                         </div>
-                        <!--div class="form-group floating-label" id="npwp" style="display: none;">
-                            <input type="text" name="NpwpNumber" class="form-control input-custom" value="<?php echo @$detailBiodata['NpwpNumber']; ?>">
-                            <label class="label-schedule">NPWP <span class="font-red">*</span></label>
-                        </div-->
                         <div class="g-recaptcha recaptcha" id="idrecaptcha" required></div>
                         <div class="input-group agree-required">
                             <input type="checkbox" name="checkbox" id="agree-required" class="cursor-pointer">
@@ -130,7 +117,7 @@
     });
 
     $('.input-group.date').datepicker({
-       format: "dd//mm/yyyy"
+       format: "dd/mm/yyyy"
     });
 
     $("input[name$='tipe-object']").click(function() {
@@ -218,47 +205,45 @@
             bankid    = $('select[name="BankId"]').val(), 
             bankacc   = $('input[name="BankAccountNumber"]').val(), 
             bankname  = $('input[name="BankAccountName"]').val(),
-            identity  = $('select[name="Identitas"]').val(),
             ktp       = $('input[name="IdentityNumber"]').val(),
             recaptcha = $('#e8df0fade2ce52c6a8cf8c8d2309d08a').val();
-        if(phone !== '' && bankid !== '' && bankacc !== '' && bankname !== '' && identity !== '' && ktp !== '') {
-            e.preventDefault();
-            if($('#agree-required').is(":checked") === false) {
-                bootoast.toast({
-                    message: 'Anda harus setuju dengan syarat dan ketentuan dari kami!',
-                    type: 'danger',
-                    position: 'top-center'
-                });
-                return;
-            }
-            else if(ktp.length < 16) {
-                bootoast.toast({
-                    message: 'Nomor KTP harus 16 angka!',
-                    type: 'danger',
-                    position: 'top-center'
-                });
-                return;
-            }
-            else if(bankid === '') {
-                bootoast.toast({
-                    message: 'BANK harus diisi!',
-                    type: 'danger',
-                    position: 'top-center'
-                });
-                return;
-            }
-            else if(recaptcha !== '') {
-                $('#btn-kirim').attr('disabled', true);
-                $('#beli-npl').submit();
-                return;
-            }
-            else {
-                bootoast.toast({
-                    message: 'Captcha harus di isi!',
-                    type: 'danger',
-                    position: 'top-center'
-                });
-            }
+
+        if(phone === '') {
+            $('input[name="Phone"]')[0].setCustomValidity('No telepon tidak boleh kosong');
+            return;
+        }
+        else if($('select[name="BankId"]').valid()) {
+            bootoast.toast({
+                message: 'BANK harus diisi!',
+                type: 'warning',
+                position: 'top-center'
+            });
+        }
+        else if(ktp.length < 16) {
+            bootoast.toast({
+                message: 'Nomor KTP harus 16 angka!',
+                type: 'warning',
+                position: 'top-center'
+            });
+        }
+        else if($('#agree-required').is(":checked") === false) {
+            bootoast.toast({
+                message: 'Anda harus setuju dengan syarat dan ketentuan dari kami!',
+                type: 'warning',
+                position: 'top-center'
+            });
+        }
+        else if(recaptcha !== '') {
+            $('#btn-kirim').attr('disabled', true);
+            //$('#beli-npl').attr('action', '<?php echo site_url("biodata/otp"); ?>');
+            //$('#beli-npl').submit();
+        }
+        else {
+            bootoast.toast({
+                message: 'Captcha harus di isi!',
+                type: 'warning',
+                position: 'top-center'
+            });
         }
     });
 

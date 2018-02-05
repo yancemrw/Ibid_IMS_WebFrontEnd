@@ -68,8 +68,8 @@ function countdown(setTimer) {
 			switch(checkpoint2) {
 				case '3': document.getElementById("countdown-id").innerHTML = '<div style="margin: 40px 0;">OTP sudah kadaluarsa<br />Silahkan hubungi customer service kami</div>';
 						  document.getElementById("divreotp").style.display = 'none';
-				case '2': document.getElementById("divreotp").innerHTML = '<a id="reotp" href="<?php echo site_url(\'biodata/otp?otpkirim=yes\')?>">Kirim ulang kode verifikasi</a>';
-				case '1': document.getElementById("divreotp").innerHTML = '<a id="reotp" href="<?php echo site_url(\'biodata/otp?otpkirim=yes\')?>">Kirim ulang kode verifikasi</a>';
+				case '2': document.getElementById("divreotp").innerHTML = '<a id="reotp" href="'+linked+'">Kirim ulang kode verifikasi</a>';
+				case '1': document.getElementById("divreotp").innerHTML = '<a id="reotp" href="'+linked+'">Kirim ulang kode verifikasi</a>';
 			}			
 		}
 	}, 1000);
