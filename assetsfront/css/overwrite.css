@@ -82,6 +82,10 @@
     margin-top: 80px !important;
 }
 
+.navbar {
+	border: 0 !important;
+}
+
 .padding-10px {
     padding: 10px !important;
 }

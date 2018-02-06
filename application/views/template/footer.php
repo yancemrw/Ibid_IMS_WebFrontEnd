@@ -3,10 +3,10 @@
     <div class="row">
       <div class="col-md-4 social-media text-right">
         <ul>
-          <li><a href=""><i class="fa fa-instagram"></i></a></li>
-          <li><a href=""><i class="fa fa-twitter"></i></a></li>
-          <li><a href=""><i class="fa fa-facebook"></i></a></li>
-          <li><a href=""><i class="fa fa-youtube-play"></i></a></li>
+          <li><a href="" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+          <li><a href="" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="" title="Youtube"><i class="fa fa-youtube-play"></i></a></li>
         </ul>
       </div>
       <div class="col-md-4 footer-link text-center">

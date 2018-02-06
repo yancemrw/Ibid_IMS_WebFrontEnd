@@ -83,14 +83,14 @@
                   <div class="box-section">
                      <div class="box-image icn icn-frekwensi"></div>
                      <h2>Frekuensi Lelang</h2>
-                     <p>Lebih dari 50 kali lelang per bulan</p>
+                     <p>Lebih dari 50 kali lelang perbulan</p>
                   </div>
                </div>
                <div class="item">
                   <div class="box-section">
                      <div class="box-image icn icn-jaringan-lelang"></div>
                      <h2>Jaringan Lelang</h2>
-                     <p>Jaringan lelang Lebih dari 30 kota</p>
+                     <p>Lebih dari 30 kota</p>
                   </div>
                </div>
                <div class="item">
@@ -104,21 +104,21 @@
                   <div class="box-section">
                      <div class="box-image icn icn-car-valuation"></div>
                      <h2>Astra Car Valuation</h2>
-                     <p>Inspeksi kendaraan secara saintifik.</p>
+                     <p>Inspeksi kendaraan secara saintifik</p>
                   </div>
                </div>
                <div class="item ">
                   <div class="box-section">
                      <div class="box-image icn icn-map"></div>
-                     <h2>MAP</h2>
-                     <p>Market Auction Price : acuan harga pasar</p>
+                     <h2>MAP (Market Auction Price)</h2>
+                     <p>Acuan harga pasar</p>
                   </div>
                </div>
                <div class="item ">
                   <div class="box-section">
                      <div class="box-image icn icn-auto-bid"></div>
                      <h2>Auto BID</h2>
-                     <p>Tawar harga sebelum lelang dimulai!</p>
+                     <p>Tawar harga unit dengan otomatis diharga maksimum</p>
                   </div>
                </div>
             </div>
@@ -254,7 +254,7 @@
                      <div class="item col-md-2">
                         <div class="box-section">
                            <div class="box-image icn icn-pengambilan-kendaraan"></div>
-                           <h2>Ambil kendaraan</h2>
+                           <h2>Pengembalian unit yang dimenangkan</h2>
                         </div>
                      </div>
                   </div>
@@ -275,7 +275,7 @@
                   <div class="col-md-2">
                      <div class="box-section">
                         <div class="box-image icn icn-bawa-mobil-dokumen"></div>
-                        <h2>Bawa kendaraan & dokumen ke IBID</h2>
+                        <h2>Bawa unit dan dokumen ke IBID</h2>
                      </div>
                   </div>
                </div>
@@ -320,7 +320,7 @@
                   <div class="content-testimoni">
                      <a href="#">
                         <div class="box-img-slide">
-                           <img alt="" src="<?php echo linkservice('cms').'uploads/contents/'.$valTesti->Photo; ?>" class="img-responsive">
+                           <img src="<?php echo linkservice('cms').'uploads/contents/'.$valTesti->Photo; ?>" class="img-responsive">
                         </div>
                         <h2><?php echo $valTesti->Title; ?></h2>
                         <p>
@@ -342,9 +342,9 @@
          <div class="content-autobid clearfix">
             <div class="col-md-7">
                <h2>Auto BID</h2>
-               <p>Amankan kendaraan favorit Anda! Dengan Auto Bid, Anda dapat menentukan harga
-                  tawar maksimal yang Anda mau sebelum lelang dimulai. Nikmati kemudahan Auto Bid
-                  dalam genggaman Anda hanya lewat aplikasi IBID. <span>Download sekarang!</span></p>
+               <p>Amankan kendaraan favorit Anda! Dengan Auto Bid, anda dapat menentukan harga
+                  tawar maksimal yang anda mau sebelum lelang dimulai. Nikmati kemudahan Auto Bid
+                  dalam genggaman anda hanya lewat aplikasi IBID. <span>Download sekarang!</span></p>
                <a href="javascript:void(0)" class="icn icn-google-play link-disabled"></a>
             </div>
             <div class="col-md-5">

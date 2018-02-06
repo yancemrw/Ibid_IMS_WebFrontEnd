@@ -114,7 +114,7 @@
                  </div>
                  <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="nav-close"><i class="fa fa-close"></i></li>
+                        <li class="nav-close"><img src="<?php echo base_url('assetsfront/images/icon/Close.png'); ?>"></li>
                         <li class="nav-title"><span class="nav-title">Home</span></li>
                         <li><a href="<?php echo site_url('comingsoon'); ?>">Cari Kendaraan</a></li>
                         <li><a href="<?php echo site_url('comingsoon'); ?>">Jadwal Lelang</a></li>
@@ -174,7 +174,7 @@
                   </div>
                   <div id="navbar" class="navbar-collapse collapse">
                      <ul class="nav navbar-nav navbar-right">
-                        <li class="nav-close"><i class="fa fa-close"></i></li>
+                        <li class="nav-close"><img src="<?php echo base_url('assetsfront/images/icon/Close.png'); ?>"></li>
                         <li class="nav-title"><span class="nav-title">Home</span></li>
                         <li><a href="<?php echo site_url('comingsoon'); ?>">Cari Kendaraan</a></li>
                         <li><a href="<?php echo site_url('comingsoon'); ?>">Jadwal Lelang</a></li>

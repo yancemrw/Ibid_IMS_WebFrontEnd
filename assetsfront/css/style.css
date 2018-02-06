@@ -21,10 +21,6 @@
 
 
 /*all style*/
-.nav>li {
-    height: 42px;
-}
-
 .clear {
     clear: both;
 }
@@ -242,8 +238,7 @@ header:before {
     transition: all 0.2s ease;
     max-height: 80px;
 
-    width: 1349px !important;
-    position: absolute !important;
+    width: 100% !important;
     top: 0 !important;
 }
 
@@ -808,7 +803,7 @@ h2.title {
 
 .box-recommend .thumbnail img {
     height: 100%;
-    width: auto;
+    width: 100%;
 }
 
 .box-recommend .thumbnail {
