@@ -803,7 +803,7 @@ h2.title {
 
 .box-recommend .thumbnail img {
     height: 100%;
-    width: 100%;
+    margin: 0 auto;
 }
 
 .box-recommend .thumbnail {

@@ -135,14 +135,12 @@ function login_status_form_mobile($userdata) {
                                     <h3>Tangkas</h3>
                                 </div>
                                 <ul>
-                                    <li class="acc_notif"><a href="am-notifikasi.html">
-                                        <span class="ic_menu"><i ></i></span> Notifikasi <span>10</span></a>
-                                    </li>
-                                    <li class="acc_transaction"><a href="am-transaksi.html"> <span class="ic_menu"><i ></i></span> Transaksi</a></li>
-                                    <li class="acc_npl"><a href="am-management.html"> <span class="ic_menu"><i ></i></span>  NPL Management</a></li>
-                                    <li class="acc_setting"><a href="am-ubah-profil.html"> <span class="ic_menu"><i ></i></span>  Pengaturan</a></li>
-                                    <li class="acc_favorite "><a href="am-whislist.html">  <span class="ic_menu"><i ></i></span> Favorit</a></li>
-                                    <li class="acc_price"><a href="am-harga-dasar.html">  <span class="ic_menu"><i ></i></span>  Harga Dasar</a></li>
+                                    <li class="acc_notif"><a href="'.site_url('notification').'"><span class="ic_menu"></span>Notifikasi<!--span>10</span--></a></li>
+                                    <li class="acc_transaction"><a href="'.site_url('transaction').'"><span class="ic_menu"><i ></i></span>Transaksi</a></li>
+                                    <li class="acc_npl"><a href="'.site_url('npl_dashboard').'"><span class="ic_menu"><i ></i></span>NPL Management</a></li>
+                                    <li class="acc_setting"><a href="'.site_url('dashboard').'"><span class="ic_menu"><i ></i></span>Pengaturan</a></li>
+                                    <li class="acc_favorite "><a href="'.site_url('favorite').'"><span class="ic_menu"><i ></i></span>Favorit</a></li>
+                                    <li class="acc_price"><a href="'.site_url('basic-price').'"><span class="ic_menu"><i ></i></span>Harga Dasar</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -150,7 +148,7 @@ function login_status_form_mobile($userdata) {
                             <hr />
                         </li>
                         <li class="text-center">
-                            <button class="btn btn-logout" onclick="location.href=\''.base_url().'\'" type="button">Keluar</button>
+                            <button class="btn btn-logout" onclick="location.href=\''.site_url('logout').'\'" type="button">Keluar</button>
                         </li>
                     </ul>
                 </li>
@@ -253,7 +251,7 @@ function login_Status_form($userdata) {
           </li>
        </ul>
     </li-->
-    <li class="dropdown">
+    <li class="dropdown hidden-mob">
        <a href="#" class="dropdown-toggle box-profile" data-toggle="dropdown">
           <span class="photo-profile">
              <img src="'.@$pp.'" alt="" title="profile">

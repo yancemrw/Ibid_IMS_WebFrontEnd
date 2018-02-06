@@ -128,6 +128,13 @@
 	.or {
 		width: 40px !important;
 	}
+
+	.btn-logout,
+	.btn-logout:hover, 
+	.btn-logout:focus {
+		font-size: 14px;
+		padding: 5px 15px;
+	}
 }
 
 // css by iqdam
