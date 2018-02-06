@@ -1220,9 +1220,9 @@
 	.form-register button,
 	.form-register button:hover,
 	.form-register button:active {
-		width: 100%;
+		width: 100% !important;
 		display: block;
-		max-width: 100%;
+		max-width: 100% !important;
 	}
 	.modal-login .form-group.text-right a,
 	.form-register a {
