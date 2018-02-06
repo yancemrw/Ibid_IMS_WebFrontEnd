@@ -353,12 +353,6 @@
    </div>
 </section>
 
-<style>
-   .form-group.clearfix {
-      margin: 2px;
-   }
-</style>
-
 <script>
    function preload(opacity) {
       if(opacity <= 0) {
