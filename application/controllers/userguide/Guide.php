@@ -445,59 +445,40 @@ class Guide extends CI_Controller {
 		$html = '<section class="procedure-info-panel">
 	   				<div class="panel panel-default panel-custom">
 	   					<div class="panel-heading">
-	   						<h3 class="no-margin">
-	   							Informasi
-	   						</h3>
+	   						<h3 class="no-margin">Informasi</h3>
 	   					</div>
 						<div class="panel-body">
 					    	<ul>
 					    		<li>
-					    			<div class="row">
-					    				<div class="col-sm-3">
-						    				Proses penawaran <span class="pull-right text-right">:</span>
-						    			</div>
-						    			<div class="col-sm-9">
-						    				Tertutup via web
-						    			</div>
-					    			</div>
-					    			<div class="clearfix"></div>
+					    			IBID - Balai Lelang Serasi telah mendapat izin dari Kementrian Keuangan Republik Indonesia, Direktorat Jendral Kekayaan Negara dengan Nomor 23/KM.6/Juni 2007.
 					    		</li>
 					    		<li>
-					    			<div class="row">
-					    				<div class="col-sm-3">
-					    				Alamat web <span class="pull-right text-right">:</span>
-						    			</div>
-						    			<div class="col-sm-9">
-						    				<a href="http://www.ibid.astra.co.id">www.ibid.astra.co.id</a>
-						    			</div>
-					    			</div>
-					    			<div class="clearfix"></div>
+					    			Petunjuk pelaksanaan lelang diatur secara keseluruhan berdasarkan Peraturan Menteri Keuangan Republik Indonesia Nomor 27/PMK.06/2016.
 					    		</li>
 					    		<li>
-					    			<div class="row">
-					    				<div class="col-sm-3">
-					    				Pembayaran <span class="pull-right text-right">:</span>
-						    			</div>
-						    			<div class="col-sm-9">
-						    				Seluruh pembayaran (Deposit/Pelunasan) ditujukan kepada Rekening PT Balai Lelang Serasi di BCA Cab Sunter Mall Jakarta No. Rekening : 4281.51.52.62
-						    			</div>
-					    			</div>
-					    			<div class="clearfix"></div>
-					    		</li>
-								<li>
-					    			<div class="row">
-					    				<div class="col-sm-3">
-					    				Info <span class="pull-right text-right">:</span>
-						    			</div>
-						    			<div class="col-sm-9">
-						    				Tlp (021) 735.5999, Fax. (021) 7289 5566, SMS 0857 1863 5544 dan Pin BBM 7CEAF292.<br>
-						    				Email: <a href="mailto:info.ibid@ibid.astra.co.id" class="inline-block">info.ibid@ibid.astra.co.id</a>
-						    			</div>
-					    			</div>
-					    			<div class="clearfix"></div>
+					    			Pedoman pelaksanaan lelang tanpa kehadiran peserta dengan melakukan penawaran lelang secara tertulis melalui internet diatur berdasarkan Peraturan Menteri Keuangan Republik Indonesia Nomor 90/PMK.06.2016.
 					    		</li>
 					    	</ul>
 					 	</div>
+						<div class="panel-heading">
+	   						<h3 class="no-margin">Ketentuan Umum</h3>
+	   					</div>
+	   					<div class="panel-body">
+	   						<ul>
+	   							<li>
+	   								Peserta lelang wajib memberikan informasi nomor Kartu Tanda Penduduk (KTP) dan Nomor Pokok Wajib Pajak atau NPWP (jika memiliki) untuk mendukung program pemerintah, sesuai dengan ketentuan dari Kementrian Keuangan Republik Indonesia Direktorat Jenderal Pajak, Peraturan Direktorat Jenderal Pajak Nomor 26/PJ/2017.
+	   							</li>
+	   							<li>
+	   								Biaya yang timbul dalam rangka peralihan hak atau pengembalian/pemindahan kendaraan menjadi tanggung jawab pemenang lelang.
+	   							</li>
+	   							<li>
+	   								Obyek lelang tidak dapat ditukar sebagian atau keseluruhan dengan obyek lelang manapun.
+	   							</li>
+	   							<li>
+	   							Jika terjadi force majore seperti bencana alam, kerusuhan massa, atau tindakan pemerintah dalam bidang moneter, segala akibat dan atau kerugian yang timbul menjadi tanggung jawab pemenang.
+	   							</li>
+	   						</ul>
+	   					</div>
 					</div>
 	   			</section>
 	   			<section class="procedure-rules-panel panel-requirement">
@@ -513,8 +494,7 @@ class Guide extends CI_Controller {
 									<a href="#collapse-rules1" data-toggle="collapse" class="collapsed" data-parent="#accordion">
 										<div class="panel-heading">
 								    		<h4 class="panel-title expand">
-								       			<div class="right-arrow pull-right"></div>
-								      			1. Pada saat open house
+								       			<div class="right-arrow pull-right"></div> 1. Saat Open House
 								      		</h4>
 								    	</div>
 									</a>
@@ -522,13 +502,13 @@ class Guide extends CI_Controller {
 								    	<div class="panel-body bg-grey">
 								    		<ul>
 								    			<li>
-								    				Peminat dapat melihat objek lelang yang akan dijual selama acara open house.
+								    				Peserta dapat memeriksa kondisi objek lelang yang akan dilelang selama open house berlangsung dengan datang langsung ke lokasi atau secara online melalui website IBID.
 								    			</li>
 								    			<li>
-								    				Peminat hanya diperkenankan memeriksa kondisi fisik dan kelengkapan kendaraan / motor / gadget, tidak diperkenankan untuk melakukan bongkar pasang atau sejenisnya yang dapat merusak objek lelang.
+								    				Peserta hanya diperkenankan melakukan cek fisik dan kelengkapan objek lelang, tapi tidak diperbolehkan melakukan bongkar pasang yang dapat merusak objek lelang.
 								    			</li>
 								    			<li>
-								    				Peminat dilarang mengambil atau merusak atribut, nomor, tulisan atau tanda-tanda yang menempel pada objek lelang.
+								    				Peserta dilarang mengambil/merusak/memindahkan atribut/nomor/tulisan/tanda-tanda yang menempel pada kendaraan atau objek lelang lain.
 								    			</li>
 								    		</ul>
 								    	</div>
@@ -538,8 +518,7 @@ class Guide extends CI_Controller {
 									<a href="#collapse-rules2" data-toggle="collapse" class="collapsed" data-parent="#accordion">
 										<div class="panel-heading">
 								    		<h4 class="panel-title expand">
-								       			<div class="right-arrow pull-right"></div>
-								      			2. Kondisi objek yang dijual
+								       			<div class="right-arrow pull-right"></div> 2. Kondisi Objek Lelang
 								      		</h4>
 								    	</div>
 									</a>
@@ -547,13 +526,16 @@ class Guide extends CI_Controller {
 								    	<div class="panel-body bg-grey">
 								    		<ul>
 								    			<li>
-								    				Kondisi objek lelang yang dijual adalah "sebagaimana adanya".
+								    				Peserta memahami dan menyetujui bahwa objek yang dilelang adalah “sebagaimana adanya".
 								    			</li>
 								    			<li>
-								    				Peserta wajib meneliti unit yang akan ditawar serta mengetahui kondisinya. Jika terdapat kekurangan atau cacat baik yang terlihat maupun tak terlihat bukan menjadi tanggung jawab penjual.
+								    				Peserta telah memeriksa dan mengetahui kondisi fisik dan kelengkapan dokumen objek lelang. Jika terdapat kekurangan atau cacat, baik yang terlihat maupun tidak terlihat, bukan merupakan tanggung jawab penyelenggara lelang.
 								    			</li>
 								    			<li>
-								    				Untuk memudahkan para peminat, panitia menyediakan daftar lot yang berisi data unit yang dapat dijadikan panduan dalam memilih objek lelang.
+								    				Untuk kemudahan peserta, penyelenggara lelang telah membuat daftar lot yang berisi data objek lelang.
+								    			</li>
+								    			<li>
+								    				Daftar lot lelang tidak dapat dijadikan dasar keberatan/klaim atas obyek lelang jika ditemukan perbedaan data, kondisi, dan dokumen yang tertera didalamnya.
 								    			</li>
 								    		</ul>
 								    	</div>
@@ -563,8 +545,7 @@ class Guide extends CI_Controller {
 									<a href="#collapse-rules3" data-toggle="collapse" class="collapsed" data-parent="#accordion">
 										<div class="panel-heading">
 								    		<h4 class="panel-title expand">
-								       			<div class="right-arrow pull-right"></div>
-								      			3. Sebelum mengikuti lelang
+								       			<div class="right-arrow pull-right"></div> 3. Sebelum Mengikuti Lelang
 								      		</h4>
 								    	</div>
 									</a>
@@ -572,13 +553,23 @@ class Guide extends CI_Controller {
 								    	<div class="panel-body bg-grey">
 								    		<ul>
 								    			<li>
-								    				Peminat dapat melihat objek lelang yang akan dijual selama acara open house.
+								    				Peserta yang bermaksud mengikuti lelang harus terlebih dulu melakukan transfer uang jaminan untuk mendapatkan NPL (Nomor Peserta Lelang) dengan nominal sebesar:<br />
+								    					a. Rp 5.000.000/ NPL objek lelang mobil <br />
+								    					b. Rp 1.000.000/ NPL objek lelang motor <br />
+								    					c. Rp 25.000.000/ NPL objek lelang alat berat <br />
+								    					d. Rp 100.000/ NPL objek lelang gadget
 								    			</li>
 								    			<li>
-								    				Peminat hanya diperkenankan memeriksa kondisi fisik dan kelengkapan kendaraan / motor / gadget, tidak diperkenankan untuk melakukan bongkar pasang atau sejenisnya yang dapat merusak objek lelang.
+								    				Peserta melakukan pembelian NPL di website resmi IBID dengan memilih memilih alternatif metode pembayaran tersedia.
 								    			</li>
 								    			<li>
-								    				Peminat dilarang mengambil atau merusak atribut, nomor, tulisan atau tanda-tanda yang menempel pada objek lelang.
+								    				Uang jaminan yang ditransfer harus sudah efektif sebelum lelang dimulai.
+								    			</li>
+								    			<li>
+								    				Peserta dapat menggunakan NPL yang telah dibeli untuk melakukan penawaran atau bidding dari website, mobile application, atau langsung datang ke lokasi lelang (peserta Lelang Onsite wajib mencetak NPL).
+								    			</li>
+								    			<li>
+								    				Peserta juga dapat memilih membeli NPL Unlimited agar bisa menawar lebih dari satu kendaraaan di semua opsi dan jadwal lelang yang tersedia tanpa batasan maksimal.
 								    			</li>
 								    		</ul>
 								    	</div>
@@ -588,8 +579,7 @@ class Guide extends CI_Controller {
 									<a href="#collapse-rules4" data-toggle="collapse" class="collapsed" data-parent="#accordion">
 										<div class="panel-heading">
 								    		<h4 class="panel-title expand">
-								       			<div class="right-arrow pull-right"></div>
-								      			4. Pada saat mengikuti lelang
+								       			<div class="right-arrow pull-right"></div> 4. Saat Mengikuti Lelang
 								      		</h4>
 								    	</div>
 									</a>
@@ -597,13 +587,19 @@ class Guide extends CI_Controller {
 								    	<div class="panel-body bg-grey">
 								    		<ul>
 								    			<li>
-								    				Peminat dapat melihat objek lelang yang akan dijual selama acara open house.
+								    				Hanya peserta yang memiliki NPL dapat melakukan bidding, baik dari website, mobile application, maupun lokasi lelang.
 								    			</li>
 								    			<li>
-								    				Peminat hanya diperkenankan memeriksa kondisi fisik dan kelengkapan kendaraan / motor / gadget, tidak diperkenankan untuk melakukan bongkar pasang atau sejenisnya yang dapat merusak objek lelang.
+								    				Lelang akan dimulai sesuai jadwal dibuka dengan harga dasar. Selanjutnya peserta bisa melakukan bidding dengan kelipatan: <br />
+								    					a. Rp 500.000 untuk mobil dan alat berat <br />
+								    					b. Rp 100.000 untuk motor <br />
+								    					c. Rp 50.000 untuk gadget
 								    			</li>
 								    			<li>
-								    				Peminat dilarang mengambil atau merusak atribut, nomor, tulisan atau tanda-tanda yang menempel pada objek lelang.
+								    				Pemenang lelang adalah peserta yang melakukan bidding dengan harga tertinggi.
+								    			</li>
+								    			<li>
+								    				Pemenang berhak memenangkan objek lelang sebanyak jumlah NPL yang dimiliki. Jika pemenang membeli NPL Unlimited, dia berhak memenangkan objek lelang tanpa batas maksimal.
 								    			</li>
 								    		</ul>
 								    	</div>
@@ -613,8 +609,7 @@ class Guide extends CI_Controller {
 									<a href="#collapse-rules5" data-toggle="collapse" class="collapsed" data-parent="#accordion">
 										<div class="panel-heading">
 								    		<h4 class="panel-title expand">
-								       			<div class="right-arrow pull-right"></div>
-								      			5. Penawaran
+								       			<div class="right-arrow pull-right"></div> 5. Penawaran atau Bidding
 								      		</h4>
 								    	</div>
 									</a>
@@ -622,13 +617,16 @@ class Guide extends CI_Controller {
 								    	<div class="panel-body bg-grey">
 								    		<ul>
 								    			<li>
-								    				Peminat dapat melihat objek lelang yang akan dijual selama acara open house.
+								    				Peserta dapat memilih jadwal lelang dengan mekanisme bidding sesuai opsi lelang yang tersedia, yaitu: <br />
+								    					a. Lelang Onsite: mekanisme bidding dilakukan dengan hadir langsung di lokasi lelang dan mengajukan bidding dengan cara mengangkat kartu NPL yang dimiliki. <br />
+								    					b. Live Auction: mekanisme bidding dilakukan dengan mengajukan penawaran melalui website atau mobile application pada saat bersamaan dengan jadwal Lelang Onsite yang sedang berlangsung. Peserta dapat menawar dari mana saja secara real time. <br />
+								    					c. Lelang Online: mekanisme bidding dilakukan dengan mengajukan penawaran melalui website atau mobile application saat jadwal Lelang Online berlangsung.
 								    			</li>
 								    			<li>
-								    				Peminat hanya diperkenankan memeriksa kondisi fisik dan kelengkapan kendaraan / motor / gadget, tidak diperkenankan untuk melakukan bongkar pasang atau sejenisnya yang dapat merusak objek lelang.
+								    				Peserta yang melakukan bidding melalui website atau mobile application wajib memperhatikan ketersediaan jaringan internet pada gadget yang digunakan untuk mengikuti lelang. Penyelenggara lelang tidak bertanggung jawab atas terjadinya perbedaan update informasi status penawaran yang mungkin terjadi akibat kendala jaringan.
 								    			</li>
 								    			<li>
-								    				Peminat dilarang mengambil atau merusak atribut, nomor, tulisan atau tanda-tanda yang menempel pada objek lelang.
+								    				Peserta juga dapat memanfaatkan fitur Auto Bid yang hanya tersedia pada mobile application. Peserta diberikan kemudahan untuk menentukan batas maksimal harga penawaran sebelum lelang dimulai sehingga tidak perlu mengikuti seluruh proses lelang untuk melakukan bidding. Sistem kami akan otomatis melakukan penawaran hingga mencapai batas harga yang telah ditentukan sebelumnya oleh peserta.
 								    			</li>
 								    		</ul>
 								    	</div>
@@ -638,8 +636,7 @@ class Guide extends CI_Controller {
 									<a href="#collapse-rules6" data-toggle="collapse" class="collapsed" data-parent="#accordion">
 										<div class="panel-heading">
 								    		<h4 class="panel-title expand">
-								       			<div class="right-arrow pull-right"></div>
-								      			6. Pemenang
+								       			<div class="right-arrow pull-right"></div> 6. Pemenang Lelang
 								      		</h4>
 								    	</div>
 									</a>
@@ -647,13 +644,31 @@ class Guide extends CI_Controller {
 								    	<div class="panel-body bg-grey">
 								    		<ul>
 								    			<li>
-								    				Peminat dapat melihat objek lelang yang akan dijual selama acara open house.
+								    				Pemenang lelang dikenakan biaya administrasi sebesar: <br />
+								    					a. Rp 1.750.000/ objek lelang mobil <br />
+								    					b. Rp. 250.000/ objek lelang motor <br />
+								    					c. Rp. 5.000.000/ objek lelang alat berat <br />
+								    					d. Rp. 300.000/ objek lelang laptop atau desktop <br />
+								    					e. Rp. 150.000/ objek lelang smartphone <br />
+								    					f. Rp. 100.000/ objek lelang monitor komputer
 								    			</li>
 								    			<li>
-								    				Peminat hanya diperkenankan memeriksa kondisi fisik dan kelengkapan kendaraan / motor / gadget, tidak diperkenankan untuk melakukan bongkar pasang atau sejenisnya yang dapat merusak objek lelang.
+								    				Pemenang lelang wajib melunasi total harga objek lelang selambatnya 5 hari kerja setelah tanggal pelaksanaan lelang. Harga akhir dikalkulasikan dari total harga objek lelang dikurangi uang jaminan atau deposit dari pembelian NPL, lalu ditambah biaya administrasi. (detail tagihan akan dikirim lewat email atau dapat dilihat pada akun peserta di website).
 								    			</li>
 								    			<li>
-								    				Peminat dilarang mengambil atau merusak atribut, nomor, tulisan atau tanda-tanda yang menempel pada objek lelang.
+								    				Pemenang lelang harus melakukan pembayaran atas objek lelang yang dimenangkan menggunakan nomor Virtual Account yang akan diinformasikan bersamaan dengan detail informasi tagihan pelunasan melalui email atau dapat dilihat pada akun peserta di website.
+								    			</li>
+								    			<li>
+								    				Pemenang lelang yang sudah melunasi tagihan dan menerima konfirmasi pembayaran dari IBID dapat melakukan serah terima objek lelang beserta dokumen sesuai jadwal yang disampaikan sebelumnya.
+								    			</li>
+								    			<li>
+								    				Pemenang lelang yang mengundurkan diri dari objek lelang yang dimenangkan atau tidak melunasi pembayaran sesuai tenggat waktu yang telah ditetapkan akan dinyatakan wanprestasi (kemenangannya batal). Uang jaminan pun otomatis hangus.
+								    			</li>
+								    			<li>
+								    				Jika tidak memenangkan lelang, pengembalian uang jaminan dari pembelian NPL akan ditransfer kembali ke nomor rekening terdaftar.
+								    			</li>
+								    			<li>
+								    				Jika sampai batas 2 hari kerja setelah tagihan dinyatakan lunas namun pemenang belum juga mengambil objek lelang yang dimenangkan, pemenang akan dikenakan biaya penitipan sebesar Rp 500.000/ objek lelang per hari keterlambatan. Segala kerusakan dan atau kehilangan sepenuhnya menjadi tanggung jawab pemenang.
 								    			</li>
 								    		</ul>
 								    	</div>

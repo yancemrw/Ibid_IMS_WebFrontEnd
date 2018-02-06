@@ -1,12 +1,4 @@
 // Edit by Anggoro
-.alerts-strength {
-    background: transparent !important;
-    border: unset !important;
-    color: red !important;
-    font-size: 10px !important;
-    font-weight: bolder !important;
-}
-
 #strength-gauge {
     position: absolute !important;
     top: 12px !important;
@@ -24,8 +16,20 @@
     font-weight: bolder !important;
 }
 
+.alerts-strength {
+    background: transparent !important;
+    border: unset !important;
+    color: red !important;
+    font-size: 10px !important;
+    font-weight: bolder !important;
+}
+
 .border-radius-none {
     border-radius: 0 !important;
+}
+
+.btn-me-daftar {
+	width: 160px !important;
 }
 
 .cursor-pointer {

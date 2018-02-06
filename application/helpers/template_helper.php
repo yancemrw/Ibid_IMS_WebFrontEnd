@@ -164,8 +164,8 @@ function login_status_form_mobile($userdata) {
 
 function login_Status_form($userdata) {
 	$pp = base_url('assetsfront/images/icon/ic_avatar.png');
-  $profile_name = @(strlen($userdata['namefront']) > 10) ? substr($userdata['namefront'], 0, 20)+'...' : $userdata['namefront'];
-	if(count(@$userdata['UserId']) > 0) {
+  $profile_name = @(strlen($userdata['namefront']) > 10) ? substr($userdata['namefront'], 0, 10).'...' : $userdata['namefront']; 
+  if(count(@$userdata['UserId']) > 0) {
 
     $html = '<!--li class="dropdown hidden-mob">
        <a href="#" class="dropdown-toggle" data-toggle="dropdown">

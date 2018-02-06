@@ -5477,7 +5477,7 @@ section.testimoni.section-blog {
 .accordion-list-on-panel .panel .panel-body {
     border-top: 1px solid #d8d8d8;
     color: #777;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .accordion-list-on-panel .panel a:hover {
@@ -6529,7 +6529,7 @@ td.bg-Grey {
 }
 
 .footer-section-aboutus button {
-    max-width: 150px;
+    max-width: 160px;
 }
 
 .box-slide-appreciation {
