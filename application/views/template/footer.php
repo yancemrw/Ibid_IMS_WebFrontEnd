@@ -78,7 +78,7 @@
         message: '<?=@$message[1]?>',
         type: '<?=@$message[0]?>',
         position: 'top-center',
-        timeout: 5
+        timeout: 3
       });
     });
   </script>
@@ -96,7 +96,7 @@
           message: 'Sandi tidak boleh kurang dari 8 karakter',
           type: 'warning',
           position: 'top-center',
-          timeout: 5
+          timeout: 3
         });
       }
       else {
@@ -114,7 +114,7 @@
           message: 'Sandi tidak boleh kurang dari 8 karakter',
           type: 'warning',
           position: 'top-center',
-          timeout: 5
+          timeout: 3
         });
       }
       else {

@@ -578,7 +578,7 @@ header:before {
     width: 100%;
     max-width: 100%;
     border-radius: 0;
-    font-size: 14px;
+    font-size: 11px;
     text-transform: uppercase;
     outline: none;
     -webkit-transition: all 0.2s ease;
@@ -594,7 +594,7 @@ header:before {
     width: 100%;
     max-width: 100%;
     border-radius: 0;
-    font-size: 14px;
+    font-size: 11px;
     text-transform: uppercase;
     outline: none;
     -webkit-transition: all 0.2s ease;
@@ -610,7 +610,7 @@ header:before {
     width: 100%;
     max-width: 100%;
     border-radius: 0;
-    font-size: 14px;
+    font-size: 11px;
     text-transform: uppercase;
     outline: none;
     -webkit-transition: all 0.2s ease;
@@ -626,7 +626,7 @@ header:before {
     width: 100%;
     max-width: 100%;
     border-radius: 0;
-    font-size: 14px;
+    font-size: 11px;
     text-transform: uppercase;
     outline: none;
     -webkit-transition: all 0.2s ease;
@@ -642,7 +642,7 @@ header:before {
     width: 100%;
     max-width: 100%;
     border-radius: 0;
-    font-size: 14px;
+    font-size: 11px;
     text-transform: uppercase;
     outline: none;
     -webkit-transition: all 0.2s ease;
@@ -659,7 +659,7 @@ header:before {
     width: 100%;
     max-width: 100%;
     border-radius: 0;
-    font-size: 14px;
+    font-size: 11px;
     text-transform: uppercase;
     outline: none;
     -webkit-transition: all 0.2s ease;
@@ -675,7 +675,7 @@ header:before {
     width: 100%;
     max-width: 100px;
     border-radius: 3px;
-    font-size: 14px;
+    font-size: 11px;
     padding: 3px 15px;
     outline: none;
     -webkit-transition: all 0.2s ease;
@@ -4901,13 +4901,10 @@ a.delete-favorite {
     margin-top: 15px;
 }
 
-.form-login button,
-.form-login button:hover,
-.form-login button:active {
+.form-login button {
     padding: 14px;
-    max-width: 160px;
+    width: 160px !important;
 }
-
 
 /*REGISTER*/
 .login-socialmedia.register-socialmedia {
