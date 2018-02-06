@@ -108,7 +108,7 @@
 					<div class="box-image icn icn-car-valuation"></div>
 					<h3>Astra Car Valuation</h3>
 					<p>Inspeksi kendaraan secara Scientific </p>
-					<button class="btn btn-green">Info Detail</button>
+					<button class="btn btn-green" disabled>Info Detail</button>
 				</div>
 			</div>
 			<div class="col-md-4">
@@ -116,7 +116,7 @@
 					<div class="box-image icn icn-map"></div>
 					<h3>Market Auction Price</h3>
 					<p>IBID memiliki data harga pasaran kendaraan di lelang yang selalu update.</p>
-					<button class="btn btn-green">Info Detail</button>
+					<button class="btn btn-green" disabled>Info Detail</button>
 				</div>
 			</div>
 			<div class="col-md-4">
@@ -124,7 +124,7 @@
 					<div class="box-image icn icn-auto-bid"></div>
 					<h3>Fitur Auto BID</h3>
 					<p>Tawar harga sebelum lelang di mulai!</p>
-					<button class="btn btn-green">Info Detail</button>
+					<button class="btn btn-green" disabled>Info Detail</button>
 				</div>
 			</div>
 			</section>
@@ -153,9 +153,9 @@
 			</section>
 		<section class="bg-grey footer-section-aboutus">
 			<img src="<?php echo base_url('assetsfront/images/icon/about-us.png'); ?>" alt="" title="">
-			<h3>Siap Untuk Mendaftarkan ?</h3>
-			<p>Temukan kendaraan idaman Anda sekarang & daftar sebagai member Untuk mendapatkan berbagai keuntungan.</p>
-			<button class="btn btn-green">Daftar</button>
+			<h3>Siap Untuk Mendaftar ?</h3>
+			<p>Temukan kendaraan idaman Anda sekarang & daftar sebagai member untuk mendapatkan berbagai keuntungan.</p>
+			<button class="btn btn-green btn-me-daftar" onclick="location.href='<?php echo site_url('register'); ?>'">Daftar</button>
 		</section>
 	</div>
 </div>
