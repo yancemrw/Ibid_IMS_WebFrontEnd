@@ -341,10 +341,8 @@
       <div class="row">
          <div class="content-autobid clearfix">
             <div class="col-md-7">
-               <h2>Auto BID</h2>
-               <p>Amankan kendaraan favorit Anda! Dengan Auto Bid, anda dapat menentukan harga
-                  tawar maksimal yang anda mau sebelum lelang dimulai. Nikmati kemudahan Auto Bid
-                  dalam genggaman anda hanya lewat aplikasi IBID. <span>Download sekarang!</span></p>
+               <h2><?php echo $content->autobid->Title; ?></h2>
+               <p><?php echo $content->autobid->Content; ?> <span>Download sekarang!</span></p>
                <a href="javascript:void(0)" class="icn icn-google-play link-disabled"></a>
             </div>
             <div class="col-md-5">
