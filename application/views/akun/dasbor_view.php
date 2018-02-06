@@ -116,7 +116,8 @@
                         <div class="form-group floating-label">
                            <input type="text" name="norek" class="form-control floating-handle input-custom only-number" 
                                     value="<?php echo @$content->users->BankAccountNumber; ?>" id="norek" maxlength="16"
-                                    oninvalid="this.setCustomValidity('Nomor rekening tidak boleh kosong')" oninput="setCustomValidity('')" required />
+                                    oninvalid="this.setCustomValidity('Nomor rekening tidak boleh kosong')" oninput="setCustomValidity('')"
+                                    title="IBID membutuhkan nomor rekening anda untuk pengembalian deposit atau transfer dana hasil lelang. Pastikan nomor rekening sudah benar" required />
                            <label class="label-schedule">Nomor Rekening *</label>
                         </div>
                         <div class="form-group floating-label">
