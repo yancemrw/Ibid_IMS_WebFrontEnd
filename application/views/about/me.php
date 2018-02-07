@@ -249,14 +249,24 @@
 			<p>Atas komitmennya dalam memberikan pelayanan terbaik untuk kepuasan pelanggannya IBID mendapat berbagai penghargaan antara lain :</p>
 			<div id="appreciation">
 				<ul class="flip-items">
-					<?php for($ai = 1; $ai < 4; $ai++) { ?>
 					<li>
 						<div class="box-slide-appreciation">
-							<img src="<?php echo base_url('assetsfront/images/background/appreciation-'.$ai.'.jpg'); ?>" />
-							<p>Penghargaan IBID</p>
+							<img src="<?php echo base_url('assetsfront/images/background/appreciation-1.jpg'); ?>" />
+							<p>5-Star "World Class Quality Achievement", kategori Balai Lelang, Mars Indonesia & SWA Group, 2013 - 2014</p>
 						</div>
 					</li>
-					<?php } ?>
+					<li>
+						<div class="box-slide-appreciation">
+							<img src="<?php echo base_url('assetsfront/images/background/appreciation-2.jpg'); ?>" />
+							<p>Rekor Bisnis Indonesia (REBI), Penyelenggara lelang mobil terbanyak dengan kota pelaksanaan lelang terluas di indonesia, Tera foundation & Majalah Marketing, 2015</p>
+						</div>
+					</li>
+					<li>
+						<div class="box-slide-appreciation">
+							<img src="<?php echo base_url('assetsfront/images/background/appreciation-3.jpg'); ?>" />
+							<p>Balai lelang dengan tingkat inovasi terbaik, Dirjend kekayaan Negara KEMENKEU Republik Indonesia, 2016</p>
+						</div>
+					</li>
 				</ul>
 			</div>
 		</section>
@@ -266,27 +276,27 @@
 				<ul class="flip-items">
 					<li>
 						<div class="box-slide-management">
-						<img src="<?php echo base_url('assetsfront/images/background/management-photo-doxa.jpg'); ?>" alt="" title="">
+							<img src="<?php echo base_url('assetsfront/images/background/management-photo-doxa.jpg'); ?>" alt="" title="">
 						</div>
-						<h2>DOXA<span>?</span></h2>
+						<h2>DADDY DOXA MANURUNG <span>PRESIDENT DIRECTOR</span></h2>
 					</li>
 					<li>
 						<div class="box-slide-management">
-						<img src="<?php echo base_url('assetsfront/images/background/management-photo-ficher.jpg'); ?>" alt="" title="">
+							<img src="<?php echo base_url('assetsfront/images/background/management-photo-goto.jpg'); ?>" alt="" title="">
 						</div>
-						<h2>FICHER<span>?</span></h2>
+						<h2>GOTO YOSHIHIRO <span>DIRECTOR</span></h2>
 					</li>
 					<li>
 						<div class="box-slide-management">
-						<img src="<?php echo base_url('assetsfront/images/background/management-photo-goto.jpg'); ?>" alt="" title="">
+							<img src="<?php echo base_url('assetsfront/images/background/management-photo-ficher.jpg'); ?>" alt="" title="">
 						</div>
-						<h2>GOTO<span>?</span></h2>
+						<h2>HALOMOAN FISCHER <span>DIRECTOR</span></h2>
 					</li>
 					<li>
 						<div class="box-slide-management">
-						<img src="<?php echo base_url('assetsfront/images/background/management-photo-hasan.jpg'); ?>" alt="" title="">
+							<img src="<?php echo base_url('assetsfront/images/background/management-photo-hadi.jpg'); ?>" alt="" title="">
 						</div>
-						<h2>HASAN<span>?</span></h2>
+						<h2>HADI WINARTO <span>DIRECTOR</span></h2>
 					</li>
 				</ul>
 			</div>
