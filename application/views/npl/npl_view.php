@@ -105,143 +105,141 @@
 </section>
 
 <script>
-  $(document).ready(function() {
-    $('.auction-info').slick({
-      dots: false,
-      infinite: false,
-      speed: 300,
-      slidesToShow: 3,
-      slidesToScroll: 3,
-      responsive: [
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            dots: true,
-            prevArrow: false,
-            nextArrow: false
-          }
+  $('.auction-info').slick({
+    dots: false,
+    infinite: false,
+    speed: 300,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: true,
+          prevArrow: false,
+          nextArrow: false
         }
-      ]
-    });
-    
-    $('.input-group.date').datepicker({
-       format: "dd/mm/yyyy"
-    });
+      }
+    ]
+  });
+  
+  $('.input-group.date').datepicker({
+     format: "dd/mm/yyyy"
+  });
 
-    $("input[name$='tipe-object']").click(function() {
-       var test = $(this).val();
+  $("input[name$='tipe-object']").click(function() {
+     var test = $(this).val();
 
-       $(".desc-object").hide();
-       $("#object" + test).show();
-    });
+     $(".desc-object").hide();
+     $("#object" + test).show();
+  });
 
-    $('input').blur(function(){
-       tmpval = $(this).val();
-       if(tmpval == '') {
-           $(this).addClass('empty');
-           $(this).removeClass('not-empty');
-       } else {
-           $(this).addClass('not-empty');
-           $(this).removeClass('empty');
-       }
-    });
+  $('input').blur(function(){
+     tmpval = $(this).val();
+     if(tmpval == '') {
+         $(this).addClass('empty');
+         $(this).removeClass('not-empty');
+     } else {
+         $(this).addClass('not-empty');
+         $(this).removeClass('empty');
+     }
+  });
 
-    // handle input if exists data
-    $('input').each(function() {
-      if($(this).val() !== '') {
-        $(this).addClass('not-empty');
+  // handle input if exists data
+  $('input').each(function() {
+    if($(this).val() !== '') {
+      $(this).addClass('not-empty');
+    }
+  });
+
+  $('.lang-mob a').click(function(){
+    $('.help-mob ul').removeClass('open')
+    $(this).toggleClass('opened')
+    $(this).siblings('ul').toggleClass('open')
+  })
+  $('.help-mob a').click(function(){
+    $('.lang-mob ul').removeClass('open')
+    $(this).toggleClass('opened')
+    $(this).siblings('ul').toggleClass('open')
+  })
+
+
+  $("#notif-rekening").on("focus", function( e ) {
+    $('.help-info-2').show();
+  });
+  $("#notif-telepon").on("focus", function( e ) {
+    $('.help-info-1').show();
+  });
+
+  // input identity
+  $(function() {
+    $("#biodata").change(function() {
+      if ($(this).val() == "k") {
+        $("#ktp").show() && $("#npwp").hide();
+      } else if ($(this).val() == "n") {
+        $("#npwp").show() && $("#ktp").hide();
+      } else {
+        $("#npwp").hide() && $("#ktp").hide();
       }
     });
+  });
 
-    $('.lang-mob a').click(function(){
-      $('.help-mob ul').removeClass('open')
-      $(this).toggleClass('opened')
-      $(this).siblings('ul').toggleClass('open')
-    })
-    $('.help-mob a').click(function(){
-      $('.lang-mob ul').removeClass('open')
-      $(this).toggleClass('opened')
-      $(this).siblings('ul').toggleClass('open')
-    })
+  // handle button kirim
+  $('#btn-kirim').click(function(e) {
+      var phone     = $('input[name="Phone"]').val(), 
+          bankid    = $('select[name="BankId"]').val(), 
+          bankacc   = $('input[name="BankAccountNumber"]').val(), 
+          bankname  = $('input[name="BankAccountName"]').val(),
+          ktp       = $('input[name="IdentityNumber"]').val(),
+          recaptcha = $('#e8df0fade2ce52c6a8cf8c8d2309d08a').val();
+      if(phone !== '' && bankid !== '' && bankacc !== '' && bankname !== '' && ktp !== '') {
+          if(ktp.length < 16) {
+              bootoast.toast({
+                  message: 'Nomor KTP harus 16 angka!',
+                  type: 'warning',
+                  position: 'top-center'
+              });
+              return false;
+          }
+          else if($('#agree-required').is(":checked") === false) {
+              bootoast.toast({
+                  message: 'Anda harus setuju dengan syarat dan ketentuan dari kami!',
+                  type: 'warning',
+                  position: 'top-center'
+              });
+              return false;
+          }
+          else if(recaptcha === '') {
+              bootoast.toast({
+                  message: 'Captcha harus di isi!',
+                  type: 'warning',
+                  position: 'top-center'
+              });
+              return false;
+          }
+          else {
+              $('#btn-kirim').attr('disabled', true);
+              $('#beli-npl').submit();
+              return false;
+          }
+      }
+  });
 
+  // handle only number
+  $('input[name="Phone"]').keypress(function(event) {
+    var charCode = (event.which) ? event.which : event.keyCode;
+    return ((charCode >= 48 && charCode <= 57) || charCode === 46);
+  });
 
-    $("#notif-rekening").on("focus", function( e ) {
-      $('.help-info-2').show();
-    });
-    $("#notif-telepon").on("focus", function( e ) {
-      $('.help-info-1').show();
-    });
+  $('input[name="BankAccountNumber"]').keypress(function(event) {
+    var charCode = (event.which) ? event.which : event.keyCode;
+    return ((charCode >= 48 && charCode <= 57) || charCode === 46);
+  });
 
-    // input identity
-    $(function() {
-      $("#biodata").change(function() {
-        if ($(this).val() == "k") {
-          $("#ktp").show() && $("#npwp").hide();
-        } else if ($(this).val() == "n") {
-          $("#npwp").show() && $("#ktp").hide();
-        } else {
-          $("#npwp").hide() && $("#ktp").hide();
-        }
-      });
-    });
-
-    // handle button kirim
-    $('#btn-kirim').click(function(e) {
-        var phone     = $('input[name="Phone"]').val(), 
-            bankid    = $('select[name="BankId"]').val(), 
-            bankacc   = $('input[name="BankAccountNumber"]').val(), 
-            bankname  = $('input[name="BankAccountName"]').val(),
-            ktp       = $('input[name="IdentityNumber"]').val(),
-            recaptcha = $('#e8df0fade2ce52c6a8cf8c8d2309d08a').val();
-        if(phone !== '' && bankid !== '' && bankacc !== '' && bankname !== '' && ktp !== '') {
-            if(ktp.length < 16) {
-                bootoast.toast({
-                    message: 'Nomor KTP harus 16 angka!',
-                    type: 'warning',
-                    position: 'top-center'
-                });
-                return false;
-            }
-            else if($('#agree-required').is(":checked") === false) {
-                bootoast.toast({
-                    message: 'Anda harus setuju dengan syarat dan ketentuan dari kami!',
-                    type: 'warning',
-                    position: 'top-center'
-                });
-                return false;
-            }
-            else if(recaptcha === '') {
-                bootoast.toast({
-                    message: 'Captcha harus di isi!',
-                    type: 'warning',
-                    position: 'top-center'
-                });
-                return false;
-            }
-            else {
-                $('#btn-kirim').attr('disabled', true);
-                $('#beli-npl').submit();
-                return false;
-            }
-        }
-    });
-
-    // handle only number
-    $('input[name="Phone"]').keypress(function(event) {
-      var charCode = (event.which) ? event.which : event.keyCode;
-      return ((charCode >= 48 && charCode <= 57) || charCode === 46);
-    });
-
-    $('input[name="BankAccountNumber"]').keypress(function(event) {
-      var charCode = (event.which) ? event.which : event.keyCode;
-      return ((charCode >= 48 && charCode <= 57) || charCode === 46);
-    });
-
-    $('input[name="IdentityNumber"]').keypress(function(event) {
-      var charCode = (event.which) ? event.which : event.keyCode;
-      return ((charCode >= 48 && charCode <= 57) || charCode === 46);
-    });
+  $('input[name="IdentityNumber"]').keypress(function(event) {
+    var charCode = (event.which) ? event.which : event.keyCode;
+    return ((charCode >= 48 && charCode <= 57) || charCode === 46);
   });
 </script>
