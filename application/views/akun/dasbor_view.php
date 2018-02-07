@@ -106,7 +106,9 @@
                      <div class="col-md-6">
                         <h4>Akun Bank</h4>
                         <div class="form-group floating-label">
-                           <select class="form-control font-theme select-custom" name="bankid" id="bankid">
+                           <select class="form-control font-theme select-custom" name="bankid" id="bankid"
+                                    oninvalid="this.setCustomValidity('Nama bank tidak boleh kosong')" 
+                                    onchange="setCustomValidity('')" required>
                               <option value="">Pilih *</option>
                               <?php foreach($listBank as $row) { ?>
                               <option value="<?php echo $row->BankId; ?>" <?php echo (@$content->users->BankId == $row->BankId) ? 'selected' : ''; ?>><?php echo $row->BankName; ?></option>
@@ -205,11 +207,21 @@
       if(firstName !== '' && notlp !== '' && ktp !== '' && norek !== '' && atasnama !== '') {
          e.preventDefault();
          if(bankid == '') {
-            alert('Nama BANK harus diisi');
+            bootoast.toast({
+               message: 'Nama BANK harus diisi',
+               type: 'warning',
+               position: 'top-center',
+               timeout: 3
+            });
             return;
          }
          else if(ktp.length < 16) {
-            alert('No KTP harus diisi 16 angka');
+            bootoast.toast({
+               message: 'No KTP harus diisi 16 angka',
+               type: 'warning',
+               position: 'top-center',
+               timeout: 3
+            });
             return;
          }
          else {
