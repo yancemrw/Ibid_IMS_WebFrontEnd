@@ -43,7 +43,7 @@
                 </ul>
             </div>
             <div class="col-md-5 col-sm-6">
-                <div class="verification-otp">
+                <div class="booking-schedule">
                     <h2>Perbaharui Data Anda <span>Hanya di Isi Untuk User Baru</span></h2>
                     <form class="form-filter" id="beli-npl" method="POST" data-provide="validation" action="<?php echo site_url("biodata/otp"); ?>">
                         <input type="hidden" name="otpkirim" value="true">
