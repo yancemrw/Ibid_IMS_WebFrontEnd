@@ -16,11 +16,11 @@ class Beli extends CI_Controller {
 		$userdata = $this->session->userdata('userdata');
 		$data = array(
 			// header white untuk selain home, karena menggunakan header yang berwarna putih
-			'header_white' => "header-white",
-			'userdata'	=> $userdata,
-			'title' => 'Beli Nomor Peserta Lelang ( NPL )',
-			'form_auth_mobile' => login_status_form_mobile($userdata),
-			'form_auth'	=> login_Status_form($userdata)
+			'header_white'		=> "header-white",
+			'userdata'			=> $userdata,
+			'title'				=> 'Beli Nomor Peserta Lelang ( NPL )',
+			'form_auth_mobile'	=> login_status_form_mobile($userdata),
+			'form_auth'			=> login_Status_form($userdata)
 		);
 
 		### diambil dari frontend lama
