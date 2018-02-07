@@ -6448,7 +6448,7 @@ td.bg-Grey {
     margin: auto;
 }
 
-.map-network img {
+.map-network .img {
     width: 100%;
     height: 400px;
 }

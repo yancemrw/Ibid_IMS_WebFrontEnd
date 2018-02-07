@@ -60,7 +60,7 @@
                         </div>
                         <div class="g-recaptcha recaptcha" id="idrecaptcha" required></div>
                         <div class="form-group text-right">
-                            <button class="btn btn-green" id="btn-daftar" disabled>Daftar</button>
+                            <button class="btn btn-green btn-register" id="btn-daftar" disabled>Daftar</button>
                             <a href="<?php echo site_url('register'); ?>">Sudah punya akun?</a>
                         </div>
                     </form>
@@ -191,7 +191,7 @@
                         message: 'Kata sandi hanya boleh menggunakan karakter dan angka',
                         type: 'warning',
                         position: 'top-center',
-                        timeout: 5
+                        timeout: 3
                     });
                 }
                 else if(recaptcha !== '') {
@@ -203,7 +203,7 @@
                         message: 'Captcha harus di isi!',
                         type: 'warning',
                         position: 'top-center',
-                        timeout: 5
+                        timeout: 3
                     });
                 }
             }

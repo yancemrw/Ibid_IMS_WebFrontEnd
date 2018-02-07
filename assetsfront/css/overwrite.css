@@ -32,6 +32,10 @@
 	width: 160px !important;
 }
 
+.btn-register {
+	font-size: 14px !important;
+}
+
 .cursor-pointer {
     cursor: pointer !important;
 }
@@ -165,4 +169,109 @@
 
 .coming-soon p {
     text-align: center;
+}
+
+/* Tentang Ibid Jaringan kami */
+
+.ibid-network {
+    position: relative;
+}
+
+.ibid-network .pin{
+    position: absolute;
+}
+
+.ibid-network .pin img {
+    position: relative;
+}
+
+.ibid-network a:after {
+    content: url('../images/icon/signal2.png');
+    position: absolute;
+    z-index: 999;
+    top:-5px;
+    left:1px;
+    animation-name: zoomIn;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3); }
+  50% {
+    opacity: 1; } }
+.zoomIn {
+  animation-name: zoomIn; }
+
+.p-medan{top:14%;left:8%;}
+.p-pekanbaru{top:28%;left:12%;}
+.p-palembang{top:45%;left:18%;}
+.p-jakarta{bottom:22%;left:24%;}
+.p-bandung{bottom:20%;left:26%;}
+.p-semarang{bottom:18%;left:31%;}
+.p-surabaya{bottom:14%;left:36%;}
+.p-balikpapan{bottom:54%;left:43%;}
+.p-banjarmasin{bottom:43%;left:42%;}
+.p-makasar{bottom:30%;left:53%;}
+
+.ibid-network .pin-hover {
+    background-color: #ffffff;
+    border: 1px solid #eae9e9;
+    width: 180px;
+    height: auto;
+    position: absolute;
+    display: none;
+    top: 180%;
+     z-index: 9999999 !important;
+    -webkit-box-shadow: 0px 0px 20px -8px rgba(0,0,0,0.33);
+    -moz-box-shadow: 0px 0px 20px -8px rgba(0,0,0,0.33);
+    box-shadow: 0px 0px 20px -8px rgba(0,0,0,0.33);
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.ibid-network a{
+    position: relative;
+}
+.ibid-network a:hover+.pin-hover{
+	position: absolute;
+	display: block;
+	top: 30px;
+    z-index: 9;
+}
+.ibid-network .pin-hover span{
+    padding: 5px 10px;
+    display: block;
+}
+.ibid-network .pin-hover p{
+    font-size: 11px;
+    margin: 0;
+    padding: 0;
+    line-height: 1.4;
+    margin-bottom: 5px;
+}
+
+.ibid-network .pin-hover h2 {
+    font-size: 14px;
+    display: block;
+    margin: 0;
+    background-color: #eae9e9;
+    padding: 5px 10px;
+}
+
+
+.ibid-net-mob table{
+    margin: 30px 0 0 0;
+}
+
+.ibid-net-mob table p {
+    margin: 0;
+}
+
+.ibid-net-mob td {
+    vertical-align:middle;
 }
