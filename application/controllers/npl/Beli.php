@@ -32,11 +32,10 @@ class Beli extends CI_Controller {
 		## get detail users
 		$url = linkservice('account') ."users/details/".$id;
 		$method = 'GET';
-		$responseApi = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
+		$responseApi = admsCurl($url, array('tipePengambilan' => 'dropdownlist'), $method);
 		if($responseApi['err']) { echo "<hr>cURL Error #:" . $responseApi['err']; } 
 		else { $dataApiDetail = json_decode($responseApi['response'], true); }
 		$detailBiodata = @$dataApiDetail['data']['users'];
-		//var_dump($detailBiodata['Phone']).':'.var_dump($detailBiodata['BankId']).':'.$detailBiodata['BankAccountNumber'].':'.$detailBiodata['BankAccountName'].':'.$detailBiodata['IdentityNumber']; exit;
 
 		/* *******************************
 			cek kelengkapan data awal
@@ -59,7 +58,7 @@ class Beli extends CI_Controller {
 			## get list Item Type
 			$url = linkservice('master')."item/get";  
 			$method = 'GET';
-			$responseApi1 = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
+			$responseApi1 = admsCurl($url, array('tipePengambilan' => 'dropdownlist'), $method);
 			if ($responseApi1['err']) { 
 				echo "<hr>cURL Error #:" . $responseApi1['err']; 
 			}
@@ -73,20 +72,21 @@ class Beli extends CI_Controller {
 			############################################################
 			$url2 = linkservice('master')."bank/get";
 			$method2 = 'GET';
-			$responseApi2 = admsCurl($url2, array('tipePengambilan'=>'dropdownlist'), $method2);
+			$responseApi2 = admsCurl($url2, array('tipePengambilan' => 'dropdownlist'), $method2);
 			$listBank = curlGenerate($responseApi2);
 			$data['listBank'] = @$listBank;
 			############################################################
 			
 			############################################################
 			## get cabang
-			$url = linkservice('master')."cabang/get";  
-			$method = 'GET';
-			$responseApi = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
-			if ($responseApi['err']) { 
-				echo "<hr>cURL Error #:" . $responseApi['err']; 
-			} else {
-				$dataApi = json_decode($responseApi['response'],true);
+			$url3 = linkservice('master')."cabang/get";  
+			$method3 = 'GET';
+			$responseApi3 = admsCurl($url3, array('tipePengambilan' => 'dropdownlist'), $method3);
+			if ($responseApi3['err']) { 
+				echo "<hr>cURL Error #:" . $responseApi3['err']; 
+			}
+			else {
+				$dataApi = json_decode($responseApi3['response'],true);
 				$itemType = $dataApi['data'];
 			}
 			$data['cabang'] = @$itemType;
