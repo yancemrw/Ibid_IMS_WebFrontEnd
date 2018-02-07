@@ -76,38 +76,18 @@ class Ours extends CI_Controller {
 
 	private function faq_content() {
 		$faq = array();
-		$faq[0]['title'] = 'Bagaimana cara mendapatkan kendaraan yang saya cari?';
-		$faq[0]['content'] = 'Pengunjung dapat mencari kendaraan yang diinginkan di website dari menu "cari kendaraan" dan hasil pencarian kendaraan dapat didownload menggunakan tombol "download" pada halaman cari kendaraan.';
-		$faq[1]['title'] = 'Bagaimana mengetahui jadwal dan lokasi lelang yang akan diselenggarakan dalam waktu dekat?';
-		$faq[1]['content'] = 'Pengunjung dapat mengetahui jadwal lelang terdekat di website dari menu "jadwal lelang" dan untuk mengetahui lokasi lelang dapat dilihat di setiap halaman informasi detail kendaraan.';
-		$faq[2]['title'] = 'Bagaimana jika pada jadwal lelang yang ada di website belum tersedia kendaraan yang pengunjung cari?';
-		$faq[2]['content'] = 'Sistem Kami akan melakukan update informasi data lelang secara berkala khususnya untuk jadwal lelang terdekat. Apabila kendaraan yang dicari belum tersedia pada jadwal lelang tertentu, maka pengunjung dimohon untuk memilih jadwal lelang terdekat dan mengunjungi website Kami kembali secara berkala.';
-		$faq[3]['title'] = 'Bagaimana cara pengunjung mendapatkan informasi daftar kendaraan yang akan dilelang secara rutin di email pengunjung?';
+		$faq[0]['title'] = 'Apa saja unit yang dilelang?';
+		$faq[0]['content'] = 'Kami melelang berbagai jenis kendaraan, seperti minibus, sedan, MPV, SUV, double cabin, truk, dan masih banyak lagi. Selain kendaraan, kami juga melelang obyek lain, misalnya alat berat, sepeda motor, dan gadget. Untuk mengetahui objek yang kami lelang, Anda dapat mengakses website resmi IBID atau langsung mengunjungi lokasi.';
+		$faq[1]['title'] = 'Bagaimana cara mendapatkan kendaraan yang saya cari?';
+		$faq[1]['content'] = 'Pengunjung dapat mencari kendaraan yang diinginkan di website melalui menu "cari kendaraan". Hasil pencarian kendaraan dapat diunduh dengan mengklik "download" yang terdapat di kanan atas halaman "cari kendaraan".';
+		$faq[2]['title'] = 'Bagaimana mengetahui jadwal dan lokasi lelang yang akan diselenggarakan dalam waktu dekat?';
+		$faq[2]['content'] = 'Pengunjung dapat mengetahui jadwal lelang terdekat di website melalui menu "jadwal lelang". Lokasi lelang juga dapat dilihat di setiap halaman informasi detail kendaraan.';
+		$faq[3]['title'] = 'Bagaimana cara mendapatkan informasi terkini mengenai daftar objek lelang secara rutin lewat email?';
 		$faq[3]['content'] = 'Untuk mendapatkan email informasi daftar kendaraan yang akan dilelang secara rutin, pengunjung dapat melakukan registrasi di website dengan mencantumkan alamat email pengunjung yang aktif.';
-		$faq[4]['title'] = 'Apa yang harus pengunjung lakukan jika sudah mendapatkan kendaraan yang sedang dicari dari website?';
-		$faq[4]['content'] = 'Setelah mendapatkan kendaraan yang dicari, pengunjung dipersilakan melakukan registrasi (bagi yang belum registrasi) selanjutnya membeli NPL (Nomor Peserta Lelang) dan mengikuti lelang dengan melakukan bidding atas kendaraan yang dipilih ketika jadwal lelang atas kendaraan tersebut sedang berlangsung.';
-		$faq[5]['title'] = 'Apa itu NPL?';
-		$faq[5]['content'] = 'NPL adalah Nomor Peserta Lelang yang akan digunakan peserta untuk melakukan bidding atas kendaraan yang dipilih. Bentuk NPL adalah beberapa digit angka yang dapat digunakan dari website atau mobile application dan juga dapat dicetak untuk digunakan melakukan bidding di lokasi.';
-		$faq[6]['title'] = 'Berapa harga NPL dan bagaimana cara membeli NPL?';
-		$faq[6]['content'] = 'Harga NPL berdasarkan obyek lelang nya adalah sebagai berikut:
-								<ol type="a">
-			    					<li>Rp. 5.000.000,- (lima juta rupiah)/NPL unit mobil</li>
-									<li>Rp. 1.000.000,- (satu juta rupiah)/NPL unit motor</li>
-									<li>Rp. 25.000.000,- (dua puluh lima juta rupiah/NPL unit alat berat</li>
-									<li>Rp. 100.000,- (seratus ribu rupiah)/NPL unit gadget</li>
-								</ol>';
-		$faq[7]['title'] = 'Bagaimana mekanisme uang pembelian NPL jika peserta menang atau kalah dilelang?';
-		$faq[7]['content'] = 'Apabila peserta memenangkan kendaraan yang dipilih maka uang pembelian NPL akan menjadi akumulasi pelunasan atas total tagihan pemenang dan apabila peserta belum memenangkan mobil yang dipilih (kalah) maka uang pembelian NPL akan dikembalikan 100% tanpa potongan kepada peserta.';
-		$faq[8]['title'] = 'Apa itu NPL unlimited? Apakah perbedaan NPL unlimited dengan NPL biasa?';
-		$faq[8]['content'] = 'NPL unlimited adalah alternatif pembelian NPL untuk mengikuti lelang mobil atau motor dimana dengan hanya membeli 1 (satu) NPL, peserta dapat mengikuti semua jadwal lelang yang diselenggarakan dan dapat memenangkan seluruh kendaraan yang dilelang. ';
-		$faq[9]['title'] = 'Bagaimana mekanisme pembelian dan penggunaan NPL unlimited?';
-		$faq[9]['content'] = '<ul>
-				    			<li>NPL unlimited dapat peserta beli setelah peserta pernah memenangkan setidaknya 1 (satu) kendaraan dari jadwal lelang sebelumnya.</li>
-								<li>NPL unlimited mobil senilai Rp. 15.000.000,-/NPL dan motor senilai Rp. 5.000.000,-/NPL.</li>
-								<li>Uang pembelian NPL unlimited akan menjadi jaminan yang menetap selama 3 (tiga) bulan dan dapat diperpanjang dengan konfirmasi.</li>
-								<li> Uang pembelian NPL unlimited tidak menjadi akumulasi total tagihan kendaraan yang dimenangkan oleh pemenang lelang.</li>
-								<li>Apabila terjadi wanprestasi setelah 5 hari kerja dari tanggal pelaksanaan lelang maka NPL unlimited ter-blokir secara otomatis dan tidak dapat digunakan lagi kecuali peserta kembali melakuan pembelian NPL unlimied.</li>
-							</ul>';
+		$faq[4]['title'] = 'Bagaimana jika pada jadwal lelang yang ada di website belum tersedia kendaraan yang pengunjung cari?';
+		$faq[4]['content'] = 'Sistem Kami akan melakukan update informasi data lelang secara berkala khususnya untuk jadwal lelang terdekat. Apabila kendaraan yang dicari belum tersedia pada jadwal lelang tertentu, maka pengunjung dimohon untuk memilih jadwal lelang terdekat dan mengunjungi website Kami kembali secara berkala.';
+		$faq[5]['title'] = 'Apa yang harus pengunjung lakukan jika sudah mendapatkan kendaraan yang sedang dicari dari website?';
+		$faq[5]['content'] = 'Setelah mendapatkan kendaraan yang dicari, pengunjung dipersilakan melakukan registrasi (bagi yang belum registrasi) selanjutnya membeli NPL (Nomor Peserta Lelang) dan mengikuti lelang dengan melakukan bidding atas kendaraan yang dipilih ketika jadwal lelang atas kendaraan tersebut sedang berlangsung.';
 
 		$html = '<div class="panel-group no-margin" id="accordion">';
 		foreach($faq as $key => $value) {
