@@ -308,7 +308,7 @@
 					<div class="box-image icn icn-car-valuation"></div>
 					<h3>Astra Car Valuation</h3>
 					<p>Inspeksi kendaraan secara Scientific </p>
-					<button class="btn btn-green" disabled>Info Detail</button>
+					<button class="btn btn-green btn-me-daftar" disabled>Info Detail</button>
 				</div>
 			</div>
 			<div class="col-md-4">
@@ -316,7 +316,7 @@
 					<div class="box-image icn icn-map"></div>
 					<h3>Market Auction Price</h3>
 					<p>IBID memiliki data harga pasaran kendaraan di lelang yang selalu update.</p>
-					<button class="btn btn-green" disabled>Info Detail</button>
+					<button class="btn btn-green btn-me-daftar" disabled>Info Detail</button>
 				</div>
 			</div>
 			<div class="col-md-4">
@@ -324,7 +324,7 @@
 					<div class="box-image icn icn-auto-bid"></div>
 					<h3>Fitur Auto BID</h3>
 					<p>Tawar harga sebelum lelang di mulai!</p>
-					<button class="btn btn-green" disabled>Info Detail</button>
+					<button class="btn btn-green btn-me-daftar" disabled>Info Detail</button>
 				</div>
 			</div>
 		</section>
