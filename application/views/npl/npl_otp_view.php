@@ -70,6 +70,25 @@
 </section>
 
 <script>
+$('.auction-info').slick({
+    dots: false,
+    infinite: false,
+    speed: 300,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    responsive: [
+        {
+                breakpoint: 768,
+                settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: true,
+                prevArrow: false,
+                nextArrow: false
+            }
+        }
+    ]
+});
 
 function refresh_button() {
     var arrOTP = new Array(), checkField = false;
@@ -120,33 +139,33 @@ function refresh_button() {
     
 }
 
-    $("input").keyup(function(e) {
-        if(this.value.length == this.maxLength) {
-            $(this).next('input').focus();
-        }
-
-        if(e.which === 13) {
-            refresh_button();
-        }
-    });
-
-    $('input').keydown(function(e) {
-        if((e.which == 8 || e.which == 46) && $(this).val() == '') {
-            $(this).prev('input').focus();
-        }
-    });
-
-    function getCookieFalse(name) {
-        var pattern = RegExp(name + "=.[^;]*")
-        matched = document.cookie.match(pattern)
-        if(matched) {
-            var cookie = matched[0].split('=')
-            return cookie[1]
-        }
-        return false
+$("input").keyup(function(e) {
+    if(this.value.length == this.maxLength) {
+        $(this).next('input').focus();
     }
 
-    function deleteCookieFalse(name) {
-        document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    if(e.which === 13) {
+        refresh_button();
     }
+});
+
+$('input').keydown(function(e) {
+    if((e.which == 8 || e.which == 46) && $(this).val() == '') {
+        $(this).prev('input').focus();
+    }
+});
+
+function getCookieFalse(name) {
+    var pattern = RegExp(name + "=.[^;]*")
+    matched = document.cookie.match(pattern)
+    if(matched) {
+        var cookie = matched[0].split('=')
+        return cookie[1]
+    }
+    return false
+}
+
+function deleteCookieFalse(name) {
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
 </script>
