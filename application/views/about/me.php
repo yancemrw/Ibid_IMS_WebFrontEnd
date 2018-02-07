@@ -333,36 +333,39 @@
 					<button class="btn btn-green" disabled>Info Detail</button>
 				</div>
 			</div>
-			</section>
-			<section id="about-7" class="clearfix our-advantage">
-				<h2>Keunggulan Kami</h2>
-				<div class="col-md-6">
-					<img src="<?php echo base_url('assetsfront/images/icon/about-live-auction.png'); ?>" alt="" title="">
-					<h3>Live Auction :</h3>
-					<p>Kini, mengikuti lelang tidak harus hadir secara fisik langsung ke lokasi. Dengan Live Auction, dimanapun Anda dapat ikut partisipasi dalam lelang bersama dengan peserta lelang lainnya di lokasi (onsite) cukup melalui gadget secara real time! Tidak hanya satu jadwal lelang, dengan Live Auction Anda dapat mengikuti 4 jadwal lelang sekaligus serentak di beberapa kota.</p>
-				</div>
-				<div class="col-md-6">
-					<img src="<?php echo base_url('assetsfront/images/icon/about-live-auction2.png'); ?>" alt="" title="">
-					<h3>Market Auction Price:</h3>
-					<p>Dengan pengalaman bertahun-tahun menjual kendaraan di lelang. Kami memiliki database harga pasaran kendaraan di lelang yang terdiri dari berbagai merek, tipe dan tahun kendaraan yang terintegrasi dengan website dan selalu update. Database tersebut dapat di akses oleh member setiap saat. Database tersebut dapat menjadi acuan sehingga Anda tidak perlu bingung lagi dalam menentukan harga jual kendaraan dan Anda dapat membeli kendaraan dengan harga terbaik.</p>
-				</div>
-				<div class="col-md-6">
-					<img src="<?php echo base_url('assetsfront/images/icon/about-live-auction3.png'); ?>" alt="" title="">
-					<h3>Astra Car Valuation :</h3>
-					<p>Tujuan kami bukan hanya untuk membuat Anda membeli kendaraan. Tujuan kami juga untuk memastikan Anda dapat menjual kendaraan dengan harga yang tepat. Oleh karena itu IBID dapat membantu Anda untuk melakukan penilaian /inspeksi kendaraan secara scientific dengan Astra Car Valuation yang berbasis teknologi. Sehingga hasil inspeksi lebih transparan, akurat & komprehensif. Hasil Inspeksi beserta rekomendasi harga akan langsung dapat Anda ketahui hanya dalam hitungan menit.</p>
-				</div>
-				<div class="col-md-6">
-					<img src="<?php echo base_url('assetsfront/images/icon/about-live-auction4.png'); ?>" alt="" title="">
-					<h3>Auto Bid :</h3>
-					<p>Tawar kendaraan idaman Anda sebelum waktu lelang dimulai menggunakan fitur Auto Bid. Masukkan jumlah maksimum yang bersedia Anda bayar. Sistem kami akan otomatis menjalankan bidding dan akan mencapai angka maksimum sesuai harga yang sudah Anda tentukan. Sistem kami akan memberi notifikasi jika ada yang menawar lebih dari harga sudah Anda tentukan, tidak perlu khawatir kehilangan kesempatan mendapatkan kendaraan idaman Anda.</p>
-				</div>
-			</section>
+		</section>
+		<section id="about-7" class="clearfix our-advantage">
+			<h2>Keunggulan Kami</h2>
+			<div class="col-md-6">
+				<img src="<?php echo base_url('assetsfront/images/icon/about-live-auction.png'); ?>" alt="" title="">
+				<h3>Live Auction :</h3>
+				<p>Kini, mengikuti lelang tidak harus hadir secara fisik langsung ke lokasi. Dengan Live Auction, dimanapun Anda dapat ikut partisipasi dalam lelang bersama dengan peserta lelang lainnya di lokasi (onsite) cukup melalui gadget secara real time! Tidak hanya satu jadwal lelang, dengan Live Auction Anda dapat mengikuti 4 jadwal lelang sekaligus serentak di beberapa kota.</p>
+			</div>
+			<div class="col-md-6">
+				<img src="<?php echo base_url('assetsfront/images/icon/about-live-auction2.png'); ?>" alt="" title="">
+				<h3>Market Auction Price:</h3>
+				<p>Dengan pengalaman bertahun-tahun menjual kendaraan di lelang. Kami memiliki database harga pasaran kendaraan di lelang yang terdiri dari berbagai merek, tipe dan tahun kendaraan yang terintegrasi dengan website dan selalu update. Database tersebut dapat di akses oleh member setiap saat. Database tersebut dapat menjadi acuan sehingga Anda tidak perlu bingung lagi dalam menentukan harga jual kendaraan dan Anda dapat membeli kendaraan dengan harga terbaik.</p>
+			</div>
+			<div class="col-md-6">
+				<img src="<?php echo base_url('assetsfront/images/icon/about-live-auction3.png'); ?>" alt="" title="">
+				<h3>Astra Car Valuation :</h3>
+				<p>Tujuan kami bukan hanya untuk membuat Anda membeli kendaraan. Tujuan kami juga untuk memastikan Anda dapat menjual kendaraan dengan harga yang tepat. Oleh karena itu IBID dapat membantu Anda untuk melakukan penilaian /inspeksi kendaraan secara scientific dengan Astra Car Valuation yang berbasis teknologi. Sehingga hasil inspeksi lebih transparan, akurat & komprehensif. Hasil Inspeksi beserta rekomendasi harga akan langsung dapat Anda ketahui hanya dalam hitungan menit.</p>
+			</div>
+			<div class="col-md-6">
+				<img src="<?php echo base_url('assetsfront/images/icon/about-live-auction4.png'); ?>" alt="" title="">
+				<h3>Auto Bid :</h3>
+				<p>Tawar kendaraan idaman Anda sebelum waktu lelang dimulai menggunakan fitur Auto Bid. Masukkan jumlah maksimum yang bersedia Anda bayar. Sistem kami akan otomatis menjalankan bidding dan akan mencapai angka maksimum sesuai harga yang sudah Anda tentukan. Sistem kami akan memberi notifikasi jika ada yang menawar lebih dari harga sudah Anda tentukan, tidak perlu khawatir kehilangan kesempatan mendapatkan kendaraan idaman Anda.</p>
+			</div>
+		</section>
+		<?php
+		if(!@$this->session->userdata('userdata')) { ?>
 		<section class="bg-grey footer-section-aboutus">
-			<img src="<?php echo base_url('assetsfront/images/icon/about-us.png'); ?>" alt="" title="">
+			<img src="<?php echo base_url('assetsfront/images/icon/about-us.png'); ?>">
 			<h3>Siap Untuk Mendaftar ?</h3>
 			<p>Temukan kendaraan idaman Anda sekarang & daftar sebagai member untuk mendapatkan berbagai keuntungan.</p>
-			<button class="btn btn-green btn-me-daftar" onclick="location.href='<?php echo site_url('register'); ?>'">Daftar</button>
+			<button class="btn btn-green btn-me-daftar" onclick="location.href='<?php echo site_url('register'); ?>'" alt="Daftar" title="Daftar">Daftar</button>
 		</section>
+		<?php } ?>
 	</div>
 </div>
 
