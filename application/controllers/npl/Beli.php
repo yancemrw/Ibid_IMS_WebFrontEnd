@@ -42,25 +42,15 @@ class Beli extends CI_Controller {
 			cek kelengkapan data awal
 			********************************
 		*/
-		if ($detailBiodata['Phone'] == '' ||
-			$detailBiodata['BankId'] == '' || 
-			$detailBiodata['BankAccountNumber'] == '' || 
-			$detailBiodata['BankAccountName'] == '' 
+		if ($detailBiodata['Phone'] !== '' &&
+			$detailBiodata['BankId'] !== '' && 
+			$detailBiodata['BankAccountNumber'] !== '' && 
+			$detailBiodata['BankAccountName'] !== '' && 
+			$detailBiodata['IdentityNumber'] !== ''
 		) {
-
-			$data['page'] 	= 'biodata/ForNPL';
-			$data['detailBiodata'] = $detailBiodata;
-			############################################################
-			## get list Bank
-			$url = linkservice('master')."bank/get";
-			$method = 'GET';
-			$responseApi = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
-			$listBank = curlGenerate($responseApi);
-			$data['listBank'] = @$listBank;
-			############################################################
+			redirect('pembelian', 'refresh');
 		}
 		else {
-
 			$data['title']	= 'Pembelian NPL';
 			$data['page'] 	= 'pembelian/add';
 			$data['detailBiodata'] = $detailBiodata;
@@ -101,7 +91,6 @@ class Beli extends CI_Controller {
 			}
 			$data['cabang'] = @$itemType;
 			############################################################
-			
 		}
 
 		$view = "npl/npl_view";
