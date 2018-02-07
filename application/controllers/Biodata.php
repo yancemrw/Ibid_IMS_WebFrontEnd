@@ -73,102 +73,77 @@ class Biodata extends CI_Controller {
 
 
 	public function otp() {
-		// echo "<pre>";
-		// print_r($_POST);
-		// exit();
-
-		// print_r($_POST);
+		// handle KTP
+		$urlKTP = linkservice('account')."users/searchKtp?ktp=".$this->input->post('IdentityNumber');
+		$methodKTP = 'GET';
+		$resKTP = admsCurl($urlKTP, array(), $methodKTP);
+		$ktp_data = json_decode($resKTP['response']);
 		
-
-		$otpsesi = substr(str_shuffle("0123456789"), -5);
-		$otpin = array(
-			'otpNPL' => $otpsesi
-		);
-		$this->session->set_userdata( $otpin );
-
-		// cek if phone is set
-		if(@$this->input->post('Phone')) {
-			$this->session->set_userdata('Phone', $this->input->post('Phone'));
+		if($ktp_data->status === 1) {
+			redirect('beli-npl', 'refresh');
 		}
-
-		// jika difrontend pengguna meminta mengirimkan lagi otp nya.
-		if (@$this->input->get('otpkirim')=='yes') {
-			$_POST['otpkirim'] = 'true';
-			$_POST['Phone'] = $this->session->userdata('Phone');
-		} else {
-			$array = array(
-				'BiodataPembelianNPL' => @$_POST
+		else {
+			$otpsesi = substr(str_shuffle("0123456789"), -5);
+			$otpin = array(
+				'otpNPL' => $otpsesi
 			);
-			$this->session->set_userdata( $array );
-		}
+			$this->session->set_userdata( $otpin );
 
-		// ########### add by mas andi supervisor
-		date_default_timezone_set('Asia/Jakarta');
-		// send to sms
-		$dataInsert =  array (
-			'type'			=> 'sms',
-			'msisdn'		=> @$_POST['Phone'],
-			'message'		=> 'IBID OTP anda : '.$otpsesi,
-			'description'	=> 'OTP IBID',
-			'schedule'		=> date("d/m/Y H:i",strtotime(date("Y-m-d H:i:s")."+1 Minutes")),
-			'campaign'		=> 'OTP'
-		);
-		$url 			= linkservice('notif')."api/notification";
-		$method 		= 'POST';
-		$responseApi 	= admsCurl($url, $dataInsert, $method);
-		// ########################################
-
-		if ($_POST['otpkirim']=='true') {
-			#########
-			// get user data
-			$id = trim($_SESSION['idfront']);
-			$url 			= linkservice('account')."usersbiodata/details/".$id;
-			$method 		= 'POST';
-			$responseApi 	= admsCurl($url, [], $method);
-			if ($responseApi['err']) { echo "<hr>cURL Error #:" . $responseApi['err']; } else {
-				$dataApiDetail = json_decode($responseApi['response'],true);
+			// cek if phone is set
+			if(@$this->input->post('Phone')) {
+				$this->session->set_userdata('Phone', $this->input->post('Phone'));
 			}
-			$detailBiodata = @$dataApiDetail['data'];
 
+			// jika difrontend pengguna meminta mengirimkan lagi otp nya.
+			if (@$this->input->get('otpkirim')=='yes') {
+				$_POST['otpkirim'] = 'true';
+				$_POST['Phone'] = $this->session->userdata('Phone');
+			} else {
+				$array = array(
+					'BiodataPembelianNPL' => @$_POST
+				);
+				$this->session->set_userdata( $array );
+			}
+
+			// ########### add by mas andi supervisor
+			date_default_timezone_set('Asia/Jakarta');
 			// send to sms
 			$dataInsert =  array (
-				'type' => 'sms',
-				'msisdn' => @$detailBiodata['Handphone'],
-				'message' => '[IBID] OTP anda : '.$otpsesi,
-				'description' => 'Ini adalah OTP IBID',
-				'schedule' => date("d/m/Y H:i",strtotime(date()."+2 Minutes")),
-				'campaign' => 'OTP'
+				'type'			=> 'sms',
+				'msisdn'		=> @$_POST['Phone'],
+				'message'		=> 'IBID OTP anda : '.$otpsesi,
+				'description'	=> 'OTP IBID',
+				'schedule'		=> date("d/m/Y H:i",strtotime(date("Y-m-d H:i:s")."+1 Minutes")),
+				'campaign'		=> 'OTP'
 			);
 			$url 			= linkservice('notif')."api/notification";
 			$method 		= 'POST';
 			$responseApi 	= admsCurl($url, $dataInsert, $method);
+			// ########################################
 
+			if ($_POST['otpkirim']=='true') {
+				#########
+				$dataInsert =  array (
+					'type' => 'email',
+					'to' => @$this->session->userdata('emailfront'),
+					'cc' => 'lutfi.f.hidayat@gmail.com',
+					'subject' => 'OTP Pembelian NPL',
+					'body' => '
+					<p>Kode OTP</p>
+					<p><b> '.$otpsesi.'</b></p>
+					'
+				); 
 
-			$dataInsert =  array (
-				'type' => 'email',
-				'to' => @$this->session->userdata('emailfront'),
-				'cc' => 'lutfi.f.hidayat@gmail.com',
-				'subject' => 'OTP Pembelian NPL',
-				'body' => '
-				<p>Kode OTP</p>
-				<p><b> '.$otpsesi.'</b></p>
-				'
-			); 
+				$url 			= linkservice('notif')."api/notification";
+				$method 		= 'POST';
+				$responseApi 	= admsCurl($url, $dataInsert, $method);
 
-			$url 			= linkservice('notif')."api/notification";
-			$method 		= 'POST';
-			$responseApi 	= admsCurl($url, $dataInsert, $method);
+				redirect('biodata/otpconfirm', 'refresh');
 
-			redirect('biodata/otpconfirm', 'refresh');
-
-		} else {
-			redirect('pembelian', 'refresh');
+			} else {
+				redirect('pembelian', 'refresh');
+			}
 		}
-
-				#######
-
-		// $this->session->set_userdata( $array );
-		// print_r($this->session->all_userdata());
 	}
 
 	public function otpconfirm()
@@ -228,7 +203,7 @@ class Biodata extends CI_Controller {
 		$method = 'GET';
 		$responseApi = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
 		if ($responseApi['err']) { echo "<hr>cURL Error #:" . $responseApi['err']; } else {
-			$dataApiDetail = json_decode($responseApi['response'],true);
+			$dataApiDetail = json_decode($responseApi['response'], true);
 		}
 		$detailBiodata = @$dataApiDetail['data'];
 		

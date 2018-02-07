@@ -136,7 +136,7 @@
             <div class="section-recommend clearfix">
                <div class="item col-md-4 ">
                   <div class="box-recommend">
-                     <a href="">
+                     <a href="javascript:void(0)">
                         <div class="thumbnail">
                            <div class="thumbnail-custom">
                               <img src="<?php echo base_url('assetsfront/images/background/img-recommend-1.jpg'); ?>" title="" alt="" />
@@ -154,7 +154,7 @@
                </div>
                <div class="item col-md-4">
                   <div class="box-recommend">
-                     <a href="">
+                     <a href="javascript:void(0)">
                         <div class="thumbnail">
                            <div class="thumbnail-custom">
                               <img src="<?php echo base_url('assetsfront/images/background/img-recommend-2.jpg'); ?>" title="" alt="" />
@@ -172,7 +172,7 @@
                </div>
                <div class="item col-md-4 ">
                   <div class="box-recommend">
-                     <a href="">
+                     <a href="javascript:void(0)">
                         <div class="thumbnail">
                            <div class="thumbnail-custom">
                               <img src="<?php echo base_url('assetsfront/images/background/img-recommend-3.jpg'); ?>" title="" alt="" />

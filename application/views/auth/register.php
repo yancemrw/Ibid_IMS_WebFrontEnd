@@ -141,7 +141,7 @@
                 return;
             }
             else if(format.test($(this).val())) {
-                $('#type-pass').html('<i class="fa fa-info"></i> Kata sandi terdapat symbol');
+                $('#type-pass').html('<i class="fa fa-info"></i> Kata sandi terdapat simbol');
                 $('#type-pass').show();
             }
             else if($(this).val().length >= 8) {
@@ -161,7 +161,7 @@
                 $('#type-pass').hide();
             }
             if(format.test($(this).val())) {
-                $('#type-pass').html('<i class="fa fa-info"></i> Kata sandi terdapat symbol');
+                $('#type-pass').html('<i class="fa fa-info"></i> Kata sandi terdapat simbol');
                 $('#type-pass').show();
             }
             if(pass !== repass) {
@@ -221,7 +221,7 @@
             }
         }).keyup(function() {
             if(format.test($(this).val())) {
-                $('#type-pass').html('<i class="fa fa-info"></i> Kata sandi terdapat symbol');
+                $('#type-pass').html('<i class="fa fa-info"></i> Kata sandi terdapat simbol');
                 $('#type-pass').show();
             }
             else {
