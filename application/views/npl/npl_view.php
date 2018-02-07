@@ -16,7 +16,7 @@
     <input type="hidden" id="e8df0fade2ce52c6a8cf8c8d2309d08a" />
     <div class="container">
         <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-7 col-sm-6">
                 <h2>Keuntungan Beli NPL di IBID?</h2>
                 <ul class="auction-info clearfix">
                     <li class="item">
@@ -42,8 +42,8 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-md-5">
-                <div class="booking-schedule">
+            <div class="col-md-5 col-sm-6">
+                <div class="verification-otp">
                     <h2>Perbaharui Data Anda <span>Hanya di Isi Untuk User Baru</span></h2>
                     <form class="form-filter" id="beli-npl" method="POST" data-provide="validation" action="<?php echo site_url("biodata/otp"); ?>">
                         <input type="hidden" name="otpkirim" value="true">
@@ -104,18 +104,28 @@
     </div>
 </section>
 
-
-
 <script>
   $(document).ready(function() {
-    $("nav").sticky({
-        topSpacing:0
+    $('.auction-info').slick({
+      dots: false,
+      infinite: false,
+      speed: 300,
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dots: true,
+            prevArrow: false,
+            nextArrow: false
+          }
+        }
+      ]
     });
-
-    $(".select-custom").select2({
-       minimumResultsForSearch: -1
-    });
-
+    
     $('.input-group.date').datepicker({
        format: "dd/mm/yyyy"
     });
@@ -127,28 +137,6 @@
        $("#object" + test).show();
     });
 
-    $('.auction-info').slick({
-       dots: false,
-       infinite: false,
-       speed: 300,
-       prevArrow: false,
-       nextArrow: false,
-       slidesToShow: 3,
-       slidesToScroll: 3,
-       responsive: [
-
-       {
-           breakpoint: 768,
-           settings: {
-               slidesToShow: 1,
-               slidesToScroll: 1,
-               dots: true,
-               prevArrow: false,
-               nextArrow: false
-           }
-       }
-       ]
-    });
     $('input').blur(function(){
        tmpval = $(this).val();
        if(tmpval == '') {
@@ -255,10 +243,5 @@
       var charCode = (event.which) ? event.which : event.keyCode;
       return ((charCode >= 48 && charCode <= 57) || charCode === 46);
     });
-
-    /*$('input[name="NpwpNumber"]').keypress(function(event) {
-      var charCode = (event.which) ? event.which : event.keyCode;
-      return ((charCode >= 48 && charCode <= 57) || charCode === 46);
-    });*/
   });
 </script>

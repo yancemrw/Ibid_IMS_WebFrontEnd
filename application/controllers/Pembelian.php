@@ -57,8 +57,6 @@ class Pembelian extends CI_Controller {
 		} 
 		else {
 			$data['title']	= 'Pembelian NPL';
-			// $view 			= 'pembelian/add';
-
 			$view 			= 'npl/pemesanan_view';
 			
 			############################################################
@@ -91,10 +89,10 @@ class Pembelian extends CI_Controller {
 			
 		}
 		
-		$data['header_white']	= "header-white";
-		$data['userdata']		= $userdata;
-		$data['form_auth']		= login_Status_form($userdata);
-
+		$data['header_white']		= "header-white";
+		$data['userdata']			= $userdata;
+		$data['form_auth_mobile']	= login_status_form_mobile($userdata);
+		$data['form_auth']			= login_Status_form($userdata);
 		template($view, $data);
 	}
 
@@ -104,8 +102,8 @@ class Pembelian extends CI_Controller {
 		$view 						= 'npl/pemesanan_view_base';
 		$data['header_white']		= "header-white";
 		$data['userdata']			= $userdata;
+		$data['form_auth_mobile']	= login_status_form_mobile($userdata);
 		$data['form_auth']			= login_Status_form($userdata);
-
 		template($view, $data);
 	}
 
