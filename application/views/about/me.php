@@ -249,30 +249,14 @@
 			<p>Atas komitmennya dalam memberikan pelayanan terbaik untuk kepuasan pelanggannya IBID mendapat berbagai penghargaan antara lain :</p>
 			<div id="appreciation">
 				<ul class="flip-items">
+					<?php for($ai = 1; $ai < 4; $ai++) { ?>
 					<li>
 						<div class="box-slide-appreciation">
-							<img src="<?php echo base_url('assetsfront/images/background/appreciation-1.jpg'); ?>" alt="" title="">
-							<p>“The 1st World class Quality Achievement” kategori lelang mobil dari Mars Research</p>
+							<img src="<?php echo base_url('assetsfront/images/background/appreciation-'.$ai.'.jpg'); ?>" />
+							<p>Penghargaan IBID</p>
 						</div>
 					</li>
-					<li>
-						<div class="box-slide-appreciation">
-							<img src="<?php echo base_url('assetsfront/images/background/appreciation-2.jpg'); ?>" alt="" title="">
-							<p>“Balai lelang dengan tingkat inovasi terbaik” dari Direktorat Jenderal Kekayaan Negara (DJKN)</p>
-						</div>
-					</li>
-					<li>
-						<div class="box-slide-appreciation">
-							<img src="<?php echo base_url('assetsfront/images/background/appreciation-3.jpg'); ?>" alt="" title="">
-							<p>“Balai lelang dengan performa terbaik” kategori sektor kendaraan dari Direktorat Jenderal Kekayaan Negara (DJKN)</p>
-						</div>
-					</li>
-					<li>
-						<div class="box-slide-appreciation">
-							<img src="<?php echo base_url('assetsfront/images/background/appreciation-4.jpg'); ?>" alt="" title="">
-							<p>Rekor Bisnis (ReBi) sebagai “Penyelenggara lelang mobil terbanyak dengan kota pelaksanaan lelang terluas di Indonesia” dari Tera Foundation</p>
-						</div>
-					</li>
+					<?php } ?>
 				</ul>
 			</div>
 		</section>
@@ -282,27 +266,27 @@
 				<ul class="flip-items">
 					<li>
 						<div class="box-slide-management">
-						<img src="<?php echo base_url('assetsfront/images/background/management-photo-1.jpg'); ?>" alt="" title="">
+						<img src="<?php echo base_url('assetsfront/images/background/management-photo-doxa.jpg'); ?>" alt="" title="">
 						</div>
-						<h2>EMIRSYAH SATAR <span>PRESIDENT & CHIEF EXECUTIVE</span></h2>
+						<h2>DOXA<span>?</span></h2>
 					</li>
 					<li>
 						<div class="box-slide-management">
-						<img src="<?php echo base_url('assetsfront/images/background/management-photo-2.jpg'); ?>" alt="" title="">
+						<img src="<?php echo base_url('assetsfront/images/background/management-photo-ficher.jpg'); ?>" alt="" title="">
 						</div>
-						<h2>EMIRSYAH SATAR <span>PRESIDENT & CHIEF EXECUTIVE</span></h2>
+						<h2>FICHER<span>?</span></h2>
 					</li>
 					<li>
 						<div class="box-slide-management">
-						<img src="<?php echo base_url('assetsfront/images/background/management-photo-3.jpg'); ?>" alt="" title="">
+						<img src="<?php echo base_url('assetsfront/images/background/management-photo-goto.jpg'); ?>" alt="" title="">
 						</div>
-						<h2>EMIRSYAH SATAR <span>PRESIDENT & CHIEF EXECUTIVE</span></h2>
+						<h2>GOTO<span>?</span></h2>
 					</li>
 					<li>
 						<div class="box-slide-management">
-						<img src="<?php echo base_url('assetsfront/images/background/management-photo-4.jpg'); ?>" alt="" title="">
+						<img src="<?php echo base_url('assetsfront/images/background/management-photo-hasan.jpg'); ?>" alt="" title="">
 						</div>
-						<h2>EMIRSYAH SATAR <span>PRESIDENT & CHIEF EXECUTIVE</span></h2>
+						<h2>HASAN<span>?</span></h2>
 					</li>
 				</ul>
 			</div>

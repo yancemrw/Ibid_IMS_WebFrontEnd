@@ -275,3 +275,10 @@
 .ibid-net-mob td {
     vertical-align:middle;
 }
+
+@media only screen and (min-width: 320px) and (max-width: 979px) {
+/* Styles */
+   .ibid-net-mob {display: block !important;}
+   .ibid-net-mob table {font-size: 12px;}
+   .ibid-network {display: none !important;}
+}
