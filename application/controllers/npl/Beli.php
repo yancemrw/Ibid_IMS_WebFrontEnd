@@ -33,22 +33,22 @@ class Beli extends CI_Controller {
 		$url = linkservice('account') ."users/details/".$id;
 		$method = 'GET';
 		$responseApi = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
-		if ($responseApi['err']) { echo "<hr>cURL Error #:" . $responseApi['err']; } else {
-			$dataApiDetail = json_decode($responseApi['response'],true);
-		}
+		if($responseApi['err']) { echo "<hr>cURL Error #:" . $responseApi['err']; } 
+		else { $dataApiDetail = json_decode($responseApi['response'], true); }
 		$detailBiodata = @$dataApiDetail['data']['users'];
+		//var_dump($detailBiodata['Phone']).':'.var_dump($detailBiodata['BankId']).':'.$detailBiodata['BankAccountNumber'].':'.$detailBiodata['BankAccountName'].':'.$detailBiodata['IdentityNumber']; exit;
 
 		/* *******************************
 			cek kelengkapan data awal
 			********************************
 		*/
-		if ($detailBiodata['Phone'] !== '' &&
-			$detailBiodata['BankId'] !== '' && 
-			$detailBiodata['BankAccountNumber'] !== '' && 
-			$detailBiodata['BankAccountName'] !== '' && 
-			$detailBiodata['IdentityNumber'] !== ''
+		if ($detailBiodata['Phone'] !== NULL &&
+			$detailBiodata['BankId'] !== NULL && 
+			$detailBiodata['BankAccountNumber'] !== NULL && 
+			$detailBiodata['BankAccountName'] !== NULL && 
+			$detailBiodata['IdentityNumber'] !== NULL
 		) {
-			redirect('pembelian', 'refresh');
+			redirect('pembelian');
 		}
 		else {
 			$data['title']	= 'Pembelian NPL';
@@ -91,10 +91,9 @@ class Beli extends CI_Controller {
 			}
 			$data['cabang'] = @$itemType;
 			############################################################
+			$view = "npl/npl_view";
+			template($view, $data);
 		}
-
-		$view = "npl/npl_view";
-		template($view, $data);
 	}
 
 }
