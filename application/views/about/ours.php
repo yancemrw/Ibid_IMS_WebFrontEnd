@@ -8,7 +8,17 @@
 			<div class="panel panel-default panel-custom">
 				<div class="panel-heading">
 					<h3 class="no-margin">
-						<?php echo $menu_title; ?>
+						<?php echo $content_title[0]; ?>
+					</h3>
+				</div>
+				<div class="panel-body <?php echo $class ?>">
+					<?php echo $content; ?>
+				</div>
+			</div>
+			<div class="panel panel-default panel-custom">
+				<div class="panel-heading">
+					<h3 class="no-margin">
+						<?php echo $content_title[1]; ?>
 					</h3>
 				</div>
 				<div class="panel-body <?php echo $class ?>">
