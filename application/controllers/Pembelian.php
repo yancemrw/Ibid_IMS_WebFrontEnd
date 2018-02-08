@@ -36,30 +36,7 @@ class Pembelian extends CI_Controller {
 			!is_null($detailBiodata['BankAccountNumber']) && 
 			!is_null($detailBiodata['BankAccountName']) &&
 			!is_null($detailBiodata['IdentityNumber'])
- 		){
-			
-			$data['page'] 	= 'biodata/ForNPL';
-			$data['detailBiodata'] = $detailBiodata;
-			############################################################
-			## get list Bank
-			$url = linkservice('master')."bank/get";
-			$method = 'GET';
-			$responseApi = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
-			if ($responseApi['err']) { 
-				echo "<hr>cURL Error #:" . $responseApi['err']; 
-			} else {
-				$dataApi = json_decode($responseApi['response'],true);
-				$listBank = $dataApi['data'];
-			}
-			$data['listBank'] = @$listBank;
-			############################################################
-			
-			redirect();
-		} 
-		else {
-			$data['title']	= 'Pembelian NPL';
-			$view 			= 'npl/pemesanan_view';
-			
+ 		) {			
 			############################################################
 			## get list Item Type
 			$url = linkservice('master')."item/get";  
@@ -87,11 +64,18 @@ class Pembelian extends CI_Controller {
 			}
 			$data['cabang'] = @$itemType;
 			############################################################
+			$data['title']				= 'Pembelian NPL';
 			$data['header_white']		= "header-white";
 			$data['userdata']			= $userdata;
 			$data['form_auth_mobile']	= login_status_form_mobile($userdata);
 			$data['form_auth']			= login_Status_form($userdata);
-			template($view, $data);
+			$view 						= 'npl/pemesanan_view';
+			template($view, $data);			
+		} 
+		else {
+			// disini ada pengecekan untuk no otp jika sudah di input atau belum
+			// #################################################################
+			redirect('beli-npl');
 		}
 	}
 

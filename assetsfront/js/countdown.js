@@ -57,8 +57,8 @@ function countdown(setTimer) {
 		var hours = Math.floor((distanced % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 		var minutes = Math.floor((distanced % (1000 * 60 * 60)) / (1000 * 60));
 		var seconds = Math.floor((distanced % (1000 * 60)) / 1000);
-		document.getElementById("countdown-id").innerHTML = '<button class="btn btn-green" id="btn-submit" onclick="refresh_button()">Submit</button>';
-		document.getElementById("divreotp").innerHTML = '<div style="margin-bottom:40px">'+numbering(hours) + ':' + numbering(minutes) + ':' + numbering(seconds)+'</div>';
+		//document.getElementById("countdown-id").innerHTML = '<button class="btn btn-green" id="btn-submit" onclick="refresh_button()">Submit</button>';
+		document.getElementById("divreotp").innerHTML = '<div style="margin-bottom:40px">' + numbering(minutes) + ':' + numbering(seconds) + '</div>';
 		
 		// If the count down is over, write some text 
 		if(distanced < 0) {
