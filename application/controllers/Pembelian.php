@@ -25,17 +25,18 @@ class Pembelian extends CI_Controller {
 		if ($responseApi['err']) { echo "<hr>cURL Error #:" . $responseApi['err']; } else {
 			$dataApiDetail = json_decode($responseApi['response'],true);
 		}
-		$detailBiodata = @$dataApiDetail['data']['users'];  
+		$detailBiodata = @$dataApiDetail['data']['users'];
 
 		/* *******************************
 			cek kelengkapan data awal
 			********************************
 		*/
-		if ($detailBiodata['Phone'] == '' ||
-			$detailBiodata['BankId'] == '' || 
-			$detailBiodata['BankAccountNumber'] == '' || 
-			$detailBiodata['BankAccountName'] == '' 
-		){
+		if (!is_null($detailBiodata['Phone']) &&
+			!is_null($detailBiodata['BankId']) &&
+			!is_null($detailBiodata['BankAccountNumber']) && 
+			!is_null($detailBiodata['BankAccountName']) &&
+			!is_null($detailBiodata['IdentityNumber'])
+ 		){
 			
 			$data['page'] 	= 'biodata/ForNPL';
 			$data['detailBiodata'] = $detailBiodata;
@@ -86,14 +87,12 @@ class Pembelian extends CI_Controller {
 			}
 			$data['cabang'] = @$itemType;
 			############################################################
-			
+			$data['header_white']		= "header-white";
+			$data['userdata']			= $userdata;
+			$data['form_auth_mobile']	= login_status_form_mobile($userdata);
+			$data['form_auth']			= login_Status_form($userdata);
+			template($view, $data);
 		}
-		
-		$data['header_white']		= "header-white";
-		$data['userdata']			= $userdata;
-		$data['form_auth_mobile']	= login_status_form_mobile($userdata);
-		$data['form_auth']			= login_Status_form($userdata);
-		template($view, $data);
 	}
 
 	public function beli() {
