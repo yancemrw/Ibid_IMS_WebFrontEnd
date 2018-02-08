@@ -13,7 +13,7 @@ function linkservice($services) {
 	$MASTER 	= ('MASTER' == strtoupper($services)) ? $return = 'http://beta.ibid.astra.co.id/backend/service/masterdata/' : '';
 	$FINANCE 	= ('FINANCE' === strtoupper($services)) ? $return = 'http://beta.ibid.astra.co.id/backend/service/finance/' : '';
 	$NPL  		= ('NPL' === strtoupper($services)) ? $return = 'http://beta.ibid.astra.co.id/backend/service/npl/' : '';
-	$CMS		= ('CMS' === strtoupper($services)) ? $return = 'http://beta.ibid.astra.co.id/backend/service/cms/' : '';
+	$CMS		= ('CMS' === strtoupper($services)) ? $return = 'http://beta.ibid.astra.co.id/backend/service/dapur/' : '';
 
 	return $return;
 }
