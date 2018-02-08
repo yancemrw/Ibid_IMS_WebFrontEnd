@@ -57,7 +57,7 @@
                             <p>Mohon tunggu 2 menit sebelum mencoba kirim ulang kode verifikasi</p>
                         </div>
                         <div id="countdown-id">
-                            <button class="btn btn-green" id="btn-submit">Submit</button>
+                            <button type="submit" class="btn btn-green">Submit</button>
                         </div>
                     <!--/form-->
                     <div id="divreotp">
@@ -90,6 +90,11 @@ $('.auction-info').slick({
     ]
 });
 
+$('button[type=submit]').click(function(e) {
+    e.preventDefault();
+    refresh_button(); 
+});
+
 function refresh_button() {
     var arrOTP = new Array(), checkField = false;
     $('input[name^="otp"]').each(function() {
@@ -111,14 +116,11 @@ function refresh_button() {
         return false;
     }
     else {
+        $('button[type=submit]').attr('disabled', true);
         $.ajax({
             type: 'POST',
             url: '<?php echo site_url('biodata/otpconfirm'); ?>',
             data: 'otp='+JSON.stringify(arrOTP),
-            async: false,
-            beforeSend: function() {
-                $('#btn-submit').attr('disabled', true);
-            },
             success: function(data) {                    
                 if(data === 'cocok') {
                     deleteCookieCountdown('CHKPT');
@@ -131,7 +133,7 @@ function refresh_button() {
                         position: 'top-center',
                         timeout: 3
                     });
-                    $('#btn-submit').attr('disabled', false);
+                    $('button[type=submit]').attr('disabled', false);
                 }
             }
         });
