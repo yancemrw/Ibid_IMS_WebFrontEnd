@@ -276,12 +276,6 @@
 				<ul class="flip-items">
 					<li>
 						<div class="box-slide-management">
-							<img src="<?php echo base_url('assetsfront/images/background/management-photo-doxa.jpg'); ?>" alt="" title="">
-						</div>
-						<h2>DADDY DOXA MANURUNG <span>PRESIDENT DIRECTOR</span></h2>
-					</li>
-					<li>
-						<div class="box-slide-management">
 							<img src="<?php echo base_url('assetsfront/images/background/management-photo-goto.jpg'); ?>" alt="" title="">
 						</div>
 						<h2>GOTO YOSHIHIRO <span>DIRECTOR</span></h2>
@@ -291,6 +285,12 @@
 							<img src="<?php echo base_url('assetsfront/images/background/management-photo-ficher.jpg'); ?>" alt="" title="">
 						</div>
 						<h2>HALOMOAN FISCHER <span>DIRECTOR</span></h2>
+					</li>
+					<li>
+						<div class="box-slide-management">
+							<img src="<?php echo base_url('assetsfront/images/background/management-photo-doxa.jpg'); ?>" alt="" title="">
+						</div>
+						<h2>DADDY DOXA MANURUNG <span>PRESIDENT DIRECTOR</span></h2>
 					</li>
 					<li>
 						<div class="box-slide-management">
