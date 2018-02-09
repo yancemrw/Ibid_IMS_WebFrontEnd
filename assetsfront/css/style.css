@@ -441,12 +441,34 @@ header:before {
     display: none;
 }
 
+.tab-search .select-custom.select-type ~ .select2-container img {
+    padding-bottom: 10px;
+    padding-left: 10px;
+    height: 35px;
+}
+
 .tab-search .select-custom~.select2-container {
     text-align: left;
     padding: 10px;
     border: 1px solid #ccc;
     width: 250px!important;
     max-width: 100%!important;
+}
+
+.tab-search .select-custom.select-type~.select2-container {
+    width: 150px!important;
+    padding-left: 0
+}
+
+.tab-search .select-custom.select-address~.select2-container {
+    width: 350px!important
+}
+
+.tab-search .select-custom~.select2-container--default .select2-selection--single {
+    padding-top: 6px
+}
+.tab-search .select-custom~.select2-container--default .select2-selection--single span {
+    padding-left: 0
 }
 
 .select-custom~.select2-container--default .select2-selection--single {
@@ -509,7 +531,6 @@ header:before {
 
 .tab-search .nav-tabs {
     border-bottom: 0;
-    height: 57px;
 }
 
 .tab-search .nav-tabs>li>a {
@@ -554,7 +575,8 @@ header:before {
 .btn-search {
     padding: 14px 10px;
     width: 250px!important;
-    max-width: 100%
+    max-width: 100%;
+    font-size: 14px !important;
 }
 
 .tab-search .form-group {
@@ -5685,7 +5707,7 @@ a.toggle-aside {
 }
 
 .nav-procedure.stick {
-    width: 74%;
+    width: 75%;
     margin: auto;
     display: block;
     top: 200px !important;
@@ -5707,7 +5729,7 @@ a.toggle-aside {
     font-family: "OpenSansBold", helvetica, Sans-serif;
     font-size: 24px;
     color: #fff;
-    margin-right: 50px;
+    right: 37px;
     z-index: 2
 }
 

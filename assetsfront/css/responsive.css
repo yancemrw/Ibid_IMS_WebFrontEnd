@@ -1619,8 +1619,8 @@
 		display: block;
 	}
 	header {
-		height: 250px;
-		background-size: cover;
+		height: 250px !important;
+		background-size: cover !important;
 	}
 	.tab-search .nav-tabs>li>a {
 		padding: 18px 21px;
