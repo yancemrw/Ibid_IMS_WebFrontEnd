@@ -33,33 +33,31 @@
             </div> 
             <div class="col-md-5 col-sm-6">      
                 <div class="verification-otp">
-                    <!--form role="form" action="<?php echo site_url('biodata/otpconfirm'); ?>" method="POST" data-provide="validation"-->
-                        <div class="input-code">
-                            <h2>Verifikasi No. HP (OTP)</h2>
-                            <h3>Masukan Kode Verifikasi  di Sini</h3>
-                            <div class="vcode" id="vcode">
-                                <input type="phone" class="vcode-input" maxlength="1" 
-                                        oninvalid="this.setCustomValidity('Harus diisi')"
-                                        oninput="setCustomValidity('')" id="vcode1" name="otp[]" required />
-                                <input type="phone" class="vcode-input" maxlength="1" 
-                                        oninvalid="this.setCustomValidity('Harus diisi')" 
-                                        oninput="setCustomValidity('')" name="otp[]" required />
-                                <input type="phone" class="vcode-input" maxlength="1" 
-                                        oninvalid="this.setCustomValidity('Harus diisi')" 
-                                        oninput="setCustomValidity('')" name="otp[]" required />
-                                <input type="phone" class="vcode-input" maxlength="1" 
-                                        oninvalid="this.setCustomValidity('Harus diisi')" 
-                                        oninput="setCustomValidity('')" name="otp[]" required />
-                                <input type="phone" class="vcode-input" maxlength="1" 
-                                        oninvalid="this.setCustomValidity('Harus diisi')" 
-                                        oninput="setCustomValidity('')" name="otp[]" required />
-                            </div>
-                            <p>Mohon tunggu 2 menit sebelum mencoba kirim ulang kode verifikasi</p>
+                    <div class="input-code">
+                        <h2>Verifikasi No. HP (OTP)</h2>
+                        <h3>Masukan Kode Verifikasi  di Sini</h3>
+                        <div class="vcode" id="vcode">
+                            <input type="phone" class="vcode-input" maxlength="1" 
+                                    oninvalid="this.setCustomValidity('Harus diisi')"
+                                    oninput="setCustomValidity('')" id="vcode1" name="otp[]" required />
+                            <input type="phone" class="vcode-input" maxlength="1" 
+                                    oninvalid="this.setCustomValidity('Harus diisi')" 
+                                    oninput="setCustomValidity('')" name="otp[]" required />
+                            <input type="phone" class="vcode-input" maxlength="1" 
+                                    oninvalid="this.setCustomValidity('Harus diisi')" 
+                                    oninput="setCustomValidity('')" name="otp[]" required />
+                            <input type="phone" class="vcode-input" maxlength="1" 
+                                    oninvalid="this.setCustomValidity('Harus diisi')" 
+                                    oninput="setCustomValidity('')" name="otp[]" required />
+                            <input type="phone" class="vcode-input" maxlength="1" 
+                                    oninvalid="this.setCustomValidity('Harus diisi')" 
+                                    oninput="setCustomValidity('')" name="otp[]" required />
                         </div>
-                        <div id="countdown-id">
-                            <button type="submit" class="btn btn-green">Submit</button>
-                        </div>
-                    <!--/form-->
+                        <p>Mohon tunggu 2 menit sebelum mencoba kirim ulang kode verifikasi</p>
+                    </div>
+                    <div id="countdown-id">
+                        <button type="submit" class="btn btn-green">Submit</button>
+                    </div>
                     <div id="divreotp">
                         <a id="reotp" href="<?php echo site_url('biodata/otp?otpkirim=yes')?>">Kirim ulang kode verifikasi</a>
                     </div>
@@ -135,6 +133,15 @@ function refresh_button() {
                     });
                     $('button[type=submit]').attr('disabled', false);
                 }
+            },
+            error: function() {
+                bootoast.toast({
+                    message: 'Koneksi ke Server Terganggu',
+                    type: 'warning',
+                    position: 'top-center',
+                    timeout: 3
+                });
+                $('button[type=submit]').attr('disabled', false);
             }
         });
     }
