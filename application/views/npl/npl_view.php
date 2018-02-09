@@ -45,7 +45,7 @@
             <div class="col-md-5 col-sm-6">
                 <div class="booking-schedule">
                     <h2>Perbaharui Data Anda <span>Hanya di Isi Untuk User Baru</span></h2>
-                    <form class="form-filter" id="beli-npl" method="POST" data-provide="validation" action="<?php echo site_url("biodata/otp"); ?>">
+                    <form class="form-filter" id="beli-npl" data-provide="validation">
                         <input type="hidden" name="otpkirim" value="true">
                         <div class="form-group floating-label">
                             <input type="text" name="Phone" id="notif-telepon" class="form-control input-custom" value="<?php echo @$detailBiodata['Phone']; ?>"
@@ -193,19 +193,12 @@
           bankacc   = $('input[name="BankAccountNumber"]').val(), 
           bankname  = $('input[name="BankAccountName"]').val(),
           ktp       = $('input[name="IdentityNumber"]').val(),
+          otpkirim  = $('input[name="otpkirim"]').val(),
           recaptcha = $('#e8df0fade2ce52c6a8cf8c8d2309d08a').val();
       if(phone !== '' && bankid !== '' && bankacc !== '' && bankname !== '' && ktp !== '') {
           if(ktp.length < 16) {
               bootoast.toast({
                   message: 'Nomor KTP harus 16 angka!',
-                  type: 'warning',
-                  position: 'top-center'
-              });
-              return false;
-          }
-          else if($('#agree-required').is(":checked") === false) {
-              bootoast.toast({
-                  message: 'Anda harus setuju dengan syarat dan ketentuan dari kami!',
                   type: 'warning',
                   position: 'top-center'
               });
@@ -219,9 +212,57 @@
               });
               return false;
           }
+          else if($('#agree-required').is(":checked") === false) {
+              bootoast.toast({
+                  message: 'Anda harus setuju dengan syarat dan ketentuan dari kami!',
+                  type: 'warning',
+                  position: 'top-center'
+              });
+              return false;
+          }
           else {
               $('#btn-kirim').attr('disabled', true);
-              $('#beli-npl').submit();
+              $.ajax({
+                type: 'POST',
+                url: '<?php echo site_url("biodata/otp"); ?>',
+                data: 'Phone='+phone+'&BankId='+bankid+'&BankAccountNumber='+bankacc+'&BankAccountName='+bankname+'&IdentityNumber='+ktp+'&otpkirim='+otpkirim,
+                success: function(data) {
+                  var data = JSON.parse(data);
+                  if(data.status === 1) {
+                    bootoast.toast({
+                      message: data.messages,
+                      type: 'warning',
+                      position: 'top-center',
+                      timeout: 3
+                    });
+                    setTimeout(function() {
+                      location.href = data.redirect;
+                    }, 1500);
+                  }
+                  else {
+                    $('#btn-kirim').attr('disabled', false);
+                    bootoast.toast({
+                      message: data.messages,
+                      type: 'warning',
+                      position: 'top-center',
+                      timeout: 3
+                    });
+                    setTimeout(function() {
+                      location.href = data.redirect;
+                    }, 1500);
+                  }
+                },
+                error: function() {
+                  $('#btn-kirim').attr('disabled', false);
+                  bootoast.toast({
+                    message: 'Terjadi Error Pada Server',
+                    type: 'warning',
+                    position: 'top-center',
+                    timeout: 3
+                  });
+                }
+              });
+              //$('#beli-npl').submit();
               return false;
           }
       }

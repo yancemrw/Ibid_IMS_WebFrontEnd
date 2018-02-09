@@ -273,7 +273,7 @@ class Ours extends CI_Controller {
                            <label class="label-schedule">Judul</label>
                         </div>
                         <div class="form-group floating-label">
-                           <textarea class="form-control" rows="5"></textarea>
+                           <textarea class="form-control border-radius-none" rows="5"></textarea>
                            <label class="label-schedule">Deskripsi</label>
                         </div>
 					</form>
