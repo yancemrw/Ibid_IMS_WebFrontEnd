@@ -278,25 +278,25 @@
 						<div class="box-slide-management">
 							<img src="<?php echo base_url('assetsfront/images/background/management-photo-goto.jpg'); ?>" alt="" title="">
 						</div>
-						<h2>GOTO YOSHIHIRO <span>DIRECTOR</span></h2>
+						<h2>GOTO YOSHIHIRO<span>DIRECTOR</span></h2>
 					</li>
 					<li>
 						<div class="box-slide-management">
-							<img src="<?php echo base_url('assetsfront/images/background/management-photo-ficher.jpg'); ?>" alt="" title="">
+							<img src="<?php echo base_url('assetsfront/images/background/management-photo-hasan.jpg'); ?>" alt="" title="">
 						</div>
-						<h2>HALOMOAN FISCHER <span>DIRECTOR</span></h2>
+						<h2>HASAN KUNTARTO TEDJASUTISNO<span>DIRECTOR</span></h2>
 					</li>
 					<li>
 						<div class="box-slide-management">
 							<img src="<?php echo base_url('assetsfront/images/background/management-photo-doxa.jpg'); ?>" alt="" title="">
 						</div>
-						<h2>DADDY DOXA MANURUNG <span>PRESIDENT DIRECTOR</span></h2>
+						<h2>DADDY DOXA MANURUNG<span>PRESIDENT DIRECTOR</span></h2>
 					</li>
 					<li>
 						<div class="box-slide-management">
-							<img src="<?php echo base_url('assetsfront/images/background/management-photo-hadi.jpg'); ?>" alt="" title="">
+							<img src="<?php echo base_url('assetsfront/images/background/management-photo-ficher.jpg'); ?>" alt="" title="">
 						</div>
-						<h2>HADI WINARTO <span>DIRECTOR</span></h2>
+						<h2>HALOMOAN FISCHER<span>DIRECTOR</span></h2>
 					</li>
 				</ul>
 			</div>
@@ -379,7 +379,7 @@
 			minimumResultsForSearch: -1
 		});
 
-		$(".side-menu-procedure").stick_in_parent({offset_top: 80});
+		//$(".side-menu-procedure").stick_in_parent({offset_top: 80});
 
 		$("sidemenu-about-us ul li a").click(function(evn){
 			evn.preventDefault();

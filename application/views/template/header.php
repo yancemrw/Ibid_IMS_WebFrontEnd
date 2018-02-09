@@ -79,18 +79,18 @@
 <body class="bg-grey">
    <!-- handle header between procedure page and other page -->
    <?php if(@$menu_pages) { ?>
-      <header class="header-min <?php echo $class_header; ?>" style="background: url(<?php echo $bgheader; ?>)no-repeat fixed; background-position: 0px -230px;
-    background-size: 100%;">
+      <header class="header-min <?php echo $class_header; ?>" style="background: url(<?php echo $bgheader; ?>)no-repeat fixed;
+    background-size: 100% auto;">
          <nav class="navbar navbar-custom">
             <div class="top-navbar text-right">
                <form class="form-inline">
-                  <div class="form-group language">
+                  <!--div class="form-group language">
                      <select class="select-custom form-control">
                         <option>Bahasa</option>
                         <option>Indonesia</option>
                         <option>English</option>
                      </select>
-                  </div>
+                  </div-->
                   <div class="form-group help">
                      <select class="select-custom form-control" id="help-select">
                         <option value="">Bantuan</option>
@@ -134,8 +134,8 @@
       </header>
       <div class="container-fluid">
    <?php } else { ?>
-   <div id="preloader" style="display:none"></div>
-   <div id="preloaderAuction" style="display:none"></div>
+      <div id="preloader" style="display:none"></div>
+      <div id="preloaderAuction" style="display:none"></div>
    <?php echo ($this->uri->segment(1) != "akun") ? '<div id="content">' : ''; ?>
 
       <!-- <header> -->
@@ -144,13 +144,13 @@
             <nav class="navbar navbar-custom <?php echo @$header_white; ?>">
                <div class="top-navbar text-right">
                   <form class="form-inline">
-                     <div class="form-group language">
+                     <!--div class="form-group language">
                         <select class="select-custom form-control">
                            <option>Bahasa</option>
                            <option>Indonesia</option>
                            <option>English</option>
                         </select>
-                     </div>
+                     </div-->
                      <div class="form-group help">
                         <select class="select-custom form-control" id="help-select">
                            <option value="">Bantuan</option>
@@ -184,7 +184,7 @@
                         <li><a href="<?php echo site_url('comingsoon'); ?>">Map</a></li>
                         <li><a href="<?php echo site_url('panduan-lelang'); ?>">Prosedur</a></li>
                         <?php echo $form_auth; ?>
-                        <li class="lang-mob">
+                        <!--li class="lang-mob">
                            <a href="javascript:void(0)">Bahasa</a>
                            <ul>
                               <li>
@@ -194,7 +194,7 @@
                                  <a href="">Inggris</a>
                               </li>
                            </ul>
-                        </li>
+                        </li-->
                         <li class="help-mob">
                            <a href="javascript:void(0)">Bantuan</a>
                            <ul>
@@ -217,9 +217,7 @@
          <?php } ?>
    <?php echo ($this->uri->segment(1) != "akun") ? '<div>' : ''; ?>
 <?php } ?>
-<?php if(@$menu_pages) {
-   echo '</div>';
- } ?>
+      </div>
 
 <script>
    $('#help-select').change(function() {

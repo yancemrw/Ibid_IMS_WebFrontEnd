@@ -32,7 +32,7 @@
 	    	minimumResultsForSearch: -1
 	    });
 	    
-		$(".side-menu-procedure").stick_in_parent({offset_top: 80});
+		//$(".side-menu-procedure").stick_in_parent({offset_top: 80});
 
         $(window).scroll(function() {
             var window_top = $(window).scrollTop() + 300;
