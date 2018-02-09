@@ -87,7 +87,7 @@
 
 <script type="text/javascript">
   // handle login
-  $('#btn-login').click(function(e) {console.log('login');
+  $('#btn-login').click(function(e) {
     var user = $('#username').val(), pass = $('#password').val();
     if(user !== '' && pass !== '') {
       e.preventDefault();
@@ -101,7 +101,31 @@
       }
       else {
         $('#btn-login').attr('disabled', true);
-        $('#form-logins').submit();
+        $.ajax({
+          type: 'POST',
+          url: '<?php echo site_url('login'); ?>',
+          data: 'username='+$('#username').val()+'&password='+$('#password').val(),
+          success: function(data) {
+            var data = JSON.parse(data);
+            if(data.status === 1) {
+              // action after login
+              setTimeout(function() {
+                location.href = '<?php echo site_url(); ?>';
+              }, 1500);
+              return false;
+            }
+            else {
+              $('#btn-login').attr('disabled', false);
+              bootoast.toast({
+                message: data.messages,
+                type: 'warning',
+                position: 'top-center',
+                timeout: 3
+              });
+              return false;
+            }
+          }
+        });
       }
     }
   });

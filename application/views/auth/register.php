@@ -52,7 +52,7 @@
                             <div class="help-info" id="type-repass"></div>
                         </div>
                         <div class="form-group floating-label">
-                            <input type="text" id="idcard" name="idcard" class="form-control" />
+                            <input type="text" id="idcard" name="idcard" class="form-control border-radius-none" />
                             <label class="label-schedule">Kartu Anggota</label>
                             <div class="help-info" id="idcard-info">
                                 <i class="fa fa-info"></i> Hanya diisi bila memiliki kartu anggota IBID

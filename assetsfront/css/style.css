@@ -4979,7 +4979,7 @@ a.delete-favorite {
     margin-bottom: 5px;
     font-family: 'OpenSansRegular';
     margin-top: 20px;
-    font-size: 14px;
+    font-size: 14px !important;
 }
 
 .form-register a {
@@ -6671,6 +6671,41 @@ td.bg-Grey {
     z-index: 9
 }
 
+.form-group.floating-label textarea {
+    position: relative;
+    z-index: 8;
+    background: none;
+    padding: 20px 11px 8px;
+    height: auto;
+}
+
+.form-group.floating-label label,
+.form-group.floating-label textarea.empty+label {
+    font-size: 14px;
+    top: 15px;
+    color: #999;
+    transition: .5s;
+    position: absolute;
+    left: 20px;
+    z-index: 2;
+}
+
+.form-group.floating-label textarea:focus {
+    border: 1px solid #81be2a;
+    outline: none;
+    box-shadow: 0 0px 1px #81be2a;
+}
+
+.form-group.floating-label textarea:focus+label,
+.form-group.floating-label textarea.not-empty+label {
+    position: absolute;
+    top: 7px;
+    left: 13px;
+    font-size: 10px;
+    color: #81be2a;
+    font-weight: normal;
+    z-index: 9
+}
 
 /* PRELOADER */
 
