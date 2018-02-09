@@ -91,29 +91,20 @@
 
 </head>
 
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-echo "<center><img src='".base_url('assetsfront/images/background/management-empty.png')."'></center>";
-
-// $respon = array(
-// 	'status'	=> 0,
-// 	'messagesdsssd'	=> $heading,
-// 	'data'	=> []);
-
-// echo  json_encode($respon);
-?>
-
-<section class="error-message">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12 text-center">
-                  <div class="image-message">
-                     <img src="assets/images/background/404.png" alt="">
-                  </div>
-                  <p>Oops... Periksa koneksi kamu</p>
-                  <button class="btn btn-green">KEMBALI KE HALAMAN SEBELUMNYA</button>
-               </div>
-            </div>
-         </div>
-      </section>
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+<div style="margin:50% auto; padding:0; width:60%; transform: translate(-50%, -50%);">
+	<center><img src='<?php echo base_url('assetsfront/images/background/management-empty.png'); ?>'></center>
+	<section class="error-message">
+		<div class="container">
+			<div class="row">
+			<div class="col-md-12 text-center">
+				<div class="image-message">
+				<img src="assets/images/background/404.png" alt="">
+				</div>
+					<p>Oops... Periksa koneksi kamu</p>
+					<button class="btn btn-green" onclick="location.href='<?php echo site_url(); ?>'">KEMBALI KE HALAMAN SEBELUMNYA</button>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

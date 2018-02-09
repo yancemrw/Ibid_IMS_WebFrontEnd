@@ -3,7 +3,7 @@
         <div class="row position-repative">
             <div class="col-md-4 col-sm-6 pull-right">
                 <div class="form-register">
-                    <form id="form-logins" action="<?php echo site_url('login'); ?>" method="POST" data-provide="validation">
+                    <form id="form-logins" data-provide="validation">
                         <h3>Masuk Akun</h3>
                         <div class="form-group floating-label">
                             <input type="email" id="username" name="username" class="form-control input-custom is-invalid" 
@@ -89,6 +89,5 @@
                 $('#btn-login').click();
             }
         });
-
     });
 </script>
