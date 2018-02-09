@@ -237,6 +237,7 @@
                     });
                     setTimeout(function() {
                       location.href = data.redirect;
+                      $('#btn-kirim').attr('disabled', false);
                     }, 1500);
                   }
                   else {
@@ -245,11 +246,9 @@
                       message: data.messages,
                       type: 'warning',
                       position: 'top-center',
-                      timeout: 3
+                      timeout: 4
                     });
-                    setTimeout(function() {
-                      location.href = data.redirect;
-                    }, 1500);
+                    location.href = data.redirect;
                   }
                 },
                 error: function() {
