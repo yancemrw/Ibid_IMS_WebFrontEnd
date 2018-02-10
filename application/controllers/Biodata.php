@@ -91,7 +91,9 @@ class Biodata extends CI_Controller {
 			}
 
 			// jika difrontend pengguna meminta mengirimkan lagi otp nya.
+			$resend = false;
 			if(@$this->input->get('otpkirim') == 'yes') {
+				$resend = true;
 				$_POST['otpkirim'] = 'true';
 				$_POST['Phone'] = $this->session->userdata('Phone');
 			}
@@ -103,8 +105,8 @@ class Biodata extends CI_Controller {
 			}
 
 			if($_POST['otpkirim'] == 'true') {
-				######## add by mas andi supervisor (send OTP via SMS) ########
-				/*date_default_timezone_set('Asia/Jakarta');
+				######## add by mas Andi Supervisor (send OTP via SMS) ########
+				date_default_timezone_set('Asia/Jakarta');
 				$dataInsert =  array (
 					'type'			=> 'sms',
 					'msisdn'		=> @$_POST['Phone'],
@@ -115,11 +117,11 @@ class Biodata extends CI_Controller {
 				);
 				$url 			= linkservice('notif')."api/notification";
 				$method 		= 'POST';
-				$responseApi 	= admsCurl($url, $dataInsert, $method);*/
-				###########################################
+				$responseApi 	= admsCurl($url, $dataInsert, $method);
+				###############################################################
 
-				############### Email OTP ################
-				$dataInsert =  array (
+				############### Email OTP (by Juragan Server Lutfi) ################
+				/*$dataInsert =  array (
 					'type'		=> 'email',
 					'to'		=> @$this->session->userdata('emailfront'),
 					'cc'		=> 'lutfi.f.hidayat@gmail.com',
@@ -128,16 +130,24 @@ class Biodata extends CI_Controller {
 				);
 				$url 			= linkservice('notif')."api/notification";
 				$method 		= 'POST';
-				$responseApi 	= admsCurl($url, $dataInsert, $method);
-				###########################################
+				$responseApi 	= admsCurl($url, $dataInsert, $method);*/
+				####################################################################
 
-				$callback->status = 1;
-				$callback->messages = 'Data Sudah Kami Terima, Silahkan Verifikasi OTP Dari Kami';
-				$callback->redirect = 'biodata/otpconfirm';
-				echo json_encode($callback);
-				exit;
-				//redirect('biodata/otpconfirm', 'refresh');
-
+				if($resend === true) {
+					$callback->status = 1;
+					$callback->messages = 'OTP Sudah Kami Kirim Kembali, Silahkan Verifikasi';
+					$callback->redirect = '';
+					echo json_encode($callback);
+					exit;
+				}
+				else {
+					$callback->status = 1;
+					$callback->messages = 'Data Sudah Kami Terima, Silahkan Verifikasi OTP Dari Kami';
+					$callback->redirect = 'biodata/otpconfirm';
+					echo json_encode($callback);
+					exit;
+					//redirect('biodata/otpconfirm', 'refresh');
+				}
 			}
 			else {
 				$callback->status = 0;
