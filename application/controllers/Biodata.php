@@ -106,7 +106,7 @@ class Biodata extends CI_Controller {
 
 			if($_POST['otpkirim'] == 'true') {
 				######## add by mas Andi Supervisor (send OTP via SMS) ########
-				/*date_default_timezone_set('Asia/Jakarta');
+				date_default_timezone_set('Asia/Jakarta');
 				$dataInsert =  array (
 					'type'			=> 'sms',
 					'msisdn'		=> @$_POST['Phone'],
@@ -117,11 +117,11 @@ class Biodata extends CI_Controller {
 				);
 				$url 			= linkservice('notif')."api/notification";
 				$method 		= 'POST';
-				$responseApi 	= admsCurl($url, $dataInsert, $method);*/
+				$responseApi 	= admsCurl($url, $dataInsert, $method);
 				###############################################################
 
 				############### Email OTP (by Juragan Server Lutfi) ################
-				$dataInsert =  array (
+				/*$dataInsert =  array (
 					'type'		=> 'email',
 					'to'		=> @$this->session->userdata('emailfront'),
 					'cc'		=> 'lutfi.f.hidayat@gmail.com',
@@ -130,7 +130,7 @@ class Biodata extends CI_Controller {
 				);
 				$url 			= linkservice('notif')."api/notification";
 				$method 		= 'POST';
-				$responseApi 	= admsCurl($url, $dataInsert, $method);
+				$responseApi 	= admsCurl($url, $dataInsert, $method);*/
 				####################################################################
 
 				if($resend === true) {
