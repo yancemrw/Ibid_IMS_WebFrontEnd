@@ -37,7 +37,7 @@
          <div role="tabpanel" class="tab-pane" id="tab-mobile-2">
             <form class="form-inline clearfix">
                <div class="form-group">
-                  <select class="select-custom form-control" id="thisCabang">
+                  <select class="select-custom form-control filterJadwal" id="thisCabang">
                      <!-- option value ="" ></option>
                      <option value ="" >Bandung</option>
                      <option value ="" >Jakarta</option -->
@@ -48,7 +48,7 @@
                   <label>Kota</label>
                </div>
                <div class="form-group clearfix">
-                  <select class="select-custom form-control select-type" id="thisItem">
+                  <select class="select-custom form-control select-type filterJadwal" id="thisItem">
                      <option value="car-type"></option>
                      <option value="hve-type"></option>
                      <option value="motorcycle-type"></option>
@@ -413,21 +413,6 @@ $(function(){
         
     }); 
 	
-	/* 
-	$('#ItemId').change(function(){
-		thisVal = $(this).val();
-		$.ajax({
-			url : '<?php echo linkservice('stock') ."item/add/Getsearchfront"; ?>',
-			data : {
-				id : thisVal
-			},
-			success : function(ret) {
-				$('#thisSearchBrand').html(ret[0]);
-			}
-		});
-	});
-	$('#ItemId').change();
-	*/
-
+	$('.filterJadwal').change();
 });
 </script>
