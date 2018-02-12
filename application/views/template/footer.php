@@ -3,10 +3,10 @@
     <div class="row">
       <div class="col-md-4 social-media text-right">
         <ul>
-          <li><a href="https://www.instagram.com/ibid_balailelangserasi/" title="Instagram"><i class="fa fa-instagram"></i></a></li>
-          <li><a href="https://twitter.com/ibid_lelang?lang=en" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-          <li><a href="https://www.facebook.com/IbidBalaiLelangSerasi/" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-          <li><a href="javascript:void(0)" title="Youtube"><i class="fa fa-youtube-play"></i></a></li>
+          <li><a href="https://www.instagram.com/ibid_balailelangserasi/" title="Instagram" target="_blank"><i class="fa fa-instagram"></i></a></li>
+          <li><a href="https://twitter.com/ibid_lelang?lang=en" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/IbidBalaiLelangSerasi/" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="https://www.youtube.com/channel/UClTIiqX7MwL7MDOK0IoKEiQ" title="Youtube" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
         </ul>
       </div>
       <div class="col-md-4 footer-link text-center">

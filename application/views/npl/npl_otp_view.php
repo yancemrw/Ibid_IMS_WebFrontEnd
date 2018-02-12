@@ -1,7 +1,4 @@
 <script type="text/javascript" src="<?php echo base_url('assetsfront/js/countdown.js'); ?>"></script>
-<script>
-    var linked = '<?php echo site_url("biodata/otp?otpkirim=yes")?>';
-</script>
 <section class="section section-auction">
     <div class="container">
         <div class="row">
@@ -35,7 +32,7 @@
                 <div class="verification-otp">
                     <div class="input-code">
                         <h2>Verifikasi No. HP (OTP)</h2>
-                        <h3>Masukan Kode Verifikasi  di Sini</h3>
+                        <h3>Masukan kode verifikasi  disini</h3>
                         <div class="vcode" id="vcode">
                             <input type="phone" class="vcode-input" maxlength="1" 
                                     oninvalid="this.setCustomValidity('Harus diisi')"
@@ -59,7 +56,7 @@
                         <button type="submit" class="btn btn-green">Submit</button>
                     </div>
                     <div id="divreotp">
-                        <a id="reotp" href="<?php echo site_url('biodata/otp?otpkirim=yes')?>">Kirim ulang kode verifikasi</a>
+                        <a id="reotp" href="javascript:void(0)" onclick="reload()">Kirim ulang kode verifikasi</a>
                     </div>
                 </div>
             </div>
@@ -93,6 +90,61 @@ $('button[type=submit]').click(function(e) {
     refresh_button(); 
 });
 
+$("input").keyup(function(e) {
+    if(this.value.length == this.maxLength) {
+        $(this).next('input').focus();
+    }
+
+    if(e.which === 13) {
+        refresh_button();
+    }
+});
+
+$('input').keydown(function(e) {
+    if((e.which == 8 || e.which == 46) && $(this).val() == '') {
+        $(this).prev('input').focus();
+    }
+});
+
+function reload() {
+    $.ajax({
+        type: 'POST',
+        url: '<?php echo site_url('biodata/otp?otpkirim=yes')?>',
+        beforeSend: function() {
+            $('#reotp').replaceWith('<img id="reotp" src="<?php echo base_url('assetsfront/images/icon/refresh_spin.gif'); ?>" width="20px" style="margin-bottom:40px;" />');
+        },
+        success: function(data) {                    
+            var data = JSON.parse(data);
+            if(data.status === 1) {
+                bootoast.toast({
+                    message: data.messages,
+                    type: 'warning',
+                    position: 'top-center',
+                    timeout: 3
+                });
+            }
+            else {
+                bootoast.toast({
+                    message: data.messages,
+                    type: 'warning',
+                    position: 'top-center',
+                    timeout: 3
+                });
+            }
+            location.reload();
+        },
+        error: function() {
+            bootoast.toast({
+                message: 'Koneksi ke Server Terganggu',
+                type: 'warning',
+                position: 'top-center',
+                timeout: 3
+            });
+            $('#reotp').replaceWith('<a id="reotp" href="javascript:void(0)" onclick="reload()">Kirim ulang kode verifikasi</a>');
+        }
+    });
+}
+
 function refresh_button() {
     var arrOTP = new Array(), checkField = false;
     $('input[name^="otp"]').each(function() {
@@ -122,6 +174,7 @@ function refresh_button() {
             success: function(data) {                    
                 if(data === 'cocok') {
                     deleteCookieCountdown('CHKPT');
+                    deleteCookieCountdown('CODOCK');
                     location.href = '<?php echo site_url('biodata/updateForNPL'); ?>';
                 }
                 else {
@@ -145,24 +198,7 @@ function refresh_button() {
             }
         });
     }
-    
 }
-
-$("input").keyup(function(e) {
-    if(this.value.length == this.maxLength) {
-        $(this).next('input').focus();
-    }
-
-    if(e.which === 13) {
-        refresh_button();
-    }
-});
-
-$('input').keydown(function(e) {
-    if((e.which == 8 || e.which == 46) && $(this).val() == '') {
-        $(this).prev('input').focus();
-    }
-});
 
 function getCookieFalse(name) {
     var pattern = RegExp(name + "=.[^;]*")
