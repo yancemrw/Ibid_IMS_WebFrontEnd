@@ -9,7 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/overwrite.css'); ?>">
 	</head>
 	<body>
-		<div style="padding:0">
+		<div style="padding:0; text-align:center;">
 			<section class="error-message">
 				<div class="container">
 					<div class="row">
@@ -18,7 +18,7 @@
 							<img src="assets/images/background/404.png" alt="">
 						</div>
 						<p>Oops... Page Not Found</p>
-						<button class="btn btn-green">KEMBALI KE HALAMAN SEBELUMNYA</button>
+						<button class="btn btn-green cursor-pointer" onclick="location.href='<?php echo site_url(); ?>'">KEMBALI KE HALAMAN UTAMA</button>
 						</div>
 					</div>
 				</div>

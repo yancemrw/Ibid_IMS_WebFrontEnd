@@ -64,7 +64,7 @@ class Biodata extends CI_Controller {
 
 	public function otp() {
 		// handle KTP
-		$urlKTP		= linkservice('account')."users/searchKtp?ktp=".$this->input->post('IdentityNumber');
+		$urlKTP		= linkservice('account')."users/searchKtp?ktp=".$this->input->post('IdentityNumber')."&id=".$this->session->userdata('userdata')['UserId'];
 		$methodKTP	= 'GET';
 		$resKTP		= admsCurl($urlKTP, array(), $methodKTP);
 		$ktp_data	= json_decode($resKTP['response']);
@@ -73,7 +73,7 @@ class Biodata extends CI_Controller {
 		if($ktp_data->status === 1) {
 			$callback->status = 0;
 			$callback->messages = 'Nomor KTP Sudah Terdaftar di Sistem Kami, Mohon Daftarkan No KTP Yang Lain';
-			$callback->redirect = '';
+			$callback->redirect = 'ktp';
 			echo json_encode($callback);
 			exit;
 			//redirect('beli-npl', 'refresh');
