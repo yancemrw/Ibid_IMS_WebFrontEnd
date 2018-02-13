@@ -7,7 +7,7 @@
 			<?php if($page_name !== 'general') { ?>
 			<section class="procedure-info-panel">
 				<div class="video-info text-center">
-					<iframe width="640" height="390" src="https://www.youtube.com/embed/IXdtkVt7Iwk?rel=0" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+					<iframe width="640" height="390" src="<?php echo $video_url; ?>" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 				</div>
 			</section>
 			<?php } ?>
