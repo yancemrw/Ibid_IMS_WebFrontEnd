@@ -139,7 +139,7 @@
                      <a href="javascript:void(0)">
                         <div class="thumbnail">
                            <div class="thumbnail-custom">
-                              <img src="<?php echo base_url('assetsfront/images/background/B1602UOY.jpg'); ?>" title="" alt="" />
+                              <img src="<?php echo base_url('assetsfront/images/background/B1602UOY.JPG'); ?>" title="" alt="" />
                            </div>
                            <div class="overlay-grade">
                               Grade <span>B</span>
@@ -157,7 +157,7 @@
                      <a href="javascript:void(0)">
                         <div class="thumbnail">
                            <div class="thumbnail-custom">
-                              <img src="<?php echo base_url('assetsfront/images/background/B1553SAG.jpg'); ?>" title="" alt="" />
+                              <img src="<?php echo base_url('assetsfront/images/background/B1553SAG.JPG'); ?>" title="" alt="" />
                            </div>
                            <div class="overlay-grade">
                               Grade <span>B</span>
@@ -175,7 +175,7 @@
                      <a href="javascript:void(0)">
                         <div class="thumbnail">
                            <div class="thumbnail-custom">
-                              <img src="<?php echo base_url('assetsfront/images/background/B1819BRB.jpg'); ?>" title="" alt="" />
+                              <img src="<?php echo base_url('assetsfront/images/background/B1819BRB.JPG'); ?>" title="" alt="" />
                            </div>
                            <div class="overlay-grade">
                               Grade <span>B</span>

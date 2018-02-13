@@ -9,14 +9,43 @@ class Guide extends CI_Controller {
 	}
 
 	public function index($page_name = '') {
+		$video_url = '';
 		switch($page_name) {
-			case 'onsite': $page_site = $this->panduan_lelang_onsite(); $menu_title = 'Tata Cara Lelang Onsite'; break;
-			case 'online': $page_site = $this->panduan_lelang_online(); $menu_title = 'Tata Cara Lelang Online'; break;
-			case 'live': $page_site = $this->panduan_lelang_live(); $menu_title = 'Tata Cara Live Auction'; break;
-			case 'entrusted': $page_site = $this->panduan_titip_lelang(); $menu_title = 'Tata Titip Lelang'; break;
-			case 'npl': $page_site = $this->beli_npl(); $menu_title = 'Cara Beli NPL'; break;
-			case 'paid': $page_site = $this->pelunasan_biaya(); $menu_title = 'Cara Melunasi Pembayaran'; break;
-			case 'general': $page_site = $this->ketentuan_umum(); $menu_title = 'Ketentuan Umum'; break;
+			case 'onsite': 
+					$page_site = $this->panduan_lelang_onsite(); 
+					$menu_title = 'Tata Cara Lelang Onsite'; 
+					$video_url = 'https://www.youtube.com/embed/-diRprzLhQc?rel=0';
+					break;
+			case 'online': 
+					$page_site = $this->panduan_lelang_online(); 
+					$menu_title = 'Tata Cara Lelang Online'; 
+					$video_url = 'https://www.youtube.com/embed/-diRprzLhQc?rel=0';
+					break;
+			case 'live': 
+					$page_site = $this->panduan_lelang_live(); 
+					$menu_title = 'Tata Cara Live Auction'; 
+					$video_url = 'https://www.youtube.com/embed/XwIQW7lbtGI?rel=0';
+					break;
+			case 'entrusted': 
+					$page_site = $this->panduan_titip_lelang(); 
+					$menu_title = 'Tata Titip Lelang'; 
+					$video_url = 'https://www.youtube.com/embed/ZFUVYODTGrU?rel=0';
+					break;
+			case 'npl': 
+					$page_site = $this->beli_npl(); 
+					$menu_title = 'Cara Beli NPL'; 
+					$video_url = 'https://www.youtube.com/embed/xYR2oGA2tA0?rel=0';
+					break;
+			case 'paid': 
+					$page_site = $this->pelunasan_biaya(); 
+					$menu_title = 'Cara Melunasi Pembayaran'; 
+					$video_url = 'https://www.youtube.com/embed/S83fKE1MGIs?rel=0';
+					break;
+			case 'general': 
+					$page_site = $this->ketentuan_umum(); 
+					$menu_title = 'Ketentuan Umum'; 
+					$video_url = '';
+					break;
 			case '': $page_site = $this->panduan_lelang_onsite(); $menu_title = 'Tata Cara Lelang On Site'; break;
 		}
 
@@ -30,7 +59,8 @@ class Guide extends CI_Controller {
 			'form_auth'			=> login_Status_form($userdata),
 			'side_menu'			=> $this->side_menu($page_name),
 			'content_panduan'	=> $page_site,
-			'page_name'			=> $page_name
+			'page_name'			=> $page_name,
+			'video_url'			=> $video_url
 		);
 		$view = "userguide/guide";
 		template($view, $data);
@@ -127,7 +157,7 @@ class Guide extends CI_Controller {
 				        	<div class="images-prosedure">
 				        		<img src="'.base_url('assetsfront/images/background/img-prosedure-6.png').'">
 				        	</div>
-				        	<h2>Ambil kendaraan</h2>
+				        	<h2>Pengambilan kendaraan</h2>
 				        	<p>Peserta dapat mengambil kendaraan beserta dokumennya maksimum 1 hari setelah melunasi pembayaran.</p>
 				        </div>
 			        </div>
@@ -268,7 +298,7 @@ class Guide extends CI_Controller {
 				        	<div class="images-prosedure">
 				        		<img src="'.base_url('assetsfront/images/background/img-prosedure-7.png').'">
 				        	</div>
-				        	<h2>Pilih jadwal lelang yang diinginkan</h2>
+				        	<h2>Pilih lelang yang diinginkan</h2>
 				        	<p>Peserta dapat memilih jadwal Live Auction yang akan berlangsung. Peserta dapat mengikuti maksimum 4 jadwal secara bersamaan.</p>
 				        </div>
 			        </div>
