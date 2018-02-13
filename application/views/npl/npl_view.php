@@ -248,7 +248,7 @@
                       position: 'top-center',
                       timeout: 4
                     });
-                    location.href = data.redirect;
+                    if(data.redirect !== 'ktp') location.href = data.redirect;
                   }
                 },
                 error: function() {

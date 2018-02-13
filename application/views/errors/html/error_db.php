@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="id" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
    <head>
-      <title>505 Internal Server Error</title>
+      <title>Error Database</title>
       <meta charset="utf-8">
       <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
       <link rel="shortcut icon" href="<?php echo base_url('assetsfront/images/favicon/favicon.ico'); ?>">
@@ -51,7 +51,7 @@
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/overwrite.css'); ?>">
    </head>
    <body>
-      <div style="padding:0">
+      <div style="padding:0; text-align:center;">
       	<section class="error-message">
       		<div class="container">
       			<div class="row">
@@ -60,7 +60,7 @@
          				  <img src='<?php echo base_url('assetsfront/images/background/500.png'); ?>' />
          				</div>
       					<p>Oops... Periksa koneksi kamu</p>
-      					<button class="btn btn-green" onclick="location.href='<?php echo site_url(); ?>'">KEMBALI KE HALAMAN SEBELUMNYA</button>
+      					<button class="btn btn-green cursor-pointer" onclick="location.href='<?php echo site_url(); ?>'">KEMBALI KE HALAMAN UTAMA</button>
       				</div>
       			</div>
       		</div>
