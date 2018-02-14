@@ -40,6 +40,17 @@
 
 		//$(".side-menu-procedure").stick_in_parent({offset_top: 80});
 
+		$('input').blur(function() {
+            tmpval = $(this).val();
+            if(tmpval == '') {
+                $(this).addClass('empty');
+                $(this).removeClass('not-empty');
+            } else {
+                $(this).addClass('not-empty');
+                $(this).removeClass('empty');
+            }
+        });
+
 		$('textarea').blur(function() {
             tmpval = $(this).val();
             if(tmpval == '') {
