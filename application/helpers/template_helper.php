@@ -18,8 +18,8 @@ function template($view = '', $data = '') {
     $data['class_header'] = 'header-aboutus';
   }
   else if(@$data['menu_pages'] === 'faq' || @$data['menu_pages'] === 'location' || @$data['menu_pages'] === 'contact') {
-    $data['bgheader'] = base_url('assetsfront/images/background/bg-homepage.jpg');
-    $data['class_header'] = '';
+    $data['bgheader'] = base_url('assetsfront/images/background/bg-about-us.jpg');
+    $data['class_header'] = 'header-aboutus';
   }
   else {
     $data['bgheader'] = '';
