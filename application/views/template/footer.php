@@ -47,7 +47,7 @@
             <div class="forgot"><a href="<?php echo site_url('forgot'); ?>">Lupa password?</a></div>
             <div class="form-group text-right">
               <div class="inis"><button class="btn btn-green" id="btn-loginx">Masuk</button></div>
-              <div class="none"><a href="<?php echo site_url('register'); ?>">Belum punya akun</a></div>
+              <div class="none"><a href="<?php echo site_url('register'); ?>" class="width-125px">Belum punya akun</a></div>
             </div>
             <span class="or">Atau</span>
           </form>
