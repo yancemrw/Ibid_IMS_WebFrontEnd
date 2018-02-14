@@ -110,7 +110,7 @@ class Biodata extends CI_Controller {
 				$dataInsert =  array (
 					'type'			=> 'sms',
 					'msisdn'		=> @$_POST['Phone'],
-					'message'		=> 'IBID OTP anda : '.$otpsesi,
+					'message'		=> 'IBID OTP '.date("d/m/Y H:i",strtotime(date("Y-m-d H:i:s"))).' KONFIRMASI OTP ANDA : '.$otpsesi,
 					'description'	=> 'OTP IBID',
 					'schedule'		=> date("d/m/Y H:i",strtotime(date("Y-m-d H:i:s")."+1 Minutes")),
 					'campaign'		=> 'OTP'

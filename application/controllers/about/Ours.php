@@ -25,8 +25,8 @@ class Ours extends CI_Controller {
 			'content_4'			=> $this->faq_content(4),
 			'content_5'			=> $this->faq_content(5),
 			'content_6'			=> $this->faq_content(6),
-			'content_7'			=> $this->faq_content(7),
-			'content_8'			=> $this->faq_content(8),
+			'content_7'			=> $this->faq_content(8),
+			'content_8'			=> $this->faq_content(7),
 			'class'				=> 'no-padding accordion-list-on-panel'
 		);
 		$this->views($data);
@@ -233,7 +233,7 @@ class Ours extends CI_Controller {
 
 	private function loc_content() {
 		$html = '<div class="location"><ul>';
-		for($i = 0; $i < 10; $i++) {
+		for($i = 0; $i < 1; $i++) {
 		$html .= '<li class="box-location">
 					<h4>IBID - Balai Lelang Serasi</h4>
 					<p>Jl. Bintaro Mulia I No.3 Bintaro Pesanggrahan - Jakarta Selatan 12250 <span>(62-21) 7355999</span></p>
@@ -278,7 +278,7 @@ class Ours extends CI_Controller {
                         </div>
 					</form>
 					<div class="text-left">
-						<button class="btn btn-green">Submit</button>
+						<button class="btn btn-green" disabled>Submit</button>
 					</div>
 				</div>
 				<div class="info-contact col-md-4">
