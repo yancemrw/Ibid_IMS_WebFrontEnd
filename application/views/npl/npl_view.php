@@ -94,7 +94,7 @@
                         <div class="g-recaptcha recaptcha" id="idrecaptcha" required></div>
                         <div class="input-group agree-required">
                             <input type="checkbox" name="checkbox" id="agree-required" class="cursor-pointer">
-                            <label for="agree-required">Dengan melakukan pendaftaran, saya setuju dengan <a href="javascript:void(0)">Kebijakan Privasi</a> dan <a href="javascript:void(0)">Syarat & Ketentuan</a> IBID.</label>
+                            <label for="agree-required">Dengan melakukan pendaftaran, saya setuju dengan <a href="javascript:void(0)" data-toggle="modal" data-target="#privacy-modal">Kebijakan Privasi</a> dan <a href="javascript:void(0)" data-toggle="modal" data-target="#bijak-modal">Syarat & Ketentuan</a> IBID.</label>
                         </div>
                         <button class="btn btn-green" id="btn-kirim">KIRIM</button>
                     </form>
@@ -103,6 +103,40 @@
         </div>
     </div>
 </section>
+
+<!-- MODAL PRIVASI -->
+<div class="modal fade" id="privacy-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog width-80">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><i class="ic ic-Close"></i><span class="sr-only">Close</span></button>
+        <h3 class="modal-title" id="lineModalLabel">Kebijakan Privasi</h3>
+      </div>
+      <div class="modal-body clearfix">
+        <div class="col-md-12 col-sm-12">
+          <?php $this->load->view('userguide/privacy_policy.html'); ?>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL Syarat & Ketentuan -->
+<div class="modal fade" id="bijak-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog width-80">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><i class="ic ic-Close"></i><span class="sr-only">Close</span></button>
+        <h3 class="modal-title" id="lineModalLabel">Syarat & Ketentuan IBID</h3>
+      </div>
+      <div class="modal-body clearfix">
+        <div class="col-md-12 col-sm-12">
+          <?php $this->load->view('userguide/syarat_ketentuan.html'); ?>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
   $('.auction-info').slick({
@@ -248,7 +282,7 @@
                       position: 'top-center',
                       timeout: 4
                     });
-                    location.href = data.redirect;
+                    if(data.redirect !== 'ktp') location.href = data.redirect;
                   }
                 },
                 error: function() {

@@ -78,7 +78,7 @@
         message: '<?=@$message[1]?>',
         type: '<?=@$message[0]?>',
         position: 'top-center',
-        timeout: 3
+        timeout: 4
       });
     });
   </script>
