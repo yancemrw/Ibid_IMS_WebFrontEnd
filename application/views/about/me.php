@@ -5,8 +5,8 @@
 			<li class="scroll-to"><a href="#about-2">Layanan Kami</a></li>
 			<li class="scroll-to"><a href="#about-3">Jaringan Kami</a></li>
 			<li class="scroll-to"><a href="#about-4">Penghargaan</a></li>
-			<li class="scroll-to"><a href="#about-5">management</a></li>
-			<li class="scroll-to"><a href="#about-6">kenapa IBID?</a></li>
+			<li class="scroll-to"><a href="#about-5">Managemen</a></li>
+			<li class="scroll-to"><a href="#about-6">Kenapa IBID?</a></li>
 			<li class="scroll-to"><a href="#about-7">Keunggulan Kami</a></li>
 		</ul>
 	</aside>
@@ -249,6 +249,12 @@
 			<p>Atas komitmennya dalam memberikan pelayanan terbaik untuk kepuasan pelanggannya IBID mendapat berbagai penghargaan antara lain :</p>
 			<div id="appreciation">
 				<ul class="flip-items">
+					<li>
+						<div class="box-slide-appreciation">
+							<img src="<?php echo base_url('assetsfront/images/background/appreciation-4.jpg'); ?>" />
+							<p>Balai lelang dengan tingkat kinerja terbaik sektor kendaraan Dirjend Kekayaan Negara KEMENKEU Republik Indonesia, 2013 - 2016</p>
+						</div>
+					</li>
 					<li>
 						<div class="box-slide-appreciation">
 							<img src="<?php echo base_url('assetsfront/images/background/appreciation-1.jpg'); ?>" />
