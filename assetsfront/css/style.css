@@ -441,12 +441,34 @@ header:before {
     display: none;
 }
 
+.tab-search .select-custom.select-type ~ .select2-container img {
+    padding-bottom: 10px;
+    padding-left: 10px;
+    height: 35px;
+}
+
 .tab-search .select-custom~.select2-container {
     text-align: left;
     padding: 10px;
     border: 1px solid #ccc;
     width: 250px!important;
     max-width: 100%!important;
+}
+
+.tab-search .select-custom.select-type~.select2-container {
+    width: 150px!important;
+    padding-left: 0
+}
+
+.tab-search .select-custom.select-address~.select2-container {
+    width: 350px!important
+}
+
+.tab-search .select-custom~.select2-container--default .select2-selection--single {
+    padding-top: 6px
+}
+.tab-search .select-custom~.select2-container--default .select2-selection--single span {
+    padding-left: 0
 }
 
 .select-custom~.select2-container--default .select2-selection--single {
@@ -509,7 +531,6 @@ header:before {
 
 .tab-search .nav-tabs {
     border-bottom: 0;
-    height: 57px;
 }
 
 .tab-search .nav-tabs>li>a {
@@ -554,7 +575,8 @@ header:before {
 .btn-search {
     padding: 14px 10px;
     width: 250px!important;
-    max-width: 100%
+    max-width: 100%;
+    font-size: 14px !important;
 }
 
 .tab-search .form-group {
@@ -578,7 +600,7 @@ header:before {
     width: 100%;
     max-width: 100%;
     border-radius: 0;
-    font-size: 11px;
+    font-size: 14px;
     text-transform: uppercase;
     outline: none;
     -webkit-transition: all 0.2s ease;
@@ -594,7 +616,7 @@ header:before {
     width: 100%;
     max-width: 100%;
     border-radius: 0;
-    font-size: 11px;
+    font-size: 14px;
     text-transform: uppercase;
     outline: none;
     -webkit-transition: all 0.2s ease;
@@ -610,7 +632,7 @@ header:before {
     width: 100%;
     max-width: 100%;
     border-radius: 0;
-    font-size: 11px;
+    font-size: 14px;
     text-transform: uppercase;
     outline: none;
     -webkit-transition: all 0.2s ease;
@@ -626,7 +648,7 @@ header:before {
     width: 100%;
     max-width: 100%;
     border-radius: 0;
-    font-size: 11px;
+    font-size: 14px;
     text-transform: uppercase;
     outline: none;
     -webkit-transition: all 0.2s ease;
@@ -642,7 +664,7 @@ header:before {
     width: 100%;
     max-width: 100%;
     border-radius: 0;
-    font-size: 11px;
+    font-size: 14px;
     text-transform: uppercase;
     outline: none;
     -webkit-transition: all 0.2s ease;
@@ -659,7 +681,7 @@ header:before {
     width: 100%;
     max-width: 100%;
     border-radius: 0;
-    font-size: 11px;
+    font-size: 14px;
     text-transform: uppercase;
     outline: none;
     -webkit-transition: all 0.2s ease;
@@ -675,7 +697,7 @@ header:before {
     width: 100%;
     max-width: 100px;
     border-radius: 3px;
-    font-size: 11px;
+    font-size: 14px;
     padding: 3px 15px;
     outline: none;
     -webkit-transition: all 0.2s ease;
@@ -4957,7 +4979,7 @@ a.delete-favorite {
     margin-bottom: 5px;
     font-family: 'OpenSansRegular';
     margin-top: 20px;
-    font-size: 14px;
+    font-size: 14px !important;
 }
 
 .form-register a {
@@ -5685,7 +5707,7 @@ a.toggle-aside {
 }
 
 .nav-procedure.stick {
-    width: 74%;
+    width: 75%;
     margin: auto;
     display: block;
     top: 200px !important;
@@ -5707,7 +5729,7 @@ a.toggle-aside {
     font-family: "OpenSansBold", helvetica, Sans-serif;
     font-size: 24px;
     color: #fff;
-    margin-right: 50px;
+    right: 37px;
     z-index: 2
 }
 
@@ -6649,6 +6671,41 @@ td.bg-Grey {
     z-index: 9
 }
 
+.form-group.floating-label textarea {
+    position: relative;
+    z-index: 8;
+    background: none;
+    padding: 20px 11px 8px;
+    height: auto;
+}
+
+.form-group.floating-label label,
+.form-group.floating-label textarea.empty+label {
+    font-size: 14px;
+    top: 15px;
+    color: #999;
+    transition: .5s;
+    position: absolute;
+    left: 20px;
+    z-index: 2;
+}
+
+.form-group.floating-label textarea:focus {
+    border: 1px solid #81be2a;
+    outline: none;
+    box-shadow: 0 0px 1px #81be2a;
+}
+
+.form-group.floating-label textarea:focus+label,
+.form-group.floating-label textarea.not-empty+label {
+    position: absolute;
+    top: 7px;
+    left: 13px;
+    font-size: 10px;
+    color: #81be2a;
+    font-weight: normal;
+    z-index: 9
+}
 
 /* PRELOADER */
 

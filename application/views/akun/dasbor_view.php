@@ -53,7 +53,7 @@
                         <div class="avatar">
                            <img src="<?php echo $img_link; ?>">
                         </div>
-                        <a href="" class="icon-camera">
+                        <a href="javascript:void(0)" class="icon-camera width-125px">
                            <img src="<?php echo base_url('assetsfront/images/icon/ic_camera.png'); ?>" alt="">
                         </a>
                      </div>

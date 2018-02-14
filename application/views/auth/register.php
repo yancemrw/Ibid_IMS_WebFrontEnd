@@ -52,7 +52,7 @@
                             <div class="help-info" id="type-repass"></div>
                         </div>
                         <div class="form-group floating-label">
-                            <input type="text" id="idcard" name="idcard" class="form-control" />
+                            <input type="text" id="idcard" name="idcard" class="form-control border-radius-none" />
                             <label class="label-schedule">Kartu Anggota</label>
                             <div class="help-info" id="idcard-info">
                                 <i class="fa fa-info"></i> Hanya diisi bila memiliki kartu anggota IBID
@@ -193,18 +193,30 @@
                         position: 'top-center',
                         timeout: 3
                     });
+                    return false;
                 }
-                else if(recaptcha !== '') {
-                    $('#btn-daftar').attr('disabled', true);
-                    $('#form-reg').submit();
-                }
-                else {
+                else if(recaptcha === '') {
                     bootoast.toast({
                         message: 'Captcha harus di isi!',
                         type: 'warning',
                         position: 'top-center',
                         timeout: 3
                     });
+                    return false;
+                }
+                else if(pass !== repass) {
+                    bootoast.toast({
+                        message: 'Kata sandi dan ulangi kata sandi tidak sama',
+                        type: 'warning',
+                        position: 'top-center',
+                        timeout: 3
+                    });
+                    return false;
+                }
+                else {
+                    $('#btn-daftar').attr('disabled', true);
+                    $('#form-reg').submit();
+                    return false;
                 }
             }
         });

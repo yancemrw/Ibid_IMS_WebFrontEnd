@@ -104,12 +104,27 @@
 	font-size: 11px;
 }
 
+.margin-left-10px {
+	margin-left: 10px;
+}
+
+.margin-left-20px {
+	margin-left: 20px;
+}
+
 .margin-top-80px {
     margin-top: 80px !important;
 }
 
 .navbar {
 	border: 0 !important;
+}
+
+.no-notif {	
+	color: #81be2a;
+	font-size: 12px;
+	margin: 15px;
+	text-align: center;
 }
 
 .padding-10px {
@@ -132,9 +147,29 @@
 	padding: 2px !important;
 }
 
+.width-80 {
+	width: 80%;
+}
+
+.width-125px {
+	width: 125px;
+}
+
 @media(max-width: 768px) {
 	.or {
 		width: 40px !important;
+	}
+
+	.btn-green, 
+	.btn-green:hover, 
+	.btn-green:focus {
+		font-size: 11px;
+	}
+
+	.btn-lg,
+	.btn-green,
+	.btn-search {
+		font-size: 11px !important;
 	}
 
 	.btn-logout,

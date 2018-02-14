@@ -75,9 +75,13 @@ class Register extends CI_Controller {
 			$urls = linkservice('account')."auth/checkemail";
 			$meth = 'POST';
 			$resp = admsCurl($urls, $dataInsert, $meth);
+
+			// print_r($resp);
+			// exit();
+
 			$jsondec = json_decode($resp['response']);
 			if($jsondec->status === 0) {
-				$url = linkservice('account')."auth/RegisterFrontEnd/register";
+				$url = linkservice('account')."auth/registerfrontend/register";
 				$method = 'POST';
 				$responseApi = admsCurl($url, $dataInsert, $method);
 
@@ -86,7 +90,7 @@ class Register extends CI_Controller {
 				}
 				else {
 					$this->session->set_flashdata('message', array('success', 'Akun anda sudah terdaftar, Silahkan verifikasi email dari kami'));
-					redirect(); 
+					redirect('login'); 
 				}
 			}
 			else {

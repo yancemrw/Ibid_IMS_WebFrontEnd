@@ -45,7 +45,7 @@
             <div class="col-md-5 col-sm-6">
                 <div class="booking-schedule">
                     <h2>Perbaharui Data Anda <span>Hanya di Isi Untuk User Baru</span></h2>
-                    <form class="form-filter" id="beli-npl" method="POST" data-provide="validation" action="<?php echo site_url("biodata/otp"); ?>">
+                    <form class="form-filter" id="beli-npl" data-provide="validation">
                         <input type="hidden" name="otpkirim" value="true">
                         <div class="form-group floating-label">
                             <input type="text" name="Phone" id="notif-telepon" class="form-control input-custom" value="<?php echo @$detailBiodata['Phone']; ?>"
@@ -94,7 +94,7 @@
                         <div class="g-recaptcha recaptcha" id="idrecaptcha" required></div>
                         <div class="input-group agree-required">
                             <input type="checkbox" name="checkbox" id="agree-required" class="cursor-pointer">
-                            <label for="agree-required">Dengan melakukan pendaftaran, saya setuju dengan <a href="javascript:void(0)">Kebijakan Privasi</a> dan <a href="javascript:void(0)">Syarat & Ketentuan</a> IBID.</label>
+                            <label for="agree-required">Dengan melakukan pendaftaran, saya setuju dengan <a href="javascript:void(0)" data-toggle="modal" data-target="#privacy-modal">Kebijakan Privasi</a> dan <a href="javascript:void(0)" data-toggle="modal" data-target="#bijak-modal">Syarat & Ketentuan</a> IBID.</label>
                         </div>
                         <button class="btn btn-green" id="btn-kirim">KIRIM</button>
                     </form>
@@ -103,6 +103,40 @@
         </div>
     </div>
 </section>
+
+<!-- MODAL PRIVASI -->
+<div class="modal fade" id="privacy-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog width-80">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><i class="ic ic-Close"></i><span class="sr-only">Close</span></button>
+        <h3 class="modal-title" id="lineModalLabel">Kebijakan Privasi</h3>
+      </div>
+      <div class="modal-body clearfix">
+        <div class="col-md-12 col-sm-12">
+          <?php $this->load->view('userguide/privacy_policy.html'); ?>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL Syarat & Ketentuan -->
+<div class="modal fade" id="bijak-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog width-80">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><i class="ic ic-Close"></i><span class="sr-only">Close</span></button>
+        <h3 class="modal-title" id="lineModalLabel">Syarat & Ketentuan IBID</h3>
+      </div>
+      <div class="modal-body clearfix">
+        <div class="col-md-12 col-sm-12">
+          <?php $this->load->view('userguide/syarat_ketentuan.html'); ?>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
   $('.auction-info').slick({
@@ -193,19 +227,12 @@
           bankacc   = $('input[name="BankAccountNumber"]').val(), 
           bankname  = $('input[name="BankAccountName"]').val(),
           ktp       = $('input[name="IdentityNumber"]').val(),
+          otpkirim  = $('input[name="otpkirim"]').val(),
           recaptcha = $('#e8df0fade2ce52c6a8cf8c8d2309d08a').val();
       if(phone !== '' && bankid !== '' && bankacc !== '' && bankname !== '' && ktp !== '') {
           if(ktp.length < 16) {
               bootoast.toast({
                   message: 'Nomor KTP harus 16 angka!',
-                  type: 'warning',
-                  position: 'top-center'
-              });
-              return false;
-          }
-          else if($('#agree-required').is(":checked") === false) {
-              bootoast.toast({
-                  message: 'Anda harus setuju dengan syarat dan ketentuan dari kami!',
                   type: 'warning',
                   position: 'top-center'
               });
@@ -219,9 +246,56 @@
               });
               return false;
           }
+          else if($('#agree-required').is(":checked") === false) {
+              bootoast.toast({
+                  message: 'Anda harus setuju dengan syarat dan ketentuan dari kami!',
+                  type: 'warning',
+                  position: 'top-center'
+              });
+              return false;
+          }
           else {
               $('#btn-kirim').attr('disabled', true);
-              $('#beli-npl').submit();
+              $.ajax({
+                type: 'POST',
+                url: '<?php echo site_url("biodata/otp"); ?>',
+                data: 'Phone='+phone+'&BankId='+bankid+'&BankAccountNumber='+bankacc+'&BankAccountName='+bankname+'&IdentityNumber='+ktp+'&otpkirim='+otpkirim,
+                success: function(data) {
+                  var data = JSON.parse(data);
+                  if(data.status === 1) {
+                    bootoast.toast({
+                      message: data.messages,
+                      type: 'warning',
+                      position: 'top-center',
+                      timeout: 3
+                    });
+                    setTimeout(function() {
+                      location.href = data.redirect;
+                      $('#btn-kirim').attr('disabled', false);
+                    }, 1500);
+                  }
+                  else {
+                    $('#btn-kirim').attr('disabled', false);
+                    bootoast.toast({
+                      message: data.messages,
+                      type: 'warning',
+                      position: 'top-center',
+                      timeout: 4
+                    });
+                    if(data.redirect !== 'ktp') location.href = data.redirect;
+                  }
+                },
+                error: function() {
+                  $('#btn-kirim').attr('disabled', false);
+                  bootoast.toast({
+                    message: 'Terjadi Error Pada Server',
+                    type: 'warning',
+                    position: 'top-center',
+                    timeout: 3
+                  });
+                }
+              });
+              //$('#beli-npl').submit();
               return false;
           }
       }

@@ -10,8 +10,8 @@ function template($view = '', $data = '') {
 
   // get header image
   if(@$data['menu_pages'] === 'panduan-lelang') {
-    $data['bgheader'] = 'https://sera.astra.co.id/uploads/contents/1487930089_9j8r7v6bXZ.png';
-    $data['class_header'] = '';
+    $data['bgheader'] = base_url('assetsfront/images/background/bg-about-us.jpg');
+    $data['class_header'] = 'header-aboutus';
   }
   else if(@$data['menu_pages'] === 'about') {
     $data['bgheader'] = base_url('assetsfront/images/background/bg-about-us.jpg');
@@ -36,15 +36,14 @@ function login_status_form_mobile($userdata) {
   $pp = base_url('assetsfront/images/icon/ic_avatar.png');
   if(count(@$userdata['UserId']) > 0) {
     $html = '<ul class="user-nav clearfix">
-                <!--li class="dropdown">
+                <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <p><img src="'.base_url('assetsfront/images/icon/Transaksi.png').'" alt="" title="" width="" height=""></p>
                     </a>
                     <ul class="dropdown-menu dropdown-custom">
-                        <li>
-                            <p class="title-dropdown">Transaksi</p>
-                        </li>
-                        <li class="input-dropdown">
+                        <li><p class="title-dropdown">Transaksi</p></li>
+                        <li><p class="no-notif">Tidak Ada Transaksi</p></li>
+                        <!--li class="input-dropdown">
                             <h2>Butuh Tindakan</h2>
                             <form>
                                 <div class="form-group floating-label">
@@ -73,18 +72,17 @@ function login_status_form_mobile($userdata) {
                         </li>
                         <li class="text-center">
                             <a href="" class="viewall-dropdown">Lihat Semua Transaksi</a>
-                        </li>
+                        </li-->
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <p><img src="'.base_url('assetsfront/images/icon/Notifikasi.png').'" alt="" title="" width="" height=""> <span class="notification">10</span></p>
+                        <p><img src="'.base_url('assetsfront/images/icon/Notifikasi.png').'" alt="" title="" width="" height=""><!--span class="notification">10</span--></p>
                     </a>
                     <ul class="dropdown-menu dropdown-custom">
-                        <li>
-                            <p class="title-dropdown">Notifikasi</p>
-                        </li>
-                        <li class="clearfix">
+                        <li><p class="title-dropdown">Notifikasi</p></li>
+                        <li><p class="no-notif">Tidak Ada Notifikasi</p></li>
+                        <!--li class="clearfix">
                             <a href="#">
                                 <div class="media-image">
                                     <img src="'.base_url('assetsfront/images/icon/ic_notif_1.png').'" alt="" title="">
@@ -119,9 +117,9 @@ function login_status_form_mobile($userdata) {
                         </li>
                         <li class="text-center">
                             <a href="" class="viewall-dropdown">Lihat Semua Transaksi</a>
-                        </li>
+                        </li-->
                     </ul>
-                </li-->
+                </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle box-profile" data-toggle="dropdown">
                     <span class="photo-profile">
@@ -165,15 +163,14 @@ function login_Status_form($userdata) {
   $profile_name = @(strlen($userdata['namefront']) > 10) ? substr($userdata['namefront'], 0, 10).'...' : $userdata['namefront']; 
   if(count(@$userdata['UserId']) > 0) {
 
-    $html = '<!--li class="dropdown hidden-mob">
+    $html = '<li class="dropdown hidden-mob">
        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           <p><img src="'.base_url('assetsfront/images/icon/ic_transaction.png').'" alt="" title="" width="16px" height="22px"> <img src="'.base_url('assetsfront/images/icon/Transaksi.png').'" alt="" title="" width="" height="" class="ic_fixed"></p>
        </a>
        <ul class="dropdown-menu dropdown-custom">
-          <li>
-             <p class="title-dropdown">Transaksi</p>
-          </li>
-          <li class="input-dropdown">
+          <li><p class="title-dropdown">Transaksi</p></li>
+          <li class="no-notif">Tidak Ada Transaksi</li>
+          <!--li class="input-dropdown">
              <h2>Butuh Tindakan</h2>
              <form>
                 <div class="form-group floating-label">
@@ -202,18 +199,17 @@ function login_Status_form($userdata) {
           </li>
           <li class="text-center">
              <a href="" class="viewall-dropdown">Lihat Semua Transaksi</a>
-          </li>
+          </li-->
        </ul>
     </li>
     <li class="dropdown hidden-mob">
        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <p><img src="'.base_url('assetsfront/images/icon/bell.png').'" alt="" title="" width="16px" height="22px"><img src="'.base_url('assetsfront/images/icon/Notifikasi.png').'" alt="" title="" width="" height="" class="ic_fixed"> <span class="notification">10</span></p>
+          <p><img src="'.base_url('assetsfront/images/icon/bell.png').'" alt="" title="" width="16px" height="22px"><img src="'.base_url('assetsfront/images/icon/Notifikasi.png').'" alt="" title="" width="" height="" class="ic_fixed"><!--span class="notification">10</span--></p>
        </a>
        <ul class="dropdown-menu dropdown-custom">
-          <li>
-             <p class="title-dropdown">Notifikasi</p>
-          </li>
-          <li class="clearfix">
+          <li><p class="title-dropdown">Notifikasi</p></li>
+          <li class="no-notif">Tidak Ada Notifikasi</li>
+          <!--li class="clearfix">
              <a href="#">
                 <div class="media-image">
                    <img src="'.base_url('assetsfront/images/icon/ic_notif_1.png').'" alt="" title="">
@@ -248,9 +244,9 @@ function login_Status_form($userdata) {
           </li>
           <li class="text-center">
              <a href="" class="viewall-dropdown">Lihat Semua Transaksi</a>
-          </li>
+          </li-->
        </ul>
-    </li-->
+    </li>
     <li class="dropdown hidden-mob">
        <a href="#" class="dropdown-toggle box-profile" data-toggle="dropdown">
           <span class="photo-profile">

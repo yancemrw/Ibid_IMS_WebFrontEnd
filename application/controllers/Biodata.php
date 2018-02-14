@@ -29,15 +29,14 @@ class Biodata extends CI_Controller {
 			cek kelengkapan data awal
 			********************************
 		*/
-			if ($detailBiodata['Phone'] == '' || 
-				$detailBiodata['BankId'] == '' || 
-				$detailBiodata['BankAccountNumber'] == '' || 
-				$detailBiodata['BankAccountName'] == '' || 
-				$detailBiodata['Name'] == '' || 
-				$detailBiodata['IdentityNumber'] == '' || 
-				$detailBiodata['NpwpNumber'] == '' 
-			){
-
+		if ($detailBiodata['Phone'] == '' || 
+			$detailBiodata['BankId'] == '' || 
+			$detailBiodata['BankAccountNumber'] == '' || 
+			$detailBiodata['BankAccountName'] == '' || 
+			$detailBiodata['Name'] == '' || 
+			$detailBiodata['IdentityNumber'] == '' || 
+			$detailBiodata['NpwpNumber'] == '' 
+		) {
 			$data['page'] 	= 'biodata/ForNPL';
 			$data['detailBiodata'] = $detailBiodata;
 			############################################################
@@ -53,20 +52,11 @@ class Biodata extends CI_Controller {
 			}
 			$data['listBank'] = @$listBank;
 			############################################################
-			
-			
 		} 
 		else {
 			$data['title']	= 'Pembelian NPL';
 			$data['page'] 	= 'counter/pembelian/add';
 		}
-		
-		
-		
-		
-			// echo '<pre>';
-			// print_r($data['detailBiodata']);
-			// echo '</pre>';
 		
 		$this->load->view('templateAdminLTE',$data);
 	}
@@ -74,83 +64,103 @@ class Biodata extends CI_Controller {
 
 	public function otp() {
 		// handle KTP
-		$urlKTP = linkservice('account')."users/searchKtp?ktp=".$this->input->post('IdentityNumber');
-		$methodKTP = 'GET';
-		$resKTP = admsCurl($urlKTP, array(), $methodKTP);
-		$ktp_data = json_decode($resKTP['response']);
+		$urlKTP		= linkservice('account')."users/searchKtp?ktp=".$this->input->post('IdentityNumber')."&id=".$this->session->userdata('userdata')['UserId'];
+		$methodKTP	= 'GET';
+		$resKTP		= admsCurl($urlKTP, array(), $methodKTP);
+		$ktp_data	= json_decode($resKTP['response']);
+		$callback	= new stdClass();
 		
 		if($ktp_data->status === 1) {
-			redirect('beli-npl', 'refresh');
+			$callback->status = 0;
+			$callback->messages = 'Nomor KTP Sudah Terdaftar di Sistem Kami, Mohon Daftarkan No KTP Yang Lain';
+			$callback->redirect = 'ktp';
+			echo json_encode($callback);
+			exit;
+			//redirect('beli-npl', 'refresh');
 		}
 		else {
 			$otpsesi = substr(str_shuffle("0123456789"), -5);
 			$otpin = array(
 				'otpNPL' => $otpsesi
 			);
-			$this->session->set_userdata( $otpin );
+			$this->session->set_userdata($otpin);
 
-			// cek if phone is set
+			// cek if phone is set false
 			if(@$this->input->post('Phone')) {
 				$this->session->set_userdata('Phone', $this->input->post('Phone'));
 			}
 
 			// jika difrontend pengguna meminta mengirimkan lagi otp nya.
-			if (@$this->input->get('otpkirim')=='yes') {
+			$resend = false;
+			if(@$this->input->get('otpkirim') == 'yes') {
+				$resend = true;
 				$_POST['otpkirim'] = 'true';
 				$_POST['Phone'] = $this->session->userdata('Phone');
-			} else {
+			}
+			else {
 				$array = array(
 					'BiodataPembelianNPL' => @$_POST
 				);
-				$this->session->set_userdata( $array );
+				$this->session->set_userdata($array);
 			}
 
-			// ########### add by mas andi supervisor
-			date_default_timezone_set('Asia/Jakarta');
-			// send to sms
-			$dataInsert =  array (
-				'type'			=> 'sms',
-				'msisdn'		=> @$_POST['Phone'],
-				'message'		=> 'IBID OTP anda : '.$otpsesi,
-				'description'	=> 'OTP IBID',
-				'schedule'		=> date("d/m/Y H:i",strtotime(date("Y-m-d H:i:s")."+1 Minutes")),
-				'campaign'		=> 'OTP'
-			);
-			$url 			= linkservice('notif')."api/notification";
-			$method 		= 'POST';
-			$responseApi 	= admsCurl($url, $dataInsert, $method);
-			// ########################################
-
-			if ($_POST['otpkirim']=='true') {
-				#########
+			if($_POST['otpkirim'] == 'true') {
+				######## add by mas Andi Supervisor (send OTP via SMS) ########
+				date_default_timezone_set('Asia/Jakarta');
 				$dataInsert =  array (
-					'type' => 'email',
-					'to' => @$this->session->userdata('emailfront'),
-					'cc' => 'lutfi.f.hidayat@gmail.com',
-					'subject' => 'OTP Pembelian NPL',
-					'body' => '
-					<p>Kode OTP</p>
-					<p><b> '.$otpsesi.'</b></p>
-					'
-				); 
-
+					'type'			=> 'sms',
+					'msisdn'		=> @$_POST['Phone'],
+					'message'		=> 'IBID OTP anda : '.$otpsesi,
+					'description'	=> 'OTP IBID',
+					'schedule'		=> date("d/m/Y H:i",strtotime(date("Y-m-d H:i:s")."+1 Minutes")),
+					'campaign'		=> 'OTP'
+				);
 				$url 			= linkservice('notif')."api/notification";
 				$method 		= 'POST';
 				$responseApi 	= admsCurl($url, $dataInsert, $method);
+				###############################################################
 
-				redirect('biodata/otpconfirm', 'refresh');
+				############### Email OTP (by Juragan Server Lutfi) ################
+				/*$dataInsert =  array (
+					'type'		=> 'email',
+					'to'		=> @$this->session->userdata('emailfront'),
+					'cc'		=> 'lutfi.f.hidayat@gmail.com',
+					'subject'	=> 'OTP Pembelian NPL',
+					'body'		=> '<p>Kode OTP Anda</p><p><b> '.$otpsesi.'</b></p>'
+				);
+				$url 			= linkservice('notif')."api/notification";
+				$method 		= 'POST';
+				$responseApi 	= admsCurl($url, $dataInsert, $method);*/
+				####################################################################
 
-			} else {
-				redirect('pembelian', 'refresh');
+				if($resend === true) {
+					$callback->status = 1;
+					$callback->messages = 'OTP Sudah Kami Kirim Kembali, Silahkan Verifikasi';
+					$callback->redirect = '';
+					echo json_encode($callback);
+					exit;
+				}
+				else {
+					$callback->status = 1;
+					$callback->messages = 'Data Sudah Kami Terima, Silahkan Verifikasi OTP Dari Kami';
+					$callback->redirect = 'biodata/otpconfirm';
+					echo json_encode($callback);
+					exit;
+					//redirect('biodata/otpconfirm', 'refresh');
+				}
+			}
+			else {
+				$callback->status = 0;
+				$callback->messages = 'Data Anda Sudah Terdaftar di Sistem Kami';
+				$callback->redirect = 'pembelian';
+				echo json_encode($callback);
+				exit;
+				//redirect('pembelian', 'refresh');
 			}
 		}
 	}
 
-	public function otpconfirm()
-	{
-		// print_r($this->session->all_userdata());
-
-
+	public function otpconfirm() {
 		if (isset($_POST['otp'])) {
 			// ubah format data otp dari string menjadi array, karena menggunakan javascript POST datanya
 			$otpconv = json_decode($_POST['otp']);
@@ -174,27 +184,20 @@ class Biodata extends CI_Controller {
 
 		$data['title']	= 'Pembelian NPL';
 		$userdata = $this->session->userdata('userdata');
-		$data = array(
+		$data = array (
 			// header white untuk selain home, karena menggunakan header yang berwarna putih
 			'header_white'		=> "header-white",
 			'userdata'			=> $userdata,
 			'title'				=> 'Beli Nomor Peserta Lelang ( NPL )',
 			'form_auth_mobile'	=> login_status_form_mobile($userdata),
 			'form_auth'			=> login_Status_form($userdata),
-			'phone'				=> ''
+			'phone'				=> (@$this->session->userdata('Phone')) ? $this->session->userdata('Phone') : ''
 		);
-		
 		$view	= 'npl/npl_otp_view';  
-		// $view = "npl/npl_view";
 		template($view , $data);
 	}
 
-	function updateForNPL(){
-
-		// print_r($this->session->all_userdata());
-		// exit();
-
-
+	function updateForNPL() {
 		############################################################
 		$id = trim($_SESSION['idfront']);
 		// exit();
@@ -210,11 +213,6 @@ class Biodata extends CI_Controller {
 		// print_r($detailBiodata);
 		$sesi = $this->session->all_userdata();
 
-		// echo "<pre>";
-		// print_r($sesi);
-		// exit();
-		
-
 		// update users
 		$dataPost['dataUpdate'] = array(
 			'Name' => @$sesi['BiodataPembelianNPL']['Name'],
@@ -227,9 +225,7 @@ class Biodata extends CI_Controller {
 		$method = 'POST';
 		$responseApi = admsCurl($url, $dataPost, $method);
 
-		// exit();
-
-		$usersBiodataArray = array(
+		$usersBiodataArray = array (
 			'BiodataId' => $id,
 			'IdentityNumber' => $sesi['BiodataPembelianNPL']['IdentityNumber'],
 			'NpwpNumber' => $sesi['BiodataPembelianNPL']['NpwpNumber'],
@@ -238,25 +234,17 @@ class Biodata extends CI_Controller {
 			'BankAccountNumber' => $sesi['BiodataPembelianNPL']['BankAccountNumber']
 		);
 
-			// print_r($usersBiodataArray);
-			// exit();
-
-
-		if ($detailBiodata['users']['BiodataId'] == ''){
-
-
+		if($detailBiodata['users']['BiodataId'] == '') {
 			// Insert Biodata
 			$url = linkservice('account') .'usersbiodata/add';
 			$method = 'POST';
 			$responseApi = admsCurl($url, $usersBiodataArray, $method);
-			if ($responseApi['err']) {
+			if($responseApi['err']) {
 				echo "<hr>cURL Error #:" . $responseApi['err'];
-			} else {
 			}
 
 		}
 		else {
-
 			// UPDATE Biodata
 			$dataPostUsersBiodata['dataUpdate'] = $usersBiodataArray;
 			$dataPostUsersBiodata['whereUpdate'] = array('BiodataId' => $id);
@@ -266,16 +254,9 @@ class Biodata extends CI_Controller {
 			$responseApi = admsCurl($url, $dataPostUsersBiodata, $method);
 			if ($responseApi['err']) {
 				echo "<hr>cURL Error #:" . $responseApi['err'];
-			} else {
 			}
 		}
-
-			// print_r($responseApi);
 		redirect('pembelian');
-		// echo '<pre>';
-		// print_r($_POST);
-		// print_r($detailBiodata);
-		// echo '</pre>';
 	}
 }
 

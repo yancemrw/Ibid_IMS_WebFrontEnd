@@ -78,9 +78,12 @@ class Login extends CI_Controller {
 				// response from oauth2
 				$res = json_decode($responseApi['response']);
 				if(isset($res->error)) {
-					// kalo gagal
-					$this->session->set_flashdata('message', array('warning', $res->error_description));
-					redirect('login');
+					$callback = new stdClass();
+					$callback->status = 0;
+					$callback->messages = $res->error_description;
+					echo json_encode($callback);
+					//$this->session->set_flashdata('message', array('warning', $res->error_description));
+					//redirect('login');
 				}
 				else {
 					// set token on session
@@ -90,9 +93,12 @@ class Login extends CI_Controller {
 					$this->session->set_userdata('groupnamefront', $res->GroupName);
 					$this->AccessApi->setAccess('in',(array)$res);
 
-					// kalo berhasil
-					$this->session->set_flashdata('message', array('success', 'Berhasil Login'));
-					redirect(site_url());
+					$callback = new stdClass();
+					$callback->status = 1;
+					$callback->messages = 'Berhasil Login';
+					echo json_encode($callback);
+					//$this->session->set_flashdata('message', array('success', 'Berhasil Login'));
+					//redirect(site_url());
 				} 
 			}
 			

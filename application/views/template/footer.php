@@ -3,10 +3,10 @@
     <div class="row">
       <div class="col-md-4 social-media text-right">
         <ul>
-          <li><a href="https://www.instagram.com/ibid_balailelangserasi/" title="Instagram"><i class="fa fa-instagram"></i></a></li>
-          <li><a href="https://twitter.com/ibid_lelang?lang=en" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-          <li><a href="https://www.facebook.com/IbidBalaiLelangSerasi/" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-          <li><a href="javascript:void(0)" title="Youtube"><i class="fa fa-youtube-play"></i></a></li>
+          <li><a href="https://www.instagram.com/ibid_balailelangserasi/" title="Instagram" target="_blank"><i class="fa fa-instagram"></i></a></li>
+          <li><a href="https://twitter.com/ibid_lelang?lang=en" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/IbidBalaiLelangSerasi/" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="https://www.youtube.com/channel/UClTIiqX7MwL7MDOK0IoKEiQ" title="Youtube" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
         </ul>
       </div>
       <div class="col-md-4 footer-link text-center">
@@ -33,7 +33,7 @@
       </div>
       <div class="modal-body clearfix">
         <div class="col-md-6 col-sm-6">
-          <form class="form-login" id="form-login" action="<?php echo site_url('login'); ?>" method="POST" data-provide="validation">
+          <form class="form-login" id="form-login" data-provide="validation">
             <div class="form-group floating-label">
               <input type="email" class="form-control floating-handle input-custom is-invalid" id="usernamex" name="username"
                       oninvalid="this.setCustomValidity('Email tidak boleh kosong')" oninput="setCustomValidity('')" required />
@@ -47,7 +47,7 @@
             <div class="forgot"><a href="<?php echo site_url('forgot'); ?>">Lupa password?</a></div>
             <div class="form-group text-right">
               <div class="inis"><button class="btn btn-green" id="btn-loginx">Masuk</button></div>
-              <div class="none"><a href="<?php echo site_url('register'); ?>">Belum punya akun</a></div>
+              <div class="none"><a href="<?php echo site_url('register'); ?>" class="width-125px">Belum punya akun</a></div>
             </div>
             <span class="or">Atau</span>
           </form>
@@ -78,7 +78,7 @@
         message: '<?=@$message[1]?>',
         type: '<?=@$message[0]?>',
         position: 'top-center',
-        timeout: 3
+        timeout: 4
       });
     });
   </script>
@@ -87,7 +87,7 @@
 
 <script type="text/javascript">
   // handle login
-  $('#btn-login').click(function(e) {console.log('login');
+  $('#btn-login').click(function(e) {
     var user = $('#username').val(), pass = $('#password').val();
     if(user !== '' && pass !== '') {
       e.preventDefault();
@@ -98,14 +98,47 @@
           position: 'top-center',
           timeout: 3
         });
+        return false;
       }
       else {
         $('#btn-login').attr('disabled', true);
-        $('#form-logins').submit();
+        $.ajax({
+          type: 'POST',
+          url: '<?php echo site_url('login'); ?>',
+          data: 'username='+user+'&password='+pass,
+          success: function(data) {
+            var data = JSON.parse(data);
+            if(data.status === 1) {
+              setTimeout(function() {
+                location.href = '<?php echo site_url(); ?>';
+              }, 1500);
+              return false;
+            }
+            else {
+              $('#btn-login').attr('disabled', false);
+              bootoast.toast({
+                message: data.messages,
+                type: 'warning',
+                position: 'top-center',
+                timeout: 3
+              });
+              return false;
+            }
+          },
+          error: function() {
+            $('#btn-login').attr('disabled', false);
+            bootoast.toast({
+              message: 'Terjadi Masalah Pada Koneksi ke Server',
+              type: 'warning',
+              position: 'top-center',
+              timeout: 3
+            });
+          }
+        });
       }
     }
   });
-  $('#btn-loginx').click(function(e) {console.log('loginx');
+  $('#btn-loginx').click(function(e) {
     var userx = $('#usernamex').val(), passx = $('#passwordx').val();
     if(userx !== '' && passx !== '') {
       e.preventDefault();
@@ -116,10 +149,43 @@
           position: 'top-center',
           timeout: 3
         });
+        return false;
       }
       else {
         $('#btn-loginx').attr('disabled', true);
-        $('#form-login').submit();
+        $.ajax({
+          type: 'POST',
+          url: '<?php echo site_url('login'); ?>',
+          data: 'username='+userx+'&password='+passx,
+          success: function(data) {
+            var data = JSON.parse(data);
+            if(data.status === 1) {
+              setTimeout(function() {
+                location.href = '<?php echo site_url(); ?>';
+              }, 1500);
+              return false;
+            }
+            else {
+              $('#btn-loginx').attr('disabled', false);
+              bootoast.toast({
+                message: data.messages,
+                type: 'warning',
+                position: 'top-center',
+                timeout: 3
+              });
+              return false;
+            }
+          },
+          error: function() {
+            $('#btn-loginx').attr('disabled', false);
+            bootoast.toast({
+              message: 'Terjadi Masalah Pada Koneksi ke Server',
+              type: 'warning',
+              position: 'top-center',
+              timeout: 3
+            });
+          }
+        });
       }
     }
   });

@@ -15,7 +15,7 @@ class Verify extends CI_Controller {
 			'email' => @$this->input->get('email')
 		); 
 
-		$url 			= linkservice('account') ."auth/EmailVerifikasi";
+		$url 			= linkservice('account') ."auth/emailverifikasi";
 		$method 		= 'POST';
 		$responseApi 	= admsCurl($url, $dataInsert, $method); 
 		
@@ -25,7 +25,7 @@ class Verify extends CI_Controller {
 			else {
 				$responseApiInsert = json_decode($responseApi['response'], true);
 				if ($responseApiInsert['status'] == 1){
-					$this->session->set_flashdata('pesan', array('success', 'Berhasil di Aktivasi'));
+					$this->session->set_flashdata('message', array('success', 'Akun anda berhasil di aktivasi'));
 					redirect('auth/login', 'refresh');
 				}
 				else if ($responseApiInsert['status'] == 0) {

@@ -1619,8 +1619,8 @@
 		display: block;
 	}
 	header {
-		height: 250px;
-		background-size: cover;
+		height: 250px !important;
+		background-size: cover !important;
 	}
 	.tab-search .nav-tabs>li>a {
 		padding: 18px 21px;
@@ -2029,7 +2029,7 @@
 		left: auto;
 		margin: 0;
 		width: 100%;
-		height: 500px;
+		height: auto;
 	    overflow-y: scroll;
 	    border-top: 0
 	}

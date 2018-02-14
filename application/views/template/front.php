@@ -37,7 +37,7 @@
          <div role="tabpanel" class="tab-pane" id="tab-mobile-2">
             <form class="form-inline clearfix">
                <div class="form-group">
-                  <select class="select-custom form-control" id="thisCabang">
+                  <select class="select-custom form-control filterJadwal" id="thisCabang">
                      <!-- option value ="" ></option>
                      <option value ="" >Bandung</option>
                      <option value ="" >Jakarta</option -->
@@ -48,7 +48,7 @@
                   <label>Kota</label>
                </div>
                <div class="form-group clearfix">
-                  <select class="select-custom form-control select-type" id="thisItem">
+                  <select class="select-custom form-control select-type filterJadwal" id="thisItem">
                      <option value="car-type"></option>
                      <option value="hve-type"></option>
                      <option value="motorcycle-type"></option>
@@ -139,15 +139,15 @@
                      <a href="javascript:void(0)">
                         <div class="thumbnail">
                            <div class="thumbnail-custom">
-                              <img src="<?php echo base_url('assetsfront/images/background/img-recommend-1.jpg'); ?>" title="" alt="" />
+                              <img src="<?php echo base_url('assetsfront/images/background/B1602UOY.JPG'); ?>" title="" alt="" />
                            </div>
                            <div class="overlay-grade">
-                              Grade <span>A</span>
+                              Grade <span>B</span>
                            </div>
                         </div>
-                        <h2>DAIHATSU LUXIO 1.5 X MINIBUS AT</h2>
-                        <span>2014</span>
-                        <p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>04 September 2017</span></p>
+                        <h2>TOYOTA KIJANG INNOVA 2.0 G MINIBUS AT</h2>
+                        <span>2012</span>
+                        <p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>7 Februari 2018</span></p>
                         <p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Jakarta</span></p>
                      </a>
                   </div>
@@ -157,15 +157,15 @@
                      <a href="javascript:void(0)">
                         <div class="thumbnail">
                            <div class="thumbnail-custom">
-                              <img src="<?php echo base_url('assetsfront/images/background/img-recommend-2.jpg'); ?>" title="" alt="" />
+                              <img src="<?php echo base_url('assetsfront/images/background/B1553SAG.JPG'); ?>" title="" alt="" />
                            </div>
                            <div class="overlay-grade">
                               Grade <span>B</span>
                            </div>
                         </div>
-                        <h2>MITSUBISHI GRANDIS 2.4 MIVEC MINIBUS AT</h2>
-                        <span>2006</span>
-                        <p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>04 September 2017</span></p>
+                        <h2>TOYOTA VIOS 1.5 G SEDAN AT</h2>
+                        <span>2012</span>
+                        <p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>13 Januari 2018</span></p>
                         <p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Jakarta</span></p>
                      </a>
                   </div>
@@ -175,15 +175,15 @@
                      <a href="javascript:void(0)">
                         <div class="thumbnail">
                            <div class="thumbnail-custom">
-                              <img src="<?php echo base_url('assetsfront/images/background/img-recommend-3.jpg'); ?>" title="" alt="" />
+                              <img src="<?php echo base_url('assetsfront/images/background/B1819BRB.JPG'); ?>" title="" alt="" />
                            </div>
                            <div class="overlay-grade">
-                              Grade <span>C</span>
+                              Grade <span>B</span>
                            </div>
                         </div>
-                        <h2>TOYOTA FORTUNER 2.7 G JEEP AT</h2>
-                        <span>2010</span>
-                        <p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>04 September 2017</span></p>
+                        <h2>TOYOTA KIJANG INNOVA 2.5 V MINIBUS AT</h2>
+                        <span>2012</span>
+                        <p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>7 Februari 2018</span></p>
                         <p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Jakarta</span></p>
                      </a>
                   </div>
@@ -413,21 +413,6 @@ $(function(){
         
     }); 
 	
-	/* 
-	$('#ItemId').change(function(){
-		thisVal = $(this).val();
-		$.ajax({
-			url : '<?php echo linkservice('stock') ."item/add/Getsearchfront"; ?>',
-			data : {
-				id : thisVal
-			},
-			success : function(ret) {
-				$('#thisSearchBrand').html(ret[0]);
-			}
-		});
-	});
-	$('#ItemId').change();
-	*/
-
+	$('.filterJadwal').change();
 });
 </script>

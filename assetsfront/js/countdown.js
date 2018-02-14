@@ -57,8 +57,8 @@ function countdown(setTimer) {
 		var hours = Math.floor((distanced % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 		var minutes = Math.floor((distanced % (1000 * 60 * 60)) / (1000 * 60));
 		var seconds = Math.floor((distanced % (1000 * 60)) / 1000);
-		document.getElementById("countdown-id").innerHTML = '<button class="btn btn-green" id="btn-submit" onclick="refresh_button()">Submit</button>';
-		document.getElementById("divreotp").innerHTML = '<div style="margin-bottom:40px">'+numbering(hours) + ':' + numbering(minutes) + ':' + numbering(seconds)+'</div>';
+		//document.getElementById("countdown-id").innerHTML = '<button class="btn btn-green" id="btn-submit" onclick="refresh_button()">Submit</button>';
+		document.getElementById("divreotp").innerHTML = '<div style="margin-bottom:40px">' + numbering(minutes) + ':' + numbering(seconds) + '</div>';
 		
 		// If the count down is over, write some text 
 		if(distanced < 0) {
@@ -68,8 +68,8 @@ function countdown(setTimer) {
 			switch(checkpoint2) {
 				case '3': document.getElementById("countdown-id").innerHTML = '<div style="margin: 40px 0;">OTP sudah kadaluarsa<br />Silahkan hubungi customer service kami</div>';
 						  document.getElementById("divreotp").style.display = 'none';
-				case '2': document.getElementById("divreotp").innerHTML = '<a id="reotp" href="'+linked+'">Kirim ulang kode verifikasi</a>';
-				case '1': document.getElementById("divreotp").innerHTML = '<a id="reotp" href="'+linked+'">Kirim ulang kode verifikasi</a>';
+				case '2': document.getElementById("divreotp").innerHTML = '<a id="reotp" href="javascript:void(0)" onclick="reload()">Kirim ulang kode verifikasi</a>';
+				case '1': document.getElementById("divreotp").innerHTML = '<a id="reotp" href="javascript:void(0)" onclick="reload()">Kirim ulang kode verifikasi</a>';
 			}			
 		}
 	}, 1000);
