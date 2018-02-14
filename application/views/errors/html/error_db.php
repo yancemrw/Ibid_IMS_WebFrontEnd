@@ -60,6 +60,7 @@
          				  <img src='<?php echo base_url('assetsfront/images/background/500.png'); ?>' />
          				</div>
       					<p>Oops... Periksa koneksi kamu</p>
+                     <p>Muat ulang halaman browser anda</p>
       					<button class="btn btn-green cursor-pointer" onclick="location.href='<?php echo site_url(); ?>'">KEMBALI KE HALAMAN UTAMA</button>
       				</div>
       			</div>

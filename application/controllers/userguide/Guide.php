@@ -19,7 +19,7 @@ class Guide extends CI_Controller {
 			case 'online': 
 					$page_site = $this->panduan_lelang_online(); 
 					$menu_title = 'Tata Cara Lelang Online'; 
-					$video_url = 'https://www.youtube.com/embed/-diRprzLhQc?rel=0';
+					$video_url = 'https://www.youtube.com/embed/ThJGKU735eU?rel=0';
 					break;
 			case 'live': 
 					$page_site = $this->panduan_lelang_live(); 
