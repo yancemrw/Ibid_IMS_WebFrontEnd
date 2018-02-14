@@ -14,7 +14,7 @@
           <li><a href="<?php echo site_url('about'); ?>">Tentang Ibid</a></li>
           <li><a href="<?php echo site_url('faq'); ?>">FAQ</a></li>
           <li><a href="<?php echo site_url('blog'); ?>">Blog</a></li>
-          <li><a href="<?php echo site_url(); ?>">Privacy Policy</a></li>
+          <li><a href="javascript:void(0)" data-toggle="modal" data-target="#privacy-modal-home">Privacy Policy</a></li>
         </ul>
       </div>
       <div class="col-md-4 copyright">
@@ -23,6 +23,7 @@
     </div>
   </div>
 </footer>
+
 <!-- LOGIN -->
 <div class="modal fade modal-login" id="login" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -59,6 +60,23 @@
             <a href="<?php echo google(); ?>" class="login-google"><i class="ic ic-Google"></i> Masuk melalui Google</a>
             <a href="<?php echo linkedin(); ?>" class="login-linkedin"><i class="ic ic-linkedin"></i> Masuk melalui Linkedin</a>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PRIVASI -->
+<div class="modal fade" id="privacy-modal-home" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog width-80">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><i class="ic ic-Close"></i><span class="sr-only">Close</span></button>
+        <h3 class="modal-title" id="lineModalLabel">Kebijakan Privasi</h3>
+      </div>
+      <div class="modal-body clearfix">
+        <div class="col-md-12 col-sm-12">
+          <?php $this->load->view('userguide/privacy_policy.html'); ?>
         </div>
       </div>
     </div>
