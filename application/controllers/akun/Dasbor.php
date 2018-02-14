@@ -21,39 +21,49 @@ class Dasbor extends CI_Controller {
 		$this->form_validation->set_rules('rekname', 'Nama Rekening', 'required');
 
 		if($this->form_validation->run() === TRUE) {
-			$tmpDob = !empty($this->input->post('dob')) ? explode("/", $this->input->post('dob')) : false;
-			$dataUpdate = array(
-				'UserId'			=> $this->input->post('UserId'),
-				'first_name'		=> $this->input->post('first_name'),
-				'last_name'			=> $this->input->post('last_name'),
-				'email'				=> $this->input->post('upd_email'),
-				'phone'				=> $this->input->post('upd_phone'),
-				'memberid'			=> $this->input->post('idcard'),
-				'gender'			=> ($this->input->post('gender') !== "") ? $this->input->post('gender') : NULL,
-				'dob'				=> $tmpDob ? (sprintf("%04d",$tmpDob[2])."-".sprintf("%02d",$tmpDob[1])."-".sprintf("%02d",$tmpDob[0])) : NULL,
-				'city'				=> $this->input->post('city'),
-				'address'			=> $this->input->post('address'),
-				'occupation'		=> $this->input->post('okup'),
-				'nonpwp' 			=> $this->input->post('npwp'),
-				'noktp'				=> $this->input->post('ktp'),
-				'address' 			=> $this->input->post('address'),
-				'city' 				=> $this->input->post('city'),
-				'bankid' 			=> $this->input->post('bankid'),
-				'accountnumber'		=> $this->input->post('norek'),
-				'accountname'		=> $this->input->post('rekname'),
-				'branchbank'		=> $this->input->post('branchbank')
-			);
-
-			$url = linkservice('account')."userfrontend/Edit";
-			$method = 'POST';
-			$responseApi = admsCurl($url, $dataUpdate, $method);
-
-			if($responseApi['err']) {
-				echo "<hr>cURL Error #:".$responseApi['err'];
+			$urlKTP		= linkservice('account')."users/searchKtp?ktp=".$this->input->post('ktp')."&id=".$this->session->userdata('userdata')['UserId'];
+			$methodKTP	= 'GET';
+			$resKTP		= admsCurl($urlKTP, array(), $methodKTP);
+			$ktp_data	= json_decode($resKTP['response']);
+			if($ktp_data->status === 1) {
+				$this->session->set_flashdata('message', array('warning', 'Nomor KTP Sudah Terdaftar di Sistem Kami, Mohon Daftarkan No KTP Yang Lain'));
+				redirect('akun/dasbor', 'refresh');
 			}
 			else {
-				$this->session->set_flashdata('message', array('success', 'Akun Sudah Berhasil Diubah'));
-				redirect('akun/dasbor', 'refresh');
+				$tmpDob = !empty($this->input->post('dob')) ? explode("/", $this->input->post('dob')) : false;
+				$dataUpdate = array(
+					'UserId'			=> $this->input->post('UserId'),
+					'first_name'		=> $this->input->post('first_name'),
+					'last_name'			=> $this->input->post('last_name'),
+					'email'				=> $this->input->post('upd_email'),
+					'phone'				=> $this->input->post('upd_phone'),
+					'memberid'			=> $this->input->post('idcard'),
+					'gender'			=> ($this->input->post('gender') !== "") ? $this->input->post('gender') : NULL,
+					'dob'				=> $tmpDob ? (sprintf("%04d",$tmpDob[2])."-".sprintf("%02d",$tmpDob[1])."-".sprintf("%02d",$tmpDob[0])) : NULL,
+					'city'				=> $this->input->post('city'),
+					'address'			=> $this->input->post('address'),
+					'occupation'		=> $this->input->post('okup'),
+					'nonpwp' 			=> $this->input->post('npwp'),
+					'noktp'				=> $this->input->post('ktp'),
+					'address' 			=> $this->input->post('address'),
+					'city' 				=> $this->input->post('city'),
+					'bankid' 			=> $this->input->post('bankid'),
+					'accountnumber'		=> $this->input->post('norek'),
+					'accountname'		=> $this->input->post('rekname'),
+					'branchbank'		=> $this->input->post('branchbank')
+				);
+
+				$url = linkservice('account')."userfrontend/Edit";
+				$method = 'POST';
+				$responseApi = admsCurl($url, $dataUpdate, $method);
+
+				if($responseApi['err']) {
+					echo "<hr>cURL Error #:".$responseApi['err'];
+				}
+				else {
+					$this->session->set_flashdata('message', array('success', 'Akun Sudah Berhasil Diubah'));
+					redirect('akun/dasbor', 'refresh');
+				}
 			}
 		}
 		else {
