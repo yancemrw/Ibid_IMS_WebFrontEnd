@@ -193,18 +193,30 @@
                         position: 'top-center',
                         timeout: 3
                     });
+                    return false;
                 }
-                else if(recaptcha !== '') {
-                    $('#btn-daftar').attr('disabled', true);
-                    $('#form-reg').submit();
-                }
-                else {
+                else if(recaptcha === '') {
                     bootoast.toast({
                         message: 'Captcha harus di isi!',
                         type: 'warning',
                         position: 'top-center',
                         timeout: 3
                     });
+                    return false;
+                }
+                else if(pass !== repass) {
+                    bootoast.toast({
+                        message: 'Kata sandi dan ulangi kata sandi tidak sama',
+                        type: 'warning',
+                        position: 'top-center',
+                        timeout: 3
+                    });
+                    return false;
+                }
+                else {
+                    $('#btn-daftar').attr('disabled', true);
+                    $('#form-reg').submit();
+                    return false;
                 }
             }
         });
