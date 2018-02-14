@@ -15,7 +15,7 @@ class Verify extends CI_Controller {
 			'email' => @$this->input->get('email')
 		); 
 
-		$url 			= linkservice('account') ."auth/EmailVerifikasi";
+		$url 			= linkservice('account') ."auth/emailverifikasi";
 		$method 		= 'POST';
 		$responseApi 	= admsCurl($url, $dataInsert, $method); 
 		

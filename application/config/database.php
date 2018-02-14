@@ -73,16 +73,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
+// azure database 
+/*
+
+ibiddev.database.windows.net
+1433	
+adminibiddev
+Serasi123
+
+*/
+
+
+// end
+
 $db['default'] = array(
 	'hostname' => '127.0.0.1',
 	'username' => 'SA',
 	'password' => 'P@ssw0rd123',
 	'database' => 'Account',
 	'dsn'	   => 'sqlsrv:Server=127.0.0.1;Database=Account;',
-	'dbdriver' => 'sqlsrv',
-	'dbprefix' => '',  
+	'dbdriver' => 'sqlsrv', 
 	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
+	'db_debug' => FALSE, //(ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
 	'cachedir' => '',
 	'char_set' => 'utf8',
@@ -95,24 +107,5 @@ $db['default'] = array(
 	'save_queries' => TRUE
 );
 
-// $db['default'] = array(
-// 	'dsn'	   => '',
-// 	'hostname' => '',
-// 	'username' => '',
-// 	'password' => '',
-// 	'database' => '',
-// 	'dbdriver' => '',
-// 	'dbprefix' => '',
-// 	'pconnect' => FALSE,
-// 	'db_debug' => (ENVIRONMENT !== 'production'),
-// 	'cache_on' => FALSE,
-// 	'cachedir' => '',
-// 	'char_set' => 'utf8',
-// 	'dbcollat' => 'utf8_general_ci',
-// 	'swap_pre' => '',
-// 	'encrypt' => FALSE,
-// 	'compress' => FALSE,
-// 	'stricton' => FALSE,
-// 	'failover' => array(),
-// 	'save_queries' => TRUE
-// );
+ 
+ 

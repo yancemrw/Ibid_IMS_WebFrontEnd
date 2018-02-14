@@ -4,8 +4,8 @@
 	<head>
 		<meta charset="utf-8">
 		<title>404 Page Not Found</title>
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/style.css') ?>">
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/responsive.css') ?>">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/style.css'); ?>">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/responsive.css'); ?>">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/overwrite.css'); ?>">
 	</head>
 	<body>
@@ -15,7 +15,7 @@
 					<div class="row">
 						<div class="col-md-12 text-center">
 						<div class="image-message">
-							<img src="assets/images/background/404.png" alt="">
+							<img src="<?php echo base_url('assetsfront/images/background/404.png'); ?>" alt="">
 						</div>
 						<p>Oops... Halaman tidak ditemukan</p>
 						<button class="btn btn-green cursor-pointer" onclick="location.href='<?php echo site_url(); ?>'">KEMBALI KE HALAMAN UTAMA</button>

@@ -95,5 +95,5 @@ $route['titip-lelang'] = 'auction/entrusted';
 $route['panduan-lelang'] = 'userguide/guide/index/onsite';
 $route['panduan-lelang/(:any)'] = 'userguide/guide/index/$1';
 
-$route['404_override'] = '';
+$route['404_override'] = 'notfound/index';
 $route['translate_uri_dashes'] = FALSE;

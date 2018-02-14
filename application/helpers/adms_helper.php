@@ -2,6 +2,7 @@
 
 // kumpulan link services
 function linkservice($services) {
+
 	$BACKEND   = ('BACKEND' == strtoupper($services)) ? $return = 'http://beta.ibid.astra.co.id/backend/adms/' : ''; 
 	$ACCOUNT = ('ACCOUNT' == strtoupper($services)) ? $return = 'http://beta.ibid.astra.co.id/backend/service/akun/' : '';  
 	$NOTIF     = ('NOTIF' == strtoupper($services)) ? $return = 'http://beta.ibid.astra.co.id/backend/service/notif/' : '';  
@@ -13,7 +14,6 @@ function linkservice($services) {
 	$FINANCE   = ('FINANCE' === strtoupper($services)) ? $return = 'http://beta.ibid.astra.co.id/backend/service/finance/' : ''; 
 	$NPL      = ('NPL' === strtoupper($services)) ? $return = 'http://beta.ibid.astra.co.id/backend/service/npl/' : ''; 
 	$CMS    = ('CMS' === strtoupper($services)) ? $return = 'http://beta.ibid.astra.co.id/backend/dapur/' : '';  
-
 	return $return;
 }
 
