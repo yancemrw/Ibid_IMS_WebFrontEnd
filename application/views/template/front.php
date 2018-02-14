@@ -323,7 +323,7 @@
                            <img src="<?php echo linkservice('cms').'uploads/contents/'.$valTesti->Photo; ?>" class="img-responsive">
                         </div>
                         <h2><?php echo $valTesti->Title; ?></h2>
-                        <p>
+                        <p class="text-align-left">
                            <span><?php echo date('d F Y', strtotime($valTesti->Tanggal)); ?></span>
                            <?php echo $valTesti->Content; ?>
                         </p>

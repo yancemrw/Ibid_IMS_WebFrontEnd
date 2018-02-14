@@ -5,8 +5,8 @@
 			<li class="scroll-to"><a href="#about-2">Layanan Kami</a></li>
 			<li class="scroll-to"><a href="#about-3">Jaringan Kami</a></li>
 			<li class="scroll-to"><a href="#about-4">Penghargaan</a></li>
-			<li class="scroll-to"><a href="#about-5">management</a></li>
-			<li class="scroll-to"><a href="#about-6">kenapa IBID?</a></li>
+			<li class="scroll-to"><a href="#about-5">Managemen</a></li>
+			<li class="scroll-to"><a href="#about-6">Kenapa IBID?</a></li>
 			<li class="scroll-to"><a href="#about-7">Keunggulan Kami</a></li>
 		</ul>
 	</aside>
