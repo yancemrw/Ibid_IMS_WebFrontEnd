@@ -251,6 +251,12 @@
 				<ul class="flip-items">
 					<li>
 						<div class="box-slide-appreciation">
+							<img src="<?php echo base_url('assetsfront/images/background/appreciation-4.jpg'); ?>" />
+							<p>Balai lelang dengan tingkat kinerja terbaik sektor kendaraan Dirjend Kekayaan Negara KEMENKEU Republik Indonesia, 2013 - 2016</p>
+						</div>
+					</li>
+					<li>
+						<div class="box-slide-appreciation">
 							<img src="<?php echo base_url('assetsfront/images/background/appreciation-1.jpg'); ?>" />
 							<p>5-Star "World Class Quality Achievement", kategori Balai Lelang, Mars Indonesia & SWA Group, 2013 - 2014</p>
 						</div>
