@@ -17,7 +17,7 @@
 						<div class="image-message">
 							<img src="assets/images/background/404.png" alt="">
 						</div>
-						<p>Oops... Page Not Found</p>
+						<p>Oops... Halaman tidak ditemukan</p>
 						<button class="btn btn-green cursor-pointer" onclick="location.href='<?php echo site_url(); ?>'">KEMBALI KE HALAMAN UTAMA</button>
 						</div>
 					</div>
