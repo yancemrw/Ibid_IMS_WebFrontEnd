@@ -107,7 +107,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                      </button>
-                     <a class="navbar-brand icon_logo" alt="" href="<?php echo base_url(); ?>"><i class="icn icn-LOGO-IBID"></i></a>
+                     <a class="navbar-brand icon_logo" onclick="setActiveMenu('home')" href="<?php echo base_url(); ?>"><i class="icn icn-LOGO-IBID"></i></a>
                      <div class="nav-header-right">
                         <?php echo $form_auth_mobile; ?>
                      </div>
@@ -116,13 +116,13 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="nav-close"><img src="<?php echo base_url('assetsfront/images/icon/Close.png'); ?>"></li>
                         <li class="nav-title"><span class="nav-title">Home</span></li>
-                        <li><a href="<?php echo site_url('comingsoon'); ?>">Cari Kendaraan</a></li>
-                        <li><a href="<?php echo site_url('comingsoon'); ?>">Jadwal Lelang</a></li>
-                        <li><a href="<?php echo site_url('live-auction'); ?>">Live Auction</a></li>
-                        <li><a href="<?php echo site_url('beli-npl'); ?>">Beli Npl</a></li>
-                        <li><a href="<?php echo site_url('titip-lelang'); ?>">Titip Lelang</a></li>
-                        <li><a href="<?php echo site_url('comingsoon'); ?>">Map</a></li>
-                        <li><a href="<?php echo site_url('panduan-lelang'); ?>">Prosedur</a></li>
+                        <li id="find_menu"><a href="<?php echo site_url('comingsoon'); ?>" onclick="setActiveMenu('find')">Cari Kendaraan</a></li>
+                        <li id="schedule_menu"><a href="<?php echo site_url('comingsoon'); ?>" onclick="setActiveMenu('schedule')">Jadwal Lelang</a></li>
+                        <li id="live_menu"><a href="<?php echo site_url('live-auction'); ?>" onclick="setActiveMenu('live')">Live Auction</a></li>
+                        <li id="npl_menu"><a href="<?php echo site_url('beli-npl'); ?>" onclick="setActiveMenu('npl')">Beli Npl</a></li>
+                        <li id="auction_menu"><a href="<?php echo site_url('titip-lelang'); ?>" onclick="setActiveMenu('auction')">Titip Lelang</a></li>
+                        <li id="map_menu"><a href="<?php echo site_url('comingsoon'); ?>" onclick="setActiveMenu('map')">Map</a></li>
+                        <li id="procedure_menu"><a href="<?php echo site_url('panduan-lelang'); ?>" onclick="setActiveMenu('procedure')">Prosedur</a></li>
                         <?php echo @$form_auth; ?>
                     </ul>
                  </div>
@@ -167,7 +167,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                      </button>
-                     <a class="navbar-brand icon_logo" alt="" href="<?php echo site_url(); ?>"><i class="icn icn-LOGO-IBID"></i></a>
+                     <a class="navbar-brand icon_logo" onclick="setActiveMenu('home')" href="<?php echo site_url(); ?>"><i class="icn icn-LOGO-IBID"></i></a>
                      <div class="nav-header-right">
                         <?php echo $form_auth_mobile; ?>
                      </div>
@@ -176,13 +176,13 @@
                      <ul class="nav navbar-nav navbar-right">
                         <li class="nav-close"><img src="<?php echo base_url('assetsfront/images/icon/Close.png'); ?>"></li>
                         <li class="nav-title"><span class="nav-title">Home</span></li>
-                        <li><a href="<?php echo site_url('comingsoon'); ?>">Cari Kendaraan</a></li>
-                        <li><a href="<?php echo site_url('comingsoon'); ?>">Jadwal Lelang</a></li>
-                        <li><a href="<?php echo site_url('comingsoon'); ?>">Live Auction</a></li>
-                        <li><a href="<?php echo site_url('beli-npl'); ?>">Beli Npl</a></li>
-                        <li><a href="<?php echo site_url('titip-lelang'); ?>">Titip Lelang</a></li>
-                        <li><a href="<?php echo site_url('comingsoon'); ?>">Map</a></li>
-                        <li><a href="<?php echo site_url('panduan-lelang'); ?>">Prosedur</a></li>
+                        <li id="find_menu"><a href="<?php echo site_url('comingsoon'); ?>" onclick="setActiveMenu('find')">Cari Kendaraan</a></li>
+                        <li id="schedule_menu"><a href="<?php echo site_url('comingsoon'); ?>" onclick="setActiveMenu('schedule')">Jadwal Lelang</a></li>
+                        <li id="live_menu"><a href="<?php echo site_url('comingsoon'); ?>" onclick="setActiveMenu('live')">Live Auction</a></li>
+                        <li id="npl_menu"><a href="<?php echo site_url('beli-npl'); ?>" onclick="setActiveMenu('npl')">Beli Npl</a></li>
+                        <li id="auction_menu"><a href="<?php echo site_url('titip-lelang'); ?>" onclick="setActiveMenu('auction')">Titip Lelang</a></li>
+                        <li id="map_menu"><a href="<?php echo site_url('comingsoon'); ?>" onclick="setActiveMenu('map')">Map</a></li>
+                        <li id="procedure_menu"><a href="<?php echo site_url('panduan-lelang'); ?>" onclick="setActiveMenu('procedure')">Prosedur</a></li>
                         <?php echo $form_auth; ?>
                         <!--li class="lang-mob">
                            <a href="javascript:void(0)">Bahasa</a>
