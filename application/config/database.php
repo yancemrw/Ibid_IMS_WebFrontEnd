@@ -87,12 +87,12 @@ Serasi123
 // end
 
 $db['default'] = array(
-	'hostname' => '127.0.0.1',
-	'username' => 'SA',
-	'password' => 'P@ssw0rd123',
-	'database' => 'Account',
-	'dsn'	   => 'sqlsrv:Server=127.0.0.1;Database=Account;',
-	'dbdriver' => 'sqlsrv', 
+	'hostname' => 'ibiddev.database.windows.net',
+	'username' => 'adminibiddev',
+	'password' => 'Serasi123',
+	'database' => 'Account', 
+	'dbdriver' => 'sqlsrv',
+	'dbprefix' => 'dbo.',  
 	'pconnect' => FALSE,
 	'db_debug' => FALSE, //(ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
