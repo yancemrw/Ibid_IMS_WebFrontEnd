@@ -151,6 +151,10 @@
 	width: 80%;
 }
 
+.width-125px {
+	width: 125px;
+}
+
 @media(max-width: 768px) {
 	.or {
 		width: 40px !important;
