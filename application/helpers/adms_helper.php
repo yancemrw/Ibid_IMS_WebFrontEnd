@@ -27,7 +27,7 @@ function linkservice($services) {
 	$NPL      = ('NPL' === strtoupper($services)) ? $return = 'http://beta.ibid.astra.co.id/backend/service/npl/' : ''; 
 	$CMS    = ('CMS' === strtoupper($services)) ? $return = 'http://beta.ibid.astra.co.id/backend/dapur/' : '';  */
 	
-	$return;
+	return $return;
 }
 
 ?>
