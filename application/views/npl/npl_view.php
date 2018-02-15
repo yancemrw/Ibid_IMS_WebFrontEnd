@@ -259,7 +259,7 @@
               $.ajax({
                 type: 'POST',
                 url: '<?php echo site_url("biodata/otp"); ?>',
-                data: 'Phone='+phone+'&BankId='+bankid+'&BankAccountNumber='+bankacc+'&BankAccountName='+bankname+'&IdentityNumber='+ktp+'&otpkirim='+otpkirim,
+                data: 'Phone='+phone+'&BankId='+bankid+'&BankAccountNumber='+bankacc+'&BankAccountName='+bankname+'&IdentityNumber='+ktp+'&otpkirim='+otpkirim+'&otpsource=npl',
                 success: function(data) {
                   var data = JSON.parse(data);
                   if(data.status === 1) {

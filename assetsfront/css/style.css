@@ -4919,6 +4919,7 @@ a.delete-favorite {
 }
 
 .form-login .none {
+    display: inline-block;
     text-align: right;
     margin-top: 15px;
 }

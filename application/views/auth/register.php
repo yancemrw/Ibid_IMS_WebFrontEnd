@@ -21,7 +21,7 @@
             <div class="col-md-4 col-sm-6 pull-right">
                 <div class="form-register">
                     <h2>Daftar</h2>
-                    <form action="<?php echo site_url('register'); ?>" id="form-reg" method="post" data-provide="validation">
+                    <form id="form-reg" data-provide="validation">
                         <h3>Buat Akun Baru</h3>
                         <div class="form-group floating-label">
                             <input type="text" id="name" name="name" class="form-control input-custom" 
@@ -61,7 +61,7 @@
                         <div class="g-recaptcha recaptcha" id="idrecaptcha" required></div>
                         <div class="form-group text-right">
                             <button class="btn btn-green btn-register" id="btn-daftar" disabled>Daftar</button>
-                            <a href="<?php echo site_url('register'); ?>">Sudah punya akun?</a>
+                            <a href="<?php echo site_url('login'); ?>">Sudah punya akun?</a>
                         </div>
                     </form>
                 </div>
@@ -191,7 +191,7 @@
                         message: 'Kata sandi hanya boleh menggunakan karakter dan angka',
                         type: 'warning',
                         position: 'top-center',
-                        timeout: 3
+                        timeout: 4
                     });
                     return false;
                 }
@@ -200,7 +200,7 @@
                         message: 'Captcha harus di isi!',
                         type: 'warning',
                         position: 'top-center',
-                        timeout: 3
+                        timeout: 4
                     });
                     return false;
                 }
@@ -209,13 +209,51 @@
                         message: 'Kata sandi dan ulangi kata sandi tidak sama',
                         type: 'warning',
                         position: 'top-center',
-                        timeout: 3
+                        timeout: 4
                     });
                     return false;
                 }
                 else {
                     $('#btn-daftar').attr('disabled', true);
-                    $('#form-reg').submit();
+                    $.ajax({
+                        type: 'POST',
+                        url: '<?php echo site_url('auth/register/create_user'); ?>',
+                        data: $("#form-reg").serializeArray(),
+                        success: function(data) {
+                            var data = JSON.parse(data);
+                            if(data.status === 1) {
+                                bootoast.toast({
+                                    message: data.messages,
+                                    type: 'warning',
+                                    position: 'top-center',
+                                    timeout: 4
+                                });
+                                setTimeout(function() {
+                                    location.href = data.redirect;
+                                    $('#btn-update').attr('disabled', false);
+                                }, 1500);
+                            }
+                            else {
+                                $('#btn-update').attr('disabled', false);
+                                bootoast.toast({
+                                    message: data.messages,
+                                    type: 'warning',
+                                    position: 'top-center',
+                                    timeout: 4
+                                });
+                                if(data.redirect !== '') location.href = data.redirect;
+                            }
+                        },
+                        error: function() {
+                            $('#btn-update').attr('disabled', false);
+                            bootoast.toast({
+                                message: 'Terjadi Error Pada Server',
+                                type: 'warning',
+                                position: 'top-center',
+                                timeout: 4
+                            });
+                        }
+                    });
                     return false;
                 }
             }
