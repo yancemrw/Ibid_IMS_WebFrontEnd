@@ -135,14 +135,14 @@ class Biodata extends CI_Controller {
 
 				if($resend === true) {
 					$callback->status = 1;
-					$callback->messages = 'OTP Sudah Kami Kirim Kembali, Silahkan Verifikasi';
+					$callback->messages = 'OTP sudah kami kirim kembali, silahkan verifikasi';
 					$callback->redirect = '';
 					echo json_encode($callback);
 					exit;
 				}
 				else {
 					$callback->status = 1;
-					$callback->messages = 'Data Sudah Kami Terima, Silahkan Verifikasi OTP Dari Kami';
+					$callback->messages = 'Silahkan verifikasi OTP dari kami';
 					$callback->redirect = 'biodata/otpconfirm';
 					echo json_encode($callback);
 					exit;
@@ -151,7 +151,7 @@ class Biodata extends CI_Controller {
 			}
 			else {
 				$callback->status = 0;
-				$callback->messages = 'Data Anda Sudah Terdaftar di Sistem Kami';
+				$callback->messages = 'Data anda sudah terdaftar di sistem kami';
 				$callback->redirect = 'pembelian';
 				echo json_encode($callback);
 				exit;
@@ -172,13 +172,10 @@ class Biodata extends CI_Controller {
 			if($otp == $this->session->userdata('otpNPL')) {
 				echo "cocok";
 				exit;
-				//redirect('biodata/updateForNPL','refresh');
 
 			} else {
 				echo "OTP tidak cocok";
 				exit;
-				//$this->session->set_flashdata('message', array('error', 'OTP tidak cocok', 'Perhatian'));
-				//redirect('biodata/otpconfirm','refresh');
 			}
 		}
 
@@ -198,9 +195,8 @@ class Biodata extends CI_Controller {
 	}
 
 	function updateForNPL() {
-		############################################################
 		$id = trim($_SESSION['idfront']);
-		// exit();
+
 		## get detail users
 		$url = linkservice('account') ."users/details/".$id;
 		$method = 'GET';
@@ -209,8 +205,6 @@ class Biodata extends CI_Controller {
 			$dataApiDetail = json_decode($responseApi['response'], true);
 		}
 		$detailBiodata = @$dataApiDetail['data'];
-		
-		// print_r($detailBiodata);
 		$sesi = $this->session->all_userdata();
 
 		// update users
@@ -225,6 +219,7 @@ class Biodata extends CI_Controller {
 		$method = 'POST';
 		$responseApi = admsCurl($url, $dataPost, $method);
 
+		// session user biodata
 		$usersBiodataArray = array (
 			'BiodataId' => $id,
 			'IdentityNumber' => $sesi['BiodataPembelianNPL']['IdentityNumber'],
@@ -235,28 +230,66 @@ class Biodata extends CI_Controller {
 		);
 
 		if($detailBiodata['users']['BiodataId'] == '') {
-			// Insert Biodata
-			$url = linkservice('account') .'usersbiodata/add';
+			$url = linkservice('account').'usersbiodata/add';
 			$method = 'POST';
 			$responseApi = admsCurl($url, $usersBiodataArray, $method);
 			if($responseApi['err']) {
-				echo "<hr>cURL Error #:" . $responseApi['err'];
+				echo "<hr>cURL Error #:".$responseApi['err'];
 			}
-
 		}
 		else {
 			// UPDATE Biodata
 			$dataPostUsersBiodata['dataUpdate'] = $usersBiodataArray;
 			$dataPostUsersBiodata['whereUpdate'] = array('BiodataId' => $id);
-
-			$url = linkservice('account') ."usersbiodata/updates";
+			$url = linkservice('account')."usersbiodata/updates";
 			$method = 'POST';
 			$responseApi = admsCurl($url, $dataPostUsersBiodata, $method);
-			if ($responseApi['err']) {
-				echo "<hr>cURL Error #:" . $responseApi['err'];
+			if($responseApi['err']) {
+				echo "<hr>cURL Error #:".$responseApi['err'];
 			}
 		}
-		redirect('pembelian');
+
+		// jika update biodata dari dashboard
+		if($sesi['BiodataPembelianNPL']['otpsource'] === 'dashboard') {
+			$usersBiodataData = array (
+				'BankBranch' => $sesi['BiodataPembelianNPL']['branchbank'],
+				'Gender' => $sesi['BiodataPembelianNPL']['gender'],
+				'Birthdate' => (@$sesi['BiodataPembelianNPL']['dob']) ? $sesi['BiodataPembelianNPL']['dob'] : NULL,
+				'Address' => $sesi['BiodataPembelianNPL']['address'],
+				'City' => $sesi['BiodataPembelianNPL']['city'],
+				'Occupation' => $sesi['BiodataPembelianNPL']['okup']
+			);
+
+			$userData = array (
+				'first_name' => $sesi['BiodataPembelianNPL']['first_name'],
+				'last_name' => $sesi['BiodataPembelianNPL']['last_name'],
+				'Email' => @$sesi['BiodataPembelianNPL']['upd_email'],
+				'Phone' => $sesi['BiodataPembelianNPL']['Phone'],
+				'MemberCardTMP' => $sesi['BiodataPembelianNPL']['idcard'],
+			);
+
+			$dataPostUser['dataUpdate'] = $userData;
+			$dataPostUser['whereUpdate'] = array('UserId' => $id);
+			$urlUser = linkservice('account')."users/updates";
+			$methodUser = 'POST';
+			$resApiUser = admsCurl($urlUser, $dataPostUser, $methodUser);
+			if($resApiUser['err']) {
+				echo "<hr>cURL Error #:".$resApiUser['err'];
+			}
+
+			$dataPostUserBiodata['dataUpdate'] = $usersBiodataData;
+			$dataPostUserBiodata['whereUpdate'] = array('BiodataId' => $id);
+			$urlBiodata = linkservice('account')."usersbiodata/updates";
+			$methodBiodata = 'POST';
+			$resApiBiodata = admsCurl($urlBiodata, $dataPostUserBiodata, $methodBiodata);
+			if($resApiBiodata['err']) {
+				echo "<hr>cURL Error #:".$resApiBiodata['err'];
+			}
+			redirect('dashboard');
+		}
+		else {
+			redirect('pembelian');
+		}
 	}
 }
 

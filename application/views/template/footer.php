@@ -96,7 +96,7 @@
         message: '<?=@$message[1]?>',
         type: '<?=@$message[0]?>',
         position: 'top-center',
-        timeout: 4
+        timeout: 5
       });
     });
   </script>
@@ -114,7 +114,7 @@
           message: 'Sandi tidak boleh kurang dari 8 karakter',
           type: 'warning',
           position: 'top-center',
-          timeout: 3
+          timeout: 4
         });
         return false;
       }
@@ -138,7 +138,7 @@
                 message: data.messages,
                 type: 'warning',
                 position: 'top-center',
-                timeout: 3
+                timeout: 4
               });
               return false;
             }
@@ -149,7 +149,7 @@
               message: 'Terjadi Masalah Pada Koneksi ke Server',
               type: 'warning',
               position: 'top-center',
-              timeout: 3
+              timeout: 4
             });
           }
         });
@@ -165,7 +165,7 @@
           message: 'Sandi tidak boleh kurang dari 8 karakter',
           type: 'warning',
           position: 'top-center',
-          timeout: 3
+          timeout: 4
         });
         return false;
       }
@@ -189,7 +189,7 @@
                 message: data.messages,
                 type: 'warning',
                 position: 'top-center',
-                timeout: 3
+                timeout: 4
               });
               return false;
             }
@@ -200,7 +200,7 @@
               message: 'Terjadi Masalah Pada Koneksi ke Server',
               type: 'warning',
               position: 'top-center',
-              timeout: 3
+              timeout: 4
             });
           }
         });

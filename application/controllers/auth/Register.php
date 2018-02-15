@@ -7,95 +7,68 @@ class Register extends CI_Controller {
 		parent::__construct(); 
 		$this->load->library(array('form_validation'));
 		$this->load->helper(array('global', 'omni'));
+		$this->userdata = $this->session->userdata('userdata');
 	}
 	
 	public function index() {
-
-		// membersihkan token session dari facebook
-		// penambahan by lutfi
-		$this->session->unset_userdata('OAUTH_ACCESS_TOKEN');
-		$this->session->unset_userdata('namefb');
-		$this->session->unset_userdata('emailfb');
-		$this->session->unset_userdata('tokenfb');
-		$this->session->unset_userdata('usernamefb');
-		$this->session->unset_userdata('emaillinkedin');
-		$this->session->unset_userdata('namelinkedin');
-		$this->session->unset_userdata('emailgoogle');
-		$this->session->unset_userdata('namegoogle');
-		// end
-
 		$data['title']	= 'Register Customer';
 		$data['page'] = 'auth/register';
+
 		// penambahan lutfi
 		$data['linkfacebook'] = facebook();
 		$data['linkgoogle'] = google();
+		$data = array(
+			'header_white'		=> "header-white",
+			'userdata'			=> $this->session->userdata('userdata'),
+			'title'				=> 'Pendaftaran',
+			'form_auth_mobile'	=> login_status_form_mobile($this->userdata),
+			'form_auth'			=> login_Status_form($this->userdata)
+		);
+		$view = "auth/register";
+		template($view, $data);		
+	}
 
-		// end penambahan link 
-		$this->form_validation->set_rules('name', 'Nama', 'required');
-		$this->form_validation->set_rules('email', 'Mail', 'required|valid_email');
-		$this->form_validation->set_rules('pass', 'Sandi', 'required|min_length[8]');
-		$this->form_validation->set_rules('repass', 'Ulangi Sandi', 'required|matches[pass]');
-		// $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-		
-		if($this->form_validation->run() === FALSE) {
-			// if ($_SERVER['REQUEST_METHOD'] == 'POST')
-			// $this->session->set_flashdata('itemFlashGagal','Harap Melengkapi Form yang Telah Disediakan');
-			// $this->load->view('auth/template',$data);
-			// $this->load->view('auth/templateauthadmin',$data);
-			$userdata = $this->session->userdata('userdata');
-			$data = array(
-				'header_white'	=> "header-white",
-				'userdata'		=> $this->session->userdata('userdata'),
-				'title'			=> 'Pendaftaran',
-				'form_auth_mobile' => login_status_form_mobile($userdata),
-				'form_auth'		=> login_Status_form($userdata)
-			);
-			$view = "auth/register";
-			template($view, $data);
-		}
-		else {
-			$dataInsert = array(
-				// 'grant_type'	=> 'password',
-				// 'client_id'		=> 'ADMS Web',
-				// 'client_secret'	=> '1234567890',
-				// 'action'		=> 'register',
-				// 'redirect_url'	=> base_url('auth/login'),
-				'username'		=> $this->input->post('email'),
-				'email'			=> $this->input->post('email'),
-				'first_name'	=> $this->input->post('name'),
-				'password'		=> $this->input->post('pass')
-				//'last_name'   	=> '',
-				// 'MemberCardTMP' => $this->input->post('idcard'), //member card
-				// 'ipAddress'		=> $this->input->ip_address(),
-				// 'GroupId'		=> 9,
-				// 'createdOn'		=> time(), 
-			);
+	public function create_user() {
+		$callback = new stdClass();
+		$dataInsert = array(
+			'username'		=> $this->input->post('email'),
+			'email'			=> $this->input->post('email'),
+			'first_name'	=> $this->input->post('name'),
+			'password'		=> $this->input->post('pass')
+		);
 
-			// cek email first, if exists cannot register
-			$urls = linkservice('account')."auth/checkemail";
-			$meth = 'POST';
-			$resp = admsCurl($urls, $dataInsert, $meth);
-			$jsondec = json_decode($resp['response']);
-			if($jsondec->status === 0) {
-				$url = linkservice('account')."auth/registerfrontend/register";
-				$method = 'POST';
-				$responseApi = admsCurl($url, $dataInsert, $method);
+		// cek email first, if exists cannot register
+		$urls = linkservice('account')."auth/checkemail";
+		$meth = 'POST';
+		$resp = admsCurl($urls, $dataInsert, $meth);
+		$jsondec = json_decode($resp['response']);
+		if($jsondec->status === 0) {
+			$url = linkservice('account')."auth/registerfrontend/register";
+			$method = 'POST';
+			$responseApi = admsCurl($url, $dataInsert, $method);
 
-				if($responseApi['err']) {
-					echo "<hr>cURL Error #:".$responseApi['err'];
-				}
-				else {
-					$this->session->set_flashdata('message', array('success', 'Akun anda sudah terdaftar, Silahkan verifikasi email dari kami'));
-					redirect('login'); 
-				}
+			if($responseApi['err']) {
+				$callback->status = 0;
+				$callback->messages = $responseApi['err'];
+				$callback->redirect = '';
+				echo json_encode($callback);
+				exit;
 			}
 			else {
-				$this->session->set_flashdata('message', array('warning', 'Email sudah terdaftar'));
-				redirect('register', 'refresh');
+				$callback->status = 1;
+				$callback->messages = 'Akun anda sudah terdaftar, Silahkan verifikasi email dari kami';
+				$callback->redirect = 'login';
+				echo json_encode($callback);
+				exit;
 			}
-
 		}
-		
+		else {
+			$callback->status = 0;
+			$callback->messages = 'Email sudah terdaftar';
+			$callback->redirect = 'register';
+			echo json_encode($callback);
+			exit;
+		}
 	}
 	
 }
