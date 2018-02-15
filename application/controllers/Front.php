@@ -1,4 +1,4 @@
- <?php
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Front extends CI_Controller {
@@ -28,7 +28,7 @@ class Front extends CI_Controller {
         
         ############################################################
         ## get list Item Type
-        $url = linkservice('master')."item/get";  
+      	$url = linkservice('master')."item/get";  
         $method = 'GET';
         $responseApi = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
         if ($responseApi['err']) { 
@@ -38,6 +38,7 @@ class Front extends CI_Controller {
             $itemType = $dataApi['data'];
         }
         $data['itemType'] = @$itemType;
+
         ############################################################
         
         ############################################################

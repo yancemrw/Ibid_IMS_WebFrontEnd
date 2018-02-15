@@ -223,7 +223,7 @@ class Biodata extends CI_Controller {
 		$usersBiodataArray = array (
 			'BiodataId' => $id,
 			'IdentityNumber' => $sesi['BiodataPembelianNPL']['IdentityNumber'],
-			'NpwpNumber' => $sesi['BiodataPembelianNPL']['NpwpNumber'],
+			'NpwpNumber' => @$sesi['BiodataPembelianNPL']['NpwpNumber'],
 			'BankId' => @$sesi['BiodataPembelianNPL']['BankId'],
 			'BankAccountName' => $sesi['BiodataPembelianNPL']['BankAccountName'],
 			'BankAccountNumber' => $sesi['BiodataPembelianNPL']['BankAccountNumber']
