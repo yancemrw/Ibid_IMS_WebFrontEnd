@@ -81,7 +81,7 @@ class Register extends CI_Controller {
 
 			$jsondec = json_decode($resp);
 			if($jsondec->status === 0) {
-				$url = linkservice('account')."auth/registerfrontend/register";
+				$url = linkservice('account')."auth/Registerfrontend/register";
 				$method = 'POST';
 				$responseApi = admsCurl($url, $dataInsert, $method);
 
