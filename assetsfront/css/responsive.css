@@ -275,9 +275,19 @@
 	.product-mob .action-bottom .btn {
 		font-size: 12px;
 	}
+	.tab-search .btn{
+        padding: 15px 2px;
+    }
+    .tab-search .select-custom~.select2-container--default .select2-selection--single{
+        padding-top: 0
+    }
 }
 
 @media(max-width: 890px) {
+	#tab-mobile-2 .form-group .select2 {
+        width: 100% !important;
+    }
+    
 	.navbar-toggle {
 		float: left;
 		display: block;
