@@ -5,7 +5,7 @@ class Pembelian extends CI_Controller {
 
 	function __construct() {
         parent::__construct();
-        if (!@$_SESSION['idfront']){ redirect(base_url()); }
+        // if (!@$_SESSION['idfront']){ redirect(base_url()); }
         $this->load->helper(array('global' , 'omni'));
     }
 	
@@ -87,6 +87,21 @@ class Pembelian extends CI_Controller {
 		$data['userdata']			= $userdata;
 		$data['form_auth_mobile']	= login_status_form_mobile($userdata);
 		$data['form_auth']			= login_Status_form($userdata);
+
+		############################################################
+        ## get cabang
+        $url = linkservice('master')."cabang/get";  
+        $method = 'GET';
+        $responseApi = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
+        if ($responseApi['err']) { 
+            echo "<hr>cURL Error #:" . $responseApi['err']; 
+        } else {
+            $dataApi = json_decode($responseApi['response'],true);
+            $cabang = $dataApi['data'];
+        }
+        $data['cabang'] = @$cabang;
+        ############################################################
+		
 		template($view, $data);
 	}
 
