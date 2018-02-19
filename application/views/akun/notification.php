@@ -20,7 +20,7 @@
                         </li>
                         <li class="acc_npl">
                             <a href="<?php echo site_url('npl_dashboard'); ?>">
-                            <span class="ic_menu"><i ></i></span> NPL Management</a>
+                            <span class="ic_menu"><i ></i></span> Manajemen NPL</a>
                         </li>
                         <li class="acc_setting">
                             <a href="<?php echo site_url('dashboard'); ?>">

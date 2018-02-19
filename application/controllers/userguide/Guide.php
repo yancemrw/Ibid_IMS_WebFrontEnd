@@ -131,7 +131,7 @@ class Guide extends CI_Controller {
 				        		<img src="'.base_url('assetsfront/images/background/img-prosedure-3.png').'">
 				        	</div>
 				        	<h2>Registrasi & beli Nomor Peserta Lelang (NPL)</h2>
-				        	<p>Isi data diri dan lakukan pembelian NPL secara online di website IBID. Pembayaran NPL bisa melalui transfer bank, Virtual Account, atau payment gateway.</p>
+				        	<p>Isi data diri dan lakukan pembelian NPL secara online di website IBID. Pembayaran NPL bisa melalui Virtual Account, kartu kredit, atau mesin EDC.</p>
 				        </div>
 			        </div>
 			        <div id="rules-4" class="rules-procedure">
@@ -149,7 +149,7 @@ class Guide extends CI_Controller {
 				        		<img src="'.base_url('assetsfront/images/background/img-prosedure-5.png').'">
 				        	</div>
 				        	<h2>Pelunasan/Pengembalian Biaya</h2>
-				        	<p>Jika peserta memenangkan lelang, pelunasan sisa pembayaran wajib dilakukan maksimum 5 hari kerja setelah lelang. Namun jika kalah, biaya pembelian NPL akan kembali 100% ke nomor rekening terdaftar, maksimum 1 hari setelah lelang.</p>
+				        	<p>Jika peserta memenangkan lelang, pelunasan sisa pembayaran wajib dilakukan selambatnya 5 hari kerja setelah lelang. Namun jika kalah, biaya pembelian NPL akan kembali 100% ke nomor rekening terdaftar, selambatnya 3 hari kerja setelah lelang.</p>
 				        </div>
 			        </div>
 			        <div id="rules-6" class="rules-procedure">
@@ -157,8 +157,8 @@ class Guide extends CI_Controller {
 				        	<div class="images-prosedure">
 				        		<img src="'.base_url('assetsfront/images/background/img-prosedure-6.png').'">
 				        	</div>
-				        	<h2>Pengambilan kendaraan</h2>
-				        	<p>Peserta dapat mengambil kendaraan beserta dokumennya maksimum 1 hari setelah melunasi pembayaran.</p>
+				        	<h2>Ambil kendaraan</h2>
+				        	<p>Peserta dapat mengambil kendaraan beserta dokumennya setelah melunasi pembayaran selambatnya 5 hari kerja setelah lelang.</p>
 				        </div>
 			        </div>
 	   			</section>';
@@ -206,7 +206,7 @@ class Guide extends CI_Controller {
 								<img src="'.base_url('assetsfront/images/background/img-prosedure-8.png').'">
 							</div>
 						<h2>Registrasi & beli Nomor Peserta Lelang (NPL)</h2>
-						<p>Isi data diri dan lakukan pembelian NPL secara online di website IBID. Pembayaran NPL bisa melalui transfer bank, Virtual Account, atau payment gateway.</span></p>
+						<p>Isi data diri dan lakukan pembelian NPL secara online di website IBID. Pembayaran NPL bisa melalui Virtual Account, kartu kredit, atau mesin EDC.</span></p>
 						</div>
 					</div>
 					<div id="rules-4" class="rules-procedure">
@@ -233,7 +233,7 @@ class Guide extends CI_Controller {
 								<img src="'.base_url('assetsfront/images/background/img-prosedure-5.png').'">
 							</div>
 							<h2>Pelunasan/pengembalian biaya</h2>
-							<p>Jika peserta memenangkan lelang, pelunasan sisa pembayaran wajib dilakukan maksimum 5 hari kerja setelah lelang. Namun jika kalah, biaya pembelian NPL akan kembali 100% ke nomor rekening terdaftar, maksimum 1 hari setelah lelang.</p>
+							<p>Jika peserta memenangkan lelang, pelunasan sisa pembayaran wajib dilakukan selambatnya 5 hari kerja setelah lelang. Namun jika kalah, biaya pembelian NPL akan kembali 100% ke nomor rekening terdaftar, selambatnya 3 hari kerja setelah lelang.</p>
 						</div>
 					</div>
 					<div id="rules-7" class="rules-procedure">
@@ -242,7 +242,7 @@ class Guide extends CI_Controller {
 								<img src="'.base_url('assetsfront/images/background/img-prosedure-6.png').'">
 							</div>
 							<h2>Ambil kendaraan</h2>
-							<p>Peserta dapat mengambil kendaraan beserta dokumennya maksimum 1 hari setelah melunasi pembayaran di lokasi pool tempat kendaraan tersebut berada.</p>
+							<p>Peserta dapat mengambil kendaraan beserta dokumennya setelah melunasi pembayaran selambatnya 5 hari kerja setelah lelang.</p>
 						</div>
 					</div>
 				</section>';
@@ -290,7 +290,7 @@ class Guide extends CI_Controller {
 				        		<img src="'.base_url('assetsfront/images/background/img-prosedure-8.png').'">
 				        	</div>
 				        	<h2>Registrasi & beli Nomor Peserta Lelang (NPL)</h2>
-				        	<p>Isi data diri dan lakukan pembelian NPL secara online di website IBID. Pembayaran NPL bisa melalui transfer bank, Virtual Account, atau payment gateway.</span></p>
+				        	<p>Isi data diri dan lakukan pembelian NPL secara online di website IBID. Pembayaran NPL bisa melalui Virtual Account, kartu kredit, atau mesin EDC.</span></p>
 				        </div>
 			        </div>
 			        <div id="rules-4" class="rules-procedure">
@@ -317,7 +317,7 @@ class Guide extends CI_Controller {
 				        		<img src="'.base_url('assetsfront/images/background/img-prosedure-5.png').'">
 				        	</div>
 				        	<h2>Pelunasan/pengembalian biaya</h2>
-				        	<p>Jika peserta memenangkan lelang, pelunasan sisa pembayaran wajib dilakukan maksimum 5 hari kerja setelah lelang. Namun jika kalah, biaya pembelian NPL akan kembali 100% ke nomor rekening terdaftar, maksimum 1 hari setelah lelang.</p>
+				        	<p>Jika peserta memenangkan lelang, pelunasan sisa pembayaran wajib dilakukan selambatnya 5 hari kerja setelah lelang. Namun jika kalah, biaya pembelian NPL akan kembali 100% ke nomor rekening terdaftar, selambatnya 3 hari kerja setelah lelang.</p>
 				        </div>
 			        </div>
 			        <div id="rules-7" class="rules-procedure">
@@ -326,7 +326,7 @@ class Guide extends CI_Controller {
 				        		<img src="'.base_url('assetsfront/images/background/img-prosedure-6.png').'">
 				        	</div>
 				        	<h2>Ambil kendaraan</h2>
-				        	<p>Peserta dapat mengambil kendaraan beserta dokumennya maksimum 1 hari setelah melunasi pembayaran di lokasi pool tempat kendaraan tersebut berada.</p>
+				        	<p>Peserta dapat mengambil kendaraan beserta dokumennya setelah melunasi pembayaran selambatnya 5 hari kerja setelah lelang.</p>
 				        </div>
 			        </div>
 	   			</section>';
@@ -352,7 +352,7 @@ class Guide extends CI_Controller {
 								<img src="'.base_url('assetsfront/images/background/img-prosedure-12.png').'">
 							</div>
 							<h2>Isi formulir titip lelang di website IBID</h2>
-							<p>Lengkapi data diri dan informasi detail kendaraan yang ingin dititipkan pada secara online di website IBID.</p>
+							<p>Lengkapi data diri dan informasi detail kendaraan yang ingin dititipkan di website IBID secara online.</p>
 						</div>
 					</div>
 					<div id="rules-2" class="rules-procedure">
@@ -446,7 +446,7 @@ class Guide extends CI_Controller {
 				        		<img src="'.base_url('assetsfront/images/background/img-prosedure-18.png').'">
 				        	</div>
 				        	<h2>Cek sisa tagihan pelunasan</h2>
-				        	<p>Detail informasi tagihan dapat dicek di website IBID pada bagian akun Anda. Sistem kami juga secara otomatis akan mengirimkan detail pembayaran ke email Anda, beserta informasi nomor atau Virtual Account.</p>
+				        	<p>Detail informasi tagihan dapat dicek di website IBID pada bagian akun Anda. Sistem kami juga secara otomatis akan mengirimkan detail pembayaran ke email Anda, beserta informasi nomor Virtual Account.</p>
 				        </div>
 			        </div>
 			        <div id="rules-2" class="rules-procedure">

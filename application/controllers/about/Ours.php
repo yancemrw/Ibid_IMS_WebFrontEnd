@@ -25,8 +25,8 @@ class Ours extends CI_Controller {
 			'content_4'			=> $this->faq_content(4),
 			'content_5'			=> $this->faq_content(5),
 			'content_6'			=> $this->faq_content(6),
-			'content_7'			=> $this->faq_content(8),
-			'content_8'			=> $this->faq_content(7),
+			'content_7'			=> $this->faq_content(7),
+			'content_8'			=> $this->faq_content(8),
 			'class'				=> 'no-padding accordion-list-on-panel'
 		);
 		$this->views($data);
@@ -88,18 +88,12 @@ class Ours extends CI_Controller {
 		$faq = array();
 		if($value === 1) {
 			$keys = 'objek';
-			$faq[0]['title'] = 'Apa saja unit yang dilelang?';
-			$faq[0]['content'] = 'Kami melelang berbagai jenis kendaraan, seperti minibus, sedan, MPV, SUV, double cabin, truk, dan masih banyak lagi. Selain kendaraan, kami juga melelang obyek lain, misalnya alat berat, sepeda motor, dan gadget. Untuk mengetahui objek yang kami lelang, Anda dapat mengakses website resmi IBID atau langsung mengunjungi lokasi.';
-			$faq[1]['title'] = 'Bagaimana cara mendapatkan kendaraan yang saya cari?';
-			$faq[1]['content'] = 'Pengunjung dapat mencari kendaraan yang diinginkan di website melalui menu "cari kendaraan". Hasil pencarian kendaraan dapat diunduh dengan mengklik "download" yang terdapat di kanan atas halaman "cari kendaraan".';
-			$faq[2]['title'] = 'Bagaimana mengetahui jadwal dan lokasi lelang yang akan diselenggarakan dalam waktu dekat?';
-			$faq[2]['content'] = 'Pengunjung dapat mengetahui jadwal lelang terdekat di website melalui menu "jadwal lelang". Lokasi lelang juga dapat dilihat di setiap halaman informasi detail kendaraan.';
-			$faq[3]['title'] = 'Bagaimana cara mendapat informasi daftar objek lelang terkini yang dikirim secara rutin lewat email?';
-			$faq[3]['content'] = 'Untuk mendapatkan email informasi daftar objek lelang yang akan dilelang secara rutin, Anda bisa melakukan registrasi di website IBID dan mencantumkan alamat email yang aktif digunakan.';
-			$faq[4]['title'] = 'Bagaimana jika objek lelang yang Anda cari belum tersedia pada jadwal lelang yang tercantum di website?';
-			$faq[4]['content'] = 'Sistem kami akan melakukan update informasi data lelang secara berkala, khususnya untuk jadwal lelang terdekat. Apabila kendaraan yang dicari belum tersedia, Anda dapat mengakses jadwal lelang paling dekat secara berkala untuk melihat penambahan atau perubahan data daftar objek lelang.';
-			$faq[5]['title'] = 'Apa langkah selanjutnya setelah Anda menemukan objek lelang yang sedang dicari di website?';
-			$faq[5]['content'] = 'Setelah menemukan objek lelang yang dicari, Anda dipersilahkan melakukan registrasi di website (jika belum memiliki akun), selanjutnya masuk ke halaman "beli NPL" (Nomor Peserta Lelang), lalu mengikuti lelang pada jadwal lelang yang tertera di detail informasi objek lelang  dengan melakukan bidding atau penawaran. ';
+			$faq[0]['title'] = 'Bagaimana cara mendapat informasi daftar objek lelang terkini yang dikirim secara rutin lewat email?';
+			$faq[0]['content'] = 'Untuk mendapatkan email informasi daftar objek lelang yang akan dilelang secara rutin, Anda bisa melakukan registrasi di website IBID dan mencantumkan alamat email yang aktif digunakan.';
+			$faq[1]['title'] = 'Bagaimana jika objek lelang yang Anda cari belum tersedia pada jadwal lelang yang tercantum di website?';
+			$faq[1]['content'] = 'Sistem kami akan melakukan update informasi data lelang secara berkala, khususnya untuk jadwal lelang terdekat. Apabila kendaraan yang dicari belum tersedia, Anda dapat mengakses jadwal lelang paling dekat secara berkala untuk melihat penambahan atau perubahan data daftar objek lelang.';
+			$faq[2]['title'] = 'Apa langkah selanjutnya setelah Anda menemukan objek lelang yang sedang dicari di website?';
+			$faq[2]['content'] = 'Setelah menemukan objek lelang yang dicari, Anda dipersilahkan melakukan registrasi di website (jika belum memiliki akun), selanjutnya masuk ke halaman "beli NPL" (Nomor Peserta Lelang), lalu mengikuti lelang pada jadwal lelang yang tertera di detail informasi objek lelang  dengan melakukan bidding atau penawaran. ';
 		}
 		if($value === 2) {
 			$keys = 'document';
@@ -141,38 +135,38 @@ class Ours extends CI_Controller {
 									- Apabila terjadi wanprestasi setelah 5 hari kerja dari tanggal pelaksanaan lelang, maka NPL Unlimited ter-blokir secara otomatis dan tidak dapat digunakan lagi kecuali peserta kembali melakuan pembelian NPL Unlimited';
 			$faq[5]['title'] = 'Bagaimana mekanisme uang pembelian NPL jika Anda menang atau kalah dilelang?';
 			$faq[5]['content'] = 'Jika Anda memenangkan kendaraan atau objek lelang lain yang dipilih, uang pembelian NPL akan terakumulasi dalam pelunasan atas total tagihan pemenang, sedangkan jika Anda belum berhasil memenangkan objek lelang yang dipilih, uang pembelian NPL akan dikembalikan 100% tanpa potongan apapun.';
-			$faq[6]['title'] = 'Apakah Anda harus hadir saat lelang berlangsung?';
-			$faq[6]['content'] = 'Anda tidak harus datang ke lokasi saat lelang. Anda bisa memanfaatkan opsi lelang Live Auction untuk melakukan bidding melalui akun IBID Anda secara real time melalui gadget.';
 		}
 		if($value === 5) {
 			$keys = 'lelang';
 			$faq[0]['title'] = 'Bagaimana cara memenangkan objek lelang yang diinginkan?';
 			$faq[0]['content'] = 'Untuk mendapat objek lelang yang diinginkan, Anda wajib mengikuti lelang dengan melakukan bidding atas objek yang diinginkan. Mekanisme pelelangan adalah tiap peserta bersaing untuk melakukan penawaran harga. Peserta yang menawar harga tertinggi akan dinyatakan sebagai pemenang. IBID memberikan opsi Live Auction menggunakan gadget, di mana Anda dapat melakukan bidding bersamaan dengan peserta lelang Onsite. Atau, Anda bisa memilih opsi Lelang Online sesuai jadwal dari gadget Anda.';
-			$faq[1]['title'] = 'Apa perbedaan Live Auction dengan Lelang Online?';
-			$faq[1]['content'] = 'Live Auction adalah lelang yang diselenggarakan di lokasi pada jadwal tertentu dan bisa diikuti dengan datang langsung ke lokasi atau melalui gadget dari manapun Anda berada secara real time. Sementara itu, Lelang Online diselenggarkan dalam rentang waktu tertentu (biasanya selama 3-5 hari) dan hanya bisa diikuti melalui gadget tanpa kehadiran fisik peserta di lokasi lelang.';
-			$faq[2]['title'] = 'Apakah akun untuk mengukuti Live Auction berbeda dengan Lelang Online?';
-			$faq[2]['content'] = 'Dengan melakukan registrasi di website, Anda mempunyai satu akun yang dapat digunakan untuk semua opsi lelang Onsite, Online, maupun Live Auction. Anda juga dapat menggunakan akun sama untuk menitipkan kendaraan atau objek lain yang ingin dilelang.';
-			$faq[3]['title'] = 'Apa itu fitur Auto Bid?';
-			$faq[3]['content'] = 'Auto Bid adalah fitur yang dapat Anda manfaatkan jika ingin melakukan bidding namun berhalangan mengikuti lelang secara langsung (real time) saat jadwal Live Auction ataupun Lelang Online. Dengan Auto Bid, Anda dapat menentukan harga bidding tertentu sebelum lelang berlangsung. Lalu, sistem kami secara otomatis akan melakukan bidding setinggi-tingginya sesuai harga yang telah Anda tentukan untuk memenangkan objek lelang yang diinginkan sesuai jadwalnya.';
-			$faq[4]['title'] = 'Bagaimana cara menggunakan fitur Auto Bid?';
-			$faq[4]['content'] = 'Fitur Auto Bid hanya tersedia pada mobile application IBID.';
-			$faq[5]['title'] = 'Bagaimana cara melunasi objek lelang yang dimenangkan?';
-			$faq[5]['content'] = 'Pemenang lelang akan diberikan informasi jumlah nominal rupiah yang harus dibayar pada formulir Konfirmasi Pemenang Lelang (KPL), disertai dengan nomor Virtual Account (VA) atas objek lelang yang dimenangkan dengan mekanisme satu objek mendapat satu nomor VA. Formulir KPL diberikan di lokasi lelang atau dapat dikirimkan via email. Pemenang dapat melakukan pembayaran menggunakan nomor VA tersebut di seluruh bank baik dengan metode setor tunai atau sistem online bank terkait.';
+			$faq[1]['title'] = 'Apakah Anda harus hadir saat lelang berlangsung?';
+			$faq[1]['content'] = 'Anda tidak harus datang ke lokasi saat lelang. Anda bisa memanfaatkan opsi lelang Live Auction untuk melakukan bidding melalui akun IBID Anda secara real time melalui gadget.';
+			$faq[2]['title'] = 'Apa perbedaan Live Auction dengan Lelang Online?';
+			$faq[2]['content'] = 'Live Auction adalah lelang yang diselenggarakan di lokasi pada jadwal tertentu dan bisa diikuti dengan datang langsung ke lokasi atau melalui gadget dari manapun Anda berada secara real time. Sementara itu, Lelang Online diselenggarkan dalam rentang waktu tertentu (biasanya selama 3-5 hari) dan hanya bisa diikuti melalui gadget tanpa kehadiran fisik peserta di lokasi lelang.';
+			$faq[3]['title'] = 'Apakah akun untuk mengukuti Live Auction berbeda dengan Lelang Online?';
+			$faq[3]['content'] = 'Dengan melakukan registrasi di website, Anda mempunyai satu akun yang dapat digunakan untuk semua opsi lelang Onsite, Online, maupun Live Auction. Anda juga dapat menggunakan akun sama untuk menitipkan kendaraan atau objek lain yang ingin dilelang.';
+			$faq[4]['title'] = 'Apa itu fitur Auto Bid?';
+			$faq[4]['content'] = 'Auto Bid adalah fitur yang dapat Anda manfaatkan jika ingin melakukan bidding namun berhalangan mengikuti lelang secara langsung (real time) saat jadwal Live Auction ataupun Lelang Online. Dengan Auto Bid, Anda dapat menentukan harga bidding tertentu sebelum lelang berlangsung. Lalu, sistem kami secara otomatis akan melakukan bidding setinggi-tingginya sesuai harga yang telah Anda tentukan untuk memenangkan objek lelang yang diinginkan sesuai jadwalnya.';
+			$faq[5]['title'] = 'Bagaimana cara menggunakan fitur Auto Bid?';
+			$faq[5]['content'] = 'Fitur Auto Bid hanya tersedia pada mobile application IBID.';
 		}
 		if($value === 6) {
 			$keys = 'after-lelang';
-			$faq[0]['title'] = 'Berapa lama masa pelunasan objek yang dimenangkan?';
-			$faq[0]['content'] = 'Peserta diberikan waktu selama 5 hari kerja setelah hari lelang untuk melunasi kendaraan atau objek lain yang dimenangkan. Jika melebihi waktu ini, pemenang dinyatakan wanprestasi (gugur) dan uang pembelian NPL hangus.';
-			$faq[1]['title'] = 'Kapan dokumen dari objek lelang yang dimenangkan bisa diambil?';
-			$faq[1]['content'] = 'Informasi kapan tersedianya dokumen kendaraan atau objek lelang lain sudah tertulis dalam keterangan daftar lot di lokasi lelang dan di halaman detail objek lelang di website. Perhitungan hari ketersediaan dokumen kendaraan dimulai setelah hari lelang. Untuk memudahkan pemenang, kami juga menyediakan layanan pengiriman notifikasi saat dokumen sudah tersedia. Notifikasi dapat dilihat di menu transaksi pada akun peserta di website.';
-			$faq[2]['title'] = 'Kapan pemenang dapat mengambil objek lelang yang dimenangkan?';
-			$faq[2]['content'] = 'Kendaraan atau objel lelang lain yang dimenangkan dapat diambil setelah pemenang melakukan pelunasan. Setelah dana pelunasan aktif di rekening IBID, pemenang akan mendapat notifikasi via email dan update status transaksi pada halaman akun peserta di website bahwa pembayaran sudah diterima dan kendaraan bisa diambil.';
-			$faq[3]['title'] = 'Bagaimana jika pemenang tidak mengambil kendaraan yang dimenangkan setelah lunas?';
-			$faq[3]['content'] = 'Jika pemenang tidak melakukan pengambilan kendaraan setelah batas hari pelunasan, pemenang akan dikenakan biaya parkir sebesar Rp 100.000/kendaraan/hari keterlambatan, serta segala kerusakan dan kehilangan sepenuhnya menjadi tanggung jawab pemenang.';
-			$faq[4]['title'] = 'Bagaimana jika pengambilan kendaraan atau dokumennya dilakukan bukan oleh pemenang?';
-			$faq[4]['content'] = 'Jika berhalangan mengambil kendaraan atau dokumennya, pemenang dapat mengirim perwakilan dengan menyiapkan surat kuasa yang telah ditandatangani di atas materai, KTP asli pemenang, dan fotokopi KTP penerima kuasa.';
-			$faq[5]['title'] = 'Apakah ada biaya tambahan saat pelunasan?';
-			$faq[5]['content'] = 'Pada saat pelunasan, pemenang dikenakan biaya administrasi sebesar: <br />
+			$faq[0]['title'] = 'Bagaimana cara melunasi objek lelang yang dimenangkan?';
+			$faq[0]['content'] = 'Pemenang lelang akan diberikan informasi jumlah nominal rupiah yang harus dibayar pada formulir Konfirmasi Pemenang Lelang (KPL), disertai dengan nomor Virtual Account (VA) atas objek lelang yang dimenangkan dengan mekanisme satu objek mendapat satu nomor VA. Formulir KPL diberikan di lokasi lelang atau dapat dikirimkan via email. Pemenang dapat melakukan pembayaran menggunakan nomor VA tersebut di seluruh bank baik dengan metode setor tunai atau sistem online bank terkait.';
+			$faq[1]['title'] = 'Berapa lama masa pelunasan objek yang dimenangkan?';
+			$faq[1]['content'] = 'Peserta diberikan waktu selama 5 hari kerja setelah hari lelang untuk melunasi kendaraan atau objek lain yang dimenangkan. Jika melebihi waktu ini, pemenang dinyatakan wanprestasi (gugur) dan uang pembelian NPL hangus.';
+			$faq[2]['title'] = 'Kapan dokumen dari objek lelang yang dimenangkan bisa diambil?';
+			$faq[2]['content'] = 'Informasi kapan tersedianya dokumen kendaraan atau objek lelang lain sudah tertulis dalam keterangan daftar lot di lokasi lelang dan di halaman detail objek lelang di website. Perhitungan hari ketersediaan dokumen kendaraan dimulai setelah hari lelang. Untuk memudahkan pemenang, kami juga menyediakan layanan pengiriman notifikasi saat dokumen sudah tersedia. Notifikasi dapat dilihat di menu transaksi pada akun peserta di website.';
+			$faq[3]['title'] = 'Kapan pemenang dapat mengambil objek lelang yang dimenangkan?';
+			$faq[3]['content'] = 'Kendaraan atau objel lelang lain yang dimenangkan dapat diambil setelah pemenang melakukan pelunasan. Setelah dana pelunasan aktif di rekening IBID, pemenang akan mendapat notifikasi via email dan update status transaksi pada halaman akun peserta di website bahwa pembayaran sudah diterima dan kendaraan bisa diambil.';
+			$faq[4]['title'] = 'Bagaimana jika pemenang tidak mengambil kendaraan yang dimenangkan setelah lunas?';
+			$faq[4]['content'] = 'Jika pemenang tidak melakukan pengambilan kendaraan setelah batas hari pelunasan, pemenang akan dikenakan biaya parkir sebesar Rp 100.000/kendaraan/hari keterlambatan, serta segala kerusakan dan kehilangan sepenuhnya menjadi tanggung jawab pemenang.';
+			$faq[5]['title'] = 'Bagaimana jika pengambilan kendaraan atau dokumennya dilakukan bukan oleh pemenang?';
+			$faq[5]['content'] = 'Jika berhalangan mengambil kendaraan atau dokumennya, pemenang dapat mengirim perwakilan dengan menyiapkan surat kuasa yang telah ditandatangani di atas materai, KTP asli pemenang, dan fotokopi KTP penerima kuasa.';
+			$faq[6]['title'] = 'Apakah ada biaya tambahan saat pelunasan?';
+			$faq[6]['content'] = 'Pada saat pelunasan, pemenang dikenakan biaya administrasi sebesar: <br />
 									a. Rp 1.750.000/mobil <br />
 									b. Rp 250.000/motor <br />
 									c. Rp 2.500.000/alat berat <br />
@@ -187,27 +181,31 @@ class Ours extends CI_Controller {
 		}
 		if($value === 7) {
 			$keys = 'map';
+			$faq[0]['title'] = 'Apa itu fitur Market Auction Price (MAP)?';
+			$faq[0]['content'] = 'Market Auction Price (MAP) adalah fitur untuk mengetahui harga pasaran terkini kendaraan yang bersumber dari harga seluruh kendaraan yang lelang oleh IBID di seluruh kota lelang untuk beragam merek dan tipe mobil, disertai hasil penilaian atas setiap mobilnya.';
+			$faq[1]['title'] = 'Bagaimana cara menggunakan fitur MAP?';
+			$faq[1]['content'] = 'Fitur MAP secara ekslusif akan diberikan kepada peserta lelang yang membeli NPL Unlimited mobil dan penitip mobil lelang tertentu.';
+		}
+		if($value === 8) {
+			$keys = 'titip';
 			$faq[0]['title'] = 'Apa itu titip lelang?';
 			$faq[0]['content'] = 'Titip lelang adalah layanan penitipan objek (kendaraan dan gadget) yang ingin dilelang oleh IBID. Layanan ini dapat dimanfaatkan oleh perseorangan ataupun perusahaan, dalam jumlah besar maupun satuan.';
 			$faq[1]['title'] = 'Bagaimana cara menitipkan objek untuk dilelang oleh IBID?';
 			$faq[1]['content'] = 'Sebelumnya, Anda harus memiliki akun IBID dengan mendaftar via website terlebih dahulu dengan mengisi data  seperti nama, email, kata sandi, dan lainnya. Setelah itu Anda dapat memilih menu "titip lelang" dan melengkapi data diri (nomor rekening bank untuk transfer dana jika objek telah terjual). Penitip dapat memilih jenis objek lelang yang akan dititipkan dan tanggal untuk inspeksi atas kendaraan yang akan dilelang.';
-		}
-		if($value === 8) {
-			$keys = 'titip';
-			$faq[0]['title'] = 'Apa saja syarat menitipkan objek untuk dilelang?';
-			$faq[0]['content'] = 'Untuk perseorangan, syaratnya adalah membawa kendaraan yang akan dititipkan beserta dokumennya ke lokasi. Selanjutnya Anda harus menandatangani surat perjanjian penitipan kendaraan bermotor untuk dilelang, surat kuasa, dan surat pernyataan.';
-			$faq[1]['title'] = 'Apa tujuan dilakukan inspeksi?';
-			$faq[1]['content'] = 'Inspeksi dilakukan untuk mengetahui kondisi objek yang akan dilelang, mulai dari interior, eksterior, mesin, sampai rangka. IBID akan memberikan hasil inspeksi serta harga rekomendasi untuk membantu Anda memutuskan harga dasar objek yang akan dilelang secara real time.';
-			$faq[2]['title'] = 'Bagaimana cara menentukan harga dasar kendaraan Anda?';
-			$faq[2]['content'] = 'Setelah mendapatkan notifikasi bahwa inspeksi sudah selesai dilakukan, Anda akan menerima laporan hasil inspeksi beserta harga rekomendasi yang dikirim melalui email. Selanjutnya, Anda dapat memasukkan harga dasar pada akun Anda di website IBID dengan memilih menu "harga dasar" di halaman manajemen akun.';
-			$faq[3]['title'] = 'Bagaimana cara mengetahui tahapan proses penitipan kendaraan dari awal hingga selesai dan berapa lama waktunya?';
-			$faq[3]['content'] = 'Seluruh tahapan transaksi penitipan lelang di IBID dapat Anda pantau melalui akun Anda di menu "transaksi". Waktu proses penitipan lelang hingga objek terjual dan uang penjualan diterima penitip di lelang pertama di IBID adalah 7 hari kerja setelah hari lelang.';
-			$faq[4]['title'] = 'Bagaimana jika kendaraan saya tidak terjual?';
-			$faq[4]['content'] = 'Jika kendaraan tidak terjual, Anda dapat mengambil kembali kendaraan selambatnya satu hari setelah hari lelang. Anda akan dikenakan biaya pengelolaan selama kendaraan berada di lokasi sebesar Rp 250.000/kendaraan. Jika kendaraan belum diambil setelah satu hari pasca lelang, Anda akan dikenakan biaya parkir sebesar Rp 100.000/kendaraan/hari, serta segala kerusakan dan kehilangan sepenuhnya menjadi tanggung jawab Anda.';
-			$faq[5]['title'] = 'Bagaimana jika kendaraan saya batal terjual karena pemenang tidak melunasi kendaraan sesuai durasi waktu yang telah ditentukan?';
-			$faq[5]['content'] = 'Jika kendaraan yang seharusnya terjual ternyata tidak dilunasi oleh pemenang lelang sesuai waktu yang ditentukan, sesuai peraturan pemerintah, Anda akan mendapat biaya penggantian sebesar 50% dari biaya pembelian NPL oleh pemenang lelang.';
-			$faq[6]['title'] = 'Bagaimana jika saya batal menitipkan kendaraan dilelang IBID?';
-			$faq[6]['content'] = 'Jika Anda telah menandatangani beberapa dokumen persyaratan penitipan lelang dan kendaraan sudah melalui tahapan inspeksi serta persiapan lelang, Anda akan dikenakan biaya pengelolaan kendaraan selama kendaraan berada di lokasi sebesar Rp 250.000/kendaraan.';
+			$faq[2]['title'] = 'Apa saja syarat menitipkan objek untuk dilelang?';
+			$faq[2]['content'] = 'Untuk perseorangan, syaratnya adalah membawa kendaraan yang akan dititipkan beserta dokumennya ke lokasi. Selanjutnya Anda harus menandatangani surat perjanjian penitipan kendaraan bermotor untuk dilelang, surat kuasa, dan surat pernyataan.';
+			$faq[3]['title'] = 'Apa tujuan dilakukan inspeksi?';
+			$faq[3]['content'] = 'Inspeksi dilakukan untuk mengetahui kondisi objek yang akan dilelang, mulai dari interior, eksterior, mesin, sampai rangka. IBID akan memberikan hasil inspeksi serta harga rekomendasi untuk membantu Anda memutuskan harga dasar objek yang akan dilelang secara real time.';
+			$faq[4]['title'] = 'Bagaimana cara menentukan harga dasar kendaraan Anda?';
+			$faq[4]['content'] = 'Setelah mendapatkan notifikasi bahwa inspeksi sudah selesai dilakukan, Anda akan menerima laporan hasil inspeksi beserta harga rekomendasi yang dikirim melalui email. Selanjutnya, Anda dapat memasukkan harga dasar pada akun Anda di website IBID dengan memilih menu "harga dasar" di halaman manajemen akun.';
+			$faq[5]['title'] = 'Bagaimana cara mengetahui tahapan proses penitipan kendaraan dari awal hingga selesai dan berapa lama waktunya?';
+			$faq[5]['content'] = 'Seluruh tahapan transaksi penitipan lelang di IBID dapat Anda pantau melalui akun Anda di menu "transaksi". Waktu proses penitipan lelang hingga objek terjual dan uang penjualan diterima penitip di lelang pertama di IBID adalah 7 hari kerja setelah hari lelang.';
+			$faq[6]['title'] = 'Bagaimana jika kendaraan saya tidak terjual?';
+			$faq[6]['content'] = 'Jika kendaraan tidak terjual, Anda dapat mengambil kembali kendaraan selambatnya satu hari setelah hari lelang. Anda akan dikenakan biaya pengelolaan selama kendaraan berada di lokasi sebesar Rp 250.000/kendaraan. Jika kendaraan belum diambil setelah satu hari pasca lelang, Anda akan dikenakan biaya parkir sebesar Rp 100.000/kendaraan/hari, serta segala kerusakan dan kehilangan sepenuhnya menjadi tanggung jawab Anda.';
+			$faq[7]['title'] = 'Bagaimana jika kendaraan saya batal terjual karena pemenang tidak melunasi kendaraan sesuai durasi waktu yang telah ditentukan?';
+			$faq[7]['content'] = 'Jika kendaraan yang seharusnya terjual ternyata tidak dilunasi oleh pemenang lelang sesuai waktu yang ditentukan, sesuai peraturan pemerintah, Anda akan mendapat biaya penggantian sebesar 50% dari biaya pembelian NPL oleh pemenang lelang.';
+			$faq[8]['title'] = 'Bagaimana jika saya batal menitipkan kendaraan dilelang IBID?';
+			$faq[8]['content'] = 'Jika Anda telah menandatangani beberapa dokumen persyaratan penitipan lelang dan kendaraan sudah melalui tahapan inspeksi serta persiapan lelang, Anda akan dikenakan biaya pengelolaan kendaraan selama kendaraan berada di lokasi sebesar Rp 250.000/kendaraan.';
 		}
 		$html = '<div class="panel-group no-margin" id="accordion">';
 		foreach($faq as $key => $value) {
@@ -233,12 +231,46 @@ class Ours extends CI_Controller {
 
 	private function loc_content() {
 		$html = '<div class="location"><ul>';
-		for($i = 0; $i < 1; $i++) {
 		$html .= '<li class="box-location">
-					<h4>IBID - Balai Lelang Serasi</h4>
-					<p>Jl. Bintaro Mulia I No.3 Bintaro Pesanggrahan - Jakarta Selatan 12250 <span>(62-21) 7355999</span></p>
+					<h4>'.strtoupper('balikpapan').'</h4>
+					<p>Jl. MT. Haryono No. 140 RT 84, Kel. Gn. Bahagia  (Sebelah kanan pintu masuk Perum BDI) <span>0542-8861663 / 08125378210</span></p>
 				</li>';
-		}
+		$html .= '<li class="box-location">
+					<h4>'.strtoupper('bandung').'</h4>
+					<p>Jl. Karapitan 109 Buah Batu Kel.Burangrang Bandung <span>085721718391 / 0817386349 </span></p>
+				</li>';
+		$html .= '<li class="box-location">
+					<h4>'.strtoupper('banjarmasin').'</h4>
+					<p>Jl. A. Yani KM.17,9 Rt.11 Rw.03, Kel. Landasan Ulin Barat Kec. Liang Anggang, Banjarbaru banjarmasin <span>082255292557 / 085245155783</span></p>
+				</li>';
+		$html .= '<li class="box-location">
+					<h4>'.strtoupper('jakarta').'</h4>
+					<p>Pool IBID Jl.Ciputat Raya No.100 Kebayoran Lama, Jakarta Selatan <span>021-7355999 / 081287735544</span></p>
+				</li>';
+		$html .= '<li class="box-location">
+					<h4>'.strtoupper('makassar').'</h4>
+					<p>Gudang SELOG Kawasan Industri Parangloe Indah Makasar <span>081348483555 / 081342300969</span></p>
+				</li>';
+		$html .= '<li class="box-location">
+					<h4>'.strtoupper('medan').'</h4>
+					<p> Jl.Asrama No.19 Samping Kantor Pajak, Pondok Kelapa Medan <span>061-8444588 / 085371747774</span></p>
+				</li>';
+		$html .= '<li class="box-location">
+					<h4>'.strtoupper('palembang').'</h4>
+					<p>Jl. Soekarno Hatta No. 414 Kel. Karya Baru, Kec. Alang-alang Lebar ( samping PT Waskita ) Kota Palembang <span>081532003443 / 081368959318</span></p>
+				</li>';
+		$html .= '<li class="box-location">
+					<h4>'.strtoupper('pekanbaru').'</h4>
+					<p>Jl. Soekarno Hatta KM 9 No. 46A, Sidomulyo Barat - Pekanbaru <span>0761-588599 / 081310943839</span></p>
+				</li>';
+		$html .= '<li class="box-location">
+					<h4>'.strtoupper('semarang').'</h4>
+					<p>Jl. Wolter Mongonsidi No.115A Semarang - Jawa Tengah <span>08119639383 / 085727799993</span></p>
+				</li>';
+		$html .= '<li class="box-location">
+					<h4>'.strtoupper('surabaya').'</h4>
+					<p>Jl. Raya Gilang 113 Kletek Sepanjang Sidoarjo <span>081554003518 / 08119421086</span></p>
+				</li>';
 		$html .= '</ul></div>';
 		return $html;
 	}
