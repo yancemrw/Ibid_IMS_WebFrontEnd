@@ -45,7 +45,7 @@
                       oninvalid="this.setCustomValidity('Password tidak boleh kosong')" oninput="setCustomValidity('')" required />
               <label for="">Password</label>
             </div>
-            <div class="forgot"><a href="<?php echo site_url('forgot'); ?>">Lupa password?</a></div>
+            <div class="forgot"><a href="<?php echo site_url('forgot'); ?>">Lupa kata sandi?</a></div>
             <div class="form-group text-right">
               <div class="inis"><button class="btn btn-green" id="btn-loginx">Masuk</button></div>
               <div class="none"><a href="<?php echo site_url('register'); ?>" class="width-125px">Belum punya akun</a></div>

@@ -5,8 +5,8 @@
         <div class="box-forgot-pass">
           <form name="formSubmit" id="form-submit" method="POST" action="<?php echo site_url('forgot'); ?>" data-provide="validation">
             <img src="<?php echo base_url('assetsfront/images/icon/ic-forgot-pass.png') ?>">
-            <h2>Forgot Your Password</h2>
-            <p>Masukkan email anda</p>
+            <h2>Atur ulang kata sandi</h2>
+            <p>Masukkan email Anda</p>
             <div class="form-group floating-label">
               <input type="email" id="email" name="email" class="form-control input-custom"
                       pattern="[^@]*@[^@]" oninput="setCustomValidity('')"

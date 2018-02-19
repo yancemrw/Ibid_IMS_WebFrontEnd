@@ -118,7 +118,7 @@
                   <div class="box-section">
                      <div class="box-image icn icn-auto-bid"></div>
                      <h2>Auto BID</h2>
-                     <p>Tawar harga unit dengan otomatis diharga maksimum</p>
+                     <p>Tawar harga secara otomatis</p>
                   </div>
                </div>
             </div>

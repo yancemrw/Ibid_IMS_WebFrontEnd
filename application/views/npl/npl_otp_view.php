@@ -32,7 +32,7 @@
                 <div class="verification-otp">
                     <div class="input-code">
                         <h2>Verifikasi No. HP (OTP)</h2>
-                        <h3>Masukan kode verifikasi  disini</h3>
+                        <h3>Masukkan kode yang kami kirim lewat SMS</h3>
                         <div class="vcode" id="vcode">
                             <input type="phone" class="vcode-input" maxlength="1" 
                                     oninvalid="this.setCustomValidity('Harus diisi')"
@@ -53,7 +53,7 @@
                         <p>Mohon tunggu 2 menit sebelum mencoba kirim ulang kode verifikasi</p>
                     </div>
                     <div id="countdown-id">
-                        <button type="submit" class="btn btn-green">Submit</button>
+                        <button type="submit" class="btn btn-green">Kirim</button>
                     </div>
                     <div id="divreotp">
                         <a id="reotp" href="javascript:void(0)" onclick="reload()">Kirim ulang kode verifikasi</a>
