@@ -21,7 +21,7 @@
             <div class="col-md-4 col-sm-6 pull-right">
                 <div class="form-register">
                     <h2>Daftar</h2>
-                    <form action="<?php echo site_url('register'); ?>" id="form-reg" method="post" data-provide="validation">
+                    <form id="form-reg" data-provide="validation">
                         <h3>Buat Akun Baru</h3>
                         <div class="form-group floating-label">
                             <input type="text" id="name" name="name" class="form-control input-custom" 
@@ -61,7 +61,7 @@
                         <div class="g-recaptcha recaptcha" id="idrecaptcha" required></div>
                         <div class="form-group text-right">
                             <button class="btn btn-green btn-register" id="btn-daftar" disabled>Daftar</button>
-                            <a href="<?php echo site_url('register'); ?>">Sudah punya akun?</a>
+                            <a href="<?php echo site_url('login'); ?>">Sudah punya akun?</a>
                         </div>
                     </form>
                 </div>
@@ -131,7 +131,7 @@
         $('#pass').blur(function() {
             var pass = $(this).val(), repass = $('#repass').val();
             if($(this).val().length < 8) {
-                $('#type-pass').html('<i class="fa fa-info"></i> Kata sandi kurang dari 8');
+                $('#type-pass').html('<i class="fa fa-info"></i> Kata sandi minimal 8 karakter');
                 $('#type-pass').show();
                 return;
             }
@@ -188,19 +188,19 @@
                 e.preventDefault();
                 if(!pass.match(letters)) {
                     bootoast.toast({
-                        message: 'Kata sandi hanya boleh menggunakan karakter dan angka',
+                        message: 'Kata sandi harus kombinasi huruf dan angka',
                         type: 'warning',
                         position: 'top-center',
-                        timeout: 3
+                        timeout: 4
                     });
                     return false;
                 }
                 else if(recaptcha === '') {
                     bootoast.toast({
-                        message: 'Captcha harus di isi!',
+                        message: 'Mohon klik CAPTCHA untuk melanjutkan',
                         type: 'warning',
                         position: 'top-center',
-                        timeout: 3
+                        timeout: 4
                     });
                     return false;
                 }
@@ -209,27 +209,65 @@
                         message: 'Kata sandi dan ulangi kata sandi tidak sama',
                         type: 'warning',
                         position: 'top-center',
-                        timeout: 3
+                        timeout: 4
                     });
                     return false;
                 }
                 else {
                     $('#btn-daftar').attr('disabled', true);
-                    $('#form-reg').submit();
+                    $.ajax({
+                        type: 'POST',
+                        url: '<?php echo site_url('auth/register/create_user'); ?>',
+                        data: $("#form-reg").serializeArray(),
+                        success: function(data) {
+                            var data = JSON.parse(data);
+                            if(data.status === 1) {
+                                bootoast.toast({
+                                    message: data.messages,
+                                    type: 'warning',
+                                    position: 'top-center',
+                                    timeout: 0
+                                });
+                                setTimeout(function() {
+                                    location.href = data.redirect;
+                                    $('#btn-update').attr('disabled', false);
+                                }, 1500);
+                            }
+                            else {
+                                $('#btn-update').attr('disabled', false);
+                                bootoast.toast({
+                                    message: data.messages,
+                                    type: 'warning',
+                                    position: 'top-center',
+                                    timeout: 4
+                                });
+                                if(data.redirect !== '') location.href = data.redirect;
+                            }
+                        },
+                        error: function() {
+                            $('#btn-update').attr('disabled', false);
+                            bootoast.toast({
+                                message: 'Terjadi Error Pada Server',
+                                type: 'warning',
+                                position: 'top-center',
+                                timeout: 4
+                            });
+                        }
+                    });
                     return false;
                 }
             }
         });
 
         $('#pass').focus(function() {
-            $('#type-pass').html('<i class="fa fa-info"></i> Kata sandi harus karakter dan angka');
+            $('#type-pass').html('<i class="fa fa-info"></i> Kata sandi harus kombinasi huruf dan angka');
             $('#type-pass').show();
         });
 
         $('#pass').keypress(function(event) {
             var charCode = (event.which) ? event.which : event.keyCode;
             if(charCode === 8) {
-                $('#type-pass').html('<i class="fa fa-info"></i> Kata sandi harus karakter dan angka');
+                $('#type-pass').html('<i class="fa fa-info"></i> Kata sandi harus kombinasi huruf dan angka');
             }
         }).keyup(function() {
             if(format.test($(this).val())) {

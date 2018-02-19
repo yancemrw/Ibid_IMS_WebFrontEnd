@@ -45,7 +45,7 @@
                       oninvalid="this.setCustomValidity('Password tidak boleh kosong')" oninput="setCustomValidity('')" required />
               <label for="">Password</label>
             </div>
-            <div class="forgot"><a href="<?php echo site_url('forgot'); ?>">Lupa password?</a></div>
+            <div class="forgot"><a href="<?php echo site_url('forgot'); ?>">Lupa kata sandi?</a></div>
             <div class="form-group text-right">
               <div class="inis"><button class="btn btn-green" id="btn-loginx">Masuk</button></div>
               <div class="none"><a href="<?php echo site_url('register'); ?>" class="width-125px">Belum punya akun</a></div>
@@ -96,7 +96,7 @@
         message: '<?=@$message[1]?>',
         type: '<?=@$message[0]?>',
         position: 'top-center',
-        timeout: 4
+        timeout: 5
       });
     });
   </script>
@@ -114,7 +114,7 @@
           message: 'Sandi tidak boleh kurang dari 8 karakter',
           type: 'warning',
           position: 'top-center',
-          timeout: 3
+          timeout: 4
         });
         return false;
       }
@@ -138,7 +138,7 @@
                 message: data.messages,
                 type: 'warning',
                 position: 'top-center',
-                timeout: 3
+                timeout: 4
               });
               return false;
             }
@@ -149,7 +149,7 @@
               message: 'Terjadi Masalah Pada Koneksi ke Server',
               type: 'warning',
               position: 'top-center',
-              timeout: 3
+              timeout: 4
             });
           }
         });
@@ -165,7 +165,7 @@
           message: 'Sandi tidak boleh kurang dari 8 karakter',
           type: 'warning',
           position: 'top-center',
-          timeout: 3
+          timeout: 4
         });
         return false;
       }
@@ -189,7 +189,7 @@
                 message: data.messages,
                 type: 'warning',
                 position: 'top-center',
-                timeout: 3
+                timeout: 4
               });
               return false;
             }
@@ -200,7 +200,7 @@
               message: 'Terjadi Masalah Pada Koneksi ke Server',
               type: 'warning',
               position: 'top-center',
-              timeout: 3
+              timeout: 4
             });
           }
         });
@@ -471,6 +471,40 @@ $(document).ready(function() {
     $(this).siblings('ul').toggleClass('open');
   });
 });
+
+// handle active menu page
+if(getActiveMenu('active_menu') !== false) {
+  console.log(getActiveMenu('active_menu'));
+  switch(getActiveMenu('active_menu')) {
+    case 'find' : $('#find_menu').addClass('active'); break;
+    case 'schedule' : $('#schedule_menu').addClass('active'); break;
+    case 'live' : $('#live_menu').addClass('active'); break;
+    case 'npl' : $('#npl_menu').addClass('active'); break;
+    case 'auction' : $('#auction_menu').addClass('active'); break;
+    case 'map' : $('#map_menu').addClass('active'); break;
+    case 'procedure' : $('#procedure_menu').addClass('active'); break;
+    case 'home' : deleteActiveMenu('active_menu'); break;
+    default : deleteActiveMenu('active_menu'); break;
+  }
+}
+
+function setActiveMenu(value) {
+  document.cookie = "active_menu="+value+"; Path=/;";
+}
+
+function getActiveMenu(name) {
+    var pattern = RegExp(name+"=.[^;]*")
+    matched = document.cookie.match(pattern)
+    if(matched) {
+        var cookie = matched[0].split('=');
+        return cookie[1];
+    }
+    return false;
+}
+
+function deleteActiveMenu(name) {
+  document.cookie = name+'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
 </script>
 </body>
 </html>

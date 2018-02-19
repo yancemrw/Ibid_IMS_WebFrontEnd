@@ -23,28 +23,28 @@
                         <div class="form-info ic ic-Mudah"></div>
                         <div class="content-media">
                             <h2>Proses Mudah dan Aman</h2>
-                            <p>Proses pembelian nomor peserta lelang (NPL) dan pembayaran dilakukan secara online di Website IBID dengan berbagai pilihan metode pembayaran yang yang terotentikasi menjamin privasi dan keamanan transaksi online Anda</p>
+                            <p>Proses pembelian dan pembayaran Nomor Peserta Lelang (NPL) dilakukan secara online lewat website IBID. Pilihan metode pembayaran kami pun telah terverifikasi sehingga menjamin privasi dan keamanan transaksi Anda.</p>
                         </div>
                     </li>
                     <li class="item">
                         <div class="form-info ic ic-Deposit-100_"></div>
                         <div class="content-media">
                             <h2>Deposit 100% Aman & Terjamin</h2>
-                            <p>Jika Anda tidak menang lelang Uang deposit dari pembelian NPL akan dikembalikan 100% tanpa potongan apapun.</p>
+                            <p>Jika Anda belum berhasil membeli objek lelang, uang deposit dari pembelian NPL akan kembali 100%, tanpa potongan apapun</p>
                         </div>
                     </li>
                     <li class="item">
                         <div class="form-info ic ic-No-NPL"></div>
                         <div class="content-media">
                             <h2>Nomor Peserta Lelang (NPL) Unlimited</h2>
-                            <p>Nikmati kemudahan lebih dengan menggunakan NPL Unlimited. Cukup membeli satu NPL yang dapat digunakan untuk mengikuti berbagai jadwal lelang bahkan secara bersamaan dan menawar kendaraan tanpa batasan maksimal.</p>
+                            <p>Lelang menjadi lebih mudah dengan NPL Unlimited. Satu NPL dapat Anda gunakan untuk berpartisipasi di semua jadwal lelang, bahkan secara bersamaan! Tawar kendaraan favorit Anda tanpa batas maksimal.</p>
                         </div>
                     </li>
                 </ul>
             </div>
             <div class="col-md-5 col-sm-6">
                 <div class="booking-schedule">
-                    <h2>Perbaharui Data Anda <span>Hanya di Isi Untuk User Baru</span></h2>
+                    <h2>Lengkapi data Anda <span>* Khusus pengguna baru</span></h2>
                     <form class="form-filter" id="beli-npl" data-provide="validation">
                         <input type="hidden" name="otpkirim" value="true">
                         <div class="form-group floating-label">
@@ -53,7 +53,7 @@
                                     oninput="setCustomValidity('')" maxlength="13" required />
                             <label class="label-schedule">No Telepon *</label>
                             <div class="help-info help-info-1">
-                                <i class="fa fa-info"></i> Pastikan nomor handphone yang Anda masukan aktif
+                                <i class="fa fa-info"></i> Pastikan nomor telepon aktif
                             </div>
                         </div>
                         <div class="form-group">
@@ -73,9 +73,7 @@
                                     oninput="setCustomValidity('')" maxlength="16" required />
                             <label class="label-schedule">Nomor Rekening *</label>
                             <div class="help-info help-info-2">
-                                <i class="fa fa-info"></i> Nomor rekening merupakan nomor rekening yang di gunakan 
-                                ibid untuk pengembalian deposit. mohon periksa nomor 
-                                rekening tersebut dengan benar
+                                <i class="fa fa-info"></i> IBID membutuhkan nomor rekening Anda untuk pengembalian deposit. Pastikan nomor rekening sudah benar.
                             </div>
                         </div>
                         <div class="form-group floating-label">
@@ -240,7 +238,7 @@
           }
           else if(recaptcha === '') {
               bootoast.toast({
-                  message: 'Captcha harus di isi!',
+                  message: 'Mohon klik CAPTCHA untuk melanjutkan',
                   type: 'warning',
                   position: 'top-center'
               });
@@ -248,7 +246,7 @@
           }
           else if($('#agree-required').is(":checked") === false) {
               bootoast.toast({
-                  message: 'Anda harus setuju dengan syarat dan ketentuan dari kami!',
+                  message: 'Silahkan centang untuk menyetujui Syarat & Ketentuan juga Kebijakan Privasi IBID',
                   type: 'warning',
                   position: 'top-center'
               });
@@ -259,7 +257,7 @@
               $.ajax({
                 type: 'POST',
                 url: '<?php echo site_url("biodata/otp"); ?>',
-                data: 'Phone='+phone+'&BankId='+bankid+'&BankAccountNumber='+bankacc+'&BankAccountName='+bankname+'&IdentityNumber='+ktp+'&otpkirim='+otpkirim,
+                data: 'Phone='+phone+'&BankId='+bankid+'&BankAccountNumber='+bankacc+'&BankAccountName='+bankname+'&IdentityNumber='+ktp+'&otpkirim='+otpkirim+'&otpsource=npl',
                 success: function(data) {
                   var data = JSON.parse(data);
                   if(data.status === 1) {
@@ -288,7 +286,7 @@
                 error: function() {
                   $('#btn-kirim').attr('disabled', false);
                   bootoast.toast({
-                    message: 'Terjadi Error Pada Server',
+                    message: 'Terjadi kesalahan saat koneksi ke server',
                     type: 'warning',
                     position: 'top-center',
                     timeout: 3

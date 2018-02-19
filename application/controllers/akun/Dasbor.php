@@ -13,15 +13,58 @@ class Dasbor extends CI_Controller {
 	}
 
 	public function index() {
-		$this->form_validation->set_rules('first_name', 'Nama Depan', 'required');
-		$this->form_validation->set_rules('ktp', 'No KTP', 'required');
-		$this->form_validation->set_rules('upd_phone', 'No Telepon', 'required');
-		$this->form_validation->set_rules('bankid', 'BANK', 'required');
-		$this->form_validation->set_rules('norek', 'No Rekening', 'required');
-		$this->form_validation->set_rules('rekname', 'Nama Rekening', 'required');
+		$userdata = $this->session->userdata('userdata');
+		$url = linkservice('account')."users/details/".$userdata['UserId'];
+		$method = 'GET';
+		$responseApi = admsCurl($url, array(), $method);
+		$generate = curlGenerate($responseApi);
 
-		if($this->form_validation->run() === TRUE) {
-			$tmpDob = !empty($this->input->post('dob')) ? explode("/", $this->input->post('dob')) : false;
+		// ubah date format
+		$split = explode('-', $generate->users->Birthdate);
+		$generate->users->Birthdate = @$generate->users->Birthdate != "" ? (@$split[2].'/'.@$split[1].'/'.@$split[0]) : '';
+
+		$url = linkservice('master')."bank/get";
+		$method = 'GET';
+		$responseApi = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
+		$listBank = curlGenerate($responseApi);
+
+		$userdata = $this->session->userdata('userdata');
+		$data = array(
+			'header_white'		=> "header-white",
+			'userdata'			=> $userdata,
+			'title'				=> 'Data Diri',
+			'form_auth_mobile'	=> login_status_form_mobile($userdata),
+			'form_auth'			=> login_Status_form($userdata),
+			'content'			=> $generate,
+			'listBank'			=> @$listBank
+		);
+		//$data['img_link'] = 'https://instagram.fjkt1-1.fna.fbcdn.net/t51.2885-15/e35/25023178_125021498293801_6299328116707819520_n.jpg';
+		$data['img_link'] = base_url('assetsfront/images/icon/ic_avatar.png');
+		$view = "akun/dasbor_view";
+
+		template($view, $data);
+	}
+
+	public function confirm_dashboard() {
+		$urlKTP		= linkservice('account')."users/searchKtp?ktp=".$this->input->post('ktp')."&id=".$this->session->userdata('userdata')['UserId'];
+		$methodKTP	= 'GET';
+		$resKTP		= admsCurl($urlKTP, array(), $methodKTP);
+		$ktp_data	= json_decode($resKTP['response']);
+		$callback	= new stdClass();
+		if($ktp_data->status === 1) {
+			$callback->status = 0;
+			$callback->messages = 'Nomor KTP sudah terdaftar di sistem kami, Mohon daftarkan nomor KTP yang lain';
+			$callback->redirect = '';
+			echo json_encode($callback);
+			exit;
+		}
+		else {
+			$callback->status = 1;
+			$callback->messages = 'Silahkan verifikasi OTP dari kami';
+			$callback->redirect = '';
+			echo json_encode($callback);
+			exit;
+			/*$tmpDob = !empty($this->input->post('dob')) ? explode("/", $this->input->post('dob')) : false;
 			$dataUpdate = array(
 				'UserId'			=> $this->input->post('UserId'),
 				'first_name'		=> $this->input->post('first_name'),
@@ -49,44 +92,19 @@ class Dasbor extends CI_Controller {
 			$responseApi = admsCurl($url, $dataUpdate, $method);
 
 			if($responseApi['err']) {
-				echo "<hr>cURL Error #:".$responseApi['err'];
+				$callback->status = 0;
+				$callback->messages = $responseApi['err'];
+				$callback->redirect = '';
+				echo json_encode($callback);
+				exit;
 			}
 			else {
-				$this->session->set_flashdata('message', array('success', 'Akun Sudah Berhasil Diubah'));
-				redirect('akun/dasbor', 'refresh');
-			}
-		}
-		else {
-			$userdata = $this->session->userdata('userdata');
-			$url = linkservice('account')."users/details/".$userdata['UserId'];
-			$method = 'GET';
-			$responseApi = admsCurl($url, array(), $method);
-			$generate = curlGenerate($responseApi);
-
-			// ubah date format
-			$split = explode('-', $generate->users->Birthdate);
-			$generate->users->Birthdate = @$generate->users->Birthdate != "" ? (@$split[2].'/'.@$split[1].'/'.@$split[0]) : '';
-
-			$url = linkservice('master')."bank/get";
-			$method = 'GET';
-			$responseApi = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
-			$listBank = curlGenerate($responseApi);
-
-			$userdata = $this->session->userdata('userdata');
-			$data = array(
-				'header_white'		=> "header-white",
-				'userdata'			=> $userdata,
-				'title'				=> 'Data Diri',
-				'form_auth_mobile'	=> login_status_form_mobile($userdata),
-				'form_auth'			=> login_Status_form($userdata),
-				'content'			=> $generate,
-				'listBank'			=> @$listBank
-			);
-			//$data['img_link'] = 'https://instagram.fjkt1-1.fna.fbcdn.net/t51.2885-15/e35/25023178_125021498293801_6299328116707819520_n.jpg';
-			$data['img_link'] = base_url('assetsfront/images/icon/ic_avatar.png');
-			$view = "akun/dasbor_view";
-
-			template($view, $data);
+				$callback->status = 1;
+				$callback->messages = 'Akun Sudah Berhasil Diubah';
+				$callback->redirect = 'dasbor';
+				echo json_encode($callback);
+				exit;
+			}*/
 		}
 	}
 

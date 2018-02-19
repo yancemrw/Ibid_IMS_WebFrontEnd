@@ -45,7 +45,7 @@
             <div class="main-management">
                <h2>Pengaturan Akun</h2>
                <div class="setting-profile">
-               <form class="clearfix" action="<?php echo site_url('akun/dasbor'); ?>" id="form-dashboard" method="post" data-provide="validation">
+               <form class="clearfix" id="form-dashboard" data-provide="validation">
                   <input type="hidden" name="UserId" value="<?php echo $content->users->UserId; ?>" />
                   <h3>Ubah Foto Profil</h3>
                   <div class="change-avatar bg-grey">
@@ -91,7 +91,7 @@
                         </div>
                         <div class="form-group floating-label">
                            <input type="text" id="npwp" name="npwp" class="border-radius-none form-control floating-handle only-number" 
-                                    value="<?php echo @$content->users->NpwpNumber; ?>" />
+                                    value="<?php echo @$content->users->NpwpNumber; ?>" maxlength="16" />
                            <label class="label-schedule">NPWP</label>
                         </div>
                         <div class="form-group floating-label">
@@ -213,7 +213,7 @@
                position: 'top-center',
                timeout: 3
             });
-            return;
+            return false;
          }
          else if(ktp.length < 16) {
             bootoast.toast({
@@ -222,12 +222,94 @@
                position: 'top-center',
                timeout: 3
             });
-            return;
+            return false;
          }
          else {
             $('#btn-update').attr('disabled', true);
-            $('#form-dashboard').submit();
-            return;
+            $.ajax({
+               type: 'POST',
+               url: '<?php echo site_url('akun/dasbor/confirm_dashboard'); ?>',
+               data: $("#form-dashboard").serializeArray(),
+               success: function(data) {
+                  var data = JSON.parse(data);
+                  if(data.status === 1) {
+                     bootoast.toast({
+                        message: data.messages,
+                        type: 'warning',
+                        position: 'top-center',
+                        timeout: 4
+                     });
+
+                     var serial_data = $("#form-dashboard").serializeArray(),
+                     data = serial_data[0].name+'='+serial_data[0].value+'&'+serial_data[1].name+'='+serial_data[1].value+'&'+serial_data[2].name+'='+serial_data[2].value+
+                           '&'+serial_data[3].name+'='+serial_data[3].value+'&Phone='+serial_data[4].value+'&IdentityNumber='+serial_data[5].value+
+                           '&NpwpNumber='+serial_data[6].value+'&'+serial_data[7].name+'='+serial_data[7].value+'&BankId='+serial_data[8].value+
+                           '&BankAccountNumber='+serial_data[9].value+'&BankAccountName='+serial_data[10].value+'&'+serial_data[11].name+'='+serial_data[11].value+
+                           '&'+serial_data[12].name+'='+serial_data[12].value+'&'+serial_data[13].name+'='+serial_data[13].value+'&'+serial_data[14].name+'='+
+                           serial_data[14].value+'&'+serial_data[15].name+'='+serial_data[15].value+'&'+serial_data[16].name+'='+serial_data[16].value+'&otpkirim=true'+
+                           '&otpsource=dashboard';
+                     $.ajax({
+                        type: 'POST',
+                        url: '<?php echo site_url("biodata/otp"); ?>',
+                        data: data,
+                        success: function(data) {
+                           var data = JSON.parse(data);
+                           if(data.status === 1) {
+                              bootoast.toast({
+                                 message: data.messages,
+                                 type: 'warning',
+                                 position: 'top-center',
+                                 timeout: 3
+                              });
+                              setTimeout(function() {
+                                 location.href = '<?php echo site_url(); ?>/'+data.redirect;
+                                 $('#btn-kirim').attr('disabled', false);
+                              }, 1500);
+                           }
+                           else {
+                              $('#btn-kirim').attr('disabled', false);
+                              bootoast.toast({
+                                 message: data.messages,
+                                 type: 'warning',
+                                 position: 'top-center',
+                                 timeout: 4
+                              });
+                              if(data.redirect !== 'ktp') location.href = '<?php echo site_url(); ?>/'+data.redirect;
+                           }
+                        },
+                        error: function() {
+                           $('#btn-kirim').attr('disabled', false);
+                           bootoast.toast({
+                              message: 'Terjadi Error Pada Server',
+                              type: 'warning',
+                              position: 'top-center',
+                              timeout: 3
+                           });
+                        }
+                     });
+                  }
+                  else {
+                     $('#btn-update').attr('disabled', false);
+                     bootoast.toast({
+                        message: data.messages,
+                        type: 'warning',
+                        position: 'top-center',
+                        timeout: 4
+                     });
+                     //if(data.redirect !== '') location.href = data.redirect;
+                  }
+               },
+               error: function() {
+                  $('#btn-update').attr('disabled', false);
+                  bootoast.toast({
+                     message: 'Terjadi Error Pada Server',
+                     type: 'warning',
+                     position: 'top-center',
+                     timeout: 4
+                  });
+               }
+            });
+            return false;
          }
       }
    });
