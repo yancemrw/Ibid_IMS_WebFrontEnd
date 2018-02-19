@@ -72,7 +72,7 @@ class Biodata extends CI_Controller {
 		
 		if($ktp_data->status === 1) {
 			$callback->status = 0;
-			$callback->messages = 'Nomor KTP Sudah Terdaftar di Sistem Kami, Mohon Daftarkan No KTP Yang Lain';
+			$callback->messages = 'Nomor KTP Anda sudah terdaftar di sistem kami';
 			$callback->redirect = 'ktp';
 			echo json_encode($callback);
 			exit;
@@ -110,7 +110,7 @@ class Biodata extends CI_Controller {
 				$dataInsert =  array (
 					'type'			=> 'sms',
 					'msisdn'		=> @$_POST['Phone'],
-					'message'		=> 'IBID OTP '.date("d/m/Y H:i",strtotime(date("Y-m-d H:i:s"))).' KONFIRMASI OTP ANDA : '.$otpsesi,
+					'message'		=> $otpsesi.' adalah kode OTP Anda. Selamat berpartisipasi dalam lelang IBID!',
 					'description'	=> 'OTP IBID',
 					'schedule'		=> date("d/m/Y H:i",strtotime(date("Y-m-d H:i:s")."+1 Minutes")),
 					'campaign'		=> 'OTP'
@@ -142,7 +142,7 @@ class Biodata extends CI_Controller {
 				}
 				else {
 					$callback->status = 1;
-					$callback->messages = 'Silahkan verifikasi OTP dari kami';
+					$callback->messages = 'Data sudah tersimpan, mohon lakukan verifikasi OTP';
 					$callback->redirect = 'biodata/otpconfirm';
 					echo json_encode($callback);
 					exit;

@@ -7,8 +7,8 @@
                         <input type="hidden" name="email" value="<?php echo $email; ?>">
                         <input type="hidden" name="changepassword" value="<?php echo $changepassword; ?>">
                         <img src="<?php echo base_url('assetsfront/images/icon/ic-reset-pass.png'); ?>">
-                        <h2>Atur ulang sandi anda</h2>
-                        <p>Masukkan sandi baru anda</p>
+                        <h2>Ubah kata sandi anda</h2>
+                        <p>Masukkan kata sandi baru</p>
                         <div class="form-group floating-label">
                             <input type="password" name="password" id="password" class="form-control input-custom"
                                     oninvalid="this.setCustomValidity('Sandi baru tidak boleh kosong')" 

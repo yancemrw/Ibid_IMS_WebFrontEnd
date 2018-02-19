@@ -131,7 +131,7 @@
         $('#pass').blur(function() {
             var pass = $(this).val(), repass = $('#repass').val();
             if($(this).val().length < 8) {
-                $('#type-pass').html('<i class="fa fa-info"></i> Kata sandi kurang dari 8');
+                $('#type-pass').html('<i class="fa fa-info"></i> Kata sandi minimal 8 karakter');
                 $('#type-pass').show();
                 return;
             }
@@ -188,7 +188,7 @@
                 e.preventDefault();
                 if(!pass.match(letters)) {
                     bootoast.toast({
-                        message: 'Kata sandi hanya boleh menggunakan karakter dan angka',
+                        message: 'Kata sandi harus kombinasi huruf dan angka',
                         type: 'warning',
                         position: 'top-center',
                         timeout: 4
@@ -197,7 +197,7 @@
                 }
                 else if(recaptcha === '') {
                     bootoast.toast({
-                        message: 'Captcha harus di isi!',
+                        message: 'Mohon klik CAPTCHA untuk melanjutkan',
                         type: 'warning',
                         position: 'top-center',
                         timeout: 4
@@ -226,7 +226,7 @@
                                     message: data.messages,
                                     type: 'warning',
                                     position: 'top-center',
-                                    timeout: 4
+                                    timeout: 0
                                 });
                                 setTimeout(function() {
                                     location.href = data.redirect;
@@ -260,14 +260,14 @@
         });
 
         $('#pass').focus(function() {
-            $('#type-pass').html('<i class="fa fa-info"></i> Kata sandi harus karakter dan angka');
+            $('#type-pass').html('<i class="fa fa-info"></i> Kata sandi harus kombinasi huruf dan angka');
             $('#type-pass').show();
         });
 
         $('#pass').keypress(function(event) {
             var charCode = (event.which) ? event.which : event.keyCode;
             if(charCode === 8) {
-                $('#type-pass').html('<i class="fa fa-info"></i> Kata sandi harus karakter dan angka');
+                $('#type-pass').html('<i class="fa fa-info"></i> Kata sandi harus kombinasi huruf dan angka');
             }
         }).keyup(function() {
             if(format.test($(this).val())) {
