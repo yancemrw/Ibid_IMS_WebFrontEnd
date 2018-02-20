@@ -56,7 +56,7 @@ class Register extends CI_Controller {
 			}
 			else {
 				$callback->status = 1;
-				$callback->messages = 'Akun sudah terdaftar, mohon lakukan verifikasi email';
+				$callback->messages = 'Akun berhasil didaftarkan, mohon lakukan verifikasi email';
 				$callback->redirect = 'login';
 				echo json_encode($callback);
 				exit;
