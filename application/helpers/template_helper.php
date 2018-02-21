@@ -34,6 +34,7 @@ function template($view = '', $data = '') {
 
 function login_status_form_mobile($userdata) {
   $pp = base_url('assetsfront/images/icon/ic_avatar.png');
+  $profile_name = @(strlen($userdata['namefront']) > 10) ? substr($userdata['namefront'], 0, 10).'...' : $userdata['namefront'];
   if(count(@$userdata['UserId']) > 0) {
     $html = '<ul class="user-nav clearfix">
                 <li class="dropdown">
@@ -130,7 +131,7 @@ function login_status_form_mobile($userdata) {
                         <li class="clearfix">
                             <div class="menu-account">
                                 <div class="avatar-account">
-                                    <h3>Tangkas</h3>
+                                    <h3>'.$profile_name.'</h3>
                                 </div>
                                 <ul>
                                     <li class="acc_notif"><a href="'.site_url('notification').'"><span class="ic_menu"></span>Notifikasi<!--span>10</span--></a></li>
