@@ -289,7 +289,7 @@
 </section>
 <section class="section">
    <div class="container-fluid">
-      <div class="row">
+      <div class="margin-right-min15px margin-left-min15px">
          <div class="col-md-6 auction-left">
             <div class="overlay-live-auction">
                <h2><?php echo $content->map->Title;?></h2>
