@@ -5,7 +5,7 @@ class Beli extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->library(array('form_validation'));
+		$this->load->library(array('form_validation', 'cart'));
 		$this->load->helper(array('global', 'omni'));
 		$this->AccessApi = new AccessApi(array('client_id' => 'ADMS Web', 'client_secret' => '1234567890', 'username' => 'rendhy.wijayanto@sera.astra.co.id'));
 		$this->AccessApi->redirect_url = site_url('login');
@@ -47,7 +47,29 @@ class Beli extends CI_Controller {
 			$detailBiodata['BankAccountName'] !== NULL && 
 			$detailBiodata['IdentityNumber'] !== NULL
 		) {
-			redirect('pembelian');
+			// redirect('pembelian');
+			
+			$data['title']	= 'Pembelian NPL';
+			$data['page'] 	= 'npl/pemesanan_view_base';
+			$data['detailBiodata'] = $detailBiodata;
+			
+			
+			############################################################
+			## get cabang
+			$url = linkservice('master')."cabang/get";  
+			$method = 'GET';
+			$responseApi = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
+			if ($responseApi['err']) { 
+				echo "<hr>cURL Error #:" . $responseApi['err']; 
+			} else {
+				$dataApi = json_decode($responseApi['response'],true);
+				$cabang = $dataApi['data'];
+			}
+			$data['cabang'] = @$cabang;
+			############################################################
+			$view = 'npl/pemesanan_view_base';
+			template($view, $data);
+			
 		}
 		else {
 			$data['title']	= 'Pembelian NPL';
