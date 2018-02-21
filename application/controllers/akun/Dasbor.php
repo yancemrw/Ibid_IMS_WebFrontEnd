@@ -46,10 +46,18 @@ class Dasbor extends CI_Controller {
 	}
 
 	public function confirm_dashboard() {
+		// verifikasi ktp
 		$urlKTP		= linkservice('account')."users/searchKtp?ktp=".$this->input->post('ktp')."&id=".$this->session->userdata('userdata')['UserId'];
 		$methodKTP	= 'GET';
 		$resKTP		= admsCurl($urlKTP, array(), $methodKTP);
 		$ktp_data	= json_decode($resKTP['response']);
+
+		// verifikasi no telpon
+		$urlPhone		= linkservice('account')."users/searchphone?phone=".$this->input->post('upd_phone')."&id=".$this->input->post('UserId');
+		$methodPhone	= 'GET';
+		$resPhone		= admsCurl($urlPhone, array(), $methodPhone);
+		$phone_data		= json_decode($resPhone['response']);
+
 		$callback	= new stdClass();
 		if($ktp_data->status === 1) {
 			$callback->status = 0;
@@ -59,52 +67,56 @@ class Dasbor extends CI_Controller {
 			exit;
 		}
 		else {
-			$callback->status = 1;
-			$callback->messages = 'Silahkan verifikasi OTP dari kami';
-			$callback->redirect = '';
-			echo json_encode($callback);
-			exit;
-			/*$tmpDob = !empty($this->input->post('dob')) ? explode("/", $this->input->post('dob')) : false;
-			$dataUpdate = array(
-				'UserId'			=> $this->input->post('UserId'),
-				'first_name'		=> $this->input->post('first_name'),
-				'last_name'			=> $this->input->post('last_name'),
-				'email'				=> $this->input->post('upd_email'),
-				'phone'				=> $this->input->post('upd_phone'),
-				'memberid'			=> $this->input->post('idcard'),
-				'gender'			=> ($this->input->post('gender') !== "") ? $this->input->post('gender') : NULL,
-				'dob'				=> $tmpDob ? (sprintf("%04d",$tmpDob[2])."-".sprintf("%02d",$tmpDob[1])."-".sprintf("%02d",$tmpDob[0])) : NULL,
-				'city'				=> $this->input->post('city'),
-				'address'			=> $this->input->post('address'),
-				'occupation'		=> $this->input->post('okup'),
-				'nonpwp' 			=> $this->input->post('npwp'),
-				'noktp'				=> $this->input->post('ktp'),
-				'address' 			=> $this->input->post('address'),
-				'city' 				=> $this->input->post('city'),
-				'bankid' 			=> $this->input->post('bankid'),
-				'accountnumber'		=> $this->input->post('norek'),
-				'accountname'		=> $this->input->post('rekname'),
-				'branchbank'		=> $this->input->post('branchbank')
-			);
+			if($phone_data->status === 1) {
+				$tmpDob = !empty($this->input->post('dob')) ? explode("/", $this->input->post('dob')) : false;
+				$dataUpdate = array(
+					'UserId'			=> $this->input->post('UserId'),
+					'first_name'		=> $this->input->post('first_name'),
+					'last_name'			=> $this->input->post('last_name'),
+					'email'				=> $this->input->post('upd_email'),
+					'phone'				=> $this->input->post('upd_phone'),
+					'memberid'			=> $this->input->post('idcard'),
+					'gender'			=> ($this->input->post('gender') !== "") ? $this->input->post('gender') : NULL,
+					'dob'				=> $tmpDob ? (sprintf("%04d",$tmpDob[2])."-".sprintf("%02d",$tmpDob[1])."-".sprintf("%02d",$tmpDob[0])) : NULL,
+					'city'				=> $this->input->post('city'),
+					'address'			=> $this->input->post('address'),
+					'occupation'		=> $this->input->post('okup'),
+					'nonpwp' 			=> $this->input->post('npwp'),
+					'noktp'				=> $this->input->post('ktp'),
+					'address' 			=> $this->input->post('address'),
+					'city' 				=> $this->input->post('city'),
+					'bankid' 			=> $this->input->post('bankid'),
+					'accountnumber'		=> $this->input->post('norek'),
+					'accountname'		=> $this->input->post('rekname'),
+					'branchbank'		=> $this->input->post('branchbank')
+				);
 
-			$url = linkservice('account')."userfrontend/Edit";
-			$method = 'POST';
-			$responseApi = admsCurl($url, $dataUpdate, $method);
+				$url = linkservice('account')."userfrontend/Edit";
+				$method = 'POST';
+				$responseApi = admsCurl($url, $dataUpdate, $method);
 
-			if($responseApi['err']) {
-				$callback->status = 0;
-				$callback->messages = $responseApi['err'];
+				if($responseApi['err']) {
+					$callback->status = 0;
+					$callback->messages = $responseApi['err'];
+					$callback->redirect = '';
+					echo json_encode($callback);
+					exit;
+				}
+				else {
+					$callback->status = 11;
+					$callback->messages = 'Akun Sudah Berhasil Diubah';
+					$callback->redirect = 'dasbor';
+					echo json_encode($callback);
+					exit;
+				}
+			}
+			else {
+				$callback->status = 1;
+				$callback->messages = 'Silahkan verifikasi OTP dari kami';
 				$callback->redirect = '';
 				echo json_encode($callback);
 				exit;
 			}
-			else {
-				$callback->status = 1;
-				$callback->messages = 'Akun Sudah Berhasil Diubah';
-				$callback->redirect = 'dasbor';
-				echo json_encode($callback);
-				exit;
-			}*/
 		}
 	}
 

@@ -266,6 +266,14 @@
                                  $('#btn-kirim').attr('disabled', false);
                               }, 1500);
                            }
+                           else if(data.status === 11) {
+                              bootoast.toast({
+                                 message: data.messages,
+                                 type: 'warning',
+                                 position: 'top-center',
+                                 timeout: 3
+                              });
+                           }
                            else {
                               $('#btn-kirim').attr('disabled', false);
                               bootoast.toast({
