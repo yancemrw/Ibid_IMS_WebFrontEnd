@@ -6,35 +6,41 @@
                 <form class="form-methode form-filter">
                     <div class="object-type pay-methode clearfix">
                         <div class="form-group">
-                            <input type="radio" name="tipe-methode" id="type_1" class="input-hidden" value="1" />
-                            <label for="type_1">
+                            <input type="radio" name="tipe-methode" id="va-bca" class="input-hidden" value="1" />
+                            <label for="va-bca">
                                 <p>Transfer Virtual Account</p>
                                 <ul>
-                                    <li><img src="<?php echo site_url('assetsfront/images/icon/ic-bca.png'); ?>" alt=""></li>
+                                    <li><img src="<?php echo base_url('assetsfront/images/icon/ic-bca.png'); ?>" alt=""></li>
                                 </ul>
                             </label>
                         </div>
                         <div class="form-group">
-                            <input type="radio" name="tipe-methode" id="type_1" class="input-hidden" value="1" />
-                            <label for="type_1">
+                            <input type="radio" name="tipe-methode" id="va-mandiri" class="input-hidden" value="2" />
+                            <label for="va-mandiri">
                                 <p>Transfer Virtual Account</p>
                                 <ul>
-                                    <li><img src="<?php echo site_url('assetsfront/images/icon/ic-mandiri.png'); ?>" alt=""></li>
+                                    <li><img src="<?php echo base_url('assetsfront/images/icon/ic-mandiri.png'); ?>" alt=""></li>
                                 </ul>
                             </label>
                         </div>
                         <div class="form-group">
-                            <input type="radio" name="tipe-methode" id="type_3" class="input-hidden" value="3" />
-                            <label for="type_3">
+                            <input type="radio" name="tipe-methode" id="cc" class="input-hidden" value="3" />
+                            <label for="cc">
                                 <p>Kartu Visa / Master Card</p>
                                 <ul>
-                                    <li><img src="<?php echo site_url('assetsfront/images/icon/ic-visa.png'); ?>" alt="" title=""></li>
-                                    <li><img src="<?php echo site_url('assetsfront/images/icon/ic-master-card.png'); ?>" alt="" title=""></li>
+                                    <li><img src="<?php echo base_url('assetsfront/images/icon/ic-visa.png'); ?>" alt="" title=""></li>
+                                    <li><img src="<?php echo base_url('assetsfront/images/icon/ic-master-card.png'); ?>" alt="" title=""></li>
                                 </ul>
                             </label>
                             <div id="methode3" class="desc-methode">
                                 3
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="radio" name="tipe-methode" id="loket" class="input-hidden" value="4" />
+                            <label for="loket">
+                                <p>Loket</p>
+                            </label>
                         </div>
                     </div>
                 </form>

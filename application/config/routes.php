@@ -68,6 +68,7 @@ $route['newpassword'] = 'auth/newpassword';
 // menu bagian header
 $route['beli-npl'] = 'npl/beli';
 $route['pembelian'] = 'Pembelian';
+$route['metode-pembayaran'] = 'npl/metodepembayaran';
 
 // bagian akun
 $route['dashboard'] = 'akun/dasbor';
