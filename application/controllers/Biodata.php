@@ -15,7 +15,7 @@ class Biodata extends CI_Controller {
 		$data['message'] = $this->session->flashdata('message');
 
 		############################################################
-		$id = trim($_SESSION['idfront']);
+		$id = trim($_SESSION['userdata']['UserId']);
 		## get detail users
 		$url = linkservice('account') ."users/details/".$id;
 		$method = 'GET';
@@ -195,7 +195,7 @@ class Biodata extends CI_Controller {
 	}
 
 	function updateForNPL() {
-		$id = trim($_SESSION['idfront']);
+		$id = trim($_SESSION['userdata']['UserId']);
 
 		## get detail users
 		$url = linkservice('account') ."users/details/".$id;
@@ -287,7 +287,7 @@ class Biodata extends CI_Controller {
 			}
 			redirect('dashboard');
 		}
-		else {
+		else if($sesi['BiodataPembelianNPL']['otpsource'] === 'npl') {
 			redirect('pembelian');
 		}
 	}
