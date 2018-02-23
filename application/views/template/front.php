@@ -126,7 +126,7 @@
       </div>
    </div>
 </section>
-<section class="section">
+<section class="section background-white">
    <div class="container">
       <div class="row">
          <div class="col-md-12">
@@ -207,7 +207,7 @@
       </div>
    </div>
 </section>
-<section class="section how-to-bid">
+<section class="section how-to-bid background-white">
    <div class="container-fluid">
       <div class="row">
          <div class="col-md-12">
@@ -287,7 +287,7 @@
       </div>
    </div>
 </section>
-<section class="section">
+<section class="section background-white">
    <div class="container-fluid">
       <div class="margin-right-min15px margin-left-min15px">
          <div class="col-md-6 auction-left">
@@ -307,7 +307,7 @@
       </div>
    </div>
 </section>
-<section class="section testimoni">
+<section class="section testimoni background-white">
    <div class="container">
       <div class="row">
          <div class="col-md-12 text-center">

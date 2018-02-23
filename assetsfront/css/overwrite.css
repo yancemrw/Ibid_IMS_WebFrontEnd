@@ -24,6 +24,10 @@
     font-weight: bolder !important;
 }
 
+.background-white {
+    background: #fff;
+}
+
 .border-radius-none {
     border-radius: 0 !important;
 }
