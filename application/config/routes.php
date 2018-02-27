@@ -77,6 +77,7 @@ $route['transaction'] = 'akun/transaction';
 $route['npl_dashboard'] = 'akun/npl_manage';
 $route['favorite'] = 'akun/whislist';
 $route['basic-price'] = 'akun/basic_price';
+$route['npl-success'] = 'npl/success';
 
 // menu cari kendaraan
 $route['cari-lelang'] = 'find/find_unit';
