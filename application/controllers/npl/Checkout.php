@@ -59,17 +59,17 @@ class Checkout extends CI_Controller {
 				$text = substr($md5,0,5).' '.substr($md5,-5);
 				$thisImgBarcodePath = $this->barcode($text, 100);
 				
-				$_SESSION['userdata']['thisBarcodeTransaction'] = $thisImgBarcodePath;
+				echo $_SESSION['userdata']['thisBarcodeTransaction'] = $thisImgBarcodePath;
 				// unset($_SESSION['userdata']['thisBarcodeTransaction']);
 				
 				$this->session->set_flashdata('message', array('success', $responseApiInsert['message']));
 				
-				redirect('npl/success','refresh');
+				// redirect('npl/success','refresh');
 
 			} else if ($responseApiInsert['status'] == 0){ 
 
 				$this->session->set_flashdata('message', array('warning', $responseApiInsert['message']));
-				redirect('beli-npl','refresh');
+				// redirect('beli-npl','refresh');
 
 			}
 		}
