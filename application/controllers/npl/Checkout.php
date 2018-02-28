@@ -203,7 +203,7 @@ class Checkout extends CI_Controller {
 			$location = $cur_size;
 		}
 		
-		imagepng($image, $text.'.png');
+		imagepng($image, 'barcode/'.$text.'.png');
 		imagedestroy($image);
 		$thisImg = base64_encode(file_get_contents($text.'.png'));
 		
@@ -219,7 +219,7 @@ class Checkout extends CI_Controller {
 		$responseApi = $this->ngeCurl($urlnya, json_encode($parameter), $method);
 		$dataApiDetail = json_decode($responseApi,true); 
 
-		unlink($text.'.png');
+		unlink('barcode/'.$text.'.png');
 		
 		return $namafile1 = $dataApiDetail['data']['image'];
 		
