@@ -247,7 +247,9 @@
                <div class="list-product box-recommend">
                   <a href="<?php echo $link_detail; ?>">
                      <div class="thumbnail">
-                        <img alt="" src="<?php echo $img_rec; ?>">
+                        <div class="thumbnail-custom">
+                           <img src="<?php echo $img_rec; ?>" />
+                        </div>
                         <div class="overlay-grade">
                            Grade <span>A</span>
                         </div>
@@ -330,10 +332,14 @@
          <div class="compare-content">
             <p><i class="fa fa-exclamation"></i> Pilih produk yang akan di bandingkan, minimal 2 produk untuk di compare</p>
             <div class="col-md-12">
+               <?php 
+               for($i = 0; $i < 4; $i++) {
+                  if($i < 2) {
+               ?>
                <div class="box-compare">
                   <a href="">
                      <div class="thumbnail">
-                        <img alt="" src="<?php echo $img_rec; ?>">
+                        <img src="<?php echo $img_rec; ?>" />
                         <div class="overlay-grade">
                            Grade <span>A</span>
                         </div>
@@ -347,33 +353,17 @@
                      <button class="btn btn-green">Ganti</button>
                   </div>
                </div>
-               <div class="box-compare">
-                  <a href="">
-                     <div class="thumbnail">
-                        <img alt="" src="<?php echo $img_rec; ?>">
-                        <div class="overlay-grade">
-                           Grade <span>A</span>
-                        </div>
-                     </div>
-                     <h2>SUZUKI SPLASH 1.2 GL<br>MINIBUS MT</h2>
-                     <span class="price">Rp. 72,000,000</span>
-                  </a>
-                  <div class="overlay-compare">
-                     <p>Apakah Anda yakin untuk menghapus atau menggantinya ?</p>
-                     <button class="btn btn-red">Hapus</button>
-                     <button class="btn btn-green">Ganti</button>
+               <?php
+                  }
+                  else {
+               ?>
+                  <div class="box-compare add-compare-box">
+                     <a href="javascript:void(0)"><i class="fa fa-plus-circle"></i></a>
                   </div>
-               </div>
-               <div class="box-compare add-compare-box">
-                  <a href="">
-                  <i class="fa fa-plus-circle"></i>
-                  </a>
-               </div>
-               <div class="box-compare add-compare-box">
-                  <a href="">
-                  <i class="fa fa-plus-circle"></i>
-                  </a>
-               </div>
+               <?php
+                  } 
+               } 
+               ?>
                <div class="box-compare button-compare">
                   <p>Untuk memulai perbandingan silakan klik button di bawah ini</p>
                   <button class="btn btn-green btn-compare" onclick="location.href='list-compare.html'" type="button">Bandingkan</button>

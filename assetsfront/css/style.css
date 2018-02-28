@@ -1609,8 +1609,8 @@ form.form-filter h2 {
     width: 105px;
     float: left;
     height: 105px;
-    margin-right: 10px;
-    margin-bottom: 10px;
+    margin-right: 5px;
+    margin-bottom: 5px;
     padding: 0!important;
     border-radius: 5px;
     text-align: center;
@@ -1867,10 +1867,9 @@ span.price {
 }
 
 .photo-amount {
-    display: none;
     position: absolute;
     bottom: 30px;
-    right: 30px;
+    left: 50px;
     background: #fff;
     font-family: "OpenSansBold", Helvetica, Sans-serif;
     color: #903e98;
@@ -2365,7 +2364,7 @@ span.price {
     width: 245px;
     background: #fff;
     padding: 10px;
-    margin: 0 10px;
+    margin: 0 9px;
     float: left;
     -webkit-transition: all 0.2s ease;
     -o-transition: all 0.2s ease;
@@ -2447,7 +2446,7 @@ span.price {
 .open-compare {
     position: fixed;
     bottom: 0;
-    right: 84px;
+    right: 10%;
     background: #000;
     padding: 6px 45px;
     border-radius: 3px 3px 0 0;
@@ -6316,6 +6315,7 @@ td.bg-Grey {
     width: 100%;
     height: 207px;
     overflow: hidden;
+    text-align: center;
 }
 
 .box-forgot-pass {

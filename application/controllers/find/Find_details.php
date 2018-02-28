@@ -23,7 +23,7 @@ class Find_details extends CI_Controller {
 			'img_bg1' => base_url('assetsfront/images/background/1.jpg'),
 			'img_bg2' => base_url('assetsfront/images/background/2.jpg'),
 			'img_bg3' => base_url('assetsfront/images/background/3.jpg'),
-			'img_rec' => base_url('assetsfront/images/background/img-recommend-1.jpg')
+			'img_rec' => base_url('assetsfront/images/background/B1819BRB.jpg')
 		);
 		$view = "find/find_details";
 		template($view, $data);
