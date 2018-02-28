@@ -68,6 +68,7 @@ $route['newpassword'] = 'auth/newpassword';
 // menu bagian header
 $route['beli-npl'] = 'npl/beli';
 $route['pembelian'] = 'Pembelian';
+$route['metode-pembayaran'] = 'npl/metodepembayaran';
 
 // bagian akun
 $route['dashboard'] = 'akun/dasbor';
@@ -76,6 +77,7 @@ $route['transaction'] = 'akun/transaction';
 $route['npl_dashboard'] = 'akun/npl_manage';
 $route['favorite'] = 'akun/whislist';
 $route['basic-price'] = 'akun/basic_price';
+$route['npl-success'] = 'npl/success';
 
 // menu cari kendaraan
 $route['cari-lelang'] = 'find/find_unit';

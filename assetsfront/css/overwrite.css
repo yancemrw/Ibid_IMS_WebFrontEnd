@@ -24,6 +24,10 @@
     font-weight: bolder !important;
 }
 
+.background-white {
+    background: #fff;
+}
+
 .border-radius-none {
     border-radius: 0 !important;
 }
@@ -155,6 +159,10 @@
 	padding: 2px !important;
 }
 
+.text-align-center {
+    text-align: center !important;
+}
+
 .text-align-left {
 	text-align: left !important;
 }
@@ -177,6 +185,12 @@
 	.btn-green:focus {
 		font-size: 11px;
 	}
+
+    .btn-red, 
+    .btn-red:hover, 
+    .btn-red:focus {
+        font-size: 11px;
+    }
 
 	.btn-lg,
 	.btn-green,
