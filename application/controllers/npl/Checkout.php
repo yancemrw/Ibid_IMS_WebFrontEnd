@@ -205,7 +205,7 @@ class Checkout extends CI_Controller {
 		
 		imagepng($image, 'barcode/'.$text.'.png');
 		imagedestroy($image);
-		$thisImg = base64_encode(file_get_contents($text.'.png'));
+		$thisImg = base64_encode(file_get_contents('barcode/'.$text.'.png'));
 		
 		
 		// kirim ke ibid gambar
