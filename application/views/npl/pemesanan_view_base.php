@@ -207,7 +207,7 @@
                             <p id="thisCartTotal"><span>Total</span> Rp. <?php echo number_format($this->cart->total()); ?></p>
                         </div>
                         <div class="button-npl text-right">
-                            <button class="btn btn-green" onclick="location.href='metode-pembayaran.html'" type="button">Lanjutkan Pembayaran <i class="fa fa-angle-right"></i></button>
+                            <button class="btn btn-green" onclick="location.href='<?php echo site_url('npl/metodepembayaran'); ?>'" type="button">Lanjutkan Pembayaran <i class="fa fa-angle-right"></i></button>
                         </div>
                     </div>
 			</div>
