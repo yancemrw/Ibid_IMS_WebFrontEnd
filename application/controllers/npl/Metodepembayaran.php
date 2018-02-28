@@ -5,6 +5,7 @@ class Metodepembayaran extends CI_Controller {
 
 	function __construct() {
         parent::__construct();
+		$this->load->library(array('form_validation', 'cart'));
         $this->load->helper(array('global', 'omni'));
         $this->AccessApi = new AccessApi(array('client_id' => 'ADMS Web', 'client_secret' => '1234567890', 'username' => 'rendhy.wijayanto@sera.astra.co.id'));
 		$this->AccessApi->redirect_url = site_url('login');
