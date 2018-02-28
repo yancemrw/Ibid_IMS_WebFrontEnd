@@ -6,7 +6,7 @@
 					<h2>Pembayaran <br>via EDC</h2>
 					<p>Terima kasih</p>
 					<span>Silahkan datang ke Loket IBID dan tunjukan barcode ini untuk melakukan pembayaran NPL</span>
-					<img src="<?php echo $_SESSION['userdata']['thisBarcodeTransaction']; ?>" alt="" title="barcode">
+					<img src="<?php echo $_SESSION['userdata']['thisBarcodeTransaction']; ?>" alt="<?php echo $_SESSION['userdata']['thisBarcodeTransaction']; ?>" title="barcode">
 					<button class="btn btn-green">Simpan</button>
 				</div>         
 			</div>
