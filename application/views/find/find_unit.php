@@ -234,7 +234,7 @@
                         <a href="<?php echo $link_detail; ?>">
                            <div class="thumbnail">
                               <div class="thumbnail-custom">
-                                 <img alt="" src="<?php echo $img; ?>">
+                                 <img alt="" src="<?php echo $img; ?>" />
                               </div>
                               <div class="overlay-grade">
                                  Grade <span>A</span>
@@ -302,7 +302,7 @@
             <input type="radio" name="tipe-object" id="type_1" class="input-hidden" value="1" />
             <label for="type_1">
                <div class="car-type">
-                  <img alt="" src="assets/images/icon/car-type.png">
+                  <img alt="" src="assetsfront/images/icon/car-type.png">
                </div>
                <p>Mobil</p>
             </label>
@@ -311,7 +311,7 @@
             <input type="radio" name="tipe-object" id="type_2" class="input-hidden" value="2" />
             <label for="type_2">
                <div class="motorcycle-type">
-                  <img alt="" src="assets/images/icon/motorcycle-type.png">
+                  <img alt="" src="assetsfront/images/icon/motorcycle-type.png">
                </div>
                <p>Motor</p>
             </label>
@@ -320,7 +320,7 @@
             <input type="radio" name="tipe-object" id="type_3" class="input-hidden" value="3" />
             <label for="type_3">
                <div class="hve-type">
-                  <img alt="" src="assets/images/icon/hve-type.png">
+                  <img alt="" src="assetsfront/images/icon/hve-type.png">
                </div>
                <p>HVE</p>
             </label>
@@ -329,7 +329,7 @@
             <input type="radio" name="tipe-object" id="type_4" class="input-hidden" value="4" />
             <label for="type_4">
                <div class="gadget-type">
-                  <img alt="" src="assets/images/icon/gadget-type.png">
+                  <img alt="" src="assetsfront/images/icon/gadget-type.png">
                </div>
                <p>Gadget</p>
             </label>
@@ -478,6 +478,63 @@
    </div>
 </form>
 
+<section class="bg-grey related-product">
+   <div class="container">
+      <div class="row">
+         <a href="javascript:;" class="open-compare">Add Compare <i class="fa fa-plus"></i></a>
+      </div>
+   </div>
+</section>
+
+<section class="compare">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="compare-content">
+            <p><i class="fa fa-exclamation"></i> Pilih produk yang akan di bandingkan, minimal 2 produk untuk di compare</p>
+            <div class="col-md-12">
+               <?php 
+               for($i = 0; $i < 4; $i++) {
+                  if($i < 2) {
+               ?>
+               <div class="box-compare">
+                  <a href="">
+                     <div class="thumbnail">
+                        <img src="<?php echo $img; ?>" />
+                        <div class="overlay-grade">
+                           Grade <span>A</span>
+                        </div>
+                     </div>
+                     <h2>SUZUKI SPLASH 1.2 GL<br>MINIBUS MT</h2>
+                     <span class="price">Rp. 72,000,000</span>
+                  </a>
+                  <div class="overlay-compare">
+                     <p>Apakah Anda yakin untuk menghapus atau menggantinya ?</p>
+                     <button class="btn btn-red">Hapus</button>
+                     <button class="btn btn-green">Ganti</button>
+                  </div>
+               </div>
+               <?php
+                  }
+                  else {
+               ?>
+                  <div class="box-compare add-compare-box">
+                     <a href="javascript:void(0)"><i class="fa fa-plus-circle"></i></a>
+                  </div>
+               <?php
+                  } 
+               } 
+               ?>
+               <div class="box-compare button-compare">
+                  <p>Untuk memulai perbandingan silakan klik button di bawah ini</p>
+                  <button class="btn btn-green btn-compare" onclick="location.href='list-compare.html'" type="button">Bandingkan</button>
+               </div>
+            </div>
+            <a href="javascript:;" class="close-compare">Tutup <i class="fa fa-times"></i></a>
+         </div>
+      </div>
+   </div>
+</section>
+
 <script>
 $(document).ready(function() {
    $('.content-load').jscroll({
@@ -507,12 +564,20 @@ $(document).ready(function() {
       if(hidden) {
          $('.form-filter.filter-mobile').animate({
             left: '0px'
-         },500)
-      } else {
+         }, 500)
+      }
+      else {
          $('.form-filter.filter-mobile').animate({
             left: '0px'
-         },500)
+         }, 500)
       }
    });
+
+   $(".open-compare").click(function() {
+         $(".compare").show(500) && $(".open-compare").hide();
+      });
+      $(".close-compare").click(function() {
+         $(".compare").hide(500) && $(".open-compare").show();
+      });
 });
 </script>

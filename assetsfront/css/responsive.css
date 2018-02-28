@@ -224,6 +224,139 @@
 	.list-product.box-recommend {
 		min-height: 420px
 	}
+	.nav-procedure.stick {
+        max-width: 710px;
+    }
+    .compare {
+        position: fixed;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.81);
+        color: #fff;
+        padding: 20px;
+        display: none;
+        height: auto;
+        z-index: 99;
+    }
+    .compare-content {
+        height: 350px;
+        overflow-x: scroll;
+    }
+    .box-compare {
+        position: relative;
+        border-radius: 10px;
+        width: calc(50% - 20px);
+        background: #fff;
+        padding: 10px;
+        margin: 10px 10px 0!important;
+        float: left;
+        -webkit-transition: all 0.2s ease;
+        -o-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+    }
+    .box-compare.add-compare-box {
+        display: table;
+        height: 250px;
+        width: calc(50% - 20px);
+        background: transparent;
+        border: 1px dotted #ccc;
+    }
+    .box-compare.button-compare {
+        width: 100%;
+        text-align: center;
+    }
+    .box-compare.button-compare button,
+    .box-compare.button-compare button:hover,
+    .box-compare.button-compare button:focus {
+        width: auto;
+        padding: 10px 50px;
+        font-size: 13px
+    }
+    .box-compare.button-compare p {
+        float: none;
+    }
+    .overlay-compare {
+    	padding-top: 20px;
+    }
+    ul.list-bider {
+        margin-top: 0;
+        border: 0;
+        border-bottom: 1px solid #ccc;
+        height: 210px;
+    }
+    .content-live-auction h2.lot-number {
+        background: #000;
+        border-radius: 0;
+        border: 0;
+        color: #fff;
+        padding: 22px
+    }
+    .box-image-auction {
+        min-height: auto
+    }
+    .lot-auction h3 {
+        font-size: 20px
+    }
+    .lot-auction {
+        min-height: 500px
+    }
+    .box-image-auction h3 {
+        padding: 12px
+    }
+    .grade-auction {
+        bottom: 23px
+    }
+    .tumbnail-auction {
+        height: 215px;
+    }
+    .box-live-auction.box-info {
+        min-height: 215px
+    }
+    .tab-search .select-custom.select-type~.select2-container {
+        width: 150px!important;
+        padding-left: 5px;
+    }
+    .tab-search .select-custom.select-address~.select2-container {
+        width: 350px!important;
+    }
+}
+
+@media(max-width: 1023px) and (min-width: 769px) {
+    .compare {
+        position: fixed;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.81);
+        color: #fff;
+        padding: 20px;
+        display: none;
+        height: auto;
+        z-index: 99;
+    }
+    .compare-content {
+        height: 350px;
+        overflow-x: scroll;
+    }
+    .box-compare {
+        position: relative;
+        border-radius: 10px;
+        width: calc(50% - 20px);
+        background: #fff;
+        padding: 10px;
+        margin: 10px 10px 0!important;
+        float: left;
+        -webkit-transition: all 0.2s ease;
+        -o-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+    }
+    .box-compare.add-compare-box {
+        display: table;
+        height: 250px;
+        width: calc(50% - 20px);
+        background: transparent;
+        border: 1px dotted #ccc;
+    }
+    .box-compare:nth-child(3) {
+        margin-left: 0!important
+    }
 }
 
 @media(max-width: 980px) {
