@@ -81,8 +81,9 @@ $route['npl-success'] = 'npl/success';
 
 // menu cari kendaraan
 $route['cari-lelang'] = 'find/find_unit';
-$route['detail-lelang'] = 'find/find_details';
+$route['detail-lelang/(:any)'] = 'find/find_details/index/$1';
 $route['cari-lelang-iscomming'] = 'find/find_unit/iscomming';
+$route['list-compare'] = 'find/compare_unit';
 
 // menu jadwal lelang
 $route['jadwal-lelang'] = 'auction/auction_date';

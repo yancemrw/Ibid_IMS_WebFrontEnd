@@ -1839,7 +1839,7 @@ span.price {
 .header-detail:before {
     content: "";
     display: block;
-    position: absolute;
+    position: relative;
     left: 0;
     top: 0;
     height: 100%;
@@ -1875,7 +1875,7 @@ span.price {
     color: #903e98;
     padding: 10px 12px;
     margin: 0;
-    z-index: 10
+    z-index: 10;
 }
 
 .header-detail:hover .photo-amount {

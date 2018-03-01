@@ -1,21 +1,35 @@
 <section class="header-detail">
    <div class="container-fluid">
-      <div class="row">
-         <div class="col-md-4">
-            <div class="image-header">
-               <img src="<?php echo $img1; ?>" alt="image header">
-               <p class="photo-amount">29 Foto</p>
+      <div class="margin-right-min15px margin-left-min15px photo-landscape">
+         <div id="lightgallery">
+            <div class="col-md-4 stickys" data-src="<?php echo $dataphoto[0]->ImagePath; ?>">
+               <a href="javascript:void(0)" class="image-header">
+                  <img src="<?php echo $dataphoto[0]->ImagePath; ?>" alt="Gambar 1">
+                  <p class="photo-amount">
+                     <?php
+                     $count_imgsx = 0; 
+                     foreach($dataphoto as $key => $imgsx) {
+                        if($imgsx->ImagePath !== '') {
+                           $count_imgsx = $count_imgsx + 1;
+                        }
+                     }
+                     echo $count_imgsx;
+                     ?>
+                     Foto
+                  </p>
+               </a>
             </div>
-         </div>
-         <div class="col-md-4">
-            <div class="image-header">
-               <img src="<?php echo $img2; ?>" alt="image header">
-            </div>
-         </div>
-         <div class="col-md-4">
-            <div class="image-header">
-               <img src="<?php echo $img3; ?>" alt="image header">
-            </div>
+            <?php
+            for ($i = 1; $i < count($dataphoto); $i++) { 
+               if($dataphoto[$i]->ImagePath !== '') {
+                  echo '<div class="col-md-4 stickys" data-src="'.$dataphoto[$i]->ImagePath.'">
+                           <a href="javascript:void(0)" class="image-header" >
+                              <img src="'.$dataphoto[$i]->ImagePath.'" alt="Gambar 2">
+                           </a>
+                        </div>';
+               }
+            }
+            ?>
          </div>
       </div>
    </div>
@@ -28,49 +42,49 @@
          <div class="col-md-8">
             <div class="desc-transport">
                <h2>Detail Kendaraan</h2>
-               <p class="no-pol">Nomor Polisi <span>: B1160PZH</span></p>
+               <p class="no-pol">Nomor Polisi <span>: <?php echo $data[0]->nopolisi; ?></span></p>
                <div class="desc-row clearfix">
                   <ul>
                      <li>
-                        <p>Merk <span>: Toyota</span></p>
+                        <p>Merk <span>: <?php echo $data[0]->merk; ?></span></p>
                      </li>
                      <li>
-                        <p>Seri <span>: Avanza</span></p>
+                        <p>Seri <span>: <?php echo $data[0]->seri; ?></span></p>
                      </li>
                      <li>
-                        <p>Tipe <span>: G</span></p>
+                        <p>Tipe <span>: <?php echo $data[0]->tipe; ?></span></p>
                      </li>
                      <li>
-                        <p>Slinder  <span>: 1.3</span></p>
+                        <p>Slinder  <span>: <?php echo $data[0]->silinder; ?></span></p>
                      </li>
                      <li>
-                        <p>Transmisi  <span>: AT</span></p>
+                        <p>Transmisi  <span>: <?php echo $data[0]->transmisi; ?></span></p>
                      </li>
                      <li>
-                        <p>Model  <span>: Minibus</span></p>
+                        <p>Model  <span>: <?php echo $data[0]->model; ?></span></p>
                      </li>
                      <li>
-                        <p>Tahun  <span>: 2015</span></p>
+                        <p>Tahun  <span>: <?php echo $data[0]->tahun; ?></span></p>
                      </li>
                   </ul>
                   <ul>
                      <li>
-                        <p>Nomor rangka <span>: MHKM1BA3JDJ011634</span></p>
+                        <p>Nomor rangka <span>: <?php echo $data[0]->norangka; ?></span></p>
                      </li>
                      <li>
-                        <p>Nomor Mesin <span>: 32423423</span></p>
+                        <p>Nomor Mesin <span>: <?php echo $data[0]->nomesin; ?></span></p>
                      </li>
                      <li>
-                        <p>Tanggal STNK <span>: 08/12/2016</span></p>
+                        <p>Tanggal STNK <span>: <?php echo $data[0]->nostnk ?></span></p>
                      </li>
                      <li>
-                        <p>Tanggal KEUR <span>: -</span></p>
+                        <p>Tanggal KEUR <span>: <?php echo $data[0]->tglkeur; ?></span></p>
                      </li>
                      <li>
-                        <p>Warna <span>: Abu Tua</span></p>
+                        <p>Warna <span>: <?php echo $data[0]->warna; ?></span></p>
                      </li>
                      <li>
-                        <p>Bahan Bakar <span>: Bensin</span></p>
+                        <p>Bahan Bakar <span>: <?php echo $data[0]->bahanbakar; ?></span></p>
                      </li>
                      <li>
                         <p>Kilometer <span>: 12,000</span></p>
@@ -124,37 +138,21 @@
                <h2>Photo Kendaraan</h2>
                <!-- MAIN SLIDES -->
                <div class="overlay-slide">
-                  <a href="" class="thirtee-view" data-toggle="modal" data-target="#squarespaceModal">
-                      <span class="ic ic-360"></span>
-                      <span></span>
-                  </a>
-                  <div class="slider">
-                     <figure>
-                        <img src="<?php echo $img_bg1; ?>" alt="" title="">
-                     </figure>
-                     <figure>
-                        <img src="<?php echo $img_bg2; ?>" alt="" title="">
-                     </figure>
-                     <figure>
-                        <img src="<?php echo $img_bg3; ?>" alt="" title="">
-                     </figure>
-                     <figure>
-                        <img src="<?php echo $img_bg1; ?>" alt="" title="">
-                     </figure>
-                     <figure>
-                        <img src="<?php echo $img_bg2; ?>" alt="" title="">
-                     </figure>
+                  <div class="slider" id="lightgallery2">
+                     <?php foreach($dataphoto as $key => $imgs) {
+                        if($imgs->ImagePath !== '') {
+                           echo '<div class="item-slide cursor-pointer" data-src="'.$imgs->ImagePath.'"><img src="'.$imgs->ImagePath.'" /></div>';
+                        }
+                     } ?>
                   </div>
                </div>
                <!-- THUMBNAILS -->
                <div class="slider-nav-thumbnails">
-                  <div class="cursor-pointer"><img src="<?php echo $img_bg1; ?>" alt="" title=""></div>
-                  <div class="cursor-pointer"><img src="<?php echo $img_bg2; ?>" alt="" title=""></div>
-                  <div class="cursor-pointer"><img src="<?php echo $img_bg3; ?>" alt="" title=""></div>
-                  <div class="cursor-pointer"><img src="<?php echo $img_bg1; ?>" alt="" title=""></div>
-                  <div class="cursor-pointer"><img src="<?php echo $img_bg2; ?>" alt="" title=""></div>
-                  <div class="cursor-pointer"><img src="<?php echo $img_bg3; ?>" alt="" title=""></div>
-                  <div class="cursor-pointer"><img src="<?php echo $img_bg1; ?>" alt="" title=""></div>
+                  <?php foreach($dataphoto as $key => $imgsclick) {
+                     if($imgsclick->ImagePath !== '') {
+                        echo '<div class="cursor-pointer"><img src="'.$imgsclick->ImagePath.'" /></div>';
+                     }
+                  } ?>
                </div>
             </div>
             <div class="graphic-lelang">
@@ -168,7 +166,7 @@
             <div class="sticky-auction">
                <div class="lelang-online">
                   <div class="">
-                     <p class="grade-detail">Grade <span>A</span></p>
+                     <p class="grade-detail">Grade <span><?php echo $grade; ?></span></p>
                      <div class="label-lot">
                         <h2>LOT 80</h2>
                      </div>
@@ -209,8 +207,8 @@
                      <h4>Rp. 418,000,000</h4>
                      <p><i class="fa fa-star"></i> Top BIDDER <span>Pilih NPL Sebelum Melakukan Lelang </span></p>
                      <select class="select-custom form-control">
-                        <option value="">NPL Reguler</option>
-                        <option value="">NPL Premium</option>
+                        <option value="">NPL Online</option>
+                        <option value="">NPL Unlimited</option>
                      </select>
                      <button class="btn btn-violet" data-toggle="modal" data-target="#choose-npl">Tawar</button>
                      <p>Pengumuman : <br>Pemenang akan dikenakan biaya Administrasi Rp. 1.750.000 </p>
@@ -227,7 +225,7 @@
                      </ul>
                   </div>
                   <button class="btn btn-orange"><i class="fa fa-heart"></i> Tambah ke Favorit</button>
-                  <button class="btn btn-green" onclick="location.href='list-compare.html'" type="button"><i class="ic ic-Bandingkan"></i> Bandingkan</button>
+                  <button class="btn btn-green" onclick="location.href='<?php echo site_url('list-compare'); ?>'" type="button"><i class="ic ic-Bandingkan"></i> Bandingkan</button>
                </div>
             </div>
          </div>
@@ -316,7 +314,7 @@
                <button class="btn btn-green" data-toggle="modal" data-target="#used-npl">Beli NPL</button>
                <div class="auction-empty">
                   <div class="image-empty">
-                     <img src="assets/images/icon/lelang-empy.png" alt="" title="">
+                     <img src="<?php echo base_url('assetsfront/images/icon/lelang-empty.png'); ?>" alt="" title="">
                   </div>
                   <p>Lelang Belum Tersedia</p>
                </div>
@@ -399,28 +397,8 @@
    </div>
 </div>
 
-<!-- line modal -->
-<div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-   <div class="modal-dialog">
-      <div class="modal-content">
-         <div class="modal-body">
-            <div class="threesixty car">
-               <div class="spinner">
-                  <span>0%</span>
-               </div>
-               <ol class="threesixty_images"></ol>
-            </div>
-         </div>
-      </div>
-   </div>
-</div>
-
 <script>
    $(document).ready(function() {
-      $("nav").sticky({
-         topSpacing:0
-      });
-   
       $(".select-custom").select2({
          minimumResultsForSearch: -1
       });
@@ -432,16 +410,19 @@
          arrows: true,
          fade: false,
          asNavFor: '.slider-nav-thumbnails',
+         dots: false
       });
-   
+
+
       $('.slider-nav-thumbnails').slick({
          slidesToShow: 5,
          slidesToScroll: 1,
          asNavFor: '.slider',
          dots: true,
-         focusOnSelect: true
+         focusOnSelect: true,
+         dots: false
       });
-   
+
       // Remove active class from all thumbnail slides
       $('.slider-nav-thumbnails .slick-slide').removeClass('slick-active');
 
@@ -454,26 +435,6 @@
          $('.slider-nav-thumbnails .slick-slide').removeClass('slick-active');
          $('.slider-nav-thumbnails .slick-slide').eq(mySlideNumber).addClass('slick-active');
       });
-   
-      // 360
-      window.onload = init;
-      var car;
-      function init() {
-         car = $('.car').ThreeSixty({
-            totalFrames: 52,
-            endFrame: 52, 
-            currentFrame: 1,
-            imgList: '.threesixty_images',
-            progress: '.spinner',
-            imagePath:'assetsfront/images/background/',
-            filePrefix: '',
-            ext: '.jpg', 
-            height: 567,
-            width: 447,
-            navigation: true,
-            responsive: true
-         });
-      }
    
       // Timer
       var countDownDate = new Date("Dec 31, 2017 00:00:00").getTime();
@@ -596,6 +557,7 @@
          $(".photo-transport").appendTo('.header-detail .container-fluid'); 
          $('.box-info').appendTo('.related-product');
          $('.info-ibid').appendTo('.mobile-info');
+         $('.detail-transport .detail-title span').appendTo('.detail-title');
          $('.sticky-auction').prependTo('.desc-transport');
       }
       $(window).on('resize', function(e) {
@@ -603,9 +565,14 @@
             $(".photo-transport").appendTo('.header-detail .container-fluid'); 
             $('.box-info').appendTo('.related-product');
             $('.info-ibid').appendTo('.mobile-info');
+            $('.detail-transport .detail-title span').appendTo('.detail-title');
             $('.sticky-auction').prependTo('.desc-transport');
          }
       });
+
+      if ($(window).width() < 1025) {
+         $(".close-compare").appendTo('.compare .container-fluid')
+      }
       
       $('#toggle-nav').click(function() {
          $('.navbar-collapse.collapse').toggleClass('open')
@@ -626,6 +593,51 @@
       })
       $('.sidemenu-left').height($('.am-right').height() - 100)
    
+      $('#lightgallery').slick({
+         dots: false,
+         infinite: false,
+         speed: 300,
+       
+         prevArrow: false,
+         nextArrow: false,
+         slidesToShow: 3,
+         slidesToScroll: 3,
+         responsive: [
+            {
+               breakpoint: 1024,
+               settings: {
+                  slidesToShow: 3,
+                  slidesToScroll: 3,
+                  infinite:false,
+                  dots: true,
+                  prevArrow: false,
+                  nextArrow: false
+               }
+            },
+            {
+               breakpoint: 800,
+               settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 1,
+                  dots: true,
+
+                  prevArrow: false,
+                  nextArrow: false
+               }
+            },
+            {
+               breakpoint: 600,
+               settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                  dots: true,
+
+                  prevArrow: false,
+                  nextArrow: false
+               }
+            }
+         ]
+      });
    
       $('.related-product-slider').slick({
          dots: false,
@@ -671,6 +683,15 @@
                }
             }
          ]
+      });
+
+      $("#lightgallery").lightGallery({
+         thumbnail: true,
+         selector: ".stickys"
+      });
+      $("#lightgallery2").lightGallery({
+         thumbnail: true,
+         selector: ".item-slide"
       });
    });
 </script>
