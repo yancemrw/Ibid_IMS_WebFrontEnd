@@ -6,16 +6,16 @@ class Find_unit extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->helper(array('global', 'omni'));
+		$this->userdata = $this->session->userdata('userdata');
 	}
 
-	public function index() {
-		$userdata = $this->session->userdata('userdata');
+	public function index() {		
 		$data = array(
 			'header_white' => "header-white",
-			'userdata'	=> $userdata,
+			'userdata'	=> $this->userdata,
 			'title' => 'Cari Kendaraan',
-			'form_auth_mobile' => login_status_form_mobile($userdata),
-			'form_auth'	=> login_Status_form($userdata),
+			'form_auth_mobile' => login_status_form_mobile($this->userdata),
+			'form_auth'	=> login_Status_form($this->userdata),
 			'img' => base_url('assetsfront/images/background/1.jpg'),
 			'link_detail' => site_url('detail-lelang')
 		);
@@ -24,13 +24,12 @@ class Find_unit extends CI_Controller {
 	}
 
 	public function iscomming() {
-		$userdata = $this->session->userdata('userdata');
 		$data = array(
 			'header_white' => "header-white",
-			'userdata'	=> $userdata,
+			'userdata'	=> $this->userdata,
 			'title' => 'Cari Kendaraan',
-			'form_auth_mobile' => login_status_form_mobile($userdata),
-			'form_auth'	=> login_Status_form($userdata),
+			'form_auth_mobile' => login_status_form_mobile($this->userdata),
+			'form_auth'	=> login_Status_form($this->userdata),
 			'img' => base_url('assetsfront/images/background/1.jpg'),
 			'link_detail' => base_url('detail-lelang')
 		);
