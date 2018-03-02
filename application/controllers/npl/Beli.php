@@ -47,8 +47,8 @@ class Beli extends CI_Controller {
 			$detailBiodata['BankAccountName'] !== NULL && 
 			$detailBiodata['IdentityNumber'] !== NULL
 		) {
-			// redirect('pembelian');
-			
+			redirect('pembelian');
+			/* 
 			$data['title']	= 'Pembelian NPL';
 			$data['page'] 	= 'npl/pemesanan_view_base';
 			$data['detailBiodata'] = $detailBiodata;
@@ -69,6 +69,7 @@ class Beli extends CI_Controller {
 			############################################################
 			$view = 'npl/pemesanan_view_base';
 			template($view, $data);
+			*/
 			
 		}
 		else {
