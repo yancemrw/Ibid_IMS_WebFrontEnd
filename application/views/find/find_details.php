@@ -94,42 +94,42 @@
                <div class="desc-row clearfix">
                   <ul>
                      <li>
-                        <p>BPKB <span>: 30 Hari</span></p>
+                        <p>BPKB <span>: <?php echo ($data[0]->BPKB === '') ? 'BELUM ADA' : $data[0]->BPKB ; ?></span></p>
                      </li>
                      <li>
-                        <p>Faktur <span>: Ada</span></p>
+                        <p>Faktur <span>: <?php echo ($data[0]->nofaktur === 0) ? 'BELUM ADA' : 'ADA' ; ?></span></p>
                      </li>
                      <li>
-                        <p>Kuitansi <span>: Tidak Ada</span></p>
+                        <p>Kuitansi <span>: <?php echo ($data[0]->Kuitansi === 0) ? 'BELUM ADA' : 'ADA' ; ?></span></p>
                      </li>
                   </ul>
                   <ul>
                      <li>
-                        <p>Surat Pelepasan Hak <span>: Ada</span></p>
+                        <p>Surat Pelepasan Hak <span>: <?php echo ($data[0]->SuratPelepasanHak === 0) ? 'BELUM ADA' : 'ADA' ; ?></span></p>
                      </li>
                      <li>
-                        <p>Ktp Pemilik <span>: Ada</span></p>
+                        <p>Ktp Pemilik <span>: <?php echo ($data[0]->KtpPemilik === 0) ? 'BELUM ADA' : 'ADA' ; ?></span></p>
                      </li>
                      <li>
-                        <p>Form A <span>: Tidak Ada</span></p>
+                        <p>Form A <span>: <?php echo ($data[0]->FormA === 0) ? 'BELUM ADA' : 'ADA' ; ?></span></p>
                      </li>
                   </ul>
                </div>
                <div class="desc-row clearfix">
                   <ul>
                      <li>
-                        <p>Interior <span>: B</span></p>
+                        <p><?php echo $gradeinternal[1]->DamageName; ?> <span>: <?php echo $gradeinternal[1]->TotalEvaluationResult; ?></span></p>
                      </li>
                      <li>
-                        <p>Rangka <span>: C</span></p>
+                        <p><?php echo $gradeinternal[3]->DamageName; ?> <span>: <?php echo $gradeinternal[3]->TotalEvaluationResult; ?></span></p>
                      </li>
                   </ul>
                   <ul>
                      <li>
-                        <p>Exterior <span>: A</span></p>
+                        <p><?php echo $gradeinternal[0]->DamageName; ?> <span>: <?php echo $gradeinternal[0]->TotalEvaluationResult; ?></span></p>
                      </li>
                      <li>
-                        <p>Mesin <span>: B</span></p>
+                        <p><?php echo $gradeinternal[2]->DamageName; ?> <span>: <?php echo $gradeinternal[2]->TotalEvaluationResult; ?></span></p>
                      </li>
                   </ul>
                </div>
@@ -168,10 +168,10 @@
                   <div class="">
                      <p class="grade-detail">Grade <span><?php echo $grade; ?></span></p>
                      <div class="label-lot">
-                        <h2>LOT 80</h2>
+                        <h2>LOT ???</h2>
                      </div>
                      <ul>
-                        <li class="clearfix">Harga Awal <span class="price">Rp. 72,000,000</span></li>
+                        <li class="clearfix">Harga Awal <span class="price">Rp. <?php echo $dataharga; ?></span></li>
                         <li>Jadwal <span>01 September 2017</span></li>
                         <li>Lokasi <span>Jl. Sunter Permai III, Jakarta Utara</span></li>
                      </ul>
