@@ -94,6 +94,11 @@
     height: 300px !important;
 }
 
+.lelang-online ul li span.price {
+    top: -11px !important;
+    font-size: 25px !important;
+}
+
 .link-disabled {
     cursor: no-drop !important;
 }
@@ -110,6 +115,10 @@
 
 .login-forgot span {
 	font-size: 11px;
+}
+
+.margin-10px {
+    margin: 10px;
 }
 
 .margin-left-10px {

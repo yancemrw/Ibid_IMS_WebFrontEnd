@@ -219,14 +219,15 @@
          </div>
          <div class="col-md-9 pl-0">
             <div class="main-right">
-               <div class="title-header clearfix">
+               <div id="loadings"></div>
+               <!--div class="title-header clearfix" id="loadings">
                   <p>Menampilkan <span>2.240</span> objek lelang untuk “<b>acura sedan</b>” ( <b>1-9</b> dari <b>2.240</b> )</p>
                   <div class="action-header">
                      <button class="btn"><i class="fa fa-download"></i> Download</button>
                      <button class="btn"><i class="fa fa-sort"></i> Sort</button>
                   </div>
-               </div>
-               <p class="notice clearfix"><span><i class="fa fa-exclamation-circle"></i> Produk telah dimasukkan ke dalam daftar perbandingan</span></p>
+               </div-->
+               <!--p class="notice clearfix"><span><i class="fa fa-exclamation-circle"></i> Produk telah dimasukkan ke dalam daftar perbandingan</span></p-->
                <div class="content-right product-mob content-load clearfix">
                   <div id="loadlist"></div>
                   <div class="clear"></div>
@@ -239,7 +240,7 @@
    </div>
 </div>
 
-<section class="bg-grey related-product">
+<section class="bg-grey related-product" id="addcompare" style="display:none">
    <div class="container">
       <div class="row">
          <a href="javascript:;" class="open-compare">Add Compare <i class="fa fa-plus"></i></a>
@@ -345,6 +346,9 @@ $(document).ready(function() {
    $.ajax({
       type: 'GET',
       url: '<?php echo linkservice('stock')."itemStock/getfrontend"; ?>',
+      beforeSend: function() {
+         $('#loadings').replaceWith('<div id="loadings" class="margin-10px text-align-center"><img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" /></div>');
+      },
       success: function(data) {
          var content = '', datas = data.data;
          for (var i = 0; i < datas.length; i++) {
@@ -354,12 +358,34 @@ $(document).ready(function() {
                type: 'GET',
                url: '<?php echo linkservice('taksasi')."nilaiicar/detail?AuctionItemId='+datas[i].AuctionItemId+'"; ?>',
                success: function(data) {
-                  var datax = data.data; console.log(datax);
+                  var datax = data.data;
                   numgrade = datax.TotalEvaluationResult;
                   $.ajax({
                      type: 'GET',
                      url: '<?php echo linkservice('taksasi')."icar/getimage?AuctionItemId='+data.data.AuctionItemId+'"; ?>',
                      success: function(data) {
+                        $('#loadings').replaceWith('<div id="loadings"></div>');
+                        var compare_data = {
+                           "BahanBakar": dataz.bahanbakar,
+                           "Image": data.data[0].ImagePath,
+                           "Kilometer": dataz.km,
+                           "Merk": dataz.merk,
+                           "Model": dataz.model,
+                           "NoKeur": dataz.nokeur,
+                           "NoMesin": dataz.nomesin,
+                           "NoPolisi": dataz.nopolisi,
+                           "NoRangka": dataz.norangka,
+                           "NoSTNK": dataz.nostnk,
+                           "Seri": dataz.seri,
+                           "Silinder": dataz.silinder,
+                           "TaksasiGrade": numgrade,
+                           "Tahun": dataz.tahun,
+                           "Transmisi": dataz.transmisi,
+                           "Tipe": dataz.tipe,
+                           "Price": dataz.FinalPriceItem,
+                           "Warna": dataz.warnadoc
+                        };
+                        var json_str = JSON.stringify(compare_data);
                         var lot = (dataz.LotNumb !== null) ? dataz.LotNumb : '???' ;
                         content += '<div class="col-md-4">'+
                                  '<div class="list-product box-recommend">'+
@@ -382,7 +408,7 @@ $(document).ready(function() {
                                  '</a>'+
                                  '<div class="action-bottom">'+
                                  '<button class="btn"><i class="fa fa-heart"></i> <span>Favorit</span></button>'+
-                                 '<button class="btn btn-compare"><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>'+
+                                 '<button class="btn btn-compare" onclick=\'set_compare_product('+json_str+')\'><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>'+
                                  '</div>'+
                                  '</div>'+
                                  '</div>';

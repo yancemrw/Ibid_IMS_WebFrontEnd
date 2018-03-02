@@ -15,7 +15,6 @@ class Find_details extends CI_Controller {
 		$method1 = 'GET';
 		$res1 = admsCurl($url1, array(), $method1);
 		$detail = curlGenerate($res1);
-		//echo "<pre>"; print_r($detail); exit;
 
 		// get detail photo
 		$url2 = linkservice('taksasi')."icar/getimage?AuctionItemId=".$id;
@@ -29,6 +28,12 @@ class Find_details extends CI_Controller {
 		$res3 = admsCurl($url3, array(), $method3);
 		$detailgrade = curlGenerate($res3);
 
+		// get grade item detail
+		$url4 = linkservice('taksasi')."nilaiicardetail/get?AuctionItemId=".$id;
+		$method4 = 'GET';
+		$res4 = admsCurl($url4, array(), $method4);
+		$detailicar = curlGenerate($res4);
+
 		$data = array(
 			'header_white' => "header-white",
 			'userdata'	=> $this->userdata,
@@ -37,12 +42,18 @@ class Find_details extends CI_Controller {
 			'form_auth'	=> login_Status_form($this->userdata),
 			'data'	=> $detail,
 			'dataphoto' => $detailphoto,
+			'dataharga' => $this->currency_format($detail[0]->FinalPriceItem),
 			'grade' => $detailgrade->TotalEvaluationResult,
+			'gradeinternal' => $detailicar,
 			'link_detail' => base_url('index.php/detail_lelang'),
 			'img_rec' => $detailphoto[6]->ImagePath
 		);
 		$view = "find/find_details";
 		template($view, $data);
+	}
+
+	function currency_format($value) {
+		return number_format($value, 2, ",", ".");
 	}
 
 }
