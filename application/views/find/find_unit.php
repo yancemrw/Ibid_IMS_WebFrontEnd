@@ -243,7 +243,7 @@
 <section class="bg-grey related-product" id="addcompare" style="display:none">
    <div class="container">
       <div class="row">
-         <a href="javascript:;" class="open-compare">Add Compare <i class="fa fa-plus"></i></a>
+         <a href="javascript:void(0)" class="open-compare">Add Compare <i class="fa fa-plus"></i></a>
       </div>
    </div>
 </section>
@@ -253,43 +253,8 @@
       <div class="row">
          <div class="compare-content">
             <p><i class="fa fa-exclamation"></i> Pilih produk yang akan di bandingkan, minimal 2 produk untuk di compare</p>
-            <div class="col-md-12">
-               <?php 
-               for($i = 0; $i < 4; $i++) {
-                  if($i < 2) {
-               ?>
-               <div class="box-compare">
-                  <a href="">
-                     <div class="thumbnail">
-                        <img src="<?php echo $img; ?>" />
-                        <div class="overlay-grade">
-                           Grade <span>A</span>
-                        </div>
-                     </div>
-                     <h2>SUZUKI SPLASH 1.2 GL<br>MINIBUS MT</h2>
-                     <span class="price">Rp. 72,000,000</span>
-                  </a>
-                  <div class="overlay-compare">
-                     <p>Apakah Anda yakin untuk menghapus atau menggantinya ?</p>
-                     <button class="btn btn-red">Hapus</button>
-                     <button class="btn btn-green">Ganti</button>
-                  </div>
-               </div>
-               <?php
-                  }
-                  else {
-               ?>
-                  <div class="box-compare add-compare-box">
-                     <a href="javascript:void(0)"><i class="fa fa-plus-circle"></i></a>
-                  </div>
-               <?php
-                  } 
-               } 
-               ?>
-               <div class="box-compare button-compare">
-                  <p>Untuk memulai perbandingan silakan klik button di bawah ini</p>
-                  <button class="btn btn-green btn-compare" onclick="location.href='<?php echo site_url('list-compare'); ?>'" type="button">Bandingkan</button>
-               </div>
+            <div class="col-md-12" id="loadContent">
+               <!-- Load Content Compare Product -->
             </div>
             <a href="javascript:;" class="close-compare">Tutup <i class="fa fa-times"></i></a>
          </div>
@@ -299,15 +264,15 @@
 
 <script>
 $(document).ready(function() {
+   //show compare element
+   let linked = '<?php echo site_url('list-compare'); ?>';
+   setCompare(linked);
+
    /*$('.content-load').jscroll({
       loadingHtml: '<img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" />',
       autoTrigger: true,
       nextSelector: 'a.hidden-content:last'
    });*/
-
-   $("nav").sticky({
-      topSpacing:0
-   });
 
    $(".select-custom").select2({
       minimumResultsForSearch: -1
@@ -408,7 +373,7 @@ $(document).ready(function() {
                                  '</a>'+
                                  '<div class="action-bottom">'+
                                  '<button class="btn"><i class="fa fa-heart"></i> <span>Favorit</span></button>'+
-                                 '<button class="btn btn-compare" onclick=\'set_compare_product('+json_str+')\'><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>'+
+                                 '<button class="btn btn-compare" onclick=\'set_compare_product('+json_str+', "'+linked+'")\'><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>'+
                                  '</div>'+
                                  '</div>'+
                                  '</div>';
@@ -421,8 +386,4 @@ $(document).ready(function() {
       }
    });
 });
-
-function currency_format(n) {
-   return n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
-}
 </script>

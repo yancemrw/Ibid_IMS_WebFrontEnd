@@ -11,7 +11,7 @@ class Find_details extends CI_Controller {
 
 	public function index($id) {
 		// get detail item
-		$url1 = linkservice('stock')."itemStock/detail/".$id;
+		$url1 = linkservice('stock')."itemstock/detail/".$id;
 		$method1 = 'GET';
 		$res1 = admsCurl($url1, array(), $method1);
 		$detail = curlGenerate($res1);

@@ -78,6 +78,7 @@
    <script src="<?php echo base_url('assetsfront/js/lightgallery.min.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/js/lg-thumbnail.min.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/bootoast/bootoast.js'); ?>"></script>
+   <script src="<?php echo base_url('assetsfront/js/compare_product.js'); ?>"></script>
 
 </head>
 <body class="bg-grey">
