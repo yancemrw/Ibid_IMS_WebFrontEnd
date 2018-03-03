@@ -4,7 +4,7 @@
          <div id="lightgallery">
             <div class="col-md-4 stickys" data-src="<?php echo $dataphoto[0]->ImagePath; ?>">
                <a href="javascript:void(0)" class="image-header">
-                  <img src="<?php echo $dataphoto[0]->ImagePath; ?>" alt="Gambar 1">
+                  <img src="<?php echo $dataphoto[0]->ImagePath; ?>" alt="Gambar 1" id="img-gambar">
                   <p class="photo-amount">
                      <?php
                      $count_imgsx = 0; 
@@ -42,52 +42,52 @@
          <div class="col-md-8">
             <div class="desc-transport">
                <h2>Detail Kendaraan</h2>
-               <p class="no-pol">Nomor Polisi <span>: <?php echo $data[0]->nopolisi; ?></span></p>
+               <p class="no-pol">Nomor Polisi <span id="span-nopol">: <?php echo $data[0]->nopolisi; ?></span></p>
                <div class="desc-row clearfix">
                   <ul>
                      <li>
-                        <p>Merk <span>: <?php echo $data[0]->merk; ?></span></p>
+                        <p>Merk <span id="span-merk">: <?php echo $data[0]->merk; ?></span></p>
                      </li>
                      <li>
-                        <p>Seri <span>: <?php echo $data[0]->seri; ?></span></p>
+                        <p>Seri <span id="span-seri">: <?php echo $data[0]->seri; ?></span></p>
                      </li>
                      <li>
-                        <p>Tipe <span>: <?php echo $data[0]->tipe; ?></span></p>
+                        <p>Tipe <span id="span-tipe">: <?php echo $data[0]->tipe; ?></span></p>
                      </li>
                      <li>
-                        <p>Slinder  <span>: <?php echo $data[0]->silinder; ?></span></p>
+                        <p>Slinder  <span id="span-silinder">: <?php echo $data[0]->silinder; ?></span></p>
                      </li>
                      <li>
-                        <p>Transmisi  <span>: <?php echo $data[0]->transmisi; ?></span></p>
+                        <p>Transmisi  <span id="span-transmisi">: <?php echo $data[0]->transmisi; ?></span></p>
                      </li>
                      <li>
-                        <p>Model  <span>: <?php echo $data[0]->model; ?></span></p>
+                        <p>Model  <span id="span-model">: <?php echo $data[0]->model; ?></span></p>
                      </li>
                      <li>
-                        <p>Tahun  <span>: <?php echo $data[0]->tahun; ?></span></p>
+                        <p>Tahun  <span id="span-tahun">: <?php echo $data[0]->tahun; ?></span></p>
                      </li>
                   </ul>
                   <ul>
                      <li>
-                        <p>Nomor rangka <span>: <?php echo $data[0]->norangka; ?></span></p>
+                        <p>Nomor rangka <span id="span-norangka">: <?php echo $data[0]->norangka; ?></span></p>
                      </li>
                      <li>
-                        <p>Nomor Mesin <span>: <?php echo $data[0]->nomesin; ?></span></p>
+                        <p>Nomor Mesin <span id="span-nomesin">: <?php echo $data[0]->nomesin; ?></span></p>
                      </li>
                      <li>
-                        <p>Tanggal STNK <span>: <?php echo $data[0]->nostnk ?></span></p>
+                        <p>Tanggal STNK <span id="span-nostnk">: <?php echo $data[0]->nostnk ?></span></p>
                      </li>
                      <li>
-                        <p>Tanggal KEUR <span>: <?php echo $data[0]->tglkeur; ?></span></p>
+                        <p>Tanggal KEUR <span id="span-tglkeur">: <?php echo $data[0]->tglkeur; ?></span></p>
                      </li>
                      <li>
-                        <p>Warna <span>: <?php echo $data[0]->warna; ?></span></p>
+                        <p>Warna <span id="span-warna">: <?php echo $data[0]->warna; ?></span></p>
                      </li>
                      <li>
-                        <p>Bahan Bakar <span>: <?php echo $data[0]->bahanbakar; ?></span></p>
+                        <p>Bahan Bakar <span id="span-bahanbakar">: <?php echo $data[0]->bahanbakar; ?></span></p>
                      </li>
                      <li>
-                        <p>Kilometer <span>: 12,000</span></p>
+                        <p>Kilometer <span id="span-kilometer">: <?php echo ($data[0]->km === '0') ? 'Data Tidak Valid' : $data[0]->km ; ?></span></p>
                      </li>
                   </ul>
                </div>
@@ -166,12 +166,14 @@
             <div class="sticky-auction">
                <div class="lelang-online">
                   <div class="">
-                     <p class="grade-detail">Grade <span><?php echo $grade; ?></span></p>
+                     <p class="grade-detail">Grade <span id="span-gradetaksasi"><?php echo $grade; ?></span></p>
                      <div class="label-lot">
                         <h2>LOT ???</h2>
                      </div>
                      <ul>
-                        <li class="clearfix">Harga Awal <span class="price">Rp. <?php echo $dataharga; ?></span></li>
+                        <li class="clearfix">
+                           Harga Awal <span class="price">Rp. <?php echo $dataharga; ?></span>
+                           <input type="hidden" id="hide-hargafinal" value="<?php echo $data[0]->FinalPriceItem ?>"></li>
                         <li>Jadwal <span>01 September 2017</span></li>
                         <li>Lokasi <span>Jl. Sunter Permai III, Jakarta Utara</span></li>
                      </ul>
@@ -225,7 +227,7 @@
                      </ul>
                   </div>
                   <button class="btn btn-orange"><i class="fa fa-heart"></i> Tambah ke Favorit</button>
-                  <button class="btn btn-green" onclick="location.href='<?php echo site_url('list-compare'); ?>'" type="button"><i class="ic ic-Bandingkan"></i> Bandingkan</button>
+                  <button class="btn btn-green" onclick="compare_action()" type="button"><i class="ic ic-Bandingkan"></i> Bandingkan</button>
                </div>
             </div>
          </div>
@@ -330,41 +332,13 @@
          <div class="compare-content">
             <p><i class="fa fa-exclamation"></i> Pilih produk yang akan di bandingkan, minimal 2 produk untuk di compare</p>
             <div class="col-md-12">
-               <?php 
-               for($i = 0; $i < 4; $i++) {
-                  if($i < 2) {
-               ?>
-               <div class="box-compare">
-                  <a href="">
-                     <div class="thumbnail">
-                        <img src="<?php echo $img_rec; ?>" />
-                        <div class="overlay-grade">
-                           Grade <span>A</span>
-                        </div>
-                     </div>
-                     <h2>SUZUKI SPLASH 1.2 GL<br>MINIBUS MT</h2>
-                     <span class="price">Rp. 72,000,000</span>
-                  </a>
-                  <div class="overlay-compare">
-                     <p>Apakah Anda yakin untuk menghapus atau menggantinya ?</p>
-                     <button class="btn btn-red">Hapus</button>
-                     <button class="btn btn-green">Ganti</button>
-                  </div>
-               </div>
-               <?php
-                  }
-                  else {
-               ?>
-                  <div class="box-compare add-compare-box">
-                     <a href="javascript:void(0)"><i class="fa fa-plus-circle"></i></a>
-                  </div>
-               <?php
-                  } 
-               } 
-               ?>
+               <div id="loadContent"></div>
+               <!--div class="box-compare add-compare-box">
+                  <a href="javascript:void(0)"><i class="fa fa-plus-circle"></i></a>
+               </div-->
                <div class="box-compare button-compare">
                   <p>Untuk memulai perbandingan silakan klik button di bawah ini</p>
-                  <button class="btn btn-green btn-compare" onclick="location.href='list-compare.html'" type="button">Bandingkan</button>
+                  <button class="btn btn-green btn-compare" onclick="location.href='<?php echo site_url('list-compare'); ?>'" type="button">Bandingkan</button>
                </div>
             </div>
             <a href="javascript:;" class="close-compare">Tutup <i class="fa fa-times"></i></a>
@@ -398,137 +372,152 @@
 </div>
 
 <script>
-   $(document).ready(function() {
-      $(".select-custom").select2({
-         minimumResultsForSearch: -1
-      });
-        
-      // slide 360
-      $('.slider').slick({
-         slidesToShow: 1,
-         slidesToScroll: 1,
-         arrows: true,
-         fade: false,
-         asNavFor: '.slider-nav-thumbnails',
-         dots: false
-      });
+$(document).ready(function() {
+   //show compare element
+   var linked = '<?php echo site_url('list-compare'); ?>';
+   setCompare(linked);
 
+   $(".select-custom").select2({
+      minimumResultsForSearch: -1
+   });
+     
+   // slide 360
+   $('.slider').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: true,
+      fade: false,
+      asNavFor: '.slider-nav-thumbnails',
+      dots: false
+   });
 
-      $('.slider-nav-thumbnails').slick({
-         slidesToShow: 5,
-         slidesToScroll: 1,
-         asNavFor: '.slider',
-         dots: true,
-         focusOnSelect: true,
-         dots: false
-      });
+   $('.slider-nav-thumbnails').slick({
+      slidesToShow: 5,
+      slidesToScroll: 1,
+      asNavFor: '.slider',
+      dots: true,
+      focusOnSelect: true,
+      dots: false
+   });
 
-      // Remove active class from all thumbnail slides
+   // Remove active class from all thumbnail slides
+   $('.slider-nav-thumbnails .slick-slide').removeClass('slick-active');
+
+   // Set active class to first thumbnail slides
+   $('.slider-nav-thumbnails .slick-slide').eq(0).addClass('slick-active');
+
+   // On before slide change match active thumbnail to current slide
+   $('.slider').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+      var mySlideNumber = nextSlide;
       $('.slider-nav-thumbnails .slick-slide').removeClass('slick-active');
+      $('.slider-nav-thumbnails .slick-slide').eq(mySlideNumber).addClass('slick-active');
+   });
 
-      // Set active class to first thumbnail slides
-      $('.slider-nav-thumbnails .slick-slide').eq(0).addClass('slick-active');
-
-      // On before slide change match active thumbnail to current slide
-      $('.slider').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-         var mySlideNumber = nextSlide;
-         $('.slider-nav-thumbnails .slick-slide').removeClass('slick-active');
-         $('.slider-nav-thumbnails .slick-slide').eq(mySlideNumber).addClass('slick-active');
-      });
-   
-      // Timer
-      var countDownDate = new Date("Dec 31, 2017 00:00:00").getTime();
-      var x = setInterval(function() {
-         var now = new Date().getTime();
-         var distance = countDownDate - now;
-         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-         document.getElementById("timer").innerHTML = days + "   :  " + hours + "   :  " + minutes + " ";
-         if (distance < 0) {
-            clearInterval(x);
-            document.getElementById("timer").innerHTML = "TIDAK ADA LELANG";
-         }
-      }, 1000);
-   
-      // TIMER MOBILE
-      var countDownDate = new Date("feb 31, 2018 00:00:00").getTime();
-      var x = setInterval(function() {
-         var now = new Date().getTime();
-         var distance = countDownDate - now;
-         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-         document.getElementById("timer-mobile").innerHTML = days + "   :  " + hours + "   :  " + minutes + " ";
-         if (distance < 0) {
-            clearInterval(x);
-            document.getElementById("timer-mobile").innerHTML = "TIDAK ADA LELANG";
-         }
-      }, 1000);
-   
-      // Graphic Lelang
-      var canvas = document.getElementById("myChart");
-      var ctx = canvas.getContext("2d");
-      var data = {
-         labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"],
-         datasets: [
-            {
-               label: "Harga Dasar",
-               backgroundColor: "rgba(60,130,211,0.3)",
-               borderColor: "rgba(60,130,211,1)",
-               data: [150, 250, 200, 350, 150, 200, 300, 200, 150, 450, 350, 300]
-            },
-            {
-               label: "Harga Terbentuk",
-               backgroundColor: "rgba(225,47,42,0.3)",
-               borderColor: "rgba(225,47,42,1)",
-               data: [420, 375, 320, 450, 550, 448, 600, 448, 400, 500, 550, 450]
-            }
-         ]
-      };
-   
-      var optionsLine = {
-         responsive: true,
-         scaleBeginAtZero: true,
-         scaleShowVerticalLines: false,
-         legend: {
-            display: true,
-            position: 'bottom',
-            labels: {
-               fontColor: 'rgb(166, 166, 166)',
-               usePointStyle: true
-            }
-         },
-         scales: {
-            yAxes: [{
-               gridLines: {
-                  display: true
-               }
-            }],
-            xAxes: [{
-               gridLines: {
-                  display: false,
-                  drawOnChartArea: false
-               }
-            }]
-         }
+   // Timer
+   var countDownDate = new Date("Dec 31, 2017 00:00:00").getTime();
+   var x = setInterval(function() {
+      var now = new Date().getTime();
+      var distance = countDownDate - now;
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      document.getElementById("timer").innerHTML = days + "   :  " + hours + "   :  " + minutes + " ";
+      if (distance < 0) {
+         clearInterval(x);
+         document.getElementById("timer").innerHTML = "TIDAK ADA LELANG";
       }
-   
-      var myNewChart = new Chart(ctx , {
-         type: "line",
-         data: data, 
-         options: optionsLine
+   }, 1000);
+
+   // TIMER MOBILE
+   var countDownDate = new Date("feb 31, 2018 00:00:00").getTime();
+   var x = setInterval(function() {
+      var now = new Date().getTime();
+      var distance = countDownDate - now;
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      document.getElementById("timer-mobile").innerHTML = days + "   :  " + hours + "   :  " + minutes + " ";
+      if (distance < 0) {
+         clearInterval(x);
+         document.getElementById("timer-mobile").innerHTML = "TIDAK ADA LELANG";
+      }
+   }, 1000);
+
+   // Graphic Lelang
+   var canvas = document.getElementById("myChart");
+   var ctx = canvas.getContext("2d");
+   var data = {
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"],
+      datasets: [
+         {
+            label: "Harga Dasar",
+            backgroundColor: "rgba(60,130,211,0.3)",
+            borderColor: "rgba(60,130,211,1)",
+            data: [150, 250, 200, 350, 150, 200, 300, 200, 150, 450, 350, 300]
+         },
+         {
+            label: "Harga Terbentuk",
+            backgroundColor: "rgba(225,47,42,0.3)",
+            borderColor: "rgba(225,47,42,1)",
+            data: [420, 375, 320, 450, 550, 448, 600, 448, 400, 500, 550, 450]
+         }
+      ]
+   };
+
+   var optionsLine = {
+      responsive: true,
+      scaleBeginAtZero: true,
+      scaleShowVerticalLines: false,
+      legend: {
+         display: true,
+         position: 'bottom',
+         labels: {
+            fontColor: 'rgb(166, 166, 166)',
+            usePointStyle: true
+         }
+      },
+      scales: {
+         yAxes: [{
+            gridLines: {
+               display: true
+            }
+         }],
+         xAxes: [{
+            gridLines: {
+               display: false,
+               drawOnChartArea: false
+            }
+         }]
+      }
+   }
+
+   var myNewChart = new Chart(ctx , {
+      type: "line",
+      data: data, 
+      options: optionsLine
+   });
+
+   // ADD COMPARE
+   $(".open-compare").click(function() {
+      $(".compare").show(500) && $(".open-compare").hide();
+   });
+   $(".close-compare").click(function() {
+      $(".compare").hide(500) && $(".open-compare").show();
+   });
+
+   if($(window).width() > 800) {
+      $('.sticky-auction').stick_in_parent({
+         'parent': $('.js-sticky-container'),
+         'offset_top': 10
+      }).on('sticky_kit:bottom', function(e) {
+         $(this).parent().css('position', 'static');
+      }).on('sticky_kit:unbottom', function(e) {
+         $(this).parent().css('position', 'relative');
       });
-   
-      // ADD COMPARE
-      $(".open-compare").click(function() {
-         $(".compare").show(500) && $(".open-compare").hide();
-      });
-      $(".close-compare").click(function() {
-         $(".compare").hide(500) && $(".open-compare").show();
-      });
-   
-      if($(window).width() > 800) {
+   }
+
+   $(window).on('resize', function(e) {
+      if ($(window).width() > 800) {
          $('.sticky-auction').stick_in_parent({
             'parent': $('.js-sticky-container'),
             'offset_top': 10
@@ -538,21 +527,17 @@
             $(this).parent().css('position', 'relative');
          });
       }
+   });
 
-      $(window).on('resize', function(e) {
-         if ($(window).width() > 800) {
-            $('.sticky-auction').stick_in_parent({
-               'parent': $('.js-sticky-container'),
-               'offset_top': 10
-            }).on('sticky_kit:bottom', function(e) {
-               $(this).parent().css('position', 'static');
-            }).on('sticky_kit:unbottom', function(e) {
-               $(this).parent().css('position', 'relative');
-            });
-         }
-      });
-   
-      // mobile view content
+   // mobile view content
+   if ($(window).width() < 800) {
+      $(".photo-transport").appendTo('.header-detail .container-fluid'); 
+      $('.box-info').appendTo('.related-product');
+      $('.info-ibid').appendTo('.mobile-info');
+      $('.detail-transport .detail-title span').appendTo('.detail-title');
+      $('.sticky-auction').prependTo('.desc-transport');
+   }
+   $(window).on('resize', function(e) {
       if ($(window).width() < 800) {
          $(".photo-transport").appendTo('.header-detail .container-fluid'); 
          $('.box-info').appendTo('.related-product');
@@ -560,138 +545,154 @@
          $('.detail-transport .detail-title span').appendTo('.detail-title');
          $('.sticky-auction').prependTo('.desc-transport');
       }
-      $(window).on('resize', function(e) {
-         if ($(window).width() < 800) {
-            $(".photo-transport").appendTo('.header-detail .container-fluid'); 
-            $('.box-info').appendTo('.related-product');
-            $('.info-ibid').appendTo('.mobile-info');
-            $('.detail-transport .detail-title span').appendTo('.detail-title');
-            $('.sticky-auction').prependTo('.desc-transport');
-         }
-      });
-
-      if ($(window).width() < 1025) {
-         $(".close-compare").appendTo('.compare .container-fluid')
-      }
-      
-      $('#toggle-nav').click(function() {
-         $('.navbar-collapse.collapse').toggleClass('open')
-      })
-      $('.nav-close').click(function() {
-         $('.navbar-collapse.collapse').toggleClass('open')
-      })
-
-      $('.lang-mob a').click(function() {
-         $('.help-mob ul').removeClass('open')
-         $(this).toggleClass('opened')
-         $(this).siblings('ul').toggleClass('open')
-      })
-      $('.help-mob a').click(function() {
-         $('.lang-mob ul').removeClass('open')
-         $(this).toggleClass('opened')
-         $(this).siblings('ul').toggleClass('open')
-      })
-      $('.sidemenu-left').height($('.am-right').height() - 100)
-   
-      $('#lightgallery').slick({
-         dots: false,
-         infinite: false,
-         speed: 300,
-       
-         prevArrow: false,
-         nextArrow: false,
-         slidesToShow: 3,
-         slidesToScroll: 3,
-         responsive: [
-            {
-               breakpoint: 1024,
-               settings: {
-                  slidesToShow: 3,
-                  slidesToScroll: 3,
-                  infinite:false,
-                  dots: true,
-                  prevArrow: false,
-                  nextArrow: false
-               }
-            },
-            {
-               breakpoint: 800,
-               settings: {
-                  slidesToShow: 2,
-                  slidesToScroll: 1,
-                  dots: true,
-
-                  prevArrow: false,
-                  nextArrow: false
-               }
-            },
-            {
-               breakpoint: 600,
-               settings: {
-                  slidesToShow: 1,
-                  slidesToScroll: 1,
-                  dots: true,
-
-                  prevArrow: false,
-                  nextArrow: false
-               }
-            }
-         ]
-      });
-   
-      $('.related-product-slider').slick({
-         dots: false,
-         infinite: false,
-         speed: 300,
-       
-         prevArrow: false,
-         nextArrow: false,
-         slidesToShow: 4,
-         slidesToScroll: 4,
-         responsive: [
-            {
-               breakpoint: 1024,
-               settings: {
-                  slidesToShow: 3,
-                  slidesToScroll: 3,
-                  infinite:false,
-                  dots: true,
-                  prevArrow: false,
-                  nextArrow: false
-               }
-            },
-            {
-               breakpoint: 800,
-               settings: {
-                  slidesToShow: 2,
-                  slidesToScroll: 1,
-                  dots: true,
-
-                  prevArrow: false,
-                  nextArrow: false
-               }
-            },
-            {
-               breakpoint: 600,
-               settings: {
-                  slidesToShow: 1,
-                  slidesToScroll: 1,
-                  dots: true,
-
-                  prevArrow: false,
-                  nextArrow: false
-               }
-            }
-         ]
-      });
-
-      $("#lightgallery").lightGallery({
-         thumbnail: true,
-         selector: ".stickys"
-      });
-      $("#lightgallery2").lightGallery({
-         thumbnail: true,
-         selector: ".item-slide"
-      });
    });
+
+   if ($(window).width() < 1025) {
+      $(".close-compare").appendTo('.compare .container-fluid')
+   }
+   
+   $('#toggle-nav').click(function() {
+      $('.navbar-collapse.collapse').toggleClass('open')
+   })
+   $('.nav-close').click(function() {
+      $('.navbar-collapse.collapse').toggleClass('open')
+   })
+
+   $('.lang-mob a').click(function() {
+      $('.help-mob ul').removeClass('open')
+      $(this).toggleClass('opened')
+      $(this).siblings('ul').toggleClass('open')
+   })
+   $('.help-mob a').click(function() {
+      $('.lang-mob ul').removeClass('open')
+      $(this).toggleClass('opened')
+      $(this).siblings('ul').toggleClass('open')
+   })
+   $('.sidemenu-left').height($('.am-right').height() - 100)
+
+   $('#lightgallery').slick({
+      dots: false,
+      infinite: false,
+      speed: 300,
+    
+      prevArrow: false,
+      nextArrow: false,
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      responsive: [
+         {
+            breakpoint: 1024,
+            settings: {
+               slidesToShow: 3,
+               slidesToScroll: 3,
+               infinite:false,
+               dots: true,
+               prevArrow: false,
+               nextArrow: false
+            }
+         },
+         {
+            breakpoint: 800,
+            settings: {
+               slidesToShow: 2,
+               slidesToScroll: 1,
+               dots: true,
+
+               prevArrow: false,
+               nextArrow: false
+            }
+         },
+         {
+            breakpoint: 600,
+            settings: {
+               slidesToShow: 1,
+               slidesToScroll: 1,
+               dots: true,
+
+               prevArrow: false,
+               nextArrow: false
+            }
+         }
+      ]
+   });
+
+   $('.related-product-slider').slick({
+      dots: false,
+      infinite: false,
+      speed: 300,
+    
+      prevArrow: false,
+      nextArrow: false,
+      slidesToShow: 4,
+      slidesToScroll: 4,
+      responsive: [
+         {
+            breakpoint: 1024,
+            settings: {
+               slidesToShow: 3,
+               slidesToScroll: 3,
+               infinite:false,
+               dots: true,
+               prevArrow: false,
+               nextArrow: false
+            }
+         },
+         {
+            breakpoint: 800,
+            settings: {
+               slidesToShow: 2,
+               slidesToScroll: 1,
+               dots: true,
+
+               prevArrow: false,
+               nextArrow: false
+            }
+         },
+         {
+            breakpoint: 600,
+            settings: {
+               slidesToShow: 1,
+               slidesToScroll: 1,
+               dots: true,
+
+               prevArrow: false,
+               nextArrow: false
+            }
+         }
+      ]
+   });
+
+   $("#lightgallery").lightGallery({
+      thumbnail: true,
+      selector: ".stickys"
+   });
+   $("#lightgallery2").lightGallery({
+      thumbnail: true,
+      selector: ".item-slide"
+   });
+});
+
+function compare_action() {
+   var compare_data = {
+      "BahanBakar"   : $('#span-bahanbakar').text().replace(': ', ''),
+      "Image"        : $('#img-gambar').attr('src'),
+      "Kilometer"    : $('#span-kilometer').text().replace(': ', ''),
+      "Merk"         : $('#span-merk').text().replace(': ', ''),
+      "Model"        : $('#span-model').text().replace(': ', ''),
+      "NoKeur"       : $('#span-tglkeur').text().replace(': ', ''),
+      "NoMesin"      : $('#span-nomesin').text().replace(': ', ''),
+      "NoPolisi"     : $('#span-nopol').text().replace(': ', ''),
+      "NoRangka"     : $('#span-norangka').text().replace(': ', ''),
+      "NoSTNK"       : $('#span-nostnk').text().replace(': ', ''),
+      "Seri"         : $('#span-seri').text().replace(': ', ''),
+      "Silinder"     : $('#span-silinder').text().replace(': ', ''),
+      "TaksasiGrade" : $('#span-gradetaksasi').text(),
+      "Tahun"        : $('#span-tahun').text().replace(': ', ''),
+      "Transmisi"    : $('#span-transmisi').text().replace(': ', ''),
+      "Tipe"         : $('#span-tipe').text().replace(': ', ''),
+      "Price"        : $('#hide-hargafinal').val(),
+      "Warna"        : $('#span-warna').text().replace(': ', '')
+   };
+   set_compare_product(JSON.stringify(compare_data))
+}
 </script>

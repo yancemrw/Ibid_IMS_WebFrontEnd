@@ -474,7 +474,6 @@ $(document).ready(function() {
 
 // handle active menu page
 if(getActiveMenu('active_menu') !== false) {
-  console.log(getActiveMenu('active_menu'));
   switch(getActiveMenu('active_menu')) {
     case 'find' : $('#find_menu').addClass('active'); break;
     case 'schedule' : $('#schedule_menu').addClass('active'); break;
@@ -490,7 +489,7 @@ if(getActiveMenu('active_menu') !== false) {
 
 // cek compare panel
 if(localStorage.getItem("CP") !== null) {
-  document.getElementById('addcompare').style.display = 'block';
+  (document.getElementById('addcompare') !== null) ? document.getElementById('addcompare').style.display = 'block' : '' ;
 }
 
 function setActiveMenu(value) {
@@ -509,22 +508,6 @@ function getActiveMenu(name) {
 
 function deleteActiveMenu(name) {
   document.cookie = name+'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-}
-
-function set_compare_product(object) {
-  if(localStorage.getItem("CP") === null) {
-    localStorage.setItem("CP", JSON.stringify([object]));
-    document.getElementById('addcompare').style.display = 'block';
-  }
-  else if(JSON.parse(localStorage.getItem("CP")).length >= 1 && JSON.parse(localStorage.getItem("CP")).length < 4) {
-    var rep = appendObjTo(JSON.parse(localStorage.getItem("CP")), object);
-    localStorage.setItem("CP", JSON.stringify(rep));
-  }
-}
-
-// function for add object into array
-function appendObjTo(thatArray, objToAppend) {
-  return Object.freeze(thatArray.concat(objToAppend));
 }
 </script>
 </body>
