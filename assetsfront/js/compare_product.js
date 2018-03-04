@@ -2,6 +2,7 @@ function setCompare(linked) {
    var content = '', getLocalStorage = JSON.parse(localStorage.getItem('CP'));
    if(getLocalStorage !== null) {
       for(var i = 0; i < getLocalStorage.length; i++) {
+         var AuctionItemId = getLocalStorage[i].AuctionItemId;
          var Merk = getLocalStorage[i].Merk;
          var Seri = getLocalStorage[i].Seri;
          var Silinder = getLocalStorage[i].Silinder;
@@ -18,7 +19,7 @@ function setCompare(linked) {
                      '</a>'+
                      '<div class="overlay-compare">'+
                      '<p>Apakah Anda yakin untuk menghapus atau menggantinya ?</p>'+
-                     '<button class="btn btn-red">Hapus</button>'+
+                     '<button class="btn btn-red" onclick="remove_product('+AuctionItemId+', \''+linked+'\')">Hapus</button>'+
                      '</div>'+
                      '</div>';
       }
@@ -104,6 +105,23 @@ function appendObjTo(thatArray, objToAppend) {
   return Object.freeze(thatArray.concat(objToAppend));
 }
 
+// function for delete compare product (https://stackoverflow.com/a/10024926)
+function remove_product(id, linked) {
+   var getLocalStorage = JSON.parse(localStorage.getItem('CP'));
+   var removeId = getLocalStorage.filter(function(el) {
+      return el.AuctionItemId !== id;
+   });
+   localStorage.setItem("CP", JSON.stringify(removeId));
+   if(getLocalStorage.length === 1) {
+      localStorage.removeItem("CP");
+      $('a.close-compare').trigger('click');
+      setTimeout(function() {
+         $('#addcompare').css('display', 'none');
+      }, 100);
+   }
+   setCompare(linked);
+}
+
 function currency_format(n) {
-   return n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+   return n.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 }
