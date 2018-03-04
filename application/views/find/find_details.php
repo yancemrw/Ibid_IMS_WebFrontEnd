@@ -1,3 +1,4 @@
+<input type="hidden" id="hidden-auctionitemid" value="<?php echo $data[0]->AuctionItemId; ?>" />
 <section class="header-detail">
    <div class="container-fluid">
       <div class="margin-right-min15px margin-left-min15px photo-landscape">
@@ -227,7 +228,9 @@
                      </ul>
                   </div>
                   <button class="btn btn-orange"><i class="fa fa-heart"></i> Tambah ke Favorit</button>
-                  <button class="btn btn-green" onclick="compare_action()" type="button"><i class="ic ic-Bandingkan"></i> Bandingkan</button>
+                  <button class="btn btn-green" onclick="compare_action('<?php echo site_url('list-compare'); ?>')" type="button">
+                     <i class="ic ic-Bandingkan"></i> Bandingkan
+                  </button>
                </div>
             </div>
          </div>
@@ -268,7 +271,7 @@
             </div>
             <?php } ?>
          </div>
-         <a href="javascript:;" class="open-compare">Add Compare <i class="fa fa-plus"></i></a>
+         <a href="javascript:;" class="open-compare" id="addcompare" style="display:none">Add Compare <i class="fa fa-plus"></i></a>
       </div>
    </div>
 </section>
@@ -672,8 +675,9 @@ $(document).ready(function() {
    });
 });
 
-function compare_action() {
+function compare_action(linked) {
    var compare_data = {
+      "AuctionItemId": parseInt($('#hidden-auctionitemid').val()),
       "BahanBakar"   : $('#span-bahanbakar').text().replace(': ', ''),
       "Image"        : $('#img-gambar').attr('src'),
       "Kilometer"    : $('#span-kilometer').text().replace(': ', ''),
@@ -693,6 +697,6 @@ function compare_action() {
       "Price"        : $('#hide-hargafinal').val(),
       "Warna"        : $('#span-warna').text().replace(': ', '')
    };
-   set_compare_product(JSON.stringify(compare_data))
+   set_compare_product(compare_data, linked);
 }
 </script>

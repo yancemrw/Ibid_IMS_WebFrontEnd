@@ -240,10 +240,10 @@
    </div>
 </div>
 
-<section class="bg-grey related-product" id="addcompare" style="display:none">
+<section class="bg-grey related-product">
    <div class="container">
       <div class="row">
-         <a href="javascript:void(0)" class="open-compare">Add Compare <i class="fa fa-plus"></i></a>
+         <a href="javascript:void(0)" class="open-compare" id="addcompare" style="display:none">Add Compare <i class="fa fa-plus"></i></a>
       </div>
    </div>
 </section>
@@ -331,6 +331,7 @@ $(document).ready(function() {
                      success: function(data) {
                         $('#loadings').replaceWith('<div id="loadings"></div>');
                         var compare_data = {
+                           "AuctionItemId": dataz.AuctionItemId,
                            "BahanBakar": dataz.bahanbakar,
                            "Image": data.data[0].ImagePath,
                            "Kilometer": dataz.km,
