@@ -120,6 +120,10 @@ a.delete-compare {
     cursor: no-drop !important;
 }
 
+.list-style {
+    list-style: circle !important;
+}
+
 .login-forgot {
 	display: inline-block;
 	margin: 10px 0 0 0;
@@ -154,6 +158,10 @@ a.delete-compare {
     margin-top: 80px !important;
 }
 
+.margin-bottom-10px {
+    margin-bottom: 10px !important;
+}
+
 .margin-right-min15px {
     margin-right: -15px !important;
 }
@@ -175,6 +183,10 @@ a.delete-compare {
 
 .padding-10px {
     padding: 10px !important;
+}
+
+.padding-30px-15px-30px-30px {
+    padding: 30px 15px 30px 30px;
 }
 
 .row {

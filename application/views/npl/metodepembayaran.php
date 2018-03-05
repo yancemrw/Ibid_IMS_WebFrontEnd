@@ -13,6 +13,16 @@
                                     <li><img src="<?php echo base_url('assetsfront/images/icon/ic-bca.png'); ?>" alt=""></li>
                                 </ul>
                             </label>
+                            <div id="methode1" class="desc-methode padding-30px-15px-30px-30px">
+                                <ul class="list-style margin-bottom-10px">
+                                    <li class="margin-bottom-10px">Kode pembayaran Virtual Account merupakan kombinasi 5 nomor unik dan nomor handphone yang terdaftar di akun IBID.</li>
+                                    <li class="margin-bottom-10px">Satu nomor Virtual Account BCA berlaku untuk satu akun saja.</li>
+                                    <li class="margin-bottom-10px">Pembayaran hanya berlaku untuk satu tagihan terbaru. Jika Anda masih memiliki tagihan yang belum dibayarkan, transaksi sebelumnya akan otomatis dibatalkan.</li>
+                                    <li class="margin-bottom-10px">Batas waktu pembayaran adalah 2 hari.</li>
+                                    <li class="margin-bottom-10px">Pembayaran Virtual Account BCA dapat dilakukan lewat ATM, m-BCA, KlikBCA Individual, atau langsung melalui teller.</li>
+                                    <li class="margin-bottom-10px">Verifikasi pembayaran secara otomatis.</li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="form-group">
                             <input type="radio" name="tipe-methode" id="va-mandiri" class="input-hidden" value="2" />
@@ -22,6 +32,16 @@
                                     <li><img src="<?php echo base_url('assetsfront/images/icon/ic-mandiri.png'); ?>" alt=""></li>
                                 </ul>
                             </label>
+                            <div id="methode2" class="desc-methode padding-30px-15px-30px-30px">
+                                <ul class="list-style margin-bottom-10px">
+                                    <li class="margin-bottom-10px">Kode pembayaran Virtual Account merupakan kombinasi 5 nomor unik dan nomor handphone yang terdaftar di akun IBID.</li>
+                                    <li class="margin-bottom-10px">Satu nomor Virtual Account berlaku untuk satu akun saja.</li>
+                                    <li class="margin-bottom-10px">Pembayaran hanya berlaku untuk satu tagihan terbaru.</li>
+                                    <li class="margin-bottom-10px">Tagihan terbayar bila Anda melakukan pembayaran dengan nominal tepat.</li>
+                                    <li class="margin-bottom-10px">Pembayaran Virtual Account Mandiri dapat dilakukan lewat ATM, Mandiri Online, atau langsung melalui teller.</li>
+                                    <li class="margin-bottom-10px">Verifikasi pembayaran secara otomatis.</li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="form-group">
                             <input type="radio" name="tipe-methode" id="cc" class="input-hidden" value="3" />
@@ -32,8 +52,14 @@
                                     <li><img src="<?php echo base_url('assetsfront/images/icon/ic-master-card.png'); ?>" alt="" title=""></li>
                                 </ul>
                             </label>
-                            <div id="methode3" class="desc-methode">
-                                3
+                            <div id="methode3" class="desc-methode padding-30px-15px-30px-30px">
+                                <ul class="list-style margin-bottom-10px">
+                                    <li class="margin-bottom-10px">Pembayaran hanya dapat dilakukan menggunakan kartu kredit berlogo Visa/Master Card.</li>
+                                    <li class="margin-bottom-10px">Pembayaran dilakukan secara online melalui situs IBID yang nantinya akan terhubung dengan sistem Visa/Master Card.</li>
+                                    <li class="margin-bottom-10px">Verifikasi pembayaran secara otomatis.</li>
+                                    <li class="margin-bottom-10px">Pastikan limit kartu kredit Anda mencukupi.</li>
+                                    <li class="margin-bottom-10px">Refund atau pengembalian dana akan dikembalikan ke rekening kartu kredit Anda.</li>
+                                </ul>
                             </div>
                         </div>
                         <div class="form-group">
@@ -41,6 +67,13 @@
                             <label for="loket">
                                 <p>Loket</p>
                             </label>
+                            <div id="methode4" class="desc-methode padding-30px-15px-30px-30px">
+                                <ul class="list-style">
+                                    <li class="margin-bottom-10px">Pembayaran hanya dapat dilakukan di loket IBID menggunakan kartu debet.</li>
+                                    <li class="margin-bottom-10px">Anda akan menerima struk berisi barcode yang harus dibawa ketika datang ke loket.</li>
+                                    <li class="margin-bottom-10px">Verifikasi pembayaran dilakukan oleh petugas loket.</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -60,9 +93,15 @@
     </div>
 </section>
 <script>
-$(function(){
-	$('#btnBayar').click(function(){
+$(function() {
+	$('#btnBayar').click(function() {
 		$('#thisForm').submit();
 	});
+
+    $("input[name$='tipe-methode']").click(function() {
+        var test = $(this).val();
+        $(".desc-methode").hide();
+        $("#methode" + test).css('display', 'inline-block');
+    });
 })
 </script>
