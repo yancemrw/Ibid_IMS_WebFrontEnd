@@ -178,9 +178,33 @@
 									</div>
 								</li>';
 							} ?>
-                            <!-- li>
+                            <li>
+                                <h2 class="npl-car">
+                                    <img src="<?php echo base_url('assetsfront/images/icon/car-white.png'); ?>" alt=""> Mobil 
+                                    <a href="" class="delete-npl"></a>
+                                </h2> 
+                                <div class="desc-npl">
+                                    <p>NPL Unlimited</p>
+                                    <p>-</p>
+                                    <p>2</p>
+                                    <p>Rp. 5,000,000</p>
+                                </div>
+                            </li>
+                            <li>
+								<h2 class="npl-motorcycle">
+									<img src="<?php echo base_url('assetsfront/images/icon/motorcycle-calendar.png'); ?>" alt=""> Motor 
+									<a href="" class="delete-npl"></a>
+								</h2>
+								<div class="desc-npl">
+									<p>NPL Online</p>
+									<p>Jakarta, 14 Agustus 2018</p>
+									<p>2</p>
+									<p>Rp. 10,000,000</p>
+								</div>
+							</li>
+							<li>
                                 <h2 class="npl-hve">
-                                    <img src="<?php echo base_url(); ?>assetsfront/images/icon/hve-white.png" alt=""> HVE 
+                                    <img src="<?php echo base_url('assetsfront/images/icon/hve-white.png'); ?>" alt=""> HVE 
                                     <a href="" class="delete-npl"></a>
                                 </h2>  
                                 <div class="desc-npl">
@@ -191,17 +215,17 @@
                                 </div>
                             </li>
                             <li>
-                                <h2 class="npl-car">
-                                    <img src="<?php echo base_url(); ?>assetsfront/images/icon/car-white.png" alt=""> Mobil 
-                                    <a href="" class="delete-npl"></a>
-                                </h2> 
-                                <div class="desc-npl">
-                                    <p>NPL Unlimited</p>
-                                    <p>-</p>
-                                    <p>2</p>
-                                    <p>Rp. 5,000,000</p>
-                                </div>
-                            </li -->
+								<h2 class="npl-gadget">
+									<img src="<?php echo base_url('assetsfront/images/icon/gadget-calendar.png'); ?>" alt=""> Gadget 
+									<a href="" class="delete-npl"></a>
+								</h2>
+								<div class="desc-npl">
+									<p>NPL Unlimited</p>
+									<p>-</p>
+									<p>2</p>
+									<p>Rp. 5,000,000</p>
+								</div>
+							</li>
                         </ul>
                         <div class="total-price text-right">
                             <p id="thisCartTotal"><span>Total</span> Rp. <?php echo number_format($this->cart->total()); ?></p>

@@ -41,12 +41,21 @@ a.delete-compare {
     border-radius: 0 !important;
 }
 
+.booking-schedule .form-filter .object-type .form-group {
+    margin-right: 6px !important;
+}
+
 .btn-me-daftar {
 	width: 160px !important;
 }
 
 .btn-register {
 	font-size: 14px !important;
+}
+
+.content-add-npl ul li {
+    margin-right: 8px !important;
+    margin-bottom: 8px !important;
 }
 
 .cursor-pointer {
@@ -179,6 +188,10 @@ a.delete-compare {
 	font-size: 12px;
 	margin: 15px;
 	text-align: center;
+}
+
+.object-type.object-npl label p {
+    margin: 10px 10px 10px 25px !important;
 }
 
 .padding-10px {

@@ -88,7 +88,7 @@
                     <button class="btn btn-green" type="button" id="btnBayar">Bayar</button>
                 </div>
             </div>
-            <div class="col-md-12 col-sm-12"> <a href="" class="back-to"><i class="fa fa-angle-left"></i> Kembali ke Beli NPL</a></div>
+            <div class="col-md-12 col-sm-12"><a href="<?php site_url('beli-npl'); ?>" class="back-to"><i class="fa fa-angle-left"></i> Kembali ke Beli NPL</a></div>
         </div>
     </div>
 </section>
