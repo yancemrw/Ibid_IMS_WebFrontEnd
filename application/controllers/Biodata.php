@@ -288,7 +288,8 @@ class Biodata extends CI_Controller {
 			redirect('dashboard');
 		}
 		else if($sesi['BiodataPembelianNPL']['otpsource'] === 'npl') {
-			redirect('pembelian');
+			//redirect('pembelian');
+			redirect('beli-npl');
 		}
 	}
 }

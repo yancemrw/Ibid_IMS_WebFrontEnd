@@ -3019,13 +3019,24 @@ a.delete-npl {
 
 h2.npl-hve {
     background: #ff4e00;
-    font-size: 20px;
+    font-size: 18px;
     color: #fff;
 }
 
 h2.npl-car {
     background: #4b79a3;
-    font-size: 20px;
+    font-size: 18px;
+    color: #fff;
+}
+h2.npl-motorcycle {
+    background: #81be2a;
+    font-size: 18px;
+    color: #fff;
+}
+
+h2.npl-gadget {
+    background: #fac917;
+    font-size: 18px;
     color: #fff;
 }
 
