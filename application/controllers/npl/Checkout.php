@@ -7,6 +7,7 @@ class Checkout extends CI_Controller {
 		$this->load->library('cart');
 		// echo '<pre>';
 		// print_r(@$_POST);
+		$methodeBayar = $_POST['tipe-methode'];
 		
 		$BiodataId = @$_SESSION['userdata']['UserId'];
 		$arrayTransaksi = array(
@@ -16,7 +17,7 @@ class Checkout extends CI_Controller {
 			'Total' => $this->cart->total() + 100000,
 			'StsPaid' => '0',
 			'StsCanceled' => '0',
-			'PaymentTypeId' => $_POST['tipe-methode'],
+			'PaymentTypeId' => $methodeBayar,
 			'CreateDate' => date('Y-m-d H:i:s'),
 		);
 		
@@ -25,6 +26,7 @@ class Checkout extends CI_Controller {
 				'ScheduleId' => $items['id'],
 				'ItemId' => $items['options']['ItemId'],
 				'NPLType' => $items['options']['Tipe NPL'],
+				'tipeLelangId' => $items['options']['tipeLelangId'],
 				'QtyNPL' => $items['qty'],
 				'AmountNPL' => $items['price'],
 				'BiodataId' => $BiodataId,
@@ -37,8 +39,7 @@ class Checkout extends CI_Controller {
 			'arrayTransaksi' => @$arrayTransaksi,
 			'arrayTransaksiDetail' => @$arrayTransaksiDetail,
 		);
-		// print_r(@$arrayKirim);
-		// die();
+		
 		
 		
 		## send data registrasi

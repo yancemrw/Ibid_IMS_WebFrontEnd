@@ -46,7 +46,10 @@ class ThisCart extends CI_Controller {
 		
 		if ($TipeNPL == 0) @$tipeLelang = 'Online';
 		else if ($TipeNPL == 1) @$tipeLelang = 'Live';
-		else if ($TipeNPL == 5) @$tipeLelang = 'All';
+		else if ($TipeNPL == 5) {
+			@$tipeLelang = 'All';
+			$id = (((int)$TipeNPL * 100) + (int)$ItemLelang ) / 100;
+		}
 		
 		## array data cart
 		$data = array(
@@ -117,7 +120,7 @@ class ThisCart extends CI_Controller {
 				</h2>  
 				<div class="desc-npl">
 					<p>NPL '.@$tipeLelang.'</p>
-					<p>'.$jadwal.'</p>
+					<p>'.$jadwal.' '.$items['id'].'</p>
 					<p>'.$items['qty'].'</p>
 					<p>Rp. '.number_format($items['subtotal']).'</p>
 				</div>
