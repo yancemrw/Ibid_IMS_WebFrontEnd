@@ -28,6 +28,9 @@ function linkservice($services) {
 	$NPL      = ('NPL' === strtoupper($services)) ? $return = 'http://alpha.ibid.astra.co.id/backend/service/npl/' : ''; 
 	$CMS    = ('CMS' === strtoupper($services)) ? $return = 'http://alpha.ibid.astra.co.id/backend/dapur/' : ''; 
 	
+	$AMSSCHEDULE    = ('AMSSCHEDULE' === strtoupper($services)) ? $return = 'http://alpha.ibid.astra.co.id/backend/serviceams/schedule/api/' : ''; 
+	$AMSSTOCK    = ('AMSSTOCK' === strtoupper($services)) ? $return = 'http://alpha.ibid.astra.co.id/backend/serviceams/stock/api/' : ''; 
+	
 	return $return;
 }
 
