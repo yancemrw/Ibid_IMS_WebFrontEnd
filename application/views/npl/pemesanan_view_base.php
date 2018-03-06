@@ -178,6 +178,7 @@
 									</div>
 								</li>';
 							} ?>
+							<!-- 
                             <li>
                                 <h2 class="npl-car">
                                     <img src="<?php echo base_url('assetsfront/images/icon/car-white.png'); ?>" alt=""> Mobil 
@@ -226,7 +227,8 @@
 									<p>Rp. 5,000,000</p>
 								</div>
 							</li>
-                        </ul>
+							-->
+						</ul>
                         <div class="total-price text-right">
                             <p id="thisCartTotal"><span>Total</span> Rp. <?php echo number_format($this->cart->total()); ?></p>
                         </div>
@@ -250,7 +252,8 @@ function getJadwalAms(){
 		if (tipeLelang == '5') tipeLelang = '';
 		
 		$.ajax( {
-			url: "http://ibid-ams-schedule.stagingapps.net/api/schedulelist",
+			// url: "http://ibid-ams-schedule.stagingapps.net/api/schedulelist",
+			url: "<?php echo linkservice('AMSSCHEDULE') .'schedulelist/'; ?>",
 			dataType: "json",
 			data: {
 				// thisData
