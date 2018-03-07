@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-7 col-sm-7">
                 <h2>Pilih Metode Pembayaran</h2>
-                <form class="form-methode form-filter" id="thisForm" action="<?php echo site_url('npl/checkout'); ?>" method="POST" target="_blank">
+                <form class="form-methode form-filter" id="thisForm" action="<?php echo site_url('npl/checkout'); ?>" method="POST">
                     <div class="object-type pay-methode clearfix">
                         <div class="form-group">
                             <input type="radio" name="tipe-methode" id="va-bca" class="input-hidden" value="1" />

@@ -78,13 +78,13 @@
                             <h2>Pilih Type NPL</h2>
                             <div class="object-type clearfix object-npl">
                                 <div class="form-group thisNplType nplMobil nplMotor nplHve">
-                                    <input name="npl" id="npl-1" class="input-hidden thisType" value="1" type="radio">
+                                    <input name="npl" id="npl-1" class="input-hidden thisType" value="0" type="radio">
                                     <label for="npl-1">
                                         <p>NPL Live</p>
                                     </label>
                                 </div>
                                 <div class="form-group thisNplType nplMobil nplMotor nplHve nplGadget">
-                                    <input name="npl" id="npl-2" class="input-hidden thisType" value="0" type="radio">
+                                    <input name="npl" id="npl-2" class="input-hidden thisType" value="1" type="radio">
                                     <label for="npl-2">
                                         <p>NPL Online</p>
                                     </label>
@@ -140,8 +140,8 @@
 							foreach ($this->cart->contents() as $items){ 
 								$jadwal = ucfirst(strtolower($items['name'])).', '.$items['options']['thisDate'];
 			
-								if ($items['options']['tipeLelangId'] == 0) @$tipeLelang = 'Online';
-								else if ($items['options']['tipeLelangId'] == 1) @$tipeLelang = 'Live';
+								if ($items['options']['tipeLelangId'] == 0) @$tipeLelang = 'Live';
+								else if ($items['options']['tipeLelangId'] == 1) @$tipeLelang = 'Online';
 								else if ($items['options']['tipeLelangId'] == 5) {
 									$jadwal = '-';
 									@$tipeLelang = 'Unlimited';

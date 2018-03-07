@@ -13,7 +13,7 @@ class Checkout extends CI_Controller {
 		$arrayTransaksi = array(
 			'BiodataId' => $BiodataId,
 			'DateTransactionNPL' => date('Y-m-d'),
-			'TransactionFrom' => 'Counter',
+			'TransactionFrom' => 'Website',
 			'Total' => $this->cart->total() + 100000,
 			'StsPaid' => '0',
 			'StsCanceled' => '0',
@@ -22,10 +22,13 @@ class Checkout extends CI_Controller {
 		);
 		
 		foreach ($this->cart->contents() as $items){
+			if ($items['options']['Tipe NPL'] == 1) @$NPLType = 'Online';
+			else if ($items['options']['Tipe NPL'] == 0) @$NPLType = 'Live';
+			else if ($items['options']['Tipe NPL'] == 5) $NPLType = 'Unlimited';
 			$arrayTransaksiDetail[] = array(
 				'ScheduleId' => $items['id'],
 				'ItemId' => $items['options']['ItemId'],
-				'NPLType' => $items['options']['Tipe NPL'],
+				'NPLType' => $NPLType,
 				'tipeLelangId' => $items['options']['tipeLelangId'],
 				'QtyNPL' => $items['qty'],
 				'AmountNPL' => $items['price'],
@@ -44,6 +47,7 @@ class Checkout extends CI_Controller {
 		
 		## send data registrasi
 		$url = linkservice('npl') .'counter/pembelian/add';
+		// $url = 'http://localhost:55/02.JOB/IBID/Ibid_ADMS_ServiceNPL/index.php/counter/pembelian/add';
 		$method = 'POST';
 		$responseApi = admsCurl($url, $arrayKirim, $method);
 		// print_r($responseApi); die();
