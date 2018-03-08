@@ -65,10 +65,11 @@ $route['logout'] = 'auth/logoutCustomer';
 $route['forgot'] = 'auth/forgot';
 $route['newpassword'] = 'auth/newpassword';
 
-// menu bagian header
+// menu bagian npl
 $route['beli-npl'] = 'npl/beli';
 $route['pembelian'] = 'Pembelian';
 $route['metode-pembayaran'] = 'npl/metodepembayaran';
+$route['virtual-account'] = 'npl/vadetail';
 
 // bagian akun
 $route['dashboard'] = 'akun/dasbor';
