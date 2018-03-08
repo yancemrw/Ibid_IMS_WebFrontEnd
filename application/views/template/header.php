@@ -121,7 +121,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="nav-close"><img src="<?php echo base_url('assetsfront/images/icon/Close.png'); ?>"></li>
                         <li class="nav-title"><span class="nav-title">Home</span></li>
-                        <li id="find_menu"><a href="<?php echo site_url('comingsoon'); ?>" onclick="setActiveMenu('find')">Cari Kendaraan</a></li>
+                        <li id="find_menu"><a href="<?php echo site_url('cari-lelang'); ?>" onclick="setActiveMenu('find')">Cari Kendaraan</a></li>
                         <li id="schedule_menu"><a href="<?php echo site_url('comingsoon'); ?>" onclick="setActiveMenu('schedule')">Jadwal Lelang</a></li>
                         <li id="live_menu"><a href="<?php echo site_url('live-auction'); ?>" onclick="setActiveMenu('live')">Live Auction</a></li>
                         <li id="npl_menu"><a href="<?php echo site_url('beli-npl'); ?>" onclick="setActiveMenu('npl')">Beli Npl</a></li>
