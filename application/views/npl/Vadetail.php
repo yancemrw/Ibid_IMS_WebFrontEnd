@@ -1,3 +1,4 @@
+<script type="text/javascript" src="<?php echo base_url('assetsfront/js/countdown_va.js'); ?>"></script>
 <section class="section section-success">
 	<div class="container">
 		<div class="margin-left-min15px margin-right-min15px">
@@ -16,7 +17,7 @@
                  <h2>Pembayaran Via Transfer Virtual Account</h2>
                  <div class="box-v-count col-md-6">
                     <p>Batas Waktu Pembayaran</p>
-                    <span>2 Hari 5 Jam 1 Menit</span>
+                    <span><div id="divotp">Memuat Waktu...</div></span>
                  </div>
                  <div class="box-v col-md-6">
                      <p>Nomor tagihan:</p>
