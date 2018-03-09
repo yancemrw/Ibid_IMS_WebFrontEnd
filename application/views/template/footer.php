@@ -474,16 +474,22 @@ $(document).ready(function() {
 
 // handle active menu page
 if(getActiveMenu('active_menu') !== false) {
-  switch(getActiveMenu('active_menu')) {
-    case 'find' : $('#find_menu').addClass('active'); break;
-    case 'schedule' : $('#schedule_menu').addClass('active'); break;
-    case 'live' : $('#live_menu').addClass('active'); break;
-    case 'npl' : $('#npl_menu').addClass('active'); break;
-    case 'auction' : $('#auction_menu').addClass('active'); break;
-    case 'map' : $('#map_menu').addClass('active'); break;
-    case 'procedure' : $('#procedure_menu').addClass('active'); break;
-    case 'home' : deleteActiveMenu('active_menu'); break;
-    default : deleteActiveMenu('active_menu'); break;
+  var url = '<?php echo site_url(); ?>', jurl = '//'+window.location.hostname+window.location.pathname;
+  if(url === jurl) {
+    deleteActiveMenu('active_menu');
+  }
+  else {
+    switch(getActiveMenu('active_menu')) {
+      case 'find' : $('#find_menu').addClass('active'); break;
+      case 'schedule' : $('#schedule_menu').addClass('active'); break;
+      case 'live' : $('#live_menu').addClass('active'); break;
+      case 'npl' : $('#npl_menu').addClass('active'); break;
+      case 'auction' : $('#auction_menu').addClass('active'); break;
+      case 'map' : $('#map_menu').addClass('active'); break;
+      case 'procedure' : $('#procedure_menu').addClass('active'); break;
+      case 'home' : deleteActiveMenu('active_menu'); break;
+      default : deleteActiveMenu('active_menu'); break;
+    }
   }
 }
 
