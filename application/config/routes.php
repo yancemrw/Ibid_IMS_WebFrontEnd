@@ -94,6 +94,7 @@ $route['jadwal-lelang-iscomming'] = 'auction/auction_date/iscomming';
 $route['live-auction'] = 'auction/live';
 $route['detail-auction'] = 'auction/details';
 $route['titip-lelang'] = 'auction/entrusted';
+$route['titip-lelang-booking'] = 'auction/entrusted_booking';
 
 // Menu panduan
 $route['panduan-lelang'] = 'userguide/guide/index/onsite';
