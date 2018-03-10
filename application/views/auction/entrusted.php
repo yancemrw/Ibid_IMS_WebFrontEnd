@@ -5,35 +5,35 @@
 				<h2>Keuntungan Titip lelang di IBID?</h2>
 				<ul class="auction-info clearfix">
 					<li class="item">
-						<div class="form-info ic ic-Mudah"></div>
+						<div class="form-info ic ic-Mudah display-block"></div>
 						<div class="content-media">
 							<h2>Mudah</h2>
 							<p>Proses registrasi dan pemilihan jadwal inspeksi kendaraan cukup dengan mengisi form via website.</p>
 						</div>
 					</li>
 					<li class="item">
-						<div class="form-info ic ic-Cepat"></div>
+						<div class="form-info ic ic-Cepat display-block"></div>
 						<div class="content-media">
 							<h2>Cepat</h2>
 							<p>Setelah melalui proses inspeksi, apapun kendaraan Anda dapat langsung ikut dilelang pada jadwal lelang terdekat </p>
 						</div>
 					</li>
 					<li class="item">
-						<div class="form-info ic ic-Harga-Jual-Optimal"></div>
+						<div class="form-info ic ic-Harga-Jual-Optimal display-block"></div>
 						<div class="content-media">
 							<h2>Harga Jual Option</h2>
 							<p>Setelah melalui proses inspeksi, apapun kendaraan Anda dapat langsung ikut dilelang pada jadwal lelang terdekat </p>
 						</div>
 					</li>
 					<li class="item">
-						<div class="form-info ic ic-Cepat-Terjual"></div>
+						<div class="form-info ic ic-Cepat-Terjual display-block"></div>
 						<div class="content-media">
 							<h2>Cepat Terjual</h2>
 							<p>Setelah melalui proses inspeksi, apapun kendaraan Anda dapat langsung ikut dilelang pada jadwal lelang terdekat </p>
 						</div>
 					</li>
 					<li class="item">
-						<div class="form-info ic ic-Solusi-Jual-Aset"></div>
+						<div class="form-info ic ic-Solusi-Jual-Aset display-block"></div>
 						<div class="content-media">
 							<h2>Solusi Jual Asset Kendaraan Perusahaan</h2>
 							<p>erusahaan ingin menjual asset kendaraan? Titip jual saja via lelang. Mudah, aman & efisien. <a href="">Hubungi kami sekarang</a>, tim kami siap membantu.</p>
@@ -102,101 +102,66 @@
 </section>
 
 <script>
-	$(document).ready(function() {
-		$("nav").sticky({
-			topSpacing:0
-		});
+$("input[name$='tipe-object']").click(function() {
+	var test = $(this).val();
+	$(".desc-object").hide();
+	$("#object" + test).show();
+});
 
-		$(".select-custom").select2({
-			minimumResultsForSearch: -1
-		});
-
-		$('.input-group.date').datepicker({
-			format: "dd//mm/yyyy"
-		});
-
-		$("input[name$='tipe-object']").click(function() {
-			var test = $(this).val();
-			$(".desc-object").hide();
-			$("#object" + test).show();
-		});
-
-		$('.auction-info').slick({
-			dots: false,
-			infinite: false,
-			speed: 300,
-			prevArrow: false,
-			nextArrow: false,
-			slidesToShow: 5,
-			slidesToScroll: 5,
-			responsive: [
-				{
-					breakpoint: 768,
-					settings: {
-						slidesToShow: 1,
-						slidesToScroll: 1,
-						dots: true,
-						prevArrow: false,
-						nextArrow: false
-					}
-				}
-			]
-		});
-
-	    $('input').blur(function() {
-			tmpval = $(this).val();
-			if(tmpval == '') {
-				$(this).addClass('empty');
-				$(this).removeClass('not-empty');
+$('.auction-info').slick({
+	dots: false,
+	infinite: false,
+	speed: 300,
+	prevArrow: false,
+	nextArrow: false,
+	slidesToShow: 5,
+	slidesToScroll: 5,
+	responsive: [
+		{
+			breakpoint: 768,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				dots: true,
+				prevArrow: false,
+				nextArrow: false
 			}
-			else {
-				$(this).addClass('not-empty');
-				$(this).removeClass('empty');
-			}
-		});
+		}
+	]
+});
 
-		$('#toggle-nav').click(function() {
-			$('.navbar-collapse.collapse').toggleClass('open')
-		})
+$('input').blur(function() {
+	tmpval = $(this).val();
+	if(tmpval == '') {
+		$(this).addClass('empty');
+		$(this).removeClass('not-empty');
+	}
+	else {
+		$(this).addClass('not-empty');
+		$(this).removeClass('empty');
+	}
+});
 
-		$('.nav-close').click(function() {
-			$('.navbar-collapse.collapse').toggleClass('open')
-		})
-	         
-		$('.lang-mob a').click(function() {
-			$('.help-mob ul').removeClass('open')
-			$(this).toggleClass('opened')
-			$(this).siblings('ul').toggleClass('open')
-		});
+$("#notif-rekening").on("focus", function(e) {
+	$('.help-info-2').show();
+});
 
-		$('.help-mob a').click(function() {
-			$('.lang-mob ul').removeClass('open')
-			$(this).toggleClass('opened')
-			$(this).siblings('ul').toggleClass('open')
-		});
+$("#notif-telepon").on("focus", function(e) {
+	$('.help-info-1').show();
+});
 
-
-		$("#notif-rekening").on("focus", function(e) {
-			$('.help-info-2').show();
-		});
-
-		$("#notif-telepon").on("focus", function(e) {
-			$('.help-info-1').show();
-		});
-
-		// input identity
-		$(function() {
-			$("#biodata").change(function() {
-				if ($(this).val() == "k") {
-					$("#ktp").show() && $("#npwp").hide();
-				}
-				else if ($(this).val() == "n") {
-					$("#npwp").show() && $("#ktp").hide(); 
-				}
-				else {
-					$("#npwp").hide() && $("#ktp").hide();
-				}
-			});
-		});
+// input identity
+$(function() {
+	$("#biodata").change(function() {
+		if ($(this).val() == "k") {
+			$("#ktp").show() && $("#npwp").hide();
+		}
+		else if ($(this).val() == "n") {
+			$("#npwp").show() && $("#ktp").hide(); 
+		}
+		else {
+			$("#npwp").hide() && $("#ktp").hide();
+		}
 	});
+});
 </script>
