@@ -317,14 +317,22 @@ $(document).ready(function() {
       success: function(data) {
          var content = '', datas = data.data;
          for (var i = 0; i < datas.length; i++) {
-            let dataz = datas[i];
+            let dataz = datas[i], 
+            merk = (dataz.merk !== undefined) ? dataz.merk : '',
+            seri = (dataz.seri !== undefined) ? dataz.seri : '',
+            silinder = (dataz.silinder !== undefined) ? dataz.silinder : '',
+            tipe = (dataz.tipe !== undefined) ? dataz.tipe : '',
+            model = (dataz.model !== undefined) ? dataz.model : '',
+            transmisi = (dataz.transmisi !== undefined) ? dataz.transmisi : '',
+            tahun = (dataz.tahun !== undefined) ? dataz.tahun : '',
+            FinalPriceItem = (dataz.FinalPriceItem !== undefined) ? dataz.FinalPriceItem : 0;
             let numgrade = '';
             $.ajax({
                type: 'GET',
                url: '<?php echo linkservice('taksasi')."nilaiicar/detail?AuctionItemId='+datas[i].AuctionItemId+'"; ?>',
                success: function(data) {
                   var datax = data.data;
-                  numgrade = datax.TotalEvaluationResult;
+                  numgrade = (datax.TotalEvaluationResult !== undefined) ? datax.TotalEvaluationResult : '?';
                   $.ajax({
                      type: 'GET',
                      url: '<?php echo linkservice('taksasi')."icar/getimage?AuctionItemId='+data.data.AuctionItemId+'"; ?>',
@@ -366,8 +374,8 @@ $(document).ready(function() {
                                  '<p class="overlay-lot">LOT '+lot+'</p>'+
                                  '</div>'+
                                  '<div class="boxright-mobile">'+
-                                 '<h2>'+dataz.merk+' '+dataz.seri+' '+dataz.silinder+' '+dataz.tipe+' '+dataz.model+' '+dataz.transmisi+'</h2>'+
-                                 '<span>'+dataz.tahun+'</span> <span class="price">Rp. '+currency_format(dataz.FinalPriceItem)+'</span>'+
+                                 '<h2>'+merk+' '+seri+' '+silinder+' '+tipe+' '+model+' '+transmisi+'</h2>'+
+                                 '<span>'+tahun+'</span> <span class="price">Rp. '+currency_format(FinalPriceItem)+'</span>'+
                                  '<p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>Belum Tersedia</span></p>'+
                                  '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Belum Tersedia</span></p>'+
                                  '</div>'+
