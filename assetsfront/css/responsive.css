@@ -1878,7 +1878,7 @@
 	}
 	.booking-schedule .form-filter .object-type .form-group {
 		max-width: 24.2%;
-		margin-right: 2px;
+		margin-right: 2px !important;
 		margin-bottom: 5px;
 		float: left;
 	}
