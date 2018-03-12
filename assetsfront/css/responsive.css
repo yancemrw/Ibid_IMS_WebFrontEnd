@@ -255,7 +255,7 @@
     }
     .box-compare.add-compare-box {
         display: table;
-        height: 250px;
+        height: 213px;
         width: calc(50% - 20px);
         background: transparent;
         border: 1px dotted #ccc;
@@ -349,7 +349,7 @@
     }
     .box-compare.add-compare-box {
         display: table;
-        height: 250px;
+        height: 213px;
         width: calc(50% - 20px);
         background: transparent;
         border: 1px dotted #ccc;
