@@ -14,10 +14,10 @@ class Entrusted extends CI_Controller {
 	}
 
 	public function index($not_comming = '') {
-		/*if($not_comming === '') {
-			redirect('comingsoon', 'refresh');
-		}
-		else {*/
+		// if($not_comming === '') {
+			// redirect('comingsoon', 'refresh');
+		// }
+		// else {
 			$data = array(
 				'header_white'	=> "header-white",
 				'userdata'		=> $this->userdata,
@@ -27,6 +27,7 @@ class Entrusted extends CI_Controller {
 			);
 			$view = "auction/entrusted";
 			template($view, $data);
+
 		//}
 	}
 

@@ -50,185 +50,51 @@
 					<form class="form-filter">
 					<div class="object-type clearfix">
 						<div class="form-group">
-							<input type="radio" name="tipe-object" id="type_1" class="input-hidden" value="1" checked />
+							<input type="radio" name="tipe-object" id="type_1" class="input-hidden" value="6" checked />
 							<label for="type_1">
 								<div class="car-type ic ic-Mobil"></div>
 								<p>Mobil</p>
 							</label>
 						</div>
 						<div class="form-group">
-							<input type="radio" name="tipe-object" id="type_2" class="input-hidden" value="2" />
+							<input type="radio" name="tipe-object" id="type_2" class="input-hidden" value="7" />
 							<label for="type_2">
 								<div class="motorcycle-type ic ic-Motor"></div>
 								<p>Motor</p>
 							</label>
 						</div>
 						<div class="form-group">
-							<input type="radio" name="tipe-object" id="type_4" class="input-hidden" value="4" />
+							<input type="radio" name="tipe-object" id="type_4" class="input-hidden" value="12" />
 							<label for="type_4">
 								<div class="gadget-type ic ic-Gadget"></div>
 								<p>Gadget</p>
 							</label>
 						</div>
 						<div class="form-group">
-							<input type="radio" name="tipe-object" id="type_3" class="input-hidden" value="3" />
+							<input type="radio" name="tipe-object" id="type_3" class="input-hidden" value="14" />
 							<label for="type_3">
 								<div class="hve-type ic ic-HVE"></div>
 								<p>HVE</p>
 							</label>
 						</div>
 					</div>
-					<div id="object1" class="desc-object" style="display:block;">
+					<div id="object6" class="desc-object" style="display: block">
+						<?php foreach($formDinamisMobil as $row){ echo $row['typeInput']; } ?>
+						
+					</div>
+					<div id="object7" class="desc-object">
+						<?php foreach($formDinamisMotor as $row){ echo $row['typeInput']; } ?>
+					</div>
+					<div id="object14" class="desc-object">
 						<div class="form-group floating-label">
 							<input type="text" name="" class="form-control input-custom">
-							<label class="label-schedule">No Polisi</label>
-						</div>
-						<div class="form-group floating-label">
-							<select class="select-custom form-control class-merk">
-								<option value="0">Merk</option>
-								<option value="other-merk1">Lainnya</option>
-							</select>
-						</div>
-						<div class="form-group floating-label other-option" id="other-merk1" style="display:none">
-							<input type="text" name="" class="form-control input-custom">
-							<label class="label-schedule">Merk</label>
-						</div>
-						<div class="form-group floating-label">
-							<select class="form-control select-custom class-seri">
-								<option value="0">Seri</option>
-								<option value="other-seri1">Lainnya</option>
-							</select>
-						</div>
-						<div class="form-group floating-label other-option" id="other-seri1" style="display:none">
-							<input type="text" name="" class="form-control input-custom">
-							<label class="label-schedule">Seri</label>
-						</div>
-						<div class="form-group floating-label">
-							<select class="form-control select-custom class-silinder">
-								<option value="0">Silinder</option>
-								<option value="other-silinder1">Lainnya</option>
-							</select>
-						</div>
-						<div class="form-group floating-label other-option" id="other-silinder1" style="display:none">
-							<input type="text" name="" class="form-control input-custom">
-							<label class="label-schedule">Silinder</label>
-						</div>
-						<div class="form-group floating-label">
-							<select class="form-control select-custom" id="tipe">
-								<option value="0">Tipe</option>
-								<option value="other-tipe">Lainnya</option>
-							</select>
-						</div>
-						<div class="form-group floating-label other-option" id="other-tipe" style="display:none">
-							<input type="text" name="" class="form-control input-custom">
-							<label class="label-schedule">Tipe</label>
-						</div>
-						<div class="form-group floating-label">
-							<input type="text" name="" class="form-control input-custom">
-							<label class="label-schedule">Tahun</label>
-						</div>
-						<div class="input-group date">
-							<input type="text" class="border-radius-none disabled-white form-control floating-handle height-50px" id="tgl-lahir1" name="dob" placeholder="Tanggal Lahir" value="" readonly>
-							<span class="input-group-addon cursor-pointer" id="tgl-lahir-span1">
-							<i class="fa fa-calendar"></i>
-							</span>
+							<label class="label-schedule">No Polisi untuk HVE</label>
 						</div>
 					</div>
-					<div id="object2" class="desc-object">
+					<div id="object12" class="desc-object">
 						<div class="form-group floating-label">
 							<input type="text" name="" class="form-control input-custom">
-							<label class="label-schedule">No Polisi</label>
-						</div>
-						<div class="form-group floating-label">
-							<select class="select-custom form-control class-merk">
-								<option value="0">Merk</option>
-								<option value="other-merk2">Lainnya</option>
-							</select>
-						</div>
-						<div class="form-group floating-label other-option" id="other-merk2" style="display:none">
-							<input type="text" name="" class="form-control input-custom">
-							<label class="label-schedule">Merk</label>
-						</div>
-						<div class="form-group floating-label">
-							<select class="form-control select-custom class-seri">
-								<option value="0">Seri</option>
-								<option value="other-seri2">Lainnya</option>
-							</select>
-						</div>
-						<div class="form-group floating-label other-option" id="other-seri2" style="display:none">
-							<input type="text" name="" class="form-control input-custom">
-							<label class="label-schedule">Seri</label>
-						</div>
-						<div class="form-group floating-label">
-							<select class="form-control select-custom class-silinder">
-								<option value="0">Silinder</option>
-								<option value="other-silinder2">Lainnya</option>
-							</select>
-						</div>
-						<div class="form-group floating-label other-option" id="other-silinder2" style="display:none">
-							<input type="text" name="" class="form-control input-custom">
-							<label class="label-schedule">Silinder</label>
-						</div>
-						<div class="form-group floating-label">
-							<input type="text" name="" class="form-control input-custom">
-							<label class="label-schedule">Tahun</label>
-						</div>
-						<div class="input-group date">
-							<input type="text" class="border-radius-none disabled-white form-control floating-handle height-50px" id="tgl-lahir2" name="dob" placeholder="Tanggal Lahir" value="" readonly>
-							<span class="input-group-addon cursor-pointer" id="tgl-lahir-span2">
-							<i class="fa fa-calendar"></i>
-							</span>
-						</div>
-					</div>
-					<div id="object3" class="desc-object">
-						<div class="form-group floating-label">
-							<input type="text" name="" class="form-control input-custom">
-							<label class="label-schedule">No Polisi</label>
-						</div>
-						<div class="form-group floating-label">
-							<select class="select-custom form-control class-merk">
-								<option value="0">Merk</option>
-								<option value="other-merk3">Lainnya</option>
-							</select>
-						</div>
-						<div class="form-group floating-label other-option" id="other-merk3" style="display:none">
-							<input type="text" name="" class="form-control input-custom">
-							<label class="label-schedule">Merk</label>
-						</div>
-						<div class="form-group floating-label">
-							<select class="form-control select-custom class-seri">
-								<option value="0">Seri</option>
-								<option value="other-seri3">Lainnya</option>
-							</select>
-						</div>
-						<div class="form-group floating-label other-option" id="other-seri3" style="display:none">
-							<input type="text" name="" class="form-control input-custom">
-							<label class="label-schedule">Seri</label>
-						</div>
-						<div class="form-group floating-label">
-							<select class="form-control select-custom class-silinder">
-								<option value="0">Silinder</option>
-								<option value="other-silinder3">Lainnya</option>
-							</select>
-						</div>
-						<div class="form-group floating-label other-option" id="other-silinder3" style="display:none">
-							<input type="text" name="" class="form-control input-custom">
-							<label class="label-schedule">Silinder</label>
-						</div>
-						<div class="form-group floating-label">
-							<input type="text" name="" class="form-control input-custom">
-							<label class="label-schedule">Tahun</label>
-						</div>
-						<div class="input-group date">
-							<input type="text" class="border-radius-none disabled-white form-control floating-handle height-50px" id="tgl-lahir3" name="dob" placeholder="Tanggal Lahir" value="" readonly>
-							<span class="input-group-addon cursor-pointer" id="tgl-lahir-span3">
-							<i class="fa fa-calendar"></i>
-						</div>
-					</div>
-					<div id="object4" class="desc-object">
-						<div class="form-group floating-label">
-							<input type="text" name="" class="form-control input-custom">
-							<label class="label-schedule">No Polisi</label>
+							<label class="label-schedule">No Polisi untuk gadget</label>
 						</div>
 						<div class="form-group floating-label">
 							<select class="select-custom form-control class-merk">
@@ -268,8 +134,11 @@
 							<input type="text" class="border-radius-none disabled-white form-control floating-handle height-50px" id="tgl-lahir4" name="dob" placeholder="Tanggal Lahir" value="" readonly>
 							<span class="input-group-addon cursor-pointer" id="tgl-lahir-span4">
 							<i class="fa fa-calendar"></i>
+							</span>
 						</div>
 					</div>
+					<div id="formDinamis">disini</div>
+					
 					<h3>Syarat & Ketentuan Lelang.</h3>
 					<ol>
 						<li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
@@ -285,10 +154,31 @@
 </section>
 
 <script>
+$(function(){
+	
 	$("input[name$='tipe-object']").click(function() {
 		var test = $(this).val();
 		$(".desc-object").hide();
 		$("#object" + test).show();
+		
+		/* $.ajax( {
+			url: "<?php echo linkservice('stock') ."item/add/getaddbookingtaksasi"; ?>",
+			dataType: "json",
+			data: {
+				id: test,
+			},
+			beforeSend: function( ) {
+				$('#formDinamis').html('');
+			},
+			success: function( data ) {
+				for(i=0; i<data.formDinamis.length; i++){
+					thisField = data.formDinamis[i];
+					$('#formDinamis').append(thisField.typeInput);
+				}
+			},
+			complete: function(){
+			}
+		}); */
 	});
 
 	$('.class-merk').each(function(x) {
@@ -378,4 +268,6 @@
 			$(this).removeClass('empty');
 		}
 	});
+
+});
 </script>
