@@ -392,7 +392,8 @@ $(function(){
         
         if (thisCabang != '' && item > 0){
             $.ajax({
-                url: 'http://ibid-ams-schedule.stagingapps.net/api/schedulelist',
+                // url: 'http://ibid-ams-schedule.stagingapps.net/api/schedulelist',
+                url: '<?php echo linkservice('AMSSCHEDULE') .'schedulelist/'; ?>',
                 dataType: 'json',
                 method: 'GET',
                 data: {
