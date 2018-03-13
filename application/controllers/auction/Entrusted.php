@@ -25,6 +25,21 @@ class Entrusted extends CI_Controller {
 				'form_auth_mobile' => login_status_form_mobile($this->userdata),
 				'form_auth'		=> login_Status_form($this->userdata)
 			);
+			
+			############################################################
+			## get cabang
+			$url = linkservice('master')."cabang/get";  
+			$method = 'GET';
+			$responseApi = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
+			if ($responseApi['err']) { 
+				echo "<hr>cURL Error #:" . $responseApi['err']; 
+			} else {
+				$dataApi = json_decode($responseApi['response'],true);
+				$cabang = $dataApi['data'];
+			}
+			$data['cabang'] = @$cabang;
+			############################################################
+			
 			$view = "auction/entrusted";
 			template($view, $data);
 
