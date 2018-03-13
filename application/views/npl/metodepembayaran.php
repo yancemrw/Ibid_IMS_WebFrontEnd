@@ -3,10 +3,10 @@
         <div class="row">
             <div class="col-md-7 col-sm-7">
                 <h2>Pilih Metode Pembayaran</h2>
-                <form class="form-methode form-filter" id="thisForm" action="<?php echo site_url('npl/checkout'); ?>" method="POST">
+                <form class="form-methode form-filter" id="thisForm" action="#<?php // echo site_url('npl/checkout'); ?>" method="POST">
                     <div class="object-type pay-methode clearfix">
                         <div class="form-group">
-                            <input type="radio" name="tipe-methode" id="va-bca" class="input-hidden" value="1" />
+                            <input type="radio" name="tipe_methode" id="va-bca" class="input-hidden" value="1" />
                             <label for="va-bca">
                                 <p>Transfer Virtual Account</p>
                                 <ul>
@@ -25,7 +25,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="radio" name="tipe-methode" id="va-mandiri" class="input-hidden" value="2" />
+                            <input type="radio" name="tipe_methode" id="va-mandiri" class="input-hidden" value="2" />
                             <label for="va-mandiri">
                                 <p>Transfer Virtual Account</p>
                                 <ul>
@@ -44,7 +44,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="radio" name="tipe-methode" id="cc" class="input-hidden" value="3" />
+                            <input type="radio" name="tipe_methode" id="cc" class="input-hidden" value="3" />
                             <label for="cc">
                                 <p>Kartu Visa / Master Card</p>
                                 <ul>
@@ -63,7 +63,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="radio" name="tipe-methode" id="loket" class="input-hidden" value="4" />
+                            <input type="radio" name="tipe_methode" id="loket" class="input-hidden" value="4" />
                             <label for="loket">
                                 <p>Loket</p>
                             </label>
@@ -89,19 +89,76 @@
                 </div>
             </div>
             <div class="col-md-12 col-sm-12"><a href="<?php site_url('beli-npl'); ?>" class="back-to"><i class="fa fa-angle-left"></i> Kembali ke Beli NPL</a></div>
+			<form action="" method="POST" id="ccPost">
+				<input type="hidden" id="thisAmount" name="amount" value="">
+				<input type="hidden" id="thisInvoice" name="invoice" value="">
+				<input type="hidden" name="name" value="<?php echo $detailBiodata['first_name'].' '.$detailBiodata['last_name']; ?>">
+				<input type="hidden" name="email" value="<?php echo $detailBiodata['Email']; ?>">
+				<input type="hidden" name="phone" value="<?php echo $detailBiodata['Phone']; ?>">
+				<input type="hidden" name="address" value="Jakarta">
+			</form>
         </div>
     </div>
 </section>
 <script>
 $(function() {
+	function pembayaranVa(){
+		alert('berhasil');	
+	}
+	
 	$('#btnBayar').click(function() {
 		$('#thisForm').submit();
 	});
 
-    $("input[name$='tipe-methode']").click(function() {
+    $("input[name$='tipe_methode']").click(function() {
         var test = $(this).val();
         $(".desc-methode").hide();
         $("#methode" + test).css('display', 'inline-block');
     });
-})
+	
+	$('#thisForm').submit(function(){
+		tipe_methode = $("input[name$='tipe_methode']:checked").val();
+		
+		$.ajax( {
+			url: "<?php echo site_url('npl/checkout'); ?>",
+			dataType: "json",
+			method: "POST",
+			data: {
+				tipe_methode: tipe_methode,
+			},
+			beforeSend: function( ) {
+			},
+			success: function( data ) {
+				// console.log(data);
+				if (data.aksi == 'redir')
+					window.location = data.url;
+				else if (data.aksi == 'cc'){
+					$('#ccPost').attr('action', data.url);
+					$("#ccPost input[name$='amount']").val(data.bill);
+					$("#ccPost input[name$='invoice']").val(data.code);
+				}
+				else if (data.aksi == 'va')
+					window.location = data.url;
+				else{
+					console.log(data);
+				}
+			},
+			complete: function(data){
+				if (tipe_methode == 3)
+					$('#ccPost').submit();
+			}
+		});
+		return false;
+		
+	});
+	
+	$('#ccPost').submit(function(){
+		thisAmount = $('#thisAmount').val();
+		console.log(thisAmount);
+		thisInvoice = $('#thisInvoice').val();
+		console.log(thisInvoice);
+	});
+	
+	
+});
 </script>
