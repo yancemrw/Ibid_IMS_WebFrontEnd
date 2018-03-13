@@ -47,7 +47,7 @@
 			<div class="col-md-5 col-sm-6">
 				<div class="booking-schedule">
 					<h2>Booking Schedule dan Data Kendaraan</h2>
-					<form class="form-filter">
+					<form class="form-filter" action="<?php echo site_url('auction/entrusted_booking/saveBooking'); ?>" method="POST" target="_blank">
 					<div class="object-type clearfix">
 						<div class="form-group">
 							<input type="radio" name="tipe-object" id="type_1" class="input-hidden" value="6" checked />
@@ -86,13 +86,13 @@
 						<?php foreach($formDinamisMotor as $row){ echo $row['typeInput']; } ?>
 					</div>
 					<div id="object14" class="desc-object">
-						<div class="form-group floating-label">
+						<!-- div class="form-group floating-label">
 							<input type="text" name="" class="form-control input-custom">
 							<label class="label-schedule">No Polisi untuk HVE</label>
-						</div>
+						</div -->
 					</div>
 					<div id="object12" class="desc-object">
-						<div class="form-group floating-label">
+						<!-- div class="form-group floating-label">
 							<input type="text" name="" class="form-control input-custom">
 							<label class="label-schedule">No Polisi untuk gadget</label>
 						</div>
@@ -135,9 +135,28 @@
 							<span class="input-group-addon cursor-pointer" id="tgl-lahir-span4">
 							<i class="fa fa-calendar"></i>
 							</span>
+						</div -->
+					</div>
+					<div>
+						<div class="form-group floating-label">
+							<textarea name="deskripsi" class="form-control input-custom" placeholder="Deskripsi"></textarea>
 						</div>
 					</div>
-					<div id="formDinamis">disini</div>
+					<div>
+						<div class="form-group floating-label">
+							<select class="select-custom form-control" id="cabangLelang" name="cabang">
+								<option value="">-Pilih Cabang-</option>
+								<?php foreach($cabang as $row){ ?>
+								<option value="<?php echo $row['CompanyId']; ?>" ><?php echo strtoupper(strtolower($row['CompanyName'])); ?></option>
+								<?php } ?>
+							</select>
+						</div>
+						<div class="form-group floating-label">
+							<select class="select-custom form-control" id="tanggalLelang" name="ScheduleBookingCalendarId">
+								<option value="">-Pilih Tanggal-</option>
+							</select>
+						</div>
+					</div>
 					
 					<h3>Syarat & Ketentuan Lelang.</h3>
 					<ol>
@@ -145,7 +164,7 @@
 						<li>It has survived not only five centuries, but also the leap into electronic typesetting.</li>
 						<li>It was popularised in the 1960s with the release of Letraset... <a href="">Lihat Selengkapnya</a></li>
 					</ol>
-					<button class="btn btn-green" onclick="location.href='titip-lelang-success.html'" type="button">KIRIM</button>
+					<button class="btn btn-green" type="submit">KIRIM</button>
 					</form>
 				</div>
 			</div>
@@ -154,31 +173,57 @@
 </section>
 
 <script>
-$(function(){
-	
-	$("input[name$='tipe-object']").click(function() {
-		var test = $(this).val();
-		$(".desc-object").hide();
-		$("#object" + test).show();
-		
-		/* $.ajax( {
-			url: "<?php echo linkservice('stock') ."item/add/getaddbookingtaksasi"; ?>",
+function searchJadwal(){
+	itemId = $("input[name$='tipe-object']:checked").val();
+	cabang = $('#cabangLelang').val();
+	if (cabang != ''){
+		$.ajax( {
+			url: "<?php echo linkservice('taksasi') ."schedule/search"; ?>",
 			dataType: "json",
+			method: 'GET',
 			data: {
-				id: test,
+				cab: cabang,
+				item: itemId,
 			},
 			beforeSend: function( ) {
 				$('#formDinamis').html('');
 			},
 			success: function( data ) {
-				for(i=0; i<data.formDinamis.length; i++){
-					thisField = data.formDinamis[i];
-					$('#formDinamis').append(thisField.typeInput);
+				console.log(data);
+				$('#tanggalLelang option').remove();
+				$('#tanggalLelang')
+					.append($("<option></option>")
+					.attr("value",'')
+					.text("-Pilih Tanggal-"));
+				
+				thisArr = data.data;
+				for(i=0; i<thisArr.length; i++){
+					row = thisArr[i];
+					$('#tanggalLelang')
+						.append($("<option></option>")
+						.attr("value",row.ScheduleBookingCalendarId)
+						.text(row.AvailableDate));
+						
+					// console.log(thisArr[i]);
+					
 				}
 			},
 			complete: function(){
 			}
-		}); */
+		});
+	}
+}
+$(function(){
+	$('#cabangLelang').change(function(){
+		searchJadwal();
+	});
+	$("input[name$='tipe-object']").click(function() {
+		var test = $(this).val();
+		$(".desc-object").hide();
+		$("#object" + test).show();
+		
+		searchJadwal();
+		
 	});
 
 	$('.class-merk').each(function(x) {
@@ -269,5 +314,7 @@ $(function(){
 		}
 	});
 
+	
+	
 });
 </script>
