@@ -74,6 +74,32 @@ class Entrusted_booking extends CI_Controller {
 		template($view, $data);
 	}
 
+	function saveBooking(){
+		echo '<pre>';
+		
+		$_POST['iditem'] = @$_POST['tipe-object'];
+		$_POST['id_cabang'] = @$_POST['cabang'];
+		$_POST['userid'] = @$_SESSION['userdata']['UserId'];
+		$_POST['cttn_pndftrn'] = @$_POST['deskripsi'];
+		
+		// $dataInsert = $_POST;
+		// $url = linkservice('stock') ."itemstock/add/";
+		// $method = 'POST';
+		// $responseApi = admsCurl($url, $dataInsert, $method);
+		// if ($responseApi['err']) {
+			// echo "<hr>cURL Error #:" . $responseApi['err'];
+		// } else {
+			// $dataApi = json_decode($responseApi['response'],true);
+			// $rowAuctionItem = $dataApi['data'];
+			// $AuctionItemId = @$rowAuctionItem[0];
+		// }
+		
+		$AuctionItemId = 12428;
+		
+		print_r(@$_POST);
+		print_r(@$responseApi);
+		
+	}
 }
 
 /* End of file Entrusted_booking.php */
