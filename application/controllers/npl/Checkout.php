@@ -94,6 +94,7 @@ class Checkout extends CI_Controller {
 					$arr = array(
 						'aksi'	=> 'cc',
 						'url'	=> linkservice('FINANCE') .'doku/cc',
+						'TransactionId'	=> $TransactionId,
 						'code'	=> $kodeTransaksi,
 						'bill'	=> $Total,
 					);
