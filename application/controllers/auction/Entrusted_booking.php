@@ -75,29 +75,74 @@ class Entrusted_booking extends CI_Controller {
 	}
 
 	function saveBooking(){
-		echo '<pre>';
+		// echo '<pre>';
+		
+		$isStock = false;
+		
+		$ScheduleBookingCalendarId = @$_POST['ScheduleBookingCalendarId'];
 		
 		$_POST['iditem'] = @$_POST['tipe-object'];
 		$_POST['id_cabang'] = @$_POST['cabang'];
 		$_POST['userid'] = @$_SESSION['userdata']['UserId'];
 		$_POST['cttn_pndftrn'] = @$_POST['deskripsi'];
 		
-		// $dataInsert = $_POST;
-		// $url = linkservice('stock') ."itemstock/add/";
-		// $method = 'POST';
-		// $responseApi = admsCurl($url, $dataInsert, $method);
-		// if ($responseApi['err']) {
-			// echo "<hr>cURL Error #:" . $responseApi['err'];
-		// } else {
-			// $dataApi = json_decode($responseApi['response'],true);
-			// $rowAuctionItem = $dataApi['data'];
-			// $AuctionItemId = @$rowAuctionItem[0];
-		// }
+		## insert ke stock
+		$dataInsert = $_POST;
+		$url = linkservice('stock') ."itemstock/add/";
+		$method = 'POST';
+		$responseApi = admsCurl($url, $dataInsert, $method);
+		if ($responseApi['err']) {
+			echo "<hr>cURL Error #:" . $responseApi['err'];
+		} else {
+			$dataApi = json_decode($responseApi['response'],true);
+			$rowAuctionItem = $dataApi['data'];
+			$AuctionItemId = @$rowAuctionItem[0];
+			$isStock = true;
+		}
 		
-		$AuctionItemId = 12428;
 		
-		print_r(@$_POST);
-		print_r(@$responseApi);
+		if ($isStock){
+			## GET data stok Detail
+			$url = linkservice('stock').'itemstock/detail/'.$AuctionItemId;
+			$method = 'GET';
+			$responseApi = admsCurl($url, array(), $method);
+			if ($responseApi['err']) { echo "<hr>cURL Error #:" . $responseApi['err']; } else {
+				$dataApiDetail = json_decode($responseApi['response'],true);
+			}
+			$detailAuctionItem = $dataApiDetail['data'][0];
+			
+			## send data insert booking taksasi item
+			$dataInsert = array(
+				'ScheduleId' => $ScheduleBookingCalendarId,
+				'Merk' => $detailAuctionItem['merk'],
+				'Model' => $detailAuctionItem['seri'],
+				'Serial' => $detailAuctionItem['nopolisi'],
+				'Year' => $detailAuctionItem['tahun'],
+				'CreateUser' => @$_SESSION['userdata']['UserId'],
+				'AuctionItemId' => $AuctionItemId,
+			);
+			$url = linkservice('taksasi') .'scheduleitem/add';
+			$method = 'POST';
+			$responseApi = admsCurl($url, $dataInsert, $method);	
+			if ($responseApi['err']) {
+				echo "<hr>cURL Error #:" . $responseApi['err'];
+			} else {
+				echo '<hr>';
+				$responseApiInsert = json_decode($responseApi['response'], true);
+				
+				$this->session->set_flashdata('message', array('success', 'Data Titip Lelang Berhasil Disimpan'));
+				redirect('titip-lelang-booking','refresh');
+				// echo json_encode($responseApiInsert);
+			}
+			
+		} 
+		else {
+			$this->session->set_flashdata('message', array('warning', 'Data Titip Lelang, Gagal Disimpan'));
+			redirect('titip-lelang-booking','refresh');
+		}
+		
+		// print_r(@$detailAuctionItem);
+		// print_r(@$responseApi);
 		
 	}
 }
