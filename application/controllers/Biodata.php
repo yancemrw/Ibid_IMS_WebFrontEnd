@@ -291,6 +291,9 @@ class Biodata extends CI_Controller {
 			//redirect('pembelian');
 			redirect('beli-npl');
 		}
+		else if($sesi['BiodataPembelianNPL']['otpsource'] === 'titip') {
+			redirect('titip-lelang-booking');
+		}
 	}
 }
 
