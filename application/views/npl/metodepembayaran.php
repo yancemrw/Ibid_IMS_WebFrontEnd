@@ -92,6 +92,8 @@
 			<form action="" method="POST" id="ccPost">
 				<input type="hidden" id="thisAmount" name="amount" value="">
 				<input type="hidden" id="thisInvoice" name="invoice" value="">
+				<input type="hidden" name="TransactionId" value="">
+				<input type="hidden" name="BiodataId" value="<?php echo $detailBiodata['BiodataId']; ?>">
 				<input type="hidden" name="name" value="<?php echo $detailBiodata['first_name'].' '.$detailBiodata['last_name']; ?>">
 				<input type="hidden" name="email" value="<?php echo $detailBiodata['Email']; ?>">
 				<input type="hidden" name="phone" value="<?php echo $detailBiodata['Phone']; ?>">
@@ -134,6 +136,7 @@ $(function() {
 					window.location = data.url;
 				else if (data.aksi == 'cc'){
 					$('#ccPost').attr('action', data.url);
+					$("#ccPost input[name$='TransactionId']").val(data.TransactionId);
 					$("#ccPost input[name$='amount']").val(data.bill);
 					$("#ccPost input[name$='invoice']").val(data.code);
 				}
