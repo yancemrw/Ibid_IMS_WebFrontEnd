@@ -109,6 +109,7 @@ $(function() {
 	}
 	
 	$('#btnBayar').click(function() {
+		$(this).addClass('disabled');
 		$('#thisForm').submit();
 	});
 
