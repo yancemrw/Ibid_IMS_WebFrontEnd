@@ -310,7 +310,7 @@ $(document).ready(function() {
    // get list frontend
    $.ajax({
       type: 'GET',
-      url: '<?php echo linkservice('stock')."itemStock/getfrontend"; ?>',
+      url: '<?php echo linkservice('stock')."itemstock/getfrontend"; ?>',
       beforeSend: function() {
          $('#loadings').replaceWith('<div id="loadings" class="margin-10px text-align-center"><img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" /></div>');
       },
