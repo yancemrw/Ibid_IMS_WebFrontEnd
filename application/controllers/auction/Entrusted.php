@@ -47,7 +47,6 @@ class Entrusted extends CI_Controller {
 			$data['page'] 	= 'auction/entrusted_booking';
 			$data['detailBiodata'] = $detailBiodata;
 			
-			
 			############################################################
 			## get cabang
 			$url = linkservice('master')."cabang/get";  

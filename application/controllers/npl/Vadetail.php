@@ -22,7 +22,7 @@ class Vadetail extends CI_Controller {
 			'form_auth_mobile'	=> login_status_form_mobile($this->userdata),
 			'form_auth'			=> login_Status_form($this->userdata)
 		);
-		template('npl/vadetail', $data);
+		template('npl/Vadetail', $data);
 	}
 
 }

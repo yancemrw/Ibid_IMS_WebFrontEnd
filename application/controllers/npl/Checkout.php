@@ -5,26 +5,30 @@ class Checkout extends CI_Controller {
 
 	function index(){
 		$this->load->library('cart');
-		// echo '<pre>';
-		// print_r(@$_POST);
+		$methodeBayar = $_POST['tipe_methode'];
 		
 		$BiodataId = @$_SESSION['userdata']['UserId'];
+		$Total = $this->cart->total() + 100000;
 		$arrayTransaksi = array(
 			'BiodataId' => $BiodataId,
 			'DateTransactionNPL' => date('Y-m-d'),
-			'TransactionFrom' => 'Counter',
-			'Total' => $this->cart->total() + 100000,
+			'TransactionFrom' => 'Website',
+			'Total' => $Total,
 			'StsPaid' => '0',
 			'StsCanceled' => '0',
-			'PaymentTypeId' => $_POST['tipe-methode'],
+			'PaymentTypeId' => $methodeBayar,
 			'CreateDate' => date('Y-m-d H:i:s'),
 		);
 		
 		foreach ($this->cart->contents() as $items){
+			if ($items['options']['Tipe NPL'] == 1) @$NPLType = 'Online';
+			else if ($items['options']['Tipe NPL'] == 0) @$NPLType = 'Live';
+			else if ($items['options']['Tipe NPL'] == 5) $NPLType = 'Unlimited';
 			$arrayTransaksiDetail[] = array(
 				'ScheduleId' => $items['id'],
 				'ItemId' => $items['options']['ItemId'],
-				'NPLType' => $items['options']['Tipe NPL'],
+				'NPLType' => $NPLType,
+				'tipeLelangId' => $items['options']['tipeLelangId'],
 				'QtyNPL' => $items['qty'],
 				'AmountNPL' => $items['price'],
 				'BiodataId' => $BiodataId,
@@ -37,22 +41,26 @@ class Checkout extends CI_Controller {
 			'arrayTransaksi' => @$arrayTransaksi,
 			'arrayTransaksiDetail' => @$arrayTransaksiDetail,
 		);
-		// print_r(@$arrayKirim);
-		// die();
+		
 		
 		
 		## send data registrasi
 		$url = linkservice('npl') .'counter/pembelian/add';
 		$method = 'POST';
 		$responseApi = admsCurl($url, $arrayKirim, $method);
-		// print_r($responseApi); die();
 		
-		## redirect dan email(belum)
+		## email(belum)
 		if ($responseApi['err']) {
 			echo "<hr>cURL Error #:" . $responseApi['err'];
 		} else {
 			$responseApiInsert = json_decode($responseApi['response'], true);
 			if ($responseApiInsert['status'] == 1){
+				
+				##################
+				## delete cart
+				$this->cart->destroy();
+				##################
+				
 				$TransactionId = $responseApiInsert['data'][0];
 
 				$md5 = md5($TransactionId);
@@ -60,18 +68,126 @@ class Checkout extends CI_Controller {
 				$thisImgBarcodePath = $this->barcode($kodeTransaksi, 100);
 				
 				$_SESSION['userdata']['thisBarcodeTransaction'] = $thisImgBarcodePath;
-				// unset($_SESSION['userdata']['thisBarcodeTransaction']);
 				
-				$this->sendEmail($kodeTransaksi, $thisImgBarcodePath);
+// $this->sendEmail($kodeTransaksi, $thisImgBarcodePath);
 				
 				$this->session->set_flashdata('message', array('success', $responseApiInsert['message']));
 				
-				redirect('npl/success','refresh');
-
+				## detail biodata
+				$id = $_SESSION['userdata']['UserId'];
+				$url = linkservice('account') ."users/details/".$id;
+				$method = 'GET';
+				$responseApi = admsCurl($url, array('tipePengambilan' => 'dropdownlist'), $method);
+				if($responseApi['err']) { echo "<hr>cURL Error #:" . $responseApi['err']; } 
+				else { $dataApiDetail = json_decode($responseApi['response'], true); }
+				$detailBiodata = @$dataApiDetail['data']['users'];
+				
+				if ($methodeBayar == 4){
+					$arr = array(
+						'aksi'	=> 'redir',
+						'url'	=> site_url('npl/success'),
+					);
+					echo json_encode($arr);
+					die();
+				}
+				else if ($methodeBayar == 3){
+					$arr = array(
+						'aksi'	=> 'cc',
+						'url'	=> linkservice('FINANCE') .'doku/cc',
+						'TransactionId'	=> $TransactionId,
+						'code'	=> $kodeTransaksi,
+						'bill'	=> $Total,
+					);
+					echo json_encode($arr);
+					die();
+				}
+				else if ($methodeBayar == 2){
+					
+					$arrayKirim = array(
+						'chain_merchant' => 'NA',
+						'amount' => $Total,
+						'invoice' => $kodeTransaksi,
+						'email' => @$detailBiodata['Email'],
+						'name' => @$detailBiodata['first_name'].' '.@$detailBiodata['last_name'],
+						'phone' => @$detailBiodata['Phone'],
+					);
+					$url = linkservice('FINANCE') .'doku/va/request';
+					$method = 'POST';
+					$responseApi = admsCurl($url, $arrayKirim, $method);
+					if ($responseApi['err']) {
+						echo "<hr>cURL Error #:" . $responseApi['err'];
+					} 
+					else {
+						$dataApiDetail = json_decode($responseApi['response'], true); 
+						$_SESSION['userdata']['thisVa'] = @$dataApiDetail['data']['va_mandiri'];
+						$_SESSION['userdata']['kodeTransaksi'] = @$kodeTransaksi;
+						
+						## update VA mandiri
+						$postTransaksi['whereData'] = array('CodeTransactionNPL' => $kodeTransaksi);
+						$postTransaksi['updateData'] = array(
+							'VANumber' => $dataApiDetail['data']['va_mandiri'], 
+							'VABank' => 'Mandiri'
+						);
+						$url = linkservice('npl') .'counter/transaksi/edit';
+						$method = 'POST';
+						$updateVa = admsCurl($url, $postTransaksi, $method);
+					}
+					
+					$arr = array(
+						'aksi'	=> 'va',
+						'url'	=> site_url('npl/vadetail'),
+						'code'	=> $kodeTransaksi,
+						'bill'	=> $Total,
+					);
+					echo json_encode($arr);
+					die();
+				}
+				else if ($methodeBayar == 1){
+					
+					$arrayKirim = array(
+						'chain_merchant' => 'NA',
+						'amount' => $Total,
+						'invoice' => $kodeTransaksi,
+						'email' => @$detailBiodata['Email'],
+						'name' => @$detailBiodata['first_name'].' '.@$detailBiodata['last_name'],
+						'phone' => @$detailBiodata['Phone'],
+					);
+					$url = linkservice('FINANCE') .'doku/va/request';
+					$method = 'POST';
+					$responseApi = admsCurl($url, $arrayKirim, $method);
+					if ($responseApi['err']) {
+						echo "<hr>cURL Error #:" . $responseApi['err'];
+					} 
+					else {
+						$dataApiDetail = json_decode($responseApi['response'], true); 
+						$_SESSION['userdata']['thisVa'] = @$dataApiDetail['data']['va_bca'];
+						$_SESSION['userdata']['kodeTransaksi'] = @$kodeTransaksi;
+						
+						## update VA mandiri
+						$postTransaksi['whereData'] = array('CodeTransactionNPL' => $kodeTransaksi);
+						$postTransaksi['updateData'] = array(
+							'VANumber' => $dataApiDetail['data']['va_bca'], 
+							'VABank' => 'BCA'
+						);
+						$url = linkservice('npl') .'counter/transaksi/edit';
+						$method = 'POST';
+						$updateVa = admsCurl($url, $postTransaksi, $method);
+					}
+					
+					$arr = array(
+						'aksi'	=> 'va',
+						'url'	=> site_url('npl/vadetail'),
+						'code'	=> $kodeTransaksi,
+						'bill'	=> $Total,
+					);
+					echo json_encode($arr);
+					die();
+				}
+				
 			} else if ($responseApiInsert['status'] == 0){ 
 
 				$this->session->set_flashdata('message', array('warning', $responseApiInsert['message']));
-				redirect('beli-npl','refresh');
+				// redirect('beli-npl','refresh');
 
 			}
 		}
