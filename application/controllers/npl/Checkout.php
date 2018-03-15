@@ -52,7 +52,7 @@ class Checkout extends CI_Controller {
 		## email(belum)
 		if ($responseApi['err']) {
 			echo "<hr>cURL Error #:" . $responseApi['err'];
-		} else {
+		} else { 
 			$responseApiInsert = json_decode($responseApi['response'], true);
 			if ($responseApiInsert['status'] == 1){
 				
@@ -69,7 +69,6 @@ class Checkout extends CI_Controller {
 				
 				$_SESSION['userdata']['thisBarcodeTransaction'] = $thisImgBarcodePath;
 				
-// $this->sendEmail($kodeTransaksi, $thisImgBarcodePath);
 				
 				$this->session->set_flashdata('message', array('success', $responseApiInsert['message']));
 				
@@ -83,11 +82,14 @@ class Checkout extends CI_Controller {
 				$detailBiodata = @$dataApiDetail['data']['users'];
 				
 				if ($methodeBayar == 4){
+
 					$arr = array(
 						'aksi'	=> 'redir',
 						'url'	=> site_url('npl/success'),
 					);
 					echo json_encode($arr);
+					#kirim email
+					$dd = $this->sendEmail($kodeTransaksi, $thisImgBarcodePath);
 					die();
 				}
 				else if ($methodeBayar == 3){
@@ -99,6 +101,8 @@ class Checkout extends CI_Controller {
 						'bill'	=> $Total,
 					);
 					echo json_encode($arr);
+					#kirim email
+					$dd = $this->sendEmail($kodeTransaksi, $thisImgBarcodePath);
 					die();
 				}
 				else if ($methodeBayar == 2){
@@ -140,9 +144,11 @@ class Checkout extends CI_Controller {
 						'bill'	=> $Total,
 					);
 					echo json_encode($arr);
+					#kirim email
+					$dd = $this->sendEmail($kodeTransaksi, $thisImgBarcodePath);
 					die();
 				}
-				else if ($methodeBayar == 1){
+				else if ($methodeBayar == 1){ 
 					
 					$arrayKirim = array(
 						'chain_merchant' => 'NA',
@@ -181,6 +187,10 @@ class Checkout extends CI_Controller {
 						'bill'	=> $Total,
 					);
 					echo json_encode($arr);
+					
+					#kirim email
+					$dd = $this->sendEmail($kodeTransaksi, $thisImgBarcodePath);
+
 					die();
 				}
 				
@@ -553,16 +563,19 @@ $isiemail .= "<table width='100%' cellspacing='0' cellpadding='0' border='0'>
 				'type' => 'email',
 				// 'to'	=> 'rendhy.wijayanto@sera.astra.co.id',
 				'to' => @$_SESSION['userdata']['username'],
-				'bcc' => 'lutfi.f.hidayat@gmail.com',
+				'cc' => 'lutfi.f.hidayat@gmail.com',
 				// 'cc' => 'abitiyoso@gmail.com; ankghoro@gmail.com; rendhy.wijayanto@sera.astra.co.id',
 				'subject' => 'Order Pembelian NPL melalui Counter',
-				'body' =>  "$isiemail "
+				'body' =>  "$isiemail",
+				'attachment' => []
 			);  
 			
-			$url 			= "http://ibidadmsdevservicenotification.azurewebsites.net/api/notification";
+			$url 			= "http://alpha.ibid.astra.co.id/backend/service/notif/api/notification";
 			$method 		= 'POST';
 			$responseApi 	= admsCurl($url, $dataInsert, $method);
 		###############################
+
+			// return $responseApi;
 	}
 	
 }
