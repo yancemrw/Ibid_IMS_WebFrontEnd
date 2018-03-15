@@ -119,7 +119,7 @@ class Biodata extends CI_Controller {
 				$method 		= 'POST';
 				$responseApi 	= admsCurl($url, $dataInsert, $method);
 				// save to file
-				$res = (object) json_decode($responseApi);
+				$res = (object) json_decode($responseApi['response']);
 				if($res->status){
 					$datas = "";
 					foreach ($res->data as $key => $val) {
