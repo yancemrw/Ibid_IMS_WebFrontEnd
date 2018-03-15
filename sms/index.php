@@ -1,0 +1,1 @@
+<?php echo "You don't allow view data"; ?>
