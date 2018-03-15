@@ -22,6 +22,17 @@ class Metodepembayaran extends CI_Controller {
 			'form_auth_mobile'	=> login_status_form_mobile($this->userdata),
 			'form_auth'			=> login_Status_form($this->userdata)
 		);
+		
+		## detail biodata
+		$id = $_SESSION['userdata']['UserId'];
+		$url = linkservice('account') ."users/details/".$id;
+		$method = 'GET';
+		$responseApi = admsCurl($url, array('tipePengambilan' => 'dropdownlist'), $method);
+		if($responseApi['err']) { echo "<hr>cURL Error #:" . $responseApi['err']; } 
+		else { $dataApiDetail = json_decode($responseApi['response'], true); }
+		$detailBiodata = @$dataApiDetail['data']['users'];
+		
+		$data['detailBiodata'] = $detailBiodata;
 		template('npl/metodepembayaran', $data);
 	}
 

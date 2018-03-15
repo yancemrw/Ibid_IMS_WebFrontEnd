@@ -41,7 +41,7 @@ class Entrusted extends CI_Controller {
 			$detailBiodata['BankAccountName'] !== NULL && 
 			$detailBiodata['IdentityNumber'] !== NULL
 		) {
-			redirect('titip-lelang-booking');			
+			redirect('titip-lelang-booking');
 		}
 		else {
 			$data['title']	= 'Pembelian NPL';

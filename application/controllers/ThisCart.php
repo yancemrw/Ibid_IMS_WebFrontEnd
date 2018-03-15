@@ -44,9 +44,12 @@ class ThisCart extends CI_Controller {
 		else if ($ItemLelang == 12) @$ItemName = 'Gadget';
 		else @$ItemName = '';
 		
-		if ($TipeNPL == 0) @$tipeLelang = 'Online';
-		else if ($TipeNPL == 1) @$tipeLelang = 'Live';
-		else if ($TipeNPL == 5) @$tipeLelang = 'All';
+		if ($TipeNPL == 1) @$tipeLelang = 'Online';
+		else if ($TipeNPL == 0) @$tipeLelang = 'Live';
+		else if ($TipeNPL == 5) {
+			@$tipeLelang = 'All';
+			$id = (((int)$TipeNPL * 100) + (int)$ItemLelang ) / 100;
+		}
 		
 		## array data cart
 		$data = array(
@@ -81,8 +84,8 @@ class ThisCart extends CI_Controller {
 			
 			$jadwal = ucfirst(strtolower($items['name'])).', '.$items['options']['thisDate'];
 			
-			if ($items['options']['tipeLelangId'] == 0) @$tipeLelang = 'Online';
-			else if ($items['options']['tipeLelangId'] == 1) @$tipeLelang = 'Live';
+			if ($items['options']['tipeLelangId'] == 1) @$tipeLelang = 'Online';
+			else if ($items['options']['tipeLelangId'] == 0) @$tipeLelang = 'Live';
 			else if ($items['options']['tipeLelangId'] == 5) {
 				$jadwal = '-';
 				@$tipeLelang = 'Unlimited';
