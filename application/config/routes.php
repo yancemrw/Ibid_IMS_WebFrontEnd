@@ -102,3 +102,6 @@ $route['panduan-lelang/(:any)'] = 'userguide/guide/index/$1';
 
 $route['404_override'] = 'notfound/index';
 $route['translate_uri_dashes'] = FALSE;
+
+// Check otp
+$route['otp/(:any)'] = 'otp/index/$1';
