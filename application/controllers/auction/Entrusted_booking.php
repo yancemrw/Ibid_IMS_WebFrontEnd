@@ -51,6 +51,15 @@ class Entrusted_booking extends CI_Controller {
 			$dataApiDetailsHve = json_decode($responseApi['response'],true); 
 		} 
 		$data['formDinamisHve'] = @$dataApiDetailsHve['formDinamis']; 
+		
+		// gadget
+		$url = linkservice('stock') ."item/add/getaddbookingtaksasi?id=12"; 
+		$method = 'GET'; 
+		$responseApi = admsCurl($url, array(), $method); 
+		if ($responseApi['err']) { echo "<hr>cURL Error #:" . $responseApi['err']; } else { 
+			$dataApiDetailsGadget = json_decode($responseApi['response'],true); 
+		} 
+		$data['formDinamisGadget'] = @$dataApiDetailsGadget['formDinamis']; 
 		######################################
 		## END form dinamis booking taksasi ##
 		######################################
@@ -127,7 +136,7 @@ class Entrusted_booking extends CI_Controller {
 			if ($responseApi['err']) {
 				echo "<hr>cURL Error #:" . $responseApi['err'];
 			} else {
-				echo '<hr>';
+				// echo '<hr>';
 				$responseApiInsert = json_decode($responseApi['response'], true);
 				
 				$this->session->set_flashdata('message', array('success', 'Data Titip Lelang Berhasil Disimpan'));

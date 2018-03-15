@@ -154,17 +154,17 @@
 								<?php } ?>
 							</select>
 						</div>
-						<!--div class="form-group floating-label">
+						<div class="form-group floating-label">
 							<select class="select-custom form-control" id="tanggalLelang" name="ScheduleBookingCalendarId">
 								<option value="">-Pilih Tanggal-</option>
 							</select>
-						</div-->
-						<div class="input-group date">
+						</div>
+						<!-- div class="input-group date">
 							<input type="text" class="border-radius-none disabled-white form-control floating-handle height-50px" id="tanggalLelang" name="ScheduleBookingCalendarId" placeholder="Tanggal Lelang" readonly>
 							<span class="input-group-addon cursor-pointer" id="tgl-lahir-span">
 							<i class="fa fa-calendar"></i>
 							</span>
-						</div>
+						</div -->
 					</div>
 					
 					<h3>Syarat & Ketentuan Lelang.</h3>
@@ -297,15 +297,15 @@ $(function(){
 	});
 
 	// datepicker
-	$('#tanggalLelang').datepicker({
-		language: 'en',
-		minDate: new Date(),
-		dateFormat: 'dd/mm/yyyy',
-		autoClose: true
-	});
-	$('#tgl-lahir-span').click(function() {
-		$('#tanggalLelang').focus();
-	});
+	// $('#tanggalLelang').datepicker({
+		// language: 'en',
+		// minDate: new Date(),
+		// dateFormat: 'dd/mm/yyyy',
+		// autoClose: true
+	// });
+	// $('#tgl-lahir-span').click(function() {
+		// $('#tanggalLelang').focus();
+	// });
 
 	$('input').blur(function() {
 		tmpval = $(this).val();
