@@ -93,6 +93,7 @@ class Checkout extends CI_Controller {
 					die();
 				}
 				else if ($methodeBayar == 3){
+					$_SESSION['userdata']['TransactionId'] = @$TransactionId;
 					$arr = array(
 						'aksi'	=> 'cc',
 						'url'	=> linkservice('FINANCE') .'doku/cc',
@@ -137,6 +138,7 @@ class Checkout extends CI_Controller {
 						$updateVa = admsCurl($url, $postTransaksi, $method);
 					}
 					
+					$_SESSION['userdata']['TransactionId'] = @$TransactionId;
 					$arr = array(
 						'aksi'	=> 'va',
 						'url'	=> site_url('npl/vadetail'),
@@ -180,6 +182,7 @@ class Checkout extends CI_Controller {
 						$updateVa = admsCurl($url, $postTransaksi, $method);
 					}
 					
+					$_SESSION['userdata']['TransactionId'] = @$TransactionId;
 					$arr = array(
 						'aksi'	=> 'va',
 						'url'	=> site_url('npl/vadetail'),
