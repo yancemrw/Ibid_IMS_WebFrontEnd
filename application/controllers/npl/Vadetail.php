@@ -24,11 +24,11 @@ class Vadetail extends CI_Controller {
 		);
 		
 		if (@$_SESSION['userdata']['TransactionId'] > 0){
+			$TransactionId = $_SESSION['userdata']['TransactionId'];
 			######################
 			### Create NPL setelah pembayaran selesai 
 			######################
 			$url = linkservice('npl') .'counter/npl/create';
-			// $url = 'http://localhost:55/02.JOB/IBID/Ibid_ADMS_ServiceNPL/index.php/counter/npl/create';
 			$method = 'POST';
 			$responseApi = admsCurl($url, array('TransactionId' => $TransactionId), $method);
 			
@@ -38,7 +38,6 @@ class Vadetail extends CI_Controller {
 			$postTransaksi['whereData'] = array('TransactionId' => $TransactionId);
 			$postTransaksi['updateData'] = array('StsPaid' => 1, 'ModifyDate' => date('Y-m-d H:i:s'));
 			$url = linkservice('npl') .'counter/transaksi/edit';
-			// $url = 'http://localhost:55/02.JOB/IBID/Ibid_ADMS_ServiceNPL/index.php/counter/transaksi/edit';
 			$method = 'POST';
 			$responseApi = admsCurl($url, $postTransaksi, $method);
 			

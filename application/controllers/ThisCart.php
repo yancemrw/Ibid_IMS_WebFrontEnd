@@ -113,10 +113,10 @@ class ThisCart extends CI_Controller {
 			}
 			
 			@$itemCart .= '
-			<li>
+			<li class="'.$items['rowid'].'">
 				<h2 class="'.$h2Class.'">
 					<img src="'.$imgPath.'" alt=""> '.$items['options']['Item'].' 
-					<a href="#" class="delete-npl" thisrowid="'.$items['rowid'].'" onclick="return thisremove(\''.$items['rowid'].'\')"></a>
+					<a href="#" class="delete-npl '.$items['rowid'].'" thisrowid="'.$items['rowid'].'" onclick="return thisremove(\''.$items['rowid'].'\')"></a>
 				</h2>  
 				<div class="desc-npl">
 					<p>NPL '.@$tipeLelang.'</p>
@@ -124,7 +124,8 @@ class ThisCart extends CI_Controller {
 					<p>'.$items['qty'].'</p>
 					<p>Rp. '.number_format($items['subtotal']).'</p>
 				</div>
-			</li>';
+			</li>
+			';
 
 			// $trReturn .= '<tr>
 				// <td><a href="#" thisrowid="'.$items['rowid'].'" class="btn btn-xs btn-danger" onclick="thisremove(\''.$items['rowid'].'\')"><i class="fa fa-close"></i> </a></td>

@@ -165,7 +165,7 @@
 								}
 								
 								echo '
-								<li>
+								<li class="'.$items['rowid'].'">
 									<h2 class="'.@$h2Class.'">
 										<img src="'.@$imgPath.'" alt=""> '.@$items['options']['Item'].' 
 										<a href="#" class="delete-npl" thisrowid="'.@$items['rowid'].'" onclick="return thisremove(\''.@$items['rowid'].'\')"></a>
@@ -283,7 +283,7 @@ function getJadwalAms(){
 				startdate: startdate,
 			},
 			beforeSend: function( ) {
-				// $('.biodataLoading').css('display','block');
+				// $('#ScheduleId').css('display','none');
 			},
 			success: function( data ) {
 				$('#ScheduleId option').remove();
@@ -305,7 +305,7 @@ function getJadwalAms(){
 				}
 			},
 			complete: function(){
-				// $('.biodataLoading').css('display','none');
+				// $('#ScheduleId').css('display','block');
 			}
 		});
 	}
@@ -340,6 +340,7 @@ function getPrice(){
 }
 
 function thisremove(thisRowId){
+	$('.'+thisRowId).css('display','none');
 	// alert('kesini');
 	$.ajax( {
 		url: "<?php echo site_url('thisCart/remove'); ?>",
@@ -395,14 +396,14 @@ $(function(){
 				Qty: Qty,
 			},
 			beforeSend: function( ) {
-				// $('.biodataLoading').css('display','block');
+				$('#btnAddToCart').addClass('disabled');
 			},
 			success: function( data ) {
 				$('#thisItemCart').html(data.allItem);
 				$('#thisCartTotal').html('<span>Total</span> Rp. ' + data.totalHarga);
 			},
 			complete: function(){
-				// $('.biodataLoading').css('display','none');
+				$('#btnAddToCart').removeClass('disabled');
 			}
 		});
 		
@@ -410,7 +411,10 @@ $(function(){
 	});
 	
 	
-	
+	$('.delete-npl').click(function(){
+		// aelrt('masuk sini');
+		$(this).parent().parent().css('display','none');
+	});
 	
 	
 	
