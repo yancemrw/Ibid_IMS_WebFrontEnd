@@ -139,7 +139,10 @@
 					</div>
 					<div>
 						<div class="form-group floating-label">
-							<textarea name="deskripsi" class="form-control input-custom" placeholder="Deskripsi"></textarea>
+							<div class="form-group floating-label">
+								<textarea class="form-control border-radius-none" name="deskripsi" rows="3"></textarea>
+								<label class="label-schedule">Deskripsi</label>
+							</div>
 						</div>
 					</div>
 					<div>
@@ -314,7 +317,16 @@ $(function(){
 		}
 	});
 
-	
+	$('textarea').blur(function() {
+        tmpval = $(this).val();
+        if(tmpval == '') {
+            $(this).addClass('empty');
+            $(this).removeClass('not-empty');
+        } else {
+            $(this).addClass('not-empty');
+            $(this).removeClass('empty');
+        }
+    });
 	
 });
 </script>
