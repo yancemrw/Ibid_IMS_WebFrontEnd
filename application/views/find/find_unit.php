@@ -13,7 +13,7 @@
             </div>
          </div>
          <div class="col-md-3">
-            <form class="form-filter clearfix">
+            <form id="thisFormFilter" class="form-filter clearfix">
                <h1><span class="icon_ic-filter"></span> Filters</h1>
                <div class="form-group">
                   <input type="radio" id="test1" name="radio-group" checked>
@@ -43,7 +43,7 @@
                <h2>Jenis Objek Lelang</h2>
                <div class="object-type clearfix">
                   <div class="form-group">
-                     <input type="radio" name="tipe-object" id="type_1" class="input-hidden" value="1" />
+                     <input type="radio" name="tipe-object" id="type_1" class="input-hidden" value="6" />
                      <label for="type_1">
                         <div class="car-type ic ic-Mobil">
                         </div>
@@ -51,7 +51,7 @@
                      </label>
                   </div>
                   <div class="form-group">
-                     <input type="radio" name="tipe-object" id="type_2" class="input-hidden" value="2" />
+                     <input type="radio" name="tipe-object" id="type_2" class="input-hidden" value="7" />
                      <label for="type_2">
                         <div class="motorcycle-type ic ic-Motor">
                         </div>
@@ -59,7 +59,7 @@
                      </label>
                   </div>
                   <div class="form-group">
-                     <input type="radio" name="tipe-object" id="type_3" class="input-hidden" value="3" />
+                     <input type="radio" name="tipe-object" id="type_3" class="input-hidden" value="14" />
                      <label for="type_3">
                         <div class="hve-type ic ic-HVE">
                         </div>
@@ -67,7 +67,7 @@
                      </label>
                   </div>
                   <div class="form-group">
-                     <input type="radio" name="tipe-object" id="type_4" class="input-hidden" value="4" />
+                     <input type="radio" name="tipe-object" id="type_4" class="input-hidden" value="12" />
                      <label for="type_4">
                         <div class="gadget-type ic ic-Gadget">
                         </div>
@@ -75,9 +75,10 @@
                      </label>
                   </div>
                </div>
-               <div id="object1" class="desc-object">
+               <div id="object6" class="desc-object">
                   <h2>Filter Mobil</h2>
-                  <div class="form-group">
+				  <?php foreach($formDinamisMobil as $row){ echo $row['typeInput']; } ?>
+                  <!-- div class="form-group">
                      <select class="form-control select-custom">
                         <option>Nomor Polisi</option>
                      </select>
@@ -101,11 +102,12 @@
                      <select class="form-control select-custom">
                         <option>Tahun</option>
                      </select>
-                  </div>
+                  </div -->
                </div>
-               <div id="object2" class="desc-object">
+               <div id="object7" class="desc-object">
                   <h2>Filter Motor</h2>
-                  <div class="form-group">
+				  <?php foreach($formDinamisMotor as $row){ echo $row['typeInput']; } ?>
+                  <!-- div class="form-group">
                      <select class="form-control select-custom">
                         <option>Nomor Polisi</option>
                      </select>
@@ -129,11 +131,12 @@
                      <select class="form-control select-custom">
                         <option>Tahun</option>
                      </select>
-                  </div>
+                  </div -->
                </div>
-               <div id="object3" class="desc-object">
+               <div id="object14" class="desc-object">
                   <h2>Filter Alat Berat</h2>
-                  <div class="form-group">
+				  <?php foreach($formDinamisHve as $row){ echo $row['typeInput']; } ?>
+                  <!-- div class="form-group">
                      <select class="form-control select-custom">
                         <option>Serial Number</option>
                      </select>
@@ -157,11 +160,12 @@
                      <select class="form-control select-custom">
                         <option>Tahun</option>
                      </select>
-                  </div>
+                  </div -->
                </div>
-               <div id="object4" class="desc-object">
+               <div id="object12" class="desc-object">
                   <h2>Filter Unit Gadget</h2>
-                  <div class="form-group">
+				  <?php foreach($formDinamisGadget as $row){ echo $row['typeInput']; } ?>
+                  <!-- div class="form-group">
                      <select class="form-control select-custom">
                         <option>Serial Number</option>
                      </select>
@@ -210,10 +214,10 @@
                      <select class="form-control select-custom">
                         <option>Tahun</option>
                      </select>
-                  </div>
+                  </div -->
                </div>
                <div class="form-group">
-                  <button class="btn btn-green">Filter</button>
+                  <button type="submit" class="btn btn-green">Filter</button>
                </div>
             </form>
          </div>
@@ -394,5 +398,100 @@ $(document).ready(function() {
          }
       }
    });
+	
+	$('#thisFormFilter').submit(function(){
+		thisFormInput = $(this).serialize();
+		console.log(thisFormInput);
+		
+		$.ajax({
+		  type: 'GET',
+		  url: '<?php echo linkservice('stock')."itemstock/getfrontend"; ?>',
+		  data: thisFormInput,
+		  beforeSend: function() {
+			 $('#loadings').replaceWith('<div id="loadings" class="margin-10px text-align-center"><img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" /></div>');
+		  },
+		  success: function(data) {
+			 var content = '', datas = data.data;
+			 for (var i = 0; i < datas.length; i++) {
+				let dataz = datas[i], 
+				merk = (dataz.merk !== undefined) ? dataz.merk : '',
+				seri = (dataz.seri !== undefined) ? dataz.seri : '',
+				silinder = (dataz.silinder !== undefined) ? dataz.silinder : '',
+				tipe = (dataz.tipe !== undefined) ? dataz.tipe : '',
+				model = (dataz.model !== undefined) ? dataz.model : '',
+				transmisi = (dataz.transmisi !== undefined) ? dataz.transmisi : '',
+				tahun = (dataz.tahun !== undefined) ? dataz.tahun : '',
+				FinalPriceItem = (dataz.FinalPriceItem !== undefined) ? dataz.FinalPriceItem : 0;
+				let numgrade = '';
+				$.ajax({
+				   type: 'GET',
+				   url: '<?php echo linkservice('taksasi')."nilaiicar/detail?AuctionItemId='+datas[i].AuctionItemId+'"; ?>',
+				   success: function(data) {
+					  var datax = data.data;
+					  numgrade = (datax.TotalEvaluationResult !== undefined) ? datax.TotalEvaluationResult : '?';
+					  $.ajax({
+						 type: 'GET',
+						 url: '<?php echo linkservice('taksasi')."icar/getimage?AuctionItemId='+data.data.AuctionItemId+'"; ?>',
+						 success: function(data) {
+							$('#loadings').replaceWith('<div id="loadings"></div>');
+							var compare_data = {
+							   "AuctionItemId": dataz.AuctionItemId,
+							   "BahanBakar": dataz.bahanbakar,
+							   "Image": data.data[0].ImagePath,
+							   "Kilometer": dataz.km,
+							   "Merk": dataz.merk,
+							   "Model": dataz.model,
+							   "NoKeur": dataz.nokeur,
+							   "NoMesin": dataz.nomesin,
+							   "NoPolisi": dataz.nopolisi,
+							   "NoRangka": dataz.norangka,
+							   "NoSTNK": dataz.nostnk,
+							   "Seri": dataz.seri,
+							   "Silinder": dataz.silinder,
+							   "TaksasiGrade": numgrade,
+							   "Tahun": dataz.tahun,
+							   "Transmisi": dataz.transmisi,
+							   "Tipe": dataz.tipe,
+							   "Price": dataz.FinalPriceItem,
+							   "Warna": dataz.warnadoc
+							};
+							var json_str = JSON.stringify(compare_data);
+							var lot = (dataz.LotNumb !== null) ? dataz.LotNumb : '???' ;
+							content += '<div class="col-md-4">'+
+									 '<div class="list-product box-recommend">'+
+									 '<a href="<?php echo $link_detail; ?>/'+dataz.AuctionItemId+'">'+
+									 '<div class="thumbnail">'+
+									 '<div class="thumbnail-custom">'+
+									 '<img src="'+data.data[0].ImagePath+'" />'+
+									 '</div>'+
+									 '<div class="overlay-grade">'+
+									 'Grade <span>'+numgrade+'</span>'+
+									 '</div>'+
+									 '<p class="overlay-lot">LOT '+lot+'</p>'+
+									 '</div>'+
+									 '<div class="boxright-mobile">'+
+									 '<h2>'+merk+' '+seri+' '+silinder+' '+tipe+' '+model+' '+transmisi+'</h2>'+
+									 '<span>'+tahun+'</span> <span class="price">Rp. '+currency_format(FinalPriceItem)+'</span>'+
+									 '<p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>Belum Tersedia</span></p>'+
+									 '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Belum Tersedia</span></p>'+
+									 '</div>'+
+									 '</a>'+
+									 '<div class="action-bottom">'+
+									 '<button class="btn"><i class="fa fa-heart"></i> <span>Favorit</span></button>'+
+									 '<button class="btn btn-compare" onclick=\'set_compare_product('+json_str+', "'+linked+'")\'><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>'+
+									 '</div>'+
+									 '</div>'+
+									 '</div>';
+							$('#loadlist').html(content);
+						 }
+					  });
+				   }
+				});
+			 }
+		  }
+	   });
+	
+		return false;
+	});
 });
 </script>
