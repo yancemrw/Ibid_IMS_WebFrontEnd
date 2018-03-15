@@ -19,6 +19,49 @@ class Find_unit extends CI_Controller {
 			'img' => base_url('assetsfront/images/background/1.jpg'),
 			'link_detail' => site_url('detail-lelang')
 		);
+		
+		#################################
+		## form dinamis Cari Kendaraan ##
+		#################################
+		// mobil
+		$url = linkservice('stock') ."item/add/getcarikendaraan?id=6"; 
+		$method = 'GET'; 
+		$responseApi = admsCurl($url, array(), $method); 
+		if ($responseApi['err']) { echo "<hr>cURL Error #:" . $responseApi['err']; } else { 
+			$dataApiDetailsMobil = json_decode($responseApi['response'],true); 
+		} 
+		$data['formDinamisMobil'] = @$dataApiDetailsMobil['formDinamis']; 
+		
+		// motor
+		$url = linkservice('stock') ."item/add/getcarikendaraan?id=7"; 
+		$method = 'GET'; 
+		$responseApi = admsCurl($url, array(), $method); 
+		if ($responseApi['err']) { echo "<hr>cURL Error #:" . $responseApi['err']; } else { 
+			$dataApiDetailsMotor = json_decode($responseApi['response'],true); 
+		} 
+		$data['formDinamisMotor'] = @$dataApiDetailsMotor['formDinamis']; 
+		
+		// gadget
+		$url = linkservice('stock') ."item/add/getcarikendaraan?id=12"; 
+		$method = 'GET'; 
+		$responseApi = admsCurl($url, array(), $method); 
+		if ($responseApi['err']) { echo "<hr>cURL Error #:" . $responseApi['err']; } else { 
+			$dataApiDetailsGadget = json_decode($responseApi['response'],true); 
+		} 
+		$data['formDinamisGadget'] = @$dataApiDetailsGadget['formDinamis']; 
+		
+		// hve
+		$url = linkservice('stock') ."item/add/getcarikendaraan?id=14"; 
+		$method = 'GET'; 
+		$responseApi = admsCurl($url, array(), $method); 
+		if ($responseApi['err']) { echo "<hr>cURL Error #:" . $responseApi['err']; } else { 
+			$dataApiDetailsHve = json_decode($responseApi['response'],true); 
+		} 
+		$data['formDinamisHve'] = @$dataApiDetailsHve['formDinamis']; 
+		#####################################
+		## END form dinamis Cari Kendaraan ##
+		#####################################
+		
 		$view = "find/find_unit";
 		template($view, $data);
 	}
