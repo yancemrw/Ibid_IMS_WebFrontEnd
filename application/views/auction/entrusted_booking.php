@@ -154,10 +154,16 @@
 								<?php } ?>
 							</select>
 						</div>
-						<div class="form-group floating-label">
+						<!--div class="form-group floating-label">
 							<select class="select-custom form-control" id="tanggalLelang" name="ScheduleBookingCalendarId">
 								<option value="">-Pilih Tanggal-</option>
 							</select>
+						</div-->
+						<div class="input-group date">
+							<input type="text" class="border-radius-none disabled-white form-control floating-handle height-50px" id="tanggalLelang" name="ScheduleBookingCalendarId" placeholder="Tanggal Lelang" readonly>
+							<span class="input-group-addon cursor-pointer" id="tgl-lahir-span">
+							<i class="fa fa-calendar"></i>
+							</span>
 						</div>
 					</div>
 					
@@ -206,9 +212,6 @@ function searchJadwal(){
 						.append($("<option></option>")
 						.attr("value",row.ScheduleBookingCalendarId)
 						.text(row.AvailableDate));
-						
-					// console.log(thisArr[i]);
-					
 				}
 			},
 			complete: function(){
@@ -294,17 +297,15 @@ $(function(){
 	});
 
 	// datepicker
-	for(var i = 1; i <= 4; i++) {
-		$('#tgl-lahir'+i).datepicker({
-			language: 'en',
-			maxDate: new Date(),
-			dateFormat: 'dd/mm/yyyy',
-			autoClose: true
-		});
-		$('#tgl-lahir-span'+i).click(function() {
-			$('#tgl-lahir'+i).focus();
-		});
-	}
+	$('#tanggalLelang').datepicker({
+		language: 'en',
+		minDate: new Date(),
+		dateFormat: 'dd/mm/yyyy',
+		autoClose: true
+	});
+	$('#tgl-lahir-span').click(function() {
+		$('#tanggalLelang').focus();
+	});
 
 	$('input').blur(function() {
 		tmpval = $(this).val();
