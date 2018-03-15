@@ -112,7 +112,7 @@ class Biodata extends CI_Controller {
 					'msisdn'		=> @$_POST['Phone'],
 					'message'		=> $otpsesi.' adalah kode OTP Anda. Selamat berpartisipasi dalam lelang IBID!',
 					'description'	=> 'OTP IBID',
-					'schedule'		=> date("d/m/Y H:i",strtotime(date("Y-m-d H:i:s")."+1 Minutes")),
+					'schedule'		=> '',
 					'campaign'		=> 'OTP'
 				);
 				$url 			= linkservice('notif')."api/notification";
