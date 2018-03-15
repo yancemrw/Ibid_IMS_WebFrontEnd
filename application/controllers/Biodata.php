@@ -118,6 +118,16 @@ class Biodata extends CI_Controller {
 				$url 			= linkservice('notif')."api/notification";
 				$method 		= 'POST';
 				$responseApi 	= admsCurl($url, $dataInsert, $method);
+				// save to file
+				$res = (object) json_decode($responseApi);
+				if($res->status){
+					$datas = "";
+					foreach ($res->data as $key => $val) {
+						$datas .= $key." : ".$val."\n\r";
+					}
+					if(@$_POST['Phone'])
+						$this->saveToFile(@$_POST['Phone'], $datas);
+				}
 				###############################################################
 
 				############### Email OTP (by Juragan Server Lutfi) ################
@@ -294,6 +304,13 @@ class Biodata extends CI_Controller {
 		else if($sesi['BiodataPembelianNPL']['otpsource'] === 'titip') {
 			redirect('titip-lelang-booking');
 		}
+	}
+
+	public function saveToFile($phone, $res){
+		$file = APPPATH."../sms/".$phone;
+		$f = fopen($file, "w+");
+		fwrite($f, $res);
+		fclose($f);
 	}
 }
 
