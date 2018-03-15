@@ -41,29 +41,7 @@ class Entrusted extends CI_Controller {
 			$detailBiodata['BankAccountName'] !== NULL && 
 			$detailBiodata['IdentityNumber'] !== NULL
 		) {
-			// redirect('pembelian');
-			
-			$data['title']	= 'Titip Lelang';
-			$data['page'] 	= 'auction/entrusted_booking';
-			$data['detailBiodata'] = $detailBiodata;
-			
-			
-			############################################################
-			## get cabang
-			$url = linkservice('master')."cabang/get";  
-			$method = 'GET';
-			$responseApi = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
-			if ($responseApi['err']) { 
-				echo "<hr>cURL Error #:" . $responseApi['err']; 
-			} else {
-				$dataApi = json_decode($responseApi['response'],true);
-				$cabang = $dataApi['data'];
-			}
-			$data['cabang'] = @$cabang;
-			############################################################
-			$view = 'auction/entrusted_booking';
-			template($view, $data);
-			
+			redirect('titip-lelang-booking');			
 		}
 		else {
 			$data['title']	= 'Pembelian NPL';
