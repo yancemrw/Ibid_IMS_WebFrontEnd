@@ -324,7 +324,7 @@
                         </div>
                         <h2><?php echo $valTesti->Title; ?></h2>
                         <p class="text-align-left">
-                           <span><?php echo date('d F Y', strtotime($valTesti->Tanggal)); ?></span>
+                           <span><?php echo $valTesti->Subtitle; ?></span>
                            <?php echo $valTesti->Content; ?>
                         </p>
                      </a>
