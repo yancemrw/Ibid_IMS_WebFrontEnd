@@ -145,6 +145,7 @@
                            echo '<div class="item-slide cursor-pointer" data-src="'.$imgs->ImagePath.'"><img src="'.$imgs->ImagePath.'" /></div>';
                         }
                      } ?>
+                     <!-- Tambahkan di sini untuk gambar 360 -->
                   </div>
                </div>
                <!-- THUMBNAILS -->
@@ -227,7 +228,9 @@
                         <li><a href=""><span class="ic ic-Check-FAQ "></span> <span>Chat Out <br>Our FAQ</span></a></li>
                      </ul>
                   </div>
+                  <?php if($this->session->userdata('userdata') !== null) { ?>
                   <button class="btn btn-orange"><i class="fa fa-heart"></i> Tambah ke Favorit</button>
+                  <?php } ?>
                   <button class="btn btn-green" onclick="compare_action('<?php echo site_url('list-compare'); ?>')" type="button">
                      <i class="ic ic-Bandingkan"></i> Bandingkan
                   </button>
