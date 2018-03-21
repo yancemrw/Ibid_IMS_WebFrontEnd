@@ -19,6 +19,13 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('sms2');
 	}
+	
+	public function d360()
+	{
+		$this->load->view('360');
+	}
+	
+	
 
 }
 

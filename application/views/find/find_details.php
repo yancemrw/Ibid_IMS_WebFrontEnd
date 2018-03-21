@@ -1,5 +1,9 @@
+<script src="<?php echo base_url('assetsfront/assets360/three.min.js'); ?>"></script> 
+<script src="<?php echo base_url('assetsfront/assets360/jquery.fullscreen.js'); ?>"></script>
+<script src="<?php echo base_url('assetsfront/assets360/mousetrap.min.js'); ?>"></script>
+<script src="<?php echo base_url('assetsfront/assets360/360.js'); ?>"></script>
 <input type="hidden" id="hidden-auctionitemid" value="<?php echo $data[0]->AuctionItemId; ?>" />
-<section class="header-detail">
+<section class="header-detail background-white">
    <div class="container-fluid">
       <div class="margin-right-min15px margin-left-min15px photo-landscape">
          <div id="lightgallery">
@@ -25,7 +29,7 @@
                if($dataphoto[$i]->ImagePath !== '') {
                   echo '<div class="col-md-4 stickys" data-src="'.$dataphoto[$i]->ImagePath.'">
                            <a href="javascript:void(0)" class="image-header" >
-                              <img src="'.$dataphoto[$i]->ImagePath.'" alt="Gambar 2">
+                              <img src="'.$dataphoto[$i]->ImagePath.'" alt="Gambar '.$i.'">
                            </a>
                         </div>';
                }
@@ -38,8 +42,12 @@
 
 <section class="detail-transport">
    <div class="container-fluid">
-      <div class="row js-sticky-container">
-         <h1>DAIHATSU LUXIO 1.5 X MINIBUS AT <span>2015</span></h1>
+      <div class="row js-sticky-container background-white">
+         <div class="detail-title">
+            <h1><?php echo $data[0]->merk.' '.$data[0]->seri.' '.$data[0]->silinder.' '.$data[0]->tipe.' '.$data[0]->model.' '.$data[0]->transmisi; ?>
+            <span><?php echo $data[0]->tahun; ?></span>
+            </h1>
+         </div>
          <div class="col-md-8">
             <div class="desc-transport">
                <h2>Detail Kendaraan</h2>
@@ -146,6 +154,7 @@
                         }
                      } ?>
                      <!-- Tambahkan di sini untuk gambar 360 -->
+                     <div class="cursor-pointer" data-target="#show-360"><img src="<?php echo base_url('assetsfront/images/background/360.jpg'); ?>" /></div>
                   </div>
                </div>
                <!-- THUMBNAILS -->
@@ -155,6 +164,7 @@
                         echo '<div class="cursor-pointer"><img src="'.$imgsclick->ImagePath.'" /></div>';
                      }
                   } ?>
+                  <div class="cursor-pointer"><img src="<?php echo base_url('assetsfront/images/background/360.jpg'); ?>" /></div>
                </div>
             </div>
             <div class="graphic-lelang">
@@ -238,7 +248,7 @@
                   <?php if($this->session->userdata('userdata') !== null) { ?>
                   <button class="btn btn-orange"><i class="fa fa-heart"></i> Tambah ke Favorit</button>
                   <?php } ?>
-                  <button class="btn btn-green" onclick="compare_action('<?php echo site_url('list-compare'); ?>')" type="button">
+                  <button class="btn btn-green <?php echo ($this->session->userdata('userdata') === null) ? 'btn-bandingkan' : ''; ?>" onclick="compare_action('<?php echo site_url('list-compare'); ?>')" type="button">
                      <i class="ic ic-Bandingkan"></i> Bandingkan
                   </button>
                </div>
@@ -383,9 +393,22 @@
       </div>
    </div>
 </div>
+<div class="modal fade modal-notification" id="show-360" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-body text-center">
+            <iframe src="<?php $this->load->view('360.php'); ?>"></iframe>
+         </div>
+      </div>
+   </div>
+</div>
 
 <script>
 $(document).ready(function() {
+   var dbRef         = firebase.database();
+   var companyRef    = dbRef.ref('company/<?php echo $company_id; ?>');
+   var scheduleRef   = companyRef.child('schedule/<?php echo $schedule_id; ?>');
+   var lotRef = scheduleRef.child('lot|stock/<?php echo $no_lot; ?>');
    var now = new Date(<?php echo "$serverdate[0],".((int)$serverdate[1]-1).",".(int)$serverdate[2].",$serverdate[3],$serverdate[4],".(int)$serverdate[4].",".(int)$serverdate[4]; ?>).getTime();
 
    //show compare element

@@ -80,6 +80,19 @@
    <script src="<?php echo base_url('assetsfront/bootoast/bootoast.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/js/compare_product.js'); ?>"></script>
 
+   <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+   <script>
+      // Initialize Firebase
+      var config = {
+         apiKey: "AIzaSyC-ZoZ16SiFPoz76W0yJbqhlLOYpPrMU7I",
+         authDomain: "ibid-ams-sample.firebaseapp.com",
+         databaseURL: "https://ibid-ams-sample.firebaseio.com",
+         projectId: "ibid-ams-sample",
+         storageBucket: "ibid-ams-sample.appspot.com",
+         messagingSenderId: "493210877814"
+      };
+      firebase.initializeApp(config);
+   </script>
 </head>
 <body class="bg-grey">
    <!-- handle header between procedure page and other page -->
