@@ -86,12 +86,14 @@
 						<?php foreach($formDinamisMotor as $row){ echo $row['typeInput']; } ?>
 					</div>
 					<div id="object14" class="desc-object">
+						<?php foreach($formDinamisHve as $row){ echo $row['typeInput']; } ?>
 						<!-- div class="form-group floating-label">
 							<input type="text" name="" class="form-control input-custom">
 							<label class="label-schedule">No Polisi untuk HVE</label>
 						</div -->
 					</div>
 					<div id="object12" class="desc-object">
+						<?php foreach($formDinamisGadget as $row){ echo $row['typeInput']; } ?>
 						<!-- div class="form-group floating-label">
 							<input type="text" name="" class="form-control input-custom">
 							<label class="label-schedule">No Polisi untuk gadget</label>
