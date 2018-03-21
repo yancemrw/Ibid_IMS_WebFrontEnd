@@ -179,6 +179,7 @@
                         <li>Jadwal <span>01 September 2017</span></li>
                         <li>Lokasi <span>Jl. Sunter Permai III, Jakarta Utara</span></li>
                      </ul>
+                     <?php if($data[0]->StatusStok === 1) { // 0 = Live Auction, 1 = Online ?>
                      <ul class="mobile-info">
                         <li>
                            <p>Lelang Akan Dimulai Dalam</p>
@@ -194,8 +195,10 @@
                            </ul>
                         </li>
                      </ul>
+                     <?php } ?>
                   </div>
                   <div class="bidder">
+                     <?php if($data[0]->StatusStok === 1) { // 0 = Live Auction, 1 = Online ?>
                      <h3>Kelipatan Rp. 500,000</h3>
                      <ul>
                         <li>Rp. 416,000,000 <span>Proxy Bidder</span></li>
@@ -216,7 +219,11 @@
                      </select>
                      <button class="btn btn-violet" data-toggle="modal" data-target="#choose-npl">Tawar</button>
                      <p>Pengumuman : <br>Pemenang akan dikenakan biaya Administrasi Rp. 1.750.000 </p>
+                     <?php } ?>
                      <button class="btn btn-green" data-toggle="modal" data-target="#used-npl">Beli NPL</button>
+                     <?php if($data[0]->StatusStok === 0) { // 0 = Live Auction, 1 = Online ?>
+                     <button class="btn btn-outline-violet">LIVE AUCTION</button>
+                     <?php } ?>
                   </div>
                </div>
                <div class="info-ibid">
@@ -224,8 +231,8 @@
                      <h2>IBID - Balai Lelang Serasi</h2>
                      <p>Jl. Bintaro Mulia I No.3 Bintaro Pesanggrahan - Jakarta Selatan 12250 <span>(62-21) 7355999</span></p>
                      <ul>
-                        <li><a href=""><span class="ic ic-Chat-With"></span> <span>Chat With <br>Us</span></a></li>
-                        <li><a href=""><span class="ic ic-Check-FAQ "></span> <span>Chat Out <br>Our FAQ</span></a></li>
+                        <li><a href="javascript:void(0)"><span class="ic ic-Chat-With"></span> <span>Chat With <br>Us</span></a></li>
+                        <li><a href="javascript:void(0)"><span class="ic ic-Check-FAQ "></span> <span>Chat Out <br>Our FAQ</span></a></li>
                      </ul>
                   </div>
                   <?php if($this->session->userdata('userdata') !== null) { ?>
