@@ -116,6 +116,10 @@ a.delete-compare {
     margin-top: 1px !important;
 }
 
+.header-white {
+    border-bottom: 1px solid #81be2a !important;
+}
+
 .height-50px {
     height: 50px !important;
 }
@@ -192,7 +196,7 @@ a.delete-compare {
 }
 
 .navbar {
-	border: 0 !important;
+	border: 0;
 }
 
 .no-notif {	

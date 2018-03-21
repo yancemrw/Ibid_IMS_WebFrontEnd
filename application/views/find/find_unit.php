@@ -15,12 +15,14 @@
          <div class="col-md-3">
             <form id="thisFormFilter" class="form-filter clearfix">
                <h1><span class="icon_ic-filter"></span> Filters</h1>
+               <?php if($this->session->userdata('userdata') !== null) { ?>
                <div class="form-group">
                   <input type="radio" id="test1" name="radio-group" checked>
                   <label for="test1" class="view-filter">Tampilkan Favorit</label>
                </div>
+               <?php } ?>
                <div class="form-group">
-                  <input type="radio" id="test2" name="radio-group">
+                  <input type="radio" id="test2" name="radio-group" <?php echo ($this->session->userdata('userdata') === null) ? 'checked' : ''; ?>>
                   <label for="test2" class="view-filter">Mobil Rekomendasi</label>
                </div>
                <h2>Tipe Lelang</h2>
@@ -314,94 +316,99 @@ $(document).ready(function() {
    // get list frontend
    $.ajax({
       type: 'GET',
-      url: '<?php echo linkservice('stock')."itemstock/getfrontend"; ?>',
+      url: '<?php echo linkservice('stock')."itemstock/Getfrontend"; ?>',
       beforeSend: function() {
-         $('#loadings').replaceWith('<div id="loadings" class="margin-10px text-align-center"><img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" /></div>');
+         $('#loadings').replaceWith('<div id="loadings" class="margin-10px margin-top-80px text-align-center"><img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" /></div>');
       },
-      success: function(data) {
+      success: function(data) {console.log(data);
          var content = '', datas = data.data;
-         for (var i = 0; i < datas.length; i++) {
-            let dataz = datas[i], 
-            merk = (dataz.merk !== undefined) ? dataz.merk : '',
-            seri = (dataz.seri !== undefined) ? dataz.seri : '',
-            silinder = (dataz.silinder !== undefined) ? dataz.silinder : '',
-            tipe = (dataz.tipe !== undefined) ? dataz.tipe : '',
-            model = (dataz.model !== undefined) ? dataz.model : '',
-            transmisi = (dataz.transmisi !== undefined) ? dataz.transmisi : '',
-            tahun = (dataz.tahun !== undefined) ? dataz.tahun : '',
-            FinalPriceItem = (dataz.FinalPriceItem !== undefined) ? dataz.FinalPriceItem : 0;
-            let numgrade = '';
-            $.ajax({
-               type: 'GET',
-               url: '<?php echo linkservice('taksasi')."nilaiicar/detail?AuctionItemId='+datas[i].AuctionItemId+'"; ?>',
-               success: function(data) {
-                  var datax = data.data;
-                  numgrade = (datax.TotalEvaluationResult !== undefined) ? datax.TotalEvaluationResult : '?';
-                  $.ajax({
-                     type: 'GET',
-                     url: '<?php echo linkservice('taksasi')."icar/getimage?AuctionItemId='+data.data.AuctionItemId+'"; ?>',
-                     success: function(data) {
-                        $('#loadings').replaceWith('<div id="loadings"></div>');
-                        var compare_data = {
-                           "AuctionItemId": dataz.AuctionItemId,
-                           "BahanBakar": dataz.bahanbakar,
-                           "Image": data.data[0].ImagePath,
-                           "Kilometer": dataz.km,
-                           "Merk": dataz.merk,
-                           "Model": dataz.model,
-                           "NoKeur": dataz.nokeur,
-                           "NoMesin": dataz.nomesin,
-                           "NoPolisi": dataz.nopolisi,
-                           "NoRangka": dataz.norangka,
-                           "NoSTNK": dataz.nostnk,
-                           "Seri": dataz.seri,
-                           "Silinder": dataz.silinder,
-                           "TaksasiGrade": numgrade,
-                           "Tahun": dataz.tahun,
-                           "Transmisi": dataz.transmisi,
-                           "Tipe": dataz.tipe,
-                           "Price": dataz.FinalPriceItem,
-                           "Warna": dataz.warnadoc
-                        };
-                        var json_str = JSON.stringify(compare_data);
-                        var lot = (dataz.LotNumb !== null) ? dataz.LotNumb : '???' ;
-                        content += '<div class="col-md-4">'+
-                                 '<div class="list-product box-recommend">'+
-                                 '<a href="<?php echo $link_detail; ?>/'+dataz.AuctionItemId+'">'+
-                                 '<div class="thumbnail">'+
-                                 '<div class="thumbnail-custom">'+
-                                 '<img src="'+data.data[0].ImagePath+'" />'+
-                                 '</div>'+
-                                 '<div class="overlay-grade">'+
-                                 'Grade <span>'+numgrade+'</span>'+
-                                 '</div>'+
-                                 '<p class="overlay-lot">LOT '+lot+'</p>'+
-                                 '</div>'+
-                                 '<div class="boxright-mobile">'+
-                                 '<h2>'+merk+' '+seri+' '+silinder+' '+tipe+' '+model+' '+transmisi+'</h2>'+
-                                 '<span>'+tahun+'</span> <span class="price">Rp. '+currency_format(FinalPriceItem)+'</span>'+
-                                 '<p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>Belum Tersedia</span></p>'+
-                                 '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Belum Tersedia</span></p>'+
-                                 '</div>'+
-                                 '</a>'+
-                                 '<div class="action-bottom">'+
-                                 '<button class="btn"><i class="fa fa-heart"></i> <span>Favorit</span></button>'+
-                                 '<button class="btn btn-compare" onclick=\'set_compare_product('+json_str+', "'+linked+'")\'><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>'+
-                                 '</div>'+
-                                 '</div>'+
-                                 '</div>';
-                        $('#loadlist').html(content);
-                     }
-                  });
-               }
-            });
-         }
+         //if(datas.StatusStok === 1) {
+            for (var i = 0; i < datas.length; i++) {
+               let dataz = datas[i], 
+               merk = (dataz.merk !== undefined) ? dataz.merk : '',
+               seri = (dataz.seri !== undefined) ? dataz.seri : '',
+               silinder = (dataz.silinder !== undefined) ? dataz.silinder : '',
+               tipe = (dataz.tipe !== undefined) ? dataz.tipe : '',
+               model = (dataz.model !== undefined) ? dataz.model : '',
+               transmisi = (dataz.transmisi !== undefined) ? dataz.transmisi : '',
+               tahun = (dataz.tahun !== undefined) ? dataz.tahun : '',
+               FinalPriceItem = (dataz.FinalPriceItem !== undefined) ? dataz.FinalPriceItem : 0;
+               let numgrade = '';
+               $.ajax({
+                  type: 'GET',
+                  url: '<?php echo linkservice('taksasi')."nilaiicar/detail?AuctionItemId='+datas[i].AuctionItemId+'"; ?>',
+                  success: function(data) {
+                     var datax = data.data;
+                     numgrade = (datax.TotalEvaluationResult !== undefined) ? datax.TotalEvaluationResult : '?';
+                     $.ajax({
+                        type: 'GET',
+                        url: '<?php echo linkservice('taksasi')."icar/getimage?AuctionItemId='+data.data.AuctionItemId+'"; ?>',
+                        success: function(data) {
+                           $('#loadings').replaceWith('<div id="loadings"></div>');
+                           var compare_data = {
+                              "AuctionItemId": dataz.AuctionItemId,
+                              "BahanBakar": dataz.bahanbakar,
+                              "Image": data.data[0].ImagePath,
+                              "Kilometer": dataz.km,
+                              "Merk": dataz.merk,
+                              "Model": dataz.model,
+                              "NoKeur": dataz.nokeur,
+                              "NoMesin": dataz.nomesin,
+                              "NoPolisi": dataz.nopolisi,
+                              "NoRangka": dataz.norangka,
+                              "NoSTNK": dataz.nostnk,
+                              "Seri": dataz.seri,
+                              "Silinder": dataz.silinder,
+                              "TaksasiGrade": numgrade,
+                              "Tahun": dataz.tahun,
+                              "Transmisi": dataz.transmisi,
+                              "Tipe": dataz.tipe,
+                              "Price": dataz.FinalPriceItem,
+                              "Warna": dataz.warnadoc
+                           };
+                           var json_str = JSON.stringify(compare_data);
+                           var lot = (dataz.LotNumb !== null) ? dataz.LotNumb : '???' ;
+                           var favorit = '<?php echo ($this->session->userdata('userdata') !== null) ? '<button class="btn"><i class="fa fa-heart"></i><span>Favorit</span></button>' : ''; ?>';
+                           content += '<div class="col-md-4">'+
+                                    '<div class="list-product box-recommend">'+
+                                    '<a href="<?php echo $link_detail; ?>/'+dataz.AuctionItemId+'">'+
+                                    '<div class="thumbnail">'+
+                                    '<div class="thumbnail-custom">'+
+                                    '<img src="'+data.data[0].ImagePath+'" />'+
+                                    '</div>'+
+                                    '<div class="overlay-grade">'+
+                                    'Grade <span>'+numgrade+'</span>'+
+                                    '</div>'+
+                                    '<p class="overlay-lot">LOT '+lot+'</p>'+
+                                    '</div>'+
+                                    '<div class="boxright-mobile">'+
+                                    '<h2>'+merk+' '+seri+' '+silinder+' '+tipe+' '+model+' '+transmisi+'</h2>'+
+                                    '<span>'+tahun+'</span> <span class="price">Rp. '+currency_format(FinalPriceItem)+'</span>'+
+                                    '<p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>Belum Tersedia</span></p>'+
+                                    '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Belum Tersedia</span></p>'+
+                                    '</div>'+
+                                    '</a>'+
+                                    '<div class="action-bottom">'+
+                                    favorit+
+                                    '<button class="btn btn-compare" onclick=\'set_compare_product('+json_str+', "'+linked+'")\'><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>'+
+                                    '</div>'+
+                                    '</div>'+
+                                    '</div>';
+                           $('#loadlist').html(content);
+                        }
+                     });
+                  }
+               });
+            }
+         /*}
+         else {
+             $('#loadings').replaceWith('<div id="loadings" class="margin-10px margin-top-80px text-align-center"><img src="<?php echo base_url('assetsfront/images/background/management-empty.png'); ?>" alt="Loading" width="200px" /></div><br /><div class="text-align-center" style="color:#9E9E9E">Data Tidak Ditemukan!</div>');
+         }*/
       }
    });
 	
-	$('#thisFormFilter').submit(function(){
+	$('#thisFormFilter').submit(function() {
 		thisFormInput = $(this).serialize();
-		console.log(thisFormInput);
 		
 		$.ajax({
 		  type: 'GET',
