@@ -34,6 +34,15 @@ class Find_details extends CI_Controller {
 		$res4 = admsCurl($url4, array(), $method4);
 		$detailicar = curlGenerate($res4);
 
+		// get data lot
+		$schedule = 37; // hardcode
+		$lot = 1; // hardcode
+		$url = "http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/getLotDataOnline?schedule=$schedule&lot=$lot";
+		$datalot = admsCurl($url, array(), 'GET');
+		$datalot = json_decode($datalot['response']);
+		$date = explode('-',$datalot->schedule->date);
+		$time = explode(':',$datalot->schedule->waktu);
+
 		$data = array(
 			'header_white' => "header-white",
 			'userdata'	=> $this->userdata,
@@ -46,7 +55,11 @@ class Find_details extends CI_Controller {
 			'grade' => $detailgrade->TotalEvaluationResult,
 			'gradeinternal' => $detailicar,
 			'link_detail' => base_url('index.php/detail_lelang'),
-			'img_rec' => $detailphoto[6]->ImagePath
+			'img_rec' => $detailphoto[6]->ImagePath,
+			'date' => $date,
+			'time' => $time,
+			'serverdate' => explode('-',date("Y-m-d-H-i-s-v")),
+			'interval' => (int)str_replace(",", "", $datalot->schedule->interval)
 		);
 		$view = "find/find_details";
 		template($view, $data);

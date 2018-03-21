@@ -300,7 +300,7 @@
          <div class="modal-body">
             <div class="bidder bidder-popup">
                <p>Lelang Akan Dimulai Dalam</p>
-               <p id="timer-mobile"></p>
+               <p id="timer-mobile">00 : 00 : 00</p>
                <ul class="timer-auction">
                   <li>Hari</li>
                   <li>Jam</li>
@@ -386,6 +386,8 @@
 
 <script>
 $(document).ready(function() {
+   var now = new Date(<?php echo "$serverdate[0],".((int)$serverdate[1]-1).",".(int)$serverdate[2].",$serverdate[3],$serverdate[4],".(int)$serverdate[4].",".(int)$serverdate[4]; ?>).getTime();
+
    //show compare element
    var linked = '<?php echo site_url('list-compare'); ?>';
    setCompare(linked);
@@ -427,17 +429,30 @@ $(document).ready(function() {
    });
 
    // Timer
-   var countDownDate = new Date("Dec 31, 2017 00:00:00").getTime();
+   var countDownDate = new Date('<?php echo "$date[0],".($date[1]-1).",".(int)$date[2].",$time[0],$time[1],0,0"; ?>').getTime();
    var x = setInterval(function() {
-      var now = new Date().getTime();
+      now = now + 1000;
       var distance = countDownDate - now;
       var days = Math.floor(distance / (1000 * 60 * 60 * 24));
       var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       document.getElementById("timer").innerHTML = days + "   :  " + hours + "   :  " + minutes + " ";
+      if (distance > 0) {
+            $("#timer").text(twoDigits(days) + "   :  " + twoDigits(hours) + "   :  " + twoDigits(minutes) + " ");
+            $("#timer-mobile").text(twoDigits(days) + "   :  " + twoDigits(hours) + "   :  " + twoDigits(minutes) + " ");
+      }
       if (distance < 0) {
          clearInterval(x);
-         document.getElementById("timer").innerHTML = "TIDAK ADA LELANG";
+         lotRef.once('value', function(lotSnap){
+            if (!lotSnap.exists()) {
+               $("#timer").text("LELANG AKAN SEGERA DIMULAI");
+               $("#timer-mobile").text("LELANG AKAN SEGERA DIMULAI");
+               $("#timer").css('font-size','39px');
+               $("#message").hide();
+               $("#message-mobile").hide();
+               $(".timer-auction").hide();
+            }
+         });
       }
    }, 1000);
 
@@ -708,5 +723,38 @@ function compare_action(linked) {
       "Warna"        : $('#span-warna').text().replace(': ', '')
    };
    set_compare_product(compare_data, linked);
+}
+
+function updateDuration(numb){
+   duration = numb;
+}
+
+function bid(){
+   const last = $('#lastbid').val();
+
+   allowRef.once('value', function(allowedSnap) {
+      lotDataRef.once('value', function(lotDataSnap) {
+         if (allowedSnap.val() && lotDataSnap.val().duration > 0) {
+
+         startPrice = lotDataSnap.exists() ? lotDataSnap.val().harga : 0;
+
+         if (last <= 0) {
+            newbid = parseInt(startPrice);
+         } else {
+            newbid = parseInt(last) + parseInt(<?php echo $interval; ?>);
+         }
+
+         tasksRef.push({
+            bid: newbid,
+            npl: $('#used-npl').val(),
+            // npl: '100001',
+            type: 'Online',
+         });
+
+         } else {
+            alert('bid is not allow bro!!');
+         }
+      });
+   });
 }
 </script>
