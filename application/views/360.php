@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html> 
 <head> 
-	<title>Demoin</title>
+	<title>Gambar 360&deg;</title>
 	<meta name="description" content=""/> 
 	<meta name="author" content=""> <meta charset="UTF-8"> 
 	<link href="<?php echo base_url('assetsfront/assets360/style.css'); ?>" media="all" rel="stylesheet" type="text/css" />
 	
 	<!-- script src="jquery.11.js"></script --> 
-	<!--script src="<?php echo base_url('assetsfront/assets360/jquery.min.js'); ?>"></script-->
+	<script src="<?php echo base_url('assetsfront/assets360/jquery.min.js'); ?>"></script>
 	
 	<script>/* If you want to stop starting auto scroll panorama just change 'false' value below. */ var autoScrol=true; </script> 
 </head>

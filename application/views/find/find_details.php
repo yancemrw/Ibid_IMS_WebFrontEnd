@@ -154,7 +154,11 @@
                         }
                      } ?>
                      <!-- Tambahkan di sini untuk gambar 360 -->
-                     <div class="cursor-pointer" data-target="#show-360"><img src="<?php echo base_url('assetsfront/images/background/360.jpg'); ?>" /></div>
+                     <div class="cursor-pointer">
+                        <a href="<?php echo site_url('welcome/d360'); ?>" target="_blank">
+                           <img src="<?php echo base_url('assetsfront/images/background/360.jpg'); ?>" />
+                        </a>
+                     </div>
                   </div>
                </div>
                <!-- THUMBNAILS -->
