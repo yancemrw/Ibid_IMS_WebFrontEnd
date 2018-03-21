@@ -227,7 +227,7 @@ a.delete-compare {
 }
 
 .row {
-	margin-right: 0 !important;
+	margin-right: -13px !important;
 }
 
 .recaptcha {
@@ -260,6 +260,14 @@ a.delete-compare {
 
 .width-100 {
     width: 100%;
+}
+
+@media(max-width: 768px) {
+    .btn-bandingkan {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        width: 100% !important;
+    }
 }
 
 @media(max-width: 768px) {
