@@ -68,12 +68,47 @@
                             </div>
                         </form>
                     </div>
-                    <div class="table-responsive table-container table-transaction content-empty">
-                        <div class="product-empty">
+                    <div class="table-responsive table-container">
+						<table class="table table-striped table-custom">
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>NPLNumber</th>
+									<th>Obj Lelang</th>
+									<th>Jenis NPL</th>
+									<th>Tanggal</th>
+									<th>Status</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php foreach($listNpl as $row){ ?>
+								<tr>
+									<td><?php echo $row->NPLId; ?></td>
+									<td><?php echo $row->NPLNumber; ?></td>
+									<td><?php echo @$detailItem[$row->ItemId]['ItemName']; ?></td>
+									<td><?php echo $row->NPLType; ?></td>
+									<td><?php if ($row->ScheduleId > 0){
+											echo @$schedule[$row->ScheduleId]['CompanyName'];
+											echo '<br>';
+											echo date('d F Y',strtotime(@$schedule[$row->ScheduleId]['date'])).', '.@$schedule[$row->ScheduleId]['waktu'];
+										}
+										// echo $row->ScheduleId; 
+									?></td>
+									<td><?php echo $row->IsUsed; ?></td>
+									<td><?php echo $row->NPLId; ?></td>
+								</tr>
+								<?php } ?>
+							</tbody>
+						</table>
+						<?php // print_r(@$listNpl); ?>
+                    </div>
+					<!-- div class="table-responsive table-container table-transaction content-empty">
+						<div class="product-empty">
                             <img src="<?php echo base_url('assetsfront/images/icon/ic-transaction-empty.png'); ?>" alt="" title="">
                         </div>
                         <p>Oops.... <span>Data Belum Tersedia.</span></p>
-                    </div>
+                    </div -->
                 </div>
             </div>
         </div>
