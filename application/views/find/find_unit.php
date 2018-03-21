@@ -320,9 +320,9 @@ $(document).ready(function() {
       beforeSend: function() {
          $('#loadings').replaceWith('<div id="loadings" class="margin-10px margin-top-80px text-align-center"><img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" /></div>');
       },
-      success: function(data) {console.log(data);
+      success: function(data) {
          var content = '', datas = data.data;
-         //if(datas.StatusStok === 1) {
+         if(datas !== null) {
             for (var i = 0; i < datas.length; i++) {
                let dataz = datas[i], 
                merk = (dataz.merk !== undefined) ? dataz.merk : '',
@@ -400,10 +400,10 @@ $(document).ready(function() {
                   }
                });
             }
-         /*}
+         }
          else {
              $('#loadings').replaceWith('<div id="loadings" class="margin-10px margin-top-80px text-align-center"><img src="<?php echo base_url('assetsfront/images/background/management-empty.png'); ?>" alt="Loading" width="200px" /></div><br /><div class="text-align-center" style="color:#9E9E9E">Data Tidak Ditemukan!</div>');
-         }*/
+         }
       }
    });
 	
