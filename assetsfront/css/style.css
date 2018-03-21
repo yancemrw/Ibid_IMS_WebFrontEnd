@@ -348,7 +348,7 @@ header:before {
     font-size: 14px;
     color: #fff;
     text-transform: uppercase;
-    padding: 10px 15px;
+    padding: 9px 15px; /* Penting Buat Menu */
     background: none;
 }
 
@@ -1366,7 +1366,6 @@ footer p {
     background-color: #fff;
     border-radius: 0;
     border: 0;
-    border-bottom: 1px solid #81be2a;
     z-index: 999
 }
 
@@ -1433,7 +1432,7 @@ footer p {
     background: transparent;
     border-bottom: 4px solid #81be2a;
     color: #81be2a;
-    padding-bottom: 10px; 
+    padding-bottom: 9px; /* Penting Buat Hover Menu */
 }
 .header-white .nav>li.dropdown>a:focus,
 .header-white .nav>li.dropdown>a:hover {
