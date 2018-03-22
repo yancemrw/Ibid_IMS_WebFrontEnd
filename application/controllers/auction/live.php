@@ -25,7 +25,7 @@ class Live extends CI_Controller {
 		}
 
 		// Get schedule list
-		$link2 = 'http://ibid-ams-schedule.stagingapps.net/api/schedulelist?untilnextmonth=1';
+		$link2 = 'http://alpha.ibid.astra.co.id/backend/serviceams/schedule/api/schedulelist?untilnextweek=1&notFinished=1&type=0&orderByDate=asc';
 		$schedule = amsCurl($link2, '', 'GET');
 		$data_schedule = curlGenerate($schedule);
 		$arrData = $data_schedule;

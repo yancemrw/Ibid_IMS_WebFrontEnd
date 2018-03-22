@@ -196,7 +196,7 @@
                         <li class="nav-title"><span class="nav-title">Home</span></li>
                         <li id="find_menu"><a href="<?php echo site_url('cari-lelang'); ?>" onclick="setActiveMenu('find')">Cari Kendaraan</a></li>
                         <li id="schedule_menu"><a href="<?php echo site_url('comingsoon'); ?>" onclick="setActiveMenu('schedule')">Jadwal Lelang</a></li>
-                        <li id="live_menu"><a href="<?php echo site_url('comingsoon'); ?>" onclick="setActiveMenu('live')">Live Auction</a></li>
+                        <li id="live_menu"><a href="<?php echo site_url('live-auction'); ?>" onclick="setActiveMenu('live')">Live Auction</a></li>
                         <li id="npl_menu"><a href="<?php echo site_url('beli-npl'); ?>" onclick="setActiveMenu('npl')">Beli Npl</a></li>
                         <li id="auction_menu"><a href="<?php echo site_url('titip-lelang'); ?>" onclick="setActiveMenu('auction')">Titip Lelang</a></li>
                         <li id="map_menu"><a href="<?php echo site_url('comingsoon'); ?>" onclick="setActiveMenu('map')">Map</a></li>
