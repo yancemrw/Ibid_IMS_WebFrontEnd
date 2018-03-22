@@ -15,10 +15,10 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12 clearfix">
-				<form class="form-inline form-auction">
+				<form class="form-inline form-auction" method="POST" action="<?php echo site_url('detail-auction') ?>" id="auction-form">
 					<?php foreach($data as $key => $value) { ?>
 					<div class="form-group thisAllItem thisItemId<?php echo $value->item_id; ?>">
-						<input type="checkbox" name="object-lelang" id="obj-<?php echo $key; ?>" class="input-hidden" value="<?php echo $value->id ?>" />
+						<input type="checkbox" name="schedules[]" id="obj-<?php echo $key; ?>" class="input-hidden" value="<?php echo $value->id ?>" />
 						<label for="obj-<?php echo $key; ?>" class="pull-left">
 							<span class="kota"><?php echo $value->CompanyName; ?><span><?php echo $value->ItemName; ?></span></span>
 							<p><?php echo $value->Address; ?>
@@ -68,7 +68,7 @@ $(document).ready(function() {
 
 	// handle button if auction not select
 	$("input[type='checkbox']").click(function() {
-		if($('input[name="object-lelang"]:checked').length > 0) {
+		if($('input[name="schedules[]"]:checked').length > 0) {
 			$('#btn-next').prop('disabled', false);
 		}
 		else {
@@ -77,11 +77,11 @@ $(document).ready(function() {
 	});
 
 	$('#btn-next').click(function() {
-		if($('input[name="object-lelang"]:checked').length < 5) {
-			$('input[name="object-lelang"]:checked').each(function() {
-				console.log($(this).val());
-				location.href = '<?php echo base_url()."index.php/detail_auction" ?>';
+		if($('input[name="schedules[]"]:checked').length < 5) {
+			$('input[name="schedules[]"]:checked').each(function() {
+				//location.href = '<?php echo site_url("detail-auction") ?>';
 			});
+			$("#auction-form").submit();
 		}
 		else {
 			alert('Maksimal 5 Jadwal Lelang');
@@ -91,7 +91,16 @@ $(document).ready(function() {
 	$('#thisSelectItem').change(function(){
 		$('.thisAllItem').css('display','none');
 		thisVal = $(this).val();
+		thisText = $(this).find('option:selected').text();
 		$('.thisItemId'+thisVal).css('display','block');
+
+		emptyAlert = '<div class="alert alert-info" role="alert" id="emptyAlert"><strong>Info! </strong>Jadwal '+thisText+' tidak tersedia.</div>';
+		if ($('.thisItemId'+thisVal).length > 0) {
+			$('#emptyAlert').remove();
+		}else{
+			$('#emptyAlert').remove();
+			$('#auction-form').append(emptyAlert);
+		}
 	});
 	$('#thisSelectItem').change();
 });
