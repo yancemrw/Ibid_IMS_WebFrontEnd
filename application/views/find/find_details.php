@@ -174,6 +174,12 @@
             <div class="graphic-lelang">
                <h2>Grafik DAIHATSU LUXIO</h2>
                <div class="canvas-graphic">
+                  <div class="graphic-coomingsoon">
+                     <span>
+                        <h2>Coming Soon</h2>
+                        <p>Fitur ini baru dapat digunakan beberapa waktu ke depan</p>
+                     </span>
+                  </div>
                   <canvas id="myChart" width="400" height="200"></canvas>
                </div>
             </div>

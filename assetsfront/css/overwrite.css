@@ -309,6 +309,18 @@ a.delete-compare {
     .photo-landscape {
         display: none;
     }
+
+    .graphic-coomingsoon {
+        height: 85% !important;
+        margin-left: -15px !important;
+        padding: 0 !important;
+    }
+
+    .graphic-coomingsoon span {
+        left: 50% !important;
+        top: 30% !important;
+        width: 100% !important;
+    }
 }
 
 // css by iqdam
@@ -653,6 +665,43 @@ a.delete-compare {
     width: 60px;
     padding:20% 0 5px 0;
     margin:0 auto;
+}
+
+.graphic-coomingsoon {
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 100%;
+    z-index:2;
+    background-color:rgba(255,255,255,0.95);
+    padding: 30px;
+    text-align: center;
+
+}
+.graphic-coomingsoon span {
+    color: #81be2a;
+    display: inline-block;
+    position: relative;
+    padding: 20px;
+    left: 13%; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto;
+    width: 320px;
+    text-align: center;
+    top: 30%;
+    transform: translate(-50%, -50%);
+}
+.graphic-coomingsoon h2 {
+    font-size: 20px;
+}
+.graphic-coomingsoon h2:before{
+    font-family: 'FontAwesome';
+    content: "\f05a";
+    margin-right: 10px;
+}
+.graphic-coomingsoon p {
+    font-size: 12px;
 }
 
 /* add by suvi sanusi */
