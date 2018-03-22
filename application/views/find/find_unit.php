@@ -221,6 +221,9 @@
                <div class="form-group">
                   <button type="submit" class="btn btn-green">Filter</button>
                </div>
+			   <?php if (@$this->session->userdata('userdata')['UserId']){ ?>
+			   <input type="hidden" name="userId" value="<?php echo $this->session->userdata('userdata')['UserId']; ?>">
+			   <?php } ?>
             </form>
          </div>
          <div class="col-md-9 pl-0">
@@ -317,6 +320,11 @@ $(document).ready(function() {
    $.ajax({
       type: 'GET',
       url: '<?php echo linkservice('stock')."itemstock/Getfrontend"; ?>',
+	  data:{
+		<?php if (@$this->session->userdata('userdata')['UserId']){ ?>
+		userId : '<?php echo $this->session->userdata('userdata')['UserId']; ?>',
+		<?php } ?>
+	  },
       beforeSend: function() {
          $('#loadings').replaceWith('<div id="loadings" class="margin-10px margin-top-80px text-align-center"><img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" /></div>');
       },
