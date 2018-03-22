@@ -1,3 +1,10 @@
+<div class="load-payment" id="loading-payment" style="display:none">
+    <div>
+        <img src="<?php echo base_url('assetsfront/images/loader/formloader.gif'); ?>">
+        <p>Mohon tunggu,,</p>
+        <p>Transaksi sedang berlangsung</p>
+    </div>
+</div>
 <section class="section section-auction">
     <div class="container">
         <div class="row">
@@ -109,6 +116,7 @@ $(function() {
 	}
 	
 	$('#btnBayar').click(function() {
+        $('#loading-payment').css('display', 'block');
 		$(this).addClass('disabled');
 		$('#thisForm').submit();
 	});
