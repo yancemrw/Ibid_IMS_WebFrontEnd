@@ -172,7 +172,7 @@
                </div>
             </div>
             <div class="graphic-lelang">
-               <h2>Grafik DAIHATSU LUXIO</h2>
+               <h2>Grafik <?php echo $data[0]->merk; ?> <?php echo $data[0]->seri; ?></h2>
                <div class="canvas-graphic">
                   <div class="graphic-coomingsoon">
                      <span>
