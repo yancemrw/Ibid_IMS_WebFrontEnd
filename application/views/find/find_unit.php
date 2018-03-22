@@ -321,7 +321,10 @@ $(document).ready(function() {
          $('#loadings').replaceWith('<div id="loadings" class="margin-10px margin-top-80px text-align-center"><img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" /></div>');
       },
       success: function(data) {
-         var content = '', datas = data.data;
+         var content = '',
+         datas = data.data,
+         sessiond = "<?php echo ($this->session->userdata('userdata') !== null) ? 'TRUE' : 'FALSE'; ?>",
+         sessionId = '<?php echo $this->session->userdata('userdata')['UserId'] ?>';
          if(datas !== null) {
             for (var i = 0; i < datas.length; i++) {
                let dataz = datas[i], 
@@ -368,7 +371,8 @@ $(document).ready(function() {
                            };
                            var json_str = JSON.stringify(compare_data);
                            var lot = (dataz.LotNumb !== null) ? dataz.LotNumb : '???' ;
-                           var favorit = '<?php echo ($this->session->userdata('userdata') !== null) ? '<button class="btn"><i class="fa fa-heart"></i><span>Favorit</span></button>' : ''; ?>';
+                           var iconFav = dataz.FavoriteId;
+                           var favorit = (sessiond === 'TRUE') ? '<button class="btn" onclick="addFav('+dataz.AuctionItemId+', '+sessionId+')"><i class="fa fa-heart"></i><span>Favorit</span></button>' : '';
                            content += '<div class="col-md-4">'+
                                     '<div class="list-product box-recommend">'+
                                     '<a href="<?php echo $link_detail; ?>/'+dataz.AuctionItemId+'">'+
@@ -397,6 +401,9 @@ $(document).ready(function() {
                            $('#loadlist').html(content);
                         }
                      });
+                  },
+                  error: function(e) {
+                     console.log(e);
                   }
                });
             }
@@ -418,7 +425,10 @@ $(document).ready(function() {
 			 $('#loadings').replaceWith('<div id="loadings" class="margin-10px text-align-center"><img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" /></div>');
 		  },
 		  success: function(data) {
-			 var content = '', datas = data.data;
+			 var content = '',
+          datas = data.data,
+          sessiond = "<?php echo ($this->session->userdata('userdata') !== null) ? 'TRUE' : 'FALSE'; ?>",
+          sessionId = '<?php echo $this->session->userdata('userdata')['UserId'] ?>';
 			 for (var i = 0; i < datas.length; i++) {
 				let dataz = datas[i], 
 				merk = (dataz.merk !== undefined) ? dataz.merk : '',
@@ -464,6 +474,7 @@ $(document).ready(function() {
 							};
 							var json_str = JSON.stringify(compare_data);
 							var lot = (dataz.LotNumb !== null) ? dataz.LotNumb : '???' ;
+                     var favorit = (sessiond === 'TRUE') ? '<button class="btn" onclick="addFav('+dataz.AuctionItemId+', '+sessionId+')"><i class="fa fa-heart"></i><span>Favorit</span></button>' : '';
 							content += '<div class="col-md-4">'+
 									 '<div class="list-product box-recommend">'+
 									 '<a href="<?php echo $link_detail; ?>/'+dataz.AuctionItemId+'">'+
@@ -484,7 +495,7 @@ $(document).ready(function() {
 									 '</div>'+
 									 '</a>'+
 									 '<div class="action-bottom">'+
-									 '<button class="btn"><i class="fa fa-heart"></i> <span>Favorit</span></button>'+
+									 favorit+
 									 '<button class="btn btn-compare" onclick=\'set_compare_product('+json_str+', "'+linked+'")\'><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>'+
 									 '</div>'+
 									 '</div>'+
@@ -501,4 +512,37 @@ $(document).ready(function() {
 		return false;
 	});
 });
+
+function addFav(aucid, id) {
+   var d = new Date(), dateformat = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds();
+   $.ajax({
+      type: 'POST',
+      url: '<?php echo linkservice('stock')."favorite/Add"; ?>',
+      data: 'AuctionItemId='+aucid+'&CreateDate='+dateformat+'&CreateUserId='+id+'&StsDeleted=1',
+      beforeSend: function() {
+         bootoast.toast({
+            message: 'Unit sedang ditambahkan ke daftar favorit kamu',
+            type: 'warning',
+            position: 'top-center',
+            timeout: 3
+         });
+      },
+      success: function(data) {
+         bootoast.toast({
+            message: 'Unit sudah ditambahkan ke daftar favorit kamu',
+            type: 'success',
+            position: 'top-center',
+            timeout: 3
+         });
+      },
+      error: function(e) {
+         bootoast.toast({
+            message: 'Koneksi terputus saat menambahkan favorit',
+            type: 'warning',
+            position: 'top-center',
+            timeout: 3
+         });
+      }
+   });
+}
 </script>
