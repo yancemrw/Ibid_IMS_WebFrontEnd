@@ -14,6 +14,21 @@ class Metodepembayaran extends CI_Controller {
     }
 
 	public function index() {
+
+		// print_r($this->cart->contents());
+		// die();
+		// $this->cart->destroy();
+		if (empty($this->cart->contents())) {
+			// echo "kosong";
+			redirect('beli-npl','refresh');
+		} 
+		// else {
+		// 	print_r($this->cart->contents());
+		// 	echo "ada";
+		// }
+		// die();
+
+
 		$data = array(
 			// header white untuk selain home, karena menggunakan header yang berwarna putih
 			'header_white'		=> "header-white",

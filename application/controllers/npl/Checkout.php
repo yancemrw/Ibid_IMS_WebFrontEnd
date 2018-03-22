@@ -3,6 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Checkout extends CI_Controller { 
 
+	function __construct() {
+		parent::__construct();
+		$this->link = 'http://beta.ibid.astra.co.id/backend/service/akun/email/logo2.jpg';
+	}
+
 	function index(){
 		$this->load->library('cart');
 		$methodeBayar = $_POST['tipe_methode'];
@@ -58,7 +63,7 @@ class Checkout extends CI_Controller {
 				
 				##################
 				## delete cart
-				$this->cart->destroy();
+				// $this->cart->destroy();
 				##################
 				
 				$TransactionId = $responseApiInsert['data'][0];
@@ -68,6 +73,7 @@ class Checkout extends CI_Controller {
 				$thisImgBarcodePath = $this->barcode($kodeTransaksi, 100);
 				
 				$_SESSION['userdata']['thisBarcodeTransaction'] = $thisImgBarcodePath;
+				// die();
 				
 				
 				$this->session->set_flashdata('message', array('success', $responseApiInsert['message']));
@@ -78,159 +84,163 @@ class Checkout extends CI_Controller {
 				$method = 'GET';
 				$responseApi = admsCurl($url, array('tipePengambilan' => 'dropdownlist'), $method);
 				if($responseApi['err']) { echo "<hr>cURL Error #:" . $responseApi['err']; } 
-				else { $dataApiDetail = json_decode($responseApi['response'], true); }
-				$detailBiodata = @$dataApiDetail['data']['users'];
-				
-				if ($methodeBayar == 4){
+					else { $dataApiDetail = json_decode($responseApi['response'], true); }
+					$detailBiodata = @$dataApiDetail['data']['users'];
 
-					$arr = array(
-						'aksi'	=> 'redir',
-						'url'	=> site_url('npl/success'),
-					);
-					echo json_encode($arr);
-					#kirim email
-					$dd = $this->sendEmail($kodeTransaksi, $thisImgBarcodePath);
-					die();
-				}
-				else if ($methodeBayar == 3){
-					$_SESSION['userdata']['TransactionId'] = @$TransactionId;
-					$arr = array(
-						'aksi'	=> 'cc',
-						'url'	=> linkservice('FINANCE') .'doku/cc',
-						'TransactionId'	=> $TransactionId,
-						'code'	=> $kodeTransaksi,
-						'bill'	=> $Total,
-					);
-					echo json_encode($arr);
-					#kirim email
-					$dd = $this->sendEmail($kodeTransaksi, $thisImgBarcodePath);
-					die();
-				}
-				else if ($methodeBayar == 2){
-					
-					$arrayKirim = array(
-						'chain_merchant' => 'NA',
-						'amount' => $Total,
-						'invoice' => $kodeTransaksi,
-						'email' => @$detailBiodata['Email'],
-						'name' => @$detailBiodata['first_name'].' '.@$detailBiodata['last_name'],
-						'phone' => @$detailBiodata['Phone'],
-					);
-					$url = linkservice('FINANCE') .'doku/va/request';
-					$method = 'POST';
-					$responseApi = admsCurl($url, $arrayKirim, $method);
-					if ($responseApi['err']) {
-						echo "<hr>cURL Error #:" . $responseApi['err'];
-					} 
-					else {
-						$dataApiDetail = json_decode($responseApi['response'], true); 
-						$_SESSION['userdata']['thisVa'] = @$dataApiDetail['data']['va_mandiri'];
-						$_SESSION['userdata']['kodeTransaksi'] = @$kodeTransaksi;
-						
-						## update VA mandiri
-						$postTransaksi['whereData'] = array('CodeTransactionNPL' => $kodeTransaksi);
-						$postTransaksi['updateData'] = array(
-							'VANumber' => $dataApiDetail['data']['va_mandiri'], 
-							'VABank' => 'Mandiri'
+					if ($methodeBayar == 4){
+					// pembayaran via loket
+						$arr = array(
+							'aksi'	=> 'redir',
+							'url'	=> site_url('npl/success'),
 						);
-						$url = linkservice('npl') .'counter/transaksi/edit';
-						$method = 'POST';
-						$updateVa = admsCurl($url, $postTransaksi, $method);
-					}
-					
-					$_SESSION['userdata']['TransactionId'] = @$TransactionId;
-					$arr = array(
-						'aksi'	=> 'va',
-						'url'	=> site_url('npl/vadetail'),
-						'code'	=> $kodeTransaksi,
-						'bill'	=> $Total,
-					);
-					echo json_encode($arr);
+						echo json_encode($arr);
 					#kirim email
-					$dd = $this->sendEmail($kodeTransaksi, $thisImgBarcodePath);
-					die();
-				}
-				else if ($methodeBayar == 1){ 
-					
-					$arrayKirim = array(
-						'chain_merchant' => 'NA',
-						'amount' => $Total,
-						'invoice' => $kodeTransaksi,
-						'email' => @$detailBiodata['Email'],
-						'name' => @$detailBiodata['first_name'].' '.@$detailBiodata['last_name'],
-						'phone' => @$detailBiodata['Phone'],
-					);
-					$url = linkservice('FINANCE') .'doku/va/request';
-					$method = 'POST';
-					$responseApi = admsCurl($url, $arrayKirim, $method);
-					if ($responseApi['err']) {
-						echo "<hr>cURL Error #:" . $responseApi['err'];
-					} 
-					else {
-						$dataApiDetail = json_decode($responseApi['response'], true); 
-						$_SESSION['userdata']['thisVa'] = @$dataApiDetail['data']['va_bca'];
-						$_SESSION['userdata']['kodeTransaksi'] = @$kodeTransaksi;
-						
-						## update VA mandiri
-						$postTransaksi['whereData'] = array('CodeTransactionNPL' => $kodeTransaksi);
-						$postTransaksi['updateData'] = array(
-							'VANumber' => $dataApiDetail['data']['va_bca'], 
-							'VABank' => 'BCA'
+						$dd = $this->sendEmail($kodeTransaksi, $thisImgBarcodePath , 4);
+						$this->cart->destroy();
+						die();
+					}
+					else if ($methodeBayar == 3){
+					// pembayaran via cc
+						$_SESSION['userdata']['TransactionId'] = @$TransactionId;
+						$arr = array(
+							'aksi'	=> 'cc',
+							'url'	=> linkservice('FINANCE') .'doku/cc',
+							'TransactionId'	=> $TransactionId,
+							'code'	=> $kodeTransaksi,
+							'bill'	=> $Total,
 						);
-						$url = linkservice('npl') .'counter/transaksi/edit';
-						$method = 'POST';
-						$updateVa = admsCurl($url, $postTransaksi, $method);
-					}
-					
-					$_SESSION['userdata']['TransactionId'] = @$TransactionId;
-					$arr = array(
-						'aksi'	=> 'va',
-						'url'	=> site_url('npl/vadetail'),
-						'code'	=> $kodeTransaksi,
-						'bill'	=> $Total,
-					);
-					echo json_encode($arr);
-					
+						echo json_encode($arr);
 					#kirim email
-					$dd = $this->sendEmail($kodeTransaksi, $thisImgBarcodePath);
+						$dd = $this->sendEmail($kodeTransaksi, $thisImgBarcodePath, 3);
+						$this->cart->destroy();
+						die();
+					}
+					else if ($methodeBayar == 2){
+					// pembayaran via bca
+						$arrayKirim = array(
+							'chain_merchant' => 'NA',
+							'amount' => $Total,
+							'invoice' => $kodeTransaksi,
+							'email' => @$detailBiodata['Email'],
+							'name' => @$detailBiodata['first_name'].' '.@$detailBiodata['last_name'],
+							'phone' => @$detailBiodata['Phone'],
+						);
+						$url = linkservice('FINANCE') .'doku/va/request';
+						$method = 'POST';
+						$responseApi = admsCurl($url, $arrayKirim, $method);
+						if ($responseApi['err']) {
+							echo "<hr>cURL Error #:" . $responseApi['err'];
+						} 
+						else {
+							$dataApiDetail = json_decode($responseApi['response'], true); 
+							$_SESSION['userdata']['thisVa'] = @$dataApiDetail['data']['va_mandiri'];
+							$_SESSION['userdata']['kodeTransaksi'] = @$kodeTransaksi;
 
-					die();
-				}
-				
-			} else if ($responseApiInsert['status'] == 0){ 
+						## update VA mandiri
+							$postTransaksi['whereData'] = array('CodeTransactionNPL' => $kodeTransaksi);
+							$postTransaksi['updateData'] = array(
+								'VANumber' => $dataApiDetail['data']['va_mandiri'], 
+								'VABank' => 'Mandiri'
+							);
+							$url = linkservice('npl') .'counter/transaksi/edit';
+							$method = 'POST';
+							$updateVa = admsCurl($url, $postTransaksi, $method);
+						}
 
-				$this->session->set_flashdata('message', array('warning', $responseApiInsert['message']));
+						$_SESSION['userdata']['TransactionId'] = @$TransactionId;
+						$arr = array(
+							'aksi'	=> 'va',
+							'url'	=> site_url('npl/vadetail'),
+							'code'	=> $kodeTransaksi,
+							'bill'	=> $Total,
+						);
+						echo json_encode($arr);
+					#kirim email
+						$dd = $this->sendEmail($kodeTransaksi, $thisImgBarcodePath , 2);
+						$this->cart->destroy();
+						die();
+					}
+					else if ($methodeBayar == 1){ 
+					// pembayaran va mandiri 
+						$arrayKirim = array(
+							'chain_merchant' => 'NA',
+							'amount' => $Total,
+							'invoice' => $kodeTransaksi,
+							'email' => @$detailBiodata['Email'],
+							'name' => @$detailBiodata['first_name'].' '.@$detailBiodata['last_name'],
+							'phone' => @$detailBiodata['Phone'],
+						);
+						$url = linkservice('FINANCE') .'doku/va/request';
+						$method = 'POST';
+						$responseApi = admsCurl($url, $arrayKirim, $method);
+						if ($responseApi['err']) {
+							echo "<hr>cURL Error #:" . $responseApi['err'];
+						} 
+						else {
+							$dataApiDetail = json_decode($responseApi['response'], true); 
+							$_SESSION['userdata']['thisVa'] = @$dataApiDetail['data']['va_bca'];
+							$_SESSION['userdata']['kodeTransaksi'] = @$kodeTransaksi;
+
+						## update VA mandiri
+							$postTransaksi['whereData'] = array('CodeTransactionNPL' => $kodeTransaksi);
+							$postTransaksi['updateData'] = array(
+								'VANumber' => $dataApiDetail['data']['va_bca'], 
+								'VABank' => 'BCA'
+							);
+							$url = linkservice('npl') .'counter/transaksi/edit';
+							$method = 'POST';
+							$updateVa = admsCurl($url, $postTransaksi, $method);
+						}
+
+						$_SESSION['userdata']['TransactionId'] = @$TransactionId;
+						$arr = array(
+							'aksi'	=> 'va',
+							'url'	=> site_url('npl/vadetail'),
+							'code'	=> $kodeTransaksi,
+							'bill'	=> $Total,
+						);
+
+					#kirim email
+						$dd = $this->sendEmail($kodeTransaksi, $thisImgBarcodePath , 1);
+						echo json_encode($arr);
+						$this->cart->destroy();
+						die();
+					}
+
+				} else if ($responseApiInsert['status'] == 0){ 
+
+					$this->session->set_flashdata('message', array('warning', $responseApiInsert['message']));
 				// redirect('beli-npl','refresh');
 
+				}
 			}
-		}
-		
-		
-		
-		
-		
-	}
 
-	function barcode( $text="0", $size="100", $filepath="", $orientation="horizontal", $code_type="code128", $print=true, $SizeFactor=1.6 ) {
-		$code_string = "";
+
+
+
+
+		}
+
+		function barcode( $text="0", $size="100", $filepath="", $orientation="horizontal", $code_type="code128", $print=true, $SizeFactor=1.6 ) {
+			$code_string = "";
 		// Translate the $text into barcode the correct $code_type
-		if ( in_array(strtolower($code_type), array("code128", "code128b")) ) {
-			$chksum = 104;
+			if ( in_array(strtolower($code_type), array("code128", "code128b")) ) {
+				$chksum = 104;
 			// Must not change order of array elements as the checksum depends on the array's key to validate final code
-			$code_array = array(" "=>"212222","!"=>"222122","\""=>"222221","#"=>"121223","$"=>"121322","%"=>"131222","&"=>"122213","'"=>"122312","("=>"132212",")"=>"221213","*"=>"221312","+"=>"231212",","=>"112232","-"=>"122132","."=>"122231","/"=>"113222","0"=>"123122","1"=>"123221","2"=>"223211","3"=>"221132","4"=>"221231","5"=>"213212","6"=>"223112","7"=>"312131","8"=>"311222","9"=>"321122",":"=>"321221",";"=>"312212","<"=>"322112","="=>"322211",">"=>"212123","?"=>"212321","@"=>"232121","A"=>"111323","B"=>"131123","C"=>"131321","D"=>"112313","E"=>"132113","F"=>"132311","G"=>"211313","H"=>"231113","I"=>"231311","J"=>"112133","K"=>"112331","L"=>"132131","M"=>"113123","N"=>"113321","O"=>"133121","P"=>"313121","Q"=>"211331","R"=>"231131","S"=>"213113","T"=>"213311","U"=>"213131","V"=>"311123","W"=>"311321","X"=>"331121","Y"=>"312113","Z"=>"312311","["=>"332111","\\"=>"314111","]"=>"221411","^"=>"431111","_"=>"111224","\`"=>"111422","a"=>"121124","b"=>"121421","c"=>"141122","d"=>"141221","e"=>"112214","f"=>"112412","g"=>"122114","h"=>"122411","i"=>"142112","j"=>"142211","k"=>"241211","l"=>"221114","m"=>"413111","n"=>"241112","o"=>"134111","p"=>"111242","q"=>"121142","r"=>"121241","s"=>"114212","t"=>"124112","u"=>"124211","v"=>"411212","w"=>"421112","x"=>"421211","y"=>"212141","z"=>"214121","{"=>"412121","|"=>"111143","}"=>"111341","~"=>"131141","DEL"=>"114113","FNC 3"=>"114311","FNC 2"=>"411113","SHIFT"=>"411311","CODE C"=>"113141","FNC 4"=>"114131","CODE A"=>"311141","FNC 1"=>"411131","Start A"=>"211412","Start B"=>"211214","Start C"=>"211232","Stop"=>"2331112");
-			$code_keys = array_keys($code_array);
-			$code_values = array_flip($code_keys);
-			for ( $X = 1; $X <= strlen($text); $X++ ) {
-				$activeKey = substr( $text, ($X-1), 1);
-				$code_string .= $code_array[$activeKey];
-				$chksum=($chksum + ($code_values[$activeKey] * $X));
-			}
-			$code_string .= $code_array[$code_keys[($chksum - (intval($chksum / 103) * 103))]];
+				$code_array = array(" "=>"212222","!"=>"222122","\""=>"222221","#"=>"121223","$"=>"121322","%"=>"131222","&"=>"122213","'"=>"122312","("=>"132212",")"=>"221213","*"=>"221312","+"=>"231212",","=>"112232","-"=>"122132","."=>"122231","/"=>"113222","0"=>"123122","1"=>"123221","2"=>"223211","3"=>"221132","4"=>"221231","5"=>"213212","6"=>"223112","7"=>"312131","8"=>"311222","9"=>"321122",":"=>"321221",";"=>"312212","<"=>"322112","="=>"322211",">"=>"212123","?"=>"212321","@"=>"232121","A"=>"111323","B"=>"131123","C"=>"131321","D"=>"112313","E"=>"132113","F"=>"132311","G"=>"211313","H"=>"231113","I"=>"231311","J"=>"112133","K"=>"112331","L"=>"132131","M"=>"113123","N"=>"113321","O"=>"133121","P"=>"313121","Q"=>"211331","R"=>"231131","S"=>"213113","T"=>"213311","U"=>"213131","V"=>"311123","W"=>"311321","X"=>"331121","Y"=>"312113","Z"=>"312311","["=>"332111","\\"=>"314111","]"=>"221411","^"=>"431111","_"=>"111224","\`"=>"111422","a"=>"121124","b"=>"121421","c"=>"141122","d"=>"141221","e"=>"112214","f"=>"112412","g"=>"122114","h"=>"122411","i"=>"142112","j"=>"142211","k"=>"241211","l"=>"221114","m"=>"413111","n"=>"241112","o"=>"134111","p"=>"111242","q"=>"121142","r"=>"121241","s"=>"114212","t"=>"124112","u"=>"124211","v"=>"411212","w"=>"421112","x"=>"421211","y"=>"212141","z"=>"214121","{"=>"412121","|"=>"111143","}"=>"111341","~"=>"131141","DEL"=>"114113","FNC 3"=>"114311","FNC 2"=>"411113","SHIFT"=>"411311","CODE C"=>"113141","FNC 4"=>"114131","CODE A"=>"311141","FNC 1"=>"411131","Start A"=>"211412","Start B"=>"211214","Start C"=>"211232","Stop"=>"2331112");
+				$code_keys = array_keys($code_array);
+				$code_values = array_flip($code_keys);
+				for ( $X = 1; $X <= strlen($text); $X++ ) {
+					$activeKey = substr( $text, ($X-1), 1);
+					$code_string .= $code_array[$activeKey];
+					$chksum=($chksum + ($code_values[$activeKey] * $X));
+				}
+				$code_string .= $code_array[$code_keys[($chksum - (intval($chksum / 103) * 103))]];
 
-			$code_string = "211214" . $code_string . "2331112";
-		}
-		elseif ( strtolower($code_type) == "code128a" ) {
-			$chksum = 103;
+				$code_string = "211214" . $code_string . "2331112";
+			}
+			elseif ( strtolower($code_type) == "code128a" ) {
+				$chksum = 103;
 			$text = strtoupper($text); // Code 128A doesn't support lower case
 			// Must not change order of array elements as the checksum depends on the array's key to validate final code
 			$code_array = array(" "=>"212222","!"=>"222122","\""=>"222221","#"=>"121223","$"=>"121322","%"=>"131222","&"=>"122213","'"=>"122312","("=>"132212",")"=>"221213","*"=>"221312","+"=>"231212",","=>"112232","-"=>"122132","."=>"122231","/"=>"113222","0"=>"123122","1"=>"123221","2"=>"223211","3"=>"221132","4"=>"221231","5"=>"213212","6"=>"223112","7"=>"312131","8"=>"311222","9"=>"321122",":"=>"321221",";"=>"312212","<"=>"322112","="=>"322211",">"=>"212123","?"=>"212321","@"=>"232121","A"=>"111323","B"=>"131123","C"=>"131321","D"=>"112313","E"=>"132113","F"=>"132311","G"=>"211313","H"=>"231113","I"=>"231311","J"=>"112133","K"=>"112331","L"=>"132131","M"=>"113123","N"=>"113321","O"=>"133121","P"=>"313121","Q"=>"211331","R"=>"231131","S"=>"213113","T"=>"213311","U"=>"213131","V"=>"311123","W"=>"311321","X"=>"331121","Y"=>"312113","Z"=>"312311","["=>"332111","\\"=>"314111","]"=>"221411","^"=>"431111","_"=>"111224","NUL"=>"111422","SOH"=>"121124","STX"=>"121421","ETX"=>"141122","EOT"=>"141221","ENQ"=>"112214","ACK"=>"112412","BEL"=>"122114","BS"=>"122411","HT"=>"142112","LF"=>"142211","VT"=>"241211","FF"=>"221114","CR"=>"413111","SO"=>"241112","SI"=>"134111","DLE"=>"111242","DC1"=>"121142","DC2"=>"121241","DC3"=>"114212","DC4"=>"124112","NAK"=>"124211","SYN"=>"411212","ETB"=>"421112","CAN"=>"421211","EM"=>"212141","SUB"=>"214121","ESC"=>"412121","FS"=>"111143","GS"=>"111341","RS"=>"131141","US"=>"114113","FNC 3"=>"114311","FNC 2"=>"411113","SHIFT"=>"411311","CODE C"=>"113141","CODE B"=>"114131","FNC 4"=>"311141","FNC 1"=>"411131","Start A"=>"211412","Start B"=>"211214","Start C"=>"211232","Stop"=>"2331112");
@@ -305,7 +315,7 @@ class Checkout extends CI_Controller {
 		
 		for ( $i=1; $i <= strlen($code_string); $i++ ){
 			$code_length = $code_length + (integer)(substr($code_string,($i-1),1));
-			}
+		}
 
 		if ( strtolower($orientation) == "horizontal" ) {
 			$img_width = $code_length*$SizeFactor;
@@ -386,196 +396,314 @@ class Checkout extends CI_Controller {
 		return $response;
 	}
 	
-	function sendEmail($kodeTransaksi, $thisImgBarcodePath){
+	function sendEmail($kodeTransaksi, $thisImgBarcodePath , $TipePembayaranParam = null ){
+
+		$TipePembayaran = strlen($TipePembayaranParam) > 0 ? $TipePembayaranParam : 0;
+
 		###############################
-		$isiemail = "<html><head>
-<title></title>
-<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta http-equiv='X-UA-Compatible' content='IE=edge'>
-<style type='text/css'>
-    /* FONTS */
-    @media screen {
-        @font-face {
-          font-family: 'Lato';
-          font-style: normal;
-          font-weight: 400;
-          src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v11/qIIYRU-oROkIk8vfvxw6QvesZW2xOQ-xsNqO47m55DA.woff) format('woff');
-        }
+		$isiemail = "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+		<html>
+		<head>
+		<title>IBID - Beli NPL</title>
+		<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+		<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+		<style type='text/css'>
+		* {
+			-ms-text-size-adjust:100%;
+			-webkit-text-size-adjust:none;
+			-webkit-text-resize:100%;
+			text-resize:100%;
+		}
+		a{
+			outline:none;
+			color:#40aceb;
+			text-decoration:underline;
+		}
+		p{
+			margin: 0;
+			line-height: 1.6;
+		}
+		.flexible{
+			border: 1px solid #C2D89C;
+		}
+		a:hover{text-decoration:none !important;}
+		.nav a:hover{text-decoration:underline !important;}
+		.title a:hover{text-decoration:underline !important;}
+		.title-2 a:hover{text-decoration:underline !important;}
+		.btn:hover{opacity:0.8;}
+		.btn a:hover{text-decoration:none !important;}
+		.btn{
+			-webkit-transition:all 0.3s ease;
+			-moz-transition:all 0.3s ease;
+			-ms-transition:all 0.3s ease;
+			transition:all 0.3s ease;
+		}
+		table td {border-collapse: collapse !important;}
+		.ExternalClass, .ExternalClass a, .ExternalClass span, .ExternalClass b, .ExternalClass br, .ExternalClass p, .ExternalClass div{line-height:inherit;}
+		@media only screen and (max-width:500px) {
+			table[class='flexible']{width:100% !important;}
+			table[class='center']{
+				float:none !important;
+				margin:0 auto !important;
+			}
+			*[class='hide']{
+				display:none !important;
+				width:0 !important;
+				height:0 !important;
+				padding:0 !important;
+				font-size:0 !important;
+				line-height:0 !important;
+			}
+			td[class='img-flex'] img{
+				width:100% !important;
+				height:auto !important;
+			}
+			td[class='aligncenter']{text-align:center !important;}
+			th[class='flex']{
+				display:block !important;
+				width:100% !important;
+			}
+			td[class='wrapper']{padding:0 !important;}
+			td[class='holder']{padding:30px 15px 20px !important;}
+			td[class='nav']{
+				padding:20px 0 0 !important;
+				text-align:center !important;
+			}
+			td[class='h-auto']{height:auto !important;}
+			td[class='description']{padding:30px 20px !important;}
+			td[class='i-120'] img{
+				width:120px !important;
+				height:auto !important;
+			}
+			td[class='footer']{padding:5px 20px 20px !important;}
+			td[class='footer'] td[class='aligncenter']{
+				line-height:25px !important;
+				padding:20px 0 0 !important;
+			}
+			tr[class='table-holder']{
+				display:table !important;
+				width:100% !important;
+			}
+			th[class='thead']{display:table-header-group !important; width:100% !important;}
+			th[class='tfoot']{display:table-footer-group !important; width:100% !important;}
+		}
+		</style>
+		</head>
+		<body style='margin:0; padding:0;' bgcolor='#f4f4f4'>
+		<table style='min-width:320px;margin:40px 0' width='100%' cellspacing='0' cellpadding='0' bgcolor='#f4f4f4'>
+		<!-- fix for gmail -->
+		<tr>
+		<td class='hide'>
+		<table width='600' cellpadding='0' cellspacing='0' style='width:600px !important;'>
+		<tr>
+		<td style='min-width:600px; font-size:0; line-height:0;'>&nbsp;</td>
+		</tr>
+		</table>
+		</td>
+		</tr>
+		<tr>
+		<td class='wrapper' style='padding:0 10px;'>
+		<!-- module 3 -->
+		<table data-module='module-3' data-thumb='thumbnails/03.png' width='100%' cellpadding='0' cellspacing='0'>
+		<tr>
+		<td data-bgcolor='bg-module' bgcolor='#f4f4f4'>
+		<table class='flexible' width='600' align='center' style='margin:0 auto;' cellpadding='0' cellspacing='0'>
+		<tr>
+		<td class='img-flex'><img src='".$this->link."' style='vertical-align:top;' width='600' height='auto' alt='' /></td>
+		</tr>
+		<tr>
+		<td data-bgcolor='bg-block' class='holder' style='padding:50px 60px 50px;' bgcolor='#ffffff'>
+		<table width='100%' cellpadding='0' cellspacing='0'>
+		<tr>
+		<td data-color='title' data-size='size title' data-min='20' data-max='40' data-link-color='link title color' data-link-style='text-decoration:none; color:#292c34;' class='title' align='center' style='font:30px/33px Arial, Helvetica, sans-serif; color:#8F3F97; padding:0 0 24px;'>
+		Detail Pembelian NPL
+		</td>
+		</tr>";
 
-        @font-face {
-          font-family: 'Lato';
-          font-style: normal;
-          font-weight: 700;
-          src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v11/qdgUG4U09HnJwhYI-uK18wLUuEpTyoUstqEm5AMlJo4.woff) format('woff');
-        }
+		// barcode 
+		if ($TipePembayaran==4) {
 
-        @font-face {
-          font-family: 'Lato';
-          font-style: italic;
-          font-weight: 400;
-          src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.gstatic.com/s/lato/v11/RYyZNoeFgb0l7W3Vu1aSWOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
-        }
+			$isiemail .="
+			<tr>
+			<td data-color='title' data-size='size title' data-min='20' data-max='40' data-link-color='link title color' data-link-style='text-decoration:none; color:#292c34;' class='title' style='font:30px/33px Arial, Helvetica, sans-serif; color:#8F3F97; padding:0 0 24px;' align='center'>
+			<img src='http:".$thisImgBarcodePath."' width='200'>
+			</td>
+			</tr>
+			";
 
-        @font-face {
-          font-family: 'Lato';
-          font-style: italic;
-          font-weight: 700;
-          src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https://fonts.gstatic.com/s/lato/v11/HkF_qI1x_noxlxhrhMQYELO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
-        }
-    }
+		}
+		// end 
 
-    /* CLIENT-SPECIFIC STYLES */
-    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
-    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
-    img { -ms-interpolation-mode: bicubic; }
-
-    /* RESET STYLES */
-    img { border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
-    table { border-collapse: collapse !important; }
-    body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; }
-
-    /* iOS BLUE LINKS */
-    a[x-apple-data-detectors] {
-        color: inherit !important;
-        text-decoration: none !important;
-        font-size: inherit !important;
-        font-family: inherit !important;
-        font-weight: inherit !important;
-        line-height: inherit !important;
-    }
-
-    /* MOBILE STYLES */
-    @media screen and (max-width:600px){
-        h1 {
-            font-size: 32px !important;
-            line-height: 32px !important;
-        }
-    }
-
-    /* ANDROID CENTER FIX */
-    div[style*='margin: 16px 0;'] { margin: 0 !important; }
-</style>
-</head>
-<body style='background-color: #f3f5f7; margin: 0 !important; padding: 0 !important;'>
-
-<!-- HIDDEN PREHEADER TEXT -->
-<div style='display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: 'Lato', Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;'> 
-</div>";
-
-$isiemail .= "<table width='100%' cellspacing='0' cellpadding='0' border='0'>
-    <!-- LOGO -->
-    <tbody><tr>
-        <td bgcolor='#33cabb' align='center'>
-            <!--[if (gte mso 9)|(IE)]>
-            <table align='center' border='0' cellspacing='0' cellpadding='0' width='600'>
-            <tr>
-            <td align='center' valign='top' width='600'>
-            <![endif]-->
-            <table style='max-width: 600px;' width='100%' cellspacing='0' cellpadding='0' border='0'>
-                <tbody><tr>
-                    <td style='padding: 80px 10px 80px 10px;' valign='top' align='center'>
-                        <a href='http://thetheme.io' target='_blank'>
-                            <img alt='Logo' style='display: block; font-family: 'Lato', Helvetica, Arial, sans-serif; color: #ffffff; font-size: 18px;' src='http://ibidadmsdevweb.azurewebsites.net/ibid.png' width='100px' border='0'>
-                        </a>
-                    </td>
-                </tr>
-            </tbody></table>
-            <!--[if (gte mso 9)|(IE)]>
-            </td>
-            </tr>
-            </table>
-            <![endif]-->
-        </td>
-    </tr>
-    <!-- HERO -->
-    <tr>
-        <td style='padding: 0px 10px 0px 10px;' bgcolor='#33cabb' align='center'>
-            <!--[if (gte mso 9)|(IE)]>
-            <table align='center' border='0' cellspacing='0' cellpadding='0' width='600'>
-            <tr>
-            <td align='center' valign='top' width='600'>
-            <![endif]-->
-            <table style='max-width: 600px;' width='100%' cellspacing='0' cellpadding='0' border='0'>
-                <tbody><tr>
-                    <td style='padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;' valign='top' bgcolor='#ffffff' align='center'>
-                      <h1 style='font-size: 42px; font-weight: 400; margin: 0;'>Halo, ".$this->input->post('Name')."!</h1>
-                    </td>
-                </tr>
-            </tbody></table>
-            <!--[if (gte mso 9)|(IE)]>
-            </td>
-            </tr>
-            </table>
-            <![endif]-->
-        </td>
-    </tr>
-    <!-- COPY BLOCK -->
-    <tr>
-        <td style='padding: 0px 10px 0px 10px;' bgcolor='#f4f4f4' align='center'>
-            <!--[if (gte mso 9)|(IE)]>
-            <table align='center' border='0' cellspacing='0' cellpadding='0' width='600'>
-            <tr>
-            <td align='center' valign='top' width='600'>
-            <![endif]-->
-            <table style='max-width: 600px;' width='100%' cellspacing='0' cellpadding='0' border='0'>
-              <!-- COPY -->
-              <tbody><tr>
-                <td style='padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 25px;' bgcolor='#ffffff' align='left'> ";
-
-            $isiemail .= 'Halo ' . @$_SESSION['userdata']['Name'];
-			$isiemail .= "<br>";
-			$isiemail .= "Pesanan NPL kamu melalui Webiste berhasil dibuat, segera lakukan pembayaran";
-			$isiemail .= "<br>";
-			$isiemail .= "Kode Order <b>".$kodeTransaksi."</b>";
-			$isiemail .= "<br>";
-			$isiemail .= "<img src='".$thisImgBarcodePath."'>";
-			$isiemail .= "<br>";
-			$isiemail .= "Detail Transaksi Order NPL";
+		$isiemail .="
+		<tr>
+		<td data-color='text' data-size='size text' data-min='10' data-max='26' data-link-color='link text color' data-link-style='font-weight:bold; text-decoration:underline; color:#40aceb;' align='left' style='font:14px/29px Arial, Helvetica, sans-serif; color:#666; padding:0 0 21px;'>
+		<table width='100%' cellspacing='0' cellpadding='0' border='0' bgcolor='#ffffff' align='center'>
+		<tbody>
+		<tr>
+		<td style='font-family:Helvetica,'Arial',sans-serif;color:#000000;font-size:11px' valign='top'>
+		<table width='100%' cellspacing='0' cellpadding='0' border='0'>
+		<tbody>
+		<tr>
+		<td data-color='text' data-size='size text' data-min='10' data-max='26' data-link-color='link text color' data-link-style='font-weight:bold; text-decoration:underline; color:#40aceb;' align='left' style='font:14px/29px Arial, Helvetica, sans-serif; color:#666; padding:0 0 21px;'>
+		<p>Agar Anda dapat segera melakukan penawaran atau bidding untuk objek lelang favorit, silahkan lakukan pembayaran tagihan Nomor Pokok Lelang (NPL) lewat Virtual Account Anda sebelum tanggal <span style='font-weight:900;'>".date('d F Y', strtotime(date('Y-m-d', strtotime('+2 days')))).", 00:00 WIB.</span></p>
+		</td>
+		</tr>
+		<tr>
+		<td height='15'><img style='display:block' src='' alt='' class='CToWUd' width='20' height='15' border='0'></td>
+		</tr>      
+		<tr>
+		<td>
+		
+		<table width='100%' cellspacing='0' cellpadding='0' border='0'>
+		<tbody><tr>
+		<td height='12'><img style='display:block' src='' alt='' class='CToWUd' width='20' height='12' border='0'></td>
+		</tr>
+		</tbody>
+		</table>
+		</td>
+		</tr> 
+		</tbody>
+		</table>
+		</td>
+		<tr>
+		<td>";
 
                 // email
-			$isiemail .= "<table border='1'>
-			<thead><tr>
-			<th>Jadwal</th>
-			<th>Tipe Lelang</th>
-			<th>Item</th>
-			<th>Tipe NPL</th>
-			<th>QTY</th>
-			<th style='text-align:right'>Item Price</th>
-			<th style='text-align:right'>Sub-Total</th>
-			</tr>  ";
+		$isiemail .= "<table style='margin:0 auto 30px;padding:20px;border: 1px solid #e6e6e6'>
+		<thead><tr style='font-size:12px'>
+		<th>Jadwal</th>
+		<th>Tipe Lelang</th>
+		<th>Item</th>
+		<th>Tipe NPL</th>
+		<th>Qty</th>
+		<th style='text-align:right'>Harga Item</th>
+		<th style='text-align:right'>Sub-Total</th>
+		</tr> ";
 
-			foreach ($this->cart->contents() as $items){
-				$isiemail .= "<tr><td>".$items['name']."</td>";
-				$isiemail .= "<td>".$items['options']['Tipe Lelang']."</td>";
-				$isiemail .= "<td>".$items['options']['Item']."</td>";
-				$isiemail .= "<td>".$items['options']['Tipe NPL']."</td>";
-				$isiemail .= "<td>".$items['qty']."</td>";
-				$isiemail .= "<td>".$this->cart->format_number($items['price'])."</td>";
-				$isiemail .= "<td>".$this->cart->format_number($items['subtotal'])."</td></tr>";
-			}
+		foreach ($this->cart->contents() as $items){
 
+			// tipe NPL
+			$tipenpl = $items['options']['Tipe NPL']==0 ? 'NPL Live' : (($items['options']['Tipe NPL']==1) ? 'NPL Online' : (($items['options']['Tipe NPL']==5) ? 'NPL Unlimited' : ''));
+
+			$isiemail .= "<tr style='font-size:12px'><td>".$items['name']. " - ".$items['options']['thisDate']."</td>";
+			$isiemail .= "<td>".$items['options']['Tipe Lelang']."</td>";
+			$isiemail .= "<td>".$items['options']['Item']."</td>";
+			$isiemail .= "<td>".$tipenpl."</td>";
+			$isiemail .= "<td>".$items['qty']."</td>";
+			$isiemail .= "<td>".$this->cart->format_number($items['price'])."</td>";
+			$isiemail .= "<td>".$this->cart->format_number($items['subtotal'])."</td></tr>";
+		}
+
+
+		// $isiemail .= "<tr>
+		// <td colspan='4'></td>
+		// <td class='text-right'><strong>Total</strong></td></tr>";
+
+		// $isiemail .= "<td class='text-right' id='thisTotal'>".$this->cart->format_number($this->cart->total() + 100000)."</td> ";
+		$isiemail .= "</table>"; 
+		$isiemail .= "	
+		<table width='100%' cellspacing='0' cellpadding='0' border='0'>
+		<tbody>
+		<tr>
+		<td style='font-size:12px;line-height:21px;font-weight:bold' width='50%' valign='top' align='center' rowspan='2'>TOTAL<br>
+		<span style='font:18px Arial, Helvetica, sans-serif; line-height:32px;color:#00af41'>RP ".$this->cart->format_number($this->cart->total() + 100000)."</span></td>
+		</tr>
+		</tbody>
+		</table>
+
+		</td>
+		</tr>";
+
+
+		if ($TipePembayaran == 2 or $TipePembayaran == 1) {
+			
+
+			$isiemail .="
+			<tr>
+			<td data-color='text' data-size='size text' data-min='10' data-max='26' data-link-color='link text color' data-link-style='font-weight:bold; text-decoration:underline; color:#40aceb;' align='left' style='font:12px/24px Arial, Helvetica, sans-serif; color:#666; padding:0 0 30px;'>
+			<h3>Pembayaran BCA dengan mobile banking BCA (m-BCA)</h3>
+			<p>1. Lakukan login m-BCA pada aplikasi BCA Mobile di gawai Anda</p>
+			<p>2. Pilih m-Transfer --> BCA Virtual Account</p>
+			<p>3. Pilih dari 'IBID' dari Daftar Transfer, atau masukkan nomor Virtual Account (jika baru pertama kali melakukan transaksi VA bersama IBID)</p>
+			<p>4. Periksa detail informasi pembayaran seperti nama dan total tagihan</p>
+			<p>5. Klik 'bayar' dan masukkan pin m-BCA</p>
+			<p>6. Pembayaran selesai. Simpan notifikasi yang muncul sebagai bukti pembayaran</p>
+
+			<h3>Pembayaran BCA dengan KlikBCA Individual</h3>
+			<p>1. Lakukan login pada aplikasi KlikBCA Individual (https://ibank.klikbca.com/)</p>
+			<p>2. Masukkan User ID dan PIN</p>
+			<p>3. Pilih Transfer Dana --> Transfer ke BCA Virtual Account
+			Masukkan nomor BCA Virtual Account</p>
+			<p>4. Masukkan jumlah yang ingin dibayarkan</p>
+			<p>5. Validasi pembayaran</p></p>
+			<p>6. Cetak nomor referensi sebagai bukti transaksi Anda</p>
+
+			<h3>Pembayaran BCA di Kantor Bank BCA</h3>
+			<p>1. Ambil nomor antrian transaksi teller dan isi slip setoran</p>
+			<p>2. Serahkan slip dan jumlah setoran kepada teller BCA</p>
+			<p>3. Teller BCA akan melakukan validasi transaksi sebelum Anda menyerahkan dana</p>
+			<p>4. Simpan slip setoran hasil validasi sebagai bukti pembayaran</p>
+			</td>
+			</tr>";
+
+		} elseif($TipePembayaran == 4){
 
 			$isiemail .= "<tr>
-					<td colspan='4'></td>
-					<td class='text-right'><strong>Total</strong></td>";
+			<td data-color='text' data-size='size text' data-min='10' data-max='26' data-link-color='link text color' data-link-style='font-weight:bold; text-decoration:underline; color:#40aceb;' style='font:12px/24px Arial, Helvetica, sans-serif; color:#666; padding:0 0 30px;' align='left'>
+			<h3>Langkah-langkah pembayaran Langsung di Loket:</h3>
+			<p>1. Pembayaran hanya dapat dilakukan di loket IBID menggunakan kartu debet.</p>
+			<p>2. Anda akan menerima struk berisi barcode yang harus dibawa ketika datang ke loket.</p>
+			<p>3 .Verifikasi pembayaran dilakukan oleh petugas loket.</p>
+			</td>
+			</tr>";
 
-			$isiemail .= "<td class='text-right' id='thisTotal'>".$this->cart->format_number($this->cart->total() + 100000)."</td> </tr> </table>"; 
+		}
 
-			$dataInsert =  array (
-				'type' => 'email',
+		$isiemail .= "
+		<tr>
+		<td data-color='text' data-size='size text' data-min='10' data-max='26' data-link-color='link text color' data-link-style='font-weight:bold; text-decoration:underline; color:#40aceb;' align='left' style='font:14px/29px Arial, Helvetica, sans-serif; color:#666; padding:0 0 21px;'>
+		<p>Email ini dikirimkan secara otomatis oleh sistem kami. Mohon untuk tidak membalas email ke alamat ini. Jika Anda ingin mengajukan pertanyaan, silahkan menghubungi IBID lewat email resmi <a href='mailto:info.ibid@ibid.astra.co.id'>info.ibid@ibid.astra.co.id</a></p>
+		</td>
+		</tr>
+		<tr>
+		<td data-color='text' data-size='size text' data-min='10' data-max='26' data-link-color='link text color' data-link-style='font-weight:bold; text-decoration:underline; color:#40aceb;' align='left' style='font:14px/29px Arial, Helvetica, sans-serif; color:#666; padding:0 0 21px;'>
+		<p>Terima kasih,</p>
+		<p>IBID</p>
+		</td>
+		</tr>
+		</table>
+		</td>
+		</tr>
+		</table>
+		</td>
+		</tr>
+		</table>
+		</td>
+		</tr>
+		<!-- fix for gmail -->
+		<tr>
+		<td style='line-height:0;'><div style='display:none; white-space:nowrap; font:15px/1px courier;'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></td>
+		</tr>
+		</table>
+		</body>
+		</html>";
+
+
+
+		$dataInsert =  array (
+			'type' => 'email',
 				// 'to'	=> 'rendhy.wijayanto@sera.astra.co.id',
-				'to' => @$_SESSION['userdata']['username'],
-				'cc' => 'lutfi.f.hidayat@gmail.com',
+			'to' => @$_SESSION['userdata']['username'],
+			'cc' => 'lutfi.f.hidayat@gmail.com',
 				// 'cc' => 'abitiyoso@gmail.com; ankghoro@gmail.com; rendhy.wijayanto@sera.astra.co.id',
-				'subject' => 'Order Pembelian NPL melalui Counter',
-				'body' =>  "$isiemail",
-				'attachment' => []
-			);  
-			
-			$url 			= "http://alpha.ibid.astra.co.id/backend/service/notif/api/notification";
-			$method 		= 'POST';
-			$responseApi 	= admsCurl($url, $dataInsert, $method);
+			'subject' => 'Order Pembelian NPL melalui Counter',
+			'body' =>  "$isiemail",
+			'attachment' => []
+		);  
+
+		$url 			= "http://alpha.ibid.astra.co.id/backend/service/notif/api/notification";
+		$method 		= 'POST';
+		$responseApi 	= admsCurl($url, $dataInsert, $method);
 		###############################
 
 			// return $responseApi;
