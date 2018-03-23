@@ -94,6 +94,13 @@ a.delete-compare {
     display: block !important;
 }
 
+.empty-fav-icon {
+    position: relative;
+    margin-right: 8px;
+    width: 16px;
+    top: -3px;
+}
+
 .float-left {
 	float: left;
 }

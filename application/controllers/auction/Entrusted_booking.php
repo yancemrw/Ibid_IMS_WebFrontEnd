@@ -94,6 +94,7 @@ class Entrusted_booking extends CI_Controller {
 		$_POST['id_cabang'] = @$_POST['cabang'];
 		$_POST['userid'] = @$_SESSION['userdata']['UserId'];
 		$_POST['cttn_pndftrn'] = @$_POST['deskripsi'];
+		$_POST['StsMiddleStock'] = 1;
 		
 		## insert ke stock
 		$dataInsert = $_POST;
@@ -129,6 +130,7 @@ class Entrusted_booking extends CI_Controller {
 				'Year' => $detailAuctionItem['tahun'],
 				'CreateUser' => @$_SESSION['userdata']['UserId'],
 				'AuctionItemId' => $AuctionItemId,
+				'StsMiddleStock' => 1,
 			);
 			$url = linkservice('taksasi') .'scheduleitem/add';
 			$method = 'POST';
