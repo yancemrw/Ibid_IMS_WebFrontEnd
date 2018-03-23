@@ -130,7 +130,7 @@ class Entrusted_booking extends CI_Controller {
 				'Year' => $detailAuctionItem['tahun'],
 				'CreateUser' => @$_SESSION['userdata']['UserId'],
 				'AuctionItemId' => $AuctionItemId,
-				'StsMiddleStock' => $StsMiddleStock,
+				'StsMiddleStock' => 1,
 			);
 			$url = linkservice('taksasi') .'scheduleitem/add';
 			$method = 'POST';
