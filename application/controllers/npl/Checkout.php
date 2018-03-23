@@ -135,6 +135,8 @@ class Checkout extends CI_Controller {
 							$dataApiDetail = json_decode($responseApi['response'], true); 
 							$_SESSION['userdata']['thisVa'] = @$dataApiDetail['data']['va_mandiri'];
 							$_SESSION['userdata']['kodeTransaksi'] = @$kodeTransaksi;
+							$_SESSION['userdata']['nilaiTransaksi'] = $Total;
+							$_SESSION['userdata']['va'] = 'bca';
 
 						## update VA mandiri
 							$postTransaksi['whereData'] = array('CodeTransactionNPL' => $kodeTransaksi);
@@ -180,6 +182,8 @@ class Checkout extends CI_Controller {
 							$dataApiDetail = json_decode($responseApi['response'], true); 
 							$_SESSION['userdata']['thisVa'] = @$dataApiDetail['data']['va_bca'];
 							$_SESSION['userdata']['kodeTransaksi'] = @$kodeTransaksi;
+							$_SESSION['userdata']['nilaiTransaksi'] = $Total;
+							$_SESSION['userdata']['va'] = 'mandiri';
 
 						## update VA mandiri
 							$postTransaksi['whereData'] = array('CodeTransactionNPL' => $kodeTransaksi);
