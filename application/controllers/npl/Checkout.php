@@ -619,7 +619,7 @@ class Checkout extends CI_Controller {
 		</tr>";
 
 
-		if ($TipePembayaran == 2 or $TipePembayaran == 1) {
+		if ($TipePembayaran == 2) {
 			
 
 			$isiemail .="
@@ -649,6 +649,41 @@ class Checkout extends CI_Controller {
 			<p>4. Simpan slip setoran hasil validasi sebagai bukti pembayaran</p>
 			</td>
 			</tr>";
+
+		} elseif($TipePembayaran == 1){
+
+			$isiemail .="
+			<tr>
+			<td data-color='text' data-size='size text' data-min='10' data-max='26' data-link-color='link text color' data-link-style='font-weight:bold; text-decoration:underline; color:#40aceb;' align='left' style='font:12px/24px Arial, Helvetica, sans-serif; color:#666; padding:0 0 30px;'>
+			<h3> Pembayaran Mandiri Virtual Account dengan ATM bank Mandiri</h3>
+
+			<ul>
+			<li>Masukkan kartu ATM dan Pin</li>
+			<li>Pilih Menu 'Bayar/Beli'</li>
+			<li>Pilih menu 'Lainnya', hingga menemukan menu 'Multipayment'</li>
+			<li>Masukkan kode biller IBID XXXXX, lalu pilih Benar</li>
+			<li>Masukkan 'Nomor Virtual Account' IBID, lalu pilih tombol Benar</li>
+			<li>Masukkan Angka '1' untuk memilih tagihan, lalu pilih tombol Ya</li>
+			<li>Akan muncul konfirmasi pembayaran, lalu pilih tombol Ya</li>
+			<li>Simpan struk sebagai bukti pembayaran anda</li>
+			</ul>
+
+
+			<h3> Pembayaran Mandiri Virtual Account dengan Internet Banking atau Mandiri Online</h3>
+			<ul>
+			<li>Login Mandiri Online dengan memasukkan username dan password</li>
+			<li>Pilih menu 'Pembayaran'</li>
+			<li>Pilih menu 'Multipayment'</li>
+			<li>Pilih penyedia jasa 'IBID'</li>
+			<li>Masukkan 'Nomor Virtual Account' dan 'Nominal' yang akan dibabayarkan , lalu pilih Lanjut</li>
+			<li>setelah muncul tagihan, pilih Konfirmasi</li>
+			<li>Masukkan PIN/kode token</li>
+			<li>Transaksi selesai, simpan bukti bayar Anda</li>
+			</ul> 
+			</td>
+			</tr>";
+
+
 
 		} elseif($TipePembayaran == 4){
 
