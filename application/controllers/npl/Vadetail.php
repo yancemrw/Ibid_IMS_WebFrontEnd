@@ -43,7 +43,13 @@ class Vadetail extends CI_Controller {
 			
 			unset($_SESSION['userdata']['TransactionId']);
 		}
-		template('npl/Vadetail', $data);
+		
+		if ($_SESSION['userdata']['va'] == 'bca')
+			template('npl/Vadetailbca', $data);
+		else if ($_SESSION['userdata']['va'] == 'mandiri')
+			template('npl/Vadetailmandiri', $data);
+		else 
+			template('npl/Vadetail', $data);
 	}
 
 }
