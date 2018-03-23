@@ -124,6 +124,9 @@
           type: 'POST',
           url: '<?php echo site_url('login'); ?>',
           data: 'username='+user+'&password='+pass,
+          beforeSend: function() {
+            $('#btn-login').html('Masuk <img src="<?php echo base_url('assetsfront/images/loader/gear.gif'); ?>" width="25" style="position:absolute; margin-top:-2px; right:73px;" />');
+          },
           success: function(data) {
             var data = JSON.parse(data);
             if(data.status === 1) {
@@ -175,6 +178,9 @@
           type: 'POST',
           url: '<?php echo site_url('login'); ?>',
           data: 'username='+userx+'&password='+passx,
+          beforeSend: function() {
+            $('#btn-loginx').html('Masuk <img src="<?php echo base_url('assetsfront/images/loader/gear.gif'); ?>" width="25" style="position:absolute; top:12px; right:25px;" />');
+          },
           success: function(data) {
             var data = JSON.parse(data);
             if(data.status === 1) {

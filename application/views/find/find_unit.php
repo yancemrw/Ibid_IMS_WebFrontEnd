@@ -320,11 +320,11 @@ $(document).ready(function() {
    $.ajax({
       type: 'GET',
       url: '<?php echo linkservice('stock')."itemstock/Getfrontend"; ?>',
-	  data:{
-		<?php if (@$this->session->userdata('userdata')['UserId']){ ?>
-		userId : '<?php echo $this->session->userdata('userdata')['UserId']; ?>',
-		<?php } ?>
-	  },
+      data:{
+         <?php if (@$this->session->userdata('userdata')['UserId']) { ?>
+         userId : '<?php echo $this->session->userdata('userdata')['UserId']; ?>',
+         <?php } ?>
+      },
       beforeSend: function() {
          $('#loadings').replaceWith('<div id="loadings" class="margin-10px margin-top-80px text-align-center"><img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" /></div>');
       },
@@ -378,9 +378,9 @@ $(document).ready(function() {
                               "Warna": dataz.warnadoc
                            };
                            var json_str = JSON.stringify(compare_data);
-                           var lot = (dataz.LotNumb !== null) ? dataz.LotNumb : '???' ;
-                           var iconFav = dataz.FavoriteId;
-                           var favorit = (sessiond === 'TRUE') ? '<button class="btn" onclick="addFav('+dataz.AuctionItemId+', '+sessionId+')"><i class="fa fa-heart"></i><span>Favorit</span></button>' : '';
+                           var lot = (dataz.LotNumb !== null) ? dataz.LotNumb : '???' ;console.log(dataz.thisFavorite);
+                           var iconFav = (dataz.thisFavorite === 0) ? '<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon" />' : '<i class="fa fa-heart"></i>';
+                           var favorit = (sessiond === 'TRUE') ? '<button class="btn" onclick="addFav('+dataz.AuctionItemId+', '+sessionId+', this)">'+iconFav+'<span>Favorit</span></button>' : '';
                            content += '<div class="col-md-4">'+
                                     '<div class="list-product box-recommend">'+
                                     '<a href="<?php echo $link_detail; ?>/'+dataz.AuctionItemId+'">'+
@@ -482,7 +482,8 @@ $(document).ready(function() {
 							};
 							var json_str = JSON.stringify(compare_data);
 							var lot = (dataz.LotNumb !== null) ? dataz.LotNumb : '???' ;
-                     var favorit = (sessiond === 'TRUE') ? '<button class="btn" onclick="addFav('+dataz.AuctionItemId+', '+sessionId+')"><i class="fa fa-heart"></i><span>Favorit</span></button>' : '';
+                     var iconFav = (dataz.thisFavorite === 0) ? '<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon" />' : '<i class="fa fa-heart"></i>';
+                     var favorit = (sessiond === 'TRUE') ? '<button class="btn" onclick="addFav('+dataz.AuctionItemId+', '+sessionId+', this)">'+iconFav+'<span>Favorit</span></button>' : '';
 							content += '<div class="col-md-4">'+
 									 '<div class="list-product box-recommend">'+
 									 '<a href="<?php echo $link_detail; ?>/'+dataz.AuctionItemId+'">'+
@@ -521,21 +522,15 @@ $(document).ready(function() {
 	});
 });
 
-function addFav(aucid, id) {
+function addFav(aucid, id, ele) {
    var d = new Date(), dateformat = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds();
    $.ajax({
       type: 'POST',
       url: '<?php echo linkservice('stock')."favorite/Add"; ?>',
       data: 'AuctionItemId='+aucid+'&CreateDate='+dateformat+'&CreateUserId='+id+'&StsDeleted=1',
-      beforeSend: function() {
-         bootoast.toast({
-            message: 'Unit sedang ditambahkan ke daftar favorit kamu',
-            type: 'warning',
-            position: 'top-center',
-            timeout: 3
-         });
-      },
       success: function(data) {
+         var prevEle = ele.children[0];
+         $(prevEle).replaceWith('<i class="fa fa-heart"></i>');
          bootoast.toast({
             message: 'Unit sudah ditambahkan ke daftar favorit kamu',
             type: 'success',
