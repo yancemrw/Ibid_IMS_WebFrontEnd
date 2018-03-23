@@ -156,10 +156,11 @@
 								<?php } ?>
 							</select>
 						</div>
-						<div class="form-group floating-label">
+						<div id="thisFieldTanggal" class="input-group-ss form-group floating-label">
 							<select class="select-custom form-control" id="tanggalLelang" name="ScheduleBookingCalendarId">
 								<option value="">-Pilih Tanggal-</option>
 							</select>
+							<span class="input-group-addon thisFaSs" style="display: none"><i class="fa fa-spin fa-refresh"></i></span>
 						</div>
 						<!-- div class="input-group date">
 							<input type="text" class="border-radius-none disabled-white form-control floating-handle height-50px" id="tanggalLelang" name="ScheduleBookingCalendarId" placeholder="Tanggal Lelang" readonly>
@@ -198,15 +199,17 @@ function searchJadwal(){
 			},
 			beforeSend: function( ) {
 				$('#formDinamis').html('');
-			},
-			success: function( data ) {
-				console.log(data);
+				$('#thisFieldTanggal span').removeAttr('style');
+				$('#thisFieldTanggal').removeClass('input-group-ss');
+				$('#thisFieldTanggal').addClass('input-group');
+				
 				$('#tanggalLelang option').remove();
 				$('#tanggalLelang')
 					.append($("<option></option>")
 					.attr("value",'')
 					.text("-Pilih Tanggal-"));
-				
+			},
+			success: function( data ) {
 				thisArr = data.data;
 				for(i=0; i<thisArr.length; i++){
 					row = thisArr[i];
@@ -217,6 +220,9 @@ function searchJadwal(){
 				}
 			},
 			complete: function(){
+				$('#thisFieldTanggal span.thisFaSs').css('display','none');
+				$('#thisFieldTanggal').addClass('input-group-ss');
+				$('#thisFieldTanggal').removeClass('input-group');
 			}
 		});
 	}
