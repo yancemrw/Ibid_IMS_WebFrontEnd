@@ -13,7 +13,7 @@
                 <form class="form-methode form-filter" id="thisForm" action="#<?php // echo site_url('npl/checkout'); ?>" method="POST">
                     <div class="object-type pay-methode clearfix">
                         <div class="form-group">
-                            <input type="radio" name="tipe_methode" id="va-bca" class="input-hidden" value="1" />
+                            <input type="radio" name="tipe_methode" id="va-bca" class="input-hidden" value="2" />
                             <label for="va-bca">
                                 <p>Transfer Virtual Account</p>
                                 <ul>
@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="radio" name="tipe_methode" id="va-mandiri" class="input-hidden" value="2" />
+                            <input type="radio" name="tipe_methode" id="va-mandiri" class="input-hidden" value="1" />
                             <label for="va-mandiri">
                                 <p>Transfer Virtual Account</p>
                                 <ul>
