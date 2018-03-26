@@ -126,9 +126,9 @@ class Entrusted_booking extends CI_Controller {
 				'ScheduleId' => $ScheduleBookingCalendarId,
 				'Merk' => $detailAuctionItem['merk'],
 				'Model' => $detailAuctionItem['seri'],
-				'Serial' => $detailAuctionItem['nopolisi'],
+				'Serial' => strtoupper($detailAuctionItem['nopolisi']),
 				'Year' => $detailAuctionItem['tahun'],
-				'CreateUser' => @$_SESSION['userdata']['UserId'],
+				'CreateUser' => $detailAuctionItem['BiodataId'],
 				'AuctionItemId' => $AuctionItemId,
 				'StsMiddleStock' => 1,
 			);
