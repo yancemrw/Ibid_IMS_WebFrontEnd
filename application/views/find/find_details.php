@@ -205,7 +205,7 @@
                            <p id="timer-title">Lelang Akan Dimulai Dalam</p>
                         </li>
                         <li>
-                           <p id="timer"></p>
+                           <p id="timer" style="height: 150px"></p>
                         </li>
                         <li>
                            <ul class="timer-auction" id="timer-desc">
@@ -234,8 +234,10 @@
                      <h4>Rp. 418,000,000</h4>
                      <p><i class="fa fa-star"></i> Top BIDDER <span>Pilih NPL Sebelum Melakukan Lelang </span></p>
                      <select class="select-custom form-control">
-                        <option value="">NPL Online</option>
-                        <option value="">NPL Unlimited</option>
+                        <option value="">Pilih NPL</option>
+						<?php foreach($thisNpl as $row){ ?>
+                        <option value="<?php echo $row->NPLNumber; ?>"><?php echo $row->NPLNumber; ?></option>
+						<?php } ?>
                      </select>
                      <button class="btn btn-violet" data-toggle="modal" data-target="#choose-npl">Tawar</button>
                      <p>Pengumuman : <br>Pemenang akan dikenakan biaya Administrasi Rp. 1.750.000 </p>
