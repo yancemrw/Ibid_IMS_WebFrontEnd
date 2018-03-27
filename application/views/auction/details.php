@@ -158,10 +158,13 @@
                       </div>
                       <div class="select-code clearfix">
                          <select class="form-control select-custom" id="used-npl<?php echo $key+1;?>">
-                            <option value="100001" selected>#100001</option>
+                            <?php foreach($thisNpl[$key] as $row){ ?>
+                            <option value="100002"><?php echo $row->NPLNumber; ?></option>
+                            <?php } ?>
+                            <!-- option value="100001" selected>#100001</option>
                             <option value="100002">#100002</option>
                             <option value="100003">#100003</option>
-                            <option value="100004">#100004</option>
+                            <option value="100004">#100004</option -->
                          </select>
                       </div>
                       <div class="button-bid">
@@ -210,6 +213,21 @@
 </style>
 
 <script>
+  var dbRef = firebase.database();
+  var activeCompany = [];
+  var liveCount = [];
+  var log = [];
+  var liveOn = [];
+  var selectedLot = [];
+  var allowBid = [];
+  var checkAllowBid = [];
+  var activeLot = [];
+  var tasksRef = [];
+  var checkRef = [];
+  var checkLiveOn = [];
+  var checkActiveLot = [];
+  var checkBid = [];
+  var bidMode;
   jQuery.fn.extend({
     slideRightShow: function() {
       return this.each(function() {
@@ -234,6 +252,10 @@
   });
 
   $(document).ready(function() {
+    $('.top-bidder-wrapper').css('min-height','30px');
+    $('#toggle').prop('checked', false);
+    $('.btn-bid').prop('disabled', true);
+    bidMode = false;
     $("nav").sticky({
       topSpacing: 0
     });
