@@ -11,7 +11,7 @@ class Find_details extends CI_Controller {
 
 	public function index($id) {
 		// get detail item
-		$url1 = linkservice('stock')."itemstock/detail/".$id;
+		$url1 = linkservice('stock')."itemstock/Detail/".$id;
 		$method1 = 'GET';
 		$res1 = admsCurl($url1, array(), $method1);
 		$detail = curlGenerate($res1);
@@ -43,6 +43,16 @@ class Find_details extends CI_Controller {
 		$date = explode('-',$datalot->schedule->date);
 		$time = explode(':',$datalot->schedule->waktu);
 
+		// cek favorit
+		$arrFav = array(
+			'userid'	=> $this->userdata['UserId'], 
+			'auctionid'	=> $detail[0]->AuctionItemId
+		);
+		$urlFav = linkservice('stock')."favorite/Checked";
+		$methodFav = 'POST';
+		$resFav = admsCurl($urlFav, $arrFav, $methodFav);
+		$jsonFav = json_decode($resFav['response']);
+
 		$data = array(
 			'header_white' => "header-white",
 			'userdata'	=> $this->userdata,
@@ -64,7 +74,8 @@ class Find_details extends CI_Controller {
 			'date' => $date,
 			'time' => $time,
 			'serverdate' => explode('-',date("Y-m-d-H-i-s-v")),
-			'interval' => (int)str_replace(",", "", $datalot->schedule->interval)
+			'interval' => (int)str_replace(",", "", $datalot->schedule->interval),
+			'favAction' => $jsonFav
 		);
 		$view = "find/find_details";
 		template($view, $data);
