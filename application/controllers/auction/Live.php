@@ -11,11 +11,13 @@ class Live extends CI_Controller {
 
 	public function index() {
 		// Get unit
-		$lunit = 'http://ibidadmsdevservicemasterdata.azurewebsites.net/index.php/item/get';
+		// $lunit = 'http://ibidadmsdevservicemasterdata.azurewebsites.net/index.php/item/get';
+		$lunit = linkservice('MASTER')."item/get";
 		$cunit = admsCurl($lunit, array(), 'GET');
 
 		// Get company list
-		$link1 = 'http://ibidadmsdevservicemasterdata.azurewebsites.net/index.php/cabang/get';
+		// $link1 = 'http://ibidadmsdevservicemasterdata.azurewebsites.net/index.php/cabang/get';
+		$link1 = linkservice('MASTER')."cabang/get";
 		$company_list = admsCurl($link1, array(), 'GET');
 		$data_company = curlGenerate($company_list);
 		$arrCompany = array();
@@ -25,7 +27,8 @@ class Live extends CI_Controller {
 		}
 
 		// Get schedule list
-		$link2 = 'http://alpha.ibid.astra.co.id/backend/serviceams/schedule/api/schedulelist?untilnextweek=1&notFinished=1&type=0&orderByDate=asc';
+		// $link2 = 'http://alpha.ibid.astra.co.id/backend/serviceams/schedule/api/schedulelist?untilnextweek=1&notFinished=1&type=0&orderByDate=asc';
+		$link2 = linkservice('AMSSCHEDULE')."schedulelist?untilnextweek=1&notFinished=1&type=0&orderByDate=asc";
 		$schedule = amsCurl($link2, '', 'GET');
 		$data_schedule = curlGenerate($schedule);
 		$arrData = $data_schedule;
