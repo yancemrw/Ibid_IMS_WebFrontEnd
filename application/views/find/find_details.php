@@ -216,26 +216,16 @@
                   <div class="bidder">
                      <?php if($data[0]->StatusStok === 1) { // 0 = Live Auction, 1 = Online ?>
                      <h3>Kelipatan Rp. 500,000</h3>
-                     <ul>
-                        <li>Rp. 416,000,000 <span>Proxy Bidder</span></li>
-                        <li>Rp. 416,500,000 <span>Online Bidder</span></li>
-                        <li>Rp. 417,000,000 <span>Floor Bidder</span></li>
-                        <li>Rp. 417,500,000 <span>Proxy Bidder</span></li>
-                        <li class="active">Rp. 418,000,000 <span>Online Bidder</span></li>
-                        <li>Rp. 417,500,000 <span>Proxy Bidder</span></li>
-                        <li>Rp. 417,500,000 <span>Proxy Bidder</span></li>
-                        <li>Rp. 417,500,000 <span>Proxy Bidder</span></li>
-                        <li>Rp. 417,500,000 <span>Proxy Bidder</span></li>
-                     </ul>
-                     <h4>Rp. 418,000,000</h4>
+                     <ul id="bidding-log-mb"></ul>
+                     <h4 id="top-bid-mb">Rp. -,</h4>
                      <p><i class="fa fa-star"></i> Top BIDDER <span>Pilih NPL Sebelum Melakukan Lelang </span></p>
-                     <select class="select-custom form-control">
+                     <select class="select-custom form-control" id="used-npl">
                         <option value="">Pilih NPL</option>
-						<?php foreach($thisNpl as $row){ ?>
-                        <option value="<?php echo $row->NPLNumber; ?>"><?php echo $row->NPLNumber; ?></option>
-						<?php } ?>
+      						<?php foreach($thisNpl as $row){ ?>
+                           <option value="<?php echo $row->NPLNumber; ?>"><?php echo $row->NPLNumber; ?></option>
+      						<?php } ?>
                      </select>
-                     <button class="btn btn-violet" data-toggle="modal" data-target="#choose-npl">Tawar</button>
+                     <button class="btn btn-violet btn-bid" data-toggle="modal" onclick="bid()" id="bid">Tawar</button>
                      <p>Pengumuman : <br>Pemenang akan dikenakan biaya Administrasi Rp. 1.750.000 </p>
                      <?php } ?>
                      <button class="btn btn-green" data-toggle="modal" data-target="#used-npl">Beli NPL</button>
@@ -379,6 +369,7 @@
       </div>
    </div>
 </section>
+<input id="lastbid" type="hidden" value="0">
 
 <!-- line modal -->
 <div class="modal fade modal-notification" id="choose-npl" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
@@ -424,8 +415,8 @@
    var durationRef   = lotDataRef.child('duration');
    var allowRef      = lotRef.child('allowBid');
    var duration = 1;
-   var countDownDate = new Date(<?php echo "$date[0],".($date[1]-1).",".(int)$date[2].",$time[0],$time[1],0,0"; ?>).getTime();
-   var now = new Date(<?php echo "$serverdate[0],".((int)$serverdate[1]-1).",".(int)$serverdate[2].",$serverdate[3],$serverdate[4],".(int)$serverdate[4].",".(int)$serverdate[4]; ?>).getTime();
+   var countDownDate = new Date('<?php echo "$date[0],".($date[1]-1).",".(int)$date[2].",$time[0],$time[1],0,0"; ?>').getTime();
+   var now = new Date('<?php echo "$serverdate[0],".((int)$serverdate[1]-1).",".(int)$serverdate[2].",$serverdate[3],$serverdate[4],".(int)$serverdate[4].",".(int)$serverdate[4]; ?>').getTime();
    
    allowRef.on('value', function(allowedSnap){
      lotDataRef.on('value', function(lotDataSnap){
@@ -551,7 +542,6 @@ $(document).ready(function() {
          }
       });
       logsRef.on("child_added", function(logSnap) {
-         console.log(logSnap.val().npl);
          if (eligibleNpl.includes(logSnap.val().npl)) {
               $('#top-bidder-info').show();
               $('.btn-bid').prop('disabled', true);
@@ -933,11 +923,11 @@ function addPeriod(nStr){
   return x1 + x2;
 }
 
-function updateDuration(numb){
+function updateDuration(numb) {
    duration = numb;
 }
 
-function bid(){
+function bid() {
    const last = $('#lastbid').val();
 
    allowRef.once('value', function(allowedSnap) {
