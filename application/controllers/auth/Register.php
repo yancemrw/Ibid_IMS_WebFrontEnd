@@ -8,6 +8,9 @@ class Register extends CI_Controller {
 		$this->load->library(array('form_validation'));
 		$this->load->helper(array('global', 'omni'));
 		$this->userdata = $this->session->userdata('userdata');
+		if(@$this->session->userdata('userdata')) {
+			redirect();
+		}
 	}
 	
 	public function index() {
