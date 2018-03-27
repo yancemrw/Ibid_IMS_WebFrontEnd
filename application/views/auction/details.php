@@ -393,6 +393,7 @@
               });
             }else{
               reset(<?php echo $key+1;?>);
+			  console.log('masuk sono|used-npl<?php echo $key+1;?>');
             }
           });
 
@@ -427,6 +428,7 @@
         }
         else {
           reset(<?php echo $key+1;?>);
+		  console.log('masuk sana|used-npl<?php echo $key+1;?>');
         }
       }
       else{
