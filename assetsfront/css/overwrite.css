@@ -156,6 +156,11 @@ a.delete-compare {
     list-style: circle !important;
 }
 
+.info-ibid button,
+.info-ibid button:hover {
+    font-size: unset !important;
+}
+
 .login-forgot {
 	display: inline-block;
 	margin: 10px 0 0 0;
