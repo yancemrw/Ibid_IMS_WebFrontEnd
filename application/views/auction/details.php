@@ -431,6 +431,18 @@
       }
       else{
         reset(<?php echo $key+1;?>);
+		
+		$.ajax({
+			url: '<?php echo linkservice('NPL')."counter/npl/searchAll/"; ?>', 
+			data:{
+				ScheduleId: val<?php echo $key+1; ?>.ScheduleId,
+				Active: 1,
+				BiodataId: '<?php echo $this->userdata['UserId']; ?>',
+			},
+			success: function(result){
+				console.log('masuk sini|used-npl<?php echo $key+1;?>');
+			}
+		});
       }
     });
 
