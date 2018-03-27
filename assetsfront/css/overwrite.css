@@ -238,6 +238,10 @@ a.delete-compare {
     padding: 30px 15px 30px 30px;
 }
 
+.photo-transport .slick-slider {
+    max-height: 100% !important;
+}
+
 .row {
 	margin-right: -13px !important;
 }
