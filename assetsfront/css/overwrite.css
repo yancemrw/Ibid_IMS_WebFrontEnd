@@ -105,6 +105,10 @@ a.delete-compare {
 	float: left;
 }
 
+.font-silver {
+    color: #757575 !important;
+}
+
 .font-red {
     color: #C62828 !important;
 }
@@ -115,6 +119,10 @@ a.delete-compare {
 
 .font-14px {
 	font-size: 14px;
+}
+
+.font-16px {
+    font-size: 16px;
 }
 
 .form-register button,
@@ -173,6 +181,10 @@ a.delete-compare {
 
 .login-forgot span {
 	font-size: 11px;
+}
+
+.main-management .box-recommend .thumbnail {
+    height: 250px !important;
 }
 
 .margin-10px {
