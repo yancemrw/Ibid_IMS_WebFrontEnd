@@ -37,7 +37,7 @@ class Details extends CI_Controller {
 				
 				if ($UserId > 0){
 					// get NPL
-					$url1 = linkservice('NPL')."counter/npl/searchAll/?BiodataId=".$UserId."&ScheduleId=".$ScheduleId;
+					$url1 = linkservice('NPL')."counter/npl/searchAll/?BiodataId=".$UserId."&ScheduleId=".$ScheduleId."&Active=1";
 					$method1 = 'GET';
 					$res1 = admsCurl($url1, array(), $method1);
 					$detailGetNpl = curlGenerate($res1);

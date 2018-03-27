@@ -1,7 +1,3 @@
-<script src="<?php echo base_url('assetsfront/assets360/three.min.js'); ?>"></script> 
-<script src="<?php echo base_url('assetsfront/assets360/jquery.fullscreen.js'); ?>"></script>
-<script src="<?php echo base_url('assetsfront/assets360/mousetrap.min.js'); ?>"></script>
-<script src="<?php echo base_url('assetsfront/assets360/360.js'); ?>"></script>
 <input type="hidden" id="hidden-auctionitemid" value="<?php echo $data[0]->AuctionItemId; ?>" />
 <section class="header-detail background-white">
    <div class="container-fluid">
@@ -418,13 +414,46 @@
 </div>
 
 <script>
-$(document).ready(function() {
    var dbRef         = firebase.database();
    var companyRef    = dbRef.ref('company/<?php echo $company_id; ?>');
    var scheduleRef   = companyRef.child('schedule/<?php echo $schedule_id; ?>');
-   var lotRef = scheduleRef.child('lot|stock/<?php echo $no_lot; ?>');
+   var lotRef        = scheduleRef.child('lot|stock/<?php echo $no_lot; ?>');
+   var logsRef       = lotRef.child('log');
+   var tasksRef      = lotRef.child('tasks');
+   var lotDataRef    = lotRef.child('lotData');
+   var durationRef   = lotDataRef.child('duration');
+   var allowRef      = lotRef.child('allowBid');
+   var duration = 1;
+   var countDownDate = new Date(<?php echo "$date[0],".($date[1]-1).",".(int)$date[2].",$time[0],$time[1],0,0"; ?>).getTime();
    var now = new Date(<?php echo "$serverdate[0],".((int)$serverdate[1]-1).",".(int)$serverdate[2].",$serverdate[3],$serverdate[4],".(int)$serverdate[4].",".(int)$serverdate[4]; ?>).getTime();
+   
+   allowRef.on('value', function(allowedSnap){
+     lotDataRef.on('value', function(lotDataSnap){
+         if (allowedSnap.exists() && lotDataSnap.exists()) {
+            if (allowedSnap.val() || lotDataSnap.val().duration > 0) {
+               $('.btn-bid').prop('disabled',false);
+            }else{
+               $('.btn-bid').prop('disabled',true);
+               $("#timer").text("LELANG SUDAH BERAKHIR");
+               $("#timer-mobile").text("LELANG SUDAH BERAKHIR");
+               $("#timer").css('font-size','39px');
+               $("#message").hide();
+               $("#message-mobile").hide();
+               $(".timer-auction").hide();
+            }
+         }
+     });
+   });
+   
+$(document).ready(function() {
+   // var dbRef         = firebase.database();
+   // var companyRef    = dbRef.ref('company/<?php echo $company_id; ?>');
+   // var scheduleRef   = companyRef.child('schedule/<?php echo $schedule_id; ?>');
+   // var lotRef = scheduleRef.child('lot|stock/<?php echo $no_lot; ?>');
+   // var now = new Date(<?php echo "$serverdate[0],".((int)$serverdate[1]-1).",".(int)$serverdate[2].",$serverdate[3],$serverdate[4],".(int)$serverdate[4].",".(int)$serverdate[4]; ?>).getTime();
 
+   $('.top-bidder-wrapper').css('min-height','30px');
+   
    //show compare element
    var linked = '<?php echo site_url('list-compare'); ?>';
    setCompare(linked);
@@ -500,6 +529,45 @@ $(document).ready(function() {
       }, 1000);
    }
 
+      var eligibleNpl = [];
+      $('#used-npl option').each(function () {
+         eligibleNpl.push($(this).val());
+      });
+      $('#top-bidder-info').hide();
+      durationRef.on('value', function(durationSnap){
+         if (durationSnap.exists()) {
+            clearInterval(x);
+            duration = durationSnap.val();
+            $("#timer").css('font-size','');
+            $("#timer").text(dhmFormat(duration));
+            $("#timer-mobile").text(dhmFormat(duration));
+            $("#message").text('Lelang Akan Berakhir Dalam');
+            $("#message-mobile").text('Lelang Akan Berakhir Dalam');
+            $("#message").show();
+            $("#message-mobile").show();
+            $(".timer-auction").show();
+         }else{
+            $('.btn-bid').prop('disabled',true);
+         }
+      });
+      logsRef.on("child_added", function(logSnap) {
+         console.log(logSnap.val().npl);
+         if (eligibleNpl.includes(logSnap.val().npl)) {
+              $('#top-bidder-info').show();
+              $('.btn-bid').prop('disabled', true);
+            } else {
+              $('#top-bidder-info').hide();
+              $('.btn-bid').prop('disabled', false);
+            }
+         $('#lastbid').val(logSnap.val().bid);
+         $('#bidding-log li').removeClass('active');
+         $('#bidding-log').prepend(logHtmlFromObject(logSnap.val()));
+         $('#top-bid').text('Rp. ' + addPeriod(logSnap.val().bid));
+         $('#bidding-log-mb li').removeClass('active');
+         $('#bidding-log-mb').prepend(logHtmlFromObject(logSnap.val()));
+         $('#top-bid-mb').text('Rp. ' + addPeriod(logSnap.val().bid));
+      });
+   
    // TIMER MOBILE
    var countDownDate = new Date("feb 31, 2018 00:00:00").getTime();
    var x = setInterval(function() {
@@ -835,6 +903,36 @@ function compare_action(linked) {
    set_compare_product(compare_data, linked);
 }
 
+function twoDigits(n){
+  return n < 10 ? "0"+n : n;
+}
+function dhmFormat(s) {
+  updateDuration(s);
+  sec = s % 60; // SECONDS
+  min = Math.floor(s / 60) % 60;
+  var fm = [
+	  Math.floor(s / 60 / 60 / 24), // DAYS
+	  Math.floor(s / 60 / 60) % 24, // HOURS
+	  sec > 0 && sec <60  ? min + 1 : min, // MINUTES
+  ];
+  return $.map(fm, function(v, i) { return ((v < 10) ? '0' : '') + v; }).join(' : ');
+}
+function logHtmlFromObject(log){
+var html = '<li class="active">Rp. '+addPeriod(log.bid)+' <span>'+log.type+' Bidder</span></li>'
+return html;
+}
+function addPeriod(nStr){
+  nStr += '';
+  x = nStr.split('.');
+  x1 = x[0];
+  x2 = x.length > 1 ? '.' + x[1] : '';
+  var rgx = /(\d+)(\d{3})/;
+  while (rgx.test(x1)) {
+	  x1 = x1.replace(rgx, '$1' + '.' + '$2');
+  }
+  return x1 + x2;
+}
+
 function updateDuration(numb){
    duration = numb;
 }
@@ -868,3 +966,7 @@ function bid(){
    });
 }
 </script>
+<script src="<?php echo base_url('assetsfront/assets360/three.min.js'); ?>"></script> 
+<script src="<?php echo base_url('assetsfront/assets360/jquery.fullscreen.js'); ?>"></script>
+<script src="<?php echo base_url('assetsfront/assets360/mousetrap.min.js'); ?>"></script>
+<!--script src="<?php echo base_url('assetsfront/assets360/360.js'); ?>"></script-->
