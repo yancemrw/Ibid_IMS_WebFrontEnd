@@ -928,32 +928,38 @@ function updateDuration(numb) {
 }
 
 function bid() {
-   const last = $('#lastbid').val();
+   if($('#used-npl').val() === '') {
+      alert('Silahkan Pilih NPL');
+      return;
+   }
+   else {
+      const last = $('#lastbid').val();
 
-   allowRef.once('value', function(allowedSnap) {
-      lotDataRef.once('value', function(lotDataSnap) {
-         if (allowedSnap.val() && lotDataSnap.val().duration > 0) {
+      allowRef.once('value', function(allowedSnap) {
+         lotDataRef.once('value', function(lotDataSnap) {
+            if (allowedSnap.val() && lotDataSnap.val().duration > 0) {
 
-         startPrice = lotDataSnap.exists() ? lotDataSnap.val().harga : 0;
+            startPrice = lotDataSnap.exists() ? lotDataSnap.val().harga : 0;
 
-         if (last <= 0) {
-            newbid = parseInt(startPrice);
-         } else {
-            newbid = parseInt(last) + parseInt(<?php echo $interval; ?>);
-         }
+            if (last <= 0) {
+               newbid = parseInt(startPrice);
+            } else {
+               newbid = parseInt(last) + parseInt(<?php echo $interval; ?>);
+            }
 
-         tasksRef.push({
-            bid: newbid,
-            npl: $('#used-npl').val(),
-            // npl: '100001',
-            type: 'Online',
+            tasksRef.push({
+               bid: newbid,
+               npl: $('#used-npl').val(),
+               // npl: '100001',
+               type: 'Online',
+            });
+
+            } else {
+               alert('bid is not allow bro!!');
+            }
          });
-
-         } else {
-            alert('bid is not allow bro!!');
-         }
       });
-   });
+   }
 }
 </script>
 <script src="<?php echo base_url('assetsfront/assets360/three.min.js'); ?>"></script> 
