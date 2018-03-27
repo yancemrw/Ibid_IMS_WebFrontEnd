@@ -125,7 +125,7 @@
           url: '<?php echo site_url('login'); ?>',
           data: 'username='+user+'&password='+pass,
           beforeSend: function() {
-            $('#btn-login').html('Masuk <img src="<?php echo base_url('assetsfront/images/loader/gear.gif'); ?>" width="25" style="position:absolute; margin-top:-2px; right:73px;" />');
+            $('#btn-login').html('Masuk <i class="fa fa-spin fa-refresh" style="position:absolute; margin-top:3px; right:87px; z-index:1;"></i>');
           },
           success: function(data) {
             var data = JSON.parse(data);
@@ -136,7 +136,7 @@
               return false;
             }
             else {
-              $('#btn-login').attr('disabled', false);
+              $('#btn-login').attr('disabled', false).html('Masuk');
               bootoast.toast({
                 message: data.messages,
                 type: 'warning',
@@ -147,7 +147,7 @@
             }
           },
           error: function() {
-            $('#btn-login').attr('disabled', false);
+            $('#btn-login').attr('disabled', false).html('Masuk');
             bootoast.toast({
               message: 'Terjadi Masalah Pada Koneksi ke Server',
               type: 'warning',
@@ -179,7 +179,7 @@
           url: '<?php echo site_url('login'); ?>',
           data: 'username='+userx+'&password='+passx,
           beforeSend: function() {
-            $('#btn-loginx').html('Masuk <img src="<?php echo base_url('assetsfront/images/loader/gear.gif'); ?>" width="25" style="position:absolute; top:12px; right:25px;" />');
+            $('#btn-loginx').html('Masuk <i class="fa fa-spin fa-refresh" style="position:absolute; top:18px; right:30px;"></i>');
           },
           success: function(data) {
             var data = JSON.parse(data);
@@ -190,7 +190,7 @@
               return false;
             }
             else {
-              $('#btn-loginx').attr('disabled', false);
+              $('#btn-loginx').attr('disabled', false).html('Masuk');
               bootoast.toast({
                 message: data.messages,
                 type: 'warning',
@@ -201,7 +201,7 @@
             }
           },
           error: function() {
-            $('#btn-loginx').attr('disabled', false);
+            $('#btn-loginx').attr('disabled', false).html('Masuk');
             bootoast.toast({
               message: 'Terjadi Masalah Pada Koneksi ke Server',
               type: 'warning',
