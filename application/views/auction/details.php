@@ -156,10 +156,11 @@
                       <div class="top-bidder-wrapper">
                         <p id="top-bidder-info<?php echo $key+1;?>"><i class="fa fa-star"></i> TOP BIDDER</p>
                       </div>
+                      <?php if ($this->userdata['UserId'] > 0){ ?>
                       <div class="select-code clearfix">
                          <select class="form-control select-custom" id="used-npl<?php echo $key+1;?>">
                             <?php foreach($thisNpl[$key] as $row){ ?>
-                            <option value="100002"><?php echo $row->NPLNumber; ?></option>
+                            <option value="<?php echo $row->NPLNumber; ?>"><?php echo $row->NPLNumber; ?></option>
                             <?php } ?>
                             <!-- option value="100001" selected>#100001</option>
                             <option value="100002">#100002</option>
@@ -170,6 +171,7 @@
                       <div class="button-bid">
                          <button class="btn btn-bid btn-violet" id="bid<?php echo $key+1;?>">TAWAR</button>
                       </div>
+                      <?php } ?>
                    </div>
                 </li>
              </ul>
