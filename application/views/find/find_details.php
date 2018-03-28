@@ -218,7 +218,7 @@
                      <h3>Kelipatan Rp. 500,000</h3>
                      <ul id="bidding-log-mb"></ul>
                      <h4 id="top-bid-mb">Rp. -,</h4>
-                     <p><i class="fa fa-star"></i> Top BIDDER <span>Pilih NPL Sebelum Melakukan Lelang </span></p>
+                     <p id="top-bidder-info"><i class="fa fa-star"></i> Top BIDDER <span>Pilih NPL Sebelum Melakukan Lelang </span></p>
                      <select class="select-custom form-control" id="used-npl">
                         <option value="">Pilih NPL</option>
       						<?php foreach($thisNpl as $row){ ?>
