@@ -239,9 +239,9 @@
                <!--p class="notice clearfix"><span><i class="fa fa-exclamation-circle"></i> Produk telah dimasukkan ke dalam daftar perbandingan</span></p-->
                <div class="content-right product-mob content-load clearfix">
                   <div id="loadlist"></div>
-                  <div class="clear"></div>
-                  <a href="#" class="hidden-content"></a>
-                  <a href="#" class="hidden-content"></a>
+               </div>
+               <div id="mored" class="cursor-pointer margin-top-10px text-align-center width-100" style="display:none">
+                  <a href="javascript:void(0)" class="font-green" onclick="">Berikutnya</a>
                </div>
             </div>
          </div>
@@ -317,10 +317,24 @@ $(document).ready(function() {
    });
 
    // get list frontend
+   loadContainer(0, 6, linked);
+	
+	$('#thisFormFilter').submit(function() {
+		var thisFormInput = $(this).serialize();
+      $('#loadlist').html('');
+      loadContainer(0, 6, linked, thisFormInput);
+		return false;
+	});
+});
+
+// load ajax content finding
+function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
    $.ajax({
       type: 'GET',
       url: '<?php echo linkservice('stock')."itemstock/Getfrontend"; ?>',
       data:{
+         offset: offset,
+         limit: limit,
          <?php if (@$this->session->userdata('userdata')['UserId']) { ?>
          userId : '<?php echo $this->session->userdata('userdata')['UserId']; ?>',
          <?php } ?>
@@ -332,7 +346,7 @@ $(document).ready(function() {
          var content = '',
          datas = data.data,
          sessiond = "<?php echo ($this->session->userdata('userdata') !== null) ? 'TRUE' : 'FALSE'; ?>",
-         sessionId = '<?php echo $this->session->userdata('userdata')['UserId'] ?>';
+         sessionId = '<?php echo $this->session->userdata('userdata')['UserId']; ?>';
          if(datas !== null) {
             for (var i = 0; i < datas.length; i++) {
                let dataz = datas[i], 
@@ -407,6 +421,7 @@ $(document).ready(function() {
                                     '</div>'+
                                     '</div>';
                            $('#loadlist').html(content);
+                           countContainer(offset, limit, linked);
                         }
                      });
                   },
@@ -421,111 +436,125 @@ $(document).ready(function() {
          }
       }
    });
-	
-	$('#thisFormFilter').submit(function() {
-		var thisFormInput = $(this).serialize();
-		$.ajax({
-         type: 'GET',
-         url: '<?php echo linkservice('stock')."itemstock/Getfrontend"; ?>',
-         data: thisFormInput,
-         beforeSend: function() {
-            $('#loadlist').html('');
-            $('#loadings').replaceWith('<div id="loadings" class="margin-10px margin-top-80px text-align-center"><img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" /></div>');
-         },
-         success: function(data) {
-            var content = '',
-            datas = data.data,
-            sessiond = "<?php echo ($this->session->userdata('userdata') !== null) ? 'TRUE' : 'FALSE'; ?>",
-            sessionId = '<?php echo $this->session->userdata('userdata')['UserId'] ?>';
+}
 
-            if(datas.length > 0) {
-               for (var i = 0; i < datas.length; i++) {
-      				let dataz = datas[i], 
-      				merk = (dataz.merk !== undefined) ? dataz.merk : '',
-      				seri = (dataz.seri !== undefined) ? dataz.seri : '',
-      				silinder = (dataz.silinder !== undefined) ? dataz.silinder : '',
-      				tipe = (dataz.tipe !== undefined) ? dataz.tipe : '',
-      				model = (dataz.model !== undefined) ? dataz.model : '',
-      				transmisi = (dataz.transmisi !== undefined) ? dataz.transmisi : '',
-      				tahun = (dataz.tahun !== undefined) ? dataz.tahun : '',
-      				FinalPriceItem = (dataz.FinalPriceItem !== undefined) ? dataz.FinalPriceItem : 0;
-      				let numgrade = '';
-      				$.ajax({
-      				   type: 'GET',
-      				   url: '<?php echo linkservice('taksasi')."nilaiicar/detail?AuctionItemId='+datas[i].AuctionItemId+'"; ?>',
-      				   success: function(data) {
-                        var datax = data.data;
-                        numgrade = (datax.TotalEvaluationResult !== undefined) ? datax.TotalEvaluationResult : '?';
-                        $.ajax({
-                           type: 'GET',
-                           url: '<?php echo linkservice('taksasi')."icar/getimage?AuctionItemId='+data.data.AuctionItemId+'"; ?>',
-                           success: function(data) {
-         							$('#loadings').replaceWith('<div id="loadings"></div>');
-         							var compare_data = {
-         							   "AuctionItemId": dataz.AuctionItemId,
-         							   "BahanBakar": dataz.bahanbakar,
-         							   "Image": data.data[0].ImagePath,
-         							   "Kilometer": dataz.km,
-         							   "Merk": dataz.merk,
-         							   "Model": dataz.model,
-         							   "NoKeur": dataz.nokeur,
-         							   "NoMesin": dataz.nomesin,
-         							   "NoPolisi": dataz.nopolisi,
-         							   "NoRangka": dataz.norangka,
-         							   "NoSTNK": dataz.nostnk,
-         							   "Seri": dataz.seri,
-         							   "Silinder": dataz.silinder,
-         							   "TaksasiGrade": numgrade,
-         							   "Tahun": dataz.tahun,
-         							   "Transmisi": dataz.transmisi,
-         							   "Tipe": dataz.tipe,
-         							   "Price": dataz.FinalPriceItem,
-         							   "Warna": dataz.warnadoc
-         							};
-         							var json_str = JSON.stringify(compare_data);
-         							var lot = (dataz.LotNumb !== null) ? dataz.LotNumb : '???';
-                              var iconFav = (dataz.thisFavorite === 0) ? '<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon" />' : '<i class="fa fa-heart"></i>';
-                              var favorit = (sessiond === 'TRUE') ? '<button class="btn" onclick="addFav('+dataz.AuctionItemId+', '+sessionId+', this)">'+iconFav+'<span>Favorit</span></button>' : '';
-         							content += '<div class="col-md-4">'+
-         									 '<div class="list-product box-recommend">'+
-         									 '<a href="<?php echo $link_detail; ?>/'+dataz.AuctionItemId+'">'+
-         									 '<div class="thumbnail">'+
-         									 '<div class="thumbnail-custom">'+
-         									 '<img src="'+data.data[0].ImagePath+'" />'+
-         									 '</div>'+
-         									 '<div class="overlay-grade">'+
-         									 'Grade <span>'+numgrade+'</span>'+
-         									 '</div>'+
-         									 '<p class="overlay-lot">LOT '+lot+'</p>'+
-         									 '</div>'+
-         									 '<div class="boxright-mobile">'+
-         									 '<h2>'+merk+' '+seri+' '+silinder+' '+tipe+' '+model+' '+transmisi+'</h2>'+
-         									 '<span>'+tahun+'</span> <span class="price">Rp. '+currency_format(FinalPriceItem)+'</span>'+
-         									 '<p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>Belum Tersedia</span></p>'+
-         									 '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Belum Tersedia</span></p>'+
-         									 '</div>'+
-         									 '</a>'+
-         									 '<div class="action-bottom">'+
-         									 favorit+
-         									 '<button class="btn btn-compare" onclick=\'set_compare_product('+json_str+', "'+linked+'")\'><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>'+
-         									 '</div>'+
-         									 '</div>'+
-         									 '</div>';
-         							$('#loadlist').html(content);
-                           }
-                        });
-      				   }
-      				});
-               }
-            }
-            else {
-               $('#loadings').replaceWith('<div id="loadings" class="margin-10px margin-top-80px text-align-center"><img src="<?php echo base_url('assetsfront/images/background/management-empty.png'); ?>" alt="Loading" width="200px" /><div style="color:#757575">Data Tidak Ditemukan!</div></div>');
+function loadContainerPaging(offset, limit, linked) {
+   $.ajax({
+      type: 'GET',
+      url: '<?php echo linkservice('stock')."itemstock/Getfrontend"; ?>',
+      data: {
+         offset: offset,
+         limit: limit,
+         <?php if (@$this->session->userdata('userdata')['UserId']) { ?>
+         userId : '<?php echo $this->session->userdata('userdata')['UserId']; ?>',
+         <?php } ?>
+      },
+      beforeSend: function() {
+         $('#mored').children().replaceWith('<i class="fa fa-spin fa-refresh"></i>');
+      },
+      success: function(data) {
+         var datas = data.data,
+         sessiond = "<?php echo ($this->session->userdata('userdata') !== null) ? 'TRUE' : 'FALSE'; ?>",
+         sessionId = '<?php echo $this->session->userdata('userdata')['UserId']; ?>';
+         if(datas !== null) {
+            for (var i = 0; i < datas.length; i++) {
+               let dataz = datas[i], 
+               merk = (dataz.merk !== undefined) ? dataz.merk : '',
+               seri = (dataz.seri !== undefined) ? dataz.seri : '',
+               silinder = (dataz.silinder !== undefined) ? dataz.silinder : '',
+               tipe = (dataz.tipe !== undefined) ? dataz.tipe : '',
+               model = (dataz.model !== undefined) ? dataz.model : '',
+               transmisi = (dataz.transmisi !== undefined) ? dataz.transmisi : '',
+               tahun = (dataz.tahun !== undefined) ? dataz.tahun : '',
+               FinalPriceItem = (dataz.FinalPriceItem !== undefined) ? dataz.FinalPriceItem : 0;
+               let numgrade = '';
+               $.ajax({
+                  type: 'GET',
+                  url: '<?php echo linkservice('taksasi')."nilaiicar/detail?AuctionItemId='+datas[i].AuctionItemId+'"; ?>',
+                  success: function(data) {
+                     var datax = data.data;
+                     numgrade = (datax.TotalEvaluationResult !== undefined) ? datax.TotalEvaluationResult : '?';
+                     $.ajax({
+                        type: 'GET',
+                        url: '<?php echo linkservice('taksasi')."icar/getimage?AuctionItemId='+data.data.AuctionItemId+'"; ?>',
+                        success: function(data) {
+                           $('#loadings').replaceWith('<div id="loadings"></div>');
+                           var compare_data = {
+                              "AuctionItemId": dataz.AuctionItemId,
+                              "BahanBakar": dataz.bahanbakar,
+                              "Image": data.data[0].ImagePath,
+                              "Kilometer": dataz.km,
+                              "Merk": dataz.merk,
+                              "Model": dataz.model,
+                              "NoKeur": dataz.nokeur,
+                              "NoMesin": dataz.nomesin,
+                              "NoPolisi": dataz.nopolisi,
+                              "NoRangka": dataz.norangka,
+                              "NoSTNK": dataz.nostnk,
+                              "Seri": dataz.seri,
+                              "Silinder": dataz.silinder,
+                              "TaksasiGrade": numgrade,
+                              "Tahun": dataz.tahun,
+                              "Transmisi": dataz.transmisi,
+                              "Tipe": dataz.tipe,
+                              "Price": dataz.FinalPriceItem,
+                              "Warna": dataz.warnadoc
+                           };
+                           var json_str = JSON.stringify(compare_data);
+                           var lot = (dataz.LotNumb !== null) ? dataz.LotNumb : '???' ;
+                           var iconFav = (dataz.thisFavorite === 0) ? '<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon" />' : '<i class="fa fa-heart"></i>';
+                           var favorit = (sessiond === 'TRUE') ? '<button class="btn" onclick="addFav('+dataz.AuctionItemId+', '+sessionId+', this)">'+iconFav+'<span>Favorit</span></button>' : '';
+                           var content = '<div class="col-md-4">'+
+                                    '<div class="list-product box-recommend">'+
+                                    '<a href="<?php echo $link_detail; ?>/'+dataz.AuctionItemId+'">'+
+                                    '<div class="thumbnail">'+
+                                    '<div class="thumbnail-custom">'+
+                                    '<img src="'+data.data[0].ImagePath+'" />'+
+                                    '</div>'+
+                                    '<div class="overlay-grade">'+
+                                    'Grade <span>'+numgrade+'</span>'+
+                                    '</div>'+
+                                    '<p class="overlay-lot">LOT '+lot+'</p>'+
+                                    '</div>'+
+                                    '<div class="boxright-mobile">'+
+                                    '<h2>'+merk+' '+seri+' '+silinder+' '+tipe+' '+model+' '+transmisi+'</h2>'+
+                                    '<span>'+tahun+'</span> <span class="price">Rp. '+currency_format(FinalPriceItem)+'</span>'+
+                                    '<p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>Belum Tersedia</span></p>'+
+                                    '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Belum Tersedia</span></p>'+
+                                    '</div>'+
+                                    '</a>'+
+                                    '<div class="action-bottom">'+
+                                    favorit+
+                                    '<button class="btn btn-compare" onclick=\'set_compare_product('+json_str+', "'+linked+'")\'><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>'+
+                                    '</div>'+
+                                    '</div>'+
+                                    '</div>';
+                           $('#loadlist').children().last().after(content);
+                           countContainer(offset, limit, linked);
+                        }
+                     });
+                  },
+                  error: function(e) {
+                     console.log(e);
+                  }
+               });
             }
          }
-      });
-		return false;
-	});
-});
+      }
+   });
+}
+
+function countContainer(offset, limit, linked) {
+   var countTotal = offset + limit;
+   var countContainer = $('#loadlist').children().length; console.log(countContainer+':'+countTotal);
+   if(countTotal === countContainer) {
+      $('#mored').children().replaceWith('<a href="javascript:void(0)" class="font-green" onclick="loadContainerPaging('+countTotal+', '+limit+', \''+linked+'\')">Berikutnya</a>');
+   }
+   else {
+      // show loading paging
+      $('#mored').css('display', 'block').children().replaceWith('<i class="fa fa-spin fa-refresh"></i>');
+   }
+}
 
 function addFav(aucid, id, ele) {
    $.ajax({

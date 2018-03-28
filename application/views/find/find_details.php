@@ -937,25 +937,28 @@ function bid() {
 
       allowRef.once('value', function(allowedSnap) {
          lotDataRef.once('value', function(lotDataSnap) {
-            if (allowedSnap.val() && lotDataSnap.val().duration > 0) {
-
-            startPrice = lotDataSnap.exists() ? lotDataSnap.val().harga : 0;
-
-            if (last <= 0) {
-               newbid = parseInt(startPrice);
-            } else {
-               newbid = parseInt(last) + parseInt(<?php echo $interval; ?>);
+            if(allowedSnap.val() && lotDataSnap.val().duration > 0) {
+               startPrice = lotDataSnap.exists() ? lotDataSnap.val().harga : 0;
+               if (last <= 0) {
+                  newbid = parseInt(startPrice);
+               }
+               else {
+                  newbid = parseInt(last) + parseInt(<?php echo $interval; ?>);
+               }
+               tasksRef.push({
+                  bid: newbid,
+                  npl: $('#used-npl').val(),
+                  // npl: '100001',
+                  type: 'Online',
+               });
             }
-
-            tasksRef.push({
-               bid: newbid,
-               npl: $('#used-npl').val(),
-               // npl: '100001',
-               type: 'Online',
-            });
-
-            } else {
-               alert('bid is not allow bro!!');
+            else {
+               bootoast.toast({
+                  message: 'Tidak diperbolehkan melakukan lelang',
+                  type: 'warning',
+                  position: 'top-center',
+                  timeout: 4
+               });
             }
          });
       });

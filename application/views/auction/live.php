@@ -84,7 +84,12 @@ $(document).ready(function() {
 			$("#auction-form").submit();
 		}
 		else {
-			alert('Maksimal 5 Jadwal Lelang');
+			bootoast.toast({
+				message: 'Diperbolehkan Memilih 5 Jadwal Lelang',
+				type: 'warning',
+				position: 'top-center',
+				timeout: 4
+			});
 		}
 	});
 	

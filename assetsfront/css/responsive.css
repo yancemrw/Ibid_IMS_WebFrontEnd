@@ -1954,7 +1954,7 @@
 	}
 	.product-mob .action-bottom .btn, .product-mob .action-wishlist .btn, .btn, .product-mob .action-wishlist a {
 	    font-size: 11px;
-	    width: 49%;
+	    width: 100%;
 	    display: inline-block;
 	    padding: 10px 2px;
 	}

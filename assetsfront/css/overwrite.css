@@ -105,6 +105,10 @@ a.delete-compare {
 	float: left;
 }
 
+.font-green {
+    color: #a3d063 !important;
+}
+
 .font-silver {
     color: #757575 !important;
 }
@@ -203,6 +207,10 @@ a.delete-compare {
     margin-left: -15px !important;
 }
 
+.margin-top-10px {
+    margin-top: 10px !important;
+}
+
 .margin-top-80px {
     margin-top: 80px !important;
 }
@@ -242,6 +250,12 @@ a.delete-compare {
     margin: 32px auto 10px !important;
 }
 
+.object-type label,
+.object-type .form-group {
+    margin-right: 2px !important;
+    margin-left: 2px !important;
+}
+
 .padding-10px {
     padding: 10px !important;
 }
@@ -268,6 +282,10 @@ a.delete-compare {
 .or {
 	width: auto !important;
 	padding: 2px !important;
+}
+
+.text-align-right {
+    text-align: right !important;
 }
 
 .text-align-center {
