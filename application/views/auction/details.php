@@ -114,7 +114,7 @@
              <ul class="bid-list clearfix">
                 <li class="col-md-6 clearfix">
                    <div class="box-image-auction">
-                    <div class="tumbnail-auction" id="thumbnail-action<?php echo $key+1;?>"> <!--add  .tumbnail-auction-overlay to five sold overlay -->
+                    <div class="tumbnail-auction tumbnail-auction-overlay" id="thumbnail-action<?php echo $key+1;?>"> <!--add  .tumbnail-auction-overlay to five sold overlay -->
                       <img src="<?php echo base_url('assetsfront/images/background/default.png'); ?>" alt="" id="lot-img<?php echo $key+1;?>">
                       <div class="overlay-sold-out" id="overlay<?php echo $key+1;?>">
                       </div>
