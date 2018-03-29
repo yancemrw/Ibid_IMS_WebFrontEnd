@@ -42,7 +42,7 @@ class Whislist extends CI_Controller {
 		}
 		//echo "<pre>"; print_r($dataImg);
 		//echo "<pre>"; print_r($dataTaksasi);
-		echo "<pre>"; print_r($data); exit;
+		//echo "<pre>"; print_r($data); exit;
 
 		$datax = array(
 			'header_white'		=> "header-white",
