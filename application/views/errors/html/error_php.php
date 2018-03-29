@@ -39,7 +39,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<img src='<?php echo base_url('assetsfront/images/background/500.png'); ?>' />
 							</div>
 							<p><?php echo $message; ?></p>
-							<?php echo (@$filepath) ? $filepath : ''; ?>
+							<p>Severity: <?php echo (@$severity) ? $severity : ''; ?></p>
+							<p>Message:  <?php echo (@$message) ? $message : ''; ?></p>
+							<p>Filename: <?php echo (@$filepath) ? $filepath : ''; ?></p>
+							<p>Line Number: <?php echo (@line) ? $line : ''; ?></p>
 							<p>Muat ulang halaman browser anda</p>
 							<button class="btn btn-green cursor-pointer" onclick="location.href='<?php echo site_url(); ?>'">KEMBALI KE HALAMAN UTAMA</button>
 						</div>
