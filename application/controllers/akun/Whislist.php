@@ -18,7 +18,7 @@ class Whislist extends CI_Controller {
 		$url = linkservice('stock')."favorite/Lists";
 		$method = 'POST';
 		$responseApi = admsCurl($url, array('userid' => $this->userdata['UserId']), $method);
-		$data = curlGenerate($responseApi);//echo "<pre>"; print_r($data); exit;
+		$data = curlGenerate($responseApi); echo "<pre>"; print_r($data); exit;
 
 		if(count($data) > 0) {
 			// get data images
