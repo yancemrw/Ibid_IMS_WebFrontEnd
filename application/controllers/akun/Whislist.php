@@ -20,6 +20,7 @@ class Whislist extends CI_Controller {
 		$responseApi = admsCurl($url, array('userid' => $this->userdata['UserId']), $method);
 		$data = curlGenerate($responseApi); //echo "<pre>"; print_r($data); exit;
 
+		$dataPrice = array();
 		if(count($data) > 0) {
 			foreach($data as $key => $row) {
 				// get data images
@@ -34,9 +35,9 @@ class Whislist extends CI_Controller {
 				$resTaksasi = admsCurl($urlTaksasi, array('userid' => $this->userdata['UserId']), $methodTaksasi);
 				$dataTaksasi = curlGenerate($resTaksasi);
 
-				$datax['dataPrice'][$key] = $row->FinalPriceItem;
+				$dataPrice = $row->FinalPriceItem;
 			}
-		} echo "<pre>"; print_r($datax); exi;
+		} echo "<pre>"; print_r($dataPrice); exit;
 
 		$datax = array(
 			'header_white'		=> "header-white",
