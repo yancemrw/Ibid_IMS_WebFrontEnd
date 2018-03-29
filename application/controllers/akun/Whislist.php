@@ -28,16 +28,18 @@ class Whislist extends CI_Controller {
 				$methodImg = 'GET';
 				$resImg = admsCurl($urlImg, array('userid' => $this->userdata['UserId']), $methodImg);
 				$dataImg = curlGenerate($resImg);
+				$data[$key]['ImagePath'] = $dataImg[$key]->ImagePath;
 
 				// get data taksasi
 				$urlTaksasi = linkservice('taksasi')."nilaiicar/detail?AuctionItemId=".$row->AuctionItemId;
 				$methodTaksasi = 'GET';
 				$resTaksasi = admsCurl($urlTaksasi, array('userid' => $this->userdata['UserId']), $methodTaksasi);
 				$dataTaksasi = curlGenerate($resTaksasi);
+				$data[$key]['TotalEvaluationResult'] = $dataTaksasi[$key]->TotalEvaluationResult;
 
-				$dataPrice[$key] = $row->FinalPriceItem;
+				$data[$key]['dataPrice'] = $row->FinalPriceItem;
 			}
-		} echo "<pre>"; print_r($dataPrice); exit;
+		}console.log($data); exit;
 
 		$datax = array(
 			'header_white'		=> "header-white",
@@ -45,9 +47,7 @@ class Whislist extends CI_Controller {
 			'title'			=> 'Data Diri',
 			'form_auth_mobile'	=> login_status_form_mobile($this->userdata),
 			'form_auth'		=> login_Status_form($this->userdata),
-			'data'			=> $data,
-			'imgData'		=> $dataImg,
-			'dataTaksasi'		=> $dataTaksasi
+			'data'			=> $data
 		);
 		$datax['img_link'] = base_url('assetsfront/images/icon/ic_avatar.png');
 		$view = "akun/whislist";
