@@ -50,16 +50,16 @@
                                 <div class="list-product box-recommend list-compare">
                                     <a href="javascript:void(0)" />
                                         <div class="thumbnail">
-                                            <img src="<?php echo $imgData[0]->ImagePath ?>" />
+                                            <img src="<?php echo $value[$key]->ImagePath ?>" />
                                             <div class="overlay-grade">
-                                                Grade <span><?php echo $dataTaksasi->TotalEvaluationResult ?></span>
+                                                Grade <span><?php echo $value[$key]->TotalEvaluationResult ?></span>
                                             </div>
                                             <p class="overlay-lot">LOT ???</p>
                                         </div>
                                         <div class="boxright-mobile">
-                                            <h2><?php echo $data[0]->merk.' '.$data[0]->seri.' '.$data[0]->silinder.' '.$data[0]->grade.' '.$data[0]->model.' '.$data[0]->transmisi ?></h2>
-                                            <span><?php echo $data[0]->tahun ?></span>
-                                            <span class="price">Rp. <?php echo $dataPrice; ?></span>
+                                            <h2><?php echo $value[$key]->merk.' '.$value[$key]->seri.' '.$value[$key]->silinder.' '.$value[$key]->grade.' '.$value[$key]->model.' '.$value[$key]->transmisi ?></h2>
+                                            <span><?php echo $value[$key]->tahun ?></span>
+                                            <span class="price">Rp. <?php echo $value[$key]->dataPrice; ?></span>
                                             <p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>Belum Tersedia</span></p>
                                             <p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Belum Tersedia</span></p>
                                         </div>
