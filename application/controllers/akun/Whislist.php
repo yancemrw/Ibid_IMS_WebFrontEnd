@@ -27,19 +27,22 @@ class Whislist extends CI_Controller {
 				$urlImg = linkservice('taksasi')."icar/getimage?AuctionItemId=".$row->AuctionItemId;
 				$methodImg = 'GET';
 				$resImg = admsCurl($urlImg, array('userid' => $this->userdata['UserId']), $methodImg);
-				$dataImg = curlGenerate($resImg); echo "<pre>"; print_r($dataImg);
+				$dataImg = curlGenerate($resImg);
 				//$data[$key]->ImagePath = $dataImg[$key]->ImagePath;
 
 				// get data taksasi
 				$urlTaksasi = linkservice('taksasi')."nilaiicar/detail?AuctionItemId=".$row->AuctionItemId;
 				$methodTaksasi = 'GET';
 				$resTaksasi = admsCurl($urlTaksasi, array('userid' => $this->userdata['UserId']), $methodTaksasi);
-				$dataTaksasi = curlGenerate($resTaksasi); echo "<pre>"; print_r($dataTaksasi); exit;
-				$data[$key]->TotalEvaluationResult = $dataTaksasi[$key]->TotalEvaluationResult;
+				$dataTaksasi = curlGenerate($resTaksasi);
+				//$data[$key]->TotalEvaluationResult = $dataTaksasi[$key]->TotalEvaluationResult;
 
 				$data[$key]->dataPrice = $row->FinalPriceItem;
 			}
-		}console.log($data); exit;
+		}
+		echo "<pre>"; print_r($dataImg);
+		echo "<pre>"; print_r($dataTaksasi); exit;
+		console.log($data); exit;
 
 		$datax = array(
 			'header_white'		=> "header-white",
