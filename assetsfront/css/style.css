@@ -3791,6 +3791,39 @@ input.switch:empty~label:after {
     width: 100%
 }
 
+.tumbnail-auction {
+    height: 230px;
+    text-align: center;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    padding-bottom: 75%;
+}
+
+.tumbnail-auction-overlay {
+    position: relative;
+}
+.tumbnail-auction-overlay:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(233, 132, 132, 0.25);
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+}
+
+.overlay-sold-out {
+    position: absolute;
+    margin: auto;
+    top: 100px;
+    bottom: 100px;
+    left: 100px;
+    right: 100px;
+    z-index: 1
+}
+
 .box-image-auction {
     background: #fff;
     position: relative;
@@ -3800,6 +3833,8 @@ input.switch:empty~label:after {
 }
 .box-image-auction h2.overlay-title {
     text-align: left;
+    border-radius: 0;
+    border: 0;
 }
 h2.overlay-title {
     position: absolute;
