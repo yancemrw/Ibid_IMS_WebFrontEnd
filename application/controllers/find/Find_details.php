@@ -40,6 +40,7 @@ class Find_details extends CI_Controller {
 		$detailicar = curlGenerate($res4);
 
 		// get getSchedule
+		$schedule = 0; $lot = 0;
 		$url1 = linkservice('stock')."lot/get/?AuctionItemId=".$id;
 		$method1 = 'GET';
 		$res1 = admsCurl($url1, array(), $method1);
@@ -47,19 +48,21 @@ class Find_details extends CI_Controller {
 		if (count(@$detailGetSchedule) > 0){
 			$schedule = $detailGetSchedule[0]->thisSchedule;
 			$lot = $detailGetSchedule[0]->LotNo;
-		} else {
-			// get data lot
-			$schedule = 37; // hardcode
-			$lot = 1; // hardcode
 		}
+		// else {
+			// // get data lot
+			// $schedule = 37; // hardcode
+			// $lot = 1; // hardcode
+		// }
 		
-		
-		
-		$url = "http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/getLotDataOnline?schedule=$schedule&lot=$lot";
-		$datalot = admsCurl($url, array(), 'GET');
-		$datalot = json_decode($datalot['response']);
-		$date = @explode('-',$datalot->schedule->date);
-		$time = @explode(':',$datalot->schedule->waktu);
+		if ($schedule > 0){
+			$url = "http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/getLotDataOnline?schedule=$schedule&lot=$lot";
+			$datalot = admsCurl($url, array(), 'GET');
+			$datalot = json_decode(@$datalot['response']);
+			$date = explode('-',@$datalot->schedule->date);
+			$time = explode(':',@$datalot->schedule->waktu);
+			
+		}
 
 		// cek favorit
 		$arrFav = array(
@@ -72,9 +75,9 @@ class Find_details extends CI_Controller {
 		$jsonFav = json_decode($resFav['response']);
 
 		
+		// get NPL
 		$thisNpl = array();
-		if ($UserId > 0){
-			// get NPL
+		if ($UserId > 0 && $schedule > 0){
 			$url1 = linkservice('NPL')."counter/npl/searchAll/?BiodataId=".$UserId."&ScheduleId=".$schedule;
 			$method1 = 'GET';
 			$res1 = admsCurl($url1, array(), $method1);
@@ -103,13 +106,13 @@ class Find_details extends CI_Controller {
 			'schedule_id' => @$datalot->schedule->id,
 			'no_lot' => @$datalot->lot->no_lot,
 			'lot_id' => @$datalot->lot->id,
-			'startprice' => @number_format((int) $datalot->stock->StartPrice + 0,0, '', ','),
+			'startprice' => number_format((int) @$datalot->stock->StartPrice + 0,0, '', ','),
 			'date' => @$date,
 			'time' => @$time,
 			'thisNpl' => @$thisNpl,
-			'serverdate' => @explode('-',date("Y-m-d-H-i-s-v")),
-			'interval' => @(int)str_replace(",", "", $datalot->schedule->interval),
-			'favAction' => @$jsonFav
+			'serverdate' => explode('-',date("Y-m-d-H-i-s-v")),
+			'interval' => (int)str_replace(",", "", @$datalot->schedule->interval),
+			'favAction' => $jsonFav
 		);
 		$view = "find/find_details";
 		template($view, $data);

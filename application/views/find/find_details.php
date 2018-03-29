@@ -123,18 +123,18 @@
                <div class="desc-row clearfix">
                   <ul>
                      <li>
-                        <p><?php echo $gradeinternal[1]->DamageName; ?> <span>: <?php echo $gradeinternal[1]->TotalEvaluationResult; ?></span></p>
+                        <p><?php echo @$gradeinternal[1]->DamageName; ?> <span>: <?php echo @$gradeinternal[1]->TotalEvaluationResult; ?></span></p>
                      </li>
                      <li>
-                        <p><?php echo $gradeinternal[3]->DamageName; ?> <span>: <?php echo $gradeinternal[3]->TotalEvaluationResult; ?></span></p>
+                        <p><?php echo @$gradeinternal[3]->DamageName; ?> <span>: <?php echo @$gradeinternal[3]->TotalEvaluationResult; ?></span></p>
                      </li>
                   </ul>
                   <ul>
                      <li>
-                        <p><?php echo $gradeinternal[0]->DamageName; ?> <span>: <?php echo $gradeinternal[0]->TotalEvaluationResult; ?></span></p>
+                        <p><?php echo @$gradeinternal[0]->DamageName; ?> <span>: <?php echo @$gradeinternal[0]->TotalEvaluationResult; ?></span></p>
                      </li>
                      <li>
-                        <p><?php echo $gradeinternal[2]->DamageName; ?> <span>: <?php echo $gradeinternal[2]->TotalEvaluationResult; ?></span></p>
+                        <p><?php echo @$gradeinternal[2]->DamageName; ?> <span>: <?php echo @$gradeinternal[2]->TotalEvaluationResult; ?></span></p>
                      </li>
                   </ul>
                </div>
@@ -415,14 +415,39 @@
    var durationRef   = lotDataRef.child('duration');
    var allowRef      = lotRef.child('allowBid');
    var duration = 1;
-   var countDownDate = new Date('<?php echo "$date[0],".($date[1]-1).",".(int)$date[2].",$time[0],$time[1],0,0"; ?>').getTime();
-   var now = new Date('<?php echo "$serverdate[0],".((int)$serverdate[1]-1).",".(int)$serverdate[2].",$serverdate[3],$serverdate[4],".(int)$serverdate[4].",".(int)$serverdate[4]; ?>').getTime();
+   
+   <?php if($data[0]->StatusStok === 1 && $schedule_id > 0) { // 0 = Live Auction, 1 = Online ?>
+   var countDownDate = new Date(<?php echo @$date[0].",".(@$date[1]-1).",".(int)@$date[2].",".@$time[0].",".@$time[1].",0,0"; ?>).getTime();
+   var now = new Date(<?php echo "$serverdate[0],".((int)$serverdate[1]-1).",".(int)$serverdate[2].",$serverdate[3],$serverdate[4],".(int)$serverdate[4].",".(int)$serverdate[4]; ?>).getTime();
+   
+   var eligibleNpl = [];
+
+      $('#used-npl option').each(function () {
+         eligibleNpl.push($(this).val());
+      });
+
+      $('#top-bidder-info').hide();
+   
    
    allowRef.on('value', function(allowedSnap){
      lotDataRef.on('value', function(lotDataSnap){
          if (allowedSnap.exists() && lotDataSnap.exists()) {
             if (allowedSnap.val() || lotDataSnap.val().duration > 0) {
-               $('.btn-bid').prop('disabled',false);
+               lotRef.once('value', function(lotSnap){
+                  if (lotSnap.hasChild("log")) {
+                     logsRef.on("child_added", function(logSnap) {
+                        if (eligibleNpl.includes(logSnap.val().npl)) {
+                          $('#top-bidder-info').show();
+                          $('.btn-bid').prop('disabled', true);
+                        } else {
+                          $('#top-bidder-info').hide();
+                          $('.btn-bid').prop('disabled', false);
+                        }
+                     });
+                  } else {
+                     $('.btn-bid').prop('disabled',false);
+                  }
+               });
             }else{
                $('.btn-bid').prop('disabled',true);
                $("#timer").text("LELANG SUDAH BERAKHIR");
@@ -435,6 +460,8 @@
          }
      });
    });
+   
+   <?php } ?>
    
 $(document).ready(function() {
    // var dbRef         = firebase.database();
@@ -485,8 +512,15 @@ $(document).ready(function() {
       $('.slider-nav-thumbnails .slick-slide').eq(mySlideNumber).addClass('slick-active');
    });
 
+   
+   
+   
+   <?php if($data[0]->StatusStok === 1 && $schedule_id > 0) { // 0 = Live Auction, 1 = Online 
+	
+   ?>
+   
    // Timer
-   var countDownDate = new Date('<?php echo "$date[0],".($date[1]-1).",".(int)$date[2].",$time[0],$time[1],0,0"; ?>').getTime();
+   var countDownDate = new Date('<?php echo $date[0].",".(@$date[1]-1).",".(int)@$date[2].",".@$time[0].",".@$time[1].",0,0"; ?>').getTime();
    if(isNaN(countDownDate)) {
       $("#timer-title").css('display', 'none');
       $("#timer").text("JADWAL LELANG TIDAK DIKETAHUI");
@@ -520,10 +554,6 @@ $(document).ready(function() {
       }, 1000);
    }
 
-      var eligibleNpl = [];
-      $('#used-npl option').each(function () {
-         eligibleNpl.push($(this).val());
-      });
       $('#top-bidder-info').hide();
       durationRef.on('value', function(durationSnap){
          if (durationSnap.exists()) {
@@ -573,6 +603,16 @@ $(document).ready(function() {
       }
    }, 1000);
 
+   
+   <?php } ?>
+   
+   
+   
+   
+   
+   
+   
+   
    // Graphic Lelang
    var canvas = document.getElementById("myChart");
    var ctx = canvas.getContext("2d");
