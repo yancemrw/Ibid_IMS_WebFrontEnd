@@ -38,7 +38,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<div class="image-message">
 								<img src='<?php echo base_url('assetsfront/images/background/500.png'); ?>' />
 							</div>
-							<p><?php echo $message; ?></p>
 							<p>Severity: <?php echo (@$severity) ? $severity : ''; ?></p>
 							<p>Message:  <?php echo (@$message) ? $message : ''; ?></p>
 							<p>Filename: <?php echo (@$filepath) ? $filepath : ''; ?></p>
