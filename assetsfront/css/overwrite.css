@@ -188,7 +188,7 @@ a.delete-compare {
 }
 
 .main-management .box-recommend .thumbnail {
-    height: 250px !important;
+    height: calc(100% - 100px) !important;
 }
 
 .margin-10px {
