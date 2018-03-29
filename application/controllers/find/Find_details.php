@@ -57,9 +57,9 @@ class Find_details extends CI_Controller {
 		
 		$url = "http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/getLotDataOnline?schedule=$schedule&lot=$lot";
 		$datalot = admsCurl($url, array(), 'GET');
-		$datalot = @json_decode($datalot['response']);
-		$date = explode('-',$datalot->schedule->date);
-		$time = explode(':',$datalot->schedule->waktu);
+		$datalot = json_decode($datalot['response']);
+		$date = @explode('-',$datalot->schedule->date);
+		$time = @explode(':',$datalot->schedule->waktu);
 
 		// cek favorit
 		$arrFav = array(
