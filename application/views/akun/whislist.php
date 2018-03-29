@@ -44,7 +44,7 @@
                         <div class="row">
                             <?php 
                             if(count($data)) {
-                                foreach($data as $key => $value) {
+                                foreach($data as $key => $value) {echo "<pre>"; print_r($value);
                             ?>
                             <div class="col-md-4">
                                 <div class="list-product box-recommend list-compare">
@@ -71,7 +71,7 @@
                                 </div>
                             </div>
                             <?php 
-                                }
+                                } exit;
                             }
                             else {
                             ?>
