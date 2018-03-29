@@ -35,18 +35,18 @@ class Whislist extends CI_Controller {
 				$resTaksasi = admsCurl($urlTaksasi, array('userid' => $this->userdata['UserId']), $methodTaksasi);
 				$dataTaksasi = curlGenerate($resTaksasi);
 
-				$dataPrice = $row->FinalPriceItem;
+				$dataPrice[$key] = $row->FinalPriceItem;
 			}
 		} echo "<pre>"; print_r($dataPrice); exit;
 
 		$datax = array(
 			'header_white'		=> "header-white",
-			'userdata'			=> $this->userdata,
-			'title'				=> 'Data Diri',
+			'userdata'		=> $this->userdata,
+			'title'			=> 'Data Diri',
 			'form_auth_mobile'	=> login_status_form_mobile($this->userdata),
-			'form_auth'			=> login_Status_form($this->userdata),
-			'data'				=> $data,
-			'imgData'			=> $dataImg,
+			'form_auth'		=> login_Status_form($this->userdata),
+			'data'			=> $data,
+			'imgData'		=> $dataImg,
 			'dataTaksasi'		=> $dataTaksasi
 		);
 		$datax['img_link'] = base_url('assetsfront/images/icon/ic_avatar.png');
