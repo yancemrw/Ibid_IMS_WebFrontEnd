@@ -18,6 +18,10 @@
 							<img src="<?php echo base_url('assetsfront/images/background/404.png'); ?>" alt="">
 						</div>
 						<p>Oops... Halaman tidak ditemukan</p>
+						<div id="container">
+							<h1><?php echo $heading; ?></h1>
+							<?php echo $message; ?>
+						</div>
 						<button class="btn btn-green cursor-pointer" onclick="location.href='<?php echo site_url(); ?>'">KEMBALI KE HALAMAN UTAMA</button>
 						</div>
 					</div>
