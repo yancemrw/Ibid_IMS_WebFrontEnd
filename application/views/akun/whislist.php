@@ -44,22 +44,22 @@
                         <div class="row">
                             <?php 
                             if(count($data)) {
-                                foreach($data as $key => $value) {echo "<pre>"; print_r($value);
+                                foreach($data as $key => $value) {
                             ?>
                             <div class="col-md-4">
                                 <div class="list-product box-recommend list-compare">
                                     <a href="javascript:void(0)" />
                                         <div class="thumbnail">
-                                            <img src="<?php echo $value[$key]->ImagePath ?>" />
+                                            <img src="<?php echo $value->ImagePath ?>" />
                                             <div class="overlay-grade">
-                                                Grade <span><?php echo $value[$key]->TotalEvaluationResult ?></span>
+                                                Grade <span><?php echo $value->TotalEvaluationResult ?></span>
                                             </div>
                                             <p class="overlay-lot">LOT ???</p>
                                         </div>
                                         <div class="boxright-mobile">
-                                            <h2><?php echo $value[$key]->merk.' '.$value[$key]->seri.' '.$value[$key]->silinder.' '.$value[$key]->grade.' '.$value[$key]->model.' '.$value[$key]->transmisi ?></h2>
-                                            <span><?php echo $value[$key]->tahun ?></span>
-                                            <span class="price">Rp. <?php echo $value[$key]->dataPrice; ?></span>
+                                            <h2><?php echo $value->merk.' '.$value->seri.' '.$value->silinder.' '.$value->grade.' '.$value->model.' '.$value->transmisi ?></h2>
+                                            <span><?php echo $value->tahun ?></span>
+                                            <span class="price">Rp. <?php echo $value->dataPrice; ?></span>
                                             <p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>Belum Tersedia</span></p>
                                             <p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Belum Tersedia</span></p>
                                         </div>
@@ -71,7 +71,7 @@
                                 </div>
                             </div>
                             <?php 
-                                } exit;
+                                }
                             }
                             else {
                             ?>
