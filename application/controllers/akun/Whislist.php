@@ -18,20 +18,20 @@ class Whislist extends CI_Controller {
 		$url = linkservice('stock')."favorite/Lists";
 		$method = 'POST';
 		$responseApi = admsCurl($url, array('userid' => $this->userdata['UserId']), $method);
-		$data = curlGenerate($responseApi); echo "<pre>"; print_r($data); exit;
+		$data = curlGenerate($responseApi); //echo "<pre>"; print_r($data); exit;
 
 		if(count($data) > 0) {
 			// get data images
 			$urlImg = linkservice('taksasi')."icar/getimage?AuctionItemId=".$data[0]->AuctionItemId;
 			$methodImg = 'GET';
 			$resImg = admsCurl($urlImg, array('userid' => $this->userdata['UserId']), $methodImg);
-			$dataImg = curlGenerate($resImg);
+			$dataImg = curlGenerate($resImg); echo "<pre>"; print_r($data);
 
 			// get data taksasi
 			$urlTaksasi = linkservice('taksasi')."nilaiicar/detail?AuctionItemId=".$data[0]->AuctionItemId;
 			$methodTaksasi = 'GET';
 			$resTaksasi = admsCurl($urlTaksasi, array('userid' => $this->userdata['UserId']), $methodTaksasi);
-			$dataTaksasi = curlGenerate($resTaksasi);
+			$dataTaksasi = curlGenerate($resTaksasi); echo "<pre>"; print_r($data); exit;
 
 			$datax['dataPrice'] = $data[0]->FinalPriceItem;
 		}
