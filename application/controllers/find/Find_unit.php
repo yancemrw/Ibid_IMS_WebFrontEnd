@@ -20,11 +20,17 @@ class Find_unit extends CI_Controller {
 			'link_detail' => site_url('detail-lelang')
 		);
 		
+		$itemAttr1 = @$_GET['itemAttr1'];
+		$itemAttr2 = @$_GET['itemAttr2'];
+		$itemAttr10 = @$_GET['itemAttr10'];
 		#################################
 		## form dinamis Cari Kendaraan ##
 		#################################
 		// mobil
-		$url = linkservice('stock') ."item/add/getcarikendaraan?id=6"; 
+		if ($itemAttr1 != "" && $itemAttr2  != ""&& $itemAttr10 != "")
+			$url = linkservice('stock') ."item/add/getcarikendaraan?id=6&itemAttr1=".@$itemAttr1."&itemAttr2=".@$itemAttr2."&itemAttr10=".@$itemAttr10;
+		else 
+			$url = linkservice('stock') ."item/add/getcarikendaraan?id=6"; 
 		$method = 'GET'; 
 		$responseApi = admsCurl($url, array(), $method); 
 		if ($responseApi['err']) { echo "<hr>cURL Error #:" . $responseApi['err']; } else { 

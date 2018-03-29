@@ -20,21 +20,21 @@ class Find_details extends CI_Controller {
 
 		// get detail photo
 		$url2 = linkservice('taksasi')."icar/getimage?AuctionItemId=".$id;
-		$url2 = linkservice('taksasi')."icar/getimage?AuctionItemId=12403";
+		// $url2 = linkservice('taksasi')."icar/getimage?AuctionItemId=12403";
 		$method2 = 'GET';
 		$res2 = admsCurl($url2, array(), $method2);
 		$detailphoto = curlGenerate($res2);
 
 		// get grade item
 		$url3 = linkservice('taksasi')."nilaiicar/detail?AuctionItemId=".$id;
-		$url3 = linkservice('taksasi')."nilaiicar/detail?AuctionItemId=12403";
+		// $url3 = linkservice('taksasi')."nilaiicar/detail?AuctionItemId=12403";
 		$method3 = 'GET';
 		$res3 = admsCurl($url3, array(), $method3);
 		$detailgrade = curlGenerate($res3);
 
 		// get grade item detail
 		$url4 = linkservice('taksasi')."nilaiicardetail/get?AuctionItemId=".$id;
-		$url4 = linkservice('taksasi')."nilaiicardetail/get?AuctionItemId=12403";
+		// $url4 = linkservice('taksasi')."nilaiicardetail/get?AuctionItemId=12403";
 		$method4 = 'GET';
 		$res4 = admsCurl($url4, array(), $method4);
 		$detailicar = curlGenerate($res4);
