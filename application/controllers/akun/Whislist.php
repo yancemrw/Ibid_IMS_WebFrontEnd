@@ -37,7 +37,7 @@ class Whislist extends CI_Controller {
 				$dataTaksasi = curlGenerate($resTaksasi);
 				$data[$key]->TotalEvaluationResult = $dataTaksasi->TotalEvaluationResult;
 
-				$data[$key]->dataPrice = $row->FinalPriceItem;
+				$data[$key]->dataPrice = $this->currency_format($row->FinalPriceItem);
 			}
 		}
 		//echo "<pre>"; print_r($dataImg);
@@ -55,6 +55,10 @@ class Whislist extends CI_Controller {
 		$datax['img_link'] = base_url('assetsfront/images/icon/ic_avatar.png');
 		$view = "akun/whislist";
 		template($view, $datax);
+	}
+	
+	function currency_format($value) {
+		return number_format($value, 2, ",", ".");
 	}
 
 }
