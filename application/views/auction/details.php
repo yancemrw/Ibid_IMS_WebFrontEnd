@@ -114,19 +114,18 @@
              <ul class="bid-list clearfix">
                 <li class="col-md-6 clearfix">
                    <div class="box-image-auction">
-                    <div class="tumbnail-auction tumbnail-auction-overlay" id="thumbnail-action<?php echo $key+1;?>"> <!--add  .tumbnail-auction-overlay to five sold overlay -->
+                    <div class="tumbnail-auction" id="thumbnail-action<?php echo $key+1;?>"> <!--add  .tumbnail-auction-overlay to five sold overlay -->
                       <img src="<?php echo base_url('assetsfront/images/background/default.png'); ?>" alt="" id="lot-img<?php echo $key+1;?>">
-                      <div class="overlay-sold-out" id="overlay<?php echo $key+1;?>">
-                      </div>
+                      <div class="overlay-sold-out" id="overlay<?php echo $key+1;?>"></div>
                     </div>
-                      <h2 class="overlay-title" id="lot-title<?php echo $key+1;?>">-</h2>
-                      <ul class="grade-auction">
-                         <li><a href="" class="active"><i class="fa fa-heart"></i></a></li>
-                         <li>
-                            <p class="overlay-grade">Grade <span id="lot-grade<?php echo $key+1;?>">-</span></p>
-                         </li>
-                      </ul>
-                      <h3 id="lot-year<?php echo $key+1;?>">-</h3>
+                    <h2 class="overlay-title" id="lot-title<?php echo $key+1;?>">-</h2>
+                    <ul class="grade-auction">
+                       <li><a href="" class="active"><i class="fa fa-heart"></i></a></li>
+                       <li>
+                          <p class="overlay-grade">Grade <span id="lot-grade<?php echo $key+1;?>">-</span></p>
+                       </li>
+                    </ul>
+                    <h3 id="lot-year<?php echo $key+1;?>">-</h3>
                    </div>
                    <div class="box-live-auction box-info">
                       <p>Harga Dasar :<span class="price-bidder" id="lot-startprice<?php echo $key+1;?>">-</span></p>
@@ -393,7 +392,7 @@
               });
             }else{
               reset(<?php echo $key+1;?>);
-			  console.log('masuk sono|used-npl<?php echo $key+1;?>');
+              console.log('masuk sono|used-npl<?php echo $key+1;?>');
             }
           });
 
@@ -428,7 +427,7 @@
         }
         else {
           reset(<?php echo $key+1;?>);
-		  console.log('masuk sana|used-npl<?php echo $key+1;?>');
+		      console.log('masuk sana|used-npl<?php echo $key+1;?>');
         }
       }
       else{
