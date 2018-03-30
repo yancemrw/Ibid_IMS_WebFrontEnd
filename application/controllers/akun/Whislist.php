@@ -18,9 +18,10 @@ class Whislist extends CI_Controller {
 		$url = linkservice('stock')."favorite/Lists";
 		$method = 'POST';
 		$responseApi = admsCurl($url, array('userid' => $this->userdata['UserId']), $method);
-		$data = curlGenerate($responseApi); //echo "<pre>"; print_r($data); exit;
+		$data = curlGenerate($responseApi);
 
 		$dataPrice = array();
+		$dataCompare = array();
 		if(count($data) > 0) {
 			foreach($data as $key => $row) {
 				// get data images
@@ -38,11 +39,34 @@ class Whislist extends CI_Controller {
 				$data[$key]->TotalEvaluationResult = $dataTaksasi->TotalEvaluationResult;
 
 				$data[$key]->dataPrice = $this->currency_format($row->FinalPriceItem);
+
+				// set json for data compare
+				$jsonCompare = new stdClass();
+				$jsonCompare->AuctionItemId = $row->AuctionItemId;
+                $jsonCompare->BahanBakar = $row->bahanbakar;
+                $jsonCompare->Image = $dataImg[0]->ImagePath;
+                $jsonCompare->Kilometer = $row->km;
+                $jsonCompare->Merk = $row->merk;
+                $jsonCompare->Model = $row->model;
+                $jsonCompare->NoKeur = $row->nokeur;
+                $jsonCompare->NoMesin = $row->nomesin;
+                $jsonCompare->NoPolisi = $row->nopolisi;
+                $jsonCompare->NoRangka = $row->norangka;
+                $jsonCompare->NoSTNK = $row->nostnk;
+                $jsonCompare->Seri = $row->seri;
+                $jsonCompare->Silinder = $row->silinder;
+                $jsonCompare->TaksasiGrade = $dataTaksasi->TotalEvaluationResult;
+                $jsonCompare->Tahun = $row->tahun;
+                $jsonCompare->Transmisi = $row->transmisi;
+                $jsonCompare->Tipe = $row->grade;
+                $jsonCompare->Price = $row->FinalPriceItem;
+                $jsonCompare->Warna = $row->warna;
+                $dataCompare[$key] = json_encode($jsonCompare);
 			}
 		}
 		//echo "<pre>"; print_r($dataImg);
 		//echo "<pre>"; print_r($dataTaksasi);
-		//echo "<pre>"; print_r($data); exit;
+		//echo "<pre>"; print_r(json_encode($jsonCompare)); exit;
 
 		$datax = array(
 			'header_white'		=> "header-white",
@@ -50,7 +74,8 @@ class Whislist extends CI_Controller {
 			'title'			=> 'Data Diri',
 			'form_auth_mobile'	=> login_status_form_mobile($this->userdata),
 			'form_auth'		=> login_Status_form($this->userdata),
-			'data'			=> $data
+			'data'			=> $data,
+			'jsonCompare'	=> $dataCompare
 		);
 		$datax['img_link'] = base_url('assetsfront/images/icon/ic_avatar.png');
 		$view = "akun/whislist";

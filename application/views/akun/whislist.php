@@ -65,7 +65,9 @@
                                         </div>
                                     </a>
                                     <div class="action-wishlist">
-                                        <button class="btn btn-green"><i class="fa fa-files-o"></i> Bandingkan</button>
+                                        <button class='btn btn-green' onclick='set_compare_product(<?php echo $jsonCompare[$key]; ?>, "<?php echo site_url('list-compare'); ?>")'>
+                                            <i class="fa fa-files-o"></i> Bandingkan
+                                        </button>
                                         <!--a href="javascript:void(0)" class="delete-favorite">Hapus Favorit</a-->
                                     </div>
                                 </div>
@@ -89,3 +91,38 @@
         </div>
     </div>
 </section>
+
+<section class="bg-grey related-product">
+   <div class="container">
+      <div class="row">
+         <a href="javascript:void(0)" class="open-compare" id="addcompare" style="display:none">Add Compare <i class="fa fa-plus"></i></a>
+      </div>
+   </div>
+</section>
+
+<section class="compare">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="compare-content">
+            <p><i class="fa fa-exclamation"></i> Pilih produk yang akan di bandingkan, minimal 2 produk untuk di compare</p>
+            <div class="col-md-12" id="loadContent">
+               <!-- Load Content Compare Product -->
+            </div>
+            <a href="javascript:;" class="close-compare">Tutup <i class="fa fa-times"></i></a>
+         </div>
+      </div>
+   </div>
+</section>
+
+<script>
+    //show compare element
+    let linked = '<?php echo site_url('list-compare'); ?>';
+    setCompare(linked);
+
+    $(".open-compare").click(function() {
+        $(".compare").show(500) && $(".open-compare").hide();
+    });
+    $(".close-compare").click(function() {
+        $(".compare").hide(500) && $(".open-compare").show();
+    });
+</script>
