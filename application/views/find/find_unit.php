@@ -240,8 +240,9 @@
                <div class="content-right product-mob content-load clearfix">
                   <div id="loadlist"></div>
                </div>
-               <div id="mored" class="cursor-pointer margin-top-10px text-align-center width-100" style="display:none">
-                  <a href="javascript:void(0)" class="font-green" onclick="">Berikutnya</a>
+               <div id="mored" class="cursor-pointer margin-top-10px text-align-center width-100">
+                  <!--a href="javascript:void(0)" class="font-green" onclick="">Berikutnya</a-->
+                  <span></span>
                </div>
             </div>
          </div>
@@ -344,7 +345,9 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
       },
       success: function(data) {
          var content = '',
+         data = data.data;
          datas = data.data,
+         dataTotal = data.total,
          sessiond = "<?php echo ($this->session->userdata('userdata') !== null) ? 'TRUE' : 'FALSE'; ?>",
          sessionId = '<?php echo $this->session->userdata('userdata')['UserId']; ?>';
          if(datas !== null) {
@@ -421,7 +424,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                                     '</div>'+
                                     '</div>';
                            $('#loadlist').html(content);
-                           countContainer(offset, limit, linked);
+                           countContainer(offset, limit, linked, dataTotal, datas.length);
                         }
                      });
                   },
@@ -450,10 +453,12 @@ function loadContainerPaging(offset, limit, linked) {
          <?php } ?>
       },
       beforeSend: function() {
-         $('#mored').children().replaceWith('<i class="fa fa-spin fa-refresh"></i>');
+         $('#mored').children().replaceWith('<img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" />');
       },
       success: function(data) {
-         var datas = data.data,
+         var data = data.data, 
+         datas = data.data,
+         dataTotal = data.total,
          sessiond = "<?php echo ($this->session->userdata('userdata') !== null) ? 'TRUE' : 'FALSE'; ?>",
          sessionId = '<?php echo $this->session->userdata('userdata')['UserId']; ?>';
          if(datas !== null) {
@@ -530,7 +535,7 @@ function loadContainerPaging(offset, limit, linked) {
                                     '</div>'+
                                     '</div>';
                            $('#loadlist').children().last().after(content);
-                           countContainer(offset, limit, linked);
+                           countContainer(offset, limit, linked, dataTotal, datas.length);
                         }
                      });
                   },
@@ -544,15 +549,25 @@ function loadContainerPaging(offset, limit, linked) {
    });
 }
 
-function countContainer(offset, limit, linked) {
-   var countTotal = offset + limit;
-   var countContainer = $('#loadlist').children().length; console.log(countContainer+':'+countTotal);
-   if(countTotal === countContainer) {
-      $('#mored').children().replaceWith('<a href="javascript:void(0)" class="font-green" onclick="loadContainerPaging('+countTotal+', '+limit+', \''+linked+'\')">Berikutnya</a>');
+function countContainer(offset, limit, linked, dataTotal, countPage) {
+   window.countTotal = offset + limit;
+   var countContainer = $('#loadlist').children().length;
+   countPage = countPage + offset;
+   if(countPage === countContainer) {
+      $('#mored').children().replaceWith('<span></span>');
+      $(document).scroll(function(e) {
+         if($(window).scrollTop() === $(document).height() - $(window).height()) {
+            if(window.countTotal < dataTotal) {
+               loadContainerPaging(window.countTotal, limit, linked);
+            }
+         }
+      });
+      return false;
    }
    else {
       // show loading paging
-      $('#mored').css('display', 'block').children().replaceWith('<i class="fa fa-spin fa-refresh"></i>');
+      $('#mored').children().replaceWith('<img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" />');
+      return false;
    }
 }
 
