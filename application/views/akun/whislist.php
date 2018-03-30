@@ -48,7 +48,7 @@
                             ?>
                             <div class="col-md-4">
                                 <div class="list-product box-recommend list-compare">
-                                    <a href="javascript:void(0)" />
+                                    <a href="<?php echo site_url('detail-lelang/'.$value->AuctionItemId); ?>" />
                                         <div class="thumbnail">
                                             <img src="<?php echo $value->ImagePath ?>" />
                                             <div class="overlay-grade">
@@ -64,10 +64,10 @@
                                             <p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Belum Tersedia</span></p>
                                         </div>
                                     </a>
-                                    <!--div class="action-wishlist">
+                                    <div class="action-wishlist">
                                         <button class="btn btn-green"><i class="fa fa-files-o"></i> Bandingkan</button>
-                                        <a href="javascript:void(0)" class="delete-favorite">Hapus Favorit</a>
-                                    </div-->
+                                        <!--a href="javascript:void(0)" class="delete-favorite">Hapus Favorit</a-->
+                                    </div>
                                 </div>
                             </div>
                             <?php 

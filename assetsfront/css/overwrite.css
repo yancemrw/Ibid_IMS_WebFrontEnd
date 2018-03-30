@@ -21,6 +21,12 @@ a.delete-compare {
     right: -3px !important;
 }
 
+.action-wishlist {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+}
+
 .alerts-strength {
     background: transparent !important;
     border: unset !important;
@@ -365,6 +371,12 @@ a.delete-compare {
     .graphic-coomingsoon span {
         left: 50% !important;
         top: 30% !important;
+        width: 100% !important;
+    }
+}
+
+@media(max-width: 768px) {
+    .product-mob .action-wishlist .btn, .btn, .product-mob .action-wishlist a {
         width: 100% !important;
     }
 }
