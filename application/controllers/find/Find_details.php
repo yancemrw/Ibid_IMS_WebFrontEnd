@@ -112,7 +112,8 @@ class Find_details extends CI_Controller {
 			'thisNpl' => @$thisNpl,
 			'serverdate' => explode('-',date("Y-m-d-H-i-s-v")),
 			'interval' => (int)str_replace(",", "", @$datalot->schedule->interval),
-			'favAction' => $jsonFav
+			'favAction' => $jsonFav,
+			'datalot' => @$datalot,
 		);
 		$view = "find/find_details";
 		template($view, $data);

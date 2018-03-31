@@ -395,10 +395,29 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                               "Warna": dataz.warnadoc
                            };
                            var json_str = JSON.stringify(compare_data);
-                           var lot = (dataz.LotNumb !== null) ? dataz.LotNumb : '???' ;
                            var iconFav = (dataz.thisFavorite === 0) ? '<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon" />' : '<i class="fa fa-heart"></i>';
                            var favorit = (sessiond === 'TRUE') ? '<button class="btn" onclick="addFav('+dataz.AuctionItemId+', '+sessionId+', this)">'+iconFav+'<span>Favorit</span></button>' : '';
-                           content += '<div class="col-md-4">'+
+                           
+                           var lot = (dataz.thisLotNo !== null) ? dataz.thisLotNo : '???' ;
+                           var schedule = (dataz.thisScheduleId !== null) ? dataz.thisScheduleId : 0 ;
+						   var lokasi = 'Belum Tersedia';
+						   var waktu = 'Belum Tersedia';
+						   
+						   if (schedule > 0){
+							   $.ajax({
+									type: 'GET',
+									url: 'http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/getLotDataOnline?schedule='+schedule+'&lot='+lot,
+									success: function(sch) {
+									   lokasi = sch.schedule.CompanyName;
+									   waktu = sch.schedule.date + ' ' + sch.schedule.waktu;
+									   $('.sch'+schedule).html(lokasi);
+									   $('.wkt'+schedule).html(waktu);
+									},
+							   });
+							   
+						   }
+						   
+						   content += '<div class="col-md-4" id="this'+dataz.AuctionItemId+'">'+
                                     '<div class="list-product box-recommend">'+
                                     '<a href="<?php echo $link_detail; ?>/'+dataz.AuctionItemId+'">'+
                                     '<div class="thumbnail">'+
@@ -413,8 +432,8 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                                     '<div class="boxright-mobile">'+
                                     '<h2>'+merk+' '+seri+' '+silinder+' '+tipe+' '+model+' '+transmisi+'</h2>'+
                                     '<span>'+tahun+'</span> <span class="price">Rp. '+currency_format(FinalPriceItem)+'</span>'+
-                                    '<p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>Belum Tersedia</span></p>'+
-                                    '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Belum Tersedia</span></p>'+
+                                    '<p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span class="sch'+dataz.thisScheduleId+'">'+waktu+'</span></p>'+
+                                    '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span class="wkt'+dataz.thisScheduleId+'">'+lokasi+'</span></p>'+
                                     '</div>'+
                                     '</a>'+
                                     '<div class="action-bottom">'+
@@ -506,9 +525,28 @@ function loadContainerPaging(offset, limit, linked) {
                               "Warna": dataz.warnadoc
                            };
                            var json_str = JSON.stringify(compare_data);
-                           var lot = (dataz.LotNumb !== null) ? dataz.LotNumb : '???' ;
                            var iconFav = (dataz.thisFavorite === 0) ? '<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon" />' : '<i class="fa fa-heart"></i>';
                            var favorit = (sessiond === 'TRUE') ? '<button class="btn" onclick="addFav('+dataz.AuctionItemId+', '+sessionId+', this)">'+iconFav+'<span>Favorit</span></button>' : '';
+						   
+                           var lot = (dataz.thisLotNo !== null) ? dataz.thisLotNo : '???' ;
+                           var schedule = (dataz.thisScheduleId !== null) ? dataz.thisScheduleId : 0 ;
+						   var lokasi = 'Belum Tersedia';
+						   var waktu = 'Belum Tersedia';
+						   
+						   if (schedule > 0){
+							   $.ajax({
+									type: 'GET',
+									url: 'http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/getLotDataOnline?schedule='+schedule+'&lot='+lot,
+									success: function(sch) {
+									   lokasi = sch.schedule.CompanyName;
+									   waktu = sch.schedule.date + ' ' + sch.schedule.waktu;
+									   $('.sch'+schedule).html(lokasi);
+									   $('.wkt'+schedule).html(waktu);
+									},
+							   });
+							   
+						   }
+						   
                            var content = '<div class="col-md-4">'+
                                     '<div class="list-product box-recommend">'+
                                     '<a href="<?php echo $link_detail; ?>/'+dataz.AuctionItemId+'">'+
@@ -524,8 +562,8 @@ function loadContainerPaging(offset, limit, linked) {
                                     '<div class="boxright-mobile">'+
                                     '<h2>'+merk+' '+seri+' '+silinder+' '+tipe+' '+model+' '+transmisi+'</h2>'+
                                     '<span>'+tahun+'</span> <span class="price">Rp. '+currency_format(FinalPriceItem)+'</span>'+
-                                    '<p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>Belum Tersedia</span></p>'+
-                                    '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Belum Tersedia</span></p>'+
+                                    '<p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span class="sch'+dataz.thisScheduleId+'">'+waktu+'</span></p>'+
+                                    '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span class="wkt'+dataz.thisScheduleId+'">'+lokasi+'</span></p>'+
                                     '</div>'+
                                     '</a>'+
                                     '<div class="action-bottom">'+

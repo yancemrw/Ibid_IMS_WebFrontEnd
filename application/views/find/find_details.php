@@ -186,14 +186,14 @@
                   <div class="">
                      <p class="grade-detail">Grade <span id="span-gradetaksasi"><?php echo $grade; ?></span></p>
                      <div class="label-lot">
-                        <h2>LOT ???</h2>
+                        <h2>LOT <?php echo @$datalot->lot->no_lot; ?></h2>
                      </div>
                      <ul>
                         <li class="clearfix">
                            Harga Awal <span class="price">Rp. <?php echo $dataharga; ?></span>
                            <input type="hidden" id="hide-hargafinal" value="<?php echo $data[0]->FinalPriceItem ?>"></li>
-                        <li>Jadwal <span>01 September 2017</span></li>
-                        <li>Lokasi <span>Jl. Sunter Permai III, Jakarta Utara</span></li>
+                        <li>Jadwal <span><?php echo @$datalot->schedule->date != '' ? date('d F Y',strtotime($datalot->schedule->date)) : '-'; ?></span></li>
+                        <li>Lokasi <span><?php echo @$datalot->schedule->CompanyName; ?></span></li>
                      </ul>
                      <?php if($data[0]->StatusStok === 1) { // 0 = Live Auction, 1 = Online ?>
                      <ul class="mobile-info">
@@ -415,6 +415,8 @@
    var durationRef   = lotDataRef.child('duration');
    var allowRef      = lotRef.child('allowBid');
    var duration = 1;
+   
+   var bidderRef           = dbRef.ref('bidder/ongoing');
    
    <?php if($data[0]->StatusStok === 1 && $schedule_id > 0) { // 0 = Live Auction, 1 = Online ?>
    var countDownDate = new Date(<?php echo @$date[0].",".(@$date[1]-1).",".(int)@$date[2].",".@$time[0].",".@$time[1].",0,0"; ?>).getTime();
@@ -974,23 +976,33 @@ function bid() {
    }
    else {
       const last = $('#lastbid').val();
+	  var bid;
+      var usedNpl = $('#used-npl').val();
+      var currentLot = <?php echo $no_lot; ?>;
 
       allowRef.once('value', function(allowedSnap) {
          lotDataRef.once('value', function(lotDataSnap) {
             if(allowedSnap.val() && lotDataSnap.val().duration > 0) {
                startPrice = lotDataSnap.exists() ? lotDataSnap.val().harga : 0;
-               if (last <= 0) {
-                  newbid = parseInt(startPrice);
-               }
-               else {
-                  newbid = parseInt(last) + parseInt(<?php echo $interval; ?>);
-               }
-               tasksRef.push({
-                  bid: newbid,
-                  npl: $('#used-npl').val(),
-                  // npl: '100001',
-                  type: 'Online',
-               });
+               
+			   last <= 0 ? newbid = parseInt(startPrice) : newbid = parseInt(last) + parseInt(<?php echo $interval; ?>);
+
+               //NPL ongoing check logic
+               var ongoingBidder = bidderRef.child('schedule/<?php echo $schedule_id;?>/'+usedNpl);
+                   ongoingBidder.once('value', function(bidderSnap){
+                     if (bidderSnap.exists()) {
+                              ongoingBidder.child('npl').once('value', function(ongoingNplSnap){
+                                 nplLot = ongoingNplSnap.val();
+                                 nplLot = nplLot.split('|');
+                                 nplLot[1] == currentLot ? bid = true : bid = false;
+                                 push_bid(bid,newbid,usedNpl);
+                              });
+                     } else {
+                        ongoingBidder.child('npl').set(usedNpl+'|<?php echo $no_lot; ?>');
+                        bid = true;
+                        push_bid(bid,newbid,usedNpl);
+                     }
+                   });
             }
             else {
                bootoast.toast({
@@ -1004,6 +1016,21 @@ function bid() {
       });
    }
 }
+
+function push_bid(bid_status,bid,npl){
+
+      if (bid_status == true) {
+         tasksRef.push({
+            bid: bid,
+            npl: npl,
+            // npl: '100001',
+            type: 'Online',
+         });
+      } else {
+         //costumize alert here
+         alert('NPL '+npl+' telah digunakan pada lot lain!!');
+      }
+  }
 </script>
 <script src="<?php echo base_url('assetsfront/assets360/three.min.js'); ?>"></script> 
 <script src="<?php echo base_url('assetsfront/assets360/jquery.fullscreen.js'); ?>"></script>
