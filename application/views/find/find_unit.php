@@ -398,24 +398,24 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                            var iconFav = (dataz.thisFavorite === 0) ? '<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon" />' : '<i class="fa fa-heart"></i>';
                            var favorit = (sessiond === 'TRUE') ? '<button class="btn" onclick="addFav('+dataz.AuctionItemId+', '+sessionId+', this)">'+iconFav+'<span>Favorit</span></button>' : '';
                            
-                           var lot = (dataz.thisLotNo !== null) ? dataz.thisLotNo : '???' ;
+                           var lot = (dataz.thisLotNo !== null && dataz.thisLotNo !== undefined) ? dataz.thisLotNo : '???' ;
                            var schedule = (dataz.thisScheduleId !== null) ? dataz.thisScheduleId : 0 ;
-						   var lokasi = 'Belum Tersedia';
-						   var waktu = 'Belum Tersedia';
-						   
-						   if (schedule > 0){
-							   $.ajax({
-									type: 'GET',
-									url: 'http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/getLotDataOnline?schedule='+schedule+'&lot='+lot,
-									success: function(sch) {
-									   lokasi = sch.schedule.CompanyName;
-									   waktu = sch.schedule.date + ' ' + sch.schedule.waktu;
-									   $('.sch'+schedule).html(lokasi);
-									   $('.wkt'+schedule).html(waktu);
-									},
-							   });
-							   
-						   }
+      						   var lokasi = 'Belum Tersedia';
+      						   var waktu = 'Belum Tersedia';
+      						   
+      						   if (schedule > 0) {
+      							   $.ajax({
+      									type: 'GET',
+      									url: 'http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/getLotDataOnline?schedule='+schedule+'&lot='+lot,
+      									success: function(sch) {
+      									   lokasi = sch.schedule.CompanyName;
+      									   waktu = sch.schedule.date + ' ' + sch.schedule.waktu;
+      									   $('.sch'+schedule).html(lokasi);
+      									   $('.wkt'+schedule).html(waktu);
+      									},
+      							   });
+      							   
+      						   }
 						   
 						   content += '<div class="col-md-4" id="this'+dataz.AuctionItemId+'">'+
                                     '<div class="list-product box-recommend">'+
@@ -528,24 +528,24 @@ function loadContainerPaging(offset, limit, linked) {
                            var iconFav = (dataz.thisFavorite === 0) ? '<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon" />' : '<i class="fa fa-heart"></i>';
                            var favorit = (sessiond === 'TRUE') ? '<button class="btn" onclick="addFav('+dataz.AuctionItemId+', '+sessionId+', this)">'+iconFav+'<span>Favorit</span></button>' : '';
 						   
-                           var lot = (dataz.thisLotNo !== null) ? dataz.thisLotNo : '???' ;
+                           var lot = (dataz.thisLotNo !== null && dataz.thisLotNo !== undefined) ? dataz.thisLotNo : '???' ;
                            var schedule = (dataz.thisScheduleId !== null) ? dataz.thisScheduleId : 0 ;
-						   var lokasi = 'Belum Tersedia';
-						   var waktu = 'Belum Tersedia';
-						   
-						   if (schedule > 0){
-							   $.ajax({
-									type: 'GET',
-									url: 'http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/getLotDataOnline?schedule='+schedule+'&lot='+lot,
-									success: function(sch) {
-									   lokasi = sch.schedule.CompanyName;
-									   waktu = sch.schedule.date + ' ' + sch.schedule.waktu;
-									   $('.sch'+schedule).html(lokasi);
-									   $('.wkt'+schedule).html(waktu);
-									},
-							   });
-							   
-						   }
+      						   var lokasi = 'Belum Tersedia';
+      						   var waktu = 'Belum Tersedia';
+      						   
+      						   if (schedule > 0) {
+      							   $.ajax({
+      									type: 'GET',
+      									url: 'http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/getLotDataOnline?schedule='+schedule+'&lot='+lot,
+      									success: function(sch) {
+      									   lokasi = sch.schedule.CompanyName;
+      									   waktu = sch.schedule.date + ' ' + sch.schedule.waktu;
+      									   $('.sch'+schedule).html(lokasi);
+      									   $('.wkt'+schedule).html(waktu);
+      									},
+      							   });
+      							   
+      						   }
 						   
                            var content = '<div class="col-md-4">'+
                                     '<div class="list-product box-recommend">'+

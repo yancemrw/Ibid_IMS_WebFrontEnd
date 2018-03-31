@@ -1713,9 +1713,45 @@
 	}
 }
 @media (max-width: 640px) {
-	.info-ibid button:first-child {
+	/*.info-ibid button:first-child {
 		margin-left: 8px;
-	}
+	}*/
+	.product-mob .box-recommend .thumbnail,
+    .box-recommend .thumbnail {
+        width: 100%;
+        margin-bottom: 5px;
+        position: relative;
+        padding-bottom: 75%;
+    }
+    .thumbnail-custom {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        overflow: hidden;
+        text-align: center;
+        top: 0;
+        right: 0;
+        left: 0;
+    }
+    .box-recommend.list-compare .thumbnail {
+        padding-bottom: 0
+    }
+    .section-recommend .box-recommend {
+        height: auto;
+    }
+    .product-mob .boxright-mobile {
+        width: 100%;
+    }
+    .section-list-product .action-bottom {
+        width: 100%
+    }
+    .section-list-product .product-mob .list-product.box-recommend {
+        max-height: 100%;
+    }
+    .section-list-product .action-bottom {
+        margin-top: 0;
+        position: relative;
+    }
 }
 @media (max-width: 600px) {
 	#modal-jadwal .modal-dialog {
@@ -1953,8 +1989,8 @@
 		width: auto!important;
 	}
 	.product-mob .action-bottom .btn, .product-mob .action-wishlist .btn, .btn, .product-mob .action-wishlist a {
-	    font-size: 11px;
-	    width: 100%;
+	    font-size: 14px;
+	    width: 49%;
 	    display: inline-block;
 	    padding: 10px 2px;
 	}

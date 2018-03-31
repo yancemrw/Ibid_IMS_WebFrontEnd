@@ -375,12 +375,6 @@ a.delete-compare {
     }
 }
 
-@media(max-width: 768px) {
-    .product-mob .action-wishlist .btn, .btn, .product-mob .action-wishlist a {
-        width: 100% !important;
-    }
-}
-
 // css by iqdam
 .coming-soon {
     max-width: 680px;
