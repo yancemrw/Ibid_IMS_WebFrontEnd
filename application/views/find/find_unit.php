@@ -13,7 +13,7 @@
             </div>
          </div>
          <div class="col-md-3">
-            <form id="thisFormFilter" class="form-filter clearfix">
+            <form id="thisFormFilter" class="form-filter search-transport clearfix">
                <h1><span class="icon_ic-filter"></span> Filters</h1>
                <?php if($this->session->userdata('userdata') !== null) { ?>
                <div class="form-group">

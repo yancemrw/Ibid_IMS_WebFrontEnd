@@ -315,14 +315,6 @@ a.delete-compare {
 }
 
 @media(max-width: 768px) {
-    .btn-bandingkan {
-        margin-left: auto !important;
-        margin-right: auto !important;
-        width: 100% !important;
-    }
-}
-
-@media(max-width: 768px) {
 	.or {
 		width: 40px !important;
 	}
@@ -358,6 +350,12 @@ a.delete-compare {
 		padding: 5px 15px;
 	}
 
+    .btn-bandingkan {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        width: 100% !important;
+    }
+
     .photo-landscape {
         display: none;
     }
@@ -372,6 +370,12 @@ a.delete-compare {
         left: 50% !important;
         top: 30% !important;
         width: 100% !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .row {
+        margin-right: -15px !important;
     }
 }
 
