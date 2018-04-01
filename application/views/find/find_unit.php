@@ -279,7 +279,7 @@ $(document).ready(function() {
    setCompare(linked);
 
    // array month
-   $arrMonth = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+   window.arrMonth = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
 
    /*$('.content-load').jscroll({
       loadingHtml: '<img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" />',
@@ -413,7 +413,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
       									success: function(sch) {
                                     var dateSplit = sch.schedule.date.split('-');
       									   lokasi = sch.schedule.CompanyName;
-      									   waktu = dateSplit[2]+' '+$arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + sch.schedule.waktu;
+      									   waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + sch.schedule.waktu;
       									   $('.sch'+schedule).html(lokasi);
       									   $('.wkt'+schedule).html(waktu);
       									},
@@ -544,7 +544,7 @@ function loadContainerPaging(offset, limit, linked) {
       									success: function(sch) {
       									   var dateSplit = sch.schedule.date.split('-');
                                     lokasi = sch.schedule.CompanyName;
-                                    waktu = dateSplit[2]+'/'+$arrMonth[dateSplit[1]-1]+'/'+dateSplit[0] + ' ' + sch.schedule.waktu;
+                                    waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + sch.schedule.waktu;
       									   $('.sch'+schedule).html(lokasi);
       									   $('.wkt'+schedule).html(waktu);
       									},
