@@ -2238,7 +2238,7 @@
 		display: none;
 	}
 	.related-product-slider .list-product.box-recommend {
-	     min-height: 480px; 
+	     min-height: 460px; 
 	}
 	.favorite {
 	    display: block;
@@ -2317,7 +2317,7 @@
 		min-height: 450px;
 	}
 	.related-product .list-product.box-recommend {
-		min-height: 405px;
+		min-height: 420px;
 	}
 	.login-socialmedia a {
 		padding: 20px;
