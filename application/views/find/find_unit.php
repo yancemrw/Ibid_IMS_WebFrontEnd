@@ -278,6 +278,9 @@ $(document).ready(function() {
    let linked = '<?php echo site_url('list-compare'); ?>';
    setCompare(linked);
 
+   // array month
+   $arrMonth = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+
    /*$('.content-load').jscroll({
       loadingHtml: '<img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" />',
       autoTrigger: true,
@@ -408,8 +411,9 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
       									type: 'GET',
       									url: 'http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/getLotDataOnline?schedule='+schedule+'&lot='+lot,
       									success: function(sch) {
+                                    var dateSplit = sch.schedule.date.split('-');
       									   lokasi = sch.schedule.CompanyName;
-      									   waktu = sch.schedule.date + ' ' + sch.schedule.waktu;
+      									   waktu = dateSplit[2]+' '+$arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + sch.schedule.waktu;
       									   $('.sch'+schedule).html(lokasi);
       									   $('.wkt'+schedule).html(waktu);
       									},
@@ -432,8 +436,8 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                                     '<div class="boxright-mobile">'+
                                     '<h2>'+merk+' '+seri+' '+silinder+' '+tipe+' '+model+' '+transmisi+'</h2>'+
                                     '<span>'+tahun+'</span> <span class="price">Rp. '+currency_format(FinalPriceItem)+'</span>'+
-                                    '<p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span class="sch'+dataz.thisScheduleId+'">'+waktu+'</span></p>'+
-                                    '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span class="wkt'+dataz.thisScheduleId+'">'+lokasi+'</span></p>'+
+                                    '<p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span class="wkt'+dataz.thisScheduleId+'">'+waktu+'</span></p>'+
+                                    '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span class="sch'+dataz.thisScheduleId+'">'+lokasi+'</span></p>'+
                                     '</div>'+
                                     '</a>'+
                                     '<div class="action-bottom">'+
@@ -538,8 +542,9 @@ function loadContainerPaging(offset, limit, linked) {
       									type: 'GET',
       									url: 'http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/getLotDataOnline?schedule='+schedule+'&lot='+lot,
       									success: function(sch) {
-      									   lokasi = sch.schedule.CompanyName;
-      									   waktu = sch.schedule.date + ' ' + sch.schedule.waktu;
+      									   var dateSplit = sch.schedule.date.split('-');
+                                    lokasi = sch.schedule.CompanyName;
+                                    waktu = dateSplit[2]+'/'+$arrMonth[dateSplit[1]-1]+'/'+dateSplit[0] + ' ' + sch.schedule.waktu;
       									   $('.sch'+schedule).html(lokasi);
       									   $('.wkt'+schedule).html(waktu);
       									},
@@ -562,8 +567,8 @@ function loadContainerPaging(offset, limit, linked) {
                                     '<div class="boxright-mobile">'+
                                     '<h2>'+merk+' '+seri+' '+silinder+' '+tipe+' '+model+' '+transmisi+'</h2>'+
                                     '<span>'+tahun+'</span> <span class="price">Rp. '+currency_format(FinalPriceItem)+'</span>'+
-                                    '<p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span class="sch'+dataz.thisScheduleId+'">'+waktu+'</span></p>'+
-                                    '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span class="wkt'+dataz.thisScheduleId+'">'+lokasi+'</span></p>'+
+                                    '<p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span class="wkt'+dataz.thisScheduleId+'">'+waktu+'</span></p>'+
+                                    '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span class="sch'+dataz.thisScheduleId+'">'+lokasi+'</span></p>'+
                                     '</div>'+
                                     '</a>'+
                                     '<div class="action-bottom">'+
