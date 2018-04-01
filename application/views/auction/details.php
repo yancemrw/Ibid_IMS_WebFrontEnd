@@ -159,7 +159,7 @@
                       <div class="select-code clearfix">
                          <select class="form-control select-custom" id="used-npl<?php echo $key+1;?>">
                             <?php foreach($thisNpl[$key] as $row){ ?>
-                            <option value="<?php echo $row->NPLNumber; ?>"><?php echo $row->NPLNumber; ?></option>
+                            <option value="<?php echo $row->NPLNumber; ?>" id="<?php echo $value->ScheduleId;?>-<?php echo $row->NPLType; ?>-npl-<?php echo $row->NPLNumber; ?>"><?php echo $row->NPLNumber; ?></option>
                             <?php } ?>
                             <!-- option value="100001" selected>#100001</option>
                             <option value="100002">#100002</option>
@@ -424,7 +424,19 @@
             $('#bidding-log<?php echo $key+1;?>').prepend(logHtmlFromObject(logVal));
             $('#top-bidder<?php echo $key+1;?>').text('Rp. ' + addPeriod(snap<?php echo $key+1; ?>.val().bid));
           });
-        }
+        
+		  activeLot[<?php echo $key+1; ?>].on("value", function(onLotSnap){
+            if (onLotSnap.hasChild("winnerNPL")) {
+              activeLot[<?php echo $key+1; ?>].child('winnerNPL').on('value', function(winnerSnap){
+                winnerNPL = winnerSnap.val();
+                //costumize the winner's npl here
+                var select<?php echo $key+1; ?> = $('#used-npl<?php echo $key+1; ?>');
+                    select<?php echo $key+1; ?>.find('option#<?php echo $value->ScheduleId;?>-Live-npl-'+winnerNPL).remove();
+              });
+            }
+          });
+
+		}
         else {
           reset(<?php echo $key+1;?>);
 		      console.log('masuk sana|used-npl<?php echo $key+1;?>');
