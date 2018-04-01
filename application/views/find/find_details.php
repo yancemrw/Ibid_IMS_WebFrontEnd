@@ -522,7 +522,7 @@ $(document).ready(function() {
    ?>
    
    // Timer
-   var countDownDate = new Date('<?php echo $date[0].",".(@$date[1]-1).",".(int)@$date[2].",".@$time[0].",".@$time[1].",0,0"; ?>').getTime();
+   var countDownDate = new Date(<?php echo $date[0].",".(@$date[1]-1).",".(int)@$date[2].",".@$time[0].",".@$time[1].",0,0"; ?>).getTime();
    if(isNaN(countDownDate)) {
       $("#timer-title").css('display', 'none');
       $("#timer").text("JADWAL LELANG TIDAK DIKETAHUI");
@@ -530,6 +530,8 @@ $(document).ready(function() {
    }
    else {
       var x = setInterval(function() {
+	  var countDownDate = new Date(<?php echo $date[0].",".(@$date[1]-1).",".(int)@$date[2].",".@$time[0].",".@$time[1].",0,0"; ?>).getTime();
+	  
          now = now + 1000;
          var distance = countDownDate - now;
          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -592,8 +594,8 @@ $(document).ready(function() {
    
    // TIMER MOBILE
    //var countDownDate = new Date("feb 31, 2018 00:00:00").getTime();
-   var countDownDate = new Date('<?php echo $date[0].",".(@$date[1]-1).",".(int)@$date[2].",".@$time[0].",".@$time[1].",0,0"; ?>').getTime();
    var x = setInterval(function() {
+      var countDownDate = new Date(<?php echo $date[0].",".(@$date[1]-1).",".(int)@$date[2].",".@$time[0].",".@$time[1].",0,0"; ?>).getTime();
       var now = new Date().getTime();
       var distance = countDownDate - now;
       var days = Math.floor(distance / (1000 * 60 * 60 * 24));
