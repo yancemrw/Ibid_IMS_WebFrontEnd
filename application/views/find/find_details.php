@@ -186,7 +186,7 @@
                   <div class="">
                      <p class="grade-detail">Grade <span id="span-gradetaksasi"><?php echo $grade; ?></span></p>
                      <div class="label-lot">
-                        <h2>LOT <?php echo @$datalot->lot->no_lot; ?></h2>
+                        <h2>LOT <?php echo @$datalot->lot->no_lot ? @$datalot->lot->no_lot : '???'; ?></h2>
                      </div>
                      <ul>
                         <li class="clearfix">
@@ -279,7 +279,7 @@
                         <p class="overlay-lot">LOT 170</p>
                      </div>
                      <h2>DAIHATSU LUXIO 1.5 X MINIBUS AT</h2>
-                     <span>2014</span> <span class="price">Rp. 72,000,000</span>
+                     <span>2014</span> <span class="price">Rp. 72.000.000</span>
                      <p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>04 September 2017</span></p>
                      <p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Jakarta</span></p>
                   </a>
@@ -591,7 +591,8 @@ $(document).ready(function() {
       });
    
    // TIMER MOBILE
-   var countDownDate = new Date("feb 31, 2018 00:00:00").getTime();
+   //var countDownDate = new Date("feb 31, 2018 00:00:00").getTime();
+   var countDownDate = new Date('<?php echo $date[0].",".(@$date[1]-1).",".(int)@$date[2].",".@$time[0].",".@$time[1].",0,0"; ?>').getTime();
    var x = setInterval(function() {
       var now = new Date().getTime();
       var distance = countDownDate - now;
@@ -976,9 +977,9 @@ function bid() {
    }
    else {
       const last = $('#lastbid').val();
-	  var bid;
+      var bid;
       var usedNpl = $('#used-npl').val();
-      var currentLot = <?php echo $no_lot; ?>;
+      var currentLot = <?php echo @$no_lot ? $no_lot : 0; ?>;
 
       allowRef.once('value', function(allowedSnap) {
          lotDataRef.once('value', function(lotDataSnap) {

@@ -123,5 +123,5 @@ function remove_product(id, linked) {
 }
 
 function currency_format(n) {
-   return n.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+   return n.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
 }

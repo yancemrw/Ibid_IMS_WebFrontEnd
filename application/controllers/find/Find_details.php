@@ -120,7 +120,7 @@ class Find_details extends CI_Controller {
 	}
 
 	function currency_format($value) {
-		return number_format($value, 2, ",", ".");
+		return number_format($value, 0, ",", ".");
 	}
 
 }
