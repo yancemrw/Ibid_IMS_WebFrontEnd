@@ -20,7 +20,7 @@
                                     <li><img src="<?php echo base_url('assetsfront/images/icon/ic-bca.png'); ?>" alt=""></li>
                                 </ul>
                             </label>
-                            <div id="methode1" class="desc-methode padding-30px-15px-30px-30px">
+                            <div id="methode2" class="desc-methode padding-30px-15px-30px-30px">
                                 <ul class="list-style margin-bottom-10px">
                                     <li class="margin-bottom-10px">Kode pembayaran Virtual Account merupakan kombinasi 5 nomor unik dan nomor handphone yang terdaftar di akun IBID.</li>
                                     <li class="margin-bottom-10px">Satu nomor Virtual Account BCA berlaku untuk satu akun saja.</li>
@@ -39,7 +39,7 @@
                                     <li><img src="<?php echo base_url('assetsfront/images/icon/ic-mandiri.png'); ?>" alt=""></li>
                                 </ul>
                             </label>
-                            <div id="methode2" class="desc-methode padding-30px-15px-30px-30px">
+                            <div id="methode1" class="desc-methode padding-30px-15px-30px-30px">
                                 <ul class="list-style margin-bottom-10px">
                                     <li class="margin-bottom-10px">Kode pembayaran Virtual Account merupakan kombinasi 5 nomor unik dan nomor handphone yang terdaftar di akun IBID.</li>
                                     <li class="margin-bottom-10px">Satu nomor Virtual Account berlaku untuk satu akun saja.</li>
