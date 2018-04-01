@@ -4078,16 +4078,6 @@ ul.lot-info li {
     width: 49.7%;
 }
 
-ul.lot-info li:before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 8px;
-    width: 1px;
-    height: 80px;
-    background: #ccc;
-}
-
 ul.lot-info li:last-child:before {
     display: none;
 }
@@ -5682,7 +5672,8 @@ form.form-inline.form-auction {
 
 .more-button {
     margin: 45px auto 65px auto;
-    width: 100%;
+    width: 300px;
+    float: none;
 }
 
 .more-button button {

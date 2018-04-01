@@ -278,14 +278,14 @@
         margin-top: 0;
         border: 0;
         border-bottom: 1px solid #ccc;
-        height: 210px;
+        height: 170px;
     }
     .content-live-auction h2.lot-number {
-        background: #000;
-        border-radius: 0;
-        border: 0;
-        color: #fff;
-        padding: 22px
+		background: #efefef;
+		border-radius: 0;
+		border: 0;
+		color: #8f3e98;
+		padding: 15px;
     }
     .box-image-auction {
         min-height: auto
@@ -1741,7 +1741,40 @@
         padding: 10px;
         z-index: 1;
 	}
+	.status-auction {
+		float: left;
+		padding-bottom: 0;
+		margin-bottom: 0;
+	}
+	ul.list-bider {
+        border: 1px solid #ccc
+    }
 }
+
+@media (max-width: 767px) {
+    .form-info {
+        float: none;
+        margin: 10px auto;
+        width: 115px
+    }
+    .auction-info li .content-media {
+        text-align: center;
+        width: 100%
+    }
+    .auction-info li {
+        margin: 0
+    }
+    .auction-info li .content-media h2 {
+        float: none;
+    }
+    .auction-info li .content-media p {
+        float: none;
+    }
+    .transaction-notif li a {
+        width: 100%
+    }
+}
+
 @media (max-width: 640px) {
 	/*.info-ibid button:first-child {
 		margin-left: 8px;
@@ -1788,7 +1821,8 @@
 		max-width: 100%
 	}
 	.more-button button {
-		width: 100%
+		width: 100%;
+		font-size: 12px !important;
 	}
 	#rc-imageselect, 
 	.g-recaptcha {
@@ -2039,6 +2073,23 @@
 		font-size: 14px;
 		margin-bottom: 10px
 	}
+	.tumbnail-auction {
+		height: auto;
+		padding-bottom: 0;
+	}
+	.list-favorite.open {
+		right: 0;
+		top: auto;
+		bottom: 40px;
+		width: 100%;
+		max-width: none;
+		padding-bottom: 0;
+	}
+	ul.list-bider {
+        border: 1px solid #ccc;
+        width: 100%;
+        max-width: none;
+    }
 }
 
 @media (min-width: 425px) and (max-width: 600px) {
@@ -2304,6 +2355,10 @@
     .grade-detail {
         top: -70px;
     }
+	.list-favorite {
+		top: auto;
+		bottom: 40px;
+	}
 }
 
 @media (max-width: 386px) {
