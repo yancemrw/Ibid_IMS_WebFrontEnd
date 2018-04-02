@@ -201,14 +201,14 @@
                            <p id="timer-title">Lelang Akan Dimulai Dalam</p>
                         </li>
                         <li>
-                           <p id="timer" style="height: 150px"></p>
-                        </li>
-                        <li>
                            <ul class="timer-auction" id="timer-desc">
                               <li>Hari</li>
                               <li>Jam</li>
                               <li>Menit</li>
                            </ul>
+                        </li>
+                        <li>
+                           <p id="timer"></p>
                         </li>
                      </ul>
                      <?php } ?>
