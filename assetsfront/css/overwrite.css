@@ -21,6 +21,10 @@ a.delete-compare {
     right: -3px !important;
 }
 
+.action-bottom {
+    position: relative !important;
+}
+
 .action-wishlist {
     bottom: 0;
     position: absolute;
@@ -155,6 +159,10 @@ a.delete-compare {
 
 .height-300px {
     height: 300px !important;
+}
+
+.list-product.box-recommend {
+    min-height: 380px !important;
 }
 
 .ic-Mobil {

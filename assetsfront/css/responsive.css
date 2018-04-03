@@ -411,6 +411,35 @@
     .tab-search .select-custom~.select2-container--default .select2-selection--single{
         padding-top: 0
     }
+    .section-list-product .product-mob .list-product.box-recommend {
+    	max-height: 100%;
+    }
+    .product-mob .box-recommend .thumbnail {
+		width: 100% !important;
+		margin-bottom: 5px;
+		position: relative;
+		padding-bottom: 75%;
+	}
+	.thumbnail-custom {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        overflow: hidden;
+        text-align: center;
+        top: 0;
+        right: 0;
+        left: 0;
+    }
+    .product-mob .boxright-mobile {
+		width: 100% !important;
+	}
+	.product-mob .action-bottom, 
+	.product-mob .action-wishlist {
+		width: 100% !important;
+	}
+	.section-list-product .action-bottom {
+		margin-top: 0;
+	}
 }
 
 @media(max-width: 890px) {

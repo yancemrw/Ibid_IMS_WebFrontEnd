@@ -250,6 +250,7 @@
    </div>
 </div>
 
+<?php if($this->session->userdata('userdata') !== null) {  ?>
 <section class="bg-grey related-product">
    <div class="container">
       <div class="row">
@@ -257,6 +258,7 @@
       </div>
    </div>
 </section>
+<?php } ?>
 
 <section class="compare">
    <div class="container-fluid">
@@ -345,16 +347,12 @@ $(document).ready(function() {
 
 // load ajax content finding
 function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
+   var initUserId = '<?php echo (@$this->session->userdata('userdata')['UserId']) ? '&userId='.$this->session->userdata('userdata')['UserId'] : '';?>'
+   var formData = 'offset='+offset+'&limit='+limit+initUserId+'&'+dataForm;
    $.ajax({
       type: 'GET',
       url: '<?php echo linkservice('stock')."itemstock/Getfrontend"; ?>',
-      data:{
-         offset: offset,
-         limit: limit,
-         <?php if (@$this->session->userdata('userdata')['UserId']) { ?>
-         userId : '<?php echo $this->session->userdata('userdata')['UserId']; ?>',
-         <?php } ?>
-      },
+      data: formData,
       beforeSend: function() {
          $('#loadings').replaceWith('<div id="loadings" class="margin-10px margin-top-80px text-align-center"><img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" /></div>');
       },
@@ -364,8 +362,8 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
          datas = data.data,
          dataTotal = data.total,
          sessiond = "<?php echo ($this->session->userdata('userdata') !== null) ? 'TRUE' : 'FALSE'; ?>",
-         sessionId = '<?php echo $this->session->userdata('userdata')['UserId']; ?>';
-         if(datas !== null) {
+         sessionId = '<?php echo $this->session->userdata('userdata')['UserId']; ?>'; console.log(datas);
+         if(datas !== null && datas.length > 0) {
             for (var i = 0; i < datas.length; i++) {
                let dataz = datas[i], 
                merk = (dataz.merk !== undefined) ? dataz.merk : '',
@@ -411,7 +409,11 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                            };
                            var json_str = JSON.stringify(compare_data);
                            var iconFav = (dataz.thisFavorite === 0) ? '<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon" />' : '<i class="fa fa-heart"></i>';
-                           var favorit = (sessiond === 'TRUE') ? '<button class="btn" onclick="addFav('+dataz.AuctionItemId+', '+sessionId+', this)">'+iconFav+'<span>Favorit</span></button>' : '';
+                           var bottom_favcom = '<div class="action-bottom">'+
+                                                '<button class="btn" onclick="addFav('+dataz.AuctionItemId+', '+sessionId+', this)">'+iconFav+'<span>Favorit</span></button>'+
+                                                '<button class="btn btn-compare" onclick=\'set_compare_product('+json_str+', "'+linked+'")\'><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>'+
+                                                '</div>';
+                           var favcom = (sessiond === 'TRUE') ? bottom_favcom : '';
                            
                            var lot = (dataz.thisLotNo !== null && dataz.thisLotNo !== undefined) ? dataz.thisLotNo : '???' ;
                            var schedule = (dataz.thisScheduleId !== null) ? dataz.thisScheduleId : 0 ;
@@ -452,10 +454,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                                     '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span class="sch'+dataz.thisScheduleId+'">'+lokasi+'</span></p>'+
                                     '</div>'+
                                     '</a>'+
-                                    '<div class="action-bottom">'+
-                                    favorit+
-                                    '<button class="btn btn-compare" onclick=\'set_compare_product('+json_str+', "'+linked+'")\'><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>'+
-                                    '</div>'+
+                                    favcom+
                                     '</div>'+
                                     '</div>';
                            $('#loadlist').html(content);
@@ -542,7 +541,11 @@ function loadContainerPaging(offset, limit, linked) {
                            };
                            var json_str = JSON.stringify(compare_data);
                            var iconFav = (dataz.thisFavorite === 0) ? '<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon" />' : '<i class="fa fa-heart"></i>';
-                           var favorit = (sessiond === 'TRUE') ? '<button class="btn" onclick="addFav('+dataz.AuctionItemId+', '+sessionId+', this)">'+iconFav+'<span>Favorit</span></button>' : '';
+                           var bottom_favcom = '<div class="action-bottom">'+
+                                                '<button class="btn" onclick="addFav('+dataz.AuctionItemId+', '+sessionId+', this)">'+iconFav+'<span>Favorit</span></button>'+
+                                                '<button class="btn btn-compare" onclick=\'set_compare_product('+json_str+', "'+linked+'")\'><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>'+
+                                                '</div>';
+                           var favcom = (sessiond === 'TRUE') ? bottom_favcom : '';
 						   
                            var lot = (dataz.thisLotNo !== null && dataz.thisLotNo !== undefined) ? dataz.thisLotNo : '???' ;
                            var schedule = (dataz.thisScheduleId !== null) ? dataz.thisScheduleId : 0 ;
@@ -583,10 +586,7 @@ function loadContainerPaging(offset, limit, linked) {
                                     '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span class="sch'+dataz.thisScheduleId+'">'+lokasi+'</span></p>'+
                                     '</div>'+
                                     '</a>'+
-                                    '<div class="action-bottom">'+
-                                    favorit+
-                                    '<button class="btn btn-compare" onclick=\'set_compare_product('+json_str+', "'+linked+'")\'><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>'+
-                                    '</div>'+
+                                    favcom+
                                     '</div>'+
                                     '</div>';
                            $('#loadlist').children().last().after(content);
