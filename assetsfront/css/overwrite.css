@@ -310,6 +310,11 @@ a.delete-compare {
 	text-align: left !important;
 }
 
+.slick-track {
+    margin-left: 0;
+    margin-right: 0;
+}
+
 .width-80 {
 	width: 80%;
 }
@@ -320,6 +325,12 @@ a.delete-compare {
 
 .width-100 {
     width: 100%;
+}
+
+@media(max-width: 812px) {
+    .btn-violet, .btn-violet:hover, .btn-violet:focus {
+        font-size: 12px;
+    }
 }
 
 @media(max-width: 768px) {

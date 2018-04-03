@@ -440,6 +440,9 @@
 	.section-list-product .action-bottom {
 		margin-top: 0;
 	}
+	.photo-landscape {
+		display: none;
+	}
 }
 
 @media(max-width: 890px) {
@@ -1250,7 +1253,10 @@
 	.bidder-mobile button:hover,
 	.bidder-mobile button:focus {
 		padding: 15px;
-		border-radius: 5px 5px 0 0
+        border-radius: 5px 5px 0 0;
+        width: auto;
+        max-width: none;
+        font-size: 12px;
 	}
 	footer {
 		background: #ccc;

@@ -247,10 +247,10 @@
                   <button class="btn btn-orange" id="btn-favorit" onclick="addFav(<?php echo $data[0]->AuctionItemId; ?>, <?php echo $userdata['UserId'] ?>, this)">
                      <?php echo ($favAction->status === 1) ? '<i class="fa fa-heart"></i>' : ''; ?> Tambah ke Favorit
                   </button>
-                  <?php } ?>
                   <button class="btn btn-green <?php echo ($this->session->userdata('userdata') === null) ? 'btn-bandingkan' : ''; ?>" onclick="compare_action('<?php echo site_url('list-compare'); ?>')" type="button">
                      <i class="ic ic-Bandingkan"></i> Bandingkan
                   </button>
+                  <?php } ?>
                </div>
             </div>
          </div>
