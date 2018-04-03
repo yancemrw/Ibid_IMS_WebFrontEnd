@@ -92,7 +92,7 @@ class Find_details extends CI_Controller {
 		$data = array(
 			'header_white' => "header-white",
 			'userdata'	=> $this->userdata,
-			'title' => 'Rincian Kendaraan',
+			'title' => $detail[0]->merk.' '.$detail[0]->seri.' '.$detail[0]->silinder.' '.$detail[0]->tipe.' '.$detail[0]->model.' '.$detail[0]->transmisi.' '.$detail[0]->tahun,
 			'form_auth_mobile' => login_status_form_mobile($this->userdata),
 			'form_auth'	=> login_Status_form($this->userdata),
 			'data'	=> @$detail,

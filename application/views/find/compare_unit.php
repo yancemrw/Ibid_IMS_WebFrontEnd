@@ -3,18 +3,27 @@
 		<div class="row">
 			<div class="col-md-12">
 				<h2>Bandingkan</h2>
-				<div class="row compare-list">
-					<div id="loadContent"></div>
+				<div class="row compare-list" id="loadContent">
+					<div></div>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
 
+<style>
+	.slick-track {
+		display: block !important;
+		position: relative !important;
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
+</style>
+
 <script>
 $(document).ready(function () {
 	//show compare element
-	$('#loadContent').replaceWith(setComparePage());
+	$('#loadContent').html(setComparePage('<?php echo base_url('assetsfront/images/icon/ic-transaction-empty.png') ?>'));
 
 	$('.compare-list').slick({
 		dots: false,

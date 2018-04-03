@@ -46,46 +46,60 @@ function setCompare(linked) {
    $('#loadContent').html(content);
 }
 
-function setComparePage() {
+function setComparePage(img_empty) {
    var getLocalStorage = JSON.parse(localStorage.getItem('CP')), content = '';
-   for(var i = 0; i < getLocalStorage.length; i++) {
-      var Merk = getLocalStorage[i].Merk;
-      var Seri = getLocalStorage[i].Seri;
-      var Silinder = getLocalStorage[i].Silinder;
-      var Tipe = getLocalStorage[i].Tipe;
-      var Model = getLocalStorage[i].Model;
-      var Transmisi = getLocalStorage[i].Transmisi;
-      content += '<div class="col-md-3 item width-100">'+
-               '<div class="list-product box-recommend list-compare">'+
-               '<a href="javascript:void(0);">'+
-               '<div class="thumbnail">'+
-               '<div class="background-cover height-200px thumnail-custom" style="background: url('+getLocalStorage[i].Image+') no-repeat center center"></div>'+
-               '<div class="overlay-grade">Grade <span>'+getLocalStorage[i].TaksasiGrade+'</span></div>'+
-               '<p class="overlay-lot">LOT ???</p>'+
-               '<a href="#" class="delete-compare field-link" data-tooltip="Hapus Item Bandingkan"><i class="fa fa-times"></i></a>'+
-               '</div>'+
-               '<h2>'+Merk+' '+Seri+' '+Silinder+' '+Tipe+' '+Model+' '+Transmisi+'</h2>'+
-               '<span>'+getLocalStorage[i].Tahun+'</span> <span class="price">Rp. '+currency_format(getLocalStorage[i].Price)+'</span>'+
-               '</a>'+
-               '<h3 class="header-compare">Nomor Polisi <span>'+getLocalStorage[i].NoPolisi+'</span></h3>'+
-               '<table class="table table-list-compare">'+
-               '<tr><td>Model Kendaraan</td><td>'+getLocalStorage[i].Model+'</td></tr>'+
-               '<tr><td>KEUR</td><td>-</td></tr>'+
-               '<tr><td>Kilometer</td><td>'+getLocalStorage[i].Kilometer+'</td></tr>'+
-               '</table>'+
-               '<table class="table table-list-compare">'+
-               '<tr><td>Nomor Rangka</td><td>'+getLocalStorage[i].NoRangka+'</td></tr>'+
-               '<tr><td>Nomor Mesin</td><td>'+getLocalStorage[i].NoMesin+'</td></tr>'+
-               '<tr><td>Tipe</td><td>'+getLocalStorage[i].Seri+'</td></tr>'+
-               '<tr><td>Transmisi</td><td>'+getLocalStorage[i].Transmisi+'</td></tr>'+
-               '<tr><td>Warna Fisik</td><td>'+getLocalStorage[i].Warna+'</td></tr>'+
-               '<tr><td>STNK</td><td>'+getLocalStorage[i].NoSTNK+'</td></tr>'+
-               '</table>'+
-               '<div class="button-compare"><button class="btn btn-violet">Tawar</button></div>'+
-               '</div>'+
-               '</div>';
+   if(getLocalStorage.length > 0) {
+      for(var i = 0; i < getLocalStorage.length; i++) {
+         var AucId = getLocalStorage[i].AuctionItemId;
+         var Merk = getLocalStorage[i].Merk;
+         var Seri = getLocalStorage[i].Seri;
+         var Silinder = getLocalStorage[i].Silinder;
+         var Tipe = getLocalStorage[i].Tipe;
+         var Model = getLocalStorage[i].Model;
+         var Transmisi = getLocalStorage[i].Transmisi;
+         var Lot = (getLocalStorage[i].Lot != null) ? getLocalStorage[i].Lot : '???';
+         var Warna = (getLocalStorage[i].Warna != null) ? getLocalStorage[i].Warna : 'Tidak Diketahui';
+         var Stnk = (getLocalStorage[i].NoSTNK != '0') ? getLocalStorage[i].NoSTNK : 'Tidak Diketahui';
+         content += '<div class="col-md-3 item width-100">'+
+                  '<div class="list-product box-recommend list-compare">'+
+                  '<a href="javascript:void(0);">'+
+                  '<div class="thumbnail">'+
+                  '<div class="background-cover minimal-height thumnail-custom" style="background: url('+getLocalStorage[i].Image+') no-repeat center center"></div>'+
+                  '<div class="overlay-grade">Grade <span>'+getLocalStorage[i].TaksasiGrade+'</span></div>'+
+                  '<p class="overlay-lot">LOT '+Lot+'</p>'+
+                  '<a href="javascript:void(0)" onclick="remove_product_page('+AucId+', \''+img_empty+'\')" class="delete-compare field-link" data-tooltip="Hapus Item Bandingkan"><i class="fa fa-times"></i></a>'+
+                  '</div>'+
+                  '<h2>'+Merk+' '+Seri+' '+Silinder+' '+Tipe+' '+Model+' '+Transmisi+'</h2>'+
+                  '<span>'+getLocalStorage[i].Tahun+'</span> <span class="price">Rp. '+currency_format(getLocalStorage[i].Price)+'</span>'+
+                  '</a>'+
+                  '<h3 class="header-compare">Nomor Polisi <span>'+getLocalStorage[i].NoPolisi+'</span></h3>'+
+                  '<table class="table table-list-compare">'+
+                  '<tr><td>Model Kendaraan</td><td>'+getLocalStorage[i].Model+'</td></tr>'+
+                  '<tr><td>KEUR</td><td>-</td></tr>'+
+                  '<tr><td>Kilometer</td><td>'+getLocalStorage[i].Kilometer+'</td></tr>'+
+                  '</table>'+
+                  '<table class="table table-list-compare">'+
+                  '<tr><td>Nomor Rangka</td><td>'+getLocalStorage[i].NoRangka+'</td></tr>'+
+                  '<tr><td>Nomor Mesin</td><td>'+getLocalStorage[i].NoMesin+'</td></tr>'+
+                  '<tr><td>Tipe</td><td>'+getLocalStorage[i].Seri+'</td></tr>'+
+                  '<tr><td>Transmisi</td><td>'+getLocalStorage[i].Transmisi+'</td></tr>'+
+                  '<tr><td>Warna Fisik</td><td>'+Warna+'</td></tr>'+
+                  '<tr><td>STNK</td><td>'+Stnk+'</td></tr>'+
+                  '</table>'+
+                  '<div class="button-compare"><button class="btn btn-violet">Tawar</button></div>'+
+                  '</div>'+
+                  '</div>';
+      }
    }
-   $('#loadContent').replaceWith(content);
+   else {
+      content = '<div class="text-align-center width-unset">'+
+                  '<div>'+
+                  '<img src="'+img_empty+'" alt="" title="">'+
+                  '</div>'+
+                  '<p>Oops.... <span>Data Tidak Ada.</span></p>'+
+                  '</div>';
+   }
+   $('#loadContent').html(content);
 }
 
 function set_compare_product(object, linked) {
@@ -120,6 +134,27 @@ function remove_product(id, linked) {
       }, 100);
    }
    setCompare(linked);
+}
+
+function remove_product_page(id, img_empty) {
+   var getLocalStorage = JSON.parse(localStorage.getItem('CP'));
+   var removeId = getLocalStorage.filter(function(el) {
+      return el.AuctionItemId !== id;
+   });
+   localStorage.setItem("CP", JSON.stringify(removeId));
+   if(getLocalStorage.length === 1) {
+      localStorage.removeItem("CP");
+      var html = '<div class="text-align-center width-unset">'+
+                  '<div>'+
+                  '<img src="'+img_empty+'" alt="" title="">'+
+                  '</div>'+
+                  '<p>Oops.... <span>Data Belum Tersedia.</span></p>'+
+                  '</div>';
+      $('#loadContent').html(html);
+   }
+   else {
+      location.reload();
+   }
 }
 
 function currency_format(n) {

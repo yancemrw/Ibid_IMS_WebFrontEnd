@@ -268,7 +268,7 @@
             <div class="col-md-12" id="loadContent">
                <!-- Load Content Compare Product -->
             </div>
-            <a href="javascript:;" class="close-compare">Tutup <i class="fa fa-times"></i></a>
+            <a href="javascript:void(0);" class="close-compare">Tutup <i class="fa fa-times"></i></a>
          </div>
       </div>
    </div>
@@ -362,18 +362,18 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
          datas = data.data,
          dataTotal = data.total,
          sessiond = "<?php echo ($this->session->userdata('userdata') !== null) ? 'TRUE' : 'FALSE'; ?>",
-         sessionId = '<?php echo $this->session->userdata('userdata')['UserId']; ?>'; console.log(datas);
+         sessionId = '<?php echo $this->session->userdata('userdata')['UserId']; ?>';
          if(datas !== null && datas.length > 0) {
             for (var i = 0; i < datas.length; i++) {
                let dataz = datas[i], 
                merk = (dataz.merk !== undefined) ? dataz.merk : '',
                seri = (dataz.seri !== undefined) ? dataz.seri : '',
                silinder = (dataz.silinder !== undefined) ? dataz.silinder : '',
-               tipe = (dataz.tipe !== undefined) ? dataz.tipe : '',
+               tipe = (dataz.grade !== undefined) ? dataz.grade : '',
                model = (dataz.model !== undefined) ? dataz.model : '',
                transmisi = (dataz.transmisi !== undefined) ? dataz.transmisi : '',
                tahun = (dataz.tahun !== undefined) ? dataz.tahun : '',
-               FinalPriceItem = (dataz.FinalPriceItem !== undefined) ? dataz.FinalPriceItem : 0;
+               FinalPriceItem = (dataz.FinalPriceItem !== undefined) ? dataz.FinalPriceItem : 0;console.log(dataz);
                let numgrade = '';
                $.ajax({
                   type: 'GET',
@@ -391,6 +391,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                               "BahanBakar": dataz.bahanbakar,
                               "Image": data.data[0].ImagePath,
                               "Kilometer": dataz.km,
+                              "Lot" : dataz.thisLotNo,
                               "Merk": dataz.merk,
                               "Model": dataz.model,
                               "NoKeur": dataz.nokeur,
@@ -403,7 +404,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                               "TaksasiGrade": numgrade,
                               "Tahun": dataz.tahun,
                               "Transmisi": dataz.transmisi,
-                              "Tipe": dataz.tipe,
+                              "Tipe": dataz.grade,
                               "Price": dataz.FinalPriceItem,
                               "Warna": dataz.warnadoc
                            };
@@ -501,7 +502,7 @@ function loadContainerPaging(offset, limit, linked) {
                merk = (dataz.merk !== undefined) ? dataz.merk : '',
                seri = (dataz.seri !== undefined) ? dataz.seri : '',
                silinder = (dataz.silinder !== undefined) ? dataz.silinder : '',
-               tipe = (dataz.tipe !== undefined) ? dataz.tipe : '',
+               tipe = (dataz.grade !== undefined) ? dataz.grade : '',
                model = (dataz.model !== undefined) ? dataz.model : '',
                transmisi = (dataz.transmisi !== undefined) ? dataz.transmisi : '',
                tahun = (dataz.tahun !== undefined) ? dataz.tahun : '',
@@ -523,6 +524,7 @@ function loadContainerPaging(offset, limit, linked) {
                               "BahanBakar": dataz.bahanbakar,
                               "Image": data.data[0].ImagePath,
                               "Kilometer": dataz.km,
+                              "Lot" : dataz.thisLotNo,
                               "Merk": dataz.merk,
                               "Model": dataz.model,
                               "NoKeur": dataz.nokeur,
@@ -535,7 +537,7 @@ function loadContainerPaging(offset, limit, linked) {
                               "TaksasiGrade": numgrade,
                               "Tahun": dataz.tahun,
                               "Transmisi": dataz.transmisi,
-                              "Tipe": dataz.tipe,
+                              "Tipe": dataz.grade,
                               "Price": dataz.FinalPriceItem,
                               "Warna": dataz.warnadoc
                            };

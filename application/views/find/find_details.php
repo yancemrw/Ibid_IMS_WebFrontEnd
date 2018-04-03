@@ -57,7 +57,7 @@
                         <p>Seri <span id="span-seri">: <?php echo $data[0]->seri; ?></span></p>
                      </li>
                      <li>
-                        <p>Tipe <span id="span-tipe">: <?php echo $data[0]->tipe; ?></span></p>
+                        <p>Tipe <span id="span-tipe">: <?php echo $data[0]->grade; ?></span></p>
                      </li>
                      <li>
                         <p>Slinder  <span id="span-silinder">: <?php echo $data[0]->silinder; ?></span></p>
@@ -93,6 +93,7 @@
                      </li>
                      <li>
                         <p>Kilometer <span id="span-kilometer">: <?php echo ($data[0]->km === '0') ? 'Data Tidak Valid' : $data[0]->km ; ?></span></p>
+                        <input type="hidden" id="span-lot" value="<?php echo (@$data[0]->thisLotNo) ? $data[0]->thisLotNo : null ; ?>" />
                      </li>
                   </ul>
                </div>
@@ -364,7 +365,7 @@
                   <button class="btn btn-green btn-compare" onclick="location.href='<?php echo site_url('list-compare'); ?>'" type="button">Bandingkan</button>
                </div>
             </div>
-            <a href="javascript:;" class="close-compare">Tutup <i class="fa fa-times"></i></a>
+            <a href="javascript:void(0);" class="close-compare">Tutup <i class="fa fa-times"></i></a>
          </div>
       </div>
    </div>
@@ -919,6 +920,7 @@ function compare_action(linked) {
       "BahanBakar"   : $('#span-bahanbakar').text().replace(': ', ''),
       "Image"        : $('#img-gambar').attr('src'),
       "Kilometer"    : $('#span-kilometer').text().replace(': ', ''),
+      "Lot"          : $('#span-lot').val(),
       "Merk"         : $('#span-merk').text().replace(': ', ''),
       "Model"        : $('#span-model').text().replace(': ', ''),
       "NoKeur"       : $('#span-tglkeur').text().replace(': ', ''),

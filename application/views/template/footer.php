@@ -494,6 +494,7 @@ if(getActiveMenu('active_menu') !== false) {
       case 'map' : $('#map_menu').addClass('active'); break;
       case 'procedure' : $('#procedure_menu').addClass('active'); break;
       case 'home' : deleteActiveMenu('active_menu'); break;
+      case 'akun' : deleteActiveMenu('active_menu'); break;
       default : deleteActiveMenu('active_menu'); break;
     }
   }
