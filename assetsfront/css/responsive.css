@@ -17,8 +17,8 @@
 		width: 49%;
 	}
 	.form-auction.form-inline .form-group {
-		width: 24.5%;
-		padding: 10px 10px 0;
+		margin-bottom: 0;
+		vertical-align: middle;
 	}
 	.list-product.box-recommend.list-compare span {
 		display: block;
