@@ -122,7 +122,7 @@
 
 <!-- MODAL Syarat & Ketentuan -->
 <div class="modal fade" id="bijak-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-  <div class="modal-dialog width-80">
+  <div class="modal-dialog width-60">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><i class="ic ic-Close"></i><span class="sr-only">Close</span></button>
