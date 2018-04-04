@@ -68,6 +68,20 @@ class Find_unit extends CI_Controller {
 		## END form dinamis Cari Kendaraan ##
 		#####################################
 		
+		############################################################
+        ## get cabang
+        $url = linkservice('master')."cabang/get";  
+        $method = 'GET';
+        $responseApi = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
+        if ($responseApi['err']) { 
+            echo "<hr>cURL Error #:" . $responseApi['err']; 
+        } else {
+            $dataApi = json_decode($responseApi['response'],true);
+            $cabang = $dataApi['data'];
+        }
+        $data['cabang'] = @$cabang;
+        ############################################################
+		
 		$view = "find/find_unit";
 		template($view, $data);
 	}
