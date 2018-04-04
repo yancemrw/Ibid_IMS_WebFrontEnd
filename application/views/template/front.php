@@ -354,25 +354,28 @@
 </section>
 
 <script>
-   function preload(opacity) {
-      if(opacity <= 0) {
-         showContent();
-      }
-      else {
-         document.getElementById('preloader').style.opacity = opacity;
-         window.setTimeout(function() { preload(opacity - 0.05) }, 100);
-      }
-   }
+// set active menu if to homepage
+setActiveMenu('home');
 
-   document.addEventListener("DOMContentLoaded", function () {
-      document.getElementById('preloader').style.display = 'block';
-      preload(1);
-   });
-   
-    Number.prototype.padLeft = function(base,chr){
-        var  len = (String(base || 10).length - String(this).length)+1;
-        return len > 0? new Array(len).join(chr || '0')+this : this;
-    }
+function preload(opacity) {
+   if(opacity <= 0) {
+      showContent();
+   }
+   else {
+      document.getElementById('preloader').style.opacity = opacity;
+      window.setTimeout(function() { preload(opacity - 0.05) }, 100);
+   }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+   document.getElementById('preloader').style.display = 'block';
+   preload(1);
+});
+
+Number.prototype.padLeft = function(base,chr){
+   var  len = (String(base || 10).length - String(this).length)+1;
+   return len > 0? new Array(len).join(chr || '0')+this : this;
+}
    
 $(function(){
     

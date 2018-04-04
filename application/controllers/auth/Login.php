@@ -85,8 +85,6 @@ class Login extends CI_Controller {
 					$callback->status = 0;
 					$callback->messages = $res->error_description;
 					echo json_encode($callback);
-					//$this->session->set_flashdata('message', array('warning', $res->error_description));
-					//redirect('login');
 				}
 				else {
 					// set token on session
@@ -99,9 +97,8 @@ class Login extends CI_Controller {
 					$callback = new stdClass();
 					$callback->status = 1;
 					$callback->messages = 'Berhasil Login';
+					$callback->url = @$_COOKIE['refer_page'] ? $_COOKIE['refer_page'] : site_url();
 					echo json_encode($callback);
-					//$this->session->set_flashdata('message', array('success', 'Berhasil Login'));
-					//redirect(site_url());
 				} 
 			}
 			

@@ -93,6 +93,54 @@
          messagingSenderId: "493210877814"
       };
       firebase.initializeApp(config);
+
+
+      // handle active menu page
+      if(getActiveMenu('active_menu') !== false) {
+         var url = '<?php echo site_url(); ?>', jurl = '//'+window.location.hostname+window.location.pathname;
+         if(url === jurl) {
+            deleteActiveMenu('active_menu');
+         }
+         else {
+            setTimeout(function() {
+               switch(getActiveMenu('active_menu')) {
+                  case 'find' : $('#find_menu').addClass('active'); break;
+                  case 'schedule' : $('#schedule_menu').addClass('active'); break;
+                  case 'live' : $('#live_menu').addClass('active'); break;
+                  case 'npl' : $('#npl_menu').addClass('active'); break;
+                  case 'auction' : $('#auction_menu').addClass('active'); break;
+                  case 'map' : $('#map_menu').addClass('active'); break;
+                  case 'procedure' : $('#procedure_menu').addClass('active'); break;
+                  case 'home' : deleteActiveMenu('active_menu'); break;
+                  case 'akun' : deleteActiveMenu('active_menu'); break;
+                  default : deleteActiveMenu('active_menu'); break;
+               }
+            }, 1000);
+         }
+      }
+
+      // cek compare panel
+      if(localStorage.getItem("CP") !== null) {
+         (document.getElementById('addcompare') !== null) ? document.getElementById('addcompare').style.display = 'block' : '' ;
+      }
+
+      function setActiveMenu(value) {
+         document.cookie = "active_menu="+value+"; Path=/;";
+      }
+
+      function getActiveMenu(name) {
+         var pattern = RegExp(name+"=.[^;]*")
+         matched = document.cookie.match(pattern)
+         if(matched) {
+            var cookie = matched[0].split('=');
+            return cookie[1];
+         }
+         return false;
+      }
+
+      function deleteActiveMenu(name) {
+         document.cookie = name+'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+      }
    </script>
 </head>
 <body class="bg-grey">
