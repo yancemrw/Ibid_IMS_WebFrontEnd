@@ -27,25 +27,33 @@
                </div>
                <h2>Tipe Lelang</h2>
                <div class="form-group">
-                  <select class="form-control select-custom">
-                     <option>Lelang Online</option>
+                  <select class="form-control select-custom thisType" name="tipeLelang">
+                     <option value="">Semua Tipe Lelang</option>
+                     <option value="1">Lelang Online</option>
+                     <option value="0">Lelang Live</option>
                   </select>
                </div>
                <h2>Kota & Jadwal</h2>
                <div class="form-group">
-                  <select class="form-control select-custom">
-                     <option>Kota</option>
+                  <select class="form-control select-custom thisKota" name="thisKota">
+                     <option value="">Semua Kota</option>
+					 <?php foreach($cabang as $row){ ?>
+                     <option value="<?php echo $row['CompanyId']; ?>" ><?php echo ucwords(substr(strtolower($row['CompanyName']), 4)); ?></option>
+                     <?php } ?>
                   </select>
                </div>
                <div class="form-group">
-                  <select class="form-control select-custom">
-                     <option>Jadwal</option>
-                  </select>
+				<div id="divSchedule" class="input-group-ss">
+				  <select class="form-control select-custom" id="ScheduleId" name="ScheduleId">
+					<option value="">Semua Jadwal</option>
+				  </select>
+				  <span class="input-group-addon" style="display: none;"><i class="fa fa-spin fa-refresh"></i></span>
+				</div>
                </div>
                <h2>Jenis Objek Lelang</h2>
                <div class="object-type clearfix">
                   <div class="form-group">
-                     <input type="radio" name="tipe-object" id="type_1" class="input-hidden" value="6" />
+                     <input type="radio" name="tipe-object" id="type_1" class="input-hidden thisItem" value="6" />
                      <label for="type_1">
                         <div class="car-type ic ic-Mobil">
                         </div>
@@ -53,7 +61,7 @@
                      </label>
                   </div>
                   <div class="form-group">
-                     <input type="radio" name="tipe-object" id="type_2" class="input-hidden" value="7" />
+                     <input type="radio" name="tipe-object" id="type_2" class="input-hidden thisItem" value="7" />
                      <label for="type_2">
                         <div class="motorcycle-type ic ic-Motor">
                         </div>
@@ -61,7 +69,7 @@
                      </label>
                   </div>
                   <div class="form-group">
-                     <input type="radio" name="tipe-object" id="type_3" class="input-hidden" value="14" />
+                     <input type="radio" name="tipe-object" id="type_3" class="input-hidden thisItem" value="14" />
                      <label for="type_3">
                         <div class="hve-type ic ic-HVE">
                         </div>
@@ -69,7 +77,7 @@
                      </label>
                   </div>
                   <div class="form-group">
-                     <input type="radio" name="tipe-object" id="type_4" class="input-hidden" value="12" />
+                     <input type="radio" name="tipe-object" id="type_4" class="input-hidden thisItem" value="12" />
                      <label for="type_4">
                         <div class="gadget-type ic ic-Gadget">
                         </div>
@@ -343,6 +351,10 @@ $(document).ready(function() {
          $(this).removeClass('empty');
       }
    });
+   
+   $('.thisItem').click(function(){ getJadwalAms(); });
+	$('.thisType').change(function(){ getJadwalAms(); });
+	$('.thisKota').change(function(){ getJadwalAms(); });
 });
 
 // load ajax content finding
@@ -691,5 +703,52 @@ function addFav(aucid, id, ele) {
          console.log(e);
       }
    });
+}
+
+function getJadwalAms(){
+	itemLelang = $('.thisItem:checked').val();
+	tipeLelang = $('.thisType').val();
+	cabangId = $('.thisKota').val();
+	startdate = '<?php echo date('Y-m-d'); ?>';
+	
+	if (itemLelang != '' && tipeLelang != '' && tipeLelang != null && cabangId != ''){}
+	$.ajax( {
+		url: "<?php echo linkservice('AMSSCHEDULE') .'schedulelist/'; ?>",
+		dataType: "json",
+		data: {
+			// thisData
+			type: tipeLelang,
+			item: itemLelang,
+			company_id: cabangId,
+			startdate: startdate,
+		},
+		beforeSend: function( ) {
+			$('#divSchedule .input-group-addon').attr("style",'');
+			$('#divSchedule').addClass('input-group');
+			$('#divSchedule').removeClass('input-group-ss');
+		},
+		success: function( data ) {
+			$('#ScheduleId option').remove();
+			$('#ScheduleId')
+				.append($("<option></option>")
+				.attr("value",'')
+				.text("Semua Jadwal"));
+			
+			thisArr = data.data;
+			for(i=0; i<thisArr.length; i++){
+				row = thisArr[i];
+				$('#ScheduleId')
+					.append($("<option></option>")
+					.attr("value",row.id)
+					.text(row.date + ' '+row.waktu.substring(0, 8)));
+			}
+		},
+		complete: function(){
+			$('#divSchedule .input-group-addon').css('display','none');
+			$('#divSchedule').removeClass('input-group');
+			$('#divSchedule').addClass('input-group-ss');
+		}
+	});
+	
 }
 </script>
