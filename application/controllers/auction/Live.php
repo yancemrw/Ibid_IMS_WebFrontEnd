@@ -7,6 +7,9 @@ class Live extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->helper(array('global', 'omni'));
+		$this->AccessApi = new AccessApi(array('client_id' => 'ADMS Web', 'client_secret' => '1234567890', 'username' => 'rendhy.wijayanto@sera.astra.co.id'));
+		$this->AccessApi->redirect_url = site_url('login');
+		$this->AccessApi->check_login();
 	}
 
 	public function index() {
