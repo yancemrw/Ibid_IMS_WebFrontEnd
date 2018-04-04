@@ -513,15 +513,9 @@ $(document).ready(function() {
       var mySlideNumber = nextSlide;
       $('.slider-nav-thumbnails .slick-slide').removeClass('slick-active');
       $('.slider-nav-thumbnails .slick-slide').eq(mySlideNumber).addClass('slick-active');
-   });
-
+   });   
    
-   
-   
-   <?php if($data[0]->StatusStok === 1 && $schedule_id > 0) { // 0 = Live Auction, 1 = Online 
-	
-   ?>
-   
+   <?php if($data[0]->StatusStok === 1 && $schedule_id > 0) { // 0 = Live Auction, 1 = Online ?>
    // Timer
    var countDownDate = new Date(<?php echo $date[0].",".(@$date[1]-1).",".(int)@$date[2].",".@$time[0].",".@$time[1].",0,0"; ?>).getTime();
    if(isNaN(countDownDate)) {
@@ -559,40 +553,40 @@ $(document).ready(function() {
       }, 1000);
    }
 
-      $('#top-bidder-info').hide();
-      durationRef.on('value', function(durationSnap){
-         if (durationSnap.exists()) {
-            clearInterval(x);
-            duration = durationSnap.val();
-            $("#timer").css('font-size','');
-            $("#timer").text(dhmFormat(duration));
-            $("#timer-mobile").text(dhmFormat(duration));
-            $("#message").text('Lelang Akan Berakhir Dalam');
-            $("#message-mobile").text('Lelang Akan Berakhir Dalam');
-            $("#message").show();
-            $("#message-mobile").show();
-            $(".timer-auction").show();
-         }else{
-            $('.btn-bid').prop('disabled',true);
+   $('#top-bidder-info').hide();
+   durationRef.on('value', function(durationSnap){
+      if (durationSnap.exists()) {
+         clearInterval(x);
+         duration = durationSnap.val();
+         $("#timer").css('font-size','');
+         $("#timer").text(dhmFormat(duration));
+         $("#timer-mobile").text(dhmFormat(duration));
+         $("#message").text('Lelang Akan Berakhir Dalam');
+         $("#message-mobile").text('Lelang Akan Berakhir Dalam');
+         $("#message").show();
+         $("#message-mobile").show();
+         $(".timer-auction").show();
+      }else{
+         $('.btn-bid').prop('disabled',true);
+      }
+   });
+   logsRef.on("child_added", function(logSnap) {
+      if (eligibleNpl.includes(logSnap.val().npl)) {
+           $('#top-bidder-info').show();
+           $('.btn-bid').prop('disabled', true);
+         } else {
+           $('#top-bidder-info').hide();
+           $('.btn-bid').prop('disabled', false);
          }
-      });
-      logsRef.on("child_added", function(logSnap) {
-         if (eligibleNpl.includes(logSnap.val().npl)) {
-              $('#top-bidder-info').show();
-              $('.btn-bid').prop('disabled', true);
-            } else {
-              $('#top-bidder-info').hide();
-              $('.btn-bid').prop('disabled', false);
-            }
-         $('#lastbid').val(logSnap.val().bid);
-         $('#bidding-log li').removeClass('active');
-         $('#bidding-log').prepend(logHtmlFromObject(logSnap.val()));
-         $('#top-bid').text('Rp. ' + addPeriod(logSnap.val().bid));
-         $('#bidding-log-mb li').removeClass('active');
-         $('#bidding-log-mb').prepend(logHtmlFromObject(logSnap.val()));
-         $('#top-bid-mb').text('Rp. ' + addPeriod(logSnap.val().bid));
-      });
-   
+      $('#lastbid').val(logSnap.val().bid);
+      $('#bidding-log li').removeClass('active');
+      $('#bidding-log').prepend(logHtmlFromObject(logSnap.val()));
+      $('#top-bid').text('Rp. ' + addPeriod(logSnap.val().bid));
+      $('#bidding-log-mb li').removeClass('active');
+      $('#bidding-log-mb').prepend(logHtmlFromObject(logSnap.val()));
+      $('#top-bid-mb').text('Rp. ' + addPeriod(logSnap.val().bid));
+   });
+
    // TIMER MOBILE
    //var countDownDate = new Date("feb 31, 2018 00:00:00").getTime();
    var x = setInterval(function() {
@@ -608,16 +602,7 @@ $(document).ready(function() {
          document.getElementById("timer-mobile").innerHTML = "TIDAK ADA LELANG";
       }
    }, 1000);
-
-   
    <?php } ?>
-   
-   
-   
-   
-   
-   
-   
    
    // Graphic Lelang
    var canvas = document.getElementById("myChart");

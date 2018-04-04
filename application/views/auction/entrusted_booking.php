@@ -170,11 +170,13 @@
 						</div -->
 					</div>
 					
-					<h3>Syarat & Ketentuan Lelang.</h3>
+					<h3>Syarat & Ketentuan Titip Lelang</h3>
 					<ol>
-						<li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
-						<li>It has survived not only five centuries, but also the leap into electronic typesetting.</li>
-						<li>It was popularised in the 1960s with the release of Letraset... <a href="">Lihat Selengkapnya</a></li>
+						<li>PENITIP LELANG dengan ini menitipkan dan memberikan kuasa...</li>
+						<li>Kesepakatan mengenai penitipan Kendaraan Bermotor yang disepakati adalah sebagai berikut...</li>
+						<li>Mengenai pelaksanaan Perjanjian ini IBID dan PENITIP LELANG... 
+							<a href="javascript:void(0)" data-toggle="modal" data-target="#syarat-penitip-modal">Lihat Selengkapnya</a>
+						</li>
 					</ol>
 					<button class="btn btn-green" type="submit">KIRIM</button>
 					</form>
@@ -183,6 +185,23 @@
 		</div>
 	</div>
 </section>
+
+<!-- MODAL Syarat & Ketentuan -->
+<div class="modal fade" id="syarat-penitip-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog width-60">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><i class="ic ic-Close"></i><span class="sr-only">Close</span></button>
+        <h3 class="modal-title" id="lineModalLabel">Syarat & Ketentuan Penitip</h3>
+      </div>
+      <div class="modal-body clearfix">
+        <div class="col-md-12 col-sm-12">
+          <?php $this->load->view('userguide/syarat_ketentuan_penitip.html'); ?>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
 function searchJadwal(){
