@@ -62,7 +62,7 @@
 					<form class="form-filter" id="beli-npl" data-provide="validation">
 						<input type="hidden" name="otpkirim" value="true">
 						<div class="form-group floating-label">
-							<input type="text" name="Phone" id="notif-telepon" class="form-control input-custom"
+							<input type="number" name="Phone" id="notif-telepon" class="form-control input-custom"
 									value="<?php echo @$detailBiodata['Phone']; ?>" 
 									oninvalid="this.setCustomValidity('No telepon tidak boleh kosong')" 
 									oninput="setCustomValidity('')" required />
