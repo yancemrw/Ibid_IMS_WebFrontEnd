@@ -232,17 +232,18 @@ $(function() {
 });
 
 // handle only number
-$('input[name="Phone"]').change(function(event) {
+$('input[name="Phone"]').keyup(function(event) {
+	var charCode = (event.which) ? event.which : event.keyCode;
+	alert(charCode);
+	return (charCode >= 48 && charCode <= 57);
+});
+
+$('input[name="BankAccountNumber"]').keypress(function(event) {
 	var charCode = (event.which) ? event.which : event.keyCode;
 	return (charCode >= 48 && charCode <= 57);
 });
 
-$('input[name="BankAccountNumber"]').change(function(event) {
-	var charCode = (event.which) ? event.which : event.keyCode;
-	return (charCode >= 48 && charCode <= 57);
-});
-
-$('input[name="IdentityNumber"]').change(function(event) {
+$('input[name="IdentityNumber"]').keypress(function(event) {
 	var charCode = (event.which) ? event.which : event.keyCode;
 	return (charCode >= 48 && charCode <= 57);
 });
@@ -250,7 +251,9 @@ $('input[name="IdentityNumber"]').change(function(event) {
 // handle input number for mobile and website
 function checkey(ele, event, max) {
 	if(event.data === '.') {
-		return true;
+		$(ele).val($(ele).val().replace('', ''));
+		event.preventDefault();
+    	return true;
 	}
 	else if($(ele).val().length >= max) {
 		$(ele).val($(ele).val().substr(0, max));
