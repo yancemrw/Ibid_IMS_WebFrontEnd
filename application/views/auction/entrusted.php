@@ -218,7 +218,7 @@ $("#notif-telepon").on("focus", function( e ) {
 	$('.help-info-1').show();
 });
 
-$('#notif-telepon').on('keypress', function(e) {
+$('#notif-telepon').on('keypress', function(e) {console.log(e.keyCode);
 	var max = 13;
 	if(e.keyCode === 46 || e.keyCode === 44) {
 		event.preventDefault();
