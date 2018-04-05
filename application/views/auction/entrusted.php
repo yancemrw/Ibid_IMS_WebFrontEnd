@@ -218,24 +218,42 @@ $("#notif-telepon").on("focus", function( e ) {
 	$('.help-info-1').show();
 });
 
-$('#notif-telepon').keyup(function(e) {
+$('#notif-telepon').on('keypress', function(e) {
 	var max = 13;
-	if($('#notif-telepon').val().length >= max) {
-		$('#notif-telepon').val($('#notif-telepon').val().substr(0, max));
+	if(e.keyCode === 46) {
+		event.preventDefault();
+		return false;
+	}
+	else {
+		if($('#notif-telepon').val().length >= max) {
+			$('#notif-telepon').val($('#notif-telepon').val().substr(0, max));
+		}
 	}
 });
 
-$('#notif-rekening').keyup(function(e) {
+$('#notif-rekening').on('keypress', function(e) {
 	var max = 16;
-	if($('#notif-rekening').val().length >= max) {
-		$('#notif-rekening').val($('#notif-rekening').val().substr(0, max));
+	if(e.keyCode === 46) {
+		event.preventDefault();
+		return false;
+	}
+	else {
+		if($('#notif-rekening').val().length >= max) {
+			$('#notif-rekening').val($('#notif-rekening').val().substr(0, max));
+		}
 	}
 });
 
-$('#notif-identity').keyup(function(e) {
-	var max = 16
-	if($('#notif-identity').val().length >= max) {
-		$('#notif-identity').val($('#notif-identity').val().substr(0, max));
+$('#notif-identity').on('keypress', function(e) {
+	var max = 16;
+	if(e.keyCode === 46) {
+		event.preventDefault();
+		return false;
+	}
+	else {
+		if($('#notif-identity').val().length >= max) {
+			$('#notif-identity').val($('#notif-identity').val().substr(0, max));
+		}
 	}
 });
 
