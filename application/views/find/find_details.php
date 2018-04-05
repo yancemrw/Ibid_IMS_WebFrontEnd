@@ -517,7 +517,7 @@ $(document).ready(function() {
    
    <?php if($data[0]->StatusStok === 1 && $schedule_id > 0) { // 0 = Live Auction, 1 = Online ?>
    // Timer
-   var countDownDate = new Date(<?php echo $date[0].",".(@$date[1]-1).",".(int)@$date[2].",".@$time[0].",".@$time[1].",0,0"; ?>).getTime();
+   var countDownDate = new Date('<?php echo $date[0].",".(@$date[1]-1).",".(int)@$date[2].",".@$time[0].",".@$time[1].",0,0"; ?>').getTime();
    if(isNaN(countDownDate)) {
       $("#timer-title").css('display', 'none');
       $("#timer").text("JADWAL LELANG TIDAK DIKETAHUI");
