@@ -233,17 +233,16 @@ $(function() {
 
 // handle only number
 $('input[name="Phone"]').keyup(function(event) {
-	var charCode = event.keyCode;
-	alert(charCode);
-	return (charCode >= 48 && charCode <= 57);
-});
-
-$('input[name="BankAccountNumber"]').keypress(function(event) {
 	var charCode = (event.which) ? event.which : event.keyCode;
 	return (charCode >= 48 && charCode <= 57);
 });
 
-$('input[name="IdentityNumber"]').keypress(function(event) {
+$('input[name="BankAccountNumber"]').keyup(function(event) {
+	var charCode = (event.which) ? event.which : event.keyCode;
+	return (charCode >= 48 && charCode <= 57);
+});
+
+$('input[name="IdentityNumber"]').keyup(function(event) {
 	var charCode = (event.which) ? event.which : event.keyCode;
 	return (charCode >= 48 && charCode <= 57);
 });
