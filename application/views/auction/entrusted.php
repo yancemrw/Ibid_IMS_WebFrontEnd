@@ -232,17 +232,17 @@ $(function() {
 });
 
 // handle only number
-$('input[name="Phone"]').keypress(function(event) {
+$('input[name="Phone"]').change(function(event) {
 	var charCode = (event.which) ? event.which : event.keyCode;
 	return (charCode >= 48 && charCode <= 57);
 });
 
-$('input[name="BankAccountNumber"]').keypress(function(event) {
+$('input[name="BankAccountNumber"]').change(function(event) {
 	var charCode = (event.which) ? event.which : event.keyCode;
 	return (charCode >= 48 && charCode <= 57);
 });
 
-$('input[name="IdentityNumber"]').keypress(function(event) {
+$('input[name="IdentityNumber"]').change(function(event) {
 	var charCode = (event.which) ? event.which : event.keyCode;
 	return (charCode >= 48 && charCode <= 57);
 });
