@@ -283,6 +283,10 @@
 </section>
 
 <script>
+var thisCabang = [];
+<?php foreach($cabang as $row){ ?>
+thisCabang[<?php echo $row['CompanyId']; ?>] = "<?php echo (($row['CompanyName'])); ?>";
+<?php } ?>
 // load mobil nabrak plang iBid
 document.addEventListener("DOMContentLoaded", function () {
    document.getElementById('preloader').style.display = 'block';
@@ -391,7 +395,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                model = (dataz.model !== undefined) ? dataz.model : '',
                transmisi = (dataz.transmisi !== undefined) ? dataz.transmisi : '',
                tahun = (dataz.tahun !== undefined) ? dataz.tahun : '',
-               FinalPriceItem = (dataz.FinalPriceItem !== undefined) ? dataz.FinalPriceItem : 0;console.log(dataz);
+               FinalPriceItem = (dataz.FinalPriceItem !== undefined) ? dataz.FinalPriceItem : 0; // console.log(dataz);
                let numgrade = '';
                $.ajax({
                   type: 'GET',
@@ -439,22 +443,8 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
       						   var lokasi = 'Belum Tersedia';
       						   var waktu = 'Belum Tersedia';
       						   
-      						   if (schedule > 0) {
-      							   $.ajax({
-      									type: 'GET',
-      									url: 'http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/getLotDataOnline?schedule='+schedule+'&lot='+lot,
-      									success: function(sch) {
-                                    var dateSplit = sch.schedule.date.split('-');
-      									   lokasi = sch.schedule.CompanyName;
-      									   waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + sch.schedule.waktu;
-      									   $('.sch'+schedule).html(lokasi);
-      									   $('.wkt'+schedule).html(waktu);
-      									},
-      							   });
-      							   
-      						   }
-						   
-						   content += '<div class="col-md-4" id="this'+dataz.AuctionItemId+'">'+
+      						
+						   content = '<div class="col-md-4" id="this'+dataz.AuctionItemId+'">'+
                                     '<div class="list-product box-recommend">'+
                                     '<a href="<?php echo $link_detail; ?>/'+dataz.AuctionItemId+'">'+
                                     '<div class="thumbnail">'+
@@ -470,13 +460,28 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                                     '<h2>'+merk+' '+seri+' '+silinder+' '+tipe+' '+model+' '+transmisi+'</h2>'+
                                     '<span>'+tahun+'</span> <span class="price">Rp. '+currency_format(FinalPriceItem)+'</span>'+
                                     '<p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span class="wkt'+dataz.thisScheduleId+'">'+waktu+'</span></p>'+
-                                    '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span class="sch'+dataz.thisScheduleId+'">'+lokasi+'</span></p>'+
+                                    '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span class="sch'+dataz.thisScheduleId+'">'+thisCabang[dataz.CompanyId]+'</span></p>'+
                                     '</div>'+
                                     '</a>'+
                                     favcom+
                                     '</div>'+
                                     '</div>';
-                           $('#loadlist').html(content);
+                           // $('#loadlist').html(content);
+                           $('#loadlist').append(content);
+						   if (schedule > 0) {
+							   $.ajax({
+									type: 'GET',
+									url: 'http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/getLotDataOnline?schedule='+schedule+'&lot='+lot,
+									success: function(sch) {
+										var dateSplit = sch.schedule.date.split('-');
+										lokasi = sch.schedule.CompanyName;
+										waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + sch.schedule.waktu;
+										$('.wkt'+schedule).html(waktu);
+									},
+							   });
+							   
+						   }
+					   
                            countContainer(offset, limit, linked, dataTotal, datas.length);
                         }
                      });
@@ -491,7 +496,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
             $('#loadings').replaceWith('<div id="loadings" class="margin-10px margin-top-80px text-align-center"><img src="<?php echo base_url('assetsfront/images/background/management-empty.png'); ?>" alt="Loading" width="200px" /><div class="style="color:#757575">Data Tidak Ditemukan!</div></div>');
          }
       }
-   });
+  });
 }
 
 function loadContainerPaging(offset, limit, linked) {
@@ -572,21 +577,6 @@ function loadContainerPaging(offset, limit, linked) {
       						   var lokasi = 'Belum Tersedia';
       						   var waktu = 'Belum Tersedia';
       						   
-      						   if (schedule > 0) {
-      							   $.ajax({
-      									type: 'GET',
-      									url: 'http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/getLotDataOnline?schedule='+schedule+'&lot='+lot,
-      									success: function(sch) {
-      									   var dateSplit = sch.schedule.date.split('-');
-                                    lokasi = sch.schedule.CompanyName;
-                                    waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + sch.schedule.waktu;
-      									   $('.sch'+schedule).html(lokasi);
-      									   $('.wkt'+schedule).html(waktu);
-      									},
-      							   });
-      							   
-      						   }
-						   
                            var content = '<div class="col-md-4">'+
                                     '<div class="list-product box-recommend">'+
                                     '<a href="<?php echo $link_detail; ?>/'+dataz.AuctionItemId+'">'+
@@ -603,13 +593,27 @@ function loadContainerPaging(offset, limit, linked) {
                                     '<h2>'+merk+' '+seri+' '+silinder+' '+tipe+' '+model+' '+transmisi+'</h2>'+
                                     '<span>'+tahun+'</span> <span class="price">Rp. '+currency_format(FinalPriceItem)+'</span>'+
                                     '<p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span class="wkt'+dataz.thisScheduleId+'">'+waktu+'</span></p>'+
-                                    '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span class="sch'+dataz.thisScheduleId+'">'+lokasi+'</span></p>'+
+                                    '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span class="sch'+dataz.thisScheduleId+'">'+thisCabang[dataz.CompanyId]+'</span></p>'+
                                     '</div>'+
                                     '</a>'+
                                     favcom+
                                     '</div>'+
                                     '</div>';
                            $('#loadlist').children().last().after(content);
+						   // $('#loadlist').append(content);
+						   if (schedule > 0) {
+							   $.ajax({
+									type: 'GET',
+									url: 'http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/getLotDataOnline?schedule='+schedule+'&lot='+lot,
+									success: function(sch) {
+										var dateSplit = sch.schedule.date.split('-');
+										lokasi = sch.schedule.CompanyName;
+										waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + sch.schedule.waktu;
+										$('.wkt'+schedule).html(waktu);
+									},
+							   });
+							   
+						   }
                            countContainer(offset, limit, linked, dataTotal, datas.length);
                         }
                      });
