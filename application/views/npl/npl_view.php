@@ -57,7 +57,7 @@
                             <input type="text" name="Phone" id="notif-telepon" class="form-control input-custom" 
                                     value="<?php echo @$detailBiodata['Phone']; ?>"
                                     oninvalid="this.setCustomValidity('No telepon tidak boleh kosong')" 
-                                    oninput="setCustomValidity('')" maxlength="13" required />
+                                    oninput="checkey(this, event, 13)" onkeypress="setCustomValidity('')" required />
                             <label class="label-schedule">No Telepon *</label>
                             <div class="help-info help-info-1">
                                 <i class="fa fa-info"></i> Pastikan nomor telepon aktif
@@ -77,7 +77,7 @@
                             <input type="text" name="BankAccountNumber" id="notif-rekening" class="form-control input-custom" 
                                     value="<?php echo @$detailBiodata['BankAccountNumber']; ?>" 
                                     oninvalid="this.setCustomValidity('Nomor rekening tidak boleh kosong')" 
-                                    oninput="setCustomValidity('')" maxlength="16" required />
+                                    oninput="checkey(this, event, 16)" onkeypress="setCustomValidity('')" required />
                             <label class="label-schedule">Nomor Rekening *</label>
                             <div class="help-info help-info-2">
                                 <i class="fa fa-info"></i> IBID membutuhkan nomor rekening Anda untuk pengembalian deposit. Pastikan nomor rekening sudah benar.
@@ -90,10 +90,10 @@
                             <label class="label-schedule">Atas Nama *</label>
                         </div>
                         <div class="form-group floating-label" id="ktp">
-                            <input type="text" name="IdentityNumber" class="form-control input-custom" maxlength="16" 
+                            <input type="text" name="IdentityNumber" class="form-control input-custom" 
                                     value="<?php echo @$detailBiodata['IdentityNumber']; ?>"
                                     oninvalid="this.setCustomValidity('Nomor KTP tidak boleh kosong')" 
-                                    oninput="setCustomValidity('')" required />
+                                    oninput="checkey(this, event, 16)" onkeypress="setCustomValidity('')" required />
                             <label class="label-schedule">Nomor KTP *</label>
                         </div>
                         <div class="g-recaptcha recaptcha" id="idrecaptcha" required></div>
@@ -309,16 +309,23 @@
   // handle only number
   $('input[name="Phone"]').keypress(function(event) {
     var charCode = (event.which) ? event.which : event.keyCode;
-    return ((charCode >= 48 && charCode <= 57) || charCode === 46);
+    return (charCode >= 48 && charCode <= 57);
   });
 
   $('input[name="BankAccountNumber"]').keypress(function(event) {
     var charCode = (event.which) ? event.which : event.keyCode;
-    return ((charCode >= 48 && charCode <= 57) || charCode === 46);
+    return (charCode >= 48 && charCode <= 57);
   });
 
   $('input[name="IdentityNumber"]').keypress(function(event) {
     var charCode = (event.which) ? event.which : event.keyCode;
-    return ((charCode >= 48 && charCode <= 57) || charCode === 46);
+    return (charCode >= 48 && charCode <= 57);
   });
+
+  // handle input number for mobile and website
+  function checkey(ele, event, max) {
+    if($(ele).val().length >= max) {
+      $(ele).val($(ele).val().substr(0, max));
+    }
+  }
 </script>

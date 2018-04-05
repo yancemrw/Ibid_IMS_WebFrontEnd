@@ -234,18 +234,25 @@ $(function() {
 // handle only number
 $('input[name="Phone"]').keypress(function(event) {
 	var charCode = (event.which) ? event.which : event.keyCode;
-	return ((charCode >= 48 && charCode <= 57) || charCode === 46);
+	return (charCode >= 48 && charCode <= 57);
 });
 
 $('input[name="BankAccountNumber"]').keypress(function(event) {
 	var charCode = (event.which) ? event.which : event.keyCode;
-	return ((charCode >= 48 && charCode <= 57) || charCode === 46);
+	return (charCode >= 48 && charCode <= 57);
 });
 
 $('input[name="IdentityNumber"]').keypress(function(event) {
 	var charCode = (event.which) ? event.which : event.keyCode;
-	return ((charCode >= 48 && charCode <= 57) || charCode === 46);
+	return (charCode >= 48 && charCode <= 57);
 });
+
+// handle input number for mobile and website
+function checkey(ele, event, max) {
+	if($(ele).val().length >= max) {
+		$(ele).val($(ele).val().substr(0, max));
+	}
+}
 
 // handle button kirim
 $('#btn-kirim').click(function(e) {
@@ -326,17 +333,4 @@ $('#btn-kirim').click(function(e) {
 		}
 	}
 });
-
-// handle input number for mobile and website
-function checkey(ele, event, max) {console.log(event);
-	if(event.keyCode === 46 || event.keyCode === 44 || event.data === '.') {console.log(event.data); console.log(typeof event.data);
-		event.preventDefault();
-		return false;
-	}
-	else {
-		if($(ele).val().length >= max) {
-			$(ele).val($(ele).val().substr(0, max));
-		}
-	}
-}
 </script>
