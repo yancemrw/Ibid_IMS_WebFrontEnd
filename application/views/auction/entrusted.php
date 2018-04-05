@@ -328,8 +328,8 @@ $('#btn-kirim').click(function(e) {
 });
 
 // handle input number for mobile and website
-function checkey(ele, event, max) {console.log(e); console.log(e.data); console.log(typeof e.data);
-	if(event.keyCode === 46 || event.keyCode === 44 || event.data === '.') {
+function checkey(ele, event, max) {console.log(event);
+	if(event.keyCode === 46 || event.keyCode === 44 || event.data === '.') {console.log(event.data); console.log(typeof event.data);
 		event.preventDefault();
 		return false;
 	}
