@@ -443,7 +443,12 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
       						   var lokasi = 'Belum Tersedia';
       						   var waktu = 'Belum Tersedia';
       						   
-      						
+      					var statusStock;
+                     switch(dataz.StatusStok) {
+                        case 0 : statusStock = 'Live'; classStatus = 'overlay-status-live';
+                        case 1 : statusStock = 'Online'; classStatus = 'overlay-status-online';
+                        default: statusStock = 'Live'; classStatus = 'overlay-status-live';
+                     }
 						   content = '<div class="col-md-4" id="this'+dataz.AuctionItemId+'">'+
                                     '<div class="list-product box-recommend">'+
                                     '<a href="<?php echo $link_detail; ?>/'+dataz.AuctionItemId+'">'+
@@ -455,6 +460,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                                     'Grade <span>'+numgrade+'</span>'+
                                     '</div>'+
                                     '<p class="overlay-lot">LOT '+lot+'</p>'+
+                                    '<p class="'+classStatus+'">'+statusStock+'</p>'+
                                     '</div>'+
                                     '<div class="boxright-mobile">'+
                                     '<h2>'+merk+' '+seri+' '+silinder+' '+tipe+' '+model+' '+transmisi+'</h2>'+
@@ -576,7 +582,12 @@ function loadContainerPaging(offset, limit, linked) {
                            var schedule = (dataz.thisScheduleId !== null) ? dataz.thisScheduleId : 0 ;
       						   var lokasi = 'Belum Tersedia';
       						   var waktu = 'Belum Tersedia';
-      						   
+      						   var statusStock;
+                           switch(dataz.StatusStok) {
+                              case 0 : statusStock = 'Live'; classStatus = 'overlay-status-live';
+                              case 1 : statusStock = 'Online'; classStatus = 'overlay-status-online';
+                              default: statusStock = 'Live'; classStatus = 'overlay-status-live';
+                           }
                            var content = '<div class="col-md-4">'+
                                     '<div class="list-product box-recommend">'+
                                     '<a href="<?php echo $link_detail; ?>/'+dataz.AuctionItemId+'">'+
@@ -588,6 +599,7 @@ function loadContainerPaging(offset, limit, linked) {
                                     'Grade <span>'+numgrade+'</span>'+
                                     '</div>'+
                                     '<p class="overlay-lot">LOT '+lot+'</p>'+
+                                    '<p class="'+classStatus+'">'+statusStock+'</p>'+
                                     '</div>'+
                                     '<div class="boxright-mobile">'+
                                     '<h2>'+merk+' '+seri+' '+silinder+' '+tipe+' '+model+' '+transmisi+'</h2>'+

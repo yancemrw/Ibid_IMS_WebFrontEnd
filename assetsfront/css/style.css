@@ -1770,7 +1770,8 @@ p.notice span {
     transition: all 0.2s ease;
     min-height: 420px;
     overflow: hidden;
-    box-shadow: 3px 3px 4px rgba(204, 204, 204, 0.5411764705882353)
+    -webkit-box-shadow: 3px 3px 4px rgba(204, 204, 204, 0.5411764705882353);
+    box-shadow: 3px 3px 4px rgba(204, 204, 204, 0.5411764705882353);
 }
 
 .list-product.box-recommend:hover {

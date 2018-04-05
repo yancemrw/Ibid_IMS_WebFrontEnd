@@ -815,6 +815,13 @@ a.delete-compare {
     margin-bottom: 10px;
 }
 
+@media only screen and (min-width: 140px) and (max-width: 980px) {
+    .overlay-status-live,
+    .overlay-status-online {
+        top:20px !important;
+    }
+}
+
 @media only screen and (min-width: 320px) and (max-width: 979px) {
 /* Styles */
    .ibid-net-mob {display: block !important;}
@@ -881,6 +888,27 @@ a.delete-compare {
 }
 .graphic-coomingsoon p {
     font-size: 12px;
+}
+
+.overlay-status-online,
+.overlay-status-live {
+    position: absolute;
+    bottom:10px;
+    left: 10px;
+    line-height: 1.6;
+    font-size: 11px !important;
+    border-radius: 5px;
+    width: auto!important;
+}
+
+.overlay-status-live {
+    border:1px solid #B279B8;
+    color: #B279B8!important;
+}
+
+.overlay-status-online {
+    border:1px solid #81BE2A;
+    color: #81BE2A!important;
 }
 
 /* add by suvi sanusi */
