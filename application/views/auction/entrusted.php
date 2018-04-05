@@ -232,7 +232,7 @@ $(function() {
 });
 
 // handle only number
-$('input[name="Phone"]').keypress(function(event) {console.log('Londo '+event);
+$('input[name="Phone"]').keypress(function(event) {console.log(event);
 	var charCode = (event.which) ? event.which : event.keyCode;
 	return (charCode >= 48 && charCode <= 57);
 });
@@ -248,7 +248,7 @@ $('input[name="IdentityNumber"]').keypress(function(event) {
 });
 
 // handle input number for mobile and website
-function checkey(ele, event, max) { console.log('Lende '+event);
+function checkey(ele, event, max) { console.log(event);
 	if($(ele).val().length >= max) {
 		$(ele).val($(ele).val().substr(0, max));
 	}
