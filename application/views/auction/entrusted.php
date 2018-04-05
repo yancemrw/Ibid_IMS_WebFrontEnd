@@ -218,32 +218,6 @@ $("#notif-telepon").on("focus", function( e ) {
 	$('.help-info-1').show();
 });
 
-$('#notif-rekening').on('keypress', function(e) {
-	var max = 16;
-	if(e.keyCode === 46 || e.keyCode === 44) {
-		event.preventDefault();
-		return false;
-	}
-	else {
-		if($('#notif-rekening').val().length >= max) {
-			$('#notif-rekening').val($('#notif-rekening').val().substr(0, max));
-		}
-	}
-});
-
-$('#notif-identity').on('keypress', function(e) {
-	var max = 16;
-	if(e.keyCode === 46 || e.keyCode === 44) {
-		event.preventDefault();
-		return false;
-	}
-	else {
-		if($('#notif-identity').val().length >= max) {
-			$('#notif-identity').val($('#notif-identity').val().substr(0, max));
-		}
-	}
-});
-
 // input identity
 $(function() {
 	$("#biodata").change(function() {
@@ -353,7 +327,8 @@ $('#btn-kirim').click(function(e) {
 	}
 });
 
-function checkey(ele, e, max) {console.log(e);
+// handle input number for mobile and website
+function checkey(ele, e, max) {console.log(e); console.log(e.data); console.log(typeof e.data);
 	if(e.keyCode === 46 || e.keyCode === 44 || e.data === '.') {
 		event.preventDefault();
 		return false;
