@@ -220,7 +220,7 @@ $("#notif-telepon").on("focus", function( e ) {
 
 $('#notif-telepon').on('keypress', function(e) {
 	var max = 13;
-	if(e.keyCode === 46) {
+	if(e.keyCode === 46 || e.keyCode === 44) {
 		event.preventDefault();
 		return false;
 	}
@@ -233,7 +233,7 @@ $('#notif-telepon').on('keypress', function(e) {
 
 $('#notif-rekening').on('keypress', function(e) {
 	var max = 16;
-	if(e.keyCode === 46) {
+	if(e.keyCode === 46 || e.keyCode === 44) {
 		event.preventDefault();
 		return false;
 	}
@@ -246,7 +246,7 @@ $('#notif-rekening').on('keypress', function(e) {
 
 $('#notif-identity').on('keypress', function(e) {
 	var max = 16;
-	if(e.keyCode === 46) {
+	if(e.keyCode === 46 || e.keyCode === 44) {
 		event.preventDefault();
 		return false;
 	}
