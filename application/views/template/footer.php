@@ -480,6 +480,18 @@ $(document).ready(function() {
   });
 });
 
+// handle input number only for mobile and website
+function checkOnlyNumber(ele, event, max) {
+  var charCode = (event.which) ? event.which : event.keyCode;
+  if(charCode === 190) {
+    $(ele).val($(ele).val().replace(new RegExp(".", ""), ""));
+    return false;
+  }
+  else if($(ele).val().length >= max) {
+    $(ele).val($(ele).val().substr(0, max));
+  }
+}
+
 // ini animasi mobil nabrak plang iBid
 function preload(opacity) {
    if(opacity <= 0) {

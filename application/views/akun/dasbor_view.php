@@ -81,14 +81,14 @@
                            <input type="number" name="upd_phone" id="upd_phone" class="form-control floating-handle input-custom only-number" 
                                     value="<?php echo @$content->users->Phone; ?>" title="Pastikan nomor dapat menerima SMS" 
                                     oninvalid="this.setCustomValidity('No Telepon tidak boleh kosong')" 
-                                    oninput="checkey(this, event, 13)" onkeypress="setCustomValidity('')" required />
+                                    onkeyup="checkOnlyNumber(this, event, 13)" onkeypress="setCustomValidity('')" required />
                            <label class="label-schedule">No Telepon *</label>
                         </div>
                         <div class="form-group floating-label">
                            <input type="number" name="ktp" id="ktp" class="form-control floating-handle input-custom only-number" 
                                     value="<?php echo @$content->users->IdentityNumber; ?>" 
                                     oninvalid="this.setCustomValidity('KTP tidak boleh kosong')" 
-                                    oninput="checkey(this, event, 13)" onkeypress="setCustomValidity('')" required />
+                                    onkeyup="checkOnlyNumber(this, event, 13)" onkeypress="setCustomValidity('')" required />
                            <label class="label-schedule">No KTP *</label>
                         </div>
                         <div class="form-group floating-label">
@@ -122,7 +122,7 @@
                            <input type="number" name="norek" class="form-control floating-handle input-custom only-number" 
                                     value="<?php echo @$content->users->BankAccountNumber; ?>" id="norek" 
                                     oninvalid="this.setCustomValidity('Nomor rekening tidak boleh kosong')" 
-                                    oninput="checkey(this, event, 13)" onkeypress="setCustomValidity('')"
+                                    onkeyup="checkOnlyNumber(this, event, 13)" onkeypress="setCustomValidity('')"
                                     title="IBID membutuhkan nomor rekening anda untuk pengembalian deposit atau transfer dana hasil lelang. Pastikan nomor rekening sudah benar" required />
                            <label class="label-schedule">Nomor Rekening *</label>
                         </div>
@@ -354,11 +354,4 @@
    $('#tgl-lahir-span').click(function() {
       $('#tgl-lahir').focus();
    });
-
-   // handle input number for mobile and website
-   function checkey(ele, event, max) {
-      if($(ele).val().length >= max) {
-         $(ele).val($(ele).val().substr(0, max));
-      }
-   }
 </script>
