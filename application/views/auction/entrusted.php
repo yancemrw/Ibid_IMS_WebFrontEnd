@@ -354,7 +354,7 @@ $('#btn-kirim').click(function(e) {
 });
 
 function checkey(ele, e, max) {console.log(e);
-	if(e.keyCode === 46 || e.keyCode === 44) {
+	if(e.keyCode === 46 || e.keyCode === 44 || e.data === '.') {
 		event.preventDefault();
 		return false;
 	}
