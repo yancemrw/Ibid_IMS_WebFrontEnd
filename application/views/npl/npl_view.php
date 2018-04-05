@@ -54,7 +54,7 @@
                     <form class="form-filter" id="beli-npl" data-provide="validation">
                         <input type="hidden" name="otpkirim" value="true">
                         <div class="form-group floating-label">
-                            <input type="text" name="Phone" id="notif-telepon" class="form-control input-custom" 
+                            <input type="number" name="Phone" id="notif-telepon" class="form-control input-custom" 
                                     value="<?php echo @$detailBiodata['Phone']; ?>"
                                     oninvalid="this.setCustomValidity('No telepon tidak boleh kosong')" 
                                     oninput="checkey(this, event, 13)" onkeypress="setCustomValidity('')" required />
@@ -74,7 +74,7 @@
                             </select>
                         </div>
                         <div class="form-group floating-label">
-                            <input type="text" name="BankAccountNumber" id="notif-rekening" class="form-control input-custom" 
+                            <input type="number" name="BankAccountNumber" id="notif-rekening" class="form-control input-custom" 
                                     value="<?php echo @$detailBiodata['BankAccountNumber']; ?>" 
                                     oninvalid="this.setCustomValidity('Nomor rekening tidak boleh kosong')" 
                                     oninput="checkey(this, event, 16)" onkeypress="setCustomValidity('')" required />
@@ -90,7 +90,7 @@
                             <label class="label-schedule">Atas Nama *</label>
                         </div>
                         <div class="form-group floating-label" id="ktp">
-                            <input type="text" name="IdentityNumber" class="form-control input-custom" 
+                            <input type="number" name="IdentityNumber" class="form-control input-custom" 
                                     value="<?php echo @$detailBiodata['IdentityNumber']; ?>"
                                     oninvalid="this.setCustomValidity('Nomor KTP tidak boleh kosong')" 
                                     oninput="checkey(this, event, 16)" onkeypress="setCustomValidity('')" required />
