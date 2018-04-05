@@ -1,15 +1,21 @@
 <script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit' async defer></script>
 <script>
-    var verifyCallback = function(response) {
-        $('#e8df0fade2ce52c6a8cf8c8d2309d08a').val(response);
-    };
-    var onloadCallback = function() {
-        grecaptcha.render('idrecaptcha', {
-            'sitekey'   : '6Lee4z8UAAAAAG8bdnCYM-ZKfsRa6fniZlq5HTRn',
-            'callback'  : verifyCallback,
-            'theme'     : 'light'
-        });
-    };
+  var verifyCallback = function(response) {
+    $('#e8df0fade2ce52c6a8cf8c8d2309d08a').val(response);
+  };
+  var onloadCallback = function() {
+    grecaptcha.render('idrecaptcha', {
+      'sitekey'   : '6Lee4z8UAAAAAG8bdnCYM-ZKfsRa6fniZlq5HTRn',
+      'callback'  : verifyCallback,
+      'theme'     : 'light'
+    });
+  };
+
+  // load mobil nabrak plang iBid
+  document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById('preloader').style.display = 'block';
+    preload(1);
+  });
 </script>
 
 <section class="section section-auction">

@@ -283,6 +283,12 @@
 </section>
 
 <script>
+// load mobil nabrak plang iBid
+document.addEventListener("DOMContentLoaded", function () {
+   document.getElementById('preloader').style.display = 'block';
+   preload(1);
+});
+
 $(document).ready(function() {
    //show compare element
    let linked = '<?php echo site_url('list-compare'); ?>';

@@ -357,16 +357,7 @@
 // set active menu if to homepage
 setActiveMenu('home');
 
-function preload(opacity) {
-   if(opacity <= 0) {
-      showContent();
-   }
-   else {
-      document.getElementById('preloader').style.opacity = opacity;
-      window.setTimeout(function() { preload(opacity - 0.05) }, 100);
-   }
-}
-
+// load mobil nabrak plang iBid
 document.addEventListener("DOMContentLoaded", function () {
    document.getElementById('preloader').style.display = 'block';
    preload(1);

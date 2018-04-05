@@ -104,9 +104,6 @@
   <!-- End  -->
 
 <script type="text/javascript">
-  // handle remove refer page after login
-  checkCookiePages();
-
   // handle login
   $('#btn-login').click(function(e) {
     var user = $('#username').val(), pass = $('#password').val();
@@ -134,6 +131,7 @@
             var data = JSON.parse(data);
             if(data.status === 1) {
               setTimeout(function() {
+                checkCookiePages(); // handle remove refer page after login
                 location.href = data.url;
               }, 1500);
               return false;
@@ -188,6 +186,7 @@
             var data = JSON.parse(data);
             if(data.status === 1) {
               setTimeout(function() {
+                checkCookiePages(); // handle remove refer page after login
                 location.href = data.url;
               }, 1500);
               return false;
@@ -480,6 +479,17 @@ $(document).ready(function() {
     $(this).siblings('ul').toggleClass('open');
   });
 });
+
+// ini animasi mobil nabrak plang iBid
+function preload(opacity) {
+   if(opacity <= 0) {
+      showContent();
+   }
+   else {
+      document.getElementById('preloader').style.opacity = opacity;
+      window.setTimeout(function() { preload(opacity - 0.05) }, 100);
+   }
+}
 
 function checkCookiePages() {
   var pages = getActiveMenu('refer_page');

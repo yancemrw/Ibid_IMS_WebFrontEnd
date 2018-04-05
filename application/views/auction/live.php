@@ -37,13 +37,13 @@
 </section>
 
 <script>
-function preload(opacity) {
+function preloadAuction(opacity) {
 	if(opacity <= 0) {
 		showContentAuction();
 	}
 	else {
 		document.getElementById('preloaderAuction').style.opacity = opacity;
-		window.setTimeout(function() { preload(opacity - 10) }, 6500);
+		window.setTimeout(function() { preloadAuction(opacity - 10) }, 6500);
 	}
 }
 
@@ -54,7 +54,7 @@ function showContentAuction() {
 
 document.addEventListener("DOMContentLoaded", function() {
 	document.getElementById('preloaderAuction').style.display = 'block';
-	preload(1);
+	preloadAuction(1);
 });
 
 $(document).ready(function() {
