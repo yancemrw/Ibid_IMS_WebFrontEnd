@@ -482,7 +482,7 @@ $(document).ready(function() {
 
 // handle input number only for mobile and website
 function checkOnlyNumber(ele, event, max) {
-  var charCode = (event.which) ? event.which : event.keyCode; console.log(charCode);
+  var charCode = (event.which) ? event.which : event.keyCode;
   if(charCode === 190 || charCode === 229) {
     $(ele).val($(ele).val().replace(new RegExp(".", ""), ""));
     return false;
