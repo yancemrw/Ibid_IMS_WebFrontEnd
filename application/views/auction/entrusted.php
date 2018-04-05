@@ -233,7 +233,7 @@ $(function() {
 
 // handle only number
 $('input[name="Phone"]').keyup(function(event) {
-	var charCode = (event.which) ? event.which : event.keyCode;
+	var charCode = event.keyCode;
 	alert(charCode);
 	return (charCode >= 48 && charCode <= 57);
 });
