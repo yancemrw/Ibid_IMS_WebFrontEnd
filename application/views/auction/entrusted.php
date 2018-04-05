@@ -65,7 +65,7 @@
 							<input type="number" name="Phone" id="notif-telepon" class="form-control input-custom"
 									value="<?php echo @$detailBiodata['Phone']; ?>" 
 									oninvalid="this.setCustomValidity('No telepon tidak boleh kosong')" 
-									oninput="setCustomValidity('')" required />
+									oninput="checkey(this, event, 13)" onkeypress="setCustomValidity('')" required />
 							<label class="label-schedule">No Telepon *</label>
 							<div class="help-info help-info-1">
 								<i class="fa fa-info"></i> Pastikan nomor telepon aktif
@@ -85,7 +85,7 @@
 							<input type="number" name="BankAccountNumber" id="notif-rekening" class="form-control input-custom" 
 									value="<?php echo @$detailBiodata['BankAccountNumber']; ?>" 
                                     oninvalid="this.setCustomValidity('Nomor rekening tidak boleh kosong')" 
-                                    oninput="setCustomValidity('')" required />
+                                    oninput="checkey(this, event, 16)" onkeypress="setCustomValidity('')" required />
 							<label class="label-schedule">Nomor Rekening *</label>
 							<div class="help-info help-info-2">
 								<i class="fa fa-info"></i> IBID membutuhkan nomor rekening Anda untuk pengembalian deposit. Pastikan nomor rekening sudah benar.
@@ -101,7 +101,7 @@
                             <input type="number" name="IdentityNumber" id="notif-identity" class="form-control input-custom"  
                                     value="<?php echo @$detailBiodata['IdentityNumber']; ?>"
                                     oninvalid="this.setCustomValidity('Nomor KTP tidak boleh kosong')" 
-                                    oninput="setCustomValidity('')" required />
+                                    oninput="checkey(this, event, 16)" onkeypress="setCustomValidity('')" required />
                             <label class="label-schedule">Nomor KTP *</label>
                         </div>
                         <div class="g-recaptcha recaptcha" id="idrecaptcha" required></div>
@@ -216,18 +216,6 @@ $("#notif-rekening").on("focus", function( e ) {
 });
 $("#notif-telepon").on("focus", function( e ) {
 	$('.help-info-1').show();
-})
-.on('keypress', function(e) {console.log(e.keyCode);
-	var max = 13;
-	if(e.keyCode === 46 || e.keyCode === 44) {
-		event.preventDefault();
-		return false;
-	}
-	else {
-		if($('#notif-telepon').val().length >= max) {
-			$('#notif-telepon').val($('#notif-telepon').val().substr(0, max));
-		}
-	}
 });
 
 $('#notif-rekening').on('keypress', function(e) {
@@ -364,4 +352,16 @@ $('#btn-kirim').click(function(e) {
 		}
 	}
 });
+
+function checkey(ele, e, max) {console.log(e);
+	if(e.keyCode === 46 || e.keyCode === 44) {
+		event.preventDefault();
+		return false;
+	}
+	else {
+		if($(ele).val().length >= max) {
+			$(ele).val($(ele).val().substr(0, max));
+		}
+	}
+}
 </script>
