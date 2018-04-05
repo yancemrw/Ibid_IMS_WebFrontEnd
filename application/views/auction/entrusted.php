@@ -232,7 +232,7 @@ $(function() {
 });
 
 // handle only number
-$('input[name="Phone"]').keypress(function(event) {
+$('input[name="Phone"]').keypress(function(event) {console.log(event);
 	var charCode = (event.which) ? event.which : event.keyCode;
 	return (charCode >= 48 && charCode <= 57);
 });
