@@ -218,21 +218,24 @@ $("#notif-telepon").on("focus", function( e ) {
 	$('.help-info-1').show();
 });
 
-$('#notif-telepon').keypress(function(e) {
-	if($('#notif-telepon').val().length >= 13) {
-		return false;
+$('#notif-telepon').keyup(function(e) {
+	var max = 13;
+	if($('#notif-telepon').val().length >= max) {
+		$('#notif-telepon').val($('#notif-telepon').val().substr(0, max));
 	}
 });
 
-$('#notif-rekening').keypress(function(e) {
-	if($('#notif-rekening').val().length >= 16) {
-		return false;
+$('#notif-rekening').keyup(function(e) {
+	var max = 16;
+	if($('#notif-rekening').val().length >= max) {
+		$('#notif-rekening').val($('#notif-rekening').val().substr(0, max));
 	}
 });
 
-$('#notif-identity').keypress(function(e) {
-	if($('#notif-identity').val().length >= 16) {
-		return false;
+$('#notif-identity').keyup(function(e) {
+	var max = 16
+	if($('#notif-identity').val().length >= max) {
+		$('#notif-identity').val($('#notif-identity').val().substr(0, max));
 	}
 });
 
