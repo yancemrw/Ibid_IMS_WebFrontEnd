@@ -835,12 +835,10 @@ h2.title {
 .box-recommend .thumbnail {
     position: relative;
     border: 0;
-    padding: 0;
+    padding: 0 0 0 0;
     border-bottom: 4px solid #d4dbc8;
     border-radius: 0;
     margin-bottom: 10px;
-    /*width: 279px;
-    height: 207px;*/
 }
 
 .overlay-grade {
@@ -942,7 +940,8 @@ h2.title {
 }
 
 .show-more button,
-.show-more button:hover {
+.show-more button:hover,
+.show-more button:focus {
     text-transform: uppercase;
     width: 170px;
     font-family: "OpenSansRegular", Helvetica, Sans-serif;
@@ -1775,8 +1774,8 @@ p.notice span {
 }
 
 .list-product.box-recommend:hover {
-    -webkit-box-shadow: 3px 3px 4px rgba(204, 204, 204, 0.5411764705882353);
-    box-shadow: 3px 3px 4px rgba(204, 204, 204, 0.5411764705882353);
+    -webkit-box-shadow: 3px 3px 7px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 3px 3px 7px 0px rgba(0, 0, 0, 0.25);
 }
 
 span.price {
@@ -2401,7 +2400,8 @@ span.price {
 }
 
 .overlay-compare button,
-.overlay-compare button:hover {
+.overlay-compare button:hover,
+.overlay-compare button:focus {
     margin-bottom: 10px;
     width: 50%;
     margin: 10px auto;
@@ -4251,7 +4251,8 @@ h3.header-compare span {
 .list-compare button:hover,
 .list-compare button:active {
     width: 100%;
-    padding: 14px
+    padding: 14px;
+    font-size: 12px;
 }
 
 .button-compare {
@@ -4425,7 +4426,7 @@ h3.header-compare span {
 }
 
 .menu-account ul li a:hover {
-    color: #a3d063
+    color: #a3d063;
 }
 
 .menu-account ul li img {
@@ -4840,11 +4841,15 @@ a.delete-favorite {
 }
 
 .whislist {
+    top: 50px!important;
     margin: 35px 15px;
 }
 
-.whislist button {
+.whislist button,
+.whislist button:hover,
+.whislist button:focus {
     margin: 5px 0 0;
+    max-width: 300px;
 }
 
 
