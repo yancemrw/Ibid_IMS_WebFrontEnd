@@ -4849,7 +4849,6 @@ a.delete-favorite {
 .whislist button:hover,
 .whislist button:focus {
     margin: 5px 0 0;
-    max-width: 300px;
 }
 
 
@@ -6363,7 +6362,7 @@ td.bg-Grey {
 
 .thumbnail-custom {
     width: 100%;
-    height: 207px;
+    height: calc(100% - 10px);
     overflow: hidden;
     text-align: center;
 }

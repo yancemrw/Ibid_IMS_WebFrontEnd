@@ -229,7 +229,7 @@ a.delete-compare {
 }
 
 .main-management .box-recommend .thumbnail {
-    height: calc(100% - 100px) !important;
+    height: calc(100% - 100px);
 }
 
 .margin-10px {
@@ -414,6 +414,22 @@ a.delete-compare {
     }
 }
 
+@media(max-width: 980px) {
+    .product-mob .box-recommend .thumbnail {
+        height: 420px;
+        padding-bottom: 0;
+    }
+
+    .product-mob .action-wishlist {
+        position: relative;
+        width: 100%;
+    }
+
+    .product-mob .action-wishlist .btn, .btn {
+        width: 100%;
+    }
+}
+
 @media(max-width: 812px) {
     .btn-violet, .btn-violet:hover, .btn-violet:focus {
         font-size: 12px;
@@ -487,13 +503,40 @@ a.delete-compare {
     }
 
     .box-recommend .thumbnail {
-        padding-bottom: 75%;
+        padding-bottom: 0;
+    }
+
+    .product-mob.whislist .box-recommend .thumbnail {
+        height: 600px;
+    }
+}
+
+@media (max-width: 640px) {
+    .thumbnail-custom {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        overflow: hidden;
+        text-align: center;
+        top: 0;
+        right: 0;
+        left: 0;
     }
 }
 
 @media (max-width: 600px) {
     .favorite {
         padding: 10px;
+    }
+
+    .product-mob .box-recommend .thumbnail img {
+        width: auto;
+        height: 100%;
+        max-width: none;
+    }
+
+    .product-mob .action-wishlist .btn, .btn {
+        width: 100% !important;
     }
 }
 
@@ -508,6 +551,10 @@ a.delete-compare {
 
     .box-recommend .thumbnail {
         padding-bottom: 75%;
+    }
+
+    .product-mob.whislist .box-recommend .thumbnail {
+        height: 276px;
     }
 }
 
@@ -538,6 +585,22 @@ a.delete-compare {
 
     .box-recommend .thumbnail {
         padding-bottom: 75%;
+    }
+
+    .product-mob.whislist .box-recommend .thumbnail {
+        height: 240px;
+    }
+}
+
+@media (max-width: 375px) {
+    .product-mob.whislist .box-recommend .thumbnail {
+        height: 249px;
+    }
+}
+
+@media (max-width: 360px) {
+    .product-mob.whislist .box-recommend .thumbnail {
+        height: 208px;
     }
 }
 
