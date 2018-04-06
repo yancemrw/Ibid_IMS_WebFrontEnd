@@ -7,76 +7,8 @@
             <i class="fa fa-heart"></i>
           </div>
         </a>
-        <div class="favorite-box">
-          <div class="list-product box-recommend">
-            <a href="halaman-detail-kendaraan.html">
-            <div class="thumbnail">
-              <div class="thumbnail-custom">
-                <img alt="" src="<?php echo $img1; ?>">
-              </div>
-              <div class="overlay-grade">
-                Grade <span>A</span>
-              </div>
-              <p class="overlay-lot">LOT 170</p>
-            </div>
-            <div class="boxright-mobile">
-              <h2>DAIHATSU LUXIO 1.5 X MINIBUS AT </h2>
-              <span>2014</span> <span class="price">Rp. 72,000,000</span>
-              <p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>04 September 2017</span></p>
-              <p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Jakarta</span></p>
-            </div>
-            </a>
-            <div class="action-bottom">
-              <button class="btn"><i class="fa fa-heart"></i> <span>Favorit</span></button>
-              <button class="btn btn-compare"><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>
-            </div>
-          </div>
-          <div class="list-product box-recommend">
-            <a href="halaman-detail-kendaraan.html">
-              <div class="thumbnail">
-                <div class="thumbnail-custom">
-                  <img alt="" src="<?php echo $img1; ?>">
-                </div>
-                <div class="overlay-grade">
-                  Grade <span>A</span>
-                </div>
-                <p class="overlay-lot">LOT 170</p>
-              </div>
-              <div class="boxright-mobile">
-                <h2>DAIHATSU LUXIO 1.5 X MINIBUS AT </h2>
-                <span>2014</span> <span class="price">Rp. 72,000,000</span>
-                <p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>04 September 2017</span></p>
-                <p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Jakarta</span></p>
-              </div>
-            </a>
-            <div class="action-bottom">
-              <button class="btn"><i class="fa fa-heart"></i> <span>Favorit</span></button>
-              <button class="btn btn-compare"><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>
-            </div>
-          </div>
-          <div class="list-product box-recommend">
-            <a href="halaman-detail-kendaraan.html">
-              <div class="thumbnail">
-                <div class="thumbnail-custom">
-                  <img alt="" src="<?php echo $img1; ?>">
-                </div>
-                <div class="overlay-grade">
-                  Grade <span>A</span>
-                </div>
-                <p class="overlay-lot">LOT 170</p>
-              </div>
-              <div class="boxright-mobile">
-                <h2>DAIHATSU LUXIO 1.5 X MINIBUS AT </h2>
-                <span>2014</span> <span class="price">Rp. 72,000,000</span>
-                <p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>04 September 2017</span></p>
-                <p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Jakarta</span></p>
-              </div>
-            </a>
-            <div class="action-bottom">
-              <button class="btn"><i class="fa fa-heart"></i> <span>Favorit</span></button>
-              <button class="btn btn-compare"><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>
-            </div>
-          </div>
+        <div class="favorite-box" id="favoriteId">
+          <!-- Load Favorit -->
         </div>
       </div>
       <div class="col-md-12 text-right clearfix">
@@ -219,12 +151,6 @@ myFav = [];
 myFav.push(<?php echo $row->AuctionItemId; ?>);
 <?php } ?>
 
-
-// coba = jQuery.inArray( 12481, myFav );
-// coba1 = jQuery.inArray( 12481029348, myFav );
-// console.log(coba);
-// console.log(coba1);
-
   var dbRef = firebase.database();
   var activeCompany = [];
   var liveCount = [];
@@ -240,6 +166,7 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
   var checkActiveLot = [];
   var checkBid = [];
   var bidMode;
+  var loadFavorite = new Array, loadIcar = new Array;
   jQuery.fn.extend({
     slideRightShow: function() {
       return this.each(function() {
@@ -324,15 +251,24 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
       });
     }
 
+    // toggle menu action
+    $('#toggle-nav').click(function() {
+      $('.navbar-collapse.collapse').toggleClass('open')
+    });
+
+    $('.nav-close').click(function() {
+      $('.navbar-collapse.collapse').toggleClass('open')
+    });
+
     <?php foreach($auctionsData as $key => $value): ?>
     var eligibleNpl<?php echo $key+1; ?> = [];
 
     $('#used-npl<?php echo $key+1; ?> option').each(function () {
       eligibleNpl<?php echo $key+1; ?>.push($(this).val());
     });
-	
-	$('#myFav<?php echo $key+1;?>').removeClass('active');
 
+    $('#myFav<?php echo $key+1;?>').removeClass('active');
+    
     $('#top-bidder-info<?php echo $key+1;?>').hide();
     activeCompany[<?php echo $key+1; ?>] = dbRef.ref('company/<?php echo $value->CompanyId; ?>');
     liveCount[<?php echo $key+1; ?>] = activeCompany[<?php echo $key+1; ?>].child('liveCount');
@@ -375,13 +311,12 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
               $('#lot-frame<?php echo $key+1;?>').text(val<?php echo $key+1; ?>.Rangka);
               $('#lot-grade<?php echo $key+1;?>').text(val<?php echo $key+1; ?>.Grade);
               $('#lot-img<?php echo $key+1;?>').attr("src",val<?php echo $key+1; ?>.Image);
-			  
-			  thisFav = jQuery.inArray( val<?php echo $key+1; ?>.AuctionItemId, myFav );
-			  
-			  $('#myFav<?php echo $key+1;?>').removeClass('active');
-			  if (thisFav >= 0){
-				  $('#myFav<?php echo $key+1;?>').addClass('active');
-			  }
+
+              thisFav = jQuery.inArray( val<?php echo $key+1; ?>.AuctionItemId, myFav );
+              $('#myFav<?php echo $key+1;?>').removeClass('active');
+              if (thisFav >= 0) {
+                $('#myFav<?php echo $key+1;?>').addClass('active');
+              }
 
               $.ajax({
                 url: "http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/nextPrev/"+val<?php echo $key+1; ?>.NoLot+"/"+val<?php echo $key+1; ?>.ScheduleId, 
@@ -540,7 +475,124 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
       }
     });
 
+    // get data favorite
+    var thisCabang = [];
+    <?php foreach($cabang as $row){ ?>
+    thisCabang[<?php echo $row['CompanyId']; ?>] = "<?php echo (($row['CompanyName'])); ?>";
+    <?php } ?>
+
+    $.ajax({
+      type  : 'POST',
+      url   : '<?php echo linkservice('stock')."favorite/Lists"; ?>',
+      data  : 'userid=<?php echo $userdata['UserId']; ?>',
+      beforeSend: function() {
+        $('#favoriteId').html('<div class="loadFavSide"><img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" /></div>');
+      },
+      success: function(data) {
+        var datax = data.data, renderData = new Array, 
+        imgData = new Array, icarData = new Array, loadContent = '';
+        for(var i = 0; i < datax.length; i++) {
+          imgData[i] = callImg(datax[i]);
+          icarData[i] = callIcar(datax[i]);
+
+          var jsonData = {
+            "AuctionItemId" : (datax[i].AuctionItemId !== undefined) ? datax[i].AuctionItemId : '',
+            "BahanBakar"    : datax[i].bahanbakar,
+            "Image"         : imgData[i][0].ImagePath,
+            "Kilometer"     : datax[i].km,
+            "Lot"           : datax[i].thisLotNo,
+            "Merk"          : datax[i].merk,
+            "Model"         : datax[i].model,
+            "NoKeur"        : datax[i].nokeur,
+            "NoMesin"       : datax[i].nomesin,
+            "NoPolisi"      : datax[i].merk,
+            "NoRangka"      : datax[i].norangka,
+            "NoSTNK"        : datax[i].nostnk,
+            "Seri"          : datax[i].seri,
+            "Silinder"      : datax[i].silinder,
+            "TaksasiGrade"  : icarData[i].TotalEvaluationResult,
+            "Tahun"         : datax[i].tahun,
+            "Transmisi"     : datax[i].transmisi,
+            "Tipe"          : datax[i].grade,
+            "Price"         : datax[i].FinalPriceItem,
+            "Warna"         : datax[i].warna
+          };
+          var json_str = JSON.stringify(jsonData);
+          var lot = (datax[i].thisLotNo !== null && datax[i].thisLotNo !== undefined) ? datax[i].thisLotNo : '???' ;
+          var schedule = (datax[i].thisScheduleId !== null) ? datax[i].thisScheduleId : 0 ;
+          var lokasi = 'Belum Tersedia';
+          var waktu = 'Belum Tersedia';
+          var lokasiLelang = (thisCabang[datax[i].CompanyId] !== undefined) ? thisCabang[datax[i].CompanyId] : 'Belum Tersedia';
+          loadContent += '<div class="list-product box-recommend">'+
+                        '<a href="javascript:void(0)">'+
+                        '<div class="thumbnail">'+
+                        '<div class="thumbnail-custom">'+
+                        '<img alt="" src="'+imgData[i][0].ImagePath+'">'+
+                        '</div>'+
+                        '<div class="overlay-grade">'+
+                        'Grade <span>'+icarData[i].TotalEvaluationResult+'</span>'+
+                        '</div>'+
+                        '<p class="overlay-lot">LOT '+lot+'</p>'+
+                        '</div>'+
+                        '<div class="boxright-mobile">'+
+                        '<h2>'+datax[i].merk+' '+datax[i].seri+' '+datax[i].silinder+' '+datax[i].grade+' '+datax[i].model+' '+datax[i].transmisi+'</h2>'+
+                        '<span>'+datax[i].tahun+'</span> <span class="price">Rp. '+currency_format(datax[i].FinalPriceItem)+'</span>'+
+                        '<p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span class="wkt'+datax[i].thisScheduleId+'">'+waktu+'</span></p>'+
+                        '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span class="sch'+datax[i].thisScheduleId+'">'+lokasiLelang+'</span></p>'+
+                        '</div>'+
+                        '</a>'+
+                        '<div class="action-bottom">'+
+                        '<button class="btn"><i class="fa fa-heart"></i> <span>Favorit</span></button>'+
+                        '<button class="btn btn-compare" onclick=\'set_compare_product('+json_str+', "")\'><i class="ic ic-Bandingkan-green"></i><span>Bandingkan</span></button>'+
+                        '</div>'+
+                        '</div>';
+        }
+        $('#favoriteId').html(loadContent);
+
+        if (schedule > 0) {
+          $.ajax({
+            type: 'GET',
+            url: 'http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/getLotDataOnline?schedule='+schedule+'&lot='+lot,
+            success: function(sch) {
+              var dateSplit = sch.schedule.date.split('-');
+              lokasi = sch.schedule.CompanyName;
+              waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + sch.schedule.waktu;
+              $('.wkt'+schedule).html(waktu);
+            }
+          });
+        }
+      },
+      error: function(e) {
+        console.log(e);
+      }
+    });
   });
+
+  function callImg(datax) {
+    $.ajax({
+      type  : 'GET',
+      async : false,
+      url   : '<?php echo linkservice('taksasi')."icar/getimage"; ?>',
+      data  : 'AuctionItemId='+datax.AuctionItemId,
+      success: function(datax) {
+        loadFavorite = datax.data;
+      }
+    });
+    return loadFavorite;
+  }
+
+  function callIcar(datay) {
+    $.ajax({
+      type  : 'GET',
+      async : false,
+      url   : '<?php echo linkservice('taksasi')."nilaiicar/detail"; ?>',
+      data  : 'AuctionItemId='+datay.AuctionItemId,
+      success: function(datay) {
+        loadIcar = datay.data;
+      }
+    });
+    return loadIcar;
+  }
 
   function logHtmlFromObject(log){
     var html = '<li class="active">Rp. '+addPeriod(log.bid)+' <span>'+log.type+' Bidder</span></li>'
