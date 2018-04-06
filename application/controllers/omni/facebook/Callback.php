@@ -2,10 +2,7 @@
 // error_reporting(E_ALL);
 // ini_set("display_errors", 1);
 
-// if(!isset($_SESSION)) 
-// { 
-//     session_start(); 
-// } 
+// if(!isset($_SESSION)) { session_start();  } 
 
 // meload omni facebook untuk keperluan access token
 require_once  APPPATH.'../omni/facebook/php-sdk-v4/src/Facebook/autoload.php';
@@ -30,12 +27,15 @@ Class Callback extends CI_Controller
           // 'persistent_data_handler'=>'session'
         ]);
 
-    $helper = $fb->getRedirectLoginHelper();
+    $helper = $fb->getRedirectLoginHelper()
        // $helper = $fb->getRedirectLoginHelper(); 
-    if (isset($_GET['state'])) { $helper->getPersistentDataHandler()->set('state', $_GET['state']); }
+	print_r($helper); die();
+    if (isset($_GET['state'])) { $stet =  $helper->getPersistentDataHandler()->set('state', $_GET['state']); }
 
         // Trick below will avoid "Cross-site request forgery validation failed. Required param "state" missing." from Facebook
     $_SESSION['FBRLH_state'] = @$_GET['state']; 
+
+//print_r($helper); die();
 
     try {
      $accessToken = $helper->getAccessToken();
@@ -48,7 +48,7 @@ Class Callback extends CI_Controller
      echo $pesan = 'Facebook SDK returned an error: ' . $e->getMessage();
      exit;
    }
-
+//print_r([$helper, $accessToken, @$_GET['state'] , @$stet , array($_SESSION) ]); die();
    if (! isset($accessToken)) {
      if ($helper->getError()) {
       header('HTTP/1.0 401 Unauthorized');
@@ -91,6 +91,7 @@ Class Callback extends CI_Controller
             $token = (string) $accessToken;  
 
             $pesan = 'Sukses Get Token';
+print_r($pesan); die();
 
             try {
               // Returns a `Facebook\FacebookResponse` object
