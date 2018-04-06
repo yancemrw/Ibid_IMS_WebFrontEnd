@@ -435,7 +435,7 @@
 	}
 	.product-mob .action-bottom, 
 	.product-mob .action-wishlist {
-		width: 100% !important;
+		width: 100%;
 	}
 	.section-list-product .action-bottom {
 		margin-top: 0;
@@ -1784,6 +1784,9 @@
 	ul.list-bider {
         border: 1px solid #ccc
     }
+    .product-mob.whislist .box-recommend .thumbnail {
+	    margin-bottom: 0;
+	}
 }
 
 @media (max-width: 767px) {
@@ -1848,6 +1851,10 @@
     }
     .section-list-product .action-bottom {
         margin-top: 0;
+        position: relative;
+    }
+    .product-mob .action-wishlist {
+        width: 100%;
         position: relative;
     }
 }

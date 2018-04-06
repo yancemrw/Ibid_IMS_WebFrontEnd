@@ -47,14 +47,16 @@
                                 foreach($data as $key => $value) {
                             ?>
                             <div class="col-md-4">
-                                <div class="list-product box-recommend list-compare">
-                                    <a href="<?php echo site_url('detail-lelang/'.$value->AuctionItemId); ?>" />
+                                <div class="list-product box-recommend">
+                                    <a href="<?php echo site_url('detail-lelang/'.$value->AuctionItemId); ?>" target="_top" />
                                         <div class="thumbnail">
-                                            <img src="<?php echo $value->ImagePath ?>" />
+                                            <div class="thumbnail-custom">
+                                                <img src="<?php echo $value->ImagePath; ?>" />
+                                            </div>
                                             <div class="overlay-grade">
                                                 Grade <span><?php echo $value->TotalEvaluationResult ?></span>
                                             </div>
-                                            <p class="overlay-lot">LOT ???</p>
+                                            <p class="overlay-lot">LOT <?php echo $value->Lot; ?></p>
                                         </div>
                                         <div class="boxright-mobile">
                                             <h2><?php echo $value->merk.' '.$value->seri.' '.$value->silinder.' '.$value->grade.' '.$value->model.' '.$value->transmisi ?></h2>

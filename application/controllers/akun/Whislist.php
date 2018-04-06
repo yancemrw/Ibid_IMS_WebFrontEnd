@@ -29,16 +29,17 @@ class Whislist extends CI_Controller {
 				$methodImg = 'GET';
 				$resImg = admsCurl($urlImg, array('userid' => $this->userdata['UserId']), $methodImg);
 				$dataImg = curlGenerate($resImg);
-				$data[$key]->ImagePath = $dataImg[0]->ImagePath;
+				$data[$key]->ImagePath = @$dataImg[0]->ImagePath ? $dataImg[0]->ImagePath : base_url('assetsfront/images/background/default.png');
 
 				// get data taksasi
 				$urlTaksasi = linkservice('taksasi')."nilaiicar/detail?AuctionItemId=".$row->AuctionItemId;
 				$methodTaksasi = 'GET';
 				$resTaksasi = admsCurl($urlTaksasi, array('userid' => $this->userdata['UserId']), $methodTaksasi);
 				$dataTaksasi = curlGenerate($resTaksasi);
-				$data[$key]->TotalEvaluationResult = $dataTaksasi->TotalEvaluationResult;
+				$data[$key]->TotalEvaluationResult = @$dataTaksasi->TotalEvaluationResult ? $dataTaksasi->TotalEvaluationResult : '?';
 
-				$data[$key]->dataPrice = $this->currency_format($row->FinalPriceItem);
+				$data[$key]->dataPrice = @$row->FinalPriceItem ? $this->currency_format($row->FinalPriceItem) : 'Belum Tersedia';
+				$data[$key]->Lot = @$row->thisLotNo ? $this->currency_format($row->thisLotNo) : '???';
 
 				// set json for data compare
 				$jsonCompare = new stdClass();
@@ -46,6 +47,7 @@ class Whislist extends CI_Controller {
                 $jsonCompare->BahanBakar = $row->bahanbakar;
                 $jsonCompare->Image = $dataImg[0]->ImagePath;
                 $jsonCompare->Kilometer = $row->km;
+                $jsonCompare->Lot = $row->thisLotNo;
                 $jsonCompare->Merk = $row->merk;
                 $jsonCompare->Model = $row->model;
                 $jsonCompare->NoKeur = $row->nokeur;
@@ -64,9 +66,6 @@ class Whislist extends CI_Controller {
                 $dataCompare[$key] = json_encode($jsonCompare);
 			}
 		}
-		//echo "<pre>"; print_r($dataImg);
-		//echo "<pre>"; print_r($dataTaksasi);
-		//echo "<pre>"; print_r(json_encode($jsonCompare)); exit;
 
 		$datax = array(
 			'header_white'		=> "header-white",
