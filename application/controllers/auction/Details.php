@@ -21,7 +21,23 @@ class Details extends CI_Controller {
 	public function index() {
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			// $scheduleURL = 'http://alpha.ibid.astra.co.id/backend/serviceams/auction/api/multicurrentlot';
-			// $scheduleURL = 'http://ibid-ams-auction.development.net/api/multicurrentlot'; //user on local 
+			// $scheduleURL = 'http://ibid-ams-auction.development.net/api/multicurrentlot'; //user on local
+
+			############################################################
+			## get cabang
+			$url = linkservice('master')."cabang/get";  
+			$method = 'GET';
+			$responseApi = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
+			if ($responseApi['err']) { 
+				echo "<hr>cURL Error #:" . $responseApi['err']; 
+			}
+			else {
+				$dataApi = json_decode($responseApi['response'],true);
+				$cabang = $dataApi['data'];
+			}
+			$data['cabang'] = @$cabang;
+			############################################################
+
 			$scheduleURL = linkservice('AMSAUCTION').'multicurrentlot';
 			$postData = $this->input->post();
 			$schedule = admsCurl($scheduleURL, $postData, 'POST');
@@ -64,7 +80,7 @@ class Details extends CI_Controller {
 			$responseApi = admsCurl($url, array('userid' => $this->userdata['UserId']), $method);
 			$data['favorite'] = curlGenerate($responseApi);
 			// echo '<pre>'; print_r($data['favorite']); die();
-			
+
 			$view = "auction/details";
 			template($view, $data);
 		}

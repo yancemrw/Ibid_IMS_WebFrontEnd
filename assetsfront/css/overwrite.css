@@ -207,6 +207,13 @@ a.delete-compare {
     line-height: 1.4em;
 }
 
+.loadFavSide {
+    text-align: center;
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
+}
+
 .login-forgot {
 	display: inline-block;
 	margin: 10px 0 0 0;
@@ -401,9 +408,19 @@ a.delete-compare {
     width: 100%;
 }
 
+@media(max-width: 1024px) {
+    .header-white .nav>li>a:hover {
+        padding-bottom: 0;
+    }
+}
+
 @media(max-width: 812px) {
     .btn-violet, .btn-violet:hover, .btn-violet:focus {
         font-size: 12px;
+    }
+
+    .box-recommend .thumbnail {
+        padding-bottom: 75%;
     }
 }
 
@@ -468,6 +485,16 @@ a.delete-compare {
     .minimal-height {
         min-height: 260px;
     }
+
+    .box-recommend .thumbnail {
+        padding-bottom: 75%;
+    }
+}
+
+@media (max-width: 600px) {
+    .favorite {
+        padding: 10px;
+    }
 }
 
 @media (max-width: 420px) {
@@ -477,6 +504,10 @@ a.delete-compare {
 
     .minimal-height {
         min-height: 245px;
+    }
+
+    .box-recommend .thumbnail {
+        padding-bottom: 75%;
     }
 }
 
@@ -490,6 +521,10 @@ a.delete-compare {
     .minimal-height {
         min-height: 200px;
     }
+
+    .box-recommend .thumbnail {
+        padding-bottom: 75%;
+    }
 }
 
 @media (max-width: 360px) {
@@ -499,6 +534,10 @@ a.delete-compare {
 
     .minimal-height {
         min-height: 180px;
+    }
+
+    .box-recommend .thumbnail {
+        padding-bottom: 75%;
     }
 }
 
