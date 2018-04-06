@@ -120,7 +120,7 @@
                     </div>
                     <h2 class="overlay-title" id="lot-title<?php echo $key+1;?>">-</h2>
                     <ul class="grade-auction">
-                       <li><a href="" class="active"><i class="fa fa-heart"></i></a></li>
+                       <li><a href="" class="active" id="myFav<?php echo $key+1;?>"><i class="fa fa-heart"></i></a></li>
                        <li>
                           <p class="overlay-grade">Grade <span id="lot-grade<?php echo $key+1;?>">-</span></p>
                        </li>
@@ -214,6 +214,17 @@
 </style>
 
 <script>
+myFav = [];
+<?php foreach($favorite as $row){ ?>
+myFav.push(<?php echo $row->AuctionItemId; ?>);
+<?php } ?>
+
+
+// coba = jQuery.inArray( 12481, myFav );
+// coba1 = jQuery.inArray( 12481029348, myFav );
+// console.log(coba);
+// console.log(coba1);
+
   var dbRef = firebase.database();
   var activeCompany = [];
   var liveCount = [];
@@ -319,6 +330,8 @@
     $('#used-npl<?php echo $key+1; ?> option').each(function () {
       eligibleNpl<?php echo $key+1; ?>.push($(this).val());
     });
+	
+	$('#myFav<?php echo $key+1;?>').removeClass('active');
 
     $('#top-bidder-info<?php echo $key+1;?>').hide();
     activeCompany[<?php echo $key+1; ?>] = dbRef.ref('company/<?php echo $value->CompanyId; ?>');
@@ -362,6 +375,13 @@
               $('#lot-frame<?php echo $key+1;?>').text(val<?php echo $key+1; ?>.Rangka);
               $('#lot-grade<?php echo $key+1;?>').text(val<?php echo $key+1; ?>.Grade);
               $('#lot-img<?php echo $key+1;?>').attr("src",val<?php echo $key+1; ?>.Image);
+			  
+			  thisFav = jQuery.inArray( val<?php echo $key+1; ?>.AuctionItemId, myFav );
+			  
+			  $('#myFav<?php echo $key+1;?>').removeClass('active');
+			  if (thisFav >= 0){
+				  $('#myFav<?php echo $key+1;?>').addClass('active');
+			  }
 
               $.ajax({
                 url: "http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/nextPrev/"+val<?php echo $key+1; ?>.NoLot+"/"+val<?php echo $key+1; ?>.ScheduleId, 

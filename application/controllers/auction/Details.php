@@ -58,6 +58,12 @@ class Details extends CI_Controller {
 			$data['thisNpl'] = $thisNpl;
 			// echo '<pre>'; print_r($thisNpl); die();
 			
+			// get data favorite
+			$url = linkservice('stock')."favorite/Lists";
+			$method = 'POST';
+			$responseApi = admsCurl($url, array('userid' => $this->userdata['UserId']), $method);
+			$data['favorite'] = curlGenerate($responseApi);
+			// echo '<pre>'; print_r($data['favorite']); die();
 			
 			$view = "auction/details";
 			template($view, $data);
