@@ -52,7 +52,7 @@
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/select2.min.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/fullcalendar.min.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/style.css?alpha.1') ?>">
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/responsive.css') ?>">
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/responsive.css?alpha.1') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/slick.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/lightgallery.min.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/image-sprite-style.css') ?>">
