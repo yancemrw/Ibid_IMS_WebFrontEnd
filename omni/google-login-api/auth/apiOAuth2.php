@@ -102,7 +102,8 @@ class apiOAuth2 extends apiAuth {
         if ($decodedResponse != $response && $decodedResponse != null && $decodedResponse['error']) {
           $response = $decodedResponse['error'];
         }
-        throw new apiAuthException("Error fetching OAuth2 access token, message: '$response'", $request->getResponseHttpCode());
+         header('Location: ' . '//'.$_SERVER["HTTP_HOST"].str_replace(basename($_SERVER['SCRIPT_NAME']), "", $_SERVER['SCRIPT_NAME']));
+        // throw new apiAuthException("Error fetching OAuth2 access token, message: '$response'", $request->getResponseHttpCode());
       }
     }
 
