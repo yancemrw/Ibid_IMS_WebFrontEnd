@@ -1650,7 +1650,7 @@
 	}
 	.product-mob .action-bottom,
 	.product-mob .action-wishlist {
-		width: 55%;
+		width: 100%;
 		position: absolute;
 		right: 0;
 		bottom: 0;

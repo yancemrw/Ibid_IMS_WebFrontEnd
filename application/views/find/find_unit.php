@@ -411,7 +411,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                            var compare_data = {
                               "AuctionItemId": dataz.AuctionItemId,
                               "BahanBakar": dataz.bahanbakar,
-                              "Image": data.data[0].ImagePath,
+                              "Image": (data.data[0].ImagePath !== undefined) ? data.data[0].ImagePath : '<?php echo base_url('assetsfront/images/background/default.png') ?>',
                               "Kilometer": dataz.km,
                               "Lot" : dataz.thisLotNo,
                               "Merk": dataz.merk,
@@ -551,7 +551,7 @@ function loadContainerPaging(offset, limit, linked) {
                            var compare_data = {
                               "AuctionItemId": dataz.AuctionItemId,
                               "BahanBakar": dataz.bahanbakar,
-                              "Image": data.data[0].ImagePath,
+                              "Image": (data.data[0].ImagePath !== undefined) ? data.data[0].ImagePath : '<?php echo base_url('assetsfront/images/background/default.png') ?>',
                               "Kilometer": dataz.km,
                               "Lot" : dataz.thisLotNo,
                               "Merk": dataz.merk,

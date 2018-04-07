@@ -39,7 +39,7 @@ class Whislist extends CI_Controller {
 				$data[$key]->TotalEvaluationResult = @$dataTaksasi->TotalEvaluationResult ? $dataTaksasi->TotalEvaluationResult : '?';
 
 				$data[$key]->dataPrice = @$row->FinalPriceItem ? $this->currency_format($row->FinalPriceItem) : 'Belum Tersedia';
-				$data[$key]->Lot = @$row->thisLotNo ? $this->currency_format($row->thisLotNo) : '???';
+				$data[$key]->Lot = @$row->thisLotNo ? $row->thisLotNo : '???';
 
 				// set json for data compare
 				$jsonCompare = new stdClass();

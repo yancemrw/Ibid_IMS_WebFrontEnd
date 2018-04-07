@@ -59,6 +59,10 @@ a.delete-compare {
     margin-right: 6px;
 }
 
+.box-recommend a h2 {
+    height: auto;
+}
+
 .btn-me-daftar {
 	width: 160px !important;
 }
@@ -106,7 +110,7 @@ a.delete-compare {
 
 .empty-fav-icon {
     position: relative;
-    margin-right: 8px;
+    margin-right: 3px;
     width: 16px;
     top: -3px;
 }
@@ -178,7 +182,7 @@ a.delete-compare {
 }
 
 .list-product.box-recommend {
-    min-height: 380px !important;
+    min-height: 380px;
 }
 
 .ic-Mobil {
@@ -192,6 +196,11 @@ a.delete-compare {
 
 .link-disabled {
     cursor: no-drop !important;
+}
+
+.list-product h2 {
+    max-width: 83% !important;
+    min-height: unset;
 }
 
 .list-style {
@@ -329,6 +338,56 @@ a.delete-compare {
     margin-left: 2px !important;
 }
 
+.product-mob.whislist .box-recommend .thumbnail-favorite {
+    height: 236px;
+}
+.product-mob .box-recommend .thumbnail-favorite img {
+    width: auto;
+    height: 100%;
+    max-width: none;
+}
+.thumbnail-custom-favorite {
+    width: 100%;
+    height: 56%;
+    position: absolute;
+    overflow: hidden;
+    text-align: center;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+.overlay-lot-favorite {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #f7f7f7;
+    font-family: "OpenSansBold", Helvetica, Sans-serif;
+    color: #903e98!important;
+    padding: 10px;
+    border-radius: 50px;
+    width: auto!important;
+}
+.overlay-grade-favorite {
+    position: absolute;
+    background: #903e98;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    color: #fff;
+    top: 210px;
+    right: 15px;
+    text-align: center;
+    font-size: 10px;
+    line-height: 18px;
+    padding: 5px 0;
+    float: none;
+}
+.overlay-grade-favorite span {
+    display: block;
+    font-size: 20px;
+    float: none;
+}
+
 .padding-10px {
     padding: 10px !important;
 }
@@ -409,13 +468,36 @@ a.delete-compare {
 }
 
 @media(max-width: 1024px) {
+    .box-recommend a h2 {
+        width: 80% !important;
+        height: unset;
+        min-height: 20px;
+    }
     .header-white .nav>li>a:hover {
         padding-bottom: 0;
+    }
+    .list-product.box-recommend {
+        min-height: 362px;
+        margin: 4px;
+    }
+    .product-mob.whislist .box-recommend .thumbnail-favorite {
+        height: 175px;
+    }
+    .thumbnail-custom-favorite {
+        height: 47%;
+    }
+    .overlay-grade-favorite {
+        top: 142px;
+        right: 10px;
+    }
+    .box-recommend h2, .main-management .box-recommend h2, .section-auction .boxright-mobile h2, .section-auction .list-compare h2, .related-product .box-recommend h2, .list-product h2 {
+        height: 38px;
+        min-height: 38px;
     }
 }
 
 @media(max-width: 980px) {
-    .product-mob .box-recommend .thumbnail {
+    .product-mob .box-recommend .thumbnail-favorite {
         height: 420px;
         padding-bottom: 0;
     }
@@ -425,7 +507,7 @@ a.delete-compare {
         width: 100%;
     }
 
-    .product-mob .action-wishlist .btn, .btn {
+    .product-mob .action-wishlist-favorite .btn {
         width: 100%;
     }
 }
@@ -437,6 +519,45 @@ a.delete-compare {
 
     .box-recommend .thumbnail {
         padding-bottom: 75%;
+    }
+}
+
+@media(max-width: 812px) {
+    .empty-fav-icon {
+        margin-right: 10px;
+    }
+    .product-mob .action-bottom .btn {
+        font-size: 14px;
+        padding: 10px 0;
+    }
+}
+
+@media(max-width: 800px) {
+    .product-mob.whislist .box-recommend .thumbnail-favorite {
+        height: 415px;
+    }
+    .product-mob .box-recommend .thumbnail-favorite img {
+        width: auto;
+        height: 100%;
+        max-width: none;
+    }
+    .product-mob .box-recommend .overlay-lot-favorite {
+        position: absolute;
+        top: 10px;
+    }
+    .overlay-grade-favorite {
+        top: 380px;
+        right: 30px;
+    }
+    .thumbnail-custom-favorite {
+        width: 100%;
+        height: 67%;
+        position: absolute;
+        overflow: hidden;
+        text-align: center;
+        top: 0;
+        right: 0;
+        left: 0;
     }
 }
 
@@ -506,12 +627,46 @@ a.delete-compare {
         padding-bottom: 0;
     }
 
-    .product-mob.whislist .box-recommend .thumbnail {
-        height: 600px;
+    .product-mob.whislist .box-recommend .thumbnail-favorite {
+        height: 550px;
+    }
+    .product-mob .box-recommend .thumbnail-favorite img {
+        width: auto;
+        height: 100%;
+        max-width: none;
+    }
+    .product-mob .box-recommend .overlay-lot-favorite {
+        position: absolute;
+        top: 10px;
+        left: 20px;
+    }
+    .thumbnail-custom-favorite {
+        width: 100%;
+        height: 73%;
+        position: absolute;
+        overflow: hidden;
+        text-align: center;
+        top: 0;
+        right: 0;
+        left: 0;
+    }
+    .overlay-grade-favorite {
+        top: 515px;
+        right: 30px;
     }
 }
 
 @media (max-width: 640px) {
+    .product-mob.whislist .box-recommend .thumbnail-favorite {
+        height: 452px;
+    }
+    .product-mob .box-recommend .overlay-lot-favorite {
+        position: absolute;
+        top: 10px;
+    }
+    .thumbnail-custom-favorite {
+        height: 71%;
+    }
     .thumbnail-custom {
         width: 100%;
         height: 100%;
@@ -522,21 +677,61 @@ a.delete-compare {
         right: 0;
         left: 0;
     }
+    .overlay-grade-favorite {
+        top: 415px;
+        right: 30px;
+    }
+    .box-recommend h2, .main-management .box-recommend h2, .section-auction .boxright-mobile h2, .section-auction .list-compare h2, .related-product .box-recommend h2, .list-product h2 {
+        height: unset;
+        min-height: 20px;
+    }
 }
 
 @media (max-width: 600px) {
     .favorite {
         padding: 10px;
     }
-
+    .empty-fav-icon {
+        margin-right: 7px;
+    }
     .product-mob .box-recommend .thumbnail img {
         width: auto;
         height: 100%;
         max-width: none;
     }
-
-    .product-mob .action-wishlist .btn, .btn {
+    .product-mob .action-wishlist-favorite .btn {
         width: 100% !important;
+    }
+    .product-mob.whislist .box-recommend .thumbnail-favorite {
+        height: 420px;
+    }
+    .product-mob .box-recommend .thumbnail-favorite img {
+        width: auto;
+        height: 100%;
+        max-width: none;
+    }
+    .product-mob .box-recommend .overlay-lot-favorite {
+        position: absolute;
+        top: 10px;
+        left: 20px;
+    }
+    .overlay-grade-favorite {
+        top: 385px;
+        right: 20px;
+    }
+    .thumbnail-custom-favorite {
+        width: 100%;
+        height: 70%;
+        position: absolute;
+        overflow: hidden;
+        text-align: center;
+        top: 0;
+        right: 0;
+        left: 0;
+    }
+    .list-product h2 {
+        height: unset;
+        min-height: 30px;
     }
 }
 
@@ -553,14 +748,106 @@ a.delete-compare {
         padding-bottom: 75%;
     }
 
-    .product-mob.whislist .box-recommend .thumbnail {
+    .product-mob.whislist .box-recommend .thumbnail-favorite {
         height: 276px;
+    }
+}
+
+@media (max-width: 414px) {
+    .empty-fav-icon {
+        margin-right: 4px;
+    }
+    .product-mob.whislist .box-recommend .thumbnail-favorite {
+        height: 280px;
+    }
+    .product-mob .box-recommend .overlay-lot-favorite {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+    .thumbnail-custom-favorite {
+        height: 61%;
+    }
+    .overlay-grade-favorite {
+        top: 250px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 412px) {
+    .empty-fav-icon {
+        margin-right: 4px;
+    }
+    .product-mob.whislist .box-recommend .thumbnail-favorite {
+        height: 282px;
+    }
+    .product-mob .box-recommend .thumbnail-favorite img {
+        width: auto;
+        height: 100%;
+        max-width: none;
+    }
+    .product-mob .box-recommend .overlay-lot-favorite {
+        position: absolute;
+        top: 10px;
+    }
+    .thumbnail-custom-favorite {
+        width: 100%;
+        height: 61%;
+        position: absolute;
+        overflow: hidden;
+        text-align: center;
+        top: 0;
+        right: 0;
+        left: 0;
+    }
+    .overlay-grade-favorite {
+        top: 250px;
+        right: 20px;
     }
 }
 
 @media (max-width: 390px) {
     .minimal-height {
         min-height: 225px;
+    }
+}
+
+@media (max-width: 384px) {
+    .empty-fav-icon {
+        margin-right: 1px;
+        width: 18px;
+    }
+    .product-mob.whislist .box-recommend .thumbnail-favorite {
+        height: 260px;
+    }
+    .product-mob .box-recommend .overlay-lot-favorite {
+        position: absolute;
+        top: 10px;
+    }
+    .thumbnail-custom-favorite {
+        height: 58%;
+    }
+    .overlay-grade-favorite {
+        top: 224px;
+        right: 20px;
+    }
+    .box-recommend h2, .main-management .box-recommend h2, .section-auction .boxright-mobile h2, .section-auction .list-compare h2, .related-product .box-recommend h2, .list-product h2 {
+        height: unset;
+        min-height: 23px;
+    }
+}
+
+@media (max-width: 375px) {
+    .product-mob.whislist .box-recommend .thumbnail-favorite {
+        height: 250px;
+    }
+    .product-mob .box-recommend .overlay-lot-favorite {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+    .thumbnail-custom-favorite {
+        height: 57%;
     }
 }
 
@@ -578,29 +865,40 @@ a.delete-compare {
     .row {
         margin-right: -15px !important;
     }
-
     .minimal-height {
         min-height: 180px;
     }
-
     .box-recommend .thumbnail {
         padding-bottom: 75%;
     }
-
-    .product-mob.whislist .box-recommend .thumbnail {
+    .empty-fav-icon {
+        margin-right: 0;
+    }
+    .product-mob.whislist .box-recommend .thumbnail-favorite {
         height: 240px;
     }
-}
-
-@media (max-width: 375px) {
-    .product-mob.whislist .box-recommend .thumbnail {
-        height: 249px;
+    .product-mob .box-recommend .thumbnail-favorite img {
+        width: auto;
+        height: 100%;
+        max-width: none;
     }
-}
-
-@media (max-width: 360px) {
-    .product-mob.whislist .box-recommend .thumbnail {
-        height: 208px;
+    .product-mob .box-recommend .overlay-lot-favorite {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+    .overlay-grade-favorite {
+        top: 210px;
+    }
+    .thumbnail-custom-favorite {
+        width: 100%;
+        height: 55%;
+        position: absolute;
+        overflow: hidden;
+        text-align: center;
+        top: 0;
+        right: 0;
+        left: 0;
     }
 }
 
