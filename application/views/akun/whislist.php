@@ -49,14 +49,14 @@
                             <div class="col-md-4">
                                 <div class="list-product box-recommend">
                                     <a href="<?php echo site_url('detail-lelang/'.$value->AuctionItemId); ?>" target="_top" />
-                                        <div class="thumbnail">
-                                            <div class="thumbnail-custom">
+                                        <div class="thumbnail-favorite">
+                                            <div class="thumbnail-custom-favorite">
                                                 <img src="<?php echo $value->ImagePath; ?>" />
                                             </div>
-                                            <div class="overlay-grade">
+                                            <div class="overlay-grade-favorite">
                                                 Grade <span><?php echo $value->TotalEvaluationResult ?></span>
                                             </div>
-                                            <p class="overlay-lot">LOT <?php echo $value->Lot; ?></p>
+                                            <p class="overlay-lot-favorite">LOT <?php echo $value->Lot; ?></p>
                                         </div>
                                         <div class="boxright-mobile">
                                             <h2><?php echo $value->merk.' '.$value->seri.' '.$value->silinder.' '.$value->grade.' '.$value->model.' '.$value->transmisi ?></h2>
@@ -66,7 +66,7 @@
                                             <p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Belum Tersedia</span></p>
                                         </div>
                                     </a>
-                                    <div class="action-wishlist">
+                                    <div class="action-wishlist-favorite">
                                         <button class='btn btn-green' onclick='set_compare_product(<?php echo $jsonCompare[$key]; ?>, "<?php echo site_url('list-compare'); ?>")'>
                                             <i class="fa fa-files-o"></i> Bandingkan
                                         </button>
