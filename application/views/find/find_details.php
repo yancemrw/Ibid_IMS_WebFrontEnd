@@ -831,6 +831,15 @@ $(document).ready(function() {
       thumbnail: true,
       selector: ".item-slide"
    });
+
+   // toggle menu action
+   $('#toggle-nav').click(function() {
+      $('.navbar-collapse.collapse').toggleClass('open')
+   });
+
+   $('.nav-close').click(function() {
+      $('.navbar-collapse.collapse').toggleClass('open')
+   });
 });
 
 // handle favorit function

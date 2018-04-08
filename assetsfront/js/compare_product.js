@@ -1,3 +1,13 @@
+// check if compare product set
+var getlocal = getLocalStorage = JSON.parse(localStorage.getItem('CP'));
+if(getlocal !== undefined || getlocal !== null) {
+   setTimeout(function() {
+      if(document.getElementById('addcompare') !== null) {
+         document.getElementById('addcompare').style.display = 'block';
+      }
+   }, 1500);
+}
+
 function setCompare(linked) {
    var content = '', getLocalStorage = JSON.parse(localStorage.getItem('CP'));
    if(getLocalStorage !== null) {

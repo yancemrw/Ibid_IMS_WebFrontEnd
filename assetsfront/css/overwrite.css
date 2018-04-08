@@ -468,6 +468,9 @@ a.delete-compare {
 }
 
 @media(max-width: 1024px) {
+    .minimal-height {
+        min-height: 156px;
+    }
     .box-recommend a h2 {
         width: 80% !important;
         height: unset;
@@ -478,7 +481,7 @@ a.delete-compare {
     }
     .list-product.box-recommend {
         min-height: 362px;
-        margin: 4px;
+        margin: 7px;
     }
     .product-mob.whislist .box-recommend .thumbnail-favorite {
         height: 175px;
@@ -493,6 +496,9 @@ a.delete-compare {
     .box-recommend h2, .main-management .box-recommend h2, .section-auction .boxright-mobile h2, .section-auction .list-compare h2, .related-product .box-recommend h2, .list-product h2 {
         height: 38px;
         min-height: 38px;
+    }
+    .table-list-compare tbody tr td {
+        word-break: break-word;
     }
 }
 
@@ -533,6 +539,12 @@ a.delete-compare {
 }
 
 @media(max-width: 800px) {
+    .minimal-height {
+        min-height: 268px;
+    }
+    .box-recommend .thumbnail {
+        padding-bottom: 0;
+    }
     .product-mob.whislist .box-recommend .thumbnail-favorite {
         height: 415px;
     }
@@ -558,6 +570,9 @@ a.delete-compare {
         top: 0;
         right: 0;
         left: 0;
+    }
+    .section-auction ul li {
+        float: unset;
     }
 }
 
@@ -657,6 +672,9 @@ a.delete-compare {
 }
 
 @media (max-width: 640px) {
+    .minimal-height {
+        min-height: 209px;
+    }
     .product-mob.whislist .box-recommend .thumbnail-favorite {
         height: 452px;
     }
@@ -688,6 +706,9 @@ a.delete-compare {
 }
 
 @media (max-width: 600px) {
+    .minimal-height {
+        min-height: 194px;
+    }
     .favorite {
         padding: 10px;
     }
@@ -735,6 +756,12 @@ a.delete-compare {
     }
 }
 
+@media (max-width: 480px) {
+    .minimal-height {
+        min-height: 325px;
+    }
+}
+
 @media (max-width: 420px) {
     .row {
         margin-right: -15px !important;
@@ -754,6 +781,9 @@ a.delete-compare {
 }
 
 @media (max-width: 414px) {
+    .minimal-height {
+        min-height: 280px;
+    }
     .empty-fav-icon {
         margin-right: 4px;
     }
@@ -813,6 +843,9 @@ a.delete-compare {
 }
 
 @media (max-width: 384px) {
+    .minimal-height {
+        min-height: 258px;
+    }
     .empty-fav-icon {
         margin-right: 1px;
         width: 18px;
@@ -866,7 +899,7 @@ a.delete-compare {
         margin-right: -15px !important;
     }
     .minimal-height {
-        min-height: 180px;
+        min-height: 240px;
     }
     .box-recommend .thumbnail {
         padding-bottom: 75%;
@@ -899,6 +932,12 @@ a.delete-compare {
         top: 0;
         right: 0;
         left: 0;
+    }
+}
+
+@media(max-width: 320px) {
+    .minimal-height {
+        min-height: 210px;
     }
 }
 
