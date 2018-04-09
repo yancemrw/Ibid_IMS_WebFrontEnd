@@ -166,15 +166,18 @@ function refresh_button() {
         return false;
     }
     else {
-        $('button[type=submit]').attr('disabled', true);
         $.ajax({
             type: 'POST',
             url: '<?php echo site_url('biodata/otpconfirm'); ?>',
             data: 'otp='+JSON.stringify(arrOTP),
+            beforeSend: function() {
+                $('button[type=submit]').attr('disabled', true).html('Kirim <i class="fa fa-spin fa-refresh" style="position:absolute; margin-top:3px; right:150px; z-index:1;"></i>');
+            },
             success: function(data) {                    
                 if(data === 'cocok') {
                     deleteCookieCountdown('CHKPT');
                     deleteCookieCountdown('CODOCK');
+                    $('button[type=submit]').html('Kirim');
                     location.href = '<?php echo site_url('biodata/updateForNPL'); ?>';
                 }
                 else {
@@ -188,6 +191,7 @@ function refresh_button() {
                 }
             },
             error: function() {
+                $('button[type=submit]').html('Kirim');
                 bootoast.toast({
                     message: 'Koneksi ke Server Terganggu',
                     type: 'warning',

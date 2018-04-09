@@ -261,11 +261,13 @@
               return false;
           }
           else {
-              $('#btn-kirim').attr('disabled', true);
               $.ajax({
                 type: 'POST',
                 url: '<?php echo site_url("biodata/otp"); ?>',
                 data: 'Phone='+phone+'&BankId='+bankid+'&BankAccountNumber='+bankacc+'&BankAccountName='+bankname+'&IdentityNumber='+ktp+'&otpkirim='+otpkirim+'&otpsource=npl',
+                beforeSend: function() {
+                  $('#btn-kirim').attr('disabled', true).html('Kirim <i class="fa fa-spin fa-refresh" style="position:absolute; margin-top:3px; right:87px; z-index:1;"></i>');
+                },
                 success: function(data) {
                   var data = JSON.parse(data);
                   if(data.status === 1) {
@@ -277,11 +279,11 @@
                     });
                     setTimeout(function() {
                       location.href = data.redirect;
-                      $('#btn-kirim').attr('disabled', false);
+                      $('#btn-kirim').attr('disabled', false).html('Kirim');
                     }, 1500);
                   }
                   else {
-                    $('#btn-kirim').attr('disabled', false);
+                    $('#btn-kirim').attr('disabled', false).html('Kirim');
                     bootoast.toast({
                       message: data.messages,
                       type: 'warning',
@@ -292,7 +294,7 @@
                   }
                 },
                 error: function() {
-                  $('#btn-kirim').attr('disabled', false);
+                  $('#btn-kirim').attr('disabled', false).html('Kirim');
                   bootoast.toast({
                     message: 'Terjadi kesalahan saat koneksi ke server',
                     type: 'warning',
