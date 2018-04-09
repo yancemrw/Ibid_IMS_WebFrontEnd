@@ -47,7 +47,7 @@
 			<div class="col-md-5 col-sm-6">
 				<div class="booking-schedule">
 					<h2>Booking Schedule dan Data Kendaraan</h2>
-					<form class="form-filter" action="<?php echo site_url('auction/entrusted_booking/saveBooking'); ?>" method="POST">
+					<form class="form-filter" action="<?php echo site_url('auction/entrusted_booking/saveBooking'); ?>" method="POST" data-provide="validation">
 					<div class="object-type clearfix">
 						<div class="form-group">
 							<input type="radio" name="tipe-object" id="type_1" class="input-hidden" value="6" checked />
@@ -355,6 +355,5 @@ $(function(){
             $(this).removeClass('empty');
         }
     });
-	
 });
 </script>
