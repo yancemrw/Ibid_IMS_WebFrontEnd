@@ -1337,7 +1337,7 @@ a.delete-compare {
 .overlay-status-online,
 .overlay-status-live {
     position: absolute;
-    bottom: 97px;
+    bottom: 100px;
     right: 10px;
     line-height: 1.6;
     font-size: 11px !important;
