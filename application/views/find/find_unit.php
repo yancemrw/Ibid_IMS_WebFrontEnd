@@ -443,11 +443,11 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
       						   var lokasi = 'Belum Tersedia';
       						   var waktu = 'Belum Tersedia';
       						   
-      					var statusStock;
+      					var statusStock, classStatus;
                      switch(dataz.StatusStok) {
-                        case 0 : statusStock = 'Live'; classStatus = 'overlay-status-live';
-                        case 1 : statusStock = 'Online'; classStatus = 'overlay-status-online';
-                        default: statusStock = 'Live'; classStatus = 'overlay-status-live';
+                        case 0 : statusStock = 'Live'; classStatus = 'overlay-status-live'; break;
+                        case 1 : statusStock = 'Online'; classStatus = 'overlay-status-online'; break;
+                        case null: statusStock = 'Live'; classStatus = 'overlay-status-live'; break;
                      }
 						   content = '<div class="col-md-4" id="this'+dataz.AuctionItemId+'">'+
                                     '<div class="list-product box-recommend">'+
@@ -460,13 +460,13 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                                     'Grade <span>'+numgrade+'</span>'+
                                     '</div>'+
                                     '<p class="overlay-lot">LOT '+lot+'</p>'+
-                                    '<p class="'+classStatus+'">'+statusStock+'</p>'+
                                     '</div>'+
                                     '<div class="boxright-mobile">'+
                                     '<h2>'+merk+' '+seri+' '+silinder+' '+tipe+' '+model+' '+transmisi+'</h2>'+
                                     '<span>'+tahun+'</span> <span class="price">Rp. '+currency_format(FinalPriceItem)+'</span>'+
                                     '<p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span class="wkt'+dataz.thisScheduleId+'">'+waktu+'</span></p>'+
                                     '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span class="sch'+dataz.thisScheduleId+'">'+thisCabang[dataz.CompanyId]+'</span></p>'+
+                                    '<p class="'+classStatus+'">'+statusStock+'</p>'+
                                     '</div>'+
                                     '</a>'+
                                     favcom+
@@ -599,13 +599,13 @@ function loadContainerPaging(offset, limit, linked) {
                                     'Grade <span>'+numgrade+'</span>'+
                                     '</div>'+
                                     '<p class="overlay-lot">LOT '+lot+'</p>'+
-                                    '<p class="'+classStatus+'">'+statusStock+'</p>'+
                                     '</div>'+
                                     '<div class="boxright-mobile">'+
                                     '<h2>'+merk+' '+seri+' '+silinder+' '+tipe+' '+model+' '+transmisi+'</h2>'+
                                     '<span>'+tahun+'</span> <span class="price">Rp. '+currency_format(FinalPriceItem)+'</span>'+
                                     '<p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span class="wkt'+dataz.thisScheduleId+'">'+waktu+'</span></p>'+
                                     '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span class="sch'+dataz.thisScheduleId+'">'+thisCabang[dataz.CompanyId]+'</span></p>'+
+                                    '<p class="'+classStatus+'">'+statusStock+'</p>'+
                                     '</div>'+
                                     '</a>'+
                                     favcom+

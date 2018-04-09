@@ -137,7 +137,7 @@
 
 <!-- MODAL Syarat & Ketentuan -->
 <div class="modal fade" id="bijak-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-  <div class="modal-dialog width-80">
+  <div class="modal-dialog width-60">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><i class="ic ic-Close"></i><span class="sr-only">Close</span></button>
@@ -272,6 +272,9 @@ $('#btn-kirim').click(function(e) {
 			type: 'POST',
 			url: '<?php echo site_url("biodata/otp"); ?>',
 			data: 'Phone='+phone+'&BankId='+bankid+'&BankAccountNumber='+bankacc+'&BankAccountName='+bankname+'&IdentityNumber='+ktp+'&otpkirim='+otpkirim+'&otpsource=titip',
+			beforeSend: function() {
+				$('#btn-kirim').html('Kirim <i class="fa fa-spin fa-refresh" style="position:absolute; margin-top:3px; right:87px; z-index:1;"></i>');
+			},
 			success: function(data) {
 				var data = JSON.parse(data);
 				if(data.status === 1) {
@@ -283,11 +286,11 @@ $('#btn-kirim').click(function(e) {
 					});
 					setTimeout(function() {
 						location.href = data.redirect;
-						$('#btn-kirim').attr('disabled', false);
+						$('#btn-kirim').attr('disabled', false).html('Kirim');
 					}, 1500);
 				}
 				else {
-				$('#btn-kirim').attr('disabled', false);
+				$('#btn-kirim').attr('disabled', false).html('Kirim');
 					bootoast.toast({
 						message: data.messages,
 						type: 'warning',
@@ -298,7 +301,7 @@ $('#btn-kirim').click(function(e) {
 				}
 			},
 			error: function() {
-				$('#btn-kirim').attr('disabled', false);
+				$('#btn-kirim').attr('disabled', false).html('Kirim');
 					bootoast.toast({
 						message: 'Terjadi kesalahan saat koneksi ke server',
 						type: 'warning',

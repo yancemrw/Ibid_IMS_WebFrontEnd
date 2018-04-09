@@ -152,11 +152,10 @@ class Biodata extends CI_Controller {
 				}
 				else {
 					$callback->status = 1;
-					$callback->messages = 'Data sudah tersimpan, mohon lakukan verifikasi OTP';
+					$callback->messages = 'Silahkan anda lakukan verifikasi OTP';
 					$callback->redirect = 'biodata/otpconfirm';
 					echo json_encode($callback);
 					exit;
-					//redirect('biodata/otpconfirm', 'refresh');
 				}
 			}
 			else {
