@@ -500,6 +500,10 @@ a.delete-compare {
     .table-list-compare tbody tr td {
         word-break: break-word;
     }
+    .overlay-status-live,
+    .overlay-status-online {
+        bottom: 87px !important;
+    }
 }
 
 @media(max-width: 980px) {
@@ -573,6 +577,10 @@ a.delete-compare {
     }
     .section-auction ul li {
         float: unset;
+    }
+    .overlay-status-live,
+    .overlay-status-online {
+        bottom: 65px !important;
     }
 }
 
@@ -753,6 +761,10 @@ a.delete-compare {
     .list-product h2 {
         height: unset;
         min-height: 30px;
+    }
+    .overlay-status-live,
+    .overlay-status-online {
+        bottom: 65px !important;
     }
 }
 
@@ -1252,13 +1264,6 @@ a.delete-compare {
 
 .box-virtual-payment .panel-custom {
     margin-bottom: 10px;
-}
-
-@media only screen and (min-width: 140px) and (max-width: 980px) {
-    .overlay-status-live,
-    .overlay-status-online {
-        top:20px !important;
-    }
 }
 
 @media only screen and (min-width: 320px) and (max-width: 979px) {
