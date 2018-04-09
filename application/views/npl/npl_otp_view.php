@@ -177,7 +177,6 @@ function refresh_button() {
                 if(data === 'cocok') {
                     deleteCookieCountdown('CHKPT');
                     deleteCookieCountdown('CODOCK');
-                    $('button[type=submit]').html('Kirim');
                     location.href = '<?php echo site_url('biodata/updateForNPL'); ?>';
                 }
                 else {
@@ -187,18 +186,17 @@ function refresh_button() {
                         position: 'top-center',
                         timeout: 3
                     });
-                    $('button[type=submit]').attr('disabled', false);
+                    $('button[type=submit]').attr('disabled', false).html('Kirim');
                 }
             },
             error: function() {
-                $('button[type=submit]').html('Kirim');
                 bootoast.toast({
                     message: 'Koneksi ke Server Terganggu',
                     type: 'warning',
                     position: 'top-center',
                     timeout: 3
                 });
-                $('button[type=submit]').attr('disabled', false);
+                $('button[type=submit]').attr('disabled', false).html('Kirim');
             }
         });
     }

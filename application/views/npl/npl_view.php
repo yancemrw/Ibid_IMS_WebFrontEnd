@@ -279,7 +279,6 @@
                     });
                     setTimeout(function() {
                       location.href = data.redirect;
-                      $('#btn-kirim').attr('disabled', false).html('Kirim');
                     }, 1500);
                   }
                   else {
