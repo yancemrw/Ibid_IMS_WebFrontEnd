@@ -87,9 +87,9 @@ Serasi123
 // end
 
 $db['default'] = array(
-	'hostname' => 'ibiddev.database.windows.net',
-	'username' => 'adminibiddev',
-	'password' => 'Serasi123',
+	'hostname' => '10.200.10',
+	'username' => 'SA',
+	'password' => 'sera12345#@',
 	'database' => 'Account', 
 	'dbdriver' => 'sqlsrv',
 	'dbprefix' => 'dbo.',  
