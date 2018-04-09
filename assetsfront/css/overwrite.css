@@ -110,7 +110,7 @@ a.delete-compare {
 
 .empty-fav-icon {
     position: relative;
-    margin-right: 3px;
+    margin-right: 9px;
     width: 16px;
     top: -3px;
 }
@@ -309,6 +309,14 @@ a.delete-compare {
     min-width: 833px;
 }
 
+.modal360 {
+    width: 80%;
+}
+.modalframe360 {
+    width: 100%;
+    height: 500px;
+}
+
 .navbar {
 	border: 0;
 }
@@ -463,6 +471,10 @@ a.delete-compare {
     width: 80%;
 }
 
+.width-90 {
+    width: 90%;
+}
+
 .width-100 {
     width: 100%;
 }
@@ -502,7 +514,7 @@ a.delete-compare {
     }
     .overlay-status-live,
     .overlay-status-online {
-        bottom: 87px !important;
+        bottom: 99px !important;
     }
 }
 
@@ -580,7 +592,7 @@ a.delete-compare {
     }
     .overlay-status-live,
     .overlay-status-online {
-        bottom: 65px !important;
+        bottom: 115px !important;
     }
 }
 
@@ -711,6 +723,13 @@ a.delete-compare {
         height: unset;
         min-height: 20px;
     }
+    .modal360 {
+        width: 96%;
+    }
+    .modalframe360 {
+        width: 100%;
+        height: 500px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -764,7 +783,14 @@ a.delete-compare {
     }
     .overlay-status-live,
     .overlay-status-online {
-        bottom: 65px !important;
+        bottom: 112px !important;
+    }
+    .modal360 {
+        width: 96%;
+    }
+    .modalframe360 {
+        width: 100%;
+        height: 500px;
     }
 }
 
@@ -880,6 +906,13 @@ a.delete-compare {
         height: unset;
         min-height: 23px;
     }
+    .modal360 {
+        width: 95%;
+    }
+    .modalframe360 {
+        width: 100%;
+        height: 500px;
+    }
 }
 
 @media (max-width: 375px) {
@@ -944,6 +977,17 @@ a.delete-compare {
         top: 0;
         right: 0;
         left: 0;
+    }
+    .overlay-status-live,
+    .overlay-status-online {
+        bottom: 112px !important;
+    }
+    .modal360 {
+        width: 93%;
+    }
+    .modalframe360 {
+        width: 100%;
+        height: 400px;
     }
 }
 

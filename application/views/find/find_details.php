@@ -146,16 +146,19 @@
                <div class="overlay-slide">
                   <div class="slider" id="lightgallery2">
                      <?php foreach($dataphoto as $key => $imgs) {
-                        if($imgs->ImagePath !== '') {
+                        if($key === 4) {
+                           // Tambahkan di sini untuk gambar 360
+                           echo '<div class="cursor-pointer">
+                                    <a id="show360" href="javascript:void(0)" target="_blank" data-toggle="modal" data-target="#show-360">
+                                       <input id="hidden360" type="hidden" value="'.site_url('welcome/d360').'" />
+                                       <img src="'.$imgs->ImagePath.'" />
+                                    </a>
+                                 </div>';
+                        }
+                        else if($imgs->ImagePath !== '') {
                            echo '<div class="item-slide cursor-pointer" data-src="'.$imgs->ImagePath.'"><img src="'.$imgs->ImagePath.'" /></div>';
                         }
-                     } ?>
-                     <!-- Tambahkan di sini untuk gambar 360 -->
-                     <div class="cursor-pointer">
-                        <a href="<?php echo site_url('welcome/d360'); ?>" target="_blank">
-                           <img src="<?php echo base_url('assetsfront/images/background/360.jpg'); ?>" />
-                        </a>
-                     </div>
+                     } ?>                     
                   </div>
                </div>
                <!-- THUMBNAILS -->
@@ -165,7 +168,6 @@
                         echo '<div class="cursor-pointer"><img src="'.$imgsclick->ImagePath.'" /></div>';
                      }
                   } ?>
-                  <div class="cursor-pointer"><img src="<?php echo base_url('assetsfront/images/background/360.jpg'); ?>" /></div>
                </div>
             </div>
             <div class="graphic-lelang">
@@ -395,11 +397,11 @@
       </div>
    </div>
 </div>
-<div class="modal fade modal-notification" id="show-360" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-   <div class="modal-dialog">
+<div class="modal fade" id="show-360" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+   <div class="modal-dialog modal360">
       <div class="modal-content">
-         <div class="modal-body text-center">
-            <iframe src="<?php $this->load->view('360.php'); ?>"></iframe>
+         <div class="modal-body text-center clearfix">
+            <iframe id="frame360" src="" class="modalframe360"></iframe>
          </div>
       </div>
    </div>
@@ -472,6 +474,11 @@ $(document).ready(function() {
    // var scheduleRef   = companyRef.child('schedule/<?php echo $schedule_id; ?>');
    // var lotRef = scheduleRef.child('lot|stock/<?php echo $no_lot; ?>');
    // var now = new Date(<?php echo "$serverdate[0],".((int)$serverdate[1]-1).",".(int)$serverdate[2].",$serverdate[3],$serverdate[4],".(int)$serverdate[4].",".(int)$serverdate[4]; ?>).getTime();
+
+   // get 360 link
+   $('#show360').click(function() {
+      $('#frame360').attr('src', $('#hidden360').val());
+   });
 
    $('.top-bidder-wrapper').css('min-height','30px');
    
