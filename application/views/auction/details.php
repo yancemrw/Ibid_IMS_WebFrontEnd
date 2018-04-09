@@ -489,7 +489,7 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
         $('#favoriteId').html('<div class="loadFavSide"><img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" /></div>');
       },
       success: function(data) {
-        var datax = data.data, renderData = new Array, 
+        var datax = data.data, 
         imgData = new Array, icarData = new Array, loadContent = '';
         for(var i = 0; i < datax.length; i++) {
           imgData[i] = callImg(datax[i]);
