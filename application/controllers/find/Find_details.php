@@ -110,7 +110,7 @@ class Find_details extends CI_Controller {
 			'date' => @$date,
 			'time' => @$time,
 			'thisNpl' => @$thisNpl,
-			'serverdate' => explode('-',date("Y-m-d-H-i-s-v", (time() + (7 * 60 * 60)) )),
+			'serverdate' => explode('-',date("Y-m-d-H-i-s-v")),
 			'interval' => (int)str_replace(",", "", @$datalot->schedule->interval),
 			'favAction' => $jsonFav,
 			'datalot' => @$datalot,
