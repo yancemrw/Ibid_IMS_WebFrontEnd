@@ -6,7 +6,7 @@
 <section class="section section-auction">
     <div class="container">
         <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-7 col-sm-6">
                 <h2>Keuntungan Beli NPL di IBID?</h2>
                 <ul class="auction-info clearfix">
                     <li class="item">
@@ -32,7 +32,7 @@
                     </li>
                 </ul>
             </div> 
-            <div class="col-md-5">      
+            <div class="col-md-5 col-sm-6">      
                     <h2>Beli NPL</h2>
                     <div class="booking-schedule buying-npl">
                         <form class="form-filter" id="thisBuyNPL">
@@ -245,12 +245,14 @@ $('.auction-info').slick({
     dots: false,
     infinite: false,
     speed: 300,
+    prevArrow: false,
+    nextArrow: false,
     slidesToShow: 3,
     slidesToScroll: 3,
     responsive: [
         {
-                breakpoint: 768,
-                settings: {
+            breakpoint: 768,
+            settings: {
                 slidesToShow: 1,
                 slidesToScroll: 1,
                 dots: true,
@@ -261,7 +263,7 @@ $('.auction-info').slick({
     ]
 });
 
-function formatCurrency(num){
+function formatCurrency(num) {
     num = num.toString().replace(/\$|\,/g, '');
     if (isNaN(num)){
         num = "0";
@@ -282,7 +284,7 @@ function formatCurrency(num){
     return (((sign) ? '' : '-') + '' + num + '.' + cents);
 }
 
-function getJadwalAms(){
+function getJadwalAms() {
 	itemLelang = $('.thisItem:checked').val();
 	tipeLelang = $('.thisType:checked').val();
 	cabangId = $('.thisKota').val();
@@ -333,7 +335,7 @@ function getJadwalAms(){
 	
 }
 
-function getPrice(){
+function getPrice() {
 	itemLelang = $('.thisItem:checked').val();
 	tipeLelang = $('.thisType:checked').val();
 	if (itemLelang != '' && tipeLelang != '' && tipeLelang){
@@ -360,7 +362,7 @@ function getPrice(){
 	
 }
 
-function thisremove(thisRowId){
+function thisremove(thisRowId) {
 	$('.'+thisRowId).css('display','none');
 	// alert('kesini');
 	$.ajax( {
@@ -378,14 +380,14 @@ function thisremove(thisRowId){
 	return false;
 }
 
-function getNplType(){
+function getNplType() {
 	$('.thisNplType').css('display', 'none');
 	thisNplType = $('.thisItem:checked').attr('thisNplType');
 	$('.'+thisNplType).css('display', 'block');
 	// console.log(thisNplType);
 }
-$(function(){
-	
+
+$(function() {
 	$('.thisItem').click(function(){ getJadwalAms(); getPrice(); getNplType(); });
 	$('.thisType').click(function(){ getJadwalAms(); getPrice(); });
 	$('.thisKota').change(function(){ getJadwalAms(); });
@@ -431,25 +433,11 @@ $(function(){
 		return false;
 	});
 	
-	
 	$('.delete-npl').click(function(){
 		// aelrt('masuk sini');
 		$(this).parent().parent().css('display','none');
 	});
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	getPrice();
 });
-
-
 </script>

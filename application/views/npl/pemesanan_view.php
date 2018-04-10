@@ -46,13 +46,14 @@
         dots: false,
         infinite: false,
         speed: 300,
+        prevArrow: false,
+        nextArrow: false,
         slidesToShow: 3,
         slidesToScroll: 3,
-        responsive: 
-        [
+        responsive: [
             {
                 breakpoint: 768,
-                    settings: {
+                settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
                     dots: true,
@@ -62,4 +63,4 @@
             }
         ]
     });
-</script>
+</script>>

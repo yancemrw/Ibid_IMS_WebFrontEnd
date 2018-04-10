@@ -50,7 +50,7 @@ class Entrusted extends CI_Controller {
 			redirect('titip-lelang-booking');
 		}
 		else {
-			$data['title']	= 'Pembelian NPL';
+			$data['title']	= 'Titip Lelang';
 			$data['page'] 	= 'pembelian/add';
 			$data['detailBiodata'] = $detailBiodata;
 			
