@@ -231,9 +231,11 @@
                      <button class="btn btn-violet btn-bid" data-toggle="modal" onclick="bid()" id="bid">Tawar</button>
                      <p>Pengumuman : <br>Pemenang akan dikenakan biaya Administrasi Rp. 1.750.000 </p>
                      <?php } ?>
-                     <button class="btn btn-green" data-toggle="modal" data-target="#used-npl">Beli NPL</button>
+                     <?php if($userdata !== null) { ?>
+                     <button class="btn btn-green" data-toggle="modal" data-target="#used-npl" onclick="location.href='<?php echo site_url('beli-npl'); ?>'">Beli NPL</button>
+                     <?php } ?>
                      <?php if($data[0]->StatusStok === 0) { // 0 = Live Auction, 1 = Online ?>
-                     <button class="btn btn-outline-violet">LIVE AUCTION</button>
+                     <button class="btn btn-outline-violet" onclick="location.href='<?php echo site_url('live-auction'); ?>'">LIVE AUCTION</button>
                      <?php } ?>
                   </div>
                </div>
