@@ -545,14 +545,16 @@ $(document).ready(function() {
          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-         document.getElementById("timer").innerHTML = days + "   :  " + hours + "   :  " + minutes + " ";
+         // document.getElementById("timer").innerHTML = days + "   :  " + hours + "   :  " + minutes + " ";
        console.log(countDownDate);
        console.log('----------------');
          if (distance > 0) {
                $("#timer").text(twoDigits(days) + "   :  " + twoDigits(hours) + "   :  " + twoDigits(minutes) + " ");
                $("#timer-mobile").text(twoDigits(days) + "   :  " + twoDigits(hours) + "   :  " + twoDigits(minutes) + " ");
          }
-         if (distance < 0) {
+        else if (distance < 0) {
+         console.log('----------------2');
+            $("#timer-title").css('display' , 'none');
             clearInterval(x);
             lotRef.once('value', function(lotSnap){
                if (!lotSnap.exists()) {
