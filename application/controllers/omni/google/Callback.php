@@ -18,57 +18,53 @@ class Callback extends CI_Controller {
 		*/ 
 		if (isset($_GET['code'])) {
 			// http://localhost:8888/ibiddevelopment/ibiddevapi/ibidadmsuser/index.php/omni/google/callback?code=4/iuwDY-oakWyJ46Kw4f1GTAlaXLoTzwmuS1_QwJAOJVo#
-			$this->googleplus->getAuthenticate();  
-			print_r($this->googleplus->getUserInfo()); die();
-			$data = $this->googleplus->getUserInfo(); 
-
-			$tmp = explode(" ", $data['name']);
-            $dataLogin = array(
-                'grant_type'    => 'password',
-                'client_id'     => 'ADMS Web',
-                'client_secret' => '1234567890',
-                'action'        => '',
-                'redirect_url'  => base_url('auth/login'),
-                'username'      => $data['email'],
-                'password'      => 'admsibid18',
-                'ipAddress'     => $this->input->ip_address(),
-                'first_name'    => $tmp[0],
-                'last_name'     => str_replace($tmp[0]." ","", $data['name']),
-                'ByOmni'        => 'google'
-            );
-            $url = linkservice('account') ."auth/oauth2";
-            $method = 'POST';
-            $responseApi = admsCurl($url, $dataLogin, $method);
-            $resp =  json_decode($responseApi['response'] , true);
-            if(isset($resp['error'])){
-                $dataLogin = array_merge($dataLogin, array('action'=>'register', 'GroupId' => 9, 'Active' => 1));
-                $responseApi = admsCurl($url, $dataLogin, $method);
-                $res =  json_decode($responseApi['response'],true);
-                if(!isset($res['error'])){
-                    $this->AccessApi->setAccess('in',(array)$res);
-                    redirect(site_url(),'refresh');
-                } else
-                    redirect('auth/login','refresh');
-                
-            } else {
-                $this->AccessApi->setAccess('in',$resp);
-                redirect(site_url(),'refresh');
+            try{
+                $this->googleplus->getAuthenticate();  
+                $data = $this->googleplus->getUserInfo(); 
+            } catch(Exception $e){
+                $data = false;
             }
 
-			// $array = array(
-			// 	'emailgoogle' 	=> @$data['email'],
-			// 	'namegoogle' 	=> @$data['name'],
-			// );
-			
-			// $this->session->set_userdata( $array );
-
-
-			// redirect('afterlogin','refresh');
+            if($data){
+                $tmp = explode(" ", $data['name']);
+                $dataLogin = array(
+                    'grant_type'    => 'password',
+                    'client_id'     => 'ADMS Web',
+                    'client_secret' => '1234567890',
+                    'action'        => '',
+                    'redirect_url'  => base_url('auth/login'),
+                    'username'      => $data['email'],
+                    'password'      => 'admsibid18',
+                    'ipAddress'     => $this->input->ip_address(),
+                    'first_name'    => $tmp[0],
+                    'last_name'     => str_replace($tmp[0]." ","", $data['name']),
+                    'ByOmni'        => 'google'
+                );
+                $url = linkservice('account') ."auth/oauth2";
+                $method = 'POST';
+                $responseApi = admsCurl($url, $dataLogin, $method);
+                $resp =  json_decode($responseApi['response'] , true);
+                if(isset($resp['error'])){
+                    $dataLogin = array_merge($dataLogin, array('action'=>'register', 'GroupId' => 9, 'Active' => 1));
+                    $responseApi = admsCurl($url, $dataLogin, $method);
+                    $res =  json_decode($responseApi['response'],true);
+                    if(!isset($res['error'])){
+                        $this->AccessApi->setAccess('in',(array)$res);
+                        redirect(site_url(),'refresh');
+                    } else
+                        redirect('auth/login','refresh');
+                    
+                } else {
+                    $this->AccessApi->setAccess('in',$resp);
+                    redirect(site_url(),'refresh');
+                }
+            } else {
+                redirect('auth/login','refresh');
+            }
 
 		} else {
 			//mengembalikan ke auth register
 			redirect('auth/register','refresh');
-			// redirect('afterlogin','refresh');
 		}
 		
 	}
