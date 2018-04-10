@@ -149,7 +149,7 @@
                         if($key === 4) {
                            // Tambahkan di sini untuk gambar 360
                            echo '<div class="cursor-pointer">
-                                    <a id="show360" href="javascript:void(0)" target="_blank" data-toggle="modal" data-target="#show-360">
+                                    <a id="show360" href="'.site_url('welcome/360').'" target="_blank">
                                        <input id="hidden360" type="hidden" value="'.site_url('welcome/d360').'" />
                                        <img src="'.$imgs->ImagePath.'" />
                                     </a>
