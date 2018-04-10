@@ -276,7 +276,7 @@
                   <a href="<?php echo $link_detail; ?>">
                      <div class="thumbnail">
                         <div class="thumbnail-custom">
-                           <img src="<?php echo $img_rec; ?>" />
+                           <img src="http:<?php echo $img_rec; ?>" />
                         </div>
                         <div class="overlay-grade">
                            Grade <span>A</span>

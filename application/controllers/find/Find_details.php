@@ -101,7 +101,7 @@ class Find_details extends CI_Controller {
 			'grade' => @$detailgrade->TotalEvaluationResult,
 			'gradeinternal' => @$detailicar,
 			'link_detail' => @base_url('index.php/detail_lelang'),
-			'img_rec' => @$detailphoto[6]->ImagePath,
+			'img_rec' => @$detailphoto[3]->ImagePath,
 			'company_id' => @$datalot->schedule->company_id,
 			'schedule_id' => @$datalot->schedule->id,
 			'no_lot' => @$datalot->lot->no_lot,
