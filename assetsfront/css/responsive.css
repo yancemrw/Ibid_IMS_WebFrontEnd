@@ -2127,6 +2127,27 @@
 		max-width: none;
 		padding-bottom: 0;
 	}
+	.booking-schedule .form-filter .object-type.object-npl .form-group {
+        width: calc(33% - 6px);
+    }
+    .booking-schedule .form-filter .object-type.object-npl .form-group:nth-child(2) {
+        margin-right: 10px!important
+    }
+    .booking-schedule .form-filter .object-type.object-npl .form-group:last-child {
+        margin-right: 0!important
+    }
+    .booking-schedule .form-filter .object-type .form-group {
+        max-width: 24.2%;
+        margin-right: 2px;
+        margin-bottom: 5px;
+        float: left;
+    }
+    .booking-schedule .form-filter .object-type .form-group img {
+        height: 21px;
+    }
+    .form-filter button {
+        max-width: none;
+    }
 	ul.list-bider {
         border: 1px solid #ccc;
         width: 100%;
@@ -2179,9 +2200,9 @@
 	.list-product.box-recommend {
 		min-height: 480px
 	}
-	.section-list-product .form-filter {
+	/*.section-list-product .form-filter {
 		display: none;
-	}
+	}*/
 	.section-list-product .col-md-9 {
 		padding: 15px;
 	}

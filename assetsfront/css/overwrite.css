@@ -525,6 +525,9 @@ a.delete-compare {
         max-width: 200px;
         width: 165px;
     }
+    #btnFilter {
+        width: 150px;
+    }
 }
 
 @media(max-width: 980px) {
@@ -541,6 +544,9 @@ a.delete-compare {
     .product-mob .action-wishlist-favorite .btn {
         width: 100%;
     }
+    #btnFilter {
+        width: 150px;
+    }
 }
 
 @media(max-width: 812px) {
@@ -551,6 +557,9 @@ a.delete-compare {
     .box-recommend .thumbnail {
         padding-bottom: 75%;
     }
+    #btnFilter {
+        width: 150px;
+    }
 }
 
 @media(max-width: 812px) {
@@ -560,6 +569,9 @@ a.delete-compare {
     .product-mob .action-bottom .btn {
         font-size: 14px;
         padding: 10px 0;
+    }
+    #btnFilter {
+        width: 150px;
     }
 }
 
@@ -606,6 +618,9 @@ a.delete-compare {
     .booking-schedule .form-filter .object-type .form-group {
         max-width: 200px;
         width: 157px;
+    }
+    #btnFilter {
+        width: 150px;
     }
 }
 
@@ -706,6 +721,9 @@ a.delete-compare {
         max-width: 200px;
         width: 150px;
     }
+    #btnFilter {
+        width: 150px;
+    }
 }
 
 @media (max-width: 640px) {
@@ -750,6 +768,9 @@ a.delete-compare {
     .booking-schedule .form-filter .object-type .form-group {
         max-width: 300px;
         width: 275px;
+    }
+    #btnFilter {
+        width: 150px;
     }
 }
 
@@ -817,6 +838,9 @@ a.delete-compare {
         max-width: 400px;
         width: 255px;
     }
+    #btnFilter {
+        width: 150px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -826,6 +850,9 @@ a.delete-compare {
     .booking-schedule .form-filter .object-type .form-group {
         max-width: 200px;
         width: 195px;
+    }
+    #btnFilter {
+        width: 150px;
     }
 }
 
@@ -844,6 +871,9 @@ a.delete-compare {
 
     .product-mob.whislist .box-recommend .thumbnail-favorite {
         height: 276px;
+    }
+    #btnFilter {
+        width: 150px;
     }
 }
 
@@ -872,6 +902,9 @@ a.delete-compare {
     .booking-schedule .form-filter .object-type .form-group {
         max-width: 200px;
         width: 163px;
+    }
+    #btnFilter {
+        width: 150px;
     }
 }
 
@@ -909,11 +942,17 @@ a.delete-compare {
         max-width: 200px;
         width: 165px;
     }
+    #btnFilter {
+        width: 150px;
+    }
 }
 
 @media (max-width: 390px) {
     .minimal-height {
         min-height: 225px;
+    }
+    #btnFilter {
+        width: 150px;
     }
 }
 
@@ -954,6 +993,9 @@ a.delete-compare {
         max-width: 200px;
         width: 148px;
     }
+    #btnFilter {
+        width: 150px;
+    }
 }
 
 @media (max-width: 375px) {
@@ -972,6 +1014,9 @@ a.delete-compare {
         max-width: 200px;
         width: 140px;
     }
+    #btnFilter {
+        width: 150px;
+    }
 }
 
 @media (max-width: 370px) {
@@ -981,6 +1026,9 @@ a.delete-compare {
 
     .box-recommend .thumbnail {
         padding-bottom: 75%;
+    }
+    #btnFilter {
+        width: 150px;
     }
 }
 
@@ -1038,6 +1086,9 @@ a.delete-compare {
         max-width: 200px;
         width: 137px;
     }
+    #btnFilter {
+        width: 150px;
+    }
 }
 
 @media(max-width: 320px) {
@@ -1047,6 +1098,9 @@ a.delete-compare {
     .booking-schedule .form-filter .object-type .form-group {
         max-width: 200px;
         width: 115px;
+    }
+    #btnFilter {
+        width: 150px;
     }
 }
 

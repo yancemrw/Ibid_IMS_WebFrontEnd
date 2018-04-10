@@ -14,7 +14,8 @@
          </div>
          <div class="col-md-3">
             <form id="thisFormFilter" class="form-filter search-transport clearfix">
-               <h1><span class="icon_ic-filter"></span> Filters</h1>
+               <a href="javascript:;" class="filter-close"><img src="<?php echo base_url('assetsfront/images/icon/Close.png'); ?>" /></a>
+               <h1><span class="fa fa-filter"></span> Filters</h1>
                <?php if($this->session->userdata('userdata') !== null) { ?>
                <div class="form-group">
                   <input type="radio" id="test1" name="radio-group" value="1" checked>
@@ -249,8 +250,8 @@
                   <div id="loadlist"></div>
                </div>
                <div id="mored" class="cursor-pointer margin-top-10px text-align-center width-100">
-                  <!--a href="javascript:void(0)" class="font-green" onclick="">Berikutnya</a-->
-                  <span></span>
+                  <a href="javascript:void(0)" class="font-green" onclick="">Selanjutnya</a>
+                  <!--span></span-->
                </div>
             </div>
          </div>
@@ -320,7 +321,7 @@ $(document).ready(function() {
    });
 
    // filter mobile
-   $('.filter-btn-mobile').click(function() {
+   /*$('.filter-btn-mobile').click(function() {
       var hidden = $('.form-filter.filter-mobile').data('hidden');
       $('.filter-btn-mobile').text(hidden ? 'Filter' : 'Filter');
       if(hidden) {
@@ -333,14 +334,14 @@ $(document).ready(function() {
             left: '0px'
          }, 500)
       }
-   });
+   });*/
 
-   $(".open-compare").click(function() {
-      $(".compare").show(500) && $(".open-compare").hide();
-   });
-   $(".close-compare").click(function() {
-      $(".compare").hide(500) && $(".open-compare").show();
-   });
+   $('.filter-btn-mobile').click(function () {
+      $('.form-filter').toggleClass('open')
+   })
+   $('.filter-close').click(function () {
+      $('.form-filter').toggleClass('open')
+   })
 
    // get list frontend
    loadContainer(0, 6, linked);
@@ -351,6 +352,7 @@ $(document).ready(function() {
       window.dataForm = '';
       actionTotalData = 0;
       $('#loadlist').html('');
+      $('.form-filter').toggleClass('open')
       loadContainer(0, 6, linked, thisFormInput);
 		return false;
 	});
@@ -383,6 +385,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
       beforeSend: function() {
          $('#btnFilter').attr('disabled', true);
          $('#loadings').replaceWith('<div id="loadings" class="margin-10px margin-top-80px text-align-center"><img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" /></div>');
+         $('#mored').css('display', 'none');
       },
       success: function(data) {
          $('#loadings').replaceWith('<div id="loadings"></div>');
@@ -488,6 +491,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                }
                $('#btnFilter').attr('disabled', false);
             }
+            $('#mored').css('display', 'block');
             countContainer(offset, limit, linked, dataTotal, datas.length, dataForm);
          }
          else {
@@ -506,7 +510,8 @@ function loadContainerPaging(offset, limit, linked, dataForm = '') {
       data: formData,
       beforeSend: function() {
          $('#btnFilter').attr('disabled', true);
-         $('#mored').children().replaceWith('<img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" />');
+         //$('#mored').children().replaceWith('<img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" />');
+         $('#mored').replaceWith('<div id="mored" class="margin-10px margin-top-80px text-align-center"><img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" /></div>');
       },
       success: function(data) {
          var content = '',
@@ -612,6 +617,7 @@ function loadContainerPaging(offset, limit, linked, dataForm = '') {
                }
                $('#btnFilter').attr('disabled', false);
             }
+            $('#mored').css('display', 'block');
             countContainer(offset, limit, linked, dataTotal, datas.length, dataForm);
          }
       }
@@ -645,7 +651,7 @@ function callIcar(datay) {
 }
 
 function countContainer(offset, limit, linked, dataTotal, countPage, dataForm = '') {
-   window.countTotal = offset + limit;
+   /*window.countTotal = offset + limit;
    window.dataForm = dataForm;
    var countContainer = $('#loadlist').children().length;
    var arrCheck = new Array;
@@ -674,7 +680,17 @@ function countContainer(offset, limit, linked, dataTotal, countPage, dataForm = 
       // show loading paging
       $('#mored').children().replaceWith('<img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" />');
       return false;
+   }*/
+   var countTotal = offset + limit;
+   var countContainer = $('#loadlist').children().length;
+   if(countTotal === countContainer) {
+      $('#mored').children().replaceWith('<a href="javascript:void(0)" class="font-green" onclick="loadContainerPaging('+countTotal+', '+limit+', \''+linked+'\')">Selanjutnya</a>');
    }
+   else {
+      // show loading paging
+      $('#mored').css('display', 'none').children().replaceWith('<i class="fa fa-spin fa-refresh"></i>');
+   }
+
 }
 
 function hasDuplicate(arr) {
