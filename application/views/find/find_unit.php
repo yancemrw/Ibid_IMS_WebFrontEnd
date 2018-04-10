@@ -684,7 +684,6 @@ function countContainer(offset, limit, linked, dataTotal, countPage, dataForm = 
    window.countTotal = offset + limit;
    window.dataForm = dataForm;
    var countContainer = $('#loadlist').children().length;
-   console.log(window.countTotal+':'+dataTotal);
    if(window.countTotal < dataTotal) {
       $('#mored').children().replaceWith('<a href="javascript:void(0)" class="font-green" onclick="loadContainerPaging('+window.countTotal+', '+limit+', \''+linked+'\', \''+window.dataForm+'\')">Selanjutnya</a>');
    }

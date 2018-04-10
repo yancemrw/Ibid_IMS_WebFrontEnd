@@ -528,6 +528,13 @@ a.delete-compare {
     #btnFilter {
         width: 150px;
     }
+    .button-filter {
+        display: block;
+        width: 100%;
+    }
+    .button-filter button, .button-filter button:hover, .button-filter button:focus {
+        width: 100%;
+    }
 }
 
 @media(max-width: 980px) {
@@ -771,6 +778,13 @@ a.delete-compare {
     }
     #btnFilter {
         width: 150px;
+    }
+    .button-filter {
+        display: block;
+        width: 100%;
+    }
+    .button-filter button, .button-filter button:hover, .button-filter button:focus {
+        width: 100%;
     }
 }
 
