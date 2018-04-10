@@ -219,7 +219,7 @@ $isiemail .= "<table width='100%' cellspacing='0' cellpadding='0' border='0'>
 				'type' => 'email',
 				// 'to'	=> 'rendhy.wijayanto@sera.astra.co.id',
 				'to' => $this->session->userdata('emailfront'),
-				'cc' => 'lutfi.f.hidayat@gmail.com',
+				'cc' => '',
 				// 'cc' => 'abitiyoso@gmail.com; ankghoro@gmail.com; rendhy.wijayanto@sera.astra.co.id',
 				'subject' => 'Order Pembelian NPL melalui Website',
 				'body' =>  "$isiemail "

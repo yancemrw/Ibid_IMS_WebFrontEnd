@@ -775,7 +775,7 @@ class Checkout extends CI_Controller {
 			'type' => 'email',
 				// 'to'	=> 'rendhy.wijayanto@sera.astra.co.id',
 			'to' => @$_SESSION['userdata']['username'],
-			// 'cc' => 'lutfi.f.hidayat@gmail.com',
+			'cc' => '',
 				// 'cc' => 'abitiyoso@gmail.com; ankghoro@gmail.com; rendhy.wijayanto@sera.astra.co.id',
 			'subject' => 'IBID - Order Pembelian NPL melalui Website',
 			'body' =>  "$isiemail",
