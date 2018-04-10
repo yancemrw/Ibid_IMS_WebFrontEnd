@@ -400,6 +400,7 @@ console.log(myFav);
                 //costumize the winner's npl here
                 var select<?php echo $key+1; ?> = $('#used-npl<?php echo $key+1; ?>');
                     select<?php echo $key+1; ?>.find('option#<?php echo $value->ScheduleId;?>-Live-npl-'+winnerNPL).remove();
+				$('#top-bidder-info<?php echo $key+1;?>').hide();
               });
             }
           });
