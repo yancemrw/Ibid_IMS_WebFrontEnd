@@ -447,11 +447,11 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                               '<p class="overlay-lot">LOT '+compare_data.Lot+'</p>'+
                               '</div>'+
                               '<div class="boxright-mobile">'+
+                              '<span class="'+classStatus+'">'+statusStock+'</span>'+
                               '<h2>'+compare_data.Merk+' '+compare_data.Seri+' '+compare_data.Silinder+' '+compare_data.Tipe+' '+compare_data.Model+' '+compare_data.Transmisi+'</h2>'+
                               '<span>'+compare_data.Tahun+'</span> <span class="price">Rp. '+currency_format(compare_data.Price)+'</span>'+
                               '<p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span class="wkt'+dataz.thisScheduleId+'">'+waktu+'</span></p>'+
                               '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span class="sch'+dataz.thisScheduleId+'">'+thisCabang[dataz.CompanyId]+'</span></p>'+
-                              '<p class="'+classStatus+'">'+statusStock+'</p>'+
                               '</div>'+
                               '</a>'+
                               favcom+
@@ -566,11 +566,11 @@ function loadContainerPaging(offset, limit, linked, dataForm) {
                               '<p class="overlay-lot">LOT '+compare_data.Lot+'</p>'+
                               '</div>'+
                               '<div class="boxright-mobile">'+
+                              '<p class="'+classStatus+'">'+statusStock+'</p>'+
                               '<h2>'+compare_data.Merk+' '+compare_data.Seri+' '+compare_data.Silinder+' '+compare_data.Tipe+' '+compare_data.Model+' '+compare_data.Transmisi+'</h2>'+
                               '<span>'+compare_data.Tahun+'</span> <span class="price">Rp. '+currency_format(compare_data.Price)+'</span>'+
                               '<p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span class="wkt'+dataz.thisScheduleId+'">'+waktu+'</span></p>'+
                               '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span class="sch'+dataz.thisScheduleId+'">'+thisCabang[dataz.CompanyId]+'</span></p>'+
-                              '<p class="'+classStatus+'">'+statusStock+'</p>'+
                               '</div>'+
                               '</a>'+
                               favcom+

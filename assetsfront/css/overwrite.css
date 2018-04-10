@@ -57,6 +57,7 @@ a.delete-compare {
 
 .booking-schedule .form-filter .object-type .form-group {
     margin-right: 6px;
+    width: unset;
 }
 
 .box-recommend a h2 {
@@ -74,6 +75,10 @@ a.delete-compare {
 .content-add-npl ul li {
     margin-right: 8px !important;
     margin-bottom: 8px !important;
+}
+
+.content-live-auction .grade-auction a {
+    color: #eee;
 }
 
 .cursor-pointer {
@@ -514,7 +519,11 @@ a.delete-compare {
     }
     .overlay-status-live,
     .overlay-status-online {
-        bottom: 99px !important;
+        margin-top: 10px !important;
+    }
+    .booking-schedule .form-filter .object-type .form-group {
+        max-width: 200px;
+        width: 165px;
     }
 }
 
@@ -587,12 +596,16 @@ a.delete-compare {
         right: 0;
         left: 0;
     }
-    .section-auction ul li {
-        float: unset;
-    }
     .overlay-status-live,
     .overlay-status-online {
-        bottom: 115px !important;
+        margin-top: 10px !important;
+    }
+    .button-npl button {
+        width: 250px;
+    }
+    .booking-schedule .form-filter .object-type .form-group {
+        max-width: 200px;
+        width: 157px;
     }
 }
 
@@ -689,6 +702,10 @@ a.delete-compare {
         top: 515px;
         right: 30px;
     }
+    .booking-schedule .form-filter .object-type .form-group {
+        max-width: 200px;
+        width: 150px;
+    }
 }
 
 @media (max-width: 640px) {
@@ -729,6 +746,10 @@ a.delete-compare {
     .modalframe360 {
         width: 100%;
         height: 500px;
+    }
+    .booking-schedule .form-filter .object-type .form-group {
+        max-width: 300px;
+        width: 275px;
     }
 }
 
@@ -783,7 +804,7 @@ a.delete-compare {
     }
     .overlay-status-live,
     .overlay-status-online {
-        bottom: 112px !important;
+        margin-top: 10px !important;
     }
     .modal360 {
         width: 96%;
@@ -792,11 +813,19 @@ a.delete-compare {
         width: 100%;
         height: 500px;
     }
+    .booking-schedule .form-filter .object-type .form-group {
+        max-width: 400px;
+        width: 255px;
+    }
 }
 
 @media (max-width: 480px) {
     .minimal-height {
         min-height: 325px;
+    }
+    .booking-schedule .form-filter .object-type .form-group {
+        max-width: 200px;
+        width: 195px;
     }
 }
 
@@ -840,6 +869,10 @@ a.delete-compare {
         top: 250px;
         right: 20px;
     }
+    .booking-schedule .form-filter .object-type .form-group {
+        max-width: 200px;
+        width: 163px;
+    }
 }
 
 @media (max-width: 412px) {
@@ -871,6 +904,10 @@ a.delete-compare {
     .overlay-grade-favorite {
         top: 250px;
         right: 20px;
+    }
+    .booking-schedule .form-filter .object-type .form-group {
+        max-width: 200px;
+        width: 165px;
     }
 }
 
@@ -913,6 +950,10 @@ a.delete-compare {
         width: 100%;
         height: 500px;
     }
+    .booking-schedule .form-filter .object-type .form-group {
+        max-width: 200px;
+        width: 148px;
+    }
 }
 
 @media (max-width: 375px) {
@@ -926,6 +967,10 @@ a.delete-compare {
     }
     .thumbnail-custom-favorite {
         height: 57%;
+    }
+    .booking-schedule .form-filter .object-type .form-group {
+        max-width: 200px;
+        width: 140px;
     }
 }
 
@@ -980,7 +1025,7 @@ a.delete-compare {
     }
     .overlay-status-live,
     .overlay-status-online {
-        bottom: 112px !important;
+        margin-top: 10px !important;
     }
     .modal360 {
         width: 93%;
@@ -989,11 +1034,19 @@ a.delete-compare {
         width: 100%;
         height: 400px;
     }
+    .booking-schedule .form-filter .object-type .form-group {
+        max-width: 200px;
+        width: 137px;
+    }
 }
 
 @media(max-width: 320px) {
     .minimal-height {
         min-height: 210px;
+    }
+    .booking-schedule .form-filter .object-type .form-group {
+        max-width: 200px;
+        width: 115px;
     }
 }
 
@@ -1381,12 +1434,13 @@ a.delete-compare {
 .overlay-status-online,
 .overlay-status-live {
     position: absolute;
-    bottom: 100px;
+    margin-top: 20px;
     right: 10px;
     line-height: 1.6;
     font-size: 11px !important;
     border-radius: 5px;
     width: auto!important;
+    padding: 1px 4px;
 }
 
 .overlay-status-live {
