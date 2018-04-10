@@ -228,7 +228,7 @@
                   </div -->
                </div>
                <div class="form-group text-align-center">
-                  <button id="btnFilter" type="submit" class="btn btn-green">Filter</button>
+                  <button id="btnFilter" type="submit" class="btn btn-green btn-150px">Filter</button>
                </div>
 			   <?php if (@$this->session->userdata('userdata')['UserId']){ ?>
 			   <input type="hidden" name="userId" value="<?php echo $this->session->userdata('userdata')['UserId']; ?>">
@@ -250,7 +250,7 @@
                   <div id="loadlist"></div>
                </div>
                <div id="mored" class="cursor-pointer margin-top-10px text-align-center width-100">
-                  <a href="javascript:void(0)" class="font-green" onclick="">Selanjutnya</a>
+                  <button class="btn btn-green">Selanjutnya</button>
                   <!--span></span-->
                </div>
             </div>
@@ -685,7 +685,7 @@ function countContainer(offset, limit, linked, dataTotal, countPage, dataForm = 
    window.dataForm = dataForm;
    var countContainer = $('#loadlist').children().length;
    if(window.countTotal < dataTotal) {
-      $('#mored').children().replaceWith('<a href="javascript:void(0)" class="font-green" onclick="loadContainerPaging('+window.countTotal+', '+limit+', \''+linked+'\', \''+window.dataForm+'\')">Selanjutnya</a>');
+      $('#mored').children().replaceWith('<button class="btn btn-green btn-150px" onclick="loadContainerPaging('+window.countTotal+', '+limit+', \''+linked+'\', \''+window.dataForm+'\')">Selanjutnya</button>');
    }
    else {
       // show loading paging

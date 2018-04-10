@@ -525,8 +525,8 @@ a.delete-compare {
         max-width: 200px;
         width: 165px;
     }
-    #btnFilter {
-        width: 150px;
+    .btn-150px {
+        width: 150px !important;
     }
     .button-filter {
         display: block;
@@ -551,8 +551,8 @@ a.delete-compare {
     .product-mob .action-wishlist-favorite .btn {
         width: 100%;
     }
-    #btnFilter {
-        width: 150px;
+    .btn-150px {
+        width: 150px !important;
     }
 }
 
@@ -564,8 +564,8 @@ a.delete-compare {
     .box-recommend .thumbnail {
         padding-bottom: 75%;
     }
-    #btnFilter {
-        width: 150px;
+    .btn-150px {
+        width: 150px !important;
     }
 }
 
@@ -577,8 +577,8 @@ a.delete-compare {
         font-size: 14px;
         padding: 10px 0;
     }
-    #btnFilter {
-        width: 150px;
+    .btn-150px {
+        width: 150px !important;
     }
 }
 
@@ -626,8 +626,8 @@ a.delete-compare {
         max-width: 200px;
         width: 157px;
     }
-    #btnFilter {
-        width: 150px;
+    .btn-150px {
+        width: 150px !important;
     }
 }
 
@@ -728,8 +728,8 @@ a.delete-compare {
         max-width: 200px;
         width: 150px;
     }
-    #btnFilter {
-        width: 150px;
+    .btn-150px {
+        width: 150px !important;
     }
 }
 
@@ -776,8 +776,8 @@ a.delete-compare {
         max-width: 300px;
         width: 275px;
     }
-    #btnFilter {
-        width: 150px;
+    .btn-150px {
+        width: 150px !important;
     }
     .button-filter {
         display: block;
@@ -852,8 +852,8 @@ a.delete-compare {
         max-width: 400px;
         width: 255px;
     }
-    #btnFilter {
-        width: 150px;
+    .btn-150px {
+        width: 150px !important;
     }
 }
 
@@ -865,8 +865,8 @@ a.delete-compare {
         max-width: 200px;
         width: 195px;
     }
-    #btnFilter {
-        width: 150px;
+    .btn-150px {
+        width: 150px !important;
     }
 }
 
@@ -886,8 +886,8 @@ a.delete-compare {
     .product-mob.whislist .box-recommend .thumbnail-favorite {
         height: 276px;
     }
-    #btnFilter {
-        width: 150px;
+    .btn-150px {
+        width: 150px !important;
     }
 }
 
@@ -917,8 +917,8 @@ a.delete-compare {
         max-width: 200px;
         width: 163px;
     }
-    #btnFilter {
-        width: 150px;
+    .btn-150px {
+        width: 150px !important;
     }
 }
 
@@ -956,8 +956,8 @@ a.delete-compare {
         max-width: 200px;
         width: 165px;
     }
-    #btnFilter {
-        width: 150px;
+    .btn-150px {
+        width: 150px !important;
     }
 }
 
@@ -965,8 +965,8 @@ a.delete-compare {
     .minimal-height {
         min-height: 225px;
     }
-    #btnFilter {
-        width: 150px;
+    .btn-150px {
+        width: 150px !important;
     }
 }
 
@@ -1007,8 +1007,8 @@ a.delete-compare {
         max-width: 200px;
         width: 148px;
     }
-    #btnFilter {
-        width: 150px;
+    .btn-150px {
+        width: 150px !important;
     }
 }
 
@@ -1028,8 +1028,8 @@ a.delete-compare {
         max-width: 200px;
         width: 140px;
     }
-    #btnFilter {
-        width: 150px;
+    .btn-150px {
+        width: 150px !important;
     }
 }
 
@@ -1041,8 +1041,8 @@ a.delete-compare {
     .box-recommend .thumbnail {
         padding-bottom: 75%;
     }
-    #btnFilter {
-        width: 150px;
+    .btn-150px {
+        width: 150px !important;
     }
 }
 
@@ -1100,8 +1100,8 @@ a.delete-compare {
         max-width: 200px;
         width: 137px;
     }
-    #btnFilter {
-        width: 150px;
+    .btn-150px {
+        width: 150px !important;
     }
 }
 
@@ -1113,8 +1113,8 @@ a.delete-compare {
         max-width: 200px;
         width: 115px;
     }
-    #btnFilter {
-        width: 150px;
+    .btn-150px {
+        width: 150px !important;
     }
 }
 
