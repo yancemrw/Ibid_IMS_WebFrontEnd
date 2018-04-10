@@ -5,6 +5,10 @@ class Callback extends CI_Controller {
 
 	public function __construct(){
         parent::__construct();
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
+
         $this->load->helper(array('global'));
         $this->AccessApi = new AccessApi(array_merge($this->config->item('Oauth'),array('username' => 'rendhy.wijayanto@sera.astra.co.id')));
 	}
@@ -24,6 +28,8 @@ class Callback extends CI_Controller {
             } catch(Exception $e){
                 $data = false;
             }
+
+            print_r($data); die();
 
             if($data){
                 $tmp = explode(" ", $data['name']);
