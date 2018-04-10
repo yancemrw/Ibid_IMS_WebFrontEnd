@@ -6,6 +6,7 @@ class Checkout extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->link = 'http://beta.ibid.astra.co.id/backend/service/akun/email/logo2.jpg';
+		$this->biayaAdm = 5000;
 	}
 
 	function index(){
@@ -13,7 +14,7 @@ class Checkout extends CI_Controller {
 		$methodeBayar = $_POST['tipe_methode'];
 		
 		$BiodataId = @$_SESSION['userdata']['UserId'];
-		$Total = $this->cart->total() + 100000;
+		$Total = $this->cart->total() + $this->biayaAdm;
 		$arrayTransaksi = array(
 			'BiodataId' => $BiodataId,
 			'DateTransactionNPL' => date('Y-m-d'),
@@ -573,7 +574,7 @@ class Checkout extends CI_Controller {
 		<td>";
 
                 // email
-		$isiemail .= "<table style='margin:0 auto 30px;padding:20px;border: 1px solid #e6e6e6'>
+		/* $isiemail .= "<table style='margin:0 auto 30px;padding:20px;border: 1px solid #e6e6e6'>
 		<thead><tr style='font-size:12px'>
 		<th>Jadwal</th>
 		<th>Tipe Lelang</th>
@@ -603,14 +604,53 @@ class Checkout extends CI_Controller {
 		// <td colspan='4'></td>
 		// <td class='text-right'><strong>Total</strong></td></tr>";
 
-		// $isiemail .= "<td class='text-right' id='thisTotal'>".$this->cart->format_number($this->cart->total() + 100000)."</td> ";
+		// $isiemail .= "<td class='text-right' id='thisTotal'>".$this->cart->format_number($this->cart->total() + $this->biayaAdm)."</td> ";
 		$isiemail .= "</table>"; 
+		*/
+		
+		foreach ($this->cart->contents() as $items){
+			$tipenpl = $items['options']['Tipe NPL']==0 ? 'NPL Live' : (($items['options']['Tipe NPL']==1) ? 'NPL Online' : (($items['options']['Tipe NPL']==5) ? 'NPL Unlimited' : ''));
+			
+			$isiemail .= "<fieldset style='margin: 0 0 5px 0; padding: 0 0 5px 0; border: 1px solid #eee;'>
+			<table>
+				<tr>
+					<th width='150px' align='right'>Jadwal :</th>
+					<td>".$items['name']. " - ".$items['options']['thisDate']."</td>
+				</tr>
+				<tr>
+					<th align='right'>Tipe Lelang :</th>
+					<td>".$items['options']['Tipe Lelang']."</td>
+				</tr>
+				<tr>
+					<th align='right'>Item :</th>
+					<td>".$items['options']['Item']."</td>
+				</tr>
+				<tr>
+					<th align='right'>Tipe NPL :</th>
+					<td>".$tipenpl."</td>
+				</tr>
+				<tr>
+					<th align='right'>QTY :</th>
+					<td>".$items['qty']."</td>
+				</tr>
+				<tr>
+					<th align='right'>Harga Item :</th>
+					<td>".$this->cart->format_number($items['price'])."</td>
+				</tr>
+				<tr>
+					<th align='right'>Sub-Total :</th>
+					<td>".$this->cart->format_number($items['subtotal'])."</td>
+				</tr>
+			</table>
+			</fieldset>";
+		}
+		
 		$isiemail .= "	
 		<table width='100%' cellspacing='0' cellpadding='0' border='0'>
 		<tbody>
 		<tr>
 		<td style='font-size:12px;line-height:21px;font-weight:bold' width='50%' valign='top' align='center' rowspan='2'>TOTAL<br>
-		<span style='font:18px Arial, Helvetica, sans-serif; line-height:32px;color:#00af41'>RP ".$this->cart->format_number($this->cart->total() + 100000)."</span></td>
+		<span style='font:18px Arial, Helvetica, sans-serif; line-height:32px;color:#00af41'>RP ".$this->cart->format_number($this->cart->total() + $this->biayaAdm)."</span></td>
 		</tr>
 		</tbody>
 		</table>
@@ -650,7 +690,8 @@ class Checkout extends CI_Controller {
 			</td>
 			</tr>";
 
-		} elseif($TipePembayaran == 1){
+		}
+		elseif($TipePembayaran == 1){
 
 			$isiemail .="
 			<tr>
@@ -685,7 +726,8 @@ class Checkout extends CI_Controller {
 
 
 
-		} elseif($TipePembayaran == 4){
+		}
+		elseif($TipePembayaran == 4){
 
 			$isiemail .= "<tr>
 			<td data-color='text' data-size='size text' data-min='10' data-max='26' data-link-color='link text color' data-link-style='font-weight:bold; text-decoration:underline; color:#40aceb;' style='font:12px/24px Arial, Helvetica, sans-serif; color:#666; padding:0 0 30px;' align='left'>
