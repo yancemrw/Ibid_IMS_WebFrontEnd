@@ -651,19 +651,18 @@ function countContainer(offset, limit, linked, dataTotal, countPage, dataForm = 
    var arrCheck = new Array;
    countPage = countPage + offset;
    if(actionTotalData > 0) {
-      actionTotalData = dataTotal;
+      actionTotalData = 0;
    }
    else {
-      actionTotalData = 0;
+      actionTotalData = dataTotal;
    }
    if(countPage === countContainer) {
       $('#mored').children().replaceWith('<span></span>');
       $(document).scroll(function(e) {
          if($(window).scrollTop() === $(document).height() - $(window).height()) {
             arrCheck.push(window.countTotal); // check multi load paging
-            console.log(window.countTotal+':'+actionTotalData);
             if(hasDuplicate(arrCheck) === false) {
-               if(window.countTotal < dataTotal) {
+               if(window.countTotal < actionTotalData) {
                   loadContainerPaging(window.countTotal, limit, linked, window.dataForm);
                }
             }
