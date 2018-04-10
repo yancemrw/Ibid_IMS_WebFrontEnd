@@ -404,8 +404,8 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                var compare_data = {
                   "AuctionItemId": dataz.AuctionItemId,
                   "BahanBakar": dataz.bahanbakar,
-                  // "Image": (imgData[i][0].ImagePath !== undefined) ? imgData[i][0].ImagePath : '<?php echo base_url('assetsfront/images/background/default.png') ?>',
-                  "Image": '//img.ibid.astra.co.id/item/12415/d8404a531ea286d733aa7c35bfbdc83c.jpg',
+                  "Image": (imgData[i][0].ImagePath !== undefined) ? imgData[i][0].ImagePath : '<?php echo base_url('assetsfront/images/background/default.png') ?>',
+                  //"Image": '//img.ibid.astra.co.id/item/12415/d8404a531ea286d733aa7c35bfbdc83c.jpg',
                   "Kilometer": dataz.km,
                   "Lot" : (dataz.thisLotNo !== undefined && dataz.thisLotNo !== null) ? dataz.thisLotNo : '???',
                   "Merk": (dataz.merk !== undefined) ? dataz.merk : '',
@@ -579,7 +579,7 @@ function loadContainerPaging(offset, limit, linked, dataForm = '') {
                               '</div>'+
                               '<div class="boxright-mobile">'+
                               '<span class="'+classStatus+'">'+statusStock+'</span>'+
-                              '<h2>'+compare_data.Merk+' '+compare_data.Seri+' '+compare_data.Silinder+' '+compare_data.Tipe+' '+compare_data.Model+' '+compare_data.Transmisi+'</h2>'+
+                              '<h2>'+compare_data.Merk+' '+compare_data.Seri+' '+compare_data.Silinder+' '+compare_data.Tipe+' '+compare_data.Transmisi+'</h2>'+
                               '<span>'+compare_data.Tahun+'</span> <span class="price">Rp. '+currency_format(compare_data.Price)+'</span>'+
                               '<p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span class="wkt'+dataz.thisScheduleId+'">'+waktu+'</span></p>'+
                               '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span class="sch'+dataz.thisScheduleId+'">'+thisCabang[dataz.CompanyId]+'</span></p>'+
