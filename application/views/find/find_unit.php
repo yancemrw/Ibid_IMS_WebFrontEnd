@@ -511,7 +511,7 @@ function loadContainerPaging(offset, limit, linked, dataForm = '') {
       beforeSend: function() {
          $('#btnFilter').attr('disabled', true);
          //$('#mored').children().replaceWith('<img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" />');
-         $('#mored').replaceWith('<div id="mored" class="margin-10px margin-top-80px text-align-center"><img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" /></div>');
+         $('#mored').replaceWith('<div id="mored" class="margin-10px text-align-center"><img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" /></div>');
       },
       success: function(data) {
          var content = '',
