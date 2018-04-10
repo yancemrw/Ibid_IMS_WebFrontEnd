@@ -88,7 +88,7 @@
                            <input type="number" name="ktp" id="ktp" class="form-control floating-handle input-custom only-number" 
                                     value="<?php echo @$content->users->IdentityNumber; ?>" 
                                     oninvalid="this.setCustomValidity('KTP tidak boleh kosong')" 
-                                    onkeyup="checkOnlyNumber(this, event, 13)" onkeypress="setCustomValidity('')" required />
+                                    onkeyup="checkOnlyNumber(this, event, 16)" onkeypress="setCustomValidity('')" required />
                            <label class="label-schedule">No KTP *</label>
                         </div>
                         <div class="form-group floating-label">
