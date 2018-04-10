@@ -546,7 +546,7 @@ function loadContainerPaging(offset, limit, linked, dataForm = '') {
                   "Transmisi": (dataz.transmisi !== undefined) ? dataz.transmisi : '',
                   "Tipe": (dataz.grade !== undefined) ? dataz.grade : '',
                   "Price": (dataz.FinalPriceItem !== undefined) ? dataz.FinalPriceItem : 0,
-                  "Warna": dataz.warnadoc
+                  "Warna": dataz.warna
                };
                var json_str = JSON.stringify(compare_data);
                var iconFav = (dataz.thisFavorite === 0) ? '<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon" />' : '<i class="fa fa-heart"></i>';
@@ -797,6 +797,5 @@ function getJadwalAms(){
 			$('#divSchedule').addClass('input-group-ss');
 		}
 	});
-	
 }
 </script>
