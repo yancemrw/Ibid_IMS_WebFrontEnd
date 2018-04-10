@@ -19,7 +19,7 @@ class Callback extends CI_Controller {
 		if (isset($_GET['code'])) {
 			// http://localhost:8888/ibiddevelopment/ibiddevapi/ibidadmsuser/index.php/omni/google/callback?code=4/iuwDY-oakWyJ46Kw4f1GTAlaXLoTzwmuS1_QwJAOJVo#
 			$this->googleplus->getAuthenticate();  
-			// print_r($this->googleplus->getUserInfo());
+			print_r($this->googleplus->getUserInfo()); die();
 			$data = $this->googleplus->getUserInfo(); 
 
 			$tmp = explode(" ", $data['name']);
