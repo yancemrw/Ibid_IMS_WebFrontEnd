@@ -54,7 +54,6 @@
                     <ul class="grade-auction">
                        <li>
                         <a href="javascript:void(0)" id="myFav<?php echo $key+1;?>">
-                          <img src="<?php echo base_url('assetsfront/images/icon/ic_loading_page.png'); ?>" />
                           <i class="fa fa-heart"></i>
                         </a>
                       </li>
@@ -503,23 +502,23 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
           var jsonData = {
             "AuctionItemId" : (datax[i].AuctionItemId !== undefined) ? datax[i].AuctionItemId : '',
             "BahanBakar"    : datax[i].bahanbakar,
-            "Image"         : imgData[i][0].ImagePath,
+            "Image"         : (imgData[i][0].ImagePath !== undefined) ? imgData[i][0].ImagePath : '<?php echo base_url('assetsfront/images/background/default.png') ?>',
             "Kilometer"     : datax[i].km,
-            "Lot"           : datax[i].thisLotNo,
-            "Merk"          : datax[i].merk,
-            "Model"         : datax[i].model,
+            "Lot"           : (datax[i].thisLotNo !== undefined && datax[i].thisLotNo !== null) ? datax[i].thisLotNo : '???',
+            "Merk"          : (datax[i].merk !== undefined) ? datax[i].merk : '',
+            "Model"         : (datax[i].model !== undefined) ? datax[i].model : '',
             "NoKeur"        : datax[i].nokeur,
             "NoMesin"       : datax[i].nomesin,
             "NoPolisi"      : datax[i].merk,
             "NoRangka"      : datax[i].norangka,
             "NoSTNK"        : datax[i].nostnk,
-            "Seri"          : datax[i].seri,
-            "Silinder"      : datax[i].silinder,
+            "Seri"          : (datax[i].seri !== undefined) ? datax[i].seri : '',
+            "Silinder"      : (datax[i].silinder !== undefined) ? datax[i].silinder : '',
             "TaksasiGrade"  : icarData[i].TotalEvaluationResult,
-            "Tahun"         : datax[i].tahun,
-            "Transmisi"     : datax[i].transmisi,
-            "Tipe"          : datax[i].grade,
-            "Price"         : datax[i].FinalPriceItem,
+            "Tahun"         : (datax[i].tahun !== undefined) ? datax[i].tahun : '',
+            "Transmisi"     : (datax[i].transmisi !== undefined) ? datax[i].transmisi : '',
+            "Tipe"          : (datax[i].grade !== undefined) ? datax[i].grade : '',
+            "Price"         : (datax[i].FinalPriceItem !== undefined) ? datax[i].FinalPriceItem : 0,
             "Warna"         : datax[i].warna
           };
           var json_str = JSON.stringify(jsonData);
@@ -540,8 +539,8 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
                         '<p class="overlay-lot">LOT '+lot+'</p>'+
                         '</div>'+
                         '<div class="boxright-mobile">'+
-                        '<h2>'+datax[i].merk+' '+datax[i].seri+' '+datax[i].silinder+' '+datax[i].grade+' '+datax[i].model+' '+datax[i].transmisi+'</h2>'+
-                        '<span>'+datax[i].tahun+'</span> <span class="price">Rp. '+currency_format(datax[i].FinalPriceItem)+'</span>'+
+                        '<h2>'+jsonData.Merk+' '+jsonData.Seri+' '+jsonData.Silinder+' '+jsonData.Tipe+' '+jsonData.Model+' '+jsonData.Transmisi+'</h2>'+
+                        '<span>'+jsonData.Tahun+'</span> <span class="price">Rp. '+currency_format(jsonData.Price)+'</span>'+
                         '<p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span class="wkt'+datax[i].thisScheduleId+'">'+waktu+'</span></p>'+
                         '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span class="sch'+datax[i].thisScheduleId+'">'+lokasiLelang+'</span></p>'+
                         '</div>'+
