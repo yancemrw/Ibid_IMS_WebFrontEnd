@@ -227,7 +227,7 @@
                   </div -->
                </div>
                <div class="form-group">
-                  <button type="submit" class="btn btn-green">Filter</button>
+                  <button id="btnFilter" type="submit" class="btn btn-green">Filter</button>
                </div>
 			   <?php if (@$this->session->userdata('userdata')['UserId']){ ?>
 			   <input type="hidden" name="userId" value="<?php echo $this->session->userdata('userdata')['UserId']; ?>">
@@ -285,6 +285,7 @@
 <script>
 var thisCabang = [];
 var loadFavorite = new Array, loadIcar = new Array;
+var actionTotalData;
 <?php foreach($cabang as $row){ ?>
 thisCabang[<?php echo $row['CompanyId']; ?>] = "<?php echo (($row['CompanyName'])); ?>";
 <?php } ?>
@@ -346,6 +347,9 @@ $(document).ready(function() {
 	
 	$('#thisFormFilter').submit(function() {
 		var thisFormInput = $(this).serialize();
+      window.countTotal = 0;
+      window.dataForm = '';
+      actionTotalData = 0;
       $('#loadlist').html('');
       loadContainer(0, 6, linked, thisFormInput);
 		return false;
@@ -377,6 +381,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
       url: '<?php echo linkservice('stock')."itemstock/Getfrontend"; ?>',
       data: formData,
       beforeSend: function() {
+         $('#btnFilter').attr('disabled', true);
          $('#loadings').replaceWith('<div id="loadings" class="margin-10px margin-top-80px text-align-center"><img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" /></div>');
       },
       success: function(data) {
@@ -389,6 +394,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
          icarData = new Array,
          sessiond = "<?php echo ($this->session->userdata('userdata') !== null) ? 'TRUE' : 'FALSE'; ?>",
          sessionId = '<?php echo ($this->session->userdata('userdata')['UserId'] !== null) ? $this->session->userdata('userdata')['UserId'] : ''; ?>';
+
          if(datas !== null && datas.length > 0) {
             for (var i = 0; i < datas.length; i++) {
                var dataz = datas[i];
@@ -398,7 +404,8 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                var compare_data = {
                   "AuctionItemId": dataz.AuctionItemId,
                   "BahanBakar": dataz.bahanbakar,
-                  "Image": (imgData[i][0].ImagePath !== undefined) ? imgData[i][0].ImagePath : '<?php echo base_url('assetsfront/images/background/default.png') ?>',
+                  // "Image": (imgData[i][0].ImagePath !== undefined) ? imgData[i][0].ImagePath : '<?php echo base_url('assetsfront/images/background/default.png') ?>',
+                  "Image": '//img.ibid.astra.co.id/item/12415/d8404a531ea286d733aa7c35bfbdc83c.jpg',
                   "Kilometer": dataz.km,
                   "Lot" : (dataz.thisLotNo !== undefined && dataz.thisLotNo !== null) ? dataz.thisLotNo : '???',
                   "Merk": (dataz.merk !== undefined) ? dataz.merk : '',
@@ -434,7 +441,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                   case 1 : statusStock = 'Online'; classStatus = 'overlay-status-online'; break;
                   case null: statusStock = 'Live'; classStatus = 'overlay-status-live'; break;
                }
-               content += '<div class="col-md-4" id="this'+dataz.AuctionItemId+'">'+
+               content = '<div class="col-md-4" id="this'+dataz.AuctionItemId+'">'+
                               '<div class="list-product box-recommend">'+
                               '<a href="<?php echo $link_detail; ?>/'+dataz.AuctionItemId+'">'+
                               '<div class="thumbnail">'+
@@ -448,7 +455,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                               '</div>'+
                               '<div class="boxright-mobile">'+
                               '<span class="'+classStatus+'">'+statusStock+'</span>'+
-                              '<h2>'+compare_data.Merk+' '+compare_data.Seri+' '+compare_data.Silinder+' '+compare_data.Tipe+' '+compare_data.Model+' '+compare_data.Transmisi+'</h2>'+
+                              '<h2>'+compare_data.Merk+' '+compare_data.Seri+' '+compare_data.Silinder+' '+compare_data.Tipe+' '+compare_data.Transmisi+'</h2>'+
                               '<span>'+compare_data.Tahun+'</span> <span class="price">Rp. '+currency_format(compare_data.Price)+'</span>'+
                               '<p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span class="wkt'+dataz.thisScheduleId+'">'+waktu+'</span></p>'+
                               '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span class="sch'+dataz.thisScheduleId+'">'+thisCabang[dataz.CompanyId]+'</span></p>'+
@@ -457,28 +464,29 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                               favcom+
                               '</div>'+
                               '</div>';
-            }
-            $('#loadlist').html(content);
-            if (schedule > 0) {
-               $.ajax({
-                  type: 'GET',
-                  url: 'http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/getLotDataOnline?schedule='+schedule+'&lot='+lot,
-                  success: function(sch) {
-                     if(sch.data !== null) {
-                        var dateSplit = sch.schedule.date.split('-');
-                        lokasi = sch.schedule.CompanyName;
-                        waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + sch.schedule.waktu;
-                        $('.wkt'+schedule).html(waktu);
+               $('#loadlist').append(content);
+               if (schedule > 0) {
+                  $.ajax({
+                     type: 'GET',
+                     url: 'http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/getLotDataOnline?schedule='+schedule+'&lot='+lot,
+                     success: function(sch) {
+                        if(sch.data !== null) {
+                           var dateSplit = sch.schedule.date.split('-');
+                           lokasi = sch.schedule.CompanyName;
+                           waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + sch.schedule.waktu;
+                           $('.wkt'+schedule).html(waktu);
+                        }
+                        else {
+                           $('.wkt'+schedule).html('Belum Tersedia');
+                        }
+                     },
+                     error: function(e) {
+                        console.log(e);
                      }
-                     else {
-                        $('.wkt'+schedule).html('Belum Tersedia');
-                     }
-                  },
-                  error: function(e) {
-                     console.log(e);
-                  }
-               });
-               
+                  });
+                  
+               }
+               $('#btnFilter').attr('disabled', false);
             }
             countContainer(offset, limit, linked, dataTotal, datas.length, dataForm);
          }
@@ -489,7 +497,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
   });
 }
 
-function loadContainerPaging(offset, limit, linked, dataForm) {
+function loadContainerPaging(offset, limit, linked, dataForm = '') {
    var initUserId = '<?php echo (@$this->session->userdata('userdata')['UserId']) ? '&userId='.$this->session->userdata('userdata')['UserId'] : ''; ?>';
    var formData = 'offset='+offset+'&limit='+limit+initUserId+'&'+dataForm;
    $.ajax({
@@ -497,6 +505,7 @@ function loadContainerPaging(offset, limit, linked, dataForm) {
       url: '<?php echo linkservice('stock')."itemstock/Getfrontend"; ?>',
       data: formData,
       beforeSend: function() {
+         $('#btnFilter').attr('disabled', true);
          $('#mored').children().replaceWith('<img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" />');
       },
       success: function(data) {
@@ -508,6 +517,9 @@ function loadContainerPaging(offset, limit, linked, dataForm) {
          icarData = new Array,
          sessiond = "<?php echo ($this->session->userdata('userdata') !== null) ? 'TRUE' : 'FALSE'; ?>",
          sessionId = '<?php echo ($this->session->userdata('userdata')['UserId'] !== null) ? $this->session->userdata('userdata')['UserId'] : ''; ?>';
+
+         window.dataTotal = dataTotal;
+
          if(datas !== null) {
             for (var i = 0; i < datas.length; i++) {
                var dataz = datas[i];
@@ -553,7 +565,7 @@ function loadContainerPaging(offset, limit, linked, dataForm) {
                   case 1 : statusStock = 'Online'; classStatus = 'overlay-status-online'; break;
                   case null: statusStock = 'Live'; classStatus = 'overlay-status-live'; break;
                }
-               content += '<div class="col-md-4" id="this'+dataz.AuctionItemId+'">'+
+               content = '<div class="col-md-4" id="this'+dataz.AuctionItemId+'">'+
                               '<div class="list-product box-recommend">'+
                               '<a href="<?php echo $link_detail; ?>/'+dataz.AuctionItemId+'">'+
                               '<div class="thumbnail">'+
@@ -566,7 +578,7 @@ function loadContainerPaging(offset, limit, linked, dataForm) {
                               '<p class="overlay-lot">LOT '+compare_data.Lot+'</p>'+
                               '</div>'+
                               '<div class="boxright-mobile">'+
-                              '<p class="'+classStatus+'">'+statusStock+'</p>'+
+                              '<span class="'+classStatus+'">'+statusStock+'</span>'+
                               '<h2>'+compare_data.Merk+' '+compare_data.Seri+' '+compare_data.Silinder+' '+compare_data.Tipe+' '+compare_data.Model+' '+compare_data.Transmisi+'</h2>'+
                               '<span>'+compare_data.Tahun+'</span> <span class="price">Rp. '+currency_format(compare_data.Price)+'</span>'+
                               '<p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span class="wkt'+dataz.thisScheduleId+'">'+waktu+'</span></p>'+
@@ -576,28 +588,29 @@ function loadContainerPaging(offset, limit, linked, dataForm) {
                               favcom+
                               '</div>'+
                               '</div>';
-            }
-            $('#loadlist').children().last().after(content);
-            if (schedule > 0) {
-               $.ajax({
-                  type: 'GET',
-                  url: 'http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/getLotDataOnline?schedule='+schedule+'&lot='+lot,
-                  success: function(sch) {
-                     if(sch.data !== null) {
-                        var dateSplit = sch.schedule.date.split('-');
-                        lokasi = sch.schedule.CompanyName;
-                        waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + sch.schedule.waktu;
-                        $('.wkt'+schedule).html(waktu);
+               $('#loadlist').children().last().after(content);
+               if (schedule > 0) {
+                  $.ajax({
+                     type: 'GET',
+                     url: 'http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/getLotDataOnline?schedule='+schedule+'&lot='+lot,
+                     success: function(sch) {
+                        if(sch.data !== null) {
+                           var dateSplit = sch.schedule.date.split('-');
+                           lokasi = sch.schedule.CompanyName;
+                           waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + sch.schedule.waktu;
+                           $('.wkt'+schedule).html(waktu);
+                        }
+                        else {
+                           $('.wkt'+schedule).html('Belum Tersedia');
+                        }
+                     },
+                     error: function(e) {
+                        console.log(e);
                      }
-                     else {
-                        $('.wkt'+schedule).html('Belum Tersedia');
-                     }
-                  },
-                  error: function(e) {
-                     console.log(e);
-                  }
-               });
-               
+                  });
+                  
+               }
+               $('#btnFilter').attr('disabled', false);
             }
             countContainer(offset, limit, linked, dataTotal, datas.length, dataForm);
          }
@@ -633,17 +646,25 @@ function callIcar(datay) {
 
 function countContainer(offset, limit, linked, dataTotal, countPage, dataForm = '') {
    window.countTotal = offset + limit;
+   window.dataForm = dataForm;
    var countContainer = $('#loadlist').children().length;
    var arrCheck = new Array;
    countPage = countPage + offset;
+   if(actionTotalData > 0) {
+      actionTotalData = dataTotal;
+   }
+   else {
+      actionTotalData = 0;
+   }
    if(countPage === countContainer) {
       $('#mored').children().replaceWith('<span></span>');
       $(document).scroll(function(e) {
          if($(window).scrollTop() === $(document).height() - $(window).height()) {
             arrCheck.push(window.countTotal); // check multi load paging
+            console.log(window.countTotal+':'+actionTotalData);
             if(hasDuplicate(arrCheck) === false) {
                if(window.countTotal < dataTotal) {
-                  loadContainerPaging(window.countTotal, limit, linked, dataForm);
+                  loadContainerPaging(window.countTotal, limit, linked, window.dataForm);
                }
             }
          }

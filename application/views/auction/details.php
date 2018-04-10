@@ -52,7 +52,12 @@
                     </div>
                     <h2 class="overlay-title" id="lot-title<?php echo $key+1;?>">-</h2>
                     <ul class="grade-auction">
-                       <li><a href="javascript:void(0)" id="myFav<?php echo $key+1;?>"><i class="fa fa-heart"></i></a></li>
+                       <li>
+                        <a href="javascript:void(0)" id="myFav<?php echo $key+1;?>">
+                          <img src="<?php echo base_url('assetsfront/images/icon/ic_loading_page.png'); ?>" />
+                          <i class="fa fa-heart"></i>
+                        </a>
+                      </li>
                        <li>
                           <p class="overlay-grade">Grade <span id="lot-grade<?php echo $key+1;?>">-</span></p>
                        </li>
