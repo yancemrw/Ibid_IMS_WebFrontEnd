@@ -235,6 +235,21 @@
 
 $(document).ready(function() {
 
+<?php
+  $ci = &get_instance();
+  $error = $ci->session->flashdata('error_message');
+  if($error){
+?>
+  bootoast.toast({
+    message: "<?=$error?>",
+    type: 'warning',
+    position: 'top-center',
+    timeout: 5
+  });
+<?php
+  }
+?>
+
   // ***** handle floating placeholder input field *****
   $('.floating-handle').blur(function() {
     tmpval = $(this).val();
