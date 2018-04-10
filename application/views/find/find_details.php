@@ -434,7 +434,8 @@
       });
 
       $('#top-bidder-info').hide();
-   
+      $('.auction-empty').hide();
+         
    
    allowRef.on('value', function(allowedSnap){
      lotDataRef.on('value', function(lotDataSnap){
