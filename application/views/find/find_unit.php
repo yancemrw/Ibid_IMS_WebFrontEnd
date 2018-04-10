@@ -227,7 +227,7 @@
                      </select>
                   </div -->
                </div>
-               <div class="form-group">
+               <div class="form-group text-align-center">
                   <button id="btnFilter" type="submit" class="btn btn-green">Filter</button>
                </div>
 			   <?php if (@$this->session->userdata('userdata')['UserId']){ ?>
@@ -681,10 +681,12 @@ function countContainer(offset, limit, linked, dataTotal, countPage, dataForm = 
       $('#mored').children().replaceWith('<img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" />');
       return false;
    }*/
-   var countTotal = offset + limit;
+   window.countTotal = offset + limit;
+   window.dataForm = dataForm;
    var countContainer = $('#loadlist').children().length;
-   if(countTotal === countContainer) {
-      $('#mored').children().replaceWith('<a href="javascript:void(0)" class="font-green" onclick="loadContainerPaging('+countTotal+', '+limit+', \''+linked+'\')">Selanjutnya</a>');
+   console.log(window.countTotal+':'+dataTotal);
+   if(window.countTotal < dataTotal) {
+      $('#mored').children().replaceWith('<a href="javascript:void(0)" class="font-green" onclick="loadContainerPaging('+window.countTotal+', '+limit+', \''+linked+'\', \''+window.dataForm+'\')">Selanjutnya</a>');
    }
    else {
       // show loading paging
