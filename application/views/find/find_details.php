@@ -224,9 +224,9 @@
                      <p id="top-bidder-info"><i class="fa fa-star"></i> Top BIDDER <span>Pilih NPL Sebelum Melakukan Lelang </span></p>
                      <select class="select-custom form-control" id="used-npl">
                         <option value="">Pilih NPL</option>
-      						<?php foreach($thisNpl as $row){ ?>
+                        <?php foreach($thisNpl as $row){ ?>
                            <option value="<?php echo $row->NPLNumber; ?>"><?php echo $row->NPLNumber; ?></option>
-      						<?php } ?>
+                        <?php } ?>
                      </select>
                      <button class="btn btn-violet btn-bid" data-toggle="modal" onclick="bid()" id="bid">Tawar</button>
                      <p>Pengumuman : <br>Pemenang akan dikenakan biaya Administrasi Rp. 1.750.000 </p>
@@ -467,7 +467,11 @@
          }
      });
    });
-   
+   <?php } else { ?>
+   $("#timer-title").css('display', 'none');
+   $("#timer").text("JADWAL LELANG TIDAK DIKETAHUI");
+   $("#timer-desc").css('display', 'none');
+   $('#top-bidder-info').hide();
    <?php } ?>
    
 $(document).ready(function() {
@@ -526,7 +530,7 @@ $(document).ready(function() {
    
    <?php if($data[0]->StatusStok === 1 && $schedule_id > 0) { // 0 = Live Auction, 1 = Online ?>
    // Timer
-   var countDownDate = new Date('<?php echo $date[0].",".(@$date[1]-1).",".(int)@$date[2].",".@$time[0].",".@$time[1].",0,0"; ?>').getTime();
+   var countDownDate = new Date(<?php echo $date[0].",".(@$date[1]-1).",".(int)@$date[2].",".@$time[0].",".@$time[1].",0,0"; ?>).getTime();
    if(isNaN(countDownDate)) {
       $("#timer-title").css('display', 'none');
       $("#timer").text("JADWAL LELANG TIDAK DIKETAHUI");
@@ -534,14 +538,16 @@ $(document).ready(function() {
    }
    else {
       var x = setInterval(function() {
-	  var countDownDate = new Date(<?php echo $date[0].",".(@$date[1]-1).",".(int)@$date[2].",".@$time[0].",".@$time[1].",0,0"; ?>).getTime();
-	  
+     var countDownDate = new Date(<?php echo $date[0].",".(@$date[1]-1).",".(int)@$date[2].",".@$time[0].",".@$time[1].",0,0"; ?>).getTime();
+     
          now = now + 1000;
          var distance = countDownDate - now;
          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
          document.getElementById("timer").innerHTML = days + "   :  " + hours + "   :  " + minutes + " ";
+       console.log(countDownDate);
+       console.log('----------------');
          if (distance > 0) {
                $("#timer").text(twoDigits(days) + "   :  " + twoDigits(hours) + "   :  " + twoDigits(minutes) + " ");
                $("#timer-mobile").text(twoDigits(days) + "   :  " + twoDigits(hours) + "   :  " + twoDigits(minutes) + " ");
@@ -951,9 +957,9 @@ function dhmFormat(s) {
   sec = s % 60; // SECONDS
   min = Math.floor(s / 60) % 60;
   var fm = [
-	  Math.floor(s / 60 / 60 / 24), // DAYS
-	  Math.floor(s / 60 / 60) % 24, // HOURS
-	  sec > 0 && sec <60  ? min + 1 : min, // MINUTES
+     Math.floor(s / 60 / 60 / 24), // DAYS
+     Math.floor(s / 60 / 60) % 24, // HOURS
+     sec > 0 && sec <60  ? min + 1 : min, // MINUTES
   ];
   return $.map(fm, function(v, i) { return ((v < 10) ? '0' : '') + v; }).join(' : ');
 }
@@ -968,7 +974,7 @@ function addPeriod(nStr){
   x2 = x.length > 1 ? '.' + x[1] : '';
   var rgx = /(\d+)(\d{3})/;
   while (rgx.test(x1)) {
-	  x1 = x1.replace(rgx, '$1' + '.' + '$2');
+     x1 = x1.replace(rgx, '$1' + '.' + '$2');
   }
   return x1 + x2;
 }
@@ -993,7 +999,7 @@ function bid() {
             if(allowedSnap.val() && lotDataSnap.val().duration > 0) {
                startPrice = lotDataSnap.exists() ? lotDataSnap.val().harga : 0;
                
-			   last <= 0 ? newbid = parseInt(startPrice) : newbid = parseInt(last) + parseInt(<?php echo $interval; ?>);
+            last <= 0 ? newbid = parseInt(startPrice) : newbid = parseInt(last) + parseInt(<?php echo $interval; ?>);
 
                //NPL ongoing check logic
                var ongoingBidder = bidderRef.child('schedule/<?php echo $schedule_id;?>/'+usedNpl);

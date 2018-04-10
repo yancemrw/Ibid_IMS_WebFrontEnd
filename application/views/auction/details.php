@@ -53,7 +53,7 @@
                     <h2 class="overlay-title" id="lot-title<?php echo $key+1;?>">-</h2>
                     <ul class="grade-auction">
                        <li>
-                        <a href="javascript:void(0)" id="myFav<?php echo $key+1;?>">
+                        <a href="javascript:void(0)" id="myFav<?php echo $key+1;?>" class="">
                           <i class="fa fa-heart"></i>
                         </a>
                       </li>
@@ -146,6 +146,9 @@
     margin-right: 5px;
     width: 100%
 }
+.content-live-auction .grade-auction a.active {
+    color: #ff4e00 !important;
+}
 /*end of signal*/
 </style>
 
@@ -154,6 +157,7 @@ myFav = [];
 <?php foreach($favorite as $row){ ?>
 myFav.push(<?php echo $row->AuctionItemId; ?>);
 <?php } ?>
+console.log(myFav);
 
   var dbRef = firebase.database();
   var activeCompany = [];
@@ -271,7 +275,7 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
       eligibleNpl<?php echo $key+1; ?>.push($(this).val());
     });
 
-    $('#myFav<?php echo $key+1;?>').removeClass('active');
+    // $('#myFav<?php echo $key+1;?>').removeClass('active');
     
     $('#top-bidder-info<?php echo $key+1;?>').hide();
     activeCompany[<?php echo $key+1; ?>] = dbRef.ref('company/<?php echo $value->CompanyId; ?>');
@@ -317,10 +321,15 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
               $('#lot-img<?php echo $key+1;?>').attr("src",val<?php echo $key+1; ?>.Image);
 
               thisFav = jQuery.inArray( val<?php echo $key+1; ?>.AuctionItemId, myFav );
-              $('#myFav<?php echo $key+1;?>').removeClass('active');
+              // $('#myFav<?php echo $key+1;?>').removeClass('active');
               if (thisFav >= 0) {
                 $('#myFav<?php echo $key+1;?>').addClass('active');
-              }
+              } else {
+          $('#myFav<?php echo $key+1;?>').removeClass('active');
+        }
+        console.log(val<?php echo $key+1; ?>.AuctionItemId);
+        console.log(thisFav);
+        console.log('----------------');
 
               $.ajax({
                 url: "http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/nextPrev/"+val<?php echo $key+1; ?>.NoLot+"/"+val<?php echo $key+1; ?>.ScheduleId, 
@@ -384,7 +393,7 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
             $('#top-bidder<?php echo $key+1;?>').text('Rp. ' + addPeriod(snap<?php echo $key+1; ?>.val().bid));
           });
         
-		  activeLot[<?php echo $key+1; ?>].on("value", function(onLotSnap){
+      activeLot[<?php echo $key+1; ?>].on("value", function(onLotSnap){
             if (onLotSnap.hasChild("winnerNPL")) {
               activeLot[<?php echo $key+1; ?>].child('winnerNPL').on('value', function(winnerSnap){
                 winnerNPL = winnerSnap.val();
@@ -395,26 +404,26 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
             }
           });
 
-		}
+    }
         else {
           reset(<?php echo $key+1;?>);
-		      console.log('masuk sana|used-npl<?php echo $key+1;?>');
+          console.log('masuk sana|used-npl<?php echo $key+1;?>');
         }
       }
       else{
         reset(<?php echo $key+1;?>);
-		
-		$.ajax({
-			url: '<?php echo linkservice('NPL')."counter/npl/searchAll/"; ?>', 
-			data:{
-				ScheduleId: val<?php echo $key+1; ?>.ScheduleId,
-				Active: 1,
-				BiodataId: '<?php echo $this->userdata['UserId']; ?>',
-			},
-			success: function(result){
-				console.log('masuk sini|used-npl<?php echo $key+1;?>');
-			}
-		});
+    
+    $.ajax({
+      url: '<?php echo linkservice('NPL')."counter/npl/searchAll/"; ?>', 
+      data:{
+        ScheduleId: val<?php echo $key+1; ?>.ScheduleId,
+        Active: 1,
+        BiodataId: '<?php echo $this->userdata['UserId']; ?>',
+      },
+      success: function(result){
+        console.log('masuk sini|used-npl<?php echo $key+1;?>');
+      }
+    });
       }
     });
 
