@@ -417,7 +417,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                   "Image": (imgData[i][0].ImagePath !== undefined) ? imgData[i][0].ImagePath : '<?php echo base_url('assetsfront/images/background/default.png') ?>',
                   //"Image": '//img.ibid.astra.co.id/item/12415/d8404a531ea286d733aa7c35bfbdc83c.jpg',
                   "Kilometer": dataz.km,
-                  "Lot" : (dataz.thisLotNo !== undefined && dataz.thisLotNo !== null) ? dataz.thisLotNo : '???',
+                  "Lot" : (dataz.thisLotNo !== undefined && dataz.thisLotNo !== null) ? dataz.thisLotNo : '-',
                   "Merk": (dataz.merk !== undefined) ? dataz.merk : '',
                   "Model": (dataz.model !== undefined) ? dataz.model : '',
                   "NoKeur": dataz.nokeur,
@@ -441,7 +441,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                                     '<button class="btn btn-compare" onclick=\'set_compare_product('+json_str+', "'+linked+'")\'><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>'+
                                     '</div>';
                var favcom = (sessiond === 'TRUE') ? bottom_favcom : '';
-               var lot = (dataz.thisLotNo !== null && dataz.thisLotNo !== undefined) ? dataz.thisLotNo : '???' ;
+               var lot = (dataz.thisLotNo !== null && dataz.thisLotNo !== undefined) ? dataz.thisLotNo : '-' ;
                var schedule = (dataz.thisScheduleId !== null) ? dataz.thisScheduleId : 0 ;
                var lokasi = 'Belum Tersedia';
                var waktu = 'Belum Tersedia';      
@@ -543,7 +543,7 @@ function loadContainerPaging(offset, limit, linked, dataForm = '') {
                   "BahanBakar": dataz.bahanbakar,
                   "Image": (imgData[i][0].ImagePath !== undefined) ? imgData[i][0].ImagePath : '<?php echo base_url('assetsfront/images/background/default.png') ?>',
                   "Kilometer": dataz.km,
-                  "Lot" : (dataz.thisLotNo !== undefined && dataz.thisLotNo !== null) ? dataz.thisLotNo : '???',
+                  "Lot" : (dataz.thisLotNo !== undefined && dataz.thisLotNo !== null) ? dataz.thisLotNo : '-',
                   "Merk": (dataz.merk !== undefined) ? dataz.merk : '',
                   "Model": (dataz.model !== undefined) ? dataz.model : '',
                   "NoKeur": dataz.nokeur,
@@ -567,7 +567,7 @@ function loadContainerPaging(offset, limit, linked, dataForm = '') {
                                     '<button class="btn btn-compare" onclick=\'set_compare_product('+json_str+', "'+linked+'")\'><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>'+
                                     '</div>';
                var favcom = (sessiond === 'TRUE') ? bottom_favcom : '';
-               var lot = (dataz.thisLotNo !== null && dataz.thisLotNo !== undefined) ? dataz.thisLotNo : '???' ;
+               var lot = (dataz.thisLotNo !== null && dataz.thisLotNo !== undefined) ? dataz.thisLotNo : '-' ;
                var schedule = (dataz.thisScheduleId !== null) ? dataz.thisScheduleId : 0 ;
                var lokasi = 'Belum Tersedia';
                var waktu = 'Belum Tersedia';      

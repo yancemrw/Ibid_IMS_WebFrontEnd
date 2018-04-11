@@ -189,7 +189,7 @@
                   <div class="">
                      <p class="grade-detail">Grade <span id="span-gradetaksasi"><?php echo $grade; ?></span></p>
                      <div class="label-lot">
-                        <h2>LOT <?php echo @$datalot->lot->no_lot ? @$datalot->lot->no_lot : '???'; ?></h2>
+                        <h2>LOT <?php echo @$datalot->lot->no_lot ? @$datalot->lot->no_lot : '-'; ?></h2>
                      </div>
                      <ul>
                         <li class="clearfix">
