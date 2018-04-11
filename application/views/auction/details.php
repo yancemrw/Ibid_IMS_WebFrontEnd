@@ -493,6 +493,7 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
     <?php foreach($cabang as $row){ ?>
     thisCabang[<?php echo $row['CompanyId']; ?>] = "<?php echo (($row['CompanyName'])); ?>";
     <?php } ?>
+    window.arrMonth = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
 
     $.ajax({
       type  : 'POST',
@@ -501,7 +502,7 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
       beforeSend: function() {
         $('#favoriteId').html('<div class="loadFavSide"><img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" /></div>');
       },
-      success: function(data) {console.log(data.length);
+      success: function(data) {
         var datax = data.data, 
         imgData = new Array, icarData = new Array, loadContent = '';
         for(var i = 0; i < datax.length; i++) {
@@ -536,6 +537,12 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
           var lokasi = 'Belum Tersedia';
           var waktu = 'Belum Tersedia';
           var lokasiLelang = (thisCabang[datax[i].CompanyId] !== undefined) ? thisCabang[datax[i].CompanyId] : 'Belum Tersedia';
+          console.log(datax[i]);
+          if (schedule > 0) {
+            var dateSplit = datax[i].date.split('-');
+            waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + datax[i].waktu;
+          }
+
           loadContent += '<div class="list-product box-recommend">'+
                         '<a href="javascript:void(0)">'+
                         '<div class="thumbnail">'+
@@ -562,7 +569,7 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
         }
         $('#favoriteId').html(loadContent);
 
-        if (schedule > 0) {
+        /*if (schedule > 0) {
           $.ajax({
             type: 'GET',
             url: 'http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/getLotDataOnline?schedule='+schedule+'&lot='+lot,
@@ -573,7 +580,7 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
               $('.wkt'+schedule).html(waktu);
             }
           });
-        }
+        }*/
       },
       error: function(e) {
         $('#favoriteId').html('<div class="loadFavSide"><img src="<?php echo base_url('assetsfront/images/background/management-empty.png'); ?>" alt="Loading" width="200px" /><div style="margin-top-10px">Data Favorite Tidak Ada</div></div>');
