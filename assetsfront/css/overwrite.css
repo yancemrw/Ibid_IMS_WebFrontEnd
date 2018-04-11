@@ -73,7 +73,8 @@ a.delete-compare {
 }
 
 .content-add-npl ul li {
-    margin-right: 8px !important;
+    margin-right: 4px !important;
+    margin-left: 4px !important;
     margin-bottom: 8px !important;
 }
 
@@ -468,6 +469,10 @@ a.delete-compare {
 	width: 125px;
 }
 
+.width-155px {
+    width: 155px !important;
+}
+
 .width-60 {
     width: 60%;
 }
@@ -579,6 +584,9 @@ a.delete-compare {
     }
     .btn-150px {
         width: 150px !important;
+    }
+    .button-npl button {
+        width: 250px;
     }
 }
 

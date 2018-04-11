@@ -165,7 +165,7 @@
 								}
 								
 								echo '
-								<li class="'.$items['rowid'].'">
+								<li class="'.$items['rowid'].' width-155px">
 									<h2 class="'.@$h2Class.'">
 										<img src="'.@$imgPath.'" alt=""> '.@$items['options']['Item'].' 
 										<a href="#" class="delete-npl" thisrowid="'.@$items['rowid'].'" onclick="return thisremove(\''.@$items['rowid'].'\')"></a>

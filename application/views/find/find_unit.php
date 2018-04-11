@@ -300,6 +300,13 @@ $(document).ready(function() {
    //show compare element
    let linked = '<?php echo site_url('list-compare'); ?>';
    setCompare(linked);
+   
+   $(".open-compare").click(function () {
+      $(".compare").show(500) && $(".open-compare").hide();
+   });
+   $(".close-compare").click(function () {
+      $(".compare").hide(500) && $(".open-compare").show();
+   });
 
    // array month
    window.arrMonth = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];

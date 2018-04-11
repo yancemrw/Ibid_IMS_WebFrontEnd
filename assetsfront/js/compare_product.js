@@ -1,6 +1,11 @@
 // check if compare product set
 var getlocal = getLocalStorage = JSON.parse(localStorage.getItem('CP'));
-if(getlocal !== undefined && getlocal !== null) {
+if(getlocal === undefined) {
+   if(getlocal.length === 0) {
+      localStorage.removeItem("CP");
+   }
+}
+else if(getlocal !== undefined && getlocal !== null) {
    setTimeout(function() {
       if(document.getElementById('addcompare') !== null) {
          document.getElementById('addcompare').style.display = 'block';

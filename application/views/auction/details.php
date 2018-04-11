@@ -157,7 +157,6 @@ myFav = [];
 <?php foreach($favorite as $row){ ?>
 myFav.push(<?php echo $row->AuctionItemId; ?>);
 <?php } ?>
-console.log(myFav);
 
   var dbRef = firebase.database();
   var activeCompany = [];
@@ -502,7 +501,7 @@ console.log(myFav);
       beforeSend: function() {
         $('#favoriteId').html('<div class="loadFavSide"><img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" /></div>');
       },
-      success: function(data) {
+      success: function(data) {console.log(data.length);
         var datax = data.data, 
         imgData = new Array, icarData = new Array, loadContent = '';
         for(var i = 0; i < datax.length; i++) {
@@ -577,6 +576,7 @@ console.log(myFav);
         }
       },
       error: function(e) {
+        $('#favoriteId').html('<div class="loadFavSide"><img src="<?php echo base_url('assetsfront/images/background/management-empty.png'); ?>" alt="Loading" width="200px" /><div style="margin-top-10px">Data Favorite Tidak Ada</div></div>');
         console.log(e);
       }
     });
