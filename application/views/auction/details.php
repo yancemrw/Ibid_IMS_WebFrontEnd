@@ -513,7 +513,7 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
             "BahanBakar"    : datax[i].bahanbakar,
             "Image"         : (imgData[i][0].ImagePath !== undefined) ? imgData[i][0].ImagePath : '<?php echo base_url('assetsfront/images/background/default.png') ?>',
             "Kilometer"     : datax[i].km,
-            "Lot"           : (datax[i].thisLotNo !== undefined && datax[i].thisLotNo !== null) ? datax[i].thisLotNo : '???',
+            "Lot"           : (datax[i].thisLotNo !== undefined && datax[i].thisLotNo !== null) ? datax[i].thisLotNo : '-',
             "Merk"          : (datax[i].merk !== undefined) ? datax[i].merk : '',
             "Model"         : (datax[i].model !== undefined) ? datax[i].model : '',
             "NoKeur"        : datax[i].nokeur,
@@ -531,7 +531,7 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
             "Warna"         : datax[i].warna
           };
           var json_str = JSON.stringify(jsonData);
-          var lot = (datax[i].thisLotNo !== null && datax[i].thisLotNo !== undefined) ? datax[i].thisLotNo : '???' ;
+          var lot = (datax[i].thisLotNo !== null && datax[i].thisLotNo !== undefined) ? datax[i].thisLotNo : '-' ;
           var schedule = (datax[i].thisScheduleId !== null) ? datax[i].thisScheduleId : 0 ;
           var lokasi = 'Belum Tersedia';
           var waktu = 'Belum Tersedia';
