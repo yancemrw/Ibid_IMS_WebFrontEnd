@@ -55,7 +55,7 @@
         </div>
         <div class="col-md-6 col-sm-6">
           <div class="login-socialmedia">
-            <a href="<?php echo facebook(); ?>" class="login-facebook"><i class="ic ic-facebook"></i> Masuk melalui Facebook</a>
+            <a href="javascript:void(0);" class="login-facebook"><i class="ic ic-facebook"></i> Masuk melalui Facebook</a>
             <a href="<?php echo site_url('omni/twitter/twitter');?>" class="login-twitter"><i class="ic ic-twitter"></i> Masuk melalui Twitter</a>
             <a href="<?php echo google(); ?>" class="login-google"><i class="ic ic-Google"></i> Masuk melalui Google</a>
             <a href="<?php echo linkedin(); ?>" class="login-linkedin"><i class="ic ic-linkedin"></i> Masuk melalui Linkedin</a>
@@ -524,6 +524,65 @@ function checkCookiePages() {
     deleteActiveMenu('refer_page');
   }
 }
+
+
+// =========================================================================
+// for new facebook login
+// =========================================================================
+function testAPI() {
+  FB.api('/me', {fields: 'email, name'}, function(response) {
+    $.ajax({
+      url: "<?=site_url('index.php/omni/facebook/callback/js_login')?>",
+      type: "POST",
+      data: response,
+      success: function(resp){
+        var resp = JSON.parse(resp);
+        bootoast.toast({
+          message: resp.message,
+          type: resp.status?'success':'warning',
+          position: 'top-center',
+          timeout: 5
+        });
+
+        if(resp.status){
+          setTimeout(function(){
+            window.location = resp.data.redirect;
+          }, 6000);
+        }
+      },
+      error: function(e){
+        bootoast.toast({
+          message: "Tidak bisa menghubung ke server",
+          type: 'warning',
+          position: 'top-center',
+          timeout: 5
+        });
+      }
+    });
+  });
+}
+
+(function(d, s, id){
+   var js, fjs = d.getElementsByTagName(s)[0];
+   if (d.getElementById(id)) {return;}
+   js = d.createElement(s); js.id = id;
+   js.src = "https://connect.facebook.net/en_US/sdk.js";
+   fjs.parentNode.insertBefore(js, fjs);
+ }(document, 'script', 'facebook-jssdk'));
+
+$(function(){
+  $('a.login-facebook').click(function(){
+      FB.init({
+        appId            : '156419028454962',
+        autoLogAppEvents : true,
+        xfbml            : true,
+        version          : 'v2.12'
+      });
+      FB.login(testAPI, {scope: 'email,public_profile', return_scopes: true});
+  });
+});
+// =========================================================================
+// created by andi
 </script>
 </body>
 </html>

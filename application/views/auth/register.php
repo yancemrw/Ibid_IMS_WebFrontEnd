@@ -69,7 +69,7 @@
             <div class="col-md-8 col-sm-6 text-center pull-left">
                 <div class="login-socialmedia register-socialmedia">
                     <p>Atau registrasi melalui</p>
-                    <a href="<?php echo facebook(); ?>" class="login-facebook"><span class="ic ic-facebook"></span>Facebook</a>
+                    <a href="javascript:void(0);" class="login-facebook"><span class="ic ic-facebook"></span>Facebook</a>
                     <a href="<?php echo site_url('omni/twitter/twitter');?>" class="login-twitter"><span class="ic ic-twitter"></span>Twitter</a>
                     <a href="<?php echo google(); ?>" class="login-google"><span class="ic ic-Google"></span>Google</a>
                     <a href="<?php echo linkedin(); ?>" class="login-linkedin"><span class="ic ic-linkedin"></span>Linkedin</a>
