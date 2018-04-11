@@ -451,7 +451,15 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                   case 1 : statusStock = 'Online'; classStatus = 'overlay-status-online'; break;
                   case null: statusStock = 'Live'; classStatus = 'overlay-status-live'; break;
                }
-               content = '<div class="col-md-4" id="this'+dataz.AuctionItemId+'">'+
+               
+			   
+				if (schedule > 0) {
+					var dateSplit = dataz.date.split('-');
+					waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + dataz.waktu;
+				}
+			   
+			   
+			   content = '<div class="col-md-4" id="this'+dataz.AuctionItemId+'">'+
                               '<div class="list-product box-recommend">'+
                               '<a href="<?php echo $link_detail; ?>/'+dataz.AuctionItemId+'">'+
                               '<div class="thumbnail">'+
@@ -475,7 +483,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                               '</div>'+
                               '</div>';
                $('#loadlist').append(content);
-               if (schedule > 0) {
+               /* if (schedule > 0) {
                   $.ajax({
                      type: 'GET',
                      url: 'http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/getLotDataOnline?schedule='+schedule+'&lot='+lot,
@@ -495,7 +503,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                      }
                   });
                   
-               }
+               } */
                $('#btnFilter').attr('disabled', false);
             }
             $('#mored').css('display', 'block');
@@ -577,6 +585,13 @@ function loadContainerPaging(offset, limit, linked, dataForm = '') {
                   case 1 : statusStock = 'Online'; classStatus = 'overlay-status-online'; break;
                   case null: statusStock = 'Live'; classStatus = 'overlay-status-live'; break;
                }
+			   
+			   
+			   if (schedule > 0) {
+					var dateSplit = dataz.date.split('-');
+					waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + dataz.waktu;
+				}
+				
                content = '<div class="col-md-4" id="this'+dataz.AuctionItemId+'">'+
                               '<div class="list-product box-recommend">'+
                               '<a href="<?php echo $link_detail; ?>/'+dataz.AuctionItemId+'">'+
@@ -601,7 +616,7 @@ function loadContainerPaging(offset, limit, linked, dataForm = '') {
                               '</div>'+
                               '</div>';
                $('#loadlist').children().last().after(content);
-               if (schedule > 0) {
+               /* if (schedule > 0) {
                   $.ajax({
                      type: 'GET',
                      url: 'http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/getLotDataOnline?schedule='+schedule+'&lot='+lot,
@@ -621,7 +636,7 @@ function loadContainerPaging(offset, limit, linked, dataForm = '') {
                      }
                   });
                   
-               }
+               } */
                $('#btnFilter').attr('disabled', false);
             }
             $('#mored').css('display', 'block');
