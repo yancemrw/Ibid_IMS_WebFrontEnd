@@ -537,7 +537,7 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
           var lokasi = 'Belum Tersedia';
           var waktu = 'Belum Tersedia';
           var lokasiLelang = (thisCabang[datax[i].CompanyId] !== undefined) ? thisCabang[datax[i].CompanyId] : 'Belum Tersedia';
-          console.log(datax[i]);
+          
           if (schedule > 0) {
             var dateSplit = datax[i].date.split('-');
             waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + datax[i].waktu;

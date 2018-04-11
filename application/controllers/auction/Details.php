@@ -35,7 +35,6 @@ class Details extends CI_Controller {
 				$dataApi = json_decode($responseApi['response'],true);
 				$cabang = $dataApi['data'];
 			}
-			$data['cabang'] = @$cabang;
 			############################################################
 
 			$scheduleURL = linkservice('AMSAUCTION').'multicurrentlot';
@@ -52,6 +51,7 @@ class Details extends CI_Controller {
 				'img1' => base_url().'assetsfront/images/background/img-recommend-1.jpg',
 				'img2' => base_url().'assetsfront/images/background/img-recommend-2.jpg',
 				'img3' => base_url().'assetsfront/images/background/img-recommend-3.jpg',
+				'cabang' => @$cabang
 			);
 			
 			$thisNpl = array();
