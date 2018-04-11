@@ -24,7 +24,7 @@ function linkedin()
 function facebook()
 {
 	$ci =& get_instance();
-	// require_once  APPPATH.'../omni/facebook/php-sdk-v4/src/Facebook/autoload.php';
+	require_once  APPPATH.'../omni/facebook/php-sdk-v4/src/Facebook/autoload.php';
   $appid      = $ci->config->item('fb')['app_id'];
   $app_secret = $ci->config->item('fb')['app_secret']; 
 	$fb = new Facebook\Facebook([
