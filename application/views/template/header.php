@@ -62,6 +62,7 @@
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/overwrite.css?alpha.7'); ?>">
 
    <!-- Header Js -->
+   <script>var img_empty = "<?php echo base_url('assetsfront/images/background/management-empty.png'); ?>";</script>
    <script src="<?php echo base_url('assetsfront/js/jquery-3.2.1.min.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/js/bootstrap.min.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/js/jquery.sticky.js'); ?>"></script>
@@ -79,7 +80,7 @@
    <script src="<?php echo base_url('assetsfront/js/lightgallery.min.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/js/lg-thumbnail.min.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/bootoast/bootoast.js'); ?>"></script>
-   <script src="<?php echo base_url('assetsfront/js/compare_product.js'); ?>"></script>
+   <script src="<?php echo base_url('assetsfront/js/compare_product.js?alpha.1'); ?>"></script>
 
    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
    <script>
