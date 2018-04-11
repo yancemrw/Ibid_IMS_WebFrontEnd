@@ -41,6 +41,8 @@ class Whislist extends CI_Controller {
 				$data[$key]->dataPrice = @$row->FinalPriceItem ? $this->currency_format($row->FinalPriceItem) : 'Belum Tersedia';
 				$data[$key]->Lot = @$row->thisLotNo ? $row->thisLotNo : '???';
 
+				$data[$key]->thisScheduleName = strlen($row->thisScheduleName)>0 ? $row->thisScheduleName : 'Belum Tersedia';
+
 				// set json for data compare
 				$jsonCompare = new stdClass();
 				$jsonCompare->AuctionItemId = $row->AuctionItemId;
