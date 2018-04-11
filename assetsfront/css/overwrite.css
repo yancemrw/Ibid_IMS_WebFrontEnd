@@ -72,6 +72,10 @@ a.delete-compare {
 	font-size: 14px !important;
 }
 
+.btn-150px {
+    width: 150px !important;
+}
+
 .content-add-npl ul li {
     margin-right: 4px !important;
     margin-left: 4px !important;
