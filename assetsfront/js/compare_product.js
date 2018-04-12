@@ -15,6 +15,7 @@ else {
                   '<p>Oops.... <span>Data Perbandingan Tidak Ada.</span></p>'+
                   '</div>';
    setTimeout(function() {
+      localStorage.removeItem("CP");
       $('#loadContent').children().replaceWith(contents);
    }, 1000);
 }
