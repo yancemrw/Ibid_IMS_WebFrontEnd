@@ -499,7 +499,7 @@ $(document).ready(function() {
 function checkOnlyNumber(ele, event, max) {
   var charCode = (event.which) ? event.which : event.keyCode;
   var val = $(ele).val();
-  if(charCode === 190 || charCode === 229 || charCode == 8) {
+  if(charCode === 190 || charCode === 229 || charCode === 8 || val.substr(val.length-1, val.length) == '.') {
     // $(ele).val($(ele).val().replace(new RegExp(".", ""), ""));
     $(ele).val(val.substr(0, (val.length)));
   }
