@@ -501,6 +501,7 @@ function checkOnlyNumber(ele, event, max) {
   var val = $(ele).val();
   if(charCode === 190 || charCode === 229 || val.substr(val.length-1, val.length) == ".") {
     $(ele).val(val.replace(new RegExp(".",""), ""));
+    // $(ele).val($(ele).val().replace(new RegExp(".", ""), ""));
     return false;
   }
   else if($(ele).val().length >= max) {
