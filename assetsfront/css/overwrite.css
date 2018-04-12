@@ -908,6 +908,10 @@ a.delete-compare {
 }
 
 @media (max-width: 480px) {
+    .favorite {
+        left: -38px;
+        padding: 10px;
+    }
     .minimal-height {
         min-height: 325px;
     }
@@ -927,6 +931,10 @@ a.delete-compare {
 }
 
 @media (max-width: 420px) {
+    .favorite {
+        left: 0;
+        padding: 10px;
+    }
     .row {
         margin-right: -15px !important;
     }
@@ -948,6 +956,10 @@ a.delete-compare {
 }
 
 @media (max-width: 414px) {
+    .favorite {
+        left: 0;
+        padding: 10px;
+    }
     .minimal-height {
         min-height: 280px;
     }
@@ -982,6 +994,10 @@ a.delete-compare {
 }
 
 @media (max-width: 412px) {
+    .favorite {
+        left: 0;
+        padding: 10px;
+    }
     .empty-fav-icon {
         margin-right: 4px;
     }
@@ -1032,6 +1048,10 @@ a.delete-compare {
 }
 
 @media (max-width: 390px) {
+    .favorite {
+        left: 0;
+        padding: 10px;
+    }
     .minimal-height {
         min-height: 225px;
     }
@@ -1041,6 +1061,10 @@ a.delete-compare {
 }
 
 @media (max-width: 384px) {
+    .favorite {
+        left: 0;
+        padding: 10px;
+    }
     .minimal-height {
         min-height: 258px;
     }
@@ -1094,6 +1118,10 @@ a.delete-compare {
 }
 
 @media (max-width: 375px) {
+    .favorite {
+        left: 0;
+        padding: 10px;
+    }
     .product-mob.whislist .box-recommend .thumbnail-favorite {
         height: 250px;
     }
@@ -1115,6 +1143,10 @@ a.delete-compare {
 }
 
 @media (max-width: 370px) {
+    .favorite {
+        left: 0;
+        padding: 10px;
+    }
     .minimal-height {
         min-height: 200px;
     }
@@ -1128,6 +1160,10 @@ a.delete-compare {
 }
 
 @media (max-width: 360px) {
+    .favorite {
+        left: 0;
+        padding: 10px;
+    }
     .row {
         margin-right: -15px !important;
     }
@@ -1198,6 +1234,10 @@ a.delete-compare {
 }
 
 @media(max-width: 320px) {
+    .favorite {
+        left: 0;
+        padding: 10px;
+    }
     .minimal-height {
         min-height: 210px;
     }
