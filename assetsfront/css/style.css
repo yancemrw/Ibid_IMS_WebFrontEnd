@@ -410,7 +410,7 @@ header:before {
     text-align: left;
     padding: 10px;
     border: 1px solid #ccc;
-    width: 100%;
+    width: 100% !important;
 }
 
 
