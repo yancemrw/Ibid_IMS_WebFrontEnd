@@ -78,9 +78,12 @@ $(document).ready(function() {
 
 	$('#btn-next').click(function() {
 		if($('input[name="schedules[]"]:checked').length < 5) {
-			$('input[name="schedules[]"]:checked').each(function() {
-				//location.href = '<?php echo site_url("detail-auction") ?>';
-			});
+			/*$('input[name="schedules[]"]:checked').each(function() {
+				location.href = '<?php echo site_url("detail-auction") ?>';
+			});*/
+			$('#btn-next')
+				.prop('disabled', true)
+				.html('Selanjutnya <i class="fa fa-spin fa-lg fa-refresh" style="position:absolute; margin-top:3px; right:80px; z-index:1;"></i>');
 			$("#auction-form").submit();
 		}
 		else {

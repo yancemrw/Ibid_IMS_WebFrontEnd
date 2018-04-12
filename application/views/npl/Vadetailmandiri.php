@@ -4,8 +4,8 @@
 		<div class="margin-left-min15px margin-right-min15px">
 			<div class="col-md-12 text-center">
 				<div class="box-virtual-info">
-					<div class="col-md-2"><img src="<?php echo base_url('assetsfront/images/icon/virtual-secure.png'); ?>"></div>
-					<div class="col-md-10">
+					<div class="vadetail-secicon"><img src="<?php echo base_url('assetsfront/images/icon/virtual-secure.png'); ?>"></div>
+					<div class="vadetail-sectext">
 						<ul>
 							<li>Selalu waspada terhadap pihak tidak bertanggung jawab</li>
 							<li>Jangan lakukan pembayaran dengan nominal yang berbeda dengan yang tertera pada tagihan kamu.</li>

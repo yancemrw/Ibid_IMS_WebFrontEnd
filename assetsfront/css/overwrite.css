@@ -465,6 +465,16 @@ a.delete-compare {
     margin-right: 0;
 }
 
+.vadetail-secicon {
+    float: left;
+    width: 20%;
+}
+
+.vadetail-sectext {
+    float: left;
+    width: 80%;
+}
+
 .width-unset {
     width: unset !important;
 }
@@ -1011,6 +1021,14 @@ a.delete-compare {
     .header-live-auction .select-custom~.select2-container {
         width: 96% !important;
     }
+    .vadetail-secicon {
+        float: left;
+        width: 25%;
+    }
+    .vadetail-sectext {
+        float: left;
+        width: 75%;
+    }
 }
 
 @media (max-width: 390px) {
@@ -1064,6 +1082,14 @@ a.delete-compare {
     }
     .header-live-auction .select-custom~.select2-container {
         width: 96% !important;
+    }
+    .vadetail-secicon {
+        float: left;
+        width: 30%;
+    }
+    .vadetail-sectext {
+        float: left;
+        width: 70%;
     }
 }
 
@@ -1160,6 +1186,14 @@ a.delete-compare {
     }
     .header-live-auction .select-custom~.select2-container {
         width: 95% !important;
+    }
+    .vadetail-secicon {
+        float: left;
+        width: 30%;
+    }
+    .vadetail-sectext {
+        float: left;
+        width: 70%;
     }
 }
 

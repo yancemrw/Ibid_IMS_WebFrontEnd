@@ -94,13 +94,16 @@
                       <?php if ($this->userdata['UserId'] > 0){ ?>
                       <div class="select-code clearfix">
                          <select class="form-control select-custom" id="used-npl<?php echo $key+1;?>">
-                            <?php foreach($thisNpl[$key] as $row){ ?>
-                            <option value="<?php echo $row->NPLNumber; ?>" id="<?php echo $value->ScheduleId;?>-<?php echo $row->NPLType; ?>-npl-<?php echo $row->NPLNumber; ?>"><?php echo $row->NPLNumber; ?></option>
-                            <?php } ?>
-                            <!-- option value="100001" selected>#100001</option>
-                            <option value="100002">#100002</option>
-                            <option value="100003">#100003</option>
-                            <option value="100004">#100004</option -->
+                            <?php 
+                            if($thisNpl[$key] !== null) {
+                              foreach($thisNpl[$key] as $row) {
+                                echo '<option value="'.$row->NPLNumber.'" id="'.$value->ScheduleId.'-'.$row->NPLType.'-npl-'.$row->NPLNumber.'">'.$row->NPLNumber.'</option>';
+                              } 
+                            }
+                            else {
+                              echo '<option value="">Tidak Ada NPL</option>';
+                            }
+                            ?>
                          </select>
                       </div>
                       <div class="button-bid">
@@ -386,7 +389,18 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
                 $('#bid<?php echo $key+1;?>').prop('disabled', false);
               } 
             }
-            $('#lastbid<?php echo $key+1;?>').val(snap<?php echo $key+1; ?>.val().bid);
+
+            // handle button tawar
+            $('#bid<?php echo $key+1;?>').click(function(e) {
+              if($('#used-npl<?php echo $key+1;?> option').filter(":selected").val() === '') {
+                e.preventDefault();
+                return false;
+              }
+              else {
+                $('#lastbid<?php echo $key+1;?>').val(snap<?php echo $key+1; ?>.val().bid);
+              }
+            });
+
             $('#bidding-log<?php echo $key+1;?> li').removeClass('active');
             $('#bidding-log<?php echo $key+1;?>').prepend(logHtmlFromObject(logVal));
             $('#top-bidder<?php echo $key+1;?>').text('Rp. ' + addPeriod(snap<?php echo $key+1; ?>.val().bid));
