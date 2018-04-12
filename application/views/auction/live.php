@@ -5,7 +5,7 @@
 				<h2>Live Auction</h2>
 				<p>Pilih Jadwal Lelang Yang Ingin Anda Ikuti Maksimal 4</p>
 			</div>
-			<div class="col-md-6 col-sm-6 text-right">
+			<div class="col-md-6 col-sm-6">
 				<select id="thisSelectItem" class="form-control select-custom">
 					<?php foreach($data_unit as $ukey => $uvalue) {
 						echo '<option value="'.$uvalue->ItemId.'">'.$uvalue->ItemName.'</option>';

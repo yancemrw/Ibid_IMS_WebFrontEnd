@@ -410,7 +410,7 @@ header:before {
     text-align: left;
     padding: 10px;
     border: 1px solid #ccc;
-    width: 100%!important
+    width: 100%;
 }
 
 
@@ -5697,7 +5697,6 @@ form.form-inline.form-auction {
 .header-live-auction .select-custom~.select2-container {
     max-width: 250px!important;
     background-color: #fff;
-    margin-right: 5px;
 }
 
 .more-button {

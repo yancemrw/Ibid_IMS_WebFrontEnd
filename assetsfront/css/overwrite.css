@@ -743,6 +743,15 @@ a.delete-compare {
     .btn-150px {
         width: 150px !important;
     }
+    .header-live-auction .select-custom~.select2-container {
+        width: 95% !important;
+    }
+    .form-auction input[type=checkbox]+label {
+        padding-top: 10px;
+    }
+    .form-auction .kota, .form-auction input[type=checkbox]+label p {
+        margin-top: 10px;
+    }
 }
 
 @media (max-width: 640px) {
@@ -798,6 +807,15 @@ a.delete-compare {
     .button-filter button, .button-filter button:hover, .button-filter button:focus {
         width: 100%;
     }
+    .header-live-auction .select-custom~.select2-container {
+        width: 98% !important;
+    }
+    .form-auction input[type=checkbox]+label {
+        padding-top: 10px;
+    }
+    .form-auction .kota, .form-auction input[type=checkbox]+label p {
+        margin-top: 10px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -805,6 +823,7 @@ a.delete-compare {
         min-height: 194px;
     }
     .favorite {
+        left: -38px;
         padding: 10px;
     }
     .empty-fav-icon {
@@ -866,6 +885,15 @@ a.delete-compare {
     }
     .btn-150px {
         width: 150px !important;
+    }
+    .header-live-auction .select-custom~.select2-container {
+        width: 97% !important;
+    }
+    .form-auction input[type=checkbox]+label {
+        padding-top: 10px;
+    }
+    .form-auction .kota, .form-auction input[type=checkbox]+label p {
+        margin-top: 10px;
     }
 }
 
@@ -938,6 +966,9 @@ a.delete-compare {
     .btn-150px {
         width: 150px !important;
     }
+    .header-live-auction .select-custom~.select2-container {
+        width: 96% !important;
+    }
 }
 
 @media (max-width: 412px) {
@@ -976,6 +1007,9 @@ a.delete-compare {
     }
     .btn-150px {
         width: 150px !important;
+    }
+    .header-live-auction .select-custom~.select2-container {
+        width: 96% !important;
     }
 }
 
@@ -1027,6 +1061,9 @@ a.delete-compare {
     }
     .btn-150px {
         width: 150px !important;
+    }
+    .header-live-auction .select-custom~.select2-container {
+        width: 96% !important;
     }
 }
 
@@ -1120,6 +1157,9 @@ a.delete-compare {
     }
     .btn-150px {
         width: 150px !important;
+    }
+    .header-live-auction .select-custom~.select2-container {
+        width: 95% !important;
     }
 }
 

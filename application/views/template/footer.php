@@ -499,9 +499,11 @@ $(document).ready(function() {
 function checkOnlyNumber(ele, event, max) {
   var charCode = (event.which) ? event.which : event.keyCode;
   var val = $(ele).val();
-  if(charCode === 190 || charCode === 229 || val.substr(val.length-1, val.length) == ".") {
-    $(ele).val(val.replace(new RegExp(".",""), ""));
-    // $(ele).val($(ele).val().replace(new RegExp(".", ""), ""));
+  //if(charCode === 190 || charCode === 229 || val.substr(val.length-1, val.length) == ".") {
+  if(charCode === 190 || charCode === 229) {
+    //$(ele).val(val.replace(new RegExp(".",""), ""));
+    var regexp = new RegExp(".", "");
+    $(ele).val($(ele).val().replace(regexp, ""));
     return false;
   }
   else if($(ele).val().length >= max) {
