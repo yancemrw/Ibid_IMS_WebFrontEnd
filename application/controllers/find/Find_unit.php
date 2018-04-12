@@ -9,7 +9,7 @@ class Find_unit extends CI_Controller {
 		$this->userdata = $this->session->userdata('userdata');
 	}
 
-	public function index() {		
+	public function index() {
 		$data = array(
 			'header_white' => "header-white",
 			'userdata'	=> $this->userdata,
@@ -19,6 +19,11 @@ class Find_unit extends CI_Controller {
 			'img' => base_url('assetsfront/images/background/1.jpg'),
 			'link_detail' => site_url('detail-lelang')
 		);
+
+		// handle post method from home searching
+		if(@$this->input->post()) {
+			$data['home_input'] = json_encode($this->input->post());
+		}
 		
 		$itemAttr1 = @$_GET['itemAttr1'];
 		$itemAttr2 = @$_GET['itemAttr2'];

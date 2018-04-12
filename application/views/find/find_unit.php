@@ -350,18 +350,32 @@ $(document).ready(function() {
       $('.form-filter').toggleClass('open')
    })
 
-   // get list frontend
-   loadContainer(0, 6, linked);
+   // handle searching from home
+   var arrPost = '<?php echo $home_input; ?>', thisFormInput;
+   if(arrPost !== '') {
+      thisFormInput = jsonSerialize(JSON.parse(arrPost));
+      window.countTotal = 0;
+      window.dataForm = '';
+      actionTotalData = 0;
+      $('#loadlist').html('');
+      loadContainer(0, 6, linked, thisFormInput);
+      //return false;
+   }
+   else {
+      loadContainer(0, 6, linked);
+      //return false;
+   }
 	
-	$('#thisFormFilter').submit(function() {
-		var thisFormInput = $(this).serialize();
+	$('#thisFormFilter').submit(function(e) {
+      e.preventDefault();
+		thisFormInput = $(this).serialize(); console.log(thisFormInput);
       window.countTotal = 0;
       window.dataForm = '';
       actionTotalData = 0;
       $('#loadlist').html('');
       $('.form-filter').toggleClass('open')
       loadContainer(0, 6, linked, thisFormInput);
-		return false;
+		//return false;
 	});
 
    $('input').blur(function() {
@@ -507,6 +521,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
             countContainer(offset, limit, linked, dataTotal, datas.length, dataForm);
          }
          else {
+            $('#btnFilter').attr('disabled', false);
             $('#loadings').replaceWith('<div id="loadings" class="margin-10px margin-top-80px text-align-center"><img src="<?php echo base_url('assetsfront/images/background/management-empty.png'); ?>" alt="Loading" width="200px" /><div class="style="color:#757575">Data Tidak Ditemukan!</div></div>');
          }
       }
@@ -830,5 +845,13 @@ function getJadwalAms(){
 			$('#divSchedule').addClass('input-group-ss');
 		}
 	});
+}
+
+function jsonSerialize(value) {
+   var returnData = '', objKey = Object.keys(value), objVal = Object.values(value);
+   for(var i = 0; i < objKey.length; i++) {
+      returnData += '&'+objKey[i]+'='+objVal[i];
+   }
+   return returnData;
 }
 </script>

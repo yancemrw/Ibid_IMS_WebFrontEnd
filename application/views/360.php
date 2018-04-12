@@ -12,7 +12,8 @@
 	<script>/* If you want to stop starting auto scroll panorama just change 'false' value below. */ var autoScrol=true; </script> 
 </head>
 <body>
-	<img id="panoramaImage" src="<?php echo base_url('assetsfront/images/background/360.jpg'); ?>"> 
+	<img id="panoramaImage" src="<?php echo base_url('assetsfront/images/background/360.jpg'); ?>">
+	<!--img id="panoramaImage" src="<?php echo $img; ?>"-->
 	<div id="panorama"> 
 		<span id="fullScreenMode" >
 			<span id="fullscreenPan">

@@ -6,31 +6,13 @@
       </ul>
       <div class="tab-content">
          <div role="tabpanel" class="tab-pane search-transport active" id="tab-mobile-1">
-            <form class="form-inline clearfix">
+            <form class="form-inline clearfix" action="<?php echo site_url('cari-lelang'); ?>" method="POST">
 
-				<?php foreach($formDinamis as $row){ echo $row['typeInput']; } ?>
-				<!-- div class="form-group clearfix"> namaLabel idInput
-				  <select id="ItemId" class="select-custom form-control">
-					 <?php foreach($itemType as $row){ ?>
-					 <option value="<?php echo $row['ItemId']; ?>"><?php echo $row['ItemName']; ?></option>
-					 <?php } ?>
-				  </select>
-				</div>
-				<div id="thisSearchBrand" class="form-group clearfix">
-					<div class="form-group clearfix">
-					  <select class="select-custom form-control">
-						 <option>Merk</option>
-					  </select>
-					</div>
-					<div class="form-group clearfix">
-					  <select class="select-custom form-control">
-						 <option>Seri</option>
-					  </select>
-					</div>
-				</div -->
-				<div class="form-group">
-				  <button class="btn btn-lg btn-green btn-search" disabled>Cari</button>
-				</div>
+   				<?php foreach($formDinamis as $row) { echo $row['typeInput']; } ?>
+
+   				<div class="form-group">
+   				  <button class="btn btn-lg btn-green btn-search" disabled>Cari</button>
+   				</div>
 
             </form>
          </div>
@@ -38,9 +20,6 @@
             <form class="form-inline clearfix">
                <div class="form-group">
                   <select class="select-custom form-control" id="thisCabang">
-                     <!-- option value ="" ></option>
-                     <option value ="" >Bandung</option>
-                     <option value ="" >Jakarta</option -->
                      <?php foreach($cabang as $row){ ?>
                      <option value="<?php echo $row['CompanyId']; ?>" ><?php echo ucwords(substr(strtolower($row['CompanyName']), 4)); ?></option>
                      <?php } ?>
