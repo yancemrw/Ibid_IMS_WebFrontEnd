@@ -498,12 +498,17 @@ $(document).ready(function() {
 // handle input number only for mobile and website
 function checkOnlyNumber(ele, event, max) {
   var charCode = (event.which) ? event.which : event.keyCode;
+  var val = $(ele).val();
   if(charCode === 190 || charCode === 229) {
-    $(ele).val($(ele).val().replace(new RegExp(".", ""), ""));
+    // $(ele).val($(ele).val().replace(new RegExp(".", ""), ""));
+    $(ele).val(val);
     return false;
   }
   else if($(ele).val().length >= max) {
     $(ele).val($(ele).val().substr(0, max));
+  }
+  else if(charCode == 8) {
+    $(ele).val(val.substr(0, (val.length)));
   }
 }
 
