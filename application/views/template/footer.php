@@ -500,7 +500,8 @@ function checkOnlyNumber(ele, event, max) {
   var charCode = (event.which) ? event.which : event.keyCode;
   var val = $(ele).val();
   if(charCode === 190 || charCode === 229 || val.substr(val.length-1, val.length) == ".") {
-    $(ele).val(val.replace(".", ""));
+    // $(ele).val(val.replace(".", ""));
+    return false;
   }
   else if($(ele).val().length >= max) {
     $(ele).val(val.substr(0, max));
