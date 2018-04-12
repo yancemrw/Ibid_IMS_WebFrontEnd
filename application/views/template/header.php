@@ -51,15 +51,15 @@
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/font-awesome/css/font-awesome.min.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/select2.min.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/fullcalendar.min.css') ?>">
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/style.css?alpha.8') ?>">
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/responsive.css?alpha.8') ?>">
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/style.css') ?>">
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/responsive.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/slick.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/lightgallery.min.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/image-sprite-style.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/prettify.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/jquery.flipster.min.css'); ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/bootoast/bootoast.css'); ?>">
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/overwrite.css?alpha.8'); ?>">
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/overwrite.css'); ?>">
 
    <!-- Header Js -->
    <script>var img_empty = "<?php echo base_url('assetsfront/images/background/management-empty.png'); ?>";</script>
@@ -80,7 +80,7 @@
    <script src="<?php echo base_url('assetsfront/js/lightgallery.min.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/js/lg-thumbnail.min.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/bootoast/bootoast.js'); ?>"></script>
-   <script src="<?php echo base_url('assetsfront/js/compare_product.js?alpha.2'); ?>"></script>
+   <script src="<?php echo base_url('assetsfront/js/compare_product.js'); ?>"></script>
 
    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
    <script>
