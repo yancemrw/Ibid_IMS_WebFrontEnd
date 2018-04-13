@@ -79,9 +79,11 @@
                             }
                             else {
                             ?>
-                            <div class="product-empty text-align-center">
-                                <img src="<?php echo base_url('assetsfront/images/icon/ic-transaction-empty.png'); ?>" alt="" title="">
-                                <div class="font-16px font-silver">Data Tidak Ada</div>
+                            <div class="table-responsive table-container table-transaction content-empty">
+                                <div class="product-empty">
+                                    <img src="<?php echo base_url('assetsfront/images/icon/ic-transaction-empty.png'); ?>" alt="" title="">
+                                </div>
+                                <p>Oops.... <span>Data Favorite Tidak Ada.</span></p>
                             </div>
                             <?php
                             }

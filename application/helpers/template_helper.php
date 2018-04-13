@@ -134,12 +134,12 @@ function login_status_form_mobile($userdata) {
                                     <h3>'.$profile_name.'</h3>
                                 </div>
                                 <ul>
-                                    <li class="acc_notif"><a href="'.site_url('notification').'"><span class="ic_menu"></span>Notifikasi<!--span>10</span--></a></li>
-                                    <li class="acc_transaction"><a href="'.site_url('transaction').'"><span class="ic_menu"><i ></i></span>Transaksi</a></li>
-                                    <li class="acc_npl"><a href="'.site_url('npl_dashboard').'"><span class="ic_menu"><i ></i></span>NPL Management</a></li>
-                                    <li class="acc_setting"><a href="'.site_url('dashboard').'"><span class="ic_menu"><i ></i></span>Pengaturan</a></li>
-                                    <li class="acc_favorite "><a href="'.site_url('favorite').'"><span class="ic_menu"><i ></i></span>Favorit</a></li>
-                                    <li class="acc_price"><a href="'.site_url('basic-price').'"><span class="ic_menu"><i ></i></span>Harga Dasar</a></li>
+                                    <li class="acc_notif"><a href="'.site_url('notification').'"><span class="ic_menu"><i></i></span>Notifikasi<!--span>10</span--></a></li>
+                                    <li class="acc_transaction"><a href="'.site_url('transaction').'"><span class="ic_menu"><i></i></span>Transaksi</a></li>
+                                    <li class="acc_npl"><a href="'.site_url('npl_dashboard').'"><span class="ic_menu"><i></i></span>NPL Management</a></li>
+                                    <li class="acc_setting"><a href="'.site_url('dashboard').'"><span class="ic_menu"><i></i></span>Pengaturan</a></li>
+                                    <li class="acc_favorite "><a href="'.site_url('favorite').'"><span class="ic_menu"><i></i></span>Favorit</a></li>
+                                    <li class="acc_price"><a href="'.site_url('basic-price').'"><span class="ic_menu"><i></i></span>Harga Dasar</a></li>
                                 </ul>
                             </div>
                         </li>
