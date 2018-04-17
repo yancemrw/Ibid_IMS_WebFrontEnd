@@ -249,7 +249,7 @@
                      </ul>
                   </div>
                   <?php if($this->session->userdata('userdata') !== null) { ?>
-                  <button class="btn btn-orange" id="btn-favorit" onclick="addFav(<?php echo $data[0]->AuctionItemId; ?>, <?php echo $userdata['UserId'] ?>, this)">
+                  <button class="btn btn-orange" id="btn-favorit" onclick="addFav(<?php echo $data[0]->AuctionItemId; ?>, <?php echo $userdata['UserId'] ?>, this, 1)">
                      <?php echo ($favAction->status === 1) ? '<i class="fa fa-heart"></i>' : ''; ?> Tambah ke Favorit
                   </button>
                   <button class="btn btn-green <?php echo ($this->session->userdata('userdata') === null) ? 'btn-bandingkan' : ''; ?>" onclick="compare_action('<?php echo site_url('list-compare'); ?>')" type="button">
@@ -337,13 +337,6 @@
             <p><i class="fa fa-exclamation"></i> Pilih produk yang akan di bandingkan, minimal 2 produk untuk di compare</p>
             <div class="col-md-12">
                <div id="loadContent"></div>
-               <!--div class="box-compare add-compare-box">
-                  <a href="javascript:void(0)"><i class="fa fa-plus-circle"></i></a>
-               </div-->
-               <div class="box-compare button-compare">
-                  <p>Untuk memulai perbandingan silakan klik button di bawah ini</p>
-                  <button class="btn btn-green btn-compare" onclick="location.href='<?php echo site_url('list-compare'); ?>'" type="button">Bandingkan</button>
-               </div>
             </div>
             <a href="javascript:void(0);" class="close-compare">Tutup <i class="fa fa-times"></i></a>
          </div>
@@ -384,6 +377,12 @@
       </div>
    </div>
 </div>
+
+<style>
+   .slick-slide img {
+      display: unset !important;
+   }
+</style>
 
 <script>
    var dbRef         = firebase.database();
@@ -796,7 +795,7 @@ $(document).ready(function() {
    $.ajax({
       type: 'GET',
       url: '<?php echo linkservice('stock')."relatedproduct/Lists"; ?>',
-      data: 'object=<?php echo $data[0]->ItemId; ?>&merk=<?php echo $data[0]->merk; ?>&price=90000000',
+      data: 'object=<?php echo $data[0]->ItemId; ?>&merk=<?php echo $data[0]->merk; ?>&price=90000000&userid=<?php echo $userdata['UserId']; ?>',
       beforeSend: function() {
          for(var i = 0; i < 4; i++) {
             var content =  '<div class="col-md-3">'+
@@ -825,7 +824,9 @@ $(document).ready(function() {
       success: function(data) {
          $('.related-product-slider').slick('unslick');
          $('#showrelated').children().remove();
-         var data = data.data;
+         var data = data.data,
+         sessiond = "<?php echo ($userdata !== null) ? 'TRUE' : 'FALSE'; ?>",
+         sessionId = '<?php echo ($userdata !== null) ? $userdata['UserId'] : ''; ?>';
          for(var i = 0; i < data.length; i++) {
             var datetime, location;
             if(data[i].schedule.status !== false) {
@@ -843,7 +844,7 @@ $(document).ready(function() {
                "Image": data[i].icarImage,
                //"Image": '//img.ibid.astra.co.id/item/12415/d8404a531ea286d733aa7c35bfbdc83c.jpg',
                "Kilometer": data[i].km,
-               "Lot" : (data[i].thisLotNo !== undefined && data[i].thisLotNo !== null) ? data[i].thisLotNo : '-',
+               "Lot": (data[i].thisLotNo !== undefined && data[i].thisLotNo !== null) ? data[i].thisLotNo : '-',
                "Merk": (data[i].merk !== undefined) ? data[i].merk : '',
                "Model": (data[i].model !== undefined) ? data[i].model : '',
                "NoKeur": data[i].nokeur,
@@ -862,6 +863,12 @@ $(document).ready(function() {
             };
             var json_str = JSON.stringify(compare_data);
             var link_detail = "<?php echo site_url('detail-lelang/'); ?>"+data[i].AuctionItemId;
+            var iconFav = (data[i].thisFavorite === 0) ? '<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon" />' : '<i class="fa fa-heart"></i>';
+            var bottom_favcom = '<div class="action-bottom">'+
+                                 '<button class="btn" onclick="addFav('+data[i].AuctionItemId+', '+sessionId+', this, 2)">'+iconFav+'<span>Favorit</span></button>'+
+                                 '<button class="btn btn-compare" onclick=\'set_compare_product('+json_str+', "'+link_detail+'")\'><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>'+
+                                 '</div>';
+            var favcom = (sessiond === 'TRUE') ? bottom_favcom : '';
             var content =  '<div class="col-md-3">'+
                            '<div class="list-product box-recommend">'+
                            '<a href="'+link_detail+'">'+
@@ -879,10 +886,7 @@ $(document).ready(function() {
                            '<p><span>Jadwal</span> <span class="fa fa-calendar"></span><span>'+datetime+'</span></p>'+
                            '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span><span>'+location+'</span></p>'+
                            '</a>'+
-                           '<div class="action-bottom">'+
-                           '<button class="btn"><i class="fa fa-heart"></i> Favorit</button>'+
-                           '<button class="btn btn-compare"><i class="ic ic-Bandingkan-green"></i> Bandingkan</button>'+
-                           '</div>'+
+                           favcom+
                            '</div>'+
                            '</div>';
             $('#showrelated').append(content);
@@ -948,7 +952,7 @@ function mobileSlick(value) {
 }
 
 // handle favorit function
-function addFav(aucid, id, ele) {
+function addFav(aucid, id, ele, type) {
    $.ajax({
       type: 'POST',
       url: '<?php echo linkservice('stock')."favorite/Checked"; ?>',
@@ -962,8 +966,14 @@ function addFav(aucid, id, ele) {
                url: '<?php echo linkservice('stock')."favorite/Add"; ?>',
                data: 'AuctionItemId='+aucid+'&CreateDate='+dateformat+'&CreateUserId='+id+'&StsDeleted=1',
                success: function(data) {
-                  var prevEle = ele;
-                  $(prevEle).html('<i class="fa fa-heart"></i> Tambah KE FAVORIT');
+                  if(type === 2) {
+                     var prevEle = ele.children[0];
+                     $(prevEle).replaceWith('<i class="fa fa-heart"></i>');
+                  }
+                  else {
+                     var prevEle = ele;
+                     $(prevEle).html('<i class="fa fa-heart"></i> Tambah KE FAVORIT');
+                  }
                   bootoast.toast({
                      message: 'Unit sudah ditambahkan ke daftar favorit kamu',
                      type: 'success',
@@ -987,8 +997,14 @@ function addFav(aucid, id, ele) {
                url: '<?php echo linkservice('stock')."favorite/Delete"; ?>',
                data: 'auctionid='+aucid+'&userid='+id,
                success: function(data) {
-                  var prevEle = ele.children[0];
-                  $(prevEle).replaceWith('');
+                  if(type === 2) {
+                     var prevEle = ele.children[0];
+                     $(prevEle).replaceWith('<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon" />');
+                  }
+                  else {
+                     var prevEle = ele.children[0];
+                     $(prevEle).replaceWith('');
+                  }
                   bootoast.toast({
                      message: 'Unit sudah dihapus dari daftar favorit kamu',
                      type: 'warning',
