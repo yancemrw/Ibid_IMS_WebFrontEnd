@@ -269,32 +269,8 @@
          <div class="col-md-12">
             <h2>Produk Terkait</h2>
          </div>
-         <div class="col-md-12 related-product-slider">
-            <?php for($footer = 0; $footer < 4; $footer++) { ?>
-            <div class="col-md-3">
-               <div class="list-product box-recommend">
-                  <a href="<?php echo $link_detail; ?>">
-                     <div class="thumbnail">
-                        <div class="thumbnail-custom">
-                           <img src="http:<?php echo $img_rec; ?>" />
-                        </div>
-                        <div class="overlay-grade">
-                           Grade <span>A</span>
-                        </div>
-                        <p class="overlay-lot">LOT 170</p>
-                     </div>
-                     <h2>DAIHATSU LUXIO 1.5 X MINIBUS AT</h2>
-                     <span>2014</span> <span class="price">Rp. 72.000.000</span>
-                     <p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span>04 September 2017</span></p>
-                     <p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Jakarta</span></p>
-                  </a>
-                  <div class="action-bottom">
-                     <button class="btn"><i class="fa fa-heart"></i> Favorit</button>
-                     <button class="btn btn-compare"><i class="ic ic-Bandingkan-green"></i> Bandingkan</button>
-                  </div>
-               </div>
-            </div>
-            <?php } ?>
+         <div class="col-md-12 related-product-slider" id="showrelated">
+            <!-- show content related product -->
          </div>
          <a href="javascript:;" class="open-compare" id="addcompare" style="display:none">Add Compare <i class="fa fa-plus"></i></a>
       </div>
@@ -481,6 +457,9 @@ $(document).ready(function() {
    // var scheduleRef   = companyRef.child('schedule/<?php echo $schedule_id; ?>');
    // var lotRef = scheduleRef.child('lot|stock/<?php echo $no_lot; ?>');
    // var now = new Date(<?php echo "$serverdate[0],".((int)$serverdate[1]-1).",".(int)$serverdate[2].",$serverdate[3],$serverdate[4],".(int)$serverdate[4].",".(int)$serverdate[4]; ?>).getTime();
+
+   // array month
+   window.arrMonth = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
 
    // get 360 link
    $('#show360').click(function() {
@@ -795,52 +774,6 @@ $(document).ready(function() {
       ]
    });
 
-   $('.related-product-slider').slick({
-      dots: false,
-      infinite: false,
-      speed: 300,
-    
-      prevArrow: false,
-      nextArrow: false,
-      slidesToShow: 4,
-      slidesToScroll: 4,
-      responsive: [
-         {
-            breakpoint: 1024,
-            settings: {
-               slidesToShow: 3,
-               slidesToScroll: 3,
-               infinite:false,
-               dots: true,
-               prevArrow: false,
-               nextArrow: false
-            }
-         },
-         {
-            breakpoint: 800,
-            settings: {
-               slidesToShow: 2,
-               slidesToScroll: 1,
-               dots: true,
-
-               prevArrow: false,
-               nextArrow: false
-            }
-         },
-         {
-            breakpoint: 600,
-            settings: {
-               slidesToShow: 1,
-               slidesToScroll: 1,
-               dots: true,
-
-               prevArrow: false,
-               nextArrow: false
-            }
-         }
-      ]
-   });
-
    $("#lightgallery").lightGallery({
       thumbnail: true,
       selector: ".stickys"
@@ -858,7 +791,161 @@ $(document).ready(function() {
    $('.nav-close').click(function() {
       $('.navbar-collapse.collapse').toggleClass('open')
    });
+
+   // create related product by object, merk, price
+   $.ajax({
+      type: 'GET',
+      url: '<?php echo linkservice('stock')."relatedproduct/Lists"; ?>',
+      data: 'object=<?php echo $data[0]->ItemId; ?>&merk=<?php echo $data[0]->merk; ?>&price=90000000',
+      beforeSend: function() {
+         for(var i = 0; i < 4; i++) {
+            var content =  '<div class="col-md-3">'+
+                           '<div class="list-product box-recommend">'+
+                           '<a href="#">'+
+                           '<div class="thumbnail">'+
+                           '<div class="thumbnail-custom">'+
+                           '<img src="<?php echo base_url('assetsfront/images/background/default.png'); ?>" height="197px" />'+
+                           '</div>'+
+                           '<div class="overlay-grade">'+
+                           '<span></span>'+
+                           '</div>'+
+                           '<p class="overlay-lot">LOT</p>'+
+                           '</div>'+
+                           '<h2></h2>'+
+                           '<span></span><span class="price"></span>'+
+                           '<p><span></span><span class="fa fa-calendar"></span><span></span></p>'+
+                           '<p><span></span><span class="fa fa-map-marker"></span><span></span></p>'+
+                           '</a>'+
+                           '</div>'+
+                           '</div>';
+            $('#showrelated').append(content);
+         }
+         mobileSlick(4);
+      },
+      success: function(data) {
+         $('.related-product-slider').slick('unslick');
+         $('#showrelated').children().remove();
+         var data = data.data;
+         for(var i = 0; i < data.length; i++) {
+            var datetime, location;
+            if(data[i].schedule.status !== false) {
+               var dateSplit = (data[i].schedule.schedule.date).split('-');
+               datetime = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + data[i].schedule.schedule.waktu;
+               location = data[i].schedule.schedule.CompanyName;
+            }
+            else {
+               datetime = 'Belum Tersedia';
+               location = 'Belum Tersedia';
+            }
+            var compare_data = {
+               "AuctionItemId": data[i].AuctionItemId,
+               "BahanBakar": data[i].bahanbakar,
+               "Image": data[i].icarImage,
+               //"Image": '//img.ibid.astra.co.id/item/12415/d8404a531ea286d733aa7c35bfbdc83c.jpg',
+               "Kilometer": data[i].km,
+               "Lot" : (data[i].thisLotNo !== undefined && data[i].thisLotNo !== null) ? data[i].thisLotNo : '-',
+               "Merk": (data[i].merk !== undefined) ? data[i].merk : '',
+               "Model": (data[i].model !== undefined) ? data[i].model : '',
+               "NoKeur": data[i].nokeur,
+               "NoMesin": data[i].nomesin,
+               "NoPolisi": data[i].nopolisi,
+               "NoRangka": data[i].norangka,
+               "NoSTNK": data[i].nostnk,
+               "Seri": (data[i].seri !== undefined) ? data[i].seri : '',
+               "Silinder": (data[i].silinder !== undefined) ? data[i].silinder : '',
+               "TaksasiGrade": data[i].nilaiIcar,
+               "Tahun": (data[i].tahun !== undefined) ? data[i].tahun : '',
+               "Transmisi": (data[i].transmisi !== undefined) ? data[i].transmisi : '',
+               "Tipe": (data[i].grade !== undefined) ? data[i].grade : '',
+               "Price": (data[i].FinalPriceItem !== undefined) ? data[i].FinalPriceItem : 0,
+               "Warna": data[i].warna
+            };
+            var json_str = JSON.stringify(compare_data);
+            var link_detail = "<?php echo site_url('detail-lelang/'); ?>"+data[i].AuctionItemId;
+            var content =  '<div class="col-md-3">'+
+                           '<div class="list-product box-recommend">'+
+                           '<a href="'+link_detail+'">'+
+                           '<div class="thumbnail">'+
+                           '<div class="thumbnail-custom">'+
+                           '<img src="'+data[i].icarImage+'" />'+
+                           '</div>'+
+                           '<div class="overlay-grade">'+
+                           'Grade <span>'+data[i].nilaiIcar+'</span>'+
+                           '</div>'+
+                           '<p class="overlay-lot">LOT '+data[i].thisLotNo+'</p>'+
+                           '</div>'+
+                           '<h2>'+data[i].merk+' '+data[i].seri+' '+data[i].silinder+' '+data[i].grade+' '+data[i].model+' '+data[i].transmisi+'</h2>'+
+                           '<span>'+data[i].tahun+'</span> <span class="price">Rp. '+currency_format(data[i].FinalPriceItem)+'</span>'+
+                           '<p><span>Jadwal</span> <span class="fa fa-calendar"></span><span>'+datetime+'</span></p>'+
+                           '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span><span>'+location+'</span></p>'+
+                           '</a>'+
+                           '<div class="action-bottom">'+
+                           '<button class="btn"><i class="fa fa-heart"></i> Favorit</button>'+
+                           '<button class="btn btn-compare"><i class="ic ic-Bandingkan-green"></i> Bandingkan</button>'+
+                           '</div>'+
+                           '</div>'+
+                           '</div>';
+            $('#showrelated').append(content);
+         }
+         mobileSlick(data.length);
+      },
+      error: function(data) {
+         bootoast.toast({
+            message: 'Koneksi terputus saat mengolah data produk terkait',
+            type: 'warning',
+            position: 'top-center',
+            timeout: 3
+         });
+      }
+   });
 });
+
+function mobileSlick(value) {
+   $('.related-product-slider').slick({
+      dots: false,
+      infinite: false,
+      speed: 300,
+    
+      prevArrow: false,
+      nextArrow: false,
+      slidesToShow: value,
+      slidesToScroll: value,
+      responsive: [
+         {
+            breakpoint: 1024,
+            settings: {
+               slidesToShow: 4,
+               slidesToScroll: 2,
+               infinite: false,
+               dots: true,
+               prevArrow: false,
+               nextArrow: false
+            }
+         },
+         {
+            breakpoint: 800,
+            settings: {
+               slidesToShow: 2,
+               slidesToScroll: 1,
+               dots: true,
+               prevArrow: false,
+               nextArrow: false
+            }
+         },
+         {
+            breakpoint: 600,
+            settings: {
+               slidesToShow: 1,
+               slidesToScroll: 1,
+               dots: true,
+               prevArrow: false,
+               nextArrow: false
+            }
+         }
+
+      ]
+   });
+}
 
 // handle favorit function
 function addFav(aucid, id, ele) {
