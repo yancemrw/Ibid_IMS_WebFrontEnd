@@ -4,7 +4,7 @@
          <div class="col-md-12">
             <form>
                <div class="form-group search-product">
-                  <input type="text" class="form-control" placeholder="Cari berdasarkan merek, tipe, atau kata kunci lain, contoh: acura sedan">
+                  <input type="text" class="form-control" id="searching" placeholder="Cari berdasarkan merek, tipe, atau kata kunci lain, contoh: acura sedan">
                   <i class="fa fa-search"></i>
                </div>
             </form>
@@ -358,24 +358,33 @@ $(document).ready(function() {
       window.dataForm = '';
       actionTotalData = 0;
       $('#loadlist').html('');
-      loadContainer(0, 6, linked, thisFormInput);
-      //return false;
+      loadContainer(0, 6, linked, thisFormInput, 1);
    }
    else {
-      loadContainer(0, 6, linked);
-      //return false;
+      loadContainer(0, 6, linked, '', 1);
    }
+
+   // handling top searching
+   $('#searching').keypress(function(e) {
+      var charCode = (e.which) ? e.which : e.keyCode;
+      var value = $('#searching').val();
+      if(charCode == 13) {
+         var arrSearch = value.split(/(\s+)/).filter( function(e) { return e.trim().length > 0; } );
+         $('#loadlist').html('');
+         loadContainer(0, 6, linked, 'keyWord='+arrSearch, 2);
+         e.preventDefault();
+      }
+   });
 	
 	$('#thisFormFilter').submit(function(e) {
       e.preventDefault();
-		thisFormInput = $(this).serialize(); console.log(thisFormInput);
+		thisFormInput = $(this).serialize();
       window.countTotal = 0;
       window.dataForm = '';
       actionTotalData = 0;
       $('#loadlist').html('');
       $('.form-filter').toggleClass('open')
-      loadContainer(0, 6, linked, thisFormInput);
-		//return false;
+      loadContainer(0, 6, linked, thisFormInput, 1);
 	});
 
    $('input').blur(function() {
@@ -396,15 +405,17 @@ $(document).ready(function() {
 });
 
 // load ajax content finding
-function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
+function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type = 1) {
    var initUserId = '<?php echo (@$this->session->userdata('userdata')['UserId']) ? '&userId='.$this->session->userdata('userdata')['UserId'] : ''; ?>';
    var formData = 'offset='+offset+'&limit='+limit+initUserId+'&'+dataForm;
+   var urlForm = (type === 1) ? '<?php echo linkservice('stock')."itemstock/Getfrontend"; ?>' : '<?php echo linkservice('stock')."itemstock/Getfrontendsearch"; ?>';
    $.ajax({
       type: 'GET',
-      url: '<?php echo linkservice('stock')."itemstock/Getfrontend"; ?>',
+      url: urlForm,
       data: formData,
       beforeSend: function() {
          $('#btnFilter').attr('disabled', true);
+         $('#searching').attr('disabled', 'disabled');
          $('#loadings').replaceWith('<div id="loadings" class="margin-10px margin-top-80px text-align-center"><img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" /></div>');
          $('#mored').css('display', 'none');
       },
@@ -418,7 +429,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
          icarData = new Array,
          sessiond = "<?php echo ($this->session->userdata('userdata') !== null) ? 'TRUE' : 'FALSE'; ?>",
          sessionId = '<?php echo ($this->session->userdata('userdata')['UserId'] !== null) ? $this->session->userdata('userdata')['UserId'] : ''; ?>';
-
+         
          if(datas !== null && datas.length > 0) {
             for (var i = 0; i < datas.length; i++) {
                var dataz = datas[i];
@@ -464,11 +475,16 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                   case 0 : statusStock = 'Live'; classStatus = 'overlay-status-live'; break;
                   case 1 : statusStock = 'Online'; classStatus = 'overlay-status-online'; break;
                   case null: statusStock = 'Live'; classStatus = 'overlay-status-live'; break;
-               }			   
-			   if (schedule > 0) {
+               }
+
+               if(dataz.schedule.status !== false) {
+                  var dateSplit = (dataz.schedule.schedule.date).split('-');
+                  waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + dataz.schedule.schedule.waktu;
+               }	   
+			   /*if (schedule > 0) {
 				   var dateSplit = dataz.date.split('-');
 				   waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + dataz.waktu;
-			   }
+			   }*/
  
 			      content = '<div class="col-md-4" id="this'+dataz.AuctionItemId+'">'+
                            '<div class="list-product box-recommend">'+
@@ -518,25 +534,39 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '') {
                $('#btnFilter').attr('disabled', false);
             }
             $('#mored').css('display', 'block');
-            countContainer(offset, limit, linked, dataTotal, datas.length, dataForm);
+            countContainer(offset, limit, linked, dataTotal, datas.length, dataForm, type);
          }
          else {
             $('#btnFilter').attr('disabled', false);
-            $('#loadings').replaceWith('<div id="loadings" class="margin-10px margin-top-80px text-align-center"><img src="<?php echo base_url('assetsfront/images/background/management-empty.png'); ?>" alt="Loading" width="200px" /><div class="style="color:#757575">Data Tidak Ditemukan!</div></div>');
+            $('#loadings').replaceWith('<div id="loadings" class="table-responsive table-container content-empty"><div class="product-empty"><img src="<?php echo base_url('assetsfront/images/background/management-empty.png'); ?>" alt="Loading" width="400px" /></div><p>Oops.... <span>Data Tidak Ditemukan.</span></p></div>');
          }
+      },
+      error: function() {
+         bootoast.toast({
+            message: 'Koneksi terputus saat mengolah data pencaraian',
+            type: 'warning',
+            position: 'top-center',
+            timeout: 3
+         });
+      },
+      complete: function() {
+         $('#btnFilter').attr('disabled', false);
+         $('#searching').removeAttr("disabled").removeAttr("style");
       }
   });
 }
 
-function loadContainerPaging(offset, limit, linked, dataForm = '') {
+function loadContainerPaging(offset, limit, linked, dataForm = '', type = 1) {
    var initUserId = '<?php echo (@$this->session->userdata('userdata')['UserId']) ? '&userId='.$this->session->userdata('userdata')['UserId'] : ''; ?>';
    var formData = 'offset='+offset+'&limit='+limit+initUserId+'&'+dataForm;
+   var urlForm = (type === 1) ? '<?php echo linkservice('stock')."itemstock/Getfrontend"; ?>' : '<?php echo linkservice('stock')."itemstock/Getfrontendsearch"; ?>';
    $.ajax({
       type: 'GET',
-      url: '<?php echo linkservice('stock')."itemstock/Getfrontend"; ?>',
+      url: urlForm,
       data: formData,
       beforeSend: function() {
          $('#btnFilter').attr('disabled', true);
+         $('#searching').attr('disabled', 'disabled');
          //$('#mored').children().replaceWith('<img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" />');
          $('#mored').replaceWith('<div id="mored" class="margin-10px text-align-center"><img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" /></div>');
       },
@@ -597,10 +627,15 @@ function loadContainerPaging(offset, limit, linked, dataForm = '') {
                   case 1 : statusStock = 'Online'; classStatus = 'overlay-status-online'; break;
                   case null: statusStock = 'Live'; classStatus = 'overlay-status-live'; break;
                }
-			   if (schedule > 0) {
+
+               if(dataz.schedule.status !== false) {
+                  var dateSplit = (dataz.schedule.schedule.date).split('-');
+                  waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + dataz.schedule.schedule.waktu;
+               }
+			   /*if (schedule > 0) {
 				   var dateSplit = dataz.date.split('-');
 				   waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + dataz.waktu;
-			   }
+			   }*/
                content = '<div class="col-md-4" id="this'+dataz.AuctionItemId+'">'+
                               '<div class="list-product box-recommend">'+
                               '<a href="<?php echo $link_detail; ?>/'+dataz.AuctionItemId+'">'+
@@ -646,11 +681,22 @@ function loadContainerPaging(offset, limit, linked, dataForm = '') {
                   });
                   
                } */
-               $('#btnFilter').attr('disabled', false);
             }
             $('#mored').css('display', 'block');
-            countContainer(offset, limit, linked, dataTotal, datas.length, dataForm);
+            countContainer(offset, limit, linked, dataTotal, datas.length, dataForm, type);
          }
+      },
+      error: function() {
+         bootoast.toast({
+            message: 'Koneksi terputus saat mengolah data pencaraian',
+            type: 'warning',
+            position: 'top-center',
+            timeout: 3
+         });
+      },
+      complete: function() {
+         $('#btnFilter').attr('disabled', false);
+         $('#searching').removeAttr("disabled").removeAttr("style");
       }
    });
 }
@@ -681,7 +727,7 @@ function callIcar(datay) {
    return loadIcar;
 }
 
-function countContainer(offset, limit, linked, dataTotal, countPage, dataForm = '') {
+function countContainer(offset, limit, linked, dataTotal, countPage, dataForm = '', type) {
    /*window.countTotal = offset + limit;
    window.dataForm = dataForm;
    var countContainer = $('#loadlist').children().length;
@@ -716,7 +762,7 @@ function countContainer(offset, limit, linked, dataTotal, countPage, dataForm = 
    window.dataForm = dataForm;
    var countContainer = $('#loadlist').children().length;
    if(window.countTotal < dataTotal) {
-      $('#mored').children().replaceWith('<button class="btn btn-green btn-150px" onclick="loadContainerPaging('+window.countTotal+', '+limit+', \''+linked+'\', \''+window.dataForm+'\')">Selanjutnya</button>');
+      $('#mored').children().replaceWith('<button class="btn btn-green btn-150px" onclick="loadContainerPaging('+window.countTotal+', '+limit+', \''+linked+'\', \''+window.dataForm+'\', '+type+')">Selanjutnya</button>');
    }
    else {
       // show loading paging
@@ -727,13 +773,13 @@ function countContainer(offset, limit, linked, dataTotal, countPage, dataForm = 
 
 function hasDuplicate(arr) {
    for(var i = 0; i <= arr.length; i++) {
-        for(var j = i; j <= arr.length; j++) {
-            if(i != j && arr[i] == arr[j]) {
-                return true;
-            }
-        }
-    }
-    return false;
+      for(var j = i; j <= arr.length; j++) {
+         if(i != j && arr[i] == arr[j]) {
+            return true;
+         }
+      }
+   }
+   return false;
 }
 
 function addFav(aucid, id, ele) {
