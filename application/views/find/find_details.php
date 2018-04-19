@@ -878,7 +878,7 @@ $(document).ready(function() {
                            '<div class="overlay-grade">'+
                            'Grade <span>'+data[i].nilaiIcar+'</span>'+
                            '</div>'+
-                           '<p class="overlay-lot">LOT '+data[i].thisLotNo+'</p>'+
+                           '<p class="overlay-lot">LOT '+compare_data.Lot+'</p>'+
                            '</div>'+
                            '<h2>'+data[i].merk+' '+data[i].seri+' '+data[i].silinder+' '+data[i].grade+' '+data[i].model+' '+data[i].transmisi+'</h2>'+
                            '<span>'+data[i].tahun+'</span> <span class="price">Rp. '+currency_format(data[i].FinalPriceItem)+'</span>'+

@@ -509,7 +509,7 @@ a.delete-compare {
     }
     .box-recommend a h2 {
         width: 80% !important;
-        height: unset;
+        height: 35px;
         min-height: 20px;
     }
     .header-white .nav>li>a:hover {
@@ -728,6 +728,7 @@ a.delete-compare {
     }
 
     .box-recommend .thumbnail {
+        height: 280px;
         padding-bottom: 0;
     }
 
@@ -1047,6 +1048,12 @@ a.delete-compare {
         top: 250px;
         right: 20px;
     }
+    .related-product-slider .list-product.box-recommend {
+        min-height: 350px;
+    }
+    .box-recommend .thumbnail {
+        height: 200px;
+    }
     .booking-schedule .form-filter .object-type .form-group {
         max-width: 200px;
         width: 163px;
@@ -1098,6 +1105,12 @@ a.delete-compare {
     .overlay-grade-favorite {
         top: 250px;
         right: 20px;
+    }
+    .related-product-slider .list-product.box-recommend {
+        min-height: 350px;
+    }
+    .box-recommend .thumbnail {
+        height: 200px;
     }
     .booking-schedule .form-filter .object-type .form-group {
         max-width: 200px;
@@ -1158,6 +1171,9 @@ a.delete-compare {
         top: 224px;
         right: 20px;
     }
+    .box-recommend .thumbnail {
+        height: 250px;
+    }
     .box-recommend h2, .main-management .box-recommend h2, .section-auction .boxright-mobile h2, .section-auction .list-compare h2, .related-product .box-recommend h2, .list-product h2 {
         height: unset;
         min-height: 23px;
@@ -1186,6 +1202,9 @@ a.delete-compare {
     .vadetail-sectext {
         float: left;
         width: 70%;
+    }
+    .bidder p {
+        margin: 10px;
     }
 }
 
@@ -1256,6 +1275,12 @@ a.delete-compare {
     }
     .empty-fav-icon {
         margin-right: 0;
+    }
+    .related-product-slider .list-product.box-recommend {
+        min-height: 350px;
+    }
+    .box-recommend .thumbnail {
+        height: 200px;
     }
     .product-mob.whislist .box-recommend .thumbnail-favorite {
         height: 240px;
@@ -1340,6 +1365,12 @@ a.delete-compare {
     }
     .content-empty p {
         font-size: 15px;
+    }
+    .related-product-slider .list-product.box-recommend {
+        min-height: 300px;
+    }
+    .box-recommend .thumbnail {
+        height: 200px;
     }
 }
 
