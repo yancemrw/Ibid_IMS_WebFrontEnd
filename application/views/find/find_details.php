@@ -1115,7 +1115,12 @@ function updateDuration(numb) {
 
 function bid() {
    if($('#used-npl').val() === '') {
-      alert('Silahkan Pilih NPL');
+      bootoast.toast({
+         message: 'Silahkan Pilih NPL!',
+         type: 'warning',
+         position: 'top-center',
+         timeout: 5
+      });
       return;
    }
    else {
@@ -1184,7 +1189,12 @@ function bid() {
 
 function bidMobile() {
    if($('#used-npl-mobile').val() === '') {
-      alert('Silahkan Pilih NPL');
+      bootoast.toast({
+         message: 'Silahkan Pilih NPL!',
+         type: 'warning',
+         position: 'top-center',
+         timeout: 5
+      });
       return;
    }
    else {
@@ -1233,21 +1243,22 @@ function bidMobile() {
    }
 }
 
-function push_bid(bid_status,bid,npl){
-
-      if (bid_status == true) {
-         tasksRef.push({
-            bid: bid,
-            npl: npl,
-            // npl: '100001',
-            type: 'Online',
-         });
-      } else {
-         //costumize alert here
-         // alert('NPL '+npl+' telah digunakan pada lot lain!!');
-         alert('NPL '+npl+' dalam keadaan TOP BIDDER pada LOT lain!!');
-      }
-  }
+function push_bid(bid_status,bid,npl) {
+   if (bid_status == true) {
+      tasksRef.push({
+         bid: bid,
+         npl: npl,
+         type: 'Online',
+      });
+   } else {
+      bootoast.toast({
+         message: 'NPL '+npl+' Sudah TOP BIDDER Pada LOT Lain!',
+         type: 'warning',
+         position: 'top-center',
+         timeout: 5
+      });
+   }
+}
 </script>
 <script src="<?php echo base_url('assetsfront/assets360/three.min.js'); ?>"></script> 
 <script src="<?php echo base_url('assetsfront/assets360/jquery.fullscreen.js'); ?>"></script>

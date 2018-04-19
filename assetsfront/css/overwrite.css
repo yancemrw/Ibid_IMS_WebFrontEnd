@@ -703,6 +703,13 @@ a.delete-compare {
     .btn-150px {
         width: 150px !important;
     }
+    .bidder ul {
+        max-width: 96%;
+    }
+    .bidder ul li span {
+        position: relative;
+        right: -300px;
+    }
 }
 
 @media(max-width: 768px) {
@@ -999,6 +1006,13 @@ a.delete-compare {
     .product-empty {
         height: 150px;
     }
+    .bidder ul {
+        max-width: 96%;
+    }
+    .bidder ul li span {
+        position: relative;
+        right: -265px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1034,6 +1048,13 @@ a.delete-compare {
     }
     .product-empty {
         height: 150px;
+    }
+    .bidder ul {
+        max-width: 96%;
+    }
+    .bidder ul li span {
+        position: relative;
+        right: -160px;
     }
 }
 
@@ -1110,6 +1131,13 @@ a.delete-compare {
     .product-empty {
         height: 150px;
     }
+    .bidder ul {
+        max-width: 96%;
+    }
+    .bidder ul li span {
+        position: relative;
+        right: -90px;
+    }
 }
 
 @media (max-width: 412px) {
@@ -1169,6 +1197,13 @@ a.delete-compare {
     .vadetail-sectext {
         float: left;
         width: 75%;
+    }
+    .bidder ul {
+        max-width: 96%;
+    }
+    .bidder ul li span {
+        position: relative;
+        right: -90px;
     }
 }
 
@@ -1245,6 +1280,13 @@ a.delete-compare {
     }
     .bidder p {
         margin: 10px;
+    }
+    .bidder ul {
+        max-width: 96%;
+    }
+    .bidder ul li span {
+        position: relative;
+        right: -50px;
     }
 }
 
@@ -1381,6 +1423,13 @@ a.delete-compare {
     .nav>li>a {
         padding: 10px;
     }
+    .bidder ul {
+        max-width: 96%;
+    }
+    .bidder ul li span {
+        position: relative;
+        right: -35px;
+    }
 }
 
 @media(max-width: 320px) {
@@ -1412,6 +1461,14 @@ a.delete-compare {
     }
     .box-recommend .thumbnail {
         height: 200px;
+    }
+    .bidder ul {
+        max-width: 96%;
+        font-size: 12px;
+    }
+    .bidder ul li span {
+        position: relative;
+        right: -30px;
     }
 }
 
