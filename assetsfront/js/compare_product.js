@@ -182,5 +182,7 @@ function remove_product_page(id, img_empty) {
 }
 
 function currency_format(n) {
-   return n.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+   if(n !== null) {
+      return n.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+   }
 }
