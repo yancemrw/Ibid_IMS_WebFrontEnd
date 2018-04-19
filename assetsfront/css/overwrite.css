@@ -647,6 +647,9 @@ a.delete-compare {
     .action-bottom button span.btnItemFooter {
         display: none;
     }
+    .bidder.bidder-popup h4 {
+        margin: 10px !important;
+    }
     .box-recommend p {
         font-size: 11px;
     }
