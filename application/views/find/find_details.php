@@ -297,27 +297,23 @@
                   <li>Jam</li>
                   <li>Menit</li>
                </ul>
+               <?php if($data[0]->StatusStok === 1) { ?>
                <h3>Kelipatan Rp. 500,000</h3>
-               <ul>
-                  <li>Rp. 416,000,000 <span>Proxy Bidder</span></li>
-                  <li>Rp. 416,500,000 <span>Online Bidder</span></li>
-                  <li>Rp. 417,000,000 <span>Floor Bidder</span></li>
-                  <li>Rp. 417,500,000 <span>Proxy Bidder</span></li>
-                  <li class="active">Rp. 418,000,000 <span>Online Bidder</span></li>
-                  <li>Rp. 417,500,000 <span>Proxy Bidder</span></li>
-                  <li>Rp. 417,500,000 <span>Proxy Bidder</span></li>
-                  <li>Rp. 417,500,000 <span>Proxy Bidder</span></li>
-                  <li>Rp. 417,500,000 <span>Proxy Bidder</span></li>
-               </ul>
-               <h4>Rp. 418,000,000</h4>
+               <ul id="bidding-log-mb"></ul>
+               <h4 id="top-bid-mb">Rp. -</h4>
                <p><i class="fa fa-star"></i> Top BIDDER <span>Pilih NPL Sebelum Melakukan Lelang </span></p>
-               <select class="select-custom form-control">
-                  <option value="">NPL Reguler</option>
-                  <option value="">NPL Premium</option>
+               <select class="select-custom form-control" id="used-npl">
+                  <option value="">Pilih NPL</option>
+                  <?php foreach($thisNpl as $row){ ?>
+                     <option value="<?php echo $row->NPLNumber; ?>"><?php echo $row->NPLNumber; ?></option>
+                  <?php } ?>
                </select>
-               <button class="btn btn-violet" data-toggle="modal" data-target="#choose-npl">Tawar</button>
+               <button class="btn btn-violet btn-bid" data-toggle="modal" onclick="bid()" id="bid">Tawar</button>
                <p>Pengumuman : <br>Pemenang akan dikenakan biaya Administrasi Rp. 1.750.000 </p>
-               <button class="btn btn-green" data-toggle="modal" data-target="#used-npl">Beli NPL</button>
+               <?php } ?>
+               <?php if($userdata !== null) { ?>
+               <button class="btn btn-green" data-toggle="modal" data-target="#used-npl" onclick="location.href='<?php echo site_url('beli-npl'); ?>'">Beli NPL</button>
+               <?php } ?>
                <div class="auction-empty">
                   <div class="image-empty">
                      <img src="<?php echo base_url('assetsfront/images/icon/lelang-empty.png'); ?>" alt="" title="">
@@ -379,8 +375,11 @@
 </div>
 
 <style>
+   .slick-slide {
+      width: 285px;
+   }
    .slick-slide img {
-      display: unset !important;
+      display: unset;
    }
 </style>
 
@@ -795,7 +794,7 @@ $(document).ready(function() {
    $.ajax({
       type: 'GET',
       url: '<?php echo linkservice('stock')."relatedproduct/Lists"; ?>',
-      data: 'object=<?php echo $data[0]->ItemId; ?>&merk=<?php echo $data[0]->merk; ?>&price=90000000&userid=<?php echo $userdata['UserId']; ?>',
+      data: 'object=<?php echo $data[0]->ItemId; ?>&merk=<?php echo $data[0]->merk; ?>&price=&userid=<?php echo $userdata['UserId']; ?>',
       beforeSend: function() {
          for(var i = 0; i < 4; i++) {
             var content =  '<div class="col-md-3">'+
@@ -863,10 +862,10 @@ $(document).ready(function() {
             };
             var json_str = JSON.stringify(compare_data);
             var link_detail = "<?php echo site_url('detail-lelang/'); ?>"+data[i].AuctionItemId;
-            var iconFav = (data[i].thisFavorite === 0) ? '<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon" />' : '<i class="fa fa-heart"></i>';
+            var iconFav = (data[i].thisFavorite === 0) ? '<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon empty-favicon-details" />' : '<i class="fa fa-heart"></i>';
             var bottom_favcom = '<div class="action-bottom">'+
-                                 '<button class="btn" onclick="addFav('+data[i].AuctionItemId+', '+sessionId+', this, 2)">'+iconFav+'<span>Favorit</span></button>'+
-                                 '<button class="btn btn-compare" onclick=\'set_compare_product('+json_str+', "'+link_detail+'")\'><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>'+
+                                 '<button class="btn" onclick="addFav('+data[i].AuctionItemId+', '+sessionId+', this, 2)">'+iconFav+'<span class="btnItemFooter">Favorit</span></button>'+
+                                 '<button class="btn btn-compare" onclick=\'set_compare_product('+json_str+', "'+link_detail+'")\'><i class="ic ic-Bandingkan-green"></i><span class="btnItemFooter">Bandingkan</span></button>'+
                                  '</div>';
             var favcom = (sessiond === 'TRUE') ? bottom_favcom : '';
             var content =  '<div class="col-md-3">'+
@@ -892,6 +891,11 @@ $(document).ready(function() {
             $('#showrelated').append(content);
          }
          mobileSlick(data.length);
+         /*setTimeout(function() {
+            $('#showrelated').children().attr('style', 'text-align:center');
+            $('#showrelated').children().children().attr('style', 'opacity: 1; width: auto; display: inline-block; text-align: left; transform: translate3d(0px, 0px, 0px);');
+            $('#showrelated').children().children().children().attr('style', 'width:285px');
+         }, 2000);*/
       },
       error: function(data) {
          bootoast.toast({
@@ -905,11 +909,15 @@ $(document).ready(function() {
 });
 
 function mobileSlick(value) {
+   var vw = false;
+   if(value < 2) {
+      vw = true;
+   }
    $('.related-product-slider').slick({
       dots: false,
       infinite: false,
       speed: 300,
-    
+      variableWidth: vw,
       prevArrow: false,
       nextArrow: false,
       slidesToShow: value,
@@ -949,6 +957,11 @@ function mobileSlick(value) {
 
       ]
    });
+
+   if(value < 2) {
+      $('#showrelated').children().children().attr('style', 'opacity:1; width:auto; transform:translate3d(0px, 0px, 0px);');
+      $('#showrelated').children().children().children().attr('style', 'opacity:1; width:auto; transform:translate3d(0px, 0px, 0px);');
+   }
 }
 
 // handle favorit function

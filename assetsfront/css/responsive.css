@@ -1273,7 +1273,8 @@
 	}
 	.bidder.bidder-popup p#timer-mobile {
 		font-size: 43px;
-		color: #81be2a
+		color: #81be2a;
+		line-height: 40px;
 	}
 	.bidder.bidder-popup ul.timer-auction {
 		height: auto;
