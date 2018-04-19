@@ -607,8 +607,21 @@ a.delete-compare {
     .minimal-height {
         min-height: 268px;
     }
+    .related-product-slider .list-product.box-recommend {
+        min-height: 300px;
+    }
+    .action-bottom button span.btnItemFooter {
+        display: none;
+    }
+    .box-recommend p {
+        font-size: 11px;
+    }
     .box-recommend .thumbnail {
+        height: 150px;
         padding-bottom: 0;
+    }
+    .empty-favicon-details {
+        margin-top: 5px;
     }
     .product-mob.whislist .box-recommend .thumbnail-favorite {
         height: 415px;
@@ -761,6 +774,13 @@ a.delete-compare {
     .form-auction .kota, .form-auction input[type=checkbox]+label p {
         margin-top: 10px;
     }
+    .related-product-slider .list-product.box-recommend {
+        min-height: 450px;
+    }
+    .box-recommend .thumbnail {
+        height: 250px;
+        padding-bottom: 0;
+    }
 }
 
 @media (max-width: 640px) {
@@ -819,6 +839,9 @@ a.delete-compare {
     .button-filter button, .button-filter button:hover, .button-filter button:focus {
         width: 100%;
     }
+    .empty-favicon-details {
+        margin-top: 5px;
+    }
     .header-live-auction .select-custom~.select2-container {
         width: 98% !important;
     }
@@ -852,6 +875,13 @@ a.delete-compare {
     }
     .empty-fav-icon {
         margin-right: 7px;
+    }
+    .related-product-slider .list-product.box-recommend {
+        min-height: 380px;
+    }
+    .box-recommend .thumbnail {
+        height: 200px;
+        padding-bottom: 0;
     }
     .product-mob .box-recommend .thumbnail img {
         width: auto;
@@ -937,6 +967,13 @@ a.delete-compare {
     }
     .minimal-height {
         min-height: 325px;
+    }
+    .related-product-slider .list-product.box-recommend {
+        min-height: 450px;
+    }
+    .box-recommend .thumbnail {
+        height: 300px;
+        padding-bottom: 0;
     }
     .booking-schedule .form-filter .object-type .form-group {
         max-width: 200px;
