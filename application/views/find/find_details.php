@@ -1187,7 +1187,7 @@ function bidMobile() {
       alert('Silahkan Pilih NPL');
       return;
    }
-   else {console.log('tes');
+   else {
       const last = $('#lastbid').val();
       var bid;
       var usedNpl = $('#used-npl-mobile').val();
@@ -1200,22 +1200,25 @@ function bidMobile() {
                
             last <= 0 ? newbid = parseInt(startPrice) : newbid = parseInt(last) + parseInt(<?php echo $interval; ?>);
 
-               //NPL ongoing check logic
-               var ongoingBidder = bidderRef.child('schedule/<?php echo $schedule_id;?>/'+usedNpl);
-                   ongoingBidder.once('value', function(bidderSnap){
-                     if (bidderSnap.exists()) {
-                              ongoingBidder.child('npl').once('value', function(ongoingNplSnap){
-                                 nplLot = ongoingNplSnap.val();
-                                 nplLot = nplLot.split('|');
-                                 nplLot[1] == currentLot ? bid = true : bid = false;
-                                 push_bid(bid,newbid,usedNpl);
-                              });
-                     } else {
-                        ongoingBidder.child('npl').set(usedNpl+'|<?php echo $no_lot; ?>');
-                        bid = true;
-                        push_bid(bid,newbid,usedNpl);
-                     }
-                   });
+               //NPL Top bidder check logic
+               var allTopBidder = bidderTop.child('schedule/<?php echo $schedule_id;?>/');   
+               allTopBidder.orderByChild("npl").equalTo(usedNpl).once("value",snapshot => {
+                  const userData = snapshot.val();
+                  if (userData){
+                     bid = false;
+                     push_bid(bid,newbid,usedNpl);
+                  } 
+                  else {
+                     allTopBidder.once('value', function(bidderSnap){
+                        allTopBidder.child(currentLot).set({
+                           npl: usedNpl
+                        });
+                     });
+                     
+                     bid = true;
+                     push_bid(bid,newbid,usedNpl);
+                  }
+               });
             }
             else {
                bootoast.toast({
