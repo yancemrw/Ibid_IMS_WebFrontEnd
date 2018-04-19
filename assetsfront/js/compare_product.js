@@ -185,4 +185,7 @@ function currency_format(n) {
    if(n !== null) {
       return n.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
    }
+   else {
+      return 0;
+   }
 }
