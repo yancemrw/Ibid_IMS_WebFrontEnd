@@ -396,6 +396,7 @@
    var duration = 1;
    
    var bidderRef           = dbRef.ref('bidder/ongoing');
+   var bidderTop           = dbRef.ref('bidder/top');
    
    <?php if($data[0]->StatusStok === 1 && $schedule_id > 0) { // 0 = Live Auction, 1 = Online ?>
    var countDownDate = new Date(<?php echo @$date[0].",".(@$date[1]-1).",".(int)@$date[2].",".@$time[0].",".@$time[1].",0,0"; ?>).getTime();
@@ -1120,7 +1121,26 @@ function bid() {
                
             last <= 0 ? newbid = parseInt(startPrice) : newbid = parseInt(last) + parseInt(<?php echo $interval; ?>);
 
+               //NPL Top bidder check logic
+			   var allTopBidder = bidderTop.child('schedule/<?php echo $schedule_id;?>/');	
+			   allTopBidder.orderByChild("npl").equalTo(usedNpl).once("value",snapshot => {
+				   const userData = snapshot.val();
+				   if (userData){
+					   bid = false;
+					   push_bid(bid,newbid,usedNpl);
+				   } 
+				   else {
+					   allTopBidder.once('value', function(bidderSnap){
+						   allTopBidder.child(currentLot).set({
+							   npl: usedNpl
+						   });
+					   });
+					   
+					   bid = true;
+					   push_bid(bid,newbid,usedNpl);
+				   }
                //NPL ongoing check logic
+			   /* 
                var ongoingBidder = bidderRef.child('schedule/<?php echo $schedule_id;?>/'+usedNpl);
                    ongoingBidder.once('value', function(bidderSnap){
                      if (bidderSnap.exists()) {
@@ -1136,6 +1156,7 @@ function bid() {
                         push_bid(bid,newbid,usedNpl);
                      }
                    });
+			   */
             }
             else {
                bootoast.toast({
@@ -1161,7 +1182,8 @@ function push_bid(bid_status,bid,npl){
          });
       } else {
          //costumize alert here
-         alert('NPL '+npl+' telah digunakan pada lot lain!!');
+         // alert('NPL '+npl+' telah digunakan pada lot lain!!');
+         alert('NPL '+npl+' dalam keadaan TOP BIDDER pada LOT lain!!');
       }
   }
 </script>
