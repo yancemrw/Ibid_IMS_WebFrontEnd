@@ -299,20 +299,20 @@
                </ul>
                <?php if($data[0]->StatusStok === 1) { ?>
                <h3>Kelipatan Rp. 500,000</h3>
-               <ul id="bidding-log-mb"></ul>
-               <h4 id="top-bid-mb">Rp. -</h4>
-               <p><i class="fa fa-star"></i> Top BIDDER <span>Pilih NPL Sebelum Melakukan Lelang </span></p>
-               <select class="select-custom form-control" id="used-npl">
+               <ul id="biddingMobile-log-mb"></ul>
+               <h4 id="topMobile-bid-mb">Rp. -</h4>
+               <p id="top-bidder-info-mobile"><i class="fa fa-star"></i> Top BIDDER <span>Pilih NPL Sebelum Melakukan Lelang </span></p>
+               <select class="select-custom form-control" id="used-npl-mobile">
                   <option value="">Pilih NPL</option>
                   <?php foreach($thisNpl as $row){ ?>
                      <option value="<?php echo $row->NPLNumber; ?>"><?php echo $row->NPLNumber; ?></option>
                   <?php } ?>
                </select>
-               <button class="btn btn-violet btn-bid" data-toggle="modal" onclick="bid()" id="bid">Tawar</button>
+               <button class="btn btn-violet btn-bid" data-toggle="modal" onclick="bidMobile()" id="bidMobile">Tawar</button>
                <p>Pengumuman : <br>Pemenang akan dikenakan biaya Administrasi Rp. 1.750.000 </p>
                <?php } ?>
                <?php if($userdata !== null) { ?>
-               <button class="btn btn-green" data-toggle="modal" data-target="#used-npl" onclick="location.href='<?php echo site_url('beli-npl'); ?>'">Beli NPL</button>
+               <button class="btn btn-green" data-toggle="modal" data-target="#used-npl-mobile" onclick="location.href='<?php echo site_url('beli-npl'); ?>'">Beli NPL</button>
                <?php } ?>
                <div class="auction-empty">
                   <div class="image-empty">
@@ -409,6 +409,7 @@
       });
 
       $('#top-bidder-info').hide();
+      $('#top-bidder-info-mobile').hide();
       $('.auction-empty').hide();
          
    
@@ -421,9 +422,11 @@
                      logsRef.on("child_added", function(logSnap) {
                         if (eligibleNpl.includes(logSnap.val().npl)) {
                           $('#top-bidder-info').show();
+                          $('#top-bidder-info-mobile').show();
                           $('.btn-bid').prop('disabled', true);
                         } else {
                           $('#top-bidder-info').hide();
+                          $('#top-bidder-info-mobile').hide();
                           $('.btn-bid').prop('disabled', false);
                         }
                      });
@@ -448,6 +451,7 @@
    $("#timer").text("JADWAL LELANG TIDAK DIKETAHUI");
    $("#timer-desc").css('display', 'none');
    $('#top-bidder-info').hide();
+   $('#top-bidder-info-mobile').hide();
    <?php } ?>
    
 $(document).ready(function() {
@@ -525,14 +529,14 @@ $(document).ready(function() {
          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
          // document.getElementById("timer").innerHTML = days + "   :  " + hours + "   :  " + minutes + " ";
-       console.log(countDownDate);
-       console.log('----------------');
+         //console.log(countDownDate);
+         //console.log('----------------');
          if (distance > 0) {
                $("#timer").text(twoDigits(days) + "   :  " + twoDigits(hours) + "   :  " + twoDigits(minutes) + " ");
                $("#timer-mobile").text(twoDigits(days) + "   :  " + twoDigits(hours) + "   :  " + twoDigits(minutes) + " ");
          }
         else if (distance < 0) {
-         console.log('----------------2');
+         //console.log('----------------2');
             $("#timer-title").css('display' , 'none');
             clearInterval(x);
             lotRef.once('value', function(lotSnap){
@@ -550,6 +554,7 @@ $(document).ready(function() {
    }
 
    $('#top-bidder-info').hide();
+   $('#top-bidder-info-mobile').hide();
    durationRef.on('value', function(durationSnap){
       if (durationSnap.exists()) {
          clearInterval(x);
@@ -569,9 +574,11 @@ $(document).ready(function() {
    logsRef.on("child_added", function(logSnap) {
       if (eligibleNpl.includes(logSnap.val().npl)) {
            $('#top-bidder-info').show();
+           $('#top-bidder-info-mobile').show();
            $('.btn-bid').prop('disabled', true);
          } else {
            $('#top-bidder-info').hide();
+           $('#top-bidder-info-mobile').hide();
            $('.btn-bid').prop('disabled', false);
          }
       $('#lastbid').val(logSnap.val().bid);
@@ -580,7 +587,10 @@ $(document).ready(function() {
       $('#top-bid').text('Rp. ' + addPeriod(logSnap.val().bid));
       $('#bidding-log-mb li').removeClass('active');
       $('#bidding-log-mb').prepend(logHtmlFromObject(logSnap.val()));
+      $('#biddingMobile-log-mb li').removeClass('active');
+      $('#biddingMobile-log-mb').prepend(logHtmlFromObject(logSnap.val()));
       $('#top-bid-mb').text('Rp. ' + addPeriod(logSnap.val().bid));
+      $('#topMobile-bid-mb').text('Rp. ' + addPeriod(logSnap.val().bid));
    });
 
    // TIMER MOBILE
@@ -1158,6 +1168,54 @@ function bid() {
                      }
                    });
 			   */
+            }
+            else {
+               bootoast.toast({
+                  message: 'Tidak diperbolehkan melakukan lelang',
+                  type: 'warning',
+                  position: 'top-center',
+                  timeout: 4
+               });
+            }
+         });
+      });
+   }
+}
+
+function bidMobile() {
+   if($('#used-npl-mobile').val() === '') {
+      alert('Silahkan Pilih NPL');
+      return;
+   }
+   else {console.log('tes');
+      const last = $('#lastbid').val();
+      var bid;
+      var usedNpl = $('#used-npl-mobile').val();
+      var currentLot = <?php echo @$no_lot ? $no_lot : 0; ?>;
+
+      allowRef.once('value', function(allowedSnap) {
+         lotDataRef.once('value', function(lotDataSnap) {
+            if(allowedSnap.val() && lotDataSnap.val().duration > 0) {
+               startPrice = lotDataSnap.exists() ? lotDataSnap.val().harga : 0;
+               
+            last <= 0 ? newbid = parseInt(startPrice) : newbid = parseInt(last) + parseInt(<?php echo $interval; ?>);
+
+               //NPL ongoing check logic
+               var ongoingBidder = bidderRef.child('schedule/<?php echo $schedule_id;?>/'+usedNpl);
+                   ongoingBidder.once('value', function(bidderSnap){
+                     if (bidderSnap.exists()) {
+                              ongoingBidder.child('npl').once('value', function(ongoingNplSnap){
+                                 nplLot = ongoingNplSnap.val();
+                                 nplLot = nplLot.split('|');
+                                 nplLot[1] == currentLot ? bid = true : bid = false;
+                                 push_bid(bid,newbid,usedNpl);
+                              });
+                     } else {
+                        ongoingBidder.child('npl').set(usedNpl+'|<?php echo $no_lot; ?>');
+                        bid = true;
+                        push_bid(bid,newbid,usedNpl);
+                     }
+                   });
             }
             else {
                bootoast.toast({

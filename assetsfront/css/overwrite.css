@@ -650,6 +650,9 @@ a.delete-compare {
     .bidder.bidder-popup h4 {
         margin: 10px !important;
     }
+    .bidder.bidder-popup button {
+        width: 150px !important;
+    }
     .box-recommend p {
         font-size: 11px;
     }
