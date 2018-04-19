@@ -1139,7 +1139,8 @@ function bid() {
 					   bid = true;
 					   push_bid(bid,newbid,usedNpl);
 				   }
-               //NPL ongoing check logic
+				});
+			   //NPL ongoing check logic
 			   /* 
                var ongoingBidder = bidderRef.child('schedule/<?php echo $schedule_id;?>/'+usedNpl);
                    ongoingBidder.once('value', function(bidderSnap){
