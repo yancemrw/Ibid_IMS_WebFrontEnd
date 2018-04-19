@@ -374,6 +374,9 @@ a.delete-compare {
     right: 0;
     left: 0;
 }
+.overlay-lot {
+    line-height: 20px;
+}
 .overlay-lot-favorite {
     position: absolute;
     top: 10px;
@@ -504,6 +507,37 @@ a.delete-compare {
 }
 
 @media(max-width: 1024px) {
+    .btn-green, 
+    .btn-green:hover, 
+    .btn-green:focus {
+        font-size: 14px;
+    }
+
+    .btn-red, 
+    .btn-red:hover, 
+    .btn-red:focus {
+        font-size: 14px;
+    }
+
+    .btn-violet,
+    .btn-violet:hover,
+    .btn-violet:focus {
+        font-size: 14px !important;
+    }
+
+    .btn-lg,
+    .btn-green,
+    .btn-search {
+        font-size: 14px;
+    }
+
+    .btn-logout,
+    .btn-logout:hover, 
+    .btn-logout:focus {
+        font-size: 14px;
+        padding: 5px 15px;
+    }
+
     .minimal-height {
         min-height: 156px;
     }
@@ -593,7 +627,7 @@ a.delete-compare {
         width: 150px !important;
     }
     .button-npl button {
-        width: 250px;
+        width: 250px !important;
     }
     .btn-violet, .btn-violet:hover, .btn-violet:focus {
         font-size: 12px;
@@ -654,7 +688,7 @@ a.delete-compare {
         margin-top: 10px !important;
     }
     .button-npl button {
-        width: 250px;
+        width: 250px !important;
     }
     .booking-schedule .form-filter .object-type .form-group {
         max-width: 200px;
@@ -673,19 +707,19 @@ a.delete-compare {
 	.btn-green, 
 	.btn-green:hover, 
 	.btn-green:focus {
-		font-size: 11px;
+		font-size: 14px;
 	}
 
     .btn-red, 
     .btn-red:hover, 
     .btn-red:focus {
-        font-size: 11px;
+        font-size: 14px;
     }
 
     .btn-violet,
     .btn-violet:hover,
     .btn-violet:focus {
-        font-size: 11px !important;
+        font-size: 14px !important;
     }
 
 	.btn-lg,
@@ -1270,8 +1304,8 @@ a.delete-compare {
     .minimal-height {
         min-height: 240px;
     }
-    .box-recommend .thumbnail {
-        padding-bottom: 75%;
+    .box-recommend.list-compare .thumbnail {
+        height: 240px;
     }
     .empty-fav-icon {
         margin-right: 0;
@@ -1281,6 +1315,7 @@ a.delete-compare {
     }
     .box-recommend .thumbnail {
         height: 200px;
+        padding-bottom: 75%;
     }
     .product-mob.whislist .box-recommend .thumbnail-favorite {
         height: 240px;
