@@ -353,12 +353,12 @@ $(document).ready(function() {
    // handle searching from home
    var arrPost = '<?php echo $home_input; ?>', thisFormInput;
    if(arrPost !== '') {
-      thisFormInput = jsonSerialize(JSON.parse(arrPost));
+      var thisFormInputs = jsonSerialize(JSON.parse(arrPost));
       window.countTotal = 0;
       window.dataForm = '';
       actionTotalData = 0;
       $('#loadlist').html('');
-      loadContainer(0, 6, linked, thisFormInput, 1);
+      loadContainer(0, 6, linked, 'tipe-object='+thisFormInputs.obj+thisFormInputs.data, 1);
    }
    else {
       loadContainer(0, 6, linked, '', 1);
@@ -894,10 +894,14 @@ function getJadwalAms(){
 }
 
 function jsonSerialize(value) {
-   var returnData = '', objKey = Object.keys(value), objVal = Object.values(value);
+   var reData, returnData = '', obj, objKey = Object.keys(value), objVal = Object.values(value);
    for(var i = 0; i < objKey.length; i++) {
-      returnData += '&'+objKey[i]+'='+objVal[i];
+      returnData += '&'+objKey[i]+'='+objVal[i].replace('|', '%7C');
    }
-   return returnData;
+   reData = {
+      obj: objKey[0].split('_')[0],
+      data: returnData
+   }
+   return reData;
 }
 </script>

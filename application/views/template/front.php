@@ -6,12 +6,12 @@
       </ul>
       <div class="tab-content">
          <div role="tabpanel" class="tab-pane search-transport active" id="tab-mobile-1">
-            <form class="form-inline clearfix" action="<?php echo site_url('cari-lelang'); ?>" method="POST">
+            <form id="search-object" class="form-inline clearfix" action="<?php echo site_url('cari-lelang'); ?>" method="POST">
 
    				<?php foreach($formDinamis as $row) { echo $row['typeInput']; } ?>
 
    				<div class="form-group">
-   				  <button class="btn btn-lg btn-green btn-search" disabled>Cari</button>
+                  <button class="btn btn-lg btn-green btn-search" onclick="this.disabled=true; document.getElementById('search-object').submit();">Cari</button>
    				</div>
 
             </form>
