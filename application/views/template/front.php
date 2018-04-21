@@ -6,12 +6,12 @@
       </ul>
       <div class="tab-content">
          <div role="tabpanel" class="tab-pane search-transport active" id="tab-mobile-1">
-            <form id="search-object" class="form-inline clearfix" action="<?php echo site_url('cari-lelang'); ?>" method="POST">
+            <form id="search-object" class="form-inline clearfix" action="<?php echo site_url('cari-lelang'); ?>" method="POST" data-provide="validation">
 
    				<?php foreach($formDinamis as $row) { echo $row['typeInput']; } ?>
 
    				<div class="form-group">
-                  <button class="btn btn-lg btn-green btn-search" onclick="this.disabled=true; document.getElementById('search-object').submit();">Cari</button>
+                  <button id="cari-object" class="btn btn-lg btn-green btn-search">Cari</button>
    				</div>
 
             </form>
@@ -347,46 +347,64 @@ Number.prototype.padLeft = function(base,chr){
    return len > 0? new Array(len).join(chr || '0')+this : this;
 }
    
-$(function(){
-    
-    $('.filterJadwal').change(function(){
-        thisCabang = $('#thisCabang').val();
-        thisItem = $('#thisItem').val();
-        
-        if (thisItem == 'car-type') item = 6;
-        else if (thisItem == 'motorcycle-type') item = 7;
-        else if (thisItem == 'gadget-type') item = 12;
-        else if (thisItem == 'hve-type') item = 14;
-        else item = 0;
-        
-        d = new Date();
-        dformat = [d.getFullYear(), (d.getMonth()+1).padLeft(), d.getDate().padLeft()].join('-');
-        // dformat = '2018-01-01';
-        
-        if (thisCabang != '' && item > 0){
-            $.ajax({
-                // url: 'http://ibid-ams-schedule.stagingapps.net/api/schedulelist',
-                url: '<?php echo linkservice('AMSSCHEDULE') .'schedulelist/'; ?>',
-                dataType: 'json',
-                method: 'GET',
-                data: {
-                    item: item,
-                    company_id: thisCabang,
-                    startdate: dformat,
-                },
-                success: function(doc) {
-                    html = "";
-                    thisOption = doc.data;
-                    for(i=0; i<thisOption.length; i++){
-                        html = html + '<option value="'+thisOption[i].id+'">'+thisOption[i].date+' '+(thisOption[i].waktu).substring(0, 8);+'</option>';
-                    }
-                    $('#thisDate').html(html);
-                }
-            });
-        }
-        
-    }); 
-	
-	$('.filterJadwal').change();
+$(function() {
+   $('.filterJadwal').change(function(){
+     thisCabang = $('#thisCabang').val();
+     thisItem = $('#thisItem').val();
+     
+     if (thisItem == 'car-type') item = 6;
+     else if (thisItem == 'motorcycle-type') item = 7;
+     else if (thisItem == 'gadget-type') item = 12;
+     else if (thisItem == 'hve-type') item = 14;
+     else item = 0;
+     
+     d = new Date();
+     dformat = [d.getFullYear(), (d.getMonth()+1).padLeft(), d.getDate().padLeft()].join('-');
+     // dformat = '2018-01-01';
+     
+     if (thisCabang != '' && item > 0){
+         $.ajax({
+             // url: 'http://ibid-ams-schedule.stagingapps.net/api/schedulelist',
+             url: '<?php echo linkservice('AMSSCHEDULE') .'schedulelist/'; ?>',
+             dataType: 'json',
+             method: 'GET',
+             data: {
+                 item: item,
+                 company_id: thisCabang,
+                 startdate: dformat,
+             },
+             success: function(doc) {
+                 html = "";
+                 thisOption = doc.data;
+                 for(i=0; i<thisOption.length; i++){
+                     html = html + '<option value="'+thisOption[i].id+'">'+thisOption[i].date+' '+(thisOption[i].waktu).substring(0, 8);+'</option>';
+                 }
+                 $('#thisDate').html(html);
+             }
+         });
+     }
+     
+   }); 
+
+   $('.filterJadwal').change();
+
+   // handle filter cari kendaraan
+   $('#cari-object').click(function(e) {
+      e.preventDefault();
+      var ele = $(this).parent().parent();
+      if(ele[0][0].value === '' && ele[0][1].value === '' && ele[0][2].value === '') {
+         bootoast.toast({
+            message: "Pilih Salah Satu Filter Cari Kendaraan",
+            type: 'warning',
+            position: 'top-center',
+            timeout: 3
+         });
+      }
+      else {
+         $(this).attr('disabled', true);
+         $('#cari-object').html('cari <i class="fa fa-spin fa-refresh" style="position:absolute; top:18px; right:80px;"></i>');
+         ele.submit();
+      }
+   });
 });
 </script>
