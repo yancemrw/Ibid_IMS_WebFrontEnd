@@ -594,6 +594,19 @@ a.delete-compare {
     .related-product {
         padding: 0;
     }
+    .lelang-online ul li p#timer {
+        line-height: 55px;
+    }
+    .header-detail {
+        top: 50px;
+        display: contents;
+    }
+    #lightgallery .slick-track {
+        height: 300px;
+    }
+    #lightgallery .slick-track img {
+        height: 330px;
+    }
 }
 
 @media(max-width: 980px) {
