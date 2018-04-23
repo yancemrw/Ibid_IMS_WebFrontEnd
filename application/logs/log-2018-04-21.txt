@@ -1,0 +1,2079 @@
+INFO - 2018-04-21 07:22:22 --> Config Class Initialized
+INFO - 2018-04-21 07:22:22 --> Hooks Class Initialized
+DEBUG - 2018-04-21 07:22:23 --> UTF-8 Support Enabled
+INFO - 2018-04-21 07:22:23 --> Utf8 Class Initialized
+INFO - 2018-04-21 07:22:23 --> URI Class Initialized
+DEBUG - 2018-04-21 07:22:24 --> No URI present. Default controller set.
+INFO - 2018-04-21 07:22:24 --> Router Class Initialized
+INFO - 2018-04-21 07:22:24 --> Output Class Initialized
+INFO - 2018-04-21 07:22:25 --> Security Class Initialized
+DEBUG - 2018-04-21 07:22:25 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 07:22:25 --> Input Class Initialized
+INFO - 2018-04-21 07:22:25 --> Language Class Initialized
+INFO - 2018-04-21 07:22:26 --> Loader Class Initialized
+INFO - 2018-04-21 07:22:26 --> Helper loaded: url_helper
+INFO - 2018-04-21 07:22:26 --> Helper loaded: form_helper
+INFO - 2018-04-21 07:22:26 --> Helper loaded: adms_helper
+INFO - 2018-04-21 07:22:26 --> Helper loaded: global_helper
+INFO - 2018-04-21 07:22:27 --> Helper loaded: template_helper
+INFO - 2018-04-21 07:22:28 --> Database Driver Class Initialized
+INFO - 2018-04-21 07:22:32 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 07:22:32 --> Controller Class Initialized
+INFO - 2018-04-21 07:22:32 --> Form Validation Class Initialized
+INFO - 2018-04-21 07:22:32 --> Helper loaded: omni_helper
+INFO - 2018-04-21 07:22:44 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 07:22:45 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 07:22:45 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+ERROR - 2018-04-21 07:22:47 --> Severity: Error --> Maximum execution time of 30 seconds exceeded C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\third_party\google-login-api\service\apiBatch.php 23
+INFO - 2018-04-21 07:27:29 --> Config Class Initialized
+INFO - 2018-04-21 07:27:29 --> Hooks Class Initialized
+DEBUG - 2018-04-21 07:27:29 --> UTF-8 Support Enabled
+INFO - 2018-04-21 07:27:29 --> Utf8 Class Initialized
+INFO - 2018-04-21 07:27:29 --> URI Class Initialized
+DEBUG - 2018-04-21 07:27:29 --> No URI present. Default controller set.
+INFO - 2018-04-21 07:27:29 --> Router Class Initialized
+INFO - 2018-04-21 07:27:29 --> Output Class Initialized
+INFO - 2018-04-21 07:27:29 --> Security Class Initialized
+DEBUG - 2018-04-21 07:27:29 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 07:27:29 --> Input Class Initialized
+INFO - 2018-04-21 07:27:29 --> Language Class Initialized
+INFO - 2018-04-21 07:27:29 --> Loader Class Initialized
+INFO - 2018-04-21 07:27:29 --> Helper loaded: url_helper
+INFO - 2018-04-21 07:27:29 --> Helper loaded: form_helper
+INFO - 2018-04-21 07:27:29 --> Helper loaded: adms_helper
+INFO - 2018-04-21 07:27:29 --> Helper loaded: global_helper
+INFO - 2018-04-21 07:27:29 --> Helper loaded: template_helper
+INFO - 2018-04-21 07:27:29 --> Database Driver Class Initialized
+INFO - 2018-04-21 07:27:31 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 07:27:31 --> Controller Class Initialized
+INFO - 2018-04-21 07:27:31 --> Form Validation Class Initialized
+INFO - 2018-04-21 07:27:31 --> Helper loaded: omni_helper
+INFO - 2018-04-21 07:27:55 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 07:27:55 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 07:27:55 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 07:27:57 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 07:27:57 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 07:27:58 --> Final output sent to browser
+DEBUG - 2018-04-21 07:27:58 --> Total execution time: 28.8798
+INFO - 2018-04-21 07:30:13 --> Config Class Initialized
+INFO - 2018-04-21 07:30:13 --> Hooks Class Initialized
+DEBUG - 2018-04-21 07:30:13 --> UTF-8 Support Enabled
+INFO - 2018-04-21 07:30:13 --> Utf8 Class Initialized
+INFO - 2018-04-21 07:30:13 --> URI Class Initialized
+INFO - 2018-04-21 07:30:13 --> Router Class Initialized
+INFO - 2018-04-21 07:30:13 --> Output Class Initialized
+INFO - 2018-04-21 07:30:13 --> Security Class Initialized
+DEBUG - 2018-04-21 07:30:13 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 07:30:13 --> Input Class Initialized
+INFO - 2018-04-21 07:30:13 --> Language Class Initialized
+INFO - 2018-04-21 07:30:14 --> Loader Class Initialized
+INFO - 2018-04-21 07:30:14 --> Helper loaded: url_helper
+INFO - 2018-04-21 07:30:14 --> Helper loaded: form_helper
+INFO - 2018-04-21 07:30:14 --> Helper loaded: adms_helper
+INFO - 2018-04-21 07:30:14 --> Helper loaded: global_helper
+INFO - 2018-04-21 07:30:14 --> Helper loaded: template_helper
+INFO - 2018-04-21 07:30:14 --> Database Driver Class Initialized
+INFO - 2018-04-21 07:30:20 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 07:30:20 --> Controller Class Initialized
+INFO - 2018-04-21 07:30:20 --> Form Validation Class Initialized
+INFO - 2018-04-21 07:30:20 --> Helper loaded: omni_helper
+INFO - 2018-04-21 07:30:20 --> Language file loaded: language/indonesia/form_validation_lang.php
+ERROR - 2018-04-21 07:31:07 --> Severity: Error --> Maximum execution time of 30 seconds exceeded C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\helpers\global_helper.php 27
+INFO - 2018-04-21 07:31:18 --> Config Class Initialized
+INFO - 2018-04-21 07:31:18 --> Hooks Class Initialized
+DEBUG - 2018-04-21 07:31:19 --> UTF-8 Support Enabled
+INFO - 2018-04-21 07:31:19 --> Utf8 Class Initialized
+INFO - 2018-04-21 07:31:19 --> URI Class Initialized
+INFO - 2018-04-21 07:31:19 --> Router Class Initialized
+INFO - 2018-04-21 07:31:19 --> Output Class Initialized
+INFO - 2018-04-21 07:31:19 --> Security Class Initialized
+DEBUG - 2018-04-21 07:31:19 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 07:31:19 --> Input Class Initialized
+INFO - 2018-04-21 07:31:19 --> Language Class Initialized
+INFO - 2018-04-21 07:31:19 --> Loader Class Initialized
+INFO - 2018-04-21 07:31:19 --> Helper loaded: url_helper
+INFO - 2018-04-21 07:31:19 --> Helper loaded: form_helper
+INFO - 2018-04-21 07:31:19 --> Helper loaded: adms_helper
+INFO - 2018-04-21 07:31:19 --> Helper loaded: global_helper
+INFO - 2018-04-21 07:31:19 --> Helper loaded: template_helper
+INFO - 2018-04-21 07:31:19 --> Database Driver Class Initialized
+INFO - 2018-04-21 07:31:24 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 07:31:24 --> Controller Class Initialized
+INFO - 2018-04-21 07:31:24 --> Form Validation Class Initialized
+INFO - 2018-04-21 07:31:24 --> Helper loaded: omni_helper
+INFO - 2018-04-21 07:31:24 --> Language file loaded: language/indonesia/form_validation_lang.php
+ERROR - 2018-04-21 07:31:58 --> Severity: Error --> Maximum execution time of 30 seconds exceeded C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\helpers\global_helper.php 27
+INFO - 2018-04-21 07:33:15 --> Config Class Initialized
+INFO - 2018-04-21 07:33:15 --> Hooks Class Initialized
+DEBUG - 2018-04-21 07:33:15 --> UTF-8 Support Enabled
+INFO - 2018-04-21 07:33:15 --> Utf8 Class Initialized
+INFO - 2018-04-21 07:33:15 --> URI Class Initialized
+INFO - 2018-04-21 07:33:15 --> Router Class Initialized
+INFO - 2018-04-21 07:33:15 --> Output Class Initialized
+INFO - 2018-04-21 07:33:15 --> Security Class Initialized
+DEBUG - 2018-04-21 07:33:15 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 07:33:15 --> Input Class Initialized
+INFO - 2018-04-21 07:33:15 --> Language Class Initialized
+INFO - 2018-04-21 07:33:15 --> Loader Class Initialized
+INFO - 2018-04-21 07:33:15 --> Helper loaded: url_helper
+INFO - 2018-04-21 07:33:15 --> Helper loaded: form_helper
+INFO - 2018-04-21 07:33:15 --> Helper loaded: adms_helper
+INFO - 2018-04-21 07:33:15 --> Helper loaded: global_helper
+INFO - 2018-04-21 07:33:15 --> Helper loaded: template_helper
+INFO - 2018-04-21 07:33:16 --> Database Driver Class Initialized
+INFO - 2018-04-21 07:33:21 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 07:33:21 --> Controller Class Initialized
+INFO - 2018-04-21 07:33:21 --> Form Validation Class Initialized
+INFO - 2018-04-21 07:33:21 --> Helper loaded: omni_helper
+INFO - 2018-04-21 07:33:21 --> Language file loaded: language/indonesia/form_validation_lang.php
+ERROR - 2018-04-21 07:33:55 --> Severity: Error --> Maximum execution time of 30 seconds exceeded C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\helpers\global_helper.php 27
+INFO - 2018-04-21 07:36:58 --> Config Class Initialized
+INFO - 2018-04-21 07:36:58 --> Hooks Class Initialized
+DEBUG - 2018-04-21 07:36:58 --> UTF-8 Support Enabled
+INFO - 2018-04-21 07:36:58 --> Utf8 Class Initialized
+INFO - 2018-04-21 07:36:58 --> URI Class Initialized
+DEBUG - 2018-04-21 07:36:58 --> No URI present. Default controller set.
+INFO - 2018-04-21 07:36:58 --> Router Class Initialized
+INFO - 2018-04-21 07:36:58 --> Output Class Initialized
+INFO - 2018-04-21 07:36:58 --> Security Class Initialized
+DEBUG - 2018-04-21 07:36:58 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 07:36:58 --> Input Class Initialized
+INFO - 2018-04-21 07:36:58 --> Language Class Initialized
+INFO - 2018-04-21 07:36:58 --> Loader Class Initialized
+INFO - 2018-04-21 07:36:58 --> Helper loaded: url_helper
+INFO - 2018-04-21 07:36:58 --> Helper loaded: form_helper
+INFO - 2018-04-21 07:36:58 --> Helper loaded: adms_helper
+INFO - 2018-04-21 07:36:58 --> Helper loaded: global_helper
+INFO - 2018-04-21 07:36:58 --> Helper loaded: template_helper
+INFO - 2018-04-21 07:36:58 --> Database Driver Class Initialized
+INFO - 2018-04-21 07:37:04 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 07:37:04 --> Controller Class Initialized
+INFO - 2018-04-21 07:37:04 --> Form Validation Class Initialized
+INFO - 2018-04-21 07:37:04 --> Helper loaded: omni_helper
+INFO - 2018-04-21 07:37:15 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 07:37:15 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 07:37:15 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 07:37:15 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 07:37:15 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 07:37:15 --> Final output sent to browser
+DEBUG - 2018-04-21 07:37:15 --> Total execution time: 17.6812
+INFO - 2018-04-21 07:38:39 --> Config Class Initialized
+INFO - 2018-04-21 07:38:39 --> Hooks Class Initialized
+DEBUG - 2018-04-21 07:38:39 --> UTF-8 Support Enabled
+INFO - 2018-04-21 07:38:39 --> Utf8 Class Initialized
+INFO - 2018-04-21 07:38:39 --> URI Class Initialized
+DEBUG - 2018-04-21 07:38:39 --> No URI present. Default controller set.
+INFO - 2018-04-21 07:38:39 --> Router Class Initialized
+INFO - 2018-04-21 07:38:39 --> Output Class Initialized
+INFO - 2018-04-21 07:38:39 --> Security Class Initialized
+DEBUG - 2018-04-21 07:38:39 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 07:38:39 --> Input Class Initialized
+INFO - 2018-04-21 07:38:39 --> Language Class Initialized
+INFO - 2018-04-21 07:38:39 --> Loader Class Initialized
+INFO - 2018-04-21 07:38:39 --> Helper loaded: url_helper
+INFO - 2018-04-21 07:38:40 --> Helper loaded: form_helper
+INFO - 2018-04-21 07:38:40 --> Helper loaded: adms_helper
+INFO - 2018-04-21 07:38:40 --> Helper loaded: global_helper
+INFO - 2018-04-21 07:38:40 --> Helper loaded: template_helper
+INFO - 2018-04-21 07:38:40 --> Database Driver Class Initialized
+INFO - 2018-04-21 07:38:41 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 07:38:41 --> Controller Class Initialized
+INFO - 2018-04-21 07:38:42 --> Form Validation Class Initialized
+INFO - 2018-04-21 07:38:42 --> Helper loaded: omni_helper
+INFO - 2018-04-21 07:38:50 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 07:38:50 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 07:38:50 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 07:38:50 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 07:38:50 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 07:38:50 --> Final output sent to browser
+DEBUG - 2018-04-21 07:38:50 --> Total execution time: 11.1136
+INFO - 2018-04-21 07:39:26 --> Config Class Initialized
+INFO - 2018-04-21 07:39:27 --> Hooks Class Initialized
+DEBUG - 2018-04-21 07:39:27 --> UTF-8 Support Enabled
+INFO - 2018-04-21 07:39:27 --> Utf8 Class Initialized
+INFO - 2018-04-21 07:39:27 --> URI Class Initialized
+DEBUG - 2018-04-21 07:39:27 --> No URI present. Default controller set.
+INFO - 2018-04-21 07:39:27 --> Router Class Initialized
+INFO - 2018-04-21 07:39:27 --> Output Class Initialized
+INFO - 2018-04-21 07:39:27 --> Security Class Initialized
+DEBUG - 2018-04-21 07:39:27 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 07:39:27 --> Input Class Initialized
+INFO - 2018-04-21 07:39:27 --> Language Class Initialized
+INFO - 2018-04-21 07:39:27 --> Loader Class Initialized
+INFO - 2018-04-21 07:39:27 --> Helper loaded: url_helper
+INFO - 2018-04-21 07:39:27 --> Helper loaded: form_helper
+INFO - 2018-04-21 07:39:27 --> Helper loaded: adms_helper
+INFO - 2018-04-21 07:39:27 --> Helper loaded: global_helper
+INFO - 2018-04-21 07:39:27 --> Helper loaded: template_helper
+INFO - 2018-04-21 07:39:27 --> Database Driver Class Initialized
+INFO - 2018-04-21 07:39:29 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 07:39:29 --> Controller Class Initialized
+INFO - 2018-04-21 07:39:29 --> Form Validation Class Initialized
+INFO - 2018-04-21 07:39:29 --> Helper loaded: omni_helper
+INFO - 2018-04-21 07:39:36 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 07:39:36 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 07:39:36 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 07:39:37 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 07:39:37 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 07:39:37 --> Final output sent to browser
+DEBUG - 2018-04-21 07:39:37 --> Total execution time: 10.1796
+INFO - 2018-04-21 08:50:17 --> Config Class Initialized
+INFO - 2018-04-21 08:50:17 --> Hooks Class Initialized
+DEBUG - 2018-04-21 08:50:18 --> UTF-8 Support Enabled
+INFO - 2018-04-21 08:50:18 --> Utf8 Class Initialized
+INFO - 2018-04-21 08:50:18 --> URI Class Initialized
+DEBUG - 2018-04-21 08:50:18 --> No URI present. Default controller set.
+INFO - 2018-04-21 08:50:18 --> Router Class Initialized
+INFO - 2018-04-21 08:50:18 --> Output Class Initialized
+INFO - 2018-04-21 08:50:19 --> Security Class Initialized
+DEBUG - 2018-04-21 08:50:19 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 08:50:19 --> Input Class Initialized
+INFO - 2018-04-21 08:50:19 --> Language Class Initialized
+INFO - 2018-04-21 08:50:19 --> Loader Class Initialized
+INFO - 2018-04-21 08:50:19 --> Helper loaded: url_helper
+INFO - 2018-04-21 08:50:19 --> Helper loaded: form_helper
+INFO - 2018-04-21 08:50:19 --> Helper loaded: adms_helper
+INFO - 2018-04-21 08:50:19 --> Helper loaded: global_helper
+INFO - 2018-04-21 08:50:19 --> Helper loaded: template_helper
+INFO - 2018-04-21 08:50:20 --> Database Driver Class Initialized
+INFO - 2018-04-21 08:50:23 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 08:50:23 --> Controller Class Initialized
+INFO - 2018-04-21 08:50:23 --> Form Validation Class Initialized
+INFO - 2018-04-21 08:50:23 --> Helper loaded: omni_helper
+INFO - 2018-04-21 08:50:33 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 08:50:33 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 08:50:34 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 08:50:35 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 08:50:35 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 08:50:35 --> Final output sent to browser
+DEBUG - 2018-04-21 08:50:35 --> Total execution time: 17.9135
+INFO - 2018-04-21 08:54:38 --> Config Class Initialized
+INFO - 2018-04-21 08:54:39 --> Hooks Class Initialized
+DEBUG - 2018-04-21 08:54:39 --> UTF-8 Support Enabled
+INFO - 2018-04-21 08:54:39 --> Utf8 Class Initialized
+INFO - 2018-04-21 08:54:39 --> URI Class Initialized
+DEBUG - 2018-04-21 08:54:39 --> No URI present. Default controller set.
+INFO - 2018-04-21 08:54:39 --> Router Class Initialized
+INFO - 2018-04-21 08:54:39 --> Output Class Initialized
+INFO - 2018-04-21 08:54:39 --> Security Class Initialized
+DEBUG - 2018-04-21 08:54:39 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 08:54:39 --> Input Class Initialized
+INFO - 2018-04-21 08:54:39 --> Language Class Initialized
+INFO - 2018-04-21 08:54:39 --> Loader Class Initialized
+INFO - 2018-04-21 08:54:39 --> Helper loaded: url_helper
+INFO - 2018-04-21 08:54:39 --> Helper loaded: form_helper
+INFO - 2018-04-21 08:54:39 --> Helper loaded: adms_helper
+INFO - 2018-04-21 08:54:39 --> Helper loaded: global_helper
+INFO - 2018-04-21 08:54:39 --> Helper loaded: template_helper
+INFO - 2018-04-21 08:54:39 --> Database Driver Class Initialized
+INFO - 2018-04-21 08:54:41 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 08:54:41 --> Controller Class Initialized
+INFO - 2018-04-21 08:54:41 --> Form Validation Class Initialized
+INFO - 2018-04-21 08:54:41 --> Helper loaded: omni_helper
+INFO - 2018-04-21 08:54:49 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 08:54:49 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 08:54:49 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 08:54:49 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 08:54:49 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 08:54:49 --> Final output sent to browser
+DEBUG - 2018-04-21 08:54:49 --> Total execution time: 10.4394
+INFO - 2018-04-21 08:58:35 --> Config Class Initialized
+INFO - 2018-04-21 08:58:35 --> Hooks Class Initialized
+DEBUG - 2018-04-21 08:58:35 --> UTF-8 Support Enabled
+INFO - 2018-04-21 08:58:35 --> Utf8 Class Initialized
+INFO - 2018-04-21 08:58:35 --> URI Class Initialized
+DEBUG - 2018-04-21 08:58:35 --> No URI present. Default controller set.
+INFO - 2018-04-21 08:58:35 --> Router Class Initialized
+INFO - 2018-04-21 08:58:35 --> Output Class Initialized
+INFO - 2018-04-21 08:58:35 --> Security Class Initialized
+DEBUG - 2018-04-21 08:58:35 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 08:58:35 --> Input Class Initialized
+INFO - 2018-04-21 08:58:35 --> Language Class Initialized
+INFO - 2018-04-21 08:58:35 --> Loader Class Initialized
+INFO - 2018-04-21 08:58:36 --> Helper loaded: url_helper
+INFO - 2018-04-21 08:58:36 --> Helper loaded: form_helper
+INFO - 2018-04-21 08:58:36 --> Helper loaded: adms_helper
+INFO - 2018-04-21 08:58:36 --> Helper loaded: global_helper
+INFO - 2018-04-21 08:58:36 --> Helper loaded: template_helper
+INFO - 2018-04-21 08:58:36 --> Database Driver Class Initialized
+INFO - 2018-04-21 08:58:38 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 08:58:38 --> Controller Class Initialized
+INFO - 2018-04-21 08:58:38 --> Form Validation Class Initialized
+INFO - 2018-04-21 08:58:39 --> Helper loaded: omni_helper
+INFO - 2018-04-21 08:58:49 --> Config Class Initialized
+INFO - 2018-04-21 08:58:49 --> Hooks Class Initialized
+DEBUG - 2018-04-21 08:58:49 --> UTF-8 Support Enabled
+INFO - 2018-04-21 08:58:49 --> Utf8 Class Initialized
+INFO - 2018-04-21 08:58:49 --> URI Class Initialized
+DEBUG - 2018-04-21 08:58:49 --> No URI present. Default controller set.
+INFO - 2018-04-21 08:58:49 --> Router Class Initialized
+INFO - 2018-04-21 08:58:49 --> Output Class Initialized
+INFO - 2018-04-21 08:58:49 --> Security Class Initialized
+DEBUG - 2018-04-21 08:58:49 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 08:58:49 --> Input Class Initialized
+INFO - 2018-04-21 08:58:49 --> Language Class Initialized
+INFO - 2018-04-21 08:58:49 --> Loader Class Initialized
+INFO - 2018-04-21 08:58:49 --> Helper loaded: url_helper
+INFO - 2018-04-21 08:58:49 --> Helper loaded: form_helper
+INFO - 2018-04-21 08:58:49 --> Helper loaded: adms_helper
+INFO - 2018-04-21 08:58:49 --> Helper loaded: global_helper
+INFO - 2018-04-21 08:58:49 --> Helper loaded: template_helper
+INFO - 2018-04-21 08:58:49 --> Database Driver Class Initialized
+INFO - 2018-04-21 08:58:50 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 08:58:50 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 08:58:50 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 08:58:50 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 08:58:50 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 08:58:50 --> Final output sent to browser
+DEBUG - 2018-04-21 08:58:50 --> Total execution time: 15.0976
+INFO - 2018-04-21 08:58:51 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 08:58:51 --> Controller Class Initialized
+INFO - 2018-04-21 08:58:51 --> Form Validation Class Initialized
+INFO - 2018-04-21 08:58:51 --> Helper loaded: omni_helper
+INFO - 2018-04-21 08:59:01 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 08:59:01 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 08:59:01 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 08:59:01 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 08:59:01 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 08:59:01 --> Final output sent to browser
+DEBUG - 2018-04-21 08:59:01 --> Total execution time: 12.3560
+INFO - 2018-04-21 09:00:11 --> Config Class Initialized
+INFO - 2018-04-21 09:00:11 --> Hooks Class Initialized
+DEBUG - 2018-04-21 09:00:11 --> UTF-8 Support Enabled
+INFO - 2018-04-21 09:00:11 --> Utf8 Class Initialized
+INFO - 2018-04-21 09:00:11 --> URI Class Initialized
+DEBUG - 2018-04-21 09:00:11 --> No URI present. Default controller set.
+INFO - 2018-04-21 09:00:11 --> Router Class Initialized
+INFO - 2018-04-21 09:00:11 --> Output Class Initialized
+INFO - 2018-04-21 09:00:11 --> Security Class Initialized
+DEBUG - 2018-04-21 09:00:11 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 09:00:11 --> Input Class Initialized
+INFO - 2018-04-21 09:00:11 --> Language Class Initialized
+INFO - 2018-04-21 09:00:11 --> Loader Class Initialized
+INFO - 2018-04-21 09:00:11 --> Helper loaded: url_helper
+INFO - 2018-04-21 09:00:11 --> Helper loaded: form_helper
+INFO - 2018-04-21 09:00:11 --> Helper loaded: adms_helper
+INFO - 2018-04-21 09:00:11 --> Helper loaded: global_helper
+INFO - 2018-04-21 09:00:11 --> Helper loaded: template_helper
+INFO - 2018-04-21 09:00:11 --> Database Driver Class Initialized
+INFO - 2018-04-21 09:00:13 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 09:00:13 --> Controller Class Initialized
+INFO - 2018-04-21 09:00:13 --> Form Validation Class Initialized
+INFO - 2018-04-21 09:00:13 --> Helper loaded: omni_helper
+INFO - 2018-04-21 09:00:15 --> Config Class Initialized
+INFO - 2018-04-21 09:00:15 --> Hooks Class Initialized
+DEBUG - 2018-04-21 09:00:15 --> UTF-8 Support Enabled
+INFO - 2018-04-21 09:00:15 --> Utf8 Class Initialized
+INFO - 2018-04-21 09:00:15 --> URI Class Initialized
+DEBUG - 2018-04-21 09:00:15 --> No URI present. Default controller set.
+INFO - 2018-04-21 09:00:15 --> Router Class Initialized
+INFO - 2018-04-21 09:00:15 --> Output Class Initialized
+INFO - 2018-04-21 09:00:15 --> Security Class Initialized
+DEBUG - 2018-04-21 09:00:15 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 09:00:15 --> Input Class Initialized
+INFO - 2018-04-21 09:00:15 --> Language Class Initialized
+INFO - 2018-04-21 09:00:15 --> Loader Class Initialized
+INFO - 2018-04-21 09:00:15 --> Helper loaded: url_helper
+INFO - 2018-04-21 09:00:15 --> Helper loaded: form_helper
+INFO - 2018-04-21 09:00:15 --> Helper loaded: adms_helper
+INFO - 2018-04-21 09:00:15 --> Helper loaded: global_helper
+INFO - 2018-04-21 09:00:15 --> Helper loaded: template_helper
+INFO - 2018-04-21 09:00:15 --> Database Driver Class Initialized
+INFO - 2018-04-21 09:00:18 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 09:00:18 --> Controller Class Initialized
+INFO - 2018-04-21 09:00:18 --> Form Validation Class Initialized
+INFO - 2018-04-21 09:00:18 --> Helper loaded: omni_helper
+INFO - 2018-04-21 09:00:24 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 09:00:24 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 09:00:24 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 09:00:24 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 09:00:24 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 09:00:24 --> Final output sent to browser
+DEBUG - 2018-04-21 09:00:24 --> Total execution time: 13.3816
+INFO - 2018-04-21 09:00:26 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 09:00:26 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 09:00:26 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 09:00:26 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 09:00:26 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 09:00:26 --> Final output sent to browser
+DEBUG - 2018-04-21 09:00:26 --> Total execution time: 11.3498
+INFO - 2018-04-21 09:06:03 --> Config Class Initialized
+INFO - 2018-04-21 09:06:03 --> Hooks Class Initialized
+DEBUG - 2018-04-21 09:06:03 --> UTF-8 Support Enabled
+INFO - 2018-04-21 09:06:04 --> Utf8 Class Initialized
+INFO - 2018-04-21 09:06:04 --> URI Class Initialized
+INFO - 2018-04-21 09:06:04 --> Router Class Initialized
+INFO - 2018-04-21 09:06:04 --> Output Class Initialized
+INFO - 2018-04-21 09:06:04 --> Security Class Initialized
+DEBUG - 2018-04-21 09:06:04 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 09:06:04 --> Input Class Initialized
+INFO - 2018-04-21 09:06:04 --> Language Class Initialized
+INFO - 2018-04-21 09:06:04 --> Loader Class Initialized
+INFO - 2018-04-21 09:06:04 --> Helper loaded: url_helper
+INFO - 2018-04-21 09:06:04 --> Helper loaded: form_helper
+INFO - 2018-04-21 09:06:04 --> Helper loaded: adms_helper
+INFO - 2018-04-21 09:06:04 --> Helper loaded: global_helper
+INFO - 2018-04-21 09:06:04 --> Helper loaded: template_helper
+INFO - 2018-04-21 09:06:04 --> Database Driver Class Initialized
+INFO - 2018-04-21 09:06:08 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 09:06:08 --> Controller Class Initialized
+INFO - 2018-04-21 09:06:08 --> Helper loaded: omni_helper
+INFO - 2018-04-21 09:06:17 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 09:06:17 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\find/find_unit.php
+DEBUG - 2018-04-21 09:06:17 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 09:06:17 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 09:06:17 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 09:06:17 --> Final output sent to browser
+DEBUG - 2018-04-21 09:06:17 --> Total execution time: 13.9900
+INFO - 2018-04-21 09:21:18 --> Config Class Initialized
+INFO - 2018-04-21 09:21:19 --> Hooks Class Initialized
+DEBUG - 2018-04-21 09:21:19 --> UTF-8 Support Enabled
+INFO - 2018-04-21 09:21:19 --> Utf8 Class Initialized
+INFO - 2018-04-21 09:21:19 --> URI Class Initialized
+DEBUG - 2018-04-21 09:21:19 --> No URI present. Default controller set.
+INFO - 2018-04-21 09:21:19 --> Router Class Initialized
+INFO - 2018-04-21 09:21:19 --> Output Class Initialized
+INFO - 2018-04-21 09:21:19 --> Security Class Initialized
+DEBUG - 2018-04-21 09:21:19 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 09:21:19 --> Input Class Initialized
+INFO - 2018-04-21 09:21:19 --> Language Class Initialized
+INFO - 2018-04-21 09:21:19 --> Loader Class Initialized
+INFO - 2018-04-21 09:21:19 --> Helper loaded: url_helper
+INFO - 2018-04-21 09:21:19 --> Helper loaded: form_helper
+INFO - 2018-04-21 09:21:19 --> Helper loaded: adms_helper
+INFO - 2018-04-21 09:21:19 --> Helper loaded: global_helper
+INFO - 2018-04-21 09:21:19 --> Helper loaded: template_helper
+INFO - 2018-04-21 09:21:19 --> Database Driver Class Initialized
+INFO - 2018-04-21 09:21:24 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 09:21:24 --> Controller Class Initialized
+INFO - 2018-04-21 09:21:24 --> Form Validation Class Initialized
+INFO - 2018-04-21 09:21:24 --> Helper loaded: omni_helper
+INFO - 2018-04-21 09:21:33 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 09:21:33 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 09:21:33 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 09:21:33 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 09:21:33 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 09:21:33 --> Final output sent to browser
+DEBUG - 2018-04-21 09:21:33 --> Total execution time: 14.4684
+INFO - 2018-04-21 09:27:31 --> Config Class Initialized
+INFO - 2018-04-21 09:27:31 --> Hooks Class Initialized
+DEBUG - 2018-04-21 09:27:32 --> UTF-8 Support Enabled
+INFO - 2018-04-21 09:27:32 --> Utf8 Class Initialized
+INFO - 2018-04-21 09:27:32 --> URI Class Initialized
+DEBUG - 2018-04-21 09:27:32 --> No URI present. Default controller set.
+INFO - 2018-04-21 09:27:32 --> Router Class Initialized
+INFO - 2018-04-21 09:27:32 --> Output Class Initialized
+INFO - 2018-04-21 09:27:32 --> Security Class Initialized
+DEBUG - 2018-04-21 09:27:32 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 09:27:32 --> Input Class Initialized
+INFO - 2018-04-21 09:27:32 --> Language Class Initialized
+INFO - 2018-04-21 09:27:32 --> Loader Class Initialized
+INFO - 2018-04-21 09:27:32 --> Helper loaded: url_helper
+INFO - 2018-04-21 09:27:32 --> Helper loaded: form_helper
+INFO - 2018-04-21 09:27:32 --> Helper loaded: adms_helper
+INFO - 2018-04-21 09:27:32 --> Helper loaded: global_helper
+INFO - 2018-04-21 09:27:32 --> Helper loaded: template_helper
+INFO - 2018-04-21 09:27:32 --> Database Driver Class Initialized
+INFO - 2018-04-21 09:27:35 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 09:27:35 --> Controller Class Initialized
+INFO - 2018-04-21 09:27:35 --> Form Validation Class Initialized
+INFO - 2018-04-21 09:27:35 --> Helper loaded: omni_helper
+INFO - 2018-04-21 09:27:40 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 09:27:40 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 09:27:40 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 09:27:41 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 09:27:41 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 09:27:41 --> Final output sent to browser
+DEBUG - 2018-04-21 09:27:41 --> Total execution time: 9.2813
+INFO - 2018-04-21 09:28:18 --> Config Class Initialized
+INFO - 2018-04-21 09:28:18 --> Hooks Class Initialized
+DEBUG - 2018-04-21 09:28:18 --> UTF-8 Support Enabled
+INFO - 2018-04-21 09:28:18 --> Utf8 Class Initialized
+INFO - 2018-04-21 09:28:18 --> URI Class Initialized
+DEBUG - 2018-04-21 09:28:18 --> No URI present. Default controller set.
+INFO - 2018-04-21 09:28:18 --> Router Class Initialized
+INFO - 2018-04-21 09:28:18 --> Output Class Initialized
+INFO - 2018-04-21 09:28:18 --> Security Class Initialized
+DEBUG - 2018-04-21 09:28:18 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 09:28:18 --> Input Class Initialized
+INFO - 2018-04-21 09:28:18 --> Language Class Initialized
+INFO - 2018-04-21 09:28:18 --> Loader Class Initialized
+INFO - 2018-04-21 09:28:18 --> Helper loaded: url_helper
+INFO - 2018-04-21 09:28:18 --> Helper loaded: form_helper
+INFO - 2018-04-21 09:28:18 --> Helper loaded: adms_helper
+INFO - 2018-04-21 09:28:18 --> Helper loaded: global_helper
+INFO - 2018-04-21 09:28:18 --> Helper loaded: template_helper
+INFO - 2018-04-21 09:28:18 --> Database Driver Class Initialized
+INFO - 2018-04-21 09:28:21 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 09:28:21 --> Controller Class Initialized
+INFO - 2018-04-21 09:28:21 --> Form Validation Class Initialized
+INFO - 2018-04-21 09:28:21 --> Helper loaded: omni_helper
+INFO - 2018-04-21 09:28:26 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 09:28:26 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 09:28:26 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 09:28:26 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 09:28:26 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 09:28:26 --> Final output sent to browser
+DEBUG - 2018-04-21 09:28:26 --> Total execution time: 8.6720
+INFO - 2018-04-21 09:30:28 --> Config Class Initialized
+INFO - 2018-04-21 09:30:28 --> Hooks Class Initialized
+DEBUG - 2018-04-21 09:30:28 --> UTF-8 Support Enabled
+INFO - 2018-04-21 09:30:28 --> Utf8 Class Initialized
+INFO - 2018-04-21 09:30:28 --> URI Class Initialized
+DEBUG - 2018-04-21 09:30:28 --> No URI present. Default controller set.
+INFO - 2018-04-21 09:30:28 --> Router Class Initialized
+INFO - 2018-04-21 09:30:28 --> Output Class Initialized
+INFO - 2018-04-21 09:30:28 --> Security Class Initialized
+DEBUG - 2018-04-21 09:30:28 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 09:30:28 --> Input Class Initialized
+INFO - 2018-04-21 09:30:29 --> Language Class Initialized
+INFO - 2018-04-21 09:30:29 --> Loader Class Initialized
+INFO - 2018-04-21 09:30:29 --> Helper loaded: url_helper
+INFO - 2018-04-21 09:30:29 --> Helper loaded: form_helper
+INFO - 2018-04-21 09:30:29 --> Helper loaded: adms_helper
+INFO - 2018-04-21 09:30:29 --> Helper loaded: global_helper
+INFO - 2018-04-21 09:30:29 --> Helper loaded: template_helper
+INFO - 2018-04-21 09:30:29 --> Database Driver Class Initialized
+INFO - 2018-04-21 09:30:32 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 09:30:32 --> Controller Class Initialized
+INFO - 2018-04-21 09:30:32 --> Form Validation Class Initialized
+INFO - 2018-04-21 09:30:32 --> Helper loaded: omni_helper
+INFO - 2018-04-21 09:30:42 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 09:30:42 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 09:30:42 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 09:30:42 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 09:30:42 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 09:30:42 --> Final output sent to browser
+DEBUG - 2018-04-21 09:30:42 --> Total execution time: 13.9284
+INFO - 2018-04-21 09:31:14 --> Config Class Initialized
+INFO - 2018-04-21 09:31:14 --> Hooks Class Initialized
+DEBUG - 2018-04-21 09:31:14 --> UTF-8 Support Enabled
+INFO - 2018-04-21 09:31:14 --> Utf8 Class Initialized
+INFO - 2018-04-21 09:31:14 --> URI Class Initialized
+DEBUG - 2018-04-21 09:31:14 --> No URI present. Default controller set.
+INFO - 2018-04-21 09:31:14 --> Router Class Initialized
+INFO - 2018-04-21 09:31:14 --> Output Class Initialized
+INFO - 2018-04-21 09:31:14 --> Security Class Initialized
+DEBUG - 2018-04-21 09:31:14 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 09:31:14 --> Input Class Initialized
+INFO - 2018-04-21 09:31:15 --> Language Class Initialized
+INFO - 2018-04-21 09:31:15 --> Loader Class Initialized
+INFO - 2018-04-21 09:31:15 --> Helper loaded: url_helper
+INFO - 2018-04-21 09:31:15 --> Helper loaded: form_helper
+INFO - 2018-04-21 09:31:15 --> Helper loaded: adms_helper
+INFO - 2018-04-21 09:31:15 --> Helper loaded: global_helper
+INFO - 2018-04-21 09:31:15 --> Helper loaded: template_helper
+INFO - 2018-04-21 09:31:15 --> Database Driver Class Initialized
+INFO - 2018-04-21 09:31:17 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 09:31:17 --> Controller Class Initialized
+INFO - 2018-04-21 09:31:17 --> Form Validation Class Initialized
+INFO - 2018-04-21 09:31:17 --> Helper loaded: omni_helper
+INFO - 2018-04-21 09:31:26 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 09:31:26 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 09:31:26 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 09:31:26 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 09:31:26 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 09:31:26 --> Final output sent to browser
+DEBUG - 2018-04-21 09:31:26 --> Total execution time: 12.2323
+INFO - 2018-04-21 09:36:27 --> Config Class Initialized
+INFO - 2018-04-21 09:36:27 --> Hooks Class Initialized
+DEBUG - 2018-04-21 09:36:27 --> UTF-8 Support Enabled
+INFO - 2018-04-21 09:36:27 --> Utf8 Class Initialized
+INFO - 2018-04-21 09:36:27 --> URI Class Initialized
+DEBUG - 2018-04-21 09:36:28 --> No URI present. Default controller set.
+INFO - 2018-04-21 09:36:28 --> Router Class Initialized
+INFO - 2018-04-21 09:36:28 --> Output Class Initialized
+INFO - 2018-04-21 09:36:28 --> Security Class Initialized
+DEBUG - 2018-04-21 09:36:28 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 09:36:28 --> Input Class Initialized
+INFO - 2018-04-21 09:36:28 --> Language Class Initialized
+INFO - 2018-04-21 09:36:29 --> Loader Class Initialized
+INFO - 2018-04-21 09:36:29 --> Helper loaded: url_helper
+INFO - 2018-04-21 09:36:29 --> Helper loaded: form_helper
+INFO - 2018-04-21 09:36:29 --> Helper loaded: adms_helper
+INFO - 2018-04-21 09:36:29 --> Helper loaded: global_helper
+INFO - 2018-04-21 09:36:29 --> Helper loaded: template_helper
+INFO - 2018-04-21 09:36:30 --> Database Driver Class Initialized
+INFO - 2018-04-21 09:36:33 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 09:36:33 --> Controller Class Initialized
+INFO - 2018-04-21 09:36:33 --> Form Validation Class Initialized
+INFO - 2018-04-21 09:36:33 --> Helper loaded: omni_helper
+ERROR - 2018-04-21 09:36:59 --> Severity: Error --> Maximum execution time of 30 seconds exceeded C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\helpers\global_helper.php 27
+INFO - 2018-04-21 09:37:02 --> Config Class Initialized
+INFO - 2018-04-21 09:37:02 --> Hooks Class Initialized
+DEBUG - 2018-04-21 09:37:02 --> UTF-8 Support Enabled
+INFO - 2018-04-21 09:37:02 --> Utf8 Class Initialized
+INFO - 2018-04-21 09:37:02 --> URI Class Initialized
+DEBUG - 2018-04-21 09:37:02 --> No URI present. Default controller set.
+INFO - 2018-04-21 09:37:02 --> Router Class Initialized
+INFO - 2018-04-21 09:37:02 --> Output Class Initialized
+INFO - 2018-04-21 09:37:02 --> Security Class Initialized
+DEBUG - 2018-04-21 09:37:02 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 09:37:02 --> Input Class Initialized
+INFO - 2018-04-21 09:37:02 --> Language Class Initialized
+INFO - 2018-04-21 09:37:02 --> Loader Class Initialized
+INFO - 2018-04-21 09:37:02 --> Helper loaded: url_helper
+INFO - 2018-04-21 09:37:02 --> Helper loaded: form_helper
+INFO - 2018-04-21 09:37:02 --> Helper loaded: adms_helper
+INFO - 2018-04-21 09:37:03 --> Helper loaded: global_helper
+INFO - 2018-04-21 09:37:03 --> Helper loaded: template_helper
+INFO - 2018-04-21 09:37:03 --> Database Driver Class Initialized
+INFO - 2018-04-21 09:37:09 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 09:37:09 --> Controller Class Initialized
+INFO - 2018-04-21 09:37:09 --> Form Validation Class Initialized
+INFO - 2018-04-21 09:37:09 --> Helper loaded: omni_helper
+INFO - 2018-04-21 09:37:26 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 09:37:27 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 09:37:27 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 09:37:28 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 09:37:28 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 09:37:28 --> Final output sent to browser
+DEBUG - 2018-04-21 09:37:28 --> Total execution time: 26.3632
+INFO - 2018-04-21 09:38:39 --> Config Class Initialized
+INFO - 2018-04-21 09:38:39 --> Hooks Class Initialized
+DEBUG - 2018-04-21 09:38:39 --> UTF-8 Support Enabled
+INFO - 2018-04-21 09:38:39 --> Utf8 Class Initialized
+INFO - 2018-04-21 09:38:39 --> URI Class Initialized
+DEBUG - 2018-04-21 09:38:39 --> No URI present. Default controller set.
+INFO - 2018-04-21 09:38:39 --> Router Class Initialized
+INFO - 2018-04-21 09:38:39 --> Output Class Initialized
+INFO - 2018-04-21 09:38:39 --> Security Class Initialized
+DEBUG - 2018-04-21 09:38:39 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 09:38:39 --> Input Class Initialized
+INFO - 2018-04-21 09:38:39 --> Language Class Initialized
+INFO - 2018-04-21 09:38:39 --> Loader Class Initialized
+INFO - 2018-04-21 09:38:39 --> Helper loaded: url_helper
+INFO - 2018-04-21 09:38:39 --> Helper loaded: form_helper
+INFO - 2018-04-21 09:38:39 --> Helper loaded: adms_helper
+INFO - 2018-04-21 09:38:39 --> Helper loaded: global_helper
+INFO - 2018-04-21 09:38:39 --> Helper loaded: template_helper
+INFO - 2018-04-21 09:38:40 --> Database Driver Class Initialized
+INFO - 2018-04-21 09:38:42 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 09:38:42 --> Controller Class Initialized
+INFO - 2018-04-21 09:38:42 --> Form Validation Class Initialized
+INFO - 2018-04-21 09:38:42 --> Helper loaded: omni_helper
+INFO - 2018-04-21 09:39:04 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 09:39:04 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 09:39:04 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 09:39:05 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 09:39:05 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 09:39:05 --> Final output sent to browser
+DEBUG - 2018-04-21 09:39:05 --> Total execution time: 26.1559
+INFO - 2018-04-21 09:41:21 --> Config Class Initialized
+INFO - 2018-04-21 09:41:21 --> Hooks Class Initialized
+DEBUG - 2018-04-21 09:41:21 --> UTF-8 Support Enabled
+INFO - 2018-04-21 09:41:21 --> Utf8 Class Initialized
+INFO - 2018-04-21 09:41:21 --> URI Class Initialized
+INFO - 2018-04-21 09:41:21 --> Router Class Initialized
+INFO - 2018-04-21 09:41:21 --> Output Class Initialized
+INFO - 2018-04-21 09:41:21 --> Security Class Initialized
+DEBUG - 2018-04-21 09:41:21 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 09:41:21 --> Input Class Initialized
+INFO - 2018-04-21 09:41:21 --> Language Class Initialized
+INFO - 2018-04-21 09:41:22 --> Loader Class Initialized
+INFO - 2018-04-21 09:41:22 --> Helper loaded: url_helper
+INFO - 2018-04-21 09:41:22 --> Helper loaded: form_helper
+INFO - 2018-04-21 09:41:22 --> Helper loaded: adms_helper
+INFO - 2018-04-21 09:41:22 --> Helper loaded: global_helper
+INFO - 2018-04-21 09:41:22 --> Helper loaded: template_helper
+INFO - 2018-04-21 09:41:22 --> Database Driver Class Initialized
+INFO - 2018-04-21 09:41:24 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 09:41:24 --> Controller Class Initialized
+INFO - 2018-04-21 09:41:24 --> Helper loaded: omni_helper
+ERROR - 2018-04-21 09:41:51 --> Severity: Error --> Maximum execution time of 30 seconds exceeded C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\helpers\global_helper.php 27
+INFO - 2018-04-21 09:42:10 --> Config Class Initialized
+INFO - 2018-04-21 09:42:10 --> Hooks Class Initialized
+DEBUG - 2018-04-21 09:42:10 --> UTF-8 Support Enabled
+INFO - 2018-04-21 09:42:10 --> Utf8 Class Initialized
+INFO - 2018-04-21 09:42:10 --> URI Class Initialized
+DEBUG - 2018-04-21 09:42:10 --> No URI present. Default controller set.
+INFO - 2018-04-21 09:42:10 --> Router Class Initialized
+INFO - 2018-04-21 09:42:10 --> Output Class Initialized
+INFO - 2018-04-21 09:42:10 --> Security Class Initialized
+DEBUG - 2018-04-21 09:42:10 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 09:42:10 --> Input Class Initialized
+INFO - 2018-04-21 09:42:10 --> Language Class Initialized
+INFO - 2018-04-21 09:42:10 --> Loader Class Initialized
+INFO - 2018-04-21 09:42:10 --> Helper loaded: url_helper
+INFO - 2018-04-21 09:42:11 --> Helper loaded: form_helper
+INFO - 2018-04-21 09:42:11 --> Helper loaded: adms_helper
+INFO - 2018-04-21 09:42:11 --> Helper loaded: global_helper
+INFO - 2018-04-21 09:42:11 --> Helper loaded: template_helper
+INFO - 2018-04-21 09:42:11 --> Database Driver Class Initialized
+INFO - 2018-04-21 09:42:13 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 09:42:13 --> Controller Class Initialized
+INFO - 2018-04-21 09:42:13 --> Form Validation Class Initialized
+INFO - 2018-04-21 09:42:13 --> Helper loaded: omni_helper
+INFO - 2018-04-21 09:42:31 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 09:42:31 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 09:42:31 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 09:42:32 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 09:42:32 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 09:42:32 --> Final output sent to browser
+DEBUG - 2018-04-21 09:42:32 --> Total execution time: 22.0261
+INFO - 2018-04-21 09:45:54 --> Config Class Initialized
+INFO - 2018-04-21 09:45:54 --> Hooks Class Initialized
+DEBUG - 2018-04-21 09:45:54 --> UTF-8 Support Enabled
+INFO - 2018-04-21 09:45:54 --> Utf8 Class Initialized
+INFO - 2018-04-21 09:45:54 --> URI Class Initialized
+DEBUG - 2018-04-21 09:45:54 --> No URI present. Default controller set.
+INFO - 2018-04-21 09:45:54 --> Router Class Initialized
+INFO - 2018-04-21 09:45:54 --> Output Class Initialized
+INFO - 2018-04-21 09:45:54 --> Security Class Initialized
+DEBUG - 2018-04-21 09:45:54 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 09:45:54 --> Input Class Initialized
+INFO - 2018-04-21 09:45:54 --> Language Class Initialized
+INFO - 2018-04-21 09:45:54 --> Loader Class Initialized
+INFO - 2018-04-21 09:45:54 --> Helper loaded: url_helper
+INFO - 2018-04-21 09:45:54 --> Helper loaded: form_helper
+INFO - 2018-04-21 09:45:54 --> Helper loaded: adms_helper
+INFO - 2018-04-21 09:45:55 --> Helper loaded: global_helper
+INFO - 2018-04-21 09:45:55 --> Helper loaded: template_helper
+INFO - 2018-04-21 09:45:55 --> Database Driver Class Initialized
+INFO - 2018-04-21 09:46:02 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 09:46:02 --> Controller Class Initialized
+INFO - 2018-04-21 09:46:02 --> Form Validation Class Initialized
+INFO - 2018-04-21 09:46:02 --> Helper loaded: omni_helper
+INFO - 2018-04-21 09:46:12 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 09:46:12 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 09:46:12 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 09:46:13 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 09:46:13 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 09:46:13 --> Final output sent to browser
+DEBUG - 2018-04-21 09:46:13 --> Total execution time: 19.3369
+INFO - 2018-04-21 09:47:33 --> Config Class Initialized
+INFO - 2018-04-21 09:47:33 --> Hooks Class Initialized
+DEBUG - 2018-04-21 09:47:33 --> UTF-8 Support Enabled
+INFO - 2018-04-21 09:47:33 --> Utf8 Class Initialized
+INFO - 2018-04-21 09:47:33 --> URI Class Initialized
+DEBUG - 2018-04-21 09:47:33 --> No URI present. Default controller set.
+INFO - 2018-04-21 09:47:33 --> Router Class Initialized
+INFO - 2018-04-21 09:47:33 --> Output Class Initialized
+INFO - 2018-04-21 09:47:33 --> Security Class Initialized
+DEBUG - 2018-04-21 09:47:33 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 09:47:34 --> Input Class Initialized
+INFO - 2018-04-21 09:47:34 --> Language Class Initialized
+INFO - 2018-04-21 09:47:34 --> Loader Class Initialized
+INFO - 2018-04-21 09:47:34 --> Helper loaded: url_helper
+INFO - 2018-04-21 09:47:34 --> Helper loaded: form_helper
+INFO - 2018-04-21 09:47:34 --> Helper loaded: adms_helper
+INFO - 2018-04-21 09:47:34 --> Helper loaded: global_helper
+INFO - 2018-04-21 09:47:34 --> Helper loaded: template_helper
+INFO - 2018-04-21 09:47:34 --> Database Driver Class Initialized
+INFO - 2018-04-21 09:47:38 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 09:47:38 --> Controller Class Initialized
+INFO - 2018-04-21 09:47:39 --> Form Validation Class Initialized
+INFO - 2018-04-21 09:47:39 --> Helper loaded: omni_helper
+INFO - 2018-04-21 09:47:59 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 09:47:59 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 09:47:59 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 09:47:59 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 09:47:59 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 09:47:59 --> Final output sent to browser
+DEBUG - 2018-04-21 09:47:59 --> Total execution time: 26.4167
+INFO - 2018-04-21 09:47:59 --> Config Class Initialized
+INFO - 2018-04-21 09:47:59 --> Hooks Class Initialized
+DEBUG - 2018-04-21 09:47:59 --> UTF-8 Support Enabled
+INFO - 2018-04-21 09:48:00 --> Utf8 Class Initialized
+INFO - 2018-04-21 09:48:00 --> URI Class Initialized
+DEBUG - 2018-04-21 09:48:00 --> No URI present. Default controller set.
+INFO - 2018-04-21 09:48:00 --> Router Class Initialized
+INFO - 2018-04-21 09:48:00 --> Output Class Initialized
+INFO - 2018-04-21 09:48:00 --> Security Class Initialized
+DEBUG - 2018-04-21 09:48:00 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 09:48:00 --> Input Class Initialized
+INFO - 2018-04-21 09:48:00 --> Language Class Initialized
+INFO - 2018-04-21 09:48:00 --> Loader Class Initialized
+INFO - 2018-04-21 09:48:00 --> Helper loaded: url_helper
+INFO - 2018-04-21 09:48:00 --> Helper loaded: form_helper
+INFO - 2018-04-21 09:48:00 --> Helper loaded: adms_helper
+INFO - 2018-04-21 09:48:00 --> Helper loaded: global_helper
+INFO - 2018-04-21 09:48:00 --> Helper loaded: template_helper
+INFO - 2018-04-21 09:48:00 --> Database Driver Class Initialized
+INFO - 2018-04-21 09:48:06 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 09:48:06 --> Controller Class Initialized
+INFO - 2018-04-21 09:48:06 --> Form Validation Class Initialized
+INFO - 2018-04-21 09:48:06 --> Helper loaded: omni_helper
+INFO - 2018-04-21 09:48:19 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 09:48:19 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 09:48:19 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 09:48:19 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 09:48:19 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 09:48:19 --> Final output sent to browser
+DEBUG - 2018-04-21 09:48:19 --> Total execution time: 19.9296
+INFO - 2018-04-21 09:49:57 --> Config Class Initialized
+INFO - 2018-04-21 09:49:58 --> Hooks Class Initialized
+DEBUG - 2018-04-21 09:49:58 --> UTF-8 Support Enabled
+INFO - 2018-04-21 09:49:58 --> Utf8 Class Initialized
+INFO - 2018-04-21 09:49:58 --> URI Class Initialized
+DEBUG - 2018-04-21 09:49:58 --> No URI present. Default controller set.
+INFO - 2018-04-21 09:49:58 --> Router Class Initialized
+INFO - 2018-04-21 09:49:58 --> Output Class Initialized
+INFO - 2018-04-21 09:49:58 --> Security Class Initialized
+DEBUG - 2018-04-21 09:49:58 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 09:49:58 --> Input Class Initialized
+INFO - 2018-04-21 09:49:58 --> Language Class Initialized
+INFO - 2018-04-21 09:49:58 --> Loader Class Initialized
+INFO - 2018-04-21 09:49:58 --> Helper loaded: url_helper
+INFO - 2018-04-21 09:49:58 --> Helper loaded: form_helper
+INFO - 2018-04-21 09:49:58 --> Helper loaded: adms_helper
+INFO - 2018-04-21 09:49:58 --> Helper loaded: global_helper
+INFO - 2018-04-21 09:49:58 --> Helper loaded: template_helper
+INFO - 2018-04-21 09:49:58 --> Database Driver Class Initialized
+INFO - 2018-04-21 09:50:05 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 09:50:05 --> Controller Class Initialized
+INFO - 2018-04-21 09:50:05 --> Form Validation Class Initialized
+INFO - 2018-04-21 09:50:05 --> Helper loaded: omni_helper
+INFO - 2018-04-21 09:50:18 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 09:50:18 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 09:50:18 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 09:50:18 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 09:50:18 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 09:50:19 --> Final output sent to browser
+DEBUG - 2018-04-21 09:50:19 --> Total execution time: 21.1698
+INFO - 2018-04-21 09:53:17 --> Config Class Initialized
+INFO - 2018-04-21 09:53:17 --> Hooks Class Initialized
+DEBUG - 2018-04-21 09:53:17 --> UTF-8 Support Enabled
+INFO - 2018-04-21 09:53:17 --> Utf8 Class Initialized
+INFO - 2018-04-21 09:53:17 --> URI Class Initialized
+DEBUG - 2018-04-21 09:53:17 --> No URI present. Default controller set.
+INFO - 2018-04-21 09:53:17 --> Router Class Initialized
+INFO - 2018-04-21 09:53:17 --> Output Class Initialized
+INFO - 2018-04-21 09:53:17 --> Security Class Initialized
+DEBUG - 2018-04-21 09:53:17 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 09:53:17 --> Input Class Initialized
+INFO - 2018-04-21 09:53:17 --> Language Class Initialized
+INFO - 2018-04-21 09:53:17 --> Loader Class Initialized
+INFO - 2018-04-21 09:53:17 --> Helper loaded: url_helper
+INFO - 2018-04-21 09:53:18 --> Helper loaded: form_helper
+INFO - 2018-04-21 09:53:18 --> Helper loaded: adms_helper
+INFO - 2018-04-21 09:53:18 --> Helper loaded: global_helper
+INFO - 2018-04-21 09:53:18 --> Helper loaded: template_helper
+INFO - 2018-04-21 09:53:18 --> Database Driver Class Initialized
+INFO - 2018-04-21 09:53:20 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 09:53:20 --> Controller Class Initialized
+INFO - 2018-04-21 09:53:20 --> Form Validation Class Initialized
+INFO - 2018-04-21 09:53:20 --> Helper loaded: omni_helper
+INFO - 2018-04-21 09:53:29 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 09:53:29 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 09:53:29 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 09:53:29 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 09:53:29 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 09:53:30 --> Final output sent to browser
+DEBUG - 2018-04-21 09:53:30 --> Total execution time: 12.6398
+INFO - 2018-04-21 09:54:24 --> Config Class Initialized
+INFO - 2018-04-21 09:54:24 --> Hooks Class Initialized
+DEBUG - 2018-04-21 09:54:24 --> UTF-8 Support Enabled
+INFO - 2018-04-21 09:54:24 --> Utf8 Class Initialized
+INFO - 2018-04-21 09:54:24 --> URI Class Initialized
+DEBUG - 2018-04-21 09:54:25 --> No URI present. Default controller set.
+INFO - 2018-04-21 09:54:25 --> Router Class Initialized
+INFO - 2018-04-21 09:54:25 --> Output Class Initialized
+INFO - 2018-04-21 09:54:25 --> Security Class Initialized
+DEBUG - 2018-04-21 09:54:25 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 09:54:25 --> Input Class Initialized
+INFO - 2018-04-21 09:54:25 --> Language Class Initialized
+INFO - 2018-04-21 09:54:25 --> Loader Class Initialized
+INFO - 2018-04-21 09:54:25 --> Helper loaded: url_helper
+INFO - 2018-04-21 09:54:25 --> Helper loaded: form_helper
+INFO - 2018-04-21 09:54:25 --> Helper loaded: adms_helper
+INFO - 2018-04-21 09:54:25 --> Helper loaded: global_helper
+INFO - 2018-04-21 09:54:25 --> Helper loaded: template_helper
+INFO - 2018-04-21 09:54:25 --> Database Driver Class Initialized
+ERROR - 2018-04-21 09:55:12 --> Severity: Error --> Maximum execution time of 30 seconds exceeded C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\system\database\drivers\sqlsrv\sqlsrv_driver.php 144
+INFO - 2018-04-21 09:56:29 --> Config Class Initialized
+INFO - 2018-04-21 09:56:29 --> Hooks Class Initialized
+DEBUG - 2018-04-21 09:56:29 --> UTF-8 Support Enabled
+INFO - 2018-04-21 09:56:29 --> Utf8 Class Initialized
+INFO - 2018-04-21 09:56:29 --> URI Class Initialized
+DEBUG - 2018-04-21 09:56:29 --> No URI present. Default controller set.
+INFO - 2018-04-21 09:56:29 --> Router Class Initialized
+INFO - 2018-04-21 09:56:29 --> Output Class Initialized
+INFO - 2018-04-21 09:56:30 --> Security Class Initialized
+DEBUG - 2018-04-21 09:56:30 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 09:56:30 --> Input Class Initialized
+INFO - 2018-04-21 09:56:30 --> Language Class Initialized
+INFO - 2018-04-21 09:56:30 --> Loader Class Initialized
+INFO - 2018-04-21 09:56:30 --> Helper loaded: url_helper
+INFO - 2018-04-21 09:56:30 --> Helper loaded: form_helper
+INFO - 2018-04-21 09:56:30 --> Helper loaded: adms_helper
+INFO - 2018-04-21 09:56:30 --> Helper loaded: global_helper
+INFO - 2018-04-21 09:56:30 --> Helper loaded: template_helper
+INFO - 2018-04-21 09:56:31 --> Database Driver Class Initialized
+INFO - 2018-04-21 09:56:34 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 09:56:34 --> Controller Class Initialized
+INFO - 2018-04-21 09:56:34 --> Form Validation Class Initialized
+INFO - 2018-04-21 09:56:34 --> Helper loaded: omni_helper
+INFO - 2018-04-21 09:56:46 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 09:56:47 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 09:56:47 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 09:56:49 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 09:56:49 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 09:56:49 --> Final output sent to browser
+DEBUG - 2018-04-21 09:56:49 --> Total execution time: 20.4719
+INFO - 2018-04-21 10:02:38 --> Config Class Initialized
+INFO - 2018-04-21 10:02:38 --> Hooks Class Initialized
+DEBUG - 2018-04-21 10:02:38 --> UTF-8 Support Enabled
+INFO - 2018-04-21 10:02:38 --> Utf8 Class Initialized
+INFO - 2018-04-21 10:02:38 --> URI Class Initialized
+DEBUG - 2018-04-21 10:02:38 --> No URI present. Default controller set.
+INFO - 2018-04-21 10:02:38 --> Router Class Initialized
+INFO - 2018-04-21 10:02:38 --> Output Class Initialized
+INFO - 2018-04-21 10:02:38 --> Security Class Initialized
+DEBUG - 2018-04-21 10:02:39 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 10:02:39 --> Input Class Initialized
+INFO - 2018-04-21 10:02:39 --> Language Class Initialized
+INFO - 2018-04-21 10:02:39 --> Loader Class Initialized
+INFO - 2018-04-21 10:02:39 --> Helper loaded: url_helper
+INFO - 2018-04-21 10:02:39 --> Helper loaded: form_helper
+INFO - 2018-04-21 10:02:39 --> Helper loaded: adms_helper
+INFO - 2018-04-21 10:02:39 --> Helper loaded: global_helper
+INFO - 2018-04-21 10:02:39 --> Helper loaded: template_helper
+INFO - 2018-04-21 10:02:39 --> Database Driver Class Initialized
+INFO - 2018-04-21 10:02:42 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 10:02:42 --> Controller Class Initialized
+INFO - 2018-04-21 10:02:42 --> Form Validation Class Initialized
+INFO - 2018-04-21 10:02:42 --> Helper loaded: omni_helper
+INFO - 2018-04-21 10:02:55 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 10:02:55 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 10:02:55 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 10:02:56 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 10:02:56 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 10:02:56 --> Final output sent to browser
+DEBUG - 2018-04-21 10:02:56 --> Total execution time: 17.8758
+INFO - 2018-04-21 10:04:02 --> Config Class Initialized
+INFO - 2018-04-21 10:04:02 --> Hooks Class Initialized
+DEBUG - 2018-04-21 10:04:02 --> UTF-8 Support Enabled
+INFO - 2018-04-21 10:04:02 --> Utf8 Class Initialized
+INFO - 2018-04-21 10:04:02 --> URI Class Initialized
+DEBUG - 2018-04-21 10:04:02 --> No URI present. Default controller set.
+INFO - 2018-04-21 10:04:02 --> Router Class Initialized
+INFO - 2018-04-21 10:04:02 --> Output Class Initialized
+INFO - 2018-04-21 10:04:02 --> Security Class Initialized
+DEBUG - 2018-04-21 10:04:02 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 10:04:02 --> Input Class Initialized
+INFO - 2018-04-21 10:04:03 --> Language Class Initialized
+INFO - 2018-04-21 10:04:03 --> Loader Class Initialized
+INFO - 2018-04-21 10:04:03 --> Helper loaded: url_helper
+INFO - 2018-04-21 10:04:03 --> Helper loaded: form_helper
+INFO - 2018-04-21 10:04:03 --> Helper loaded: adms_helper
+INFO - 2018-04-21 10:04:03 --> Helper loaded: global_helper
+INFO - 2018-04-21 10:04:03 --> Helper loaded: template_helper
+INFO - 2018-04-21 10:04:03 --> Database Driver Class Initialized
+INFO - 2018-04-21 10:04:06 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 10:04:06 --> Controller Class Initialized
+INFO - 2018-04-21 10:04:06 --> Form Validation Class Initialized
+INFO - 2018-04-21 10:04:06 --> Helper loaded: omni_helper
+INFO - 2018-04-21 10:04:18 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 10:04:18 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 10:04:18 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 10:04:18 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 10:04:19 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 10:04:19 --> Final output sent to browser
+DEBUG - 2018-04-21 10:04:19 --> Total execution time: 16.9194
+INFO - 2018-04-21 10:06:05 --> Config Class Initialized
+INFO - 2018-04-21 10:06:05 --> Hooks Class Initialized
+DEBUG - 2018-04-21 10:06:05 --> UTF-8 Support Enabled
+INFO - 2018-04-21 10:06:05 --> Utf8 Class Initialized
+INFO - 2018-04-21 10:06:06 --> URI Class Initialized
+DEBUG - 2018-04-21 10:06:06 --> No URI present. Default controller set.
+INFO - 2018-04-21 10:06:06 --> Router Class Initialized
+INFO - 2018-04-21 10:06:06 --> Output Class Initialized
+INFO - 2018-04-21 10:06:06 --> Security Class Initialized
+DEBUG - 2018-04-21 10:06:06 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 10:06:06 --> Input Class Initialized
+INFO - 2018-04-21 10:06:06 --> Language Class Initialized
+INFO - 2018-04-21 10:06:06 --> Loader Class Initialized
+INFO - 2018-04-21 10:06:06 --> Helper loaded: url_helper
+INFO - 2018-04-21 10:06:06 --> Helper loaded: form_helper
+INFO - 2018-04-21 10:06:06 --> Helper loaded: adms_helper
+INFO - 2018-04-21 10:06:06 --> Helper loaded: global_helper
+INFO - 2018-04-21 10:06:06 --> Helper loaded: template_helper
+INFO - 2018-04-21 10:06:06 --> Database Driver Class Initialized
+INFO - 2018-04-21 10:06:11 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 10:06:11 --> Controller Class Initialized
+INFO - 2018-04-21 10:06:11 --> Form Validation Class Initialized
+INFO - 2018-04-21 10:06:11 --> Helper loaded: omni_helper
+INFO - 2018-04-21 10:06:22 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 10:06:22 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 10:06:22 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 10:06:22 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 10:06:22 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 10:06:22 --> Final output sent to browser
+DEBUG - 2018-04-21 10:06:22 --> Total execution time: 16.5511
+INFO - 2018-04-21 10:08:17 --> Config Class Initialized
+INFO - 2018-04-21 10:08:17 --> Hooks Class Initialized
+DEBUG - 2018-04-21 10:08:17 --> UTF-8 Support Enabled
+INFO - 2018-04-21 10:08:17 --> Utf8 Class Initialized
+INFO - 2018-04-21 10:08:17 --> URI Class Initialized
+DEBUG - 2018-04-21 10:08:17 --> No URI present. Default controller set.
+INFO - 2018-04-21 10:08:17 --> Router Class Initialized
+INFO - 2018-04-21 10:08:17 --> Output Class Initialized
+INFO - 2018-04-21 10:08:18 --> Security Class Initialized
+DEBUG - 2018-04-21 10:08:18 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 10:08:18 --> Input Class Initialized
+INFO - 2018-04-21 10:08:18 --> Language Class Initialized
+INFO - 2018-04-21 10:08:18 --> Loader Class Initialized
+INFO - 2018-04-21 10:08:18 --> Helper loaded: url_helper
+INFO - 2018-04-21 10:08:18 --> Helper loaded: form_helper
+INFO - 2018-04-21 10:08:18 --> Helper loaded: adms_helper
+INFO - 2018-04-21 10:08:18 --> Helper loaded: global_helper
+INFO - 2018-04-21 10:08:18 --> Helper loaded: template_helper
+INFO - 2018-04-21 10:08:18 --> Database Driver Class Initialized
+INFO - 2018-04-21 10:08:20 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 10:08:20 --> Controller Class Initialized
+INFO - 2018-04-21 10:08:20 --> Form Validation Class Initialized
+INFO - 2018-04-21 10:08:20 --> Helper loaded: omni_helper
+INFO - 2018-04-21 10:08:30 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 10:08:30 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 10:08:30 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 10:08:30 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 10:08:30 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 10:08:30 --> Final output sent to browser
+DEBUG - 2018-04-21 10:08:30 --> Total execution time: 13.1056
+INFO - 2018-04-21 10:09:15 --> Config Class Initialized
+INFO - 2018-04-21 10:09:15 --> Hooks Class Initialized
+DEBUG - 2018-04-21 10:09:15 --> UTF-8 Support Enabled
+INFO - 2018-04-21 10:09:15 --> Utf8 Class Initialized
+INFO - 2018-04-21 10:09:15 --> URI Class Initialized
+DEBUG - 2018-04-21 10:09:15 --> No URI present. Default controller set.
+INFO - 2018-04-21 10:09:15 --> Router Class Initialized
+INFO - 2018-04-21 10:09:15 --> Output Class Initialized
+INFO - 2018-04-21 10:09:15 --> Security Class Initialized
+DEBUG - 2018-04-21 10:09:15 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 10:09:15 --> Input Class Initialized
+INFO - 2018-04-21 10:09:15 --> Language Class Initialized
+INFO - 2018-04-21 10:09:15 --> Loader Class Initialized
+INFO - 2018-04-21 10:09:15 --> Helper loaded: url_helper
+INFO - 2018-04-21 10:09:15 --> Helper loaded: form_helper
+INFO - 2018-04-21 10:09:15 --> Helper loaded: adms_helper
+INFO - 2018-04-21 10:09:15 --> Helper loaded: global_helper
+INFO - 2018-04-21 10:09:15 --> Helper loaded: template_helper
+INFO - 2018-04-21 10:09:15 --> Database Driver Class Initialized
+INFO - 2018-04-21 10:09:17 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 10:09:17 --> Controller Class Initialized
+INFO - 2018-04-21 10:09:17 --> Form Validation Class Initialized
+INFO - 2018-04-21 10:09:17 --> Helper loaded: omni_helper
+INFO - 2018-04-21 10:09:31 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 10:09:31 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 10:09:31 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 10:09:31 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 10:09:31 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 10:09:31 --> Final output sent to browser
+DEBUG - 2018-04-21 10:09:31 --> Total execution time: 16.4384
+INFO - 2018-04-21 10:10:06 --> Config Class Initialized
+INFO - 2018-04-21 10:10:06 --> Hooks Class Initialized
+DEBUG - 2018-04-21 10:10:06 --> UTF-8 Support Enabled
+INFO - 2018-04-21 10:10:06 --> Utf8 Class Initialized
+INFO - 2018-04-21 10:10:06 --> URI Class Initialized
+DEBUG - 2018-04-21 10:10:06 --> No URI present. Default controller set.
+INFO - 2018-04-21 10:10:06 --> Router Class Initialized
+INFO - 2018-04-21 10:10:06 --> Output Class Initialized
+INFO - 2018-04-21 10:10:06 --> Security Class Initialized
+DEBUG - 2018-04-21 10:10:06 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 10:10:06 --> Input Class Initialized
+INFO - 2018-04-21 10:10:06 --> Language Class Initialized
+INFO - 2018-04-21 10:10:06 --> Loader Class Initialized
+INFO - 2018-04-21 10:10:06 --> Helper loaded: url_helper
+INFO - 2018-04-21 10:10:06 --> Helper loaded: form_helper
+INFO - 2018-04-21 10:10:07 --> Helper loaded: adms_helper
+INFO - 2018-04-21 10:10:07 --> Helper loaded: global_helper
+INFO - 2018-04-21 10:10:07 --> Helper loaded: template_helper
+INFO - 2018-04-21 10:10:07 --> Database Driver Class Initialized
+INFO - 2018-04-21 10:10:10 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 10:10:10 --> Controller Class Initialized
+INFO - 2018-04-21 10:10:10 --> Form Validation Class Initialized
+INFO - 2018-04-21 10:10:10 --> Helper loaded: omni_helper
+INFO - 2018-04-21 10:10:21 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 10:10:21 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 10:10:21 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 10:10:21 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 10:10:21 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 10:10:21 --> Final output sent to browser
+DEBUG - 2018-04-21 10:10:21 --> Total execution time: 15.2790
+INFO - 2018-04-21 10:11:19 --> Config Class Initialized
+INFO - 2018-04-21 10:11:19 --> Hooks Class Initialized
+DEBUG - 2018-04-21 10:11:19 --> UTF-8 Support Enabled
+INFO - 2018-04-21 10:11:19 --> Utf8 Class Initialized
+INFO - 2018-04-21 10:11:19 --> URI Class Initialized
+DEBUG - 2018-04-21 10:11:19 --> No URI present. Default controller set.
+INFO - 2018-04-21 10:11:19 --> Router Class Initialized
+INFO - 2018-04-21 10:11:19 --> Output Class Initialized
+INFO - 2018-04-21 10:11:19 --> Security Class Initialized
+DEBUG - 2018-04-21 10:11:19 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 10:11:19 --> Input Class Initialized
+INFO - 2018-04-21 10:11:19 --> Language Class Initialized
+INFO - 2018-04-21 10:11:19 --> Loader Class Initialized
+INFO - 2018-04-21 10:11:19 --> Helper loaded: url_helper
+INFO - 2018-04-21 10:11:19 --> Helper loaded: form_helper
+INFO - 2018-04-21 10:11:19 --> Helper loaded: adms_helper
+INFO - 2018-04-21 10:11:20 --> Helper loaded: global_helper
+INFO - 2018-04-21 10:11:20 --> Helper loaded: template_helper
+INFO - 2018-04-21 10:11:20 --> Database Driver Class Initialized
+INFO - 2018-04-21 10:11:22 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 10:11:22 --> Controller Class Initialized
+INFO - 2018-04-21 10:11:22 --> Form Validation Class Initialized
+INFO - 2018-04-21 10:11:22 --> Helper loaded: omni_helper
+INFO - 2018-04-21 10:11:36 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 10:11:36 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 10:11:36 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 10:11:36 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 10:11:36 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 10:11:36 --> Final output sent to browser
+DEBUG - 2018-04-21 10:11:36 --> Total execution time: 17.0750
+INFO - 2018-04-21 10:12:04 --> Config Class Initialized
+INFO - 2018-04-21 10:12:04 --> Hooks Class Initialized
+DEBUG - 2018-04-21 10:12:04 --> UTF-8 Support Enabled
+INFO - 2018-04-21 10:12:04 --> Utf8 Class Initialized
+INFO - 2018-04-21 10:12:04 --> URI Class Initialized
+DEBUG - 2018-04-21 10:12:04 --> No URI present. Default controller set.
+INFO - 2018-04-21 10:12:04 --> Router Class Initialized
+INFO - 2018-04-21 10:12:04 --> Output Class Initialized
+INFO - 2018-04-21 10:12:05 --> Security Class Initialized
+DEBUG - 2018-04-21 10:12:05 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 10:12:05 --> Input Class Initialized
+INFO - 2018-04-21 10:12:05 --> Language Class Initialized
+INFO - 2018-04-21 10:12:05 --> Loader Class Initialized
+INFO - 2018-04-21 10:12:05 --> Helper loaded: url_helper
+INFO - 2018-04-21 10:12:05 --> Helper loaded: form_helper
+INFO - 2018-04-21 10:12:05 --> Helper loaded: adms_helper
+INFO - 2018-04-21 10:12:05 --> Helper loaded: global_helper
+INFO - 2018-04-21 10:12:05 --> Helper loaded: template_helper
+INFO - 2018-04-21 10:12:05 --> Database Driver Class Initialized
+INFO - 2018-04-21 10:12:07 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 10:12:07 --> Controller Class Initialized
+INFO - 2018-04-21 10:12:07 --> Form Validation Class Initialized
+INFO - 2018-04-21 10:12:07 --> Helper loaded: omni_helper
+INFO - 2018-04-21 10:12:17 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 10:12:17 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 10:12:17 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 10:12:17 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 10:12:17 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 10:12:17 --> Final output sent to browser
+DEBUG - 2018-04-21 10:12:17 --> Total execution time: 13.2480
+INFO - 2018-04-21 10:13:03 --> Config Class Initialized
+INFO - 2018-04-21 10:13:03 --> Hooks Class Initialized
+DEBUG - 2018-04-21 10:13:03 --> UTF-8 Support Enabled
+INFO - 2018-04-21 10:13:03 --> Utf8 Class Initialized
+INFO - 2018-04-21 10:13:03 --> URI Class Initialized
+DEBUG - 2018-04-21 10:13:03 --> No URI present. Default controller set.
+INFO - 2018-04-21 10:13:03 --> Router Class Initialized
+INFO - 2018-04-21 10:13:03 --> Output Class Initialized
+INFO - 2018-04-21 10:13:03 --> Security Class Initialized
+DEBUG - 2018-04-21 10:13:03 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 10:13:03 --> Input Class Initialized
+INFO - 2018-04-21 10:13:03 --> Language Class Initialized
+INFO - 2018-04-21 10:13:03 --> Loader Class Initialized
+INFO - 2018-04-21 10:13:03 --> Helper loaded: url_helper
+INFO - 2018-04-21 10:13:03 --> Helper loaded: form_helper
+INFO - 2018-04-21 10:13:03 --> Helper loaded: adms_helper
+INFO - 2018-04-21 10:13:03 --> Helper loaded: global_helper
+INFO - 2018-04-21 10:13:03 --> Helper loaded: template_helper
+INFO - 2018-04-21 10:13:04 --> Database Driver Class Initialized
+INFO - 2018-04-21 10:13:08 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 10:13:08 --> Controller Class Initialized
+INFO - 2018-04-21 10:13:08 --> Form Validation Class Initialized
+INFO - 2018-04-21 10:13:08 --> Helper loaded: omni_helper
+INFO - 2018-04-21 10:13:19 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 10:13:19 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 10:13:19 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 10:13:19 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 10:13:19 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 10:13:19 --> Final output sent to browser
+DEBUG - 2018-04-21 10:13:19 --> Total execution time: 16.7682
+INFO - 2018-04-21 10:13:46 --> Config Class Initialized
+INFO - 2018-04-21 10:13:46 --> Hooks Class Initialized
+DEBUG - 2018-04-21 10:13:46 --> UTF-8 Support Enabled
+INFO - 2018-04-21 10:13:46 --> Utf8 Class Initialized
+INFO - 2018-04-21 10:13:46 --> URI Class Initialized
+DEBUG - 2018-04-21 10:13:47 --> No URI present. Default controller set.
+INFO - 2018-04-21 10:13:47 --> Router Class Initialized
+INFO - 2018-04-21 10:13:47 --> Output Class Initialized
+INFO - 2018-04-21 10:13:47 --> Security Class Initialized
+DEBUG - 2018-04-21 10:13:47 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 10:13:47 --> Input Class Initialized
+INFO - 2018-04-21 10:13:47 --> Language Class Initialized
+INFO - 2018-04-21 10:13:47 --> Loader Class Initialized
+INFO - 2018-04-21 10:13:47 --> Helper loaded: url_helper
+INFO - 2018-04-21 10:13:47 --> Helper loaded: form_helper
+INFO - 2018-04-21 10:13:47 --> Helper loaded: adms_helper
+INFO - 2018-04-21 10:13:47 --> Helper loaded: global_helper
+INFO - 2018-04-21 10:13:47 --> Helper loaded: template_helper
+INFO - 2018-04-21 10:13:47 --> Database Driver Class Initialized
+INFO - 2018-04-21 10:13:48 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 10:13:49 --> Controller Class Initialized
+INFO - 2018-04-21 10:13:49 --> Form Validation Class Initialized
+INFO - 2018-04-21 10:13:49 --> Helper loaded: omni_helper
+INFO - 2018-04-21 10:14:01 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 10:14:01 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 10:14:01 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 10:14:01 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 10:14:01 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 10:14:01 --> Final output sent to browser
+DEBUG - 2018-04-21 10:14:02 --> Total execution time: 14.9924
+INFO - 2018-04-21 10:15:13 --> Config Class Initialized
+INFO - 2018-04-21 10:15:13 --> Hooks Class Initialized
+DEBUG - 2018-04-21 10:15:13 --> UTF-8 Support Enabled
+INFO - 2018-04-21 10:15:13 --> Utf8 Class Initialized
+INFO - 2018-04-21 10:15:13 --> URI Class Initialized
+DEBUG - 2018-04-21 10:15:13 --> No URI present. Default controller set.
+INFO - 2018-04-21 10:15:13 --> Router Class Initialized
+INFO - 2018-04-21 10:15:13 --> Output Class Initialized
+INFO - 2018-04-21 10:15:13 --> Security Class Initialized
+DEBUG - 2018-04-21 10:15:13 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 10:15:13 --> Input Class Initialized
+INFO - 2018-04-21 10:15:13 --> Language Class Initialized
+INFO - 2018-04-21 10:15:13 --> Loader Class Initialized
+INFO - 2018-04-21 10:15:13 --> Helper loaded: url_helper
+INFO - 2018-04-21 10:15:13 --> Helper loaded: form_helper
+INFO - 2018-04-21 10:15:13 --> Helper loaded: adms_helper
+INFO - 2018-04-21 10:15:13 --> Helper loaded: global_helper
+INFO - 2018-04-21 10:15:13 --> Helper loaded: template_helper
+INFO - 2018-04-21 10:15:13 --> Database Driver Class Initialized
+INFO - 2018-04-21 10:15:15 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 10:15:15 --> Controller Class Initialized
+INFO - 2018-04-21 10:15:15 --> Form Validation Class Initialized
+INFO - 2018-04-21 10:15:15 --> Helper loaded: omni_helper
+INFO - 2018-04-21 10:15:24 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 10:15:24 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 10:15:24 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 10:15:24 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 10:15:24 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 10:15:24 --> Final output sent to browser
+DEBUG - 2018-04-21 10:15:25 --> Total execution time: 11.8332
+INFO - 2018-04-21 10:34:36 --> Config Class Initialized
+INFO - 2018-04-21 10:34:37 --> Hooks Class Initialized
+DEBUG - 2018-04-21 10:34:37 --> UTF-8 Support Enabled
+INFO - 2018-04-21 10:34:37 --> Utf8 Class Initialized
+INFO - 2018-04-21 10:34:37 --> URI Class Initialized
+INFO - 2018-04-21 10:34:37 --> Router Class Initialized
+INFO - 2018-04-21 10:34:37 --> Output Class Initialized
+INFO - 2018-04-21 10:34:37 --> Security Class Initialized
+DEBUG - 2018-04-21 10:34:37 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 10:34:37 --> Input Class Initialized
+INFO - 2018-04-21 10:34:37 --> Language Class Initialized
+INFO - 2018-04-21 10:34:37 --> Loader Class Initialized
+INFO - 2018-04-21 10:34:37 --> Helper loaded: url_helper
+INFO - 2018-04-21 10:34:37 --> Helper loaded: form_helper
+INFO - 2018-04-21 10:34:37 --> Helper loaded: adms_helper
+INFO - 2018-04-21 10:34:37 --> Helper loaded: global_helper
+INFO - 2018-04-21 10:34:37 --> Helper loaded: template_helper
+INFO - 2018-04-21 10:34:37 --> Database Driver Class Initialized
+INFO - 2018-04-21 10:34:39 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 10:34:39 --> Controller Class Initialized
+INFO - 2018-04-21 10:34:39 --> Helper loaded: omni_helper
+INFO - 2018-04-21 10:34:45 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 10:34:45 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\find/find_unit.php
+DEBUG - 2018-04-21 10:34:45 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 10:34:45 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 10:34:45 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 10:34:45 --> Final output sent to browser
+DEBUG - 2018-04-21 10:34:45 --> Total execution time: 8.8207
+INFO - 2018-04-21 10:35:03 --> Config Class Initialized
+INFO - 2018-04-21 10:35:03 --> Hooks Class Initialized
+DEBUG - 2018-04-21 10:35:03 --> UTF-8 Support Enabled
+INFO - 2018-04-21 10:35:03 --> Utf8 Class Initialized
+INFO - 2018-04-21 10:35:04 --> URI Class Initialized
+DEBUG - 2018-04-21 10:35:04 --> No URI present. Default controller set.
+INFO - 2018-04-21 10:35:04 --> Router Class Initialized
+INFO - 2018-04-21 10:35:04 --> Output Class Initialized
+INFO - 2018-04-21 10:35:04 --> Security Class Initialized
+DEBUG - 2018-04-21 10:35:04 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 10:35:04 --> Input Class Initialized
+INFO - 2018-04-21 10:35:04 --> Language Class Initialized
+INFO - 2018-04-21 10:35:04 --> Loader Class Initialized
+INFO - 2018-04-21 10:35:04 --> Helper loaded: url_helper
+INFO - 2018-04-21 10:35:04 --> Helper loaded: form_helper
+INFO - 2018-04-21 10:35:04 --> Helper loaded: adms_helper
+INFO - 2018-04-21 10:35:04 --> Helper loaded: global_helper
+INFO - 2018-04-21 10:35:04 --> Helper loaded: template_helper
+INFO - 2018-04-21 10:35:04 --> Database Driver Class Initialized
+INFO - 2018-04-21 10:35:14 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 10:35:15 --> Controller Class Initialized
+INFO - 2018-04-21 10:35:15 --> Form Validation Class Initialized
+INFO - 2018-04-21 10:35:15 --> Helper loaded: omni_helper
+INFO - 2018-04-21 10:35:23 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 10:35:23 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 10:35:23 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 10:35:23 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 10:35:23 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 10:35:23 --> Final output sent to browser
+DEBUG - 2018-04-21 10:35:23 --> Total execution time: 19.8579
+INFO - 2018-04-21 10:37:55 --> Config Class Initialized
+INFO - 2018-04-21 10:37:55 --> Hooks Class Initialized
+DEBUG - 2018-04-21 10:37:55 --> UTF-8 Support Enabled
+INFO - 2018-04-21 10:37:55 --> Utf8 Class Initialized
+INFO - 2018-04-21 10:37:55 --> URI Class Initialized
+DEBUG - 2018-04-21 10:37:55 --> No URI present. Default controller set.
+INFO - 2018-04-21 10:37:55 --> Router Class Initialized
+INFO - 2018-04-21 10:37:55 --> Output Class Initialized
+INFO - 2018-04-21 10:37:55 --> Security Class Initialized
+DEBUG - 2018-04-21 10:37:55 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 10:37:55 --> Input Class Initialized
+INFO - 2018-04-21 10:37:55 --> Language Class Initialized
+INFO - 2018-04-21 10:37:55 --> Loader Class Initialized
+INFO - 2018-04-21 10:37:55 --> Helper loaded: url_helper
+INFO - 2018-04-21 10:37:56 --> Helper loaded: form_helper
+INFO - 2018-04-21 10:37:56 --> Helper loaded: adms_helper
+INFO - 2018-04-21 10:37:56 --> Helper loaded: global_helper
+INFO - 2018-04-21 10:37:56 --> Helper loaded: template_helper
+INFO - 2018-04-21 10:37:56 --> Database Driver Class Initialized
+INFO - 2018-04-21 10:37:57 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 10:37:57 --> Controller Class Initialized
+INFO - 2018-04-21 10:37:57 --> Form Validation Class Initialized
+INFO - 2018-04-21 10:37:57 --> Helper loaded: omni_helper
+INFO - 2018-04-21 10:38:06 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 10:38:06 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 10:38:06 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 10:38:06 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 10:38:06 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 10:38:06 --> Final output sent to browser
+DEBUG - 2018-04-21 10:38:06 --> Total execution time: 10.9506
+INFO - 2018-04-21 10:38:27 --> Config Class Initialized
+INFO - 2018-04-21 10:38:27 --> Hooks Class Initialized
+DEBUG - 2018-04-21 10:38:27 --> UTF-8 Support Enabled
+INFO - 2018-04-21 10:38:27 --> Utf8 Class Initialized
+INFO - 2018-04-21 10:38:27 --> URI Class Initialized
+INFO - 2018-04-21 10:38:27 --> Router Class Initialized
+INFO - 2018-04-21 10:38:27 --> Output Class Initialized
+INFO - 2018-04-21 10:38:27 --> Security Class Initialized
+DEBUG - 2018-04-21 10:38:28 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 10:38:28 --> Input Class Initialized
+INFO - 2018-04-21 10:38:28 --> Language Class Initialized
+INFO - 2018-04-21 10:38:28 --> Loader Class Initialized
+INFO - 2018-04-21 10:38:28 --> Helper loaded: url_helper
+INFO - 2018-04-21 10:38:28 --> Helper loaded: form_helper
+INFO - 2018-04-21 10:38:28 --> Helper loaded: adms_helper
+INFO - 2018-04-21 10:38:28 --> Helper loaded: global_helper
+INFO - 2018-04-21 10:38:28 --> Helper loaded: template_helper
+INFO - 2018-04-21 10:38:28 --> Database Driver Class Initialized
+INFO - 2018-04-21 10:38:29 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 10:38:29 --> Controller Class Initialized
+INFO - 2018-04-21 10:38:29 --> Helper loaded: omni_helper
+INFO - 2018-04-21 10:38:35 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 10:38:35 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\find/find_unit.php
+DEBUG - 2018-04-21 10:38:35 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 10:38:35 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 10:38:35 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 10:38:35 --> Final output sent to browser
+DEBUG - 2018-04-21 10:38:36 --> Total execution time: 8.4193
+INFO - 2018-04-21 10:38:44 --> Config Class Initialized
+INFO - 2018-04-21 10:38:44 --> Hooks Class Initialized
+DEBUG - 2018-04-21 10:38:44 --> UTF-8 Support Enabled
+INFO - 2018-04-21 10:38:44 --> Utf8 Class Initialized
+INFO - 2018-04-21 10:38:44 --> URI Class Initialized
+DEBUG - 2018-04-21 10:38:44 --> No URI present. Default controller set.
+INFO - 2018-04-21 10:38:44 --> Router Class Initialized
+INFO - 2018-04-21 10:38:45 --> Output Class Initialized
+INFO - 2018-04-21 10:38:45 --> Security Class Initialized
+DEBUG - 2018-04-21 10:38:45 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 10:38:45 --> Input Class Initialized
+INFO - 2018-04-21 10:38:45 --> Language Class Initialized
+INFO - 2018-04-21 10:38:45 --> Loader Class Initialized
+INFO - 2018-04-21 10:38:45 --> Helper loaded: url_helper
+INFO - 2018-04-21 10:38:45 --> Helper loaded: form_helper
+INFO - 2018-04-21 10:38:45 --> Helper loaded: adms_helper
+INFO - 2018-04-21 10:38:45 --> Helper loaded: global_helper
+INFO - 2018-04-21 10:38:45 --> Helper loaded: template_helper
+INFO - 2018-04-21 10:38:45 --> Database Driver Class Initialized
+INFO - 2018-04-21 10:38:46 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 10:38:46 --> Controller Class Initialized
+INFO - 2018-04-21 10:38:46 --> Form Validation Class Initialized
+INFO - 2018-04-21 10:38:47 --> Helper loaded: omni_helper
+INFO - 2018-04-21 10:38:53 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 10:38:53 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 10:38:53 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 10:38:54 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 10:38:54 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 10:38:54 --> Final output sent to browser
+DEBUG - 2018-04-21 10:38:54 --> Total execution time: 9.4440
+INFO - 2018-04-21 10:39:05 --> Config Class Initialized
+INFO - 2018-04-21 10:39:05 --> Hooks Class Initialized
+DEBUG - 2018-04-21 10:39:05 --> UTF-8 Support Enabled
+INFO - 2018-04-21 10:39:05 --> Utf8 Class Initialized
+INFO - 2018-04-21 10:39:06 --> URI Class Initialized
+INFO - 2018-04-21 10:39:06 --> Router Class Initialized
+INFO - 2018-04-21 10:39:06 --> Output Class Initialized
+INFO - 2018-04-21 10:39:06 --> Security Class Initialized
+DEBUG - 2018-04-21 10:39:06 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 10:39:06 --> Input Class Initialized
+INFO - 2018-04-21 10:39:06 --> Language Class Initialized
+INFO - 2018-04-21 10:39:06 --> Loader Class Initialized
+INFO - 2018-04-21 10:39:06 --> Helper loaded: url_helper
+INFO - 2018-04-21 10:39:06 --> Helper loaded: form_helper
+INFO - 2018-04-21 10:39:06 --> Helper loaded: adms_helper
+INFO - 2018-04-21 10:39:06 --> Helper loaded: global_helper
+INFO - 2018-04-21 10:39:06 --> Helper loaded: template_helper
+INFO - 2018-04-21 10:39:06 --> Database Driver Class Initialized
+INFO - 2018-04-21 10:39:08 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 10:39:08 --> Controller Class Initialized
+INFO - 2018-04-21 10:39:08 --> Helper loaded: omni_helper
+INFO - 2018-04-21 10:39:22 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 10:39:22 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\find/find_unit.php
+DEBUG - 2018-04-21 10:39:22 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 10:39:22 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 10:39:22 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 10:39:22 --> Final output sent to browser
+DEBUG - 2018-04-21 10:39:23 --> Total execution time: 17.2770
+INFO - 2018-04-21 10:40:08 --> Config Class Initialized
+INFO - 2018-04-21 10:40:08 --> Hooks Class Initialized
+DEBUG - 2018-04-21 10:40:08 --> UTF-8 Support Enabled
+INFO - 2018-04-21 10:40:08 --> Utf8 Class Initialized
+INFO - 2018-04-21 10:40:08 --> URI Class Initialized
+DEBUG - 2018-04-21 10:40:08 --> No URI present. Default controller set.
+INFO - 2018-04-21 10:40:08 --> Router Class Initialized
+INFO - 2018-04-21 10:40:08 --> Output Class Initialized
+INFO - 2018-04-21 10:40:08 --> Security Class Initialized
+DEBUG - 2018-04-21 10:40:08 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 10:40:09 --> Input Class Initialized
+INFO - 2018-04-21 10:40:09 --> Language Class Initialized
+INFO - 2018-04-21 10:40:09 --> Loader Class Initialized
+INFO - 2018-04-21 10:40:09 --> Helper loaded: url_helper
+INFO - 2018-04-21 10:40:09 --> Helper loaded: form_helper
+INFO - 2018-04-21 10:40:09 --> Helper loaded: adms_helper
+INFO - 2018-04-21 10:40:09 --> Helper loaded: global_helper
+INFO - 2018-04-21 10:40:09 --> Helper loaded: template_helper
+INFO - 2018-04-21 10:40:09 --> Database Driver Class Initialized
+INFO - 2018-04-21 10:40:10 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 10:40:10 --> Controller Class Initialized
+INFO - 2018-04-21 10:40:10 --> Form Validation Class Initialized
+INFO - 2018-04-21 10:40:10 --> Helper loaded: omni_helper
+INFO - 2018-04-21 10:40:18 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 10:40:18 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 10:40:18 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 10:40:18 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 10:40:18 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 10:40:18 --> Final output sent to browser
+DEBUG - 2018-04-21 10:40:18 --> Total execution time: 9.8957
+INFO - 2018-04-21 10:42:49 --> Config Class Initialized
+INFO - 2018-04-21 10:42:49 --> Hooks Class Initialized
+DEBUG - 2018-04-21 10:42:49 --> UTF-8 Support Enabled
+INFO - 2018-04-21 10:42:49 --> Utf8 Class Initialized
+INFO - 2018-04-21 10:42:49 --> URI Class Initialized
+DEBUG - 2018-04-21 10:42:49 --> No URI present. Default controller set.
+INFO - 2018-04-21 10:42:49 --> Router Class Initialized
+INFO - 2018-04-21 10:42:49 --> Output Class Initialized
+INFO - 2018-04-21 10:42:49 --> Security Class Initialized
+DEBUG - 2018-04-21 10:42:49 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 10:42:49 --> Input Class Initialized
+INFO - 2018-04-21 10:42:49 --> Language Class Initialized
+INFO - 2018-04-21 10:42:49 --> Loader Class Initialized
+INFO - 2018-04-21 10:42:49 --> Helper loaded: url_helper
+INFO - 2018-04-21 10:42:49 --> Helper loaded: form_helper
+INFO - 2018-04-21 10:42:49 --> Helper loaded: adms_helper
+INFO - 2018-04-21 10:42:49 --> Helper loaded: global_helper
+INFO - 2018-04-21 10:42:49 --> Helper loaded: template_helper
+INFO - 2018-04-21 10:42:49 --> Database Driver Class Initialized
+INFO - 2018-04-21 10:42:51 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 10:42:51 --> Controller Class Initialized
+INFO - 2018-04-21 10:42:51 --> Form Validation Class Initialized
+INFO - 2018-04-21 10:42:51 --> Helper loaded: omni_helper
+INFO - 2018-04-21 10:42:56 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 10:42:56 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 10:42:56 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 10:42:56 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 10:42:56 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 10:42:56 --> Final output sent to browser
+DEBUG - 2018-04-21 10:42:56 --> Total execution time: 7.4808
+INFO - 2018-04-21 10:43:52 --> Config Class Initialized
+INFO - 2018-04-21 10:43:52 --> Hooks Class Initialized
+DEBUG - 2018-04-21 10:43:52 --> UTF-8 Support Enabled
+INFO - 2018-04-21 10:43:52 --> Utf8 Class Initialized
+INFO - 2018-04-21 10:43:52 --> URI Class Initialized
+DEBUG - 2018-04-21 10:43:52 --> No URI present. Default controller set.
+INFO - 2018-04-21 10:43:52 --> Router Class Initialized
+INFO - 2018-04-21 10:43:52 --> Output Class Initialized
+INFO - 2018-04-21 10:43:52 --> Security Class Initialized
+DEBUG - 2018-04-21 10:43:53 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 10:43:53 --> Input Class Initialized
+INFO - 2018-04-21 10:43:53 --> Language Class Initialized
+INFO - 2018-04-21 10:43:53 --> Loader Class Initialized
+INFO - 2018-04-21 10:43:53 --> Helper loaded: url_helper
+INFO - 2018-04-21 10:43:53 --> Helper loaded: form_helper
+INFO - 2018-04-21 10:43:53 --> Helper loaded: adms_helper
+INFO - 2018-04-21 10:43:53 --> Helper loaded: global_helper
+INFO - 2018-04-21 10:43:53 --> Helper loaded: template_helper
+INFO - 2018-04-21 10:43:53 --> Database Driver Class Initialized
+INFO - 2018-04-21 10:43:54 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 10:43:54 --> Controller Class Initialized
+INFO - 2018-04-21 10:43:54 --> Form Validation Class Initialized
+INFO - 2018-04-21 10:43:54 --> Helper loaded: omni_helper
+INFO - 2018-04-21 10:44:02 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 10:44:02 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 10:44:02 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 10:44:02 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 10:44:02 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 10:44:02 --> Final output sent to browser
+DEBUG - 2018-04-21 10:44:02 --> Total execution time: 10.1685
+INFO - 2018-04-21 10:46:15 --> Config Class Initialized
+INFO - 2018-04-21 10:46:15 --> Hooks Class Initialized
+DEBUG - 2018-04-21 10:46:15 --> UTF-8 Support Enabled
+INFO - 2018-04-21 10:46:15 --> Utf8 Class Initialized
+INFO - 2018-04-21 10:46:15 --> URI Class Initialized
+DEBUG - 2018-04-21 10:46:15 --> No URI present. Default controller set.
+INFO - 2018-04-21 10:46:15 --> Router Class Initialized
+INFO - 2018-04-21 10:46:15 --> Output Class Initialized
+INFO - 2018-04-21 10:46:15 --> Security Class Initialized
+DEBUG - 2018-04-21 10:46:15 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 10:46:15 --> Input Class Initialized
+INFO - 2018-04-21 10:46:15 --> Language Class Initialized
+INFO - 2018-04-21 10:46:15 --> Loader Class Initialized
+INFO - 2018-04-21 10:46:15 --> Helper loaded: url_helper
+INFO - 2018-04-21 10:46:15 --> Helper loaded: form_helper
+INFO - 2018-04-21 10:46:16 --> Helper loaded: adms_helper
+INFO - 2018-04-21 10:46:16 --> Helper loaded: global_helper
+INFO - 2018-04-21 10:46:16 --> Helper loaded: template_helper
+INFO - 2018-04-21 10:46:16 --> Database Driver Class Initialized
+INFO - 2018-04-21 10:46:17 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 10:46:17 --> Controller Class Initialized
+INFO - 2018-04-21 10:46:17 --> Form Validation Class Initialized
+INFO - 2018-04-21 10:46:17 --> Helper loaded: omni_helper
+INFO - 2018-04-21 10:46:23 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 10:46:23 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/front.php
+DEBUG - 2018-04-21 10:46:23 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 10:46:24 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 10:46:24 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 10:46:24 --> Final output sent to browser
+DEBUG - 2018-04-21 10:46:24 --> Total execution time: 8.7364
+INFO - 2018-04-21 10:54:35 --> Config Class Initialized
+INFO - 2018-04-21 10:54:35 --> Hooks Class Initialized
+DEBUG - 2018-04-21 10:54:35 --> UTF-8 Support Enabled
+INFO - 2018-04-21 10:54:35 --> Utf8 Class Initialized
+INFO - 2018-04-21 10:54:35 --> URI Class Initialized
+INFO - 2018-04-21 10:54:35 --> Router Class Initialized
+INFO - 2018-04-21 10:54:35 --> Output Class Initialized
+INFO - 2018-04-21 10:54:35 --> Security Class Initialized
+DEBUG - 2018-04-21 10:54:35 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 10:54:35 --> Input Class Initialized
+INFO - 2018-04-21 10:54:35 --> Language Class Initialized
+INFO - 2018-04-21 10:54:35 --> Loader Class Initialized
+INFO - 2018-04-21 10:54:35 --> Helper loaded: url_helper
+INFO - 2018-04-21 10:54:35 --> Helper loaded: form_helper
+INFO - 2018-04-21 10:54:35 --> Helper loaded: adms_helper
+INFO - 2018-04-21 10:54:35 --> Helper loaded: global_helper
+INFO - 2018-04-21 10:54:35 --> Helper loaded: template_helper
+INFO - 2018-04-21 10:54:35 --> Database Driver Class Initialized
+INFO - 2018-04-21 10:54:37 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 10:54:37 --> Controller Class Initialized
+INFO - 2018-04-21 10:54:37 --> Helper loaded: omni_helper
+INFO - 2018-04-21 10:54:57 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 10:54:57 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\find/find_unit.php
+DEBUG - 2018-04-21 10:54:57 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 10:54:58 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 10:54:58 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 10:54:58 --> Final output sent to browser
+DEBUG - 2018-04-21 10:54:58 --> Total execution time: 23.2496
+INFO - 2018-04-21 10:55:57 --> Config Class Initialized
+INFO - 2018-04-21 10:55:57 --> Hooks Class Initialized
+DEBUG - 2018-04-21 10:55:57 --> UTF-8 Support Enabled
+INFO - 2018-04-21 10:55:57 --> Utf8 Class Initialized
+INFO - 2018-04-21 10:55:57 --> URI Class Initialized
+INFO - 2018-04-21 10:55:57 --> Router Class Initialized
+INFO - 2018-04-21 10:55:57 --> Output Class Initialized
+INFO - 2018-04-21 10:55:57 --> Security Class Initialized
+DEBUG - 2018-04-21 10:55:57 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 10:55:57 --> Input Class Initialized
+INFO - 2018-04-21 10:55:57 --> Language Class Initialized
+INFO - 2018-04-21 10:55:57 --> Loader Class Initialized
+INFO - 2018-04-21 10:55:57 --> Helper loaded: url_helper
+INFO - 2018-04-21 10:55:58 --> Helper loaded: form_helper
+INFO - 2018-04-21 10:55:58 --> Helper loaded: adms_helper
+INFO - 2018-04-21 10:55:58 --> Helper loaded: global_helper
+INFO - 2018-04-21 10:55:58 --> Helper loaded: template_helper
+INFO - 2018-04-21 10:55:58 --> Database Driver Class Initialized
+INFO - 2018-04-21 10:56:00 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 10:56:00 --> Controller Class Initialized
+INFO - 2018-04-21 10:56:00 --> Helper loaded: omni_helper
+INFO - 2018-04-21 10:56:17 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 10:56:17 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\find/find_details.php
+DEBUG - 2018-04-21 10:56:17 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 10:56:17 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 10:56:17 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 10:56:17 --> Final output sent to browser
+DEBUG - 2018-04-21 10:56:17 --> Total execution time: 20.2037
+INFO - 2018-04-21 10:57:16 --> Config Class Initialized
+INFO - 2018-04-21 10:57:16 --> Hooks Class Initialized
+DEBUG - 2018-04-21 10:57:16 --> UTF-8 Support Enabled
+INFO - 2018-04-21 10:57:16 --> Utf8 Class Initialized
+INFO - 2018-04-21 10:57:16 --> URI Class Initialized
+INFO - 2018-04-21 10:57:17 --> Router Class Initialized
+INFO - 2018-04-21 10:57:17 --> Output Class Initialized
+INFO - 2018-04-21 10:57:17 --> Security Class Initialized
+DEBUG - 2018-04-21 10:57:17 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 10:57:17 --> Input Class Initialized
+INFO - 2018-04-21 10:57:17 --> Language Class Initialized
+INFO - 2018-04-21 10:57:17 --> Loader Class Initialized
+INFO - 2018-04-21 10:57:17 --> Helper loaded: url_helper
+INFO - 2018-04-21 10:57:17 --> Helper loaded: form_helper
+INFO - 2018-04-21 10:57:17 --> Helper loaded: adms_helper
+INFO - 2018-04-21 10:57:17 --> Helper loaded: global_helper
+INFO - 2018-04-21 10:57:17 --> Helper loaded: template_helper
+INFO - 2018-04-21 10:57:17 --> Database Driver Class Initialized
+INFO - 2018-04-21 10:57:21 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 10:57:21 --> Controller Class Initialized
+INFO - 2018-04-21 10:57:22 --> Helper loaded: omni_helper
+INFO - 2018-04-21 10:57:38 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 10:57:38 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\find/find_details.php
+DEBUG - 2018-04-21 10:57:38 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 10:57:38 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 10:57:38 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 10:57:38 --> Final output sent to browser
+DEBUG - 2018-04-21 10:57:39 --> Total execution time: 22.3314
+INFO - 2018-04-21 11:05:14 --> Config Class Initialized
+INFO - 2018-04-21 11:05:14 --> Hooks Class Initialized
+DEBUG - 2018-04-21 11:05:14 --> UTF-8 Support Enabled
+INFO - 2018-04-21 11:05:14 --> Utf8 Class Initialized
+INFO - 2018-04-21 11:05:14 --> URI Class Initialized
+INFO - 2018-04-21 11:05:14 --> Router Class Initialized
+INFO - 2018-04-21 11:05:14 --> Output Class Initialized
+INFO - 2018-04-21 11:05:14 --> Security Class Initialized
+DEBUG - 2018-04-21 11:05:14 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 11:05:14 --> Input Class Initialized
+INFO - 2018-04-21 11:05:14 --> Language Class Initialized
+INFO - 2018-04-21 11:05:14 --> Loader Class Initialized
+INFO - 2018-04-21 11:05:14 --> Helper loaded: url_helper
+INFO - 2018-04-21 11:05:14 --> Helper loaded: form_helper
+INFO - 2018-04-21 11:05:14 --> Helper loaded: adms_helper
+INFO - 2018-04-21 11:05:14 --> Helper loaded: global_helper
+INFO - 2018-04-21 11:05:14 --> Helper loaded: template_helper
+INFO - 2018-04-21 11:05:14 --> Database Driver Class Initialized
+INFO - 2018-04-21 11:05:16 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 11:05:16 --> Controller Class Initialized
+INFO - 2018-04-21 11:05:16 --> Helper loaded: omni_helper
+INFO - 2018-04-21 11:05:37 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 11:05:37 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\find/find_details.php
+DEBUG - 2018-04-21 11:05:37 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 11:05:37 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 11:05:37 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 11:05:37 --> Final output sent to browser
+DEBUG - 2018-04-21 11:05:37 --> Total execution time: 23.3000
+INFO - 2018-04-21 11:31:14 --> Config Class Initialized
+INFO - 2018-04-21 11:31:14 --> Hooks Class Initialized
+DEBUG - 2018-04-21 11:31:14 --> UTF-8 Support Enabled
+INFO - 2018-04-21 11:31:14 --> Utf8 Class Initialized
+INFO - 2018-04-21 11:31:14 --> URI Class Initialized
+INFO - 2018-04-21 11:31:14 --> Router Class Initialized
+INFO - 2018-04-21 11:31:14 --> Output Class Initialized
+INFO - 2018-04-21 11:31:14 --> Security Class Initialized
+DEBUG - 2018-04-21 11:31:14 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 11:31:14 --> Input Class Initialized
+INFO - 2018-04-21 11:31:14 --> Language Class Initialized
+INFO - 2018-04-21 11:31:14 --> Loader Class Initialized
+INFO - 2018-04-21 11:31:14 --> Helper loaded: url_helper
+INFO - 2018-04-21 11:31:14 --> Helper loaded: form_helper
+INFO - 2018-04-21 11:31:14 --> Helper loaded: adms_helper
+INFO - 2018-04-21 11:31:14 --> Helper loaded: global_helper
+INFO - 2018-04-21 11:31:14 --> Helper loaded: template_helper
+INFO - 2018-04-21 11:31:15 --> Database Driver Class Initialized
+INFO - 2018-04-21 11:31:17 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 11:31:17 --> Controller Class Initialized
+INFO - 2018-04-21 11:31:17 --> Helper loaded: omni_helper
+ERROR - 2018-04-21 11:31:44 --> Severity: Error --> Maximum execution time of 30 seconds exceeded C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\helpers\global_helper.php 27
+INFO - 2018-04-21 11:31:57 --> Config Class Initialized
+INFO - 2018-04-21 11:31:57 --> Hooks Class Initialized
+DEBUG - 2018-04-21 11:31:57 --> UTF-8 Support Enabled
+INFO - 2018-04-21 11:31:57 --> Utf8 Class Initialized
+INFO - 2018-04-21 11:31:57 --> URI Class Initialized
+INFO - 2018-04-21 11:31:57 --> Router Class Initialized
+INFO - 2018-04-21 11:31:57 --> Output Class Initialized
+INFO - 2018-04-21 11:31:57 --> Security Class Initialized
+DEBUG - 2018-04-21 11:31:57 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 11:31:57 --> Input Class Initialized
+INFO - 2018-04-21 11:31:57 --> Language Class Initialized
+INFO - 2018-04-21 11:31:57 --> Loader Class Initialized
+INFO - 2018-04-21 11:31:57 --> Helper loaded: url_helper
+INFO - 2018-04-21 11:31:57 --> Helper loaded: form_helper
+INFO - 2018-04-21 11:31:57 --> Helper loaded: adms_helper
+INFO - 2018-04-21 11:31:57 --> Helper loaded: global_helper
+INFO - 2018-04-21 11:31:57 --> Helper loaded: template_helper
+INFO - 2018-04-21 11:31:58 --> Database Driver Class Initialized
+INFO - 2018-04-21 11:32:00 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 11:32:00 --> Controller Class Initialized
+INFO - 2018-04-21 11:32:00 --> Helper loaded: omni_helper
+ERROR - 2018-04-21 11:32:31 --> Severity: Error --> Maximum execution time of 30 seconds exceeded C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\helpers\global_helper.php 27
+INFO - 2018-04-21 11:32:57 --> Config Class Initialized
+INFO - 2018-04-21 11:32:57 --> Hooks Class Initialized
+DEBUG - 2018-04-21 11:32:57 --> UTF-8 Support Enabled
+INFO - 2018-04-21 11:32:57 --> Utf8 Class Initialized
+INFO - 2018-04-21 11:32:57 --> URI Class Initialized
+INFO - 2018-04-21 11:32:57 --> Router Class Initialized
+INFO - 2018-04-21 11:32:57 --> Output Class Initialized
+INFO - 2018-04-21 11:32:57 --> Security Class Initialized
+DEBUG - 2018-04-21 11:32:57 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 11:32:57 --> Input Class Initialized
+INFO - 2018-04-21 11:32:57 --> Language Class Initialized
+INFO - 2018-04-21 11:32:57 --> Loader Class Initialized
+INFO - 2018-04-21 11:32:57 --> Helper loaded: url_helper
+INFO - 2018-04-21 11:32:57 --> Helper loaded: form_helper
+INFO - 2018-04-21 11:32:57 --> Helper loaded: adms_helper
+INFO - 2018-04-21 11:32:57 --> Helper loaded: global_helper
+INFO - 2018-04-21 11:32:57 --> Helper loaded: template_helper
+INFO - 2018-04-21 11:32:58 --> Database Driver Class Initialized
+INFO - 2018-04-21 11:33:00 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 11:33:00 --> Controller Class Initialized
+INFO - 2018-04-21 11:33:00 --> Helper loaded: omni_helper
+ERROR - 2018-04-21 11:34:00 --> Severity: Error --> Maximum execution time of 30 seconds exceeded C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\helpers\global_helper.php 27
+INFO - 2018-04-21 11:34:03 --> Config Class Initialized
+INFO - 2018-04-21 11:34:03 --> Hooks Class Initialized
+DEBUG - 2018-04-21 11:34:03 --> UTF-8 Support Enabled
+INFO - 2018-04-21 11:34:03 --> Utf8 Class Initialized
+INFO - 2018-04-21 11:34:03 --> URI Class Initialized
+INFO - 2018-04-21 11:34:03 --> Router Class Initialized
+INFO - 2018-04-21 11:34:04 --> Output Class Initialized
+INFO - 2018-04-21 11:34:04 --> Security Class Initialized
+DEBUG - 2018-04-21 11:34:04 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 11:34:04 --> Input Class Initialized
+INFO - 2018-04-21 11:34:04 --> Language Class Initialized
+INFO - 2018-04-21 11:34:04 --> Loader Class Initialized
+INFO - 2018-04-21 11:34:04 --> Helper loaded: url_helper
+INFO - 2018-04-21 11:34:04 --> Helper loaded: form_helper
+INFO - 2018-04-21 11:34:04 --> Helper loaded: adms_helper
+INFO - 2018-04-21 11:34:04 --> Helper loaded: global_helper
+INFO - 2018-04-21 11:34:04 --> Helper loaded: template_helper
+INFO - 2018-04-21 11:34:04 --> Database Driver Class Initialized
+INFO - 2018-04-21 11:34:06 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 11:34:06 --> Controller Class Initialized
+INFO - 2018-04-21 11:34:06 --> Helper loaded: omni_helper
+INFO - 2018-04-21 11:34:29 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 11:34:29 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\find/find_details.php
+DEBUG - 2018-04-21 11:34:29 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 11:34:30 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 11:34:30 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 11:34:30 --> Final output sent to browser
+DEBUG - 2018-04-21 11:34:30 --> Total execution time: 26.3617
+INFO - 2018-04-21 11:35:01 --> Config Class Initialized
+INFO - 2018-04-21 11:35:01 --> Hooks Class Initialized
+DEBUG - 2018-04-21 11:35:01 --> UTF-8 Support Enabled
+INFO - 2018-04-21 11:35:01 --> Utf8 Class Initialized
+INFO - 2018-04-21 11:35:01 --> URI Class Initialized
+INFO - 2018-04-21 11:35:01 --> Router Class Initialized
+INFO - 2018-04-21 11:35:01 --> Output Class Initialized
+INFO - 2018-04-21 11:35:01 --> Security Class Initialized
+DEBUG - 2018-04-21 11:35:01 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 11:35:02 --> Input Class Initialized
+INFO - 2018-04-21 11:35:02 --> Language Class Initialized
+INFO - 2018-04-21 11:35:02 --> Loader Class Initialized
+INFO - 2018-04-21 11:35:02 --> Helper loaded: url_helper
+INFO - 2018-04-21 11:35:02 --> Helper loaded: form_helper
+INFO - 2018-04-21 11:35:02 --> Helper loaded: adms_helper
+INFO - 2018-04-21 11:35:02 --> Helper loaded: global_helper
+INFO - 2018-04-21 11:35:02 --> Helper loaded: template_helper
+INFO - 2018-04-21 11:35:02 --> Database Driver Class Initialized
+INFO - 2018-04-21 11:35:03 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 11:35:03 --> Controller Class Initialized
+INFO - 2018-04-21 11:35:03 --> Helper loaded: omni_helper
+INFO - 2018-04-21 11:35:23 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 11:35:23 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\find/find_details.php
+DEBUG - 2018-04-21 11:35:24 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 11:35:24 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 11:35:24 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 11:35:24 --> Final output sent to browser
+DEBUG - 2018-04-21 11:35:24 --> Total execution time: 22.5810
+INFO - 2018-04-21 11:37:55 --> Config Class Initialized
+INFO - 2018-04-21 11:37:55 --> Hooks Class Initialized
+DEBUG - 2018-04-21 11:37:55 --> UTF-8 Support Enabled
+INFO - 2018-04-21 11:37:55 --> Utf8 Class Initialized
+INFO - 2018-04-21 11:37:55 --> URI Class Initialized
+INFO - 2018-04-21 11:37:55 --> Router Class Initialized
+INFO - 2018-04-21 11:37:56 --> Output Class Initialized
+INFO - 2018-04-21 11:37:56 --> Security Class Initialized
+DEBUG - 2018-04-21 11:37:56 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 11:37:56 --> Input Class Initialized
+INFO - 2018-04-21 11:37:56 --> Language Class Initialized
+INFO - 2018-04-21 11:37:56 --> Loader Class Initialized
+INFO - 2018-04-21 11:37:56 --> Helper loaded: url_helper
+INFO - 2018-04-21 11:37:56 --> Helper loaded: form_helper
+INFO - 2018-04-21 11:37:56 --> Helper loaded: adms_helper
+INFO - 2018-04-21 11:37:56 --> Helper loaded: global_helper
+INFO - 2018-04-21 11:37:56 --> Helper loaded: template_helper
+INFO - 2018-04-21 11:37:56 --> Database Driver Class Initialized
+INFO - 2018-04-21 11:37:57 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 11:37:57 --> Controller Class Initialized
+INFO - 2018-04-21 11:37:57 --> Helper loaded: omni_helper
+INFO - 2018-04-21 11:38:16 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 11:38:16 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\find/find_details.php
+DEBUG - 2018-04-21 11:38:16 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 11:38:16 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 11:38:16 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 11:38:16 --> Final output sent to browser
+DEBUG - 2018-04-21 11:38:16 --> Total execution time: 20.7652
+INFO - 2018-04-21 11:39:27 --> Config Class Initialized
+INFO - 2018-04-21 11:39:27 --> Hooks Class Initialized
+DEBUG - 2018-04-21 11:39:27 --> UTF-8 Support Enabled
+INFO - 2018-04-21 11:39:27 --> Utf8 Class Initialized
+INFO - 2018-04-21 11:39:27 --> URI Class Initialized
+INFO - 2018-04-21 11:39:27 --> Router Class Initialized
+INFO - 2018-04-21 11:39:27 --> Output Class Initialized
+INFO - 2018-04-21 11:39:27 --> Security Class Initialized
+DEBUG - 2018-04-21 11:39:27 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 11:39:27 --> Input Class Initialized
+INFO - 2018-04-21 11:39:27 --> Language Class Initialized
+INFO - 2018-04-21 11:39:27 --> Loader Class Initialized
+INFO - 2018-04-21 11:39:27 --> Helper loaded: url_helper
+INFO - 2018-04-21 11:39:27 --> Helper loaded: form_helper
+INFO - 2018-04-21 11:39:27 --> Helper loaded: adms_helper
+INFO - 2018-04-21 11:39:27 --> Helper loaded: global_helper
+INFO - 2018-04-21 11:39:27 --> Helper loaded: template_helper
+INFO - 2018-04-21 11:39:27 --> Database Driver Class Initialized
+INFO - 2018-04-21 11:39:30 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 11:39:31 --> Controller Class Initialized
+INFO - 2018-04-21 11:39:31 --> Helper loaded: omni_helper
+ERROR - 2018-04-21 11:40:00 --> Severity: Error --> Maximum execution time of 30 seconds exceeded C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\helpers\global_helper.php 27
+INFO - 2018-04-21 11:40:07 --> Config Class Initialized
+INFO - 2018-04-21 11:40:07 --> Hooks Class Initialized
+DEBUG - 2018-04-21 11:40:07 --> UTF-8 Support Enabled
+INFO - 2018-04-21 11:40:07 --> Utf8 Class Initialized
+INFO - 2018-04-21 11:40:07 --> URI Class Initialized
+INFO - 2018-04-21 11:40:07 --> Router Class Initialized
+INFO - 2018-04-21 11:40:07 --> Output Class Initialized
+INFO - 2018-04-21 11:40:07 --> Security Class Initialized
+DEBUG - 2018-04-21 11:40:07 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 11:40:07 --> Input Class Initialized
+INFO - 2018-04-21 11:40:07 --> Language Class Initialized
+INFO - 2018-04-21 11:40:07 --> Loader Class Initialized
+INFO - 2018-04-21 11:40:07 --> Helper loaded: url_helper
+INFO - 2018-04-21 11:40:07 --> Helper loaded: form_helper
+INFO - 2018-04-21 11:40:07 --> Helper loaded: adms_helper
+INFO - 2018-04-21 11:40:07 --> Helper loaded: global_helper
+INFO - 2018-04-21 11:40:07 --> Helper loaded: template_helper
+INFO - 2018-04-21 11:40:07 --> Database Driver Class Initialized
+INFO - 2018-04-21 11:40:10 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 11:40:10 --> Controller Class Initialized
+INFO - 2018-04-21 11:40:10 --> Helper loaded: omni_helper
+ERROR - 2018-04-21 11:40:39 --> Severity: Error --> Maximum execution time of 30 seconds exceeded C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\helpers\global_helper.php 27
+INFO - 2018-04-21 11:40:44 --> Config Class Initialized
+INFO - 2018-04-21 11:40:44 --> Hooks Class Initialized
+DEBUG - 2018-04-21 11:40:44 --> UTF-8 Support Enabled
+INFO - 2018-04-21 11:40:44 --> Utf8 Class Initialized
+INFO - 2018-04-21 11:40:44 --> URI Class Initialized
+INFO - 2018-04-21 11:40:44 --> Router Class Initialized
+INFO - 2018-04-21 11:40:44 --> Output Class Initialized
+INFO - 2018-04-21 11:40:44 --> Security Class Initialized
+DEBUG - 2018-04-21 11:40:44 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 11:40:44 --> Input Class Initialized
+INFO - 2018-04-21 11:40:44 --> Language Class Initialized
+INFO - 2018-04-21 11:40:44 --> Loader Class Initialized
+INFO - 2018-04-21 11:40:44 --> Helper loaded: url_helper
+INFO - 2018-04-21 11:40:44 --> Helper loaded: form_helper
+INFO - 2018-04-21 11:40:44 --> Helper loaded: adms_helper
+INFO - 2018-04-21 11:40:44 --> Helper loaded: global_helper
+INFO - 2018-04-21 11:40:44 --> Helper loaded: template_helper
+INFO - 2018-04-21 11:40:44 --> Database Driver Class Initialized
+INFO - 2018-04-21 11:40:47 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 11:40:47 --> Controller Class Initialized
+INFO - 2018-04-21 11:40:47 --> Helper loaded: omni_helper
+ERROR - 2018-04-21 11:41:15 --> Severity: Error --> Maximum execution time of 30 seconds exceeded C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\helpers\global_helper.php 27
+INFO - 2018-04-21 11:41:20 --> Config Class Initialized
+INFO - 2018-04-21 11:41:20 --> Hooks Class Initialized
+DEBUG - 2018-04-21 11:41:20 --> UTF-8 Support Enabled
+INFO - 2018-04-21 11:41:20 --> Utf8 Class Initialized
+INFO - 2018-04-21 11:41:20 --> URI Class Initialized
+INFO - 2018-04-21 11:41:20 --> Router Class Initialized
+INFO - 2018-04-21 11:41:20 --> Output Class Initialized
+INFO - 2018-04-21 11:41:20 --> Security Class Initialized
+DEBUG - 2018-04-21 11:41:20 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 11:41:20 --> Input Class Initialized
+INFO - 2018-04-21 11:41:20 --> Language Class Initialized
+INFO - 2018-04-21 11:41:20 --> Loader Class Initialized
+INFO - 2018-04-21 11:41:20 --> Helper loaded: url_helper
+INFO - 2018-04-21 11:41:20 --> Helper loaded: form_helper
+INFO - 2018-04-21 11:41:20 --> Helper loaded: adms_helper
+INFO - 2018-04-21 11:41:20 --> Helper loaded: global_helper
+INFO - 2018-04-21 11:41:20 --> Helper loaded: template_helper
+INFO - 2018-04-21 11:41:20 --> Database Driver Class Initialized
+INFO - 2018-04-21 11:41:22 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 11:41:22 --> Controller Class Initialized
+INFO - 2018-04-21 11:41:22 --> Helper loaded: omni_helper
+INFO - 2018-04-21 11:41:45 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 11:41:45 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\find/find_details.php
+DEBUG - 2018-04-21 11:41:45 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 11:41:45 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 11:41:45 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 11:41:45 --> Final output sent to browser
+DEBUG - 2018-04-21 11:41:45 --> Total execution time: 25.7196
+INFO - 2018-04-21 11:41:46 --> Config Class Initialized
+INFO - 2018-04-21 11:41:46 --> Hooks Class Initialized
+DEBUG - 2018-04-21 11:41:47 --> UTF-8 Support Enabled
+INFO - 2018-04-21 11:41:47 --> Utf8 Class Initialized
+INFO - 2018-04-21 11:41:47 --> URI Class Initialized
+INFO - 2018-04-21 11:41:47 --> Router Class Initialized
+INFO - 2018-04-21 11:41:47 --> Output Class Initialized
+INFO - 2018-04-21 11:41:47 --> Security Class Initialized
+DEBUG - 2018-04-21 11:41:47 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 11:41:47 --> Input Class Initialized
+INFO - 2018-04-21 11:41:47 --> Language Class Initialized
+INFO - 2018-04-21 11:41:47 --> Loader Class Initialized
+INFO - 2018-04-21 11:41:47 --> Helper loaded: url_helper
+INFO - 2018-04-21 11:41:47 --> Helper loaded: form_helper
+INFO - 2018-04-21 11:41:47 --> Helper loaded: adms_helper
+INFO - 2018-04-21 11:41:47 --> Helper loaded: global_helper
+INFO - 2018-04-21 11:41:47 --> Helper loaded: template_helper
+INFO - 2018-04-21 11:41:47 --> Database Driver Class Initialized
+INFO - 2018-04-21 11:41:49 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 11:41:49 --> Controller Class Initialized
+INFO - 2018-04-21 11:41:49 --> Helper loaded: omni_helper
+INFO - 2018-04-21 11:42:09 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 11:42:09 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\find/find_details.php
+DEBUG - 2018-04-21 11:42:09 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 11:42:09 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 11:42:09 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 11:42:09 --> Final output sent to browser
+DEBUG - 2018-04-21 11:42:09 --> Total execution time: 22.6518
+INFO - 2018-04-21 11:45:56 --> Config Class Initialized
+INFO - 2018-04-21 11:45:56 --> Hooks Class Initialized
+DEBUG - 2018-04-21 11:45:57 --> UTF-8 Support Enabled
+INFO - 2018-04-21 11:45:57 --> Utf8 Class Initialized
+INFO - 2018-04-21 11:45:57 --> URI Class Initialized
+INFO - 2018-04-21 11:45:57 --> Router Class Initialized
+INFO - 2018-04-21 11:45:57 --> Output Class Initialized
+INFO - 2018-04-21 11:45:57 --> Security Class Initialized
+DEBUG - 2018-04-21 11:45:57 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 11:45:57 --> Input Class Initialized
+INFO - 2018-04-21 11:45:57 --> Language Class Initialized
+INFO - 2018-04-21 11:45:57 --> Loader Class Initialized
+INFO - 2018-04-21 11:45:57 --> Helper loaded: url_helper
+INFO - 2018-04-21 11:45:57 --> Helper loaded: form_helper
+INFO - 2018-04-21 11:45:57 --> Helper loaded: adms_helper
+INFO - 2018-04-21 11:45:57 --> Helper loaded: global_helper
+INFO - 2018-04-21 11:45:57 --> Helper loaded: template_helper
+INFO - 2018-04-21 11:45:57 --> Database Driver Class Initialized
+ERROR - 2018-04-21 11:46:12 --> Unable to connect to the database
+INFO - 2018-04-21 11:46:14 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 11:46:14 --> Controller Class Initialized
+INFO - 2018-04-21 11:46:14 --> Helper loaded: omni_helper
+ERROR - 2018-04-21 11:46:33 --> Severity: Error --> Maximum execution time of 30 seconds exceeded C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\helpers\global_helper.php 27
+INFO - 2018-04-21 11:46:58 --> Config Class Initialized
+INFO - 2018-04-21 11:46:58 --> Hooks Class Initialized
+DEBUG - 2018-04-21 11:46:58 --> UTF-8 Support Enabled
+INFO - 2018-04-21 11:46:58 --> Utf8 Class Initialized
+INFO - 2018-04-21 11:46:58 --> URI Class Initialized
+INFO - 2018-04-21 11:46:58 --> Router Class Initialized
+INFO - 2018-04-21 11:46:58 --> Output Class Initialized
+INFO - 2018-04-21 11:46:58 --> Security Class Initialized
+DEBUG - 2018-04-21 11:46:58 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 11:46:58 --> Input Class Initialized
+INFO - 2018-04-21 11:46:58 --> Language Class Initialized
+INFO - 2018-04-21 11:46:58 --> Loader Class Initialized
+INFO - 2018-04-21 11:46:58 --> Helper loaded: url_helper
+INFO - 2018-04-21 11:46:58 --> Helper loaded: form_helper
+INFO - 2018-04-21 11:46:58 --> Helper loaded: adms_helper
+INFO - 2018-04-21 11:46:58 --> Helper loaded: global_helper
+INFO - 2018-04-21 11:46:58 --> Helper loaded: template_helper
+INFO - 2018-04-21 11:46:58 --> Database Driver Class Initialized
+INFO - 2018-04-21 11:47:02 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 11:47:02 --> Controller Class Initialized
+INFO - 2018-04-21 11:47:02 --> Helper loaded: omni_helper
+ERROR - 2018-04-21 11:47:30 --> Severity: Error --> Maximum execution time of 30 seconds exceeded C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\helpers\global_helper.php 27
+INFO - 2018-04-21 11:47:51 --> Config Class Initialized
+INFO - 2018-04-21 11:47:51 --> Hooks Class Initialized
+DEBUG - 2018-04-21 11:47:51 --> UTF-8 Support Enabled
+INFO - 2018-04-21 11:47:51 --> Utf8 Class Initialized
+INFO - 2018-04-21 11:47:51 --> URI Class Initialized
+INFO - 2018-04-21 11:47:51 --> Router Class Initialized
+INFO - 2018-04-21 11:47:51 --> Output Class Initialized
+INFO - 2018-04-21 11:47:51 --> Security Class Initialized
+DEBUG - 2018-04-21 11:47:51 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 11:47:51 --> Input Class Initialized
+INFO - 2018-04-21 11:47:51 --> Language Class Initialized
+INFO - 2018-04-21 11:47:51 --> Loader Class Initialized
+INFO - 2018-04-21 11:47:51 --> Helper loaded: url_helper
+INFO - 2018-04-21 11:47:51 --> Helper loaded: form_helper
+INFO - 2018-04-21 11:47:51 --> Helper loaded: adms_helper
+INFO - 2018-04-21 11:47:51 --> Helper loaded: global_helper
+INFO - 2018-04-21 11:47:51 --> Helper loaded: template_helper
+INFO - 2018-04-21 11:47:51 --> Database Driver Class Initialized
+INFO - 2018-04-21 11:47:53 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 11:47:53 --> Controller Class Initialized
+INFO - 2018-04-21 11:47:53 --> Helper loaded: omni_helper
+INFO - 2018-04-21 11:48:20 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 11:48:20 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\find/find_details.php
+DEBUG - 2018-04-21 11:48:20 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 11:48:20 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 11:48:20 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 11:48:20 --> Final output sent to browser
+ERROR - 2018-04-21 11:48:21 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\system\core\Output.php:538) C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\system\core\Common.php 578
+ERROR - 2018-04-21 11:48:21 --> Severity: Error --> Maximum execution time of 30 seconds exceeded C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\system\core\Log.php 231
+INFO - 2018-04-21 11:49:50 --> Config Class Initialized
+INFO - 2018-04-21 11:49:50 --> Hooks Class Initialized
+DEBUG - 2018-04-21 11:49:50 --> UTF-8 Support Enabled
+INFO - 2018-04-21 11:49:50 --> Utf8 Class Initialized
+INFO - 2018-04-21 11:49:50 --> URI Class Initialized
+INFO - 2018-04-21 11:49:50 --> Router Class Initialized
+INFO - 2018-04-21 11:49:50 --> Output Class Initialized
+INFO - 2018-04-21 11:49:50 --> Security Class Initialized
+DEBUG - 2018-04-21 11:49:50 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 11:49:50 --> Input Class Initialized
+INFO - 2018-04-21 11:49:50 --> Language Class Initialized
+INFO - 2018-04-21 11:49:50 --> Loader Class Initialized
+INFO - 2018-04-21 11:49:50 --> Helper loaded: url_helper
+INFO - 2018-04-21 11:49:50 --> Helper loaded: form_helper
+INFO - 2018-04-21 11:49:50 --> Helper loaded: adms_helper
+INFO - 2018-04-21 11:49:50 --> Helper loaded: global_helper
+INFO - 2018-04-21 11:49:50 --> Helper loaded: template_helper
+INFO - 2018-04-21 11:49:50 --> Database Driver Class Initialized
+INFO - 2018-04-21 11:49:53 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 11:49:53 --> Controller Class Initialized
+INFO - 2018-04-21 11:49:53 --> Helper loaded: omni_helper
+INFO - 2018-04-21 11:50:11 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 11:50:12 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\find/find_details.php
+DEBUG - 2018-04-21 11:50:12 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 11:50:12 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 11:50:12 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 11:50:12 --> Final output sent to browser
+DEBUG - 2018-04-21 11:50:12 --> Total execution time: 22.1400
+INFO - 2018-04-21 11:51:47 --> Config Class Initialized
+INFO - 2018-04-21 11:51:47 --> Hooks Class Initialized
+DEBUG - 2018-04-21 11:51:47 --> UTF-8 Support Enabled
+INFO - 2018-04-21 11:51:47 --> Utf8 Class Initialized
+INFO - 2018-04-21 11:51:47 --> URI Class Initialized
+INFO - 2018-04-21 11:51:47 --> Router Class Initialized
+INFO - 2018-04-21 11:51:47 --> Output Class Initialized
+INFO - 2018-04-21 11:51:47 --> Security Class Initialized
+DEBUG - 2018-04-21 11:51:47 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 11:51:47 --> Input Class Initialized
+INFO - 2018-04-21 11:51:47 --> Language Class Initialized
+INFO - 2018-04-21 11:51:47 --> Loader Class Initialized
+INFO - 2018-04-21 11:51:47 --> Helper loaded: url_helper
+INFO - 2018-04-21 11:51:47 --> Helper loaded: form_helper
+INFO - 2018-04-21 11:51:47 --> Helper loaded: adms_helper
+INFO - 2018-04-21 11:51:47 --> Helper loaded: global_helper
+INFO - 2018-04-21 11:51:47 --> Helper loaded: template_helper
+INFO - 2018-04-21 11:51:47 --> Database Driver Class Initialized
+INFO - 2018-04-21 11:51:49 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 11:51:49 --> Controller Class Initialized
+INFO - 2018-04-21 11:51:49 --> Helper loaded: omni_helper
+INFO - 2018-04-21 11:52:06 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 11:52:06 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\find/find_details.php
+DEBUG - 2018-04-21 11:52:06 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 11:52:06 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 11:52:06 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 11:52:06 --> Final output sent to browser
+DEBUG - 2018-04-21 11:52:06 --> Total execution time: 19.2582
+INFO - 2018-04-21 11:53:46 --> Config Class Initialized
+INFO - 2018-04-21 11:53:46 --> Hooks Class Initialized
+DEBUG - 2018-04-21 11:53:46 --> UTF-8 Support Enabled
+INFO - 2018-04-21 11:53:46 --> Utf8 Class Initialized
+INFO - 2018-04-21 11:53:46 --> URI Class Initialized
+INFO - 2018-04-21 11:53:46 --> Router Class Initialized
+INFO - 2018-04-21 11:53:46 --> Output Class Initialized
+INFO - 2018-04-21 11:53:46 --> Security Class Initialized
+DEBUG - 2018-04-21 11:53:46 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-04-21 11:53:46 --> Input Class Initialized
+INFO - 2018-04-21 11:53:46 --> Language Class Initialized
+INFO - 2018-04-21 11:53:46 --> Loader Class Initialized
+INFO - 2018-04-21 11:53:46 --> Helper loaded: url_helper
+INFO - 2018-04-21 11:53:47 --> Helper loaded: form_helper
+INFO - 2018-04-21 11:53:47 --> Helper loaded: adms_helper
+INFO - 2018-04-21 11:53:47 --> Helper loaded: global_helper
+INFO - 2018-04-21 11:53:47 --> Helper loaded: template_helper
+INFO - 2018-04-21 11:53:47 --> Database Driver Class Initialized
+INFO - 2018-04-21 11:53:48 --> Session: Class initialized using 'database' driver.
+INFO - 2018-04-21 11:53:48 --> Controller Class Initialized
+INFO - 2018-04-21 11:53:48 --> Helper loaded: omni_helper
+INFO - 2018-04-21 11:54:07 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/header.php
+INFO - 2018-04-21 11:54:07 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\find/find_details.php
+DEBUG - 2018-04-21 11:54:07 --> Config file loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\config/googleplus.php
+INFO - 2018-04-21 11:54:07 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\userguide/privacy_policy.html
+INFO - 2018-04-21 11:54:07 --> File loaded: C:\xampp\htdocs\ibid\Ibid_IMS_WebFrontEnd\application\views\template/footer.php
+INFO - 2018-04-21 11:54:07 --> Final output sent to browser
+DEBUG - 2018-04-21 11:54:07 --> Total execution time: 21.1622

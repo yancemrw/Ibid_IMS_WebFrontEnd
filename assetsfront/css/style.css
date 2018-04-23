@@ -6377,7 +6377,7 @@ td.bg-Grey {
 
 .table-transaction.content-empty {
     position: static;
-    padding: 100px 0
+    padding: 10px 0
 }
 
 .table-management .content-empty .product-empty {
