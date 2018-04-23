@@ -149,7 +149,7 @@
 					</div>
 					<div>
 						<div class="form-group floating-label">
-							<select class="select-custom form-control" id="cabangLelang" name="cabang">
+							<select class="select-custom form-control" id="cabangLelang" name="cabang" required="required">
 								<option value="">-Pilih Cabang-</option>
 								<?php foreach($cabang as $row){ ?>
 								<option value="<?php echo $row['CompanyId']; ?>" ><?php echo strtoupper(strtolower($row['CompanyName'])); ?></option>
@@ -157,7 +157,7 @@
 							</select>
 						</div>
 						<div id="thisFieldTanggal" class="input-group-ss form-group floating-label">
-							<select class="select-custom form-control" id="tanggalLelang" name="ScheduleBookingCalendarId">
+							<select class="select-custom form-control" id="tanggalLelang" name="ScheduleBookingCalendarId" required="required">
 								<option value="">-Pilih Tanggal-</option>
 							</select>
 							<span class="input-group-addon thisFaSs" style="display: none"><i class="fa fa-spin fa-refresh"></i></span>
@@ -246,6 +246,12 @@ function searchJadwal(){
 		});
 	}
 }
+function myRequired(){
+	itemId = $("input[name$='tipe-object']:checked").val();
+	$('.ItemId').removeAttr('required');
+	$('.ItemId'+itemId+'required').attr('required', 'required');
+	$('.ItemId'+itemId+'required').attr('required', 'required');
+}
 $(function(){
 	$('#cabangLelang').change(function(){
 		searchJadwal();
@@ -255,8 +261,8 @@ $(function(){
 		$(".desc-object").hide();
 		$("#object" + test).show();
 		
+		myRequired();
 		searchJadwal();
-		
 	});
 
 	$('.class-merk').each(function(x) {
@@ -355,5 +361,7 @@ $(function(){
             $(this).removeClass('empty');
         }
     });
+	
+	myRequired();
 });
 </script>
