@@ -29,22 +29,21 @@ class Get_schedule extends CI_Controller {
 		}
 		
 		
-		// Get unit
-		$lunit = 'http://ibidadmsdevservicemasterdata.azurewebsites.net/index.php/item/get';
-		$cunit = admsCurl($lunit, array(), 'GET');
 
 		// Get company list
-		$link1 = 'http://ibidadmsdevservicemasterdata.azurewebsites.net/index.php/cabang/get';
+		$link1 = linkservice('master')."cabang/get";
 		$company_list = admsCurl($link1, array(), 'GET');
 		$arrCompany = array();
 		foreach(curlGenerate($company_list) as $key => $value) {
 			$arrCompany[$value->CompanyId]['CompanyName'] = $value->CompanyName;
 			$arrCompany[$value->CompanyId]['Address'] = $value->Address;
+			$arrCompany[$value->CompanyId]['AliasName'] = $value->AliasName;
 		}
 
 		// Get schedule list
 		// $link2 = 'http://ibid-ams-schedule.stagingapps.net/api/schedulelist?untilnextmonth=1';
-		$link2 = 'http://ibid-ams-schedule.stagingapps.net/api/schedulelist?company_id='.$company_id.'&startdate='.$startdate.'&enddate='.$enddate;
+		// $link2 = 'http://ibid-ams-schedule.stagingapps.net/api/schedulelist?company_id='.$company_id.'&startdate='.$startdate.'&enddate='.$enddate;
+		$link2 = linkservice('AMSSCHEDULE').'schedulelist?company_id='.$company_id.'&startdate='.$startdate.'&enddate='.$enddate;
 		$schedule = amsCurl($link2, '', 'GET');
 		$data_schedule = curlGenerate($schedule);
 		
@@ -52,38 +51,53 @@ class Get_schedule extends CI_Controller {
 		$eventMotor = array();
 		$eventHve = array();
 		$eventGadget = array();
+		
+		$eventThisMobil = array(); 
+		$eventThisMotor = array();
+		$eventThisHve = array();
+		$eventThisGadget = array();
 		foreach($data_schedule as $keys => $values) {
 			$evenCall = array(
-				'title' => date('d F Y H:i:s', strtotime($values->date.$values->waktu)),
+				'title' => $arrCompany[$values->company_id]['AliasName'],
+				// 'title' => date('d F Y H:i:s', strtotime($values->date.$values->waktu)),
 				'start' => date('Y-m-d', strtotime($values->date.$values->waktu)),
 				'end' => date('Y-m-d', strtotime($values->date.$values->waktu)),
 				'allDay' => false,
+				'aliasName' => $arrCompany[$values->company_id],
 			);
 			
 			if ($values->ItemName == 'MOBIL' && $cbCar == 1){
 				$evenCall['className'] = 'car-event';
-				if (count(@$eventMobil) < 4)
-					$eventMobil[] = $evenCall;
+				if (count(@$eventMobil[$evenCall['start']]) < 4){
+					$eventMobil[$evenCall['start']][] = $evenCall;
+					$eventThisMobil[] = $evenCall;
+				}
 			}
 			if ($values->ItemName == 'MOTOR' && $cbMtr == 1){
 				$evenCall['className'] = 'motor-event';
-				if (count(@$eventMotor) < 4)
-					$eventMotor[] = $evenCall;
+				if (count(@$eventMotor[$evenCall['start']]) < 4){
+					$eventMotor[$evenCall['start']][] = $evenCall;
+					$eventThisMotor[] = $evenCall;
+				}
 			}
 			if ($values->ItemName == 'HVE' && $cbHve == 1){
 				$evenCall['className'] = 'hve-event';
-				if (count(@$eventHve) < 4)
-					$eventHve[] = $evenCall;
+				if (count(@$eventHve[$evenCall['start']]) < 4){
+					$eventHve[$evenCall['start']][] = $evenCall;
+					$eventThisHve[] = $evenCall;
+				}
 			}
 			if ($values->ItemName == 'GADGET' && $cbGad == 1){
 				$evenCall['className'] = 'gadget-event';
-				if (count(@$eventGadget) < 4)
-					$eventGadget[] = $evenCall;
+				if (count(@$eventGadget[$evenCall['start']]) < 4){
+					$eventGadget[$evenCall['start']][] = $evenCall;
+					$eventThisGadget[] = $evenCall;
+				}
 			}
 			
 			// $arrData[$keys]->Address = $arrCompany[$values->company_id]['Address'];
 		}
-		$arrayReturn = array_merge($eventMobil, $eventMotor, $eventHve, $eventGadget);
+		$arrayReturn = array_merge($eventThisMobil, $eventThisMotor, $eventThisHve, $eventThisGadget);
 		
 		header('Access-Control-Allow-Origin: *');
 		header('Access-Control-Allow-Methods: POST, GET');

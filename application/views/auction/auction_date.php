@@ -8,9 +8,8 @@
                   <div class="form-group">
                      <label>Kota</label>
                      <select id="thisCabang" class="select-custom form-control">
-                        <!-- option value ="" >Bandung</option>
-                        <option value ="" >Jakarta</option -->
-						<?php foreach($cabang as $row){ ?>
+                        <option value="" >Semua Jadwal</option>
+						<?php foreach($cabang as $row){ $arrKota[$row['CompanyId']] = $row['AliasName']; ?>
 						<option value="<?php echo $row['CompanyId']; ?>" ><?php echo substr($row['CompanyName'],4); ?></option>
 						<?php } ?>
                      </select>
@@ -61,7 +60,7 @@
             <h4 class="modal-title" id="myModalLabel">14 <span>Rabu</span></h4>
          </div>
          <div class="modal-body" align="center">
-            <ul class="clearfix">
+            <ul class="clearfix" id="thisObjTglLelang">
                <li >
                   <a href="" class="car-event"> <span>JKT T</span></a>
                </li>
@@ -105,6 +104,8 @@
 </div>
 <script>
 var arrHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+var arrKota = <?php echo json_encode($arrKota); ?>;
+
 function getDates(startDate, endDate) {
    var now = startDate,
    dates = [];
@@ -112,9 +113,11 @@ function getDates(startDate, endDate) {
    while (now.format('YYYY-MM-DD') <= endDate.format('YYYY-MM-DD')) {
       dates.push(now.format('YYYY-MM-DD'));
       now.add('days', 1);
+      now.add('days', 1);
    }
    return dates;
 }
+
 function getCalendar(){
 	$('#calendar').fullCalendar({
       header: {
@@ -125,15 +128,17 @@ function getCalendar(){
 	  monthNames:['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
       height:'auto',
       defaultDate: '<?php echo date('Y-m-d'); ?>', //'2017-11-12',
+      // defaultDate: '2017-11-12',
       navLinks: true, // can click day/week names to navigate views
       businessHours: true, // display business hours
       editable: false,
       // events: even_cal,
       dayRender: function(date, cell) {
+		  thisCabang = $('#thisCabang').val()
          var parseDate = moment(cell.attr("data-date")).format('e');
 		 var thisHari = arrHari[parseDate];
          $("td.fc-day-top[data-date='" + cell.attr("data-date") + "']").append("<span>" + thisHari + "</span>");
-         $("td.fc-day-top[data-date='" + cell.attr("data-date") + "']").append("<a class='link cursor-pointer thisDate' data-toggle='modal' data-target='#modal-jadwal' thisDate='" + cell.attr("data-date") + "'>Selengkapnya</a>");
+         $("td.fc-day-top[data-date='" + cell.attr("data-date") + "']").append("<a class='link cursor-pointer thisDate' data-toggle='modal' data-target='#modal-jadwal' thisDate='" + cell.attr("data-date") + "' onclick='cobaSini(\""+thisCabang+"\", \"" + cell.attr("data-date") + "\", \""+thisHari+"\")'>Selengkapnya</a>");
          $("td.fc-day.fc-widget-content[data-date='" + cell.attr("data-date") + "']").append("<a class='link cursor-pointer' data-toggle='modal' data-target='#modal-jadwal'>Selengkapnya</a>")
       },
       eventRender: function(event, element) {
@@ -146,7 +151,8 @@ function getCalendar(){
       },
       events: function(start, end, timezone, callback) {
         $.ajax({
-          url: '<?php echo linkservice('FRONTEND') ."auction/Get_schedule"; ?>',
+          // url: '<?php echo linkservice('FRONTEND') ."auction/Get_schedule"; ?>',
+          url: '<?php echo site_url("auction/Get_schedule"); ?>',
           dataType: 'json',
           data: {
             start: start.unix(),
@@ -318,9 +324,9 @@ $(document).ready(function() {
    });
    
    $('.thisDate').click(function(){
+	   console.log(this);
 	   thisDate = $(this).attr('thisDate');
-	   // console.log(thisDate);
-	   $('#myModalLabel').html(thisDate);
+	   $('#myModalLabel').html(thisDate+' sanusi masuk sini');
 	   // return false;
    });
    
@@ -335,4 +341,48 @@ $(document).ready(function() {
    
    getCalendar();
 });
+
+function cobaSini(thisCabang, thisDate, thisHari){
+	// thisDate = $(this).attr('thisDate');
+   $('#myModalLabel').html(thisDate+' <span>'+thisHari+' '+thisCabang+'</span>');
+   
+   $.ajax({
+		url: '<?php echo linkservice('AMSSCHEDULE').'schedulelist'; ?>',
+		dataType: 'json',
+		data: {
+			startdate: thisDate,
+			enddate: thisDate,
+			company_id: thisCabang
+		},
+		beforeSend: function(){
+			$('#thisObjTglLelang').html('');
+		},
+		success: function(doc) {
+			thisHtmlAppend = '';
+			if (doc.data.length > 0){
+				for(var i=0; i<doc.data.length; i++){
+					thisData = doc.data[i];
+					if (thisData.ItemName == 'MOBIL')
+						thisHtmlAppend += '<li><a href="<?php echo site_url('cari-lelang'); ?>?tipe-object=6" class="car-event"> <span>'+arrKota[thisData.company_id]+'</span></a></li>';
+					else if (thisData.ItemName == 'MOTOR')
+						thisHtmlAppend += '<li><a href="<?php echo site_url('cari-lelang'); ?>?tipe-object=7" class="motor-event"> <span>'+arrKota[thisData.company_id]+'</span></a></li>';
+					else if (thisData.ItemName == 'HVE')
+						thisHtmlAppend += '<li><a href="<?php echo site_url('cari-lelang'); ?>?tipe-object=14" class="hve-event"> <span>'+arrKota[thisData.company_id]+'</span></a></li>';
+					else if (thisData.ItemName == 'GADGET')
+						thisHtmlAppend += '<li><a href="<?php echo site_url('cari-lelang'); ?>?tipe-object=12" class="gadget-event"> <span>'+arrKota[thisData.company_id]+'</span></a></li>';
+				}
+			}
+			$('#thisObjTglLelang').html(thisHtmlAppend);
+			console.log(thisHtmlAppend);
+		},
+		beforeSend: function(){
+			// console.log('masuk sini');
+		},
+		complete: function(){
+			// console.log('masuk sana');
+		},
+	});
+   
+}
+
 </script>
