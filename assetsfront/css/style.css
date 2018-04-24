@@ -6091,6 +6091,18 @@ li.input-dropdown a {
     /*background: #f7f7f7*/
 }
 
+#top-transaction li.input-dropdown {
+    margin-bottom: 5px;
+}
+
+#top-transaction li.input-dropdown a {
+    padding: 3px;
+}
+
+#top-transaction li.input-dropdown a:hover {
+    background-color: #f2f2f2;
+    text-decoration: none;
+}
 
 /*transaction detail*/
 
