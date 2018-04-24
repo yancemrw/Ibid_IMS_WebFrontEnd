@@ -6053,6 +6053,7 @@ p.title-dropdown {
     display: table-cell;
     vertical-align: top;
     padding-left: 10px;
+    text-align: left;
 }
 
 .transaction-image {
@@ -6085,9 +6086,9 @@ p.title-dropdown {
 
 li.input-dropdown a {
     white-space: normal;
-    margin: 10px -15px;
+    margin: 0 -15px;
     padding: 15px;
-    background: #f7f7f7
+    /*background: #f7f7f7*/
 }
 
 

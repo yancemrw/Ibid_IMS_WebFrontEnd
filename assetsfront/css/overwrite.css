@@ -185,6 +185,11 @@ a.delete-compare {
     border-bottom: 1px solid #81be2a !important;
 }
 
+.header-white .nav>li>a>p {
+    margin: 0;
+    min-height: 30px;
+}
+
 .height-50px {
     height: 50px !important;
 }
