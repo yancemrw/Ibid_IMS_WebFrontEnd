@@ -187,7 +187,7 @@ a.delete-compare {
 
 .header-white .nav>li>a>p {
     margin: 0;
-    min-height: 30px;
+    min-height: 32px;
 }
 
 .height-50px {
@@ -622,6 +622,11 @@ a.delete-compare {
     #lightgallery .slick-track img {
         height: 330px;
     }
+    #top-transaction-mobile > li.input-dropdown a {
+        width: 100%;
+        padding: 10px;
+        text-align: left;
+    }
 }
 
 @media(max-width: 980px) {
@@ -737,6 +742,13 @@ a.delete-compare {
     .bidder ul li span {
         position: relative;
         right: -300px;
+    }
+    .modal-login .modal-dialog {
+        max-width: 800px;
+        width: 96%;
+    }
+    .login-socialmedia {
+        padding-left: 0;
     }
 }
 
@@ -1041,6 +1053,10 @@ a.delete-compare {
         position: relative;
         right: -265px;
     }
+    .modal-login .modal-dialog {
+        max-width: 800px;
+        width: 96%;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1083,6 +1099,10 @@ a.delete-compare {
     .bidder ul li span {
         position: relative;
         right: -160px;
+    }
+    .modal-login .modal-dialog {
+        max-width: 800px;
+        width: 96%;
     }
 }
 
@@ -1497,6 +1517,10 @@ a.delete-compare {
     .bidder ul li span {
         position: relative;
         right: -30px;
+    }
+    .modal-login .modal-dialog {
+        max-width: 800px;
+        width: 100%;
     }
 }
 

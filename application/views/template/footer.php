@@ -592,40 +592,79 @@ $(function(){
 // created by andi
 
 // get notification
-$.ajax({
-  url: '<?php echo linkservice('account').'notifications/get'; ?>',
-  type: 'POST',
-  data: "type=2&UserId=<?php echo $userdata['UserId'] ?>",
-  beforeSend: function() {
-    $('#top-transaction').html('<img src="<?php echo base_url('assetsfront/images/loader/formloader.gif'); ?>" width="24">');
-    $('#top-transaction-mobile').html('<img src="<?php echo base_url('assetsfront/images/loader/formloader.gif'); ?>" width="24">');
-  },
-  success: function(data) {
-    var data = data.data;
-    if(data.length > 0) {
-      for(var i = 0; i < data.length; i++) {
-        var images = JSON.parse(data[i].Image),
-        stat = (data[i].StatusUser === 'seller') ? data[i].SubTitle : 'No. NPL #002';
-        html =  '<li class="input-dropdown">'+
-                '<a href="javascript:void(0)">'+
-                '<div class="transaction-image">'+
-                '<img src="'+images.img+'" alt="" title="">'+
-                '</div>'+
-                '<div class="transaction-content">'+
-                '<h2>'+data[i].Title+'</h2>'+
-                '<p>'+stat+'<span>Rp. '+currency_format(data[i].Billing)+'</span></p>'+
-                '</div>'+
-                '</a>'+
-                '</li>';
-      }
+var getTopLocaleStore = JSON.parse(localStorage.getItem("NotifReload")); // cek timestamp from localstorage
+var nowsTime = new Date();
+if(nowsTime.getTime() <= getTopLocaleStore.timestamp) {
+  var data = getTopLocaleStore.data, html = '';
+  if(data.length > 0) {
+    for(var i = 0; i < data.length; i++) {
+      var images = JSON.parse(data[i].Image),
+      stat = (data[i].StatusUser === 'seller') ? data[i].SubTitle : 'No. NPL #002';
+      html += '<li class="input-dropdown">'+
+              '<a href="javascript:void(0)">'+
+              '<div class="transaction-image">'+
+              '<img src="'+images.img+'" alt="" title="">'+
+              '</div>'+
+              '<div class="transaction-content">'+
+              '<h2>'+data[i].Title+'</h2>'+
+              '<p>'+stat+'<span>Rp. '+currency_format(data[i].Billing)+'</span></p>'+
+              '</div>'+
+              '</a>'+
+              '</li>';
     }
-    else {
-      html = 'Tidak Ada Transaksi';
-    }
-    $('#top-transaction').html(html);
-    $('#top-transaction-mobile').html(html);
   }
-});
+  else {
+    html = 'Tidak Ada Transaksi';
+  }
+  $('#top-transaction').html(html);
+  $('#top-transaction-mobile').html(html);
+}
+else {
+  var TopUserId = '<?php echo $this->session->userdata('userdata')['UserId'] ?>';
+  if(TopUserId !== '') {
+    $.ajax({
+      url: '<?php echo linkservice('account').'notifications/get'; ?>',
+      type: 'POST',
+      data: "type=2&UserId="+TopUserId,
+      beforeSend: function() {
+        $('#top-transaction').html('<img src="<?php echo base_url('assetsfront/images/loader/formloader.gif'); ?>" width="24">');
+        $('#top-transaction-mobile').html('<img src="<?php echo base_url('assetsfront/images/loader/formloader.gif'); ?>" width="24">');
+      },
+      success: function(data) {
+        var data = data.data, html = '';
+        var tenMinutesLater = new Date();
+        tenMinutesLater.setMinutes(tenMinutesLater.getMinutes() + 10)
+        var localStore = {
+          timestamp: tenMinutesLater.getTime(),
+          data: data
+        };
+        localStorage.setItem("NotifReload", JSON.stringify(localStore));
+        if(data.length > 0) {
+          for(var i = 0; i < data.length; i++) {
+            var images = JSON.parse(data[i].Image),
+            stat = (data[i].StatusUser === 'seller') ? data[i].SubTitle : 'No. NPL #002';
+            html += '<li class="input-dropdown">'+
+                    '<a href="javascript:void(0)">'+
+                    '<div class="transaction-image">'+
+                    '<img src="'+images.img+'" alt="" title="">'+
+                    '</div>'+
+                    '<div class="transaction-content">'+
+                    '<h2>'+data[i].Title+'</h2>'+
+                    '<p>'+stat+'<span>Rp. '+currency_format(data[i].Billing)+'</span></p>'+
+                    '</div>'+
+                    '</a>'+
+                    '</li>';
+          }
+        }
+        else {
+          html = 'Tidak Ada Transaksi';
+        }
+        $('#top-transaction').html(html);
+        $('#top-transaction-mobile').html(html);
+      }
+    });
+  }
+}
 </script>
 </body>
 </html>
