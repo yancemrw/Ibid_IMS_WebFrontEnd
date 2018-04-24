@@ -47,7 +47,7 @@
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="tab-1">
                             <div class="filter-table">
-                                <form class="form-inline">
+                                <form class="form-inline" id="transaksiPenjualan">
                                     <div class="form-group">
                                         <input type="text" name="" class="form-control input-custom" placeholder="Search">
                                         <i class="fa fa-search"></i>
@@ -112,10 +112,10 @@
 
 <script>
     $.ajax({
-        type: 'POST',
+        type: 'GET',
         url: "<?php echo linkservice('stock').'winner/get'; ?>",
         data: {
-			UserId: '<?php echo $userdata['UserId'] ?>'
+			pemilik: '<?php echo $userdata['UserId'] ?>'
 			// "type=2&UserId=<?php echo $userdata['UserId'] ?>",
 		},
         beforeSend: function() {
@@ -168,4 +168,5 @@
             });
         }
     });
+
 </script>
