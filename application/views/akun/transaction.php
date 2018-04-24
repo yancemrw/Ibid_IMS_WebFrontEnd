@@ -113,34 +113,52 @@
 <script>
     $.ajax({
         type: 'POST',
-        url: "<?php echo linkservice('account').'notifications/get'; ?>",
-        data: "type=2&UserId=<?php echo $userdata['UserId'] ?>",
+        url: "<?php echo linkservice('stock').'winner/get'; ?>",
+        data: {
+			UserId: '<?php echo $userdata['UserId'] ?>'
+			// "type=2&UserId=<?php echo $userdata['UserId'] ?>",
+		},
         beforeSend: function() {
             $('#table-jual tbody').html('<tr><td colspan="7"><b class="text-shadows">Memuat Data...</b></td></tr>');
         },
         success: function(data) {
-            var data = data.data, rows;
+			var data = data.data, rows;
             for(var i = 0; i < data.length; i++) {
+				
+				imgStep_1 = '<?php echo base_url('assetsfront/images/icon/ic_transaction_step_1_grey.png'); ?>';
+				if (data[i].IsPaid == 1)
+					imgStep_1 = '<?php echo base_url('assetsfront/images/icon/ic_transaction_step_1.png'); ?>';
+				
                 rows += '<tr>'+
                         '<td></td>'+
-                        '<td>'+data[i].NoPolisi+'</td><td>'+data[i].Title+'</td>'+
-                        '<td></td>'+
+                        '<td>'+data[i].nopolisi+'</td>'+
+						'<td>'+data[i].merk+' '+data[i].seri+' '+data[i].silinder+' '+data[i].model+' '+data[i].transmisi+'<br>'+data[i].tahun+'</td>'+
+                        '<td>Jenis</td>'+
                         '<td>Rp. '+currency_format(data[i].Billing)+'</td>'+
-                        '<td>'+data[i].Schedule+'</td>'+
+                        '<td>'+data[i].ScheduleAuctionWinnerCompany+'<br>'+data[i].ScheduleAuctionWinnerDate+'</td>'+
                         '<td>'+
-                        '<a href="" class="step-transaction">'+
-                        '<ul>'+
-                        '<li><img src="<?php echo base_url('assetsfront/images/icon/ic_transaction_step_1.png'); ?>" alt=""></li>'+
-                        '<li><img src="<?php echo base_url('assetsfront/images/icon/ic_transaction_step_2.png'); ?>" alt=""></li>'+
-                        '<li><img src="<?php echo base_url('assetsfront/images/icon/ic_transaction_step_3_grey.png'); ?>" alt=""></li>'+
-                        '<li><img src="<?php echo base_url('assetsfront/images/icon/ic_transaction_step_4_grey.png'); ?>" alt=""></li>'+
-                        '<p>Serah Terima Kendaraan Kepada Pemenang</p>'+
-                        '</ul>'+
-                        '</a></td>'+
+						'<a href="" class="step-transaction">'+
+						'<ul>'+
+						'<li><img class="imgSrcStep-1-'+data[i].AuctionItemId+'" src="'+imgStep_1+'" alt=""></li>'+
+						'<li><img class="imgSrcStep-2-'+data[i].AuctionItemId+'" src="<?php echo base_url('assetsfront/images/icon/ic_transaction_step_2.png'); ?>" alt=""></li>'+
+						'<li><img class="imgSrcStep-3-'+data[i].AuctionItemId+'" src="<?php echo base_url('assetsfront/images/icon/ic_transaction_step_3_grey.png'); ?>" alt=""></li>'+
+						'<li><img class="imgSrcStep-4-'+data[i].AuctionItemId+'" src="<?php echo base_url('assetsfront/images/icon/ic_transaction_step_4_grey.png'); ?>" alt=""></li>'+
+						'<p>Serah Terima Kendaraan Kepada Pemenang</p>'+
+						'</ul>'+
+						'</a>'+
+						'</td>'+
                         '</tr>';
             }
             $('#table-jual tbody tr').replaceWith(rows);
-        },
+		},
+		complete: function(data){
+			// data = data.responseJSON.data;
+			// setTimeout(function(){ 
+				// alert("Hello"); 
+				// console.log(data); 
+			// }, 1000);
+			
+		},
         error: function() {
             bootoast.toast({
                 message: "Gagal Mengambil Data",
