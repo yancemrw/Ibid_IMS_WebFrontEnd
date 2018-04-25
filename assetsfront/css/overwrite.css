@@ -16,6 +16,15 @@
     font-weight: bolder !important;
 }
 
+#thisFormCalendar > div.form-group > .select2.select2-container.select2-container--default {
+    background-color: #fff;
+    max-width: unset;
+}
+
+#thisFormCalendar > div.form-group > .select-auctCategory label {
+    background-color: #fff;
+}
+
 a.delete-compare {
     top: -5px !important;
     right: -3px !important;
