@@ -96,6 +96,55 @@
                             </div>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="tab-2">
+							<div class="filter-table">
+                                <form class="form-inline" id="transaksiPembelian">
+                                    <div class="form-group">
+                                        <input type="text" name="" class="form-control input-custom" placeholder="Search">
+                                        <i class="fa fa-search"></i>
+                                    </div>
+                                    <div class="filter-right">
+                                        <div class="form-group">
+                                            <select class="form-control select-custom">
+                                                <option>Filter by jadwal</option>
+                                                <option>jakarta timur</option>
+                                                <option>jakarta timur</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <select class="form-control select-custom">
+                                                <option>Jenis lelang</option>
+                                                <option>Hybrid</option>
+                                                <option>Hybrid</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Show</label>
+                                            <select class="form-control select-custom">
+                                                <option>10</option>
+                                                <option>15</option>
+                                                <option>20</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="table-responsive table-container table-transaction">
+                                <table id="table-beli" class="table table-striped table-custom table-custom-transaction table-responsive-am">
+                                    <thead>
+                                        <tr>
+                                            <th width="3">No</th>
+                                            <th>NPL</th>
+                                            <th width="10">No Pol/Serial Number</th>
+                                            <th>Nama Barang</th>
+                                            <th>Jenis</th>
+                                            <th>Harga</th>
+                                            <th>Tanggal</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
                             <div class="table-responsive table-container table-transaction content-empty">
                                 <div class="product-empty">
                                     <img src="<?php echo base_url('assetsfront/images/icon/ic-transaction-empty.png'); ?>" alt="" title="">
@@ -160,6 +209,74 @@
                         '</tr>';
             }
             $('#table-jual tbody tr').replaceWith(rows);
+		},
+		complete: function(data){
+			// data = data.responseJSON.data;
+			// setTimeout(function(){ 
+				// alert("Hello"); 
+				// console.log(data); 
+			// }, 1000);
+			
+		},
+        error: function() {
+            bootoast.toast({
+                message: "Gagal Mengambil Data",
+                type: 'warning',
+                position: 'top-center',
+                timeout: 4
+            });
+        }
+    });
+	
+	$.ajax({
+        type: 'GET',
+        url: "<?php echo linkservice('stock').'winner/get'; ?>",
+        data: {
+			userid: '<?php echo $userdata['UserId'] ?>'
+		},
+        beforeSend: function() {
+            $('#table-beli tbody').html('<tr><td colspan="7"><b class="text-shadows">Memuat Data...</b></td></tr>');
+        },
+        success: function(data) {
+			var data = data.data, rows;
+            for(var i = 0; i < data.length; i++) {
+				
+				keteranganStatus = 'Belum Dilunasi';
+				imgStep_1 = '<?php echo base_url('assetsfront/images/icon/ic_transaction_step_1_grey.png'); ?>';
+				imgStep_2 = '<?php echo base_url('assetsfront/images/icon/ic_transaction_step_2_grey.png'); ?>';
+				imgStep_3 = '<?php echo base_url('assetsfront/images/icon/ic_transaction_step_3_grey.png'); ?>';
+				imgStep_4 = '<?php echo base_url('assetsfront/images/icon/ic_transaction_step_4_grey.png'); ?>';
+				if (data[i].IsPaid == 1){
+					imgStep_1 = '<?php echo base_url('assetsfront/images/icon/ic_transaction_step_1.png'); ?>';
+					keteranganStatus = '';
+					if (data[i].IsPaid == 1){
+						
+					}
+				}
+				
+				
+                rows += '<tr>'+
+                        '<td></td>'+
+                        '<td>'+data[i].NPLNumber+'</td>'+
+                        '<td>'+data[i].nopolisi+'</td>'+
+						'<td>'+data[i].merk+' '+data[i].seri+' '+data[i].silinder+' '+data[i].model+' '+data[i].transmisi+'<br>'+data[i].tahun+'</td>'+
+                        '<td>Jenis</td>'+
+                        '<td>Rp. '+currency_format(data[i].Billing)+'</td>'+
+                        '<td>'+data[i].ScheduleAuctionWinnerCompany+'<br>'+data[i].ScheduleAuctionWinnerDate+'</td>'+
+                        '<td>'+
+						'<a href="" class="step-transaction">'+
+						'<ul>'+
+						'<li><img class="imgSrcStep-1-'+data[i].AuctionItemId+'" src="'+imgStep_1+'" alt=""></li>'+
+						'<li><img class="imgSrcStep-2-'+data[i].AuctionItemId+'" src="<?php echo base_url('assetsfront/images/icon/ic_transaction_step_2_grey.png'); ?>" alt=""></li>'+
+						'<li><img class="imgSrcStep-3-'+data[i].AuctionItemId+'" src="<?php echo base_url('assetsfront/images/icon/ic_transaction_step_3_grey.png'); ?>" alt=""></li>'+
+						'<li><img class="imgSrcStep-4-'+data[i].AuctionItemId+'" src="<?php echo base_url('assetsfront/images/icon/ic_transaction_step_4_grey.png'); ?>" alt=""></li>'+
+						'<p>Serah Terima Kendaraan Kepada Pemenang</p>'+
+						'</ul>'+
+						'</a>'+
+						'</td>'+
+                        '</tr>';
+            }
+            $('#table-beli tbody tr').replaceWith(rows);
 		},
 		complete: function(data){
 			// data = data.responseJSON.data;
