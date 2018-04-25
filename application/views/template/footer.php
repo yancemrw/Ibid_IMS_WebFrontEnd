@@ -308,7 +308,8 @@ $(document).ready(function() {
     );
     return $state;
   }
-  $('.why-ibid').slick({
+
+$('.why-ibid').slick({
     dots: false,
     infinite: false,
     speed: 300,
@@ -351,6 +352,7 @@ $(document).ready(function() {
       }
     ]
   });
+
   $('.howTo-bid').slick({
     dots: false,
     infinite: false,
@@ -394,49 +396,7 @@ $(document).ready(function() {
       }
     ]
   });
-  $('.section-recommend').slick({
-    dots: false,
-    infinite: false,
-    speed: 300,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite:false,
-          dots: true,
 
-          prevArrow: false,
-          nextArrow: false
-        }
-      },
-      {
-        breakpoint: 800,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          dots: true,
-
-          prevArrow: false,
-          nextArrow: false
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          dots: true,
-
-          prevArrow: false,
-          nextArrow: false
-        }
-      }
-    ]
-  });
   $('.testimoni-slide').slick({
     dots: false,
     infinite: false,

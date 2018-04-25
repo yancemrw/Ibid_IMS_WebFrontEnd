@@ -802,10 +802,11 @@ $(document).ready(function() {
    });
 
    // create related product by object, merk, price
+   window.classSlickNames = '.related-product-slider';
    $.ajax({
       type: 'GET',
       url: '<?php echo linkservice('stock')."relatedproduct/Lists"; ?>',
-      data: 'object=<?php echo $data[0]->ItemId; ?>&merk=<?php echo $data[0]->merk; ?>&price=&userid=<?php echo $userdata['UserId']; ?>',
+      data: 'object=<?php echo $data[0]->ItemId; ?>&merk=<?php echo $data[0]->merk; ?>&price=&userid=<?php echo $userdata['UserId']; ?>&top=4',
       beforeSend: function() {
          for(var i = 0; i < 4; i++) {
             var content =  '<div class="col-md-3">'+
@@ -829,10 +830,10 @@ $(document).ready(function() {
                            '</div>';
             $('#showrelated').append(content);
          }
-         mobileSlick(4);
+         mobileSlick(4, classSlickNames);
       },
       success: function(data) {
-         $('.related-product-slider').slick('unslick');
+         $(classSlickNames).slick('unslick');
          $('#showrelated').children().remove();
          var data = data.data,
          sessiond = "<?php echo ($userdata !== null) ? 'TRUE' : 'FALSE'; ?>",
@@ -901,30 +902,41 @@ $(document).ready(function() {
                            '</div>';
             $('#showrelated').append(content);
          }
-         mobileSlick(data.length);
+         mobileSlick(data.length, classSlickNames);
          /*setTimeout(function() {
             $('#showrelated').children().attr('style', 'text-align:center');
             $('#showrelated').children().children().attr('style', 'opacity: 1; width: auto; display: inline-block; text-align: left; transform: translate3d(0px, 0px, 0px);');
             $('#showrelated').children().children().children().attr('style', 'width:285px');
          }, 2000);*/
       },
-      error: function(data) {
-         bootoast.toast({
-            message: 'Koneksi terputus saat mengolah data produk terkait',
-            type: 'warning',
-            position: 'top-center',
-            timeout: 3
-         });
+      error: function(e) {
+         var data = e.responseJSON;
+         if(data.status === 0 && data.data.length === 0) {
+            bootoast.toast({
+               message: data.message,
+               type: 'warning',
+               position: 'top-center',
+               timeout: 3
+            });
+         }
+         else {
+            bootoast.toast({
+               message: 'Koneksi terputus saat mengolah data produk rekomendasi',
+               type: 'warning',
+               position: 'top-center',
+               timeout: 3
+            });
+         }
       }
    });
 });
 
-function mobileSlick(value) {
+function mobileSlick(value, classSlickNames) {
    var vw = false;
    if(value < 2) {
       vw = true;
    }
-   $('.related-product-slider').slick({
+   $(classSlickNames).slick({
       dots: false,
       infinite: false,
       speed: 300,
