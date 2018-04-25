@@ -684,6 +684,32 @@ a.delete-compare {
     .dropdown-menu.dropdown-custom {
         right: 0;
         left: unset;
+        margin-top: 10px;
+    }
+    .dropdown-menu.dropdown-profile {
+        right: 0;
+        left: unset;
+        margin-top: 10px;
+    }
+    .dropdown-menu.dropdown-profile:before {
+        content: "";
+        position: absolute;
+        top: -8px;
+        right: 30px;
+        margin: auto;
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid #fff;
+    }
+    .dropdown-transaksi:before {
+        left: 130px !important;
+        right: unset !important;
+    }
+    .dropdown-bell:before {
+        left: 175px !important;
+        right: unset !important;
     }
 }
 

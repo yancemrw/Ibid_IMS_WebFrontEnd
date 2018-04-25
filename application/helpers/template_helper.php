@@ -41,7 +41,7 @@ function login_status_form_mobile($userdata) {
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <p><img src="'.base_url('assetsfront/images/icon/Transaksi.png').'" alt="" title="" width="" height=""></p>
                     </a>
-                    <ul class="dropdown-menu dropdown-custom">
+                    <ul class="dropdown-menu dropdown-custom dropdown-transaksi">
                         <li><p class="title-dropdown">Transaksi</p></li>
                         <li><p id="top-transaction-mobile" class="notif">Tidak Ada Transaksi</p></li>
                         <!--li class="input-dropdown">
@@ -80,7 +80,7 @@ function login_status_form_mobile($userdata) {
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <p><img src="'.base_url('assetsfront/images/icon/Notifikasi.png').'" alt="" title="" width="" height=""><!--span class="notification">10</span--></p>
                     </a>
-                    <ul class="dropdown-menu dropdown-custom">
+                    <ul class="dropdown-menu dropdown-custom dropdown-bell">
                         <li><p class="title-dropdown">Notifikasi</p></li>
                         <li><p id="top-notif-mobile" class="notif">Tidak Ada Notifikasi</p></li>
                         <!--li class="clearfix">
