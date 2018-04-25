@@ -111,8 +111,8 @@
          <div class="col-md-12">
             <h2 class="title">Mobil Rekomendasi</h2>
          </div>
-         <div class="col-md-12">
-            <div class="section-recommend clearfix">
+         <div class="col-md-12 section-recommend" id="showrelated">
+            <!--div class="section-recommend clearfix">
                <div class="item col-md-4 ">
                   <div class="box-recommend">
                      <a href="javascript:void(0)">
@@ -167,7 +167,7 @@
                      </a>
                   </div>
                </div>
-            </div>
+            </div-->
          </div>
          <div class="col-md-12 text-center show-more hidden-xs">
             <button class="btn btn-lg btn-green" disabled>Lihat Semua</button>
@@ -406,5 +406,183 @@ $(function() {
          ele.submit();
       }
    });
+
+   // create related product by object, merk, price
+   window.classSlickNames = '.section-recommend';
+   $.ajax({
+      type: 'GET',
+      url: '<?php echo linkservice('stock')."relatedproduct/Lists"; ?>',
+      data: 'object=&merk=&price=100000000&userid=<?php echo $userdata['UserId']; ?>&top=3',
+      beforeSend: function() {
+         for(var i = 0; i < 3; i++) {
+            var content =  '<div class="item col-md-4">'+
+                           '<div class="box-recommend">'+
+                           '<a href="#">'+
+                           '<div class="thumbnail">'+
+                           '<div class="thumbnail-custom">'+
+                           '<img src="<?php echo base_url('assetsfront/images/background/default.png'); ?>" height="197px" />'+
+                           '</div>'+
+                           '<div class="overlay-grade">'+
+                           '<span></span>'+
+                           '</div>'+
+                           '<p class="overlay-lot">LOT</p>'+
+                           '</div>'+
+                           '<h2></h2>'+
+                           '<span></span><span class="price"></span>'+
+                           '<p><span></span><span class="fa fa-calendar"></span><span></span></p>'+
+                           '<p><span></span><span class="fa fa-map-marker"></span><span></span></p>'+
+                           '</a>'+
+                           '</div>'+
+                           '</div>';
+            $('#showrelated').append(content);
+         }
+         mobileSlick(3, classSlickNames);
+      },
+      success: function(data) {
+         $(classSlickNames).slick('unslick');
+         $('#showrelated').children().remove();
+         var data = data.data,
+         sessiond = "<?php echo ($userdata !== null) ? 'TRUE' : 'FALSE'; ?>",
+         sessionId = '<?php echo ($userdata !== null) ? $userdata['UserId'] : ''; ?>';
+         for(var i = 0; i < data.length; i++) {
+            var datetime, location;
+            if(data[i].schedule.status !== false) {
+               var dateSplit = (data[i].schedule.schedule.date).split('-');
+               datetime = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + data[i].schedule.schedule.waktu;
+               location = data[i].schedule.schedule.CompanyName;
+            }
+            else {
+               datetime = 'Belum Tersedia';
+               location = 'Belum Tersedia';
+            }
+            var compare_data = {
+               "AuctionItemId": data[i].AuctionItemId,
+               "BahanBakar": data[i].bahanbakar,
+               "Image": data[i].icarImage,
+               //"Image": '//img.ibid.astra.co.id/item/12415/d8404a531ea286d733aa7c35bfbdc83c.jpg',
+               "Kilometer": data[i].km,
+               "Lot": (data[i].thisLotNo !== undefined && data[i].thisLotNo !== null) ? data[i].thisLotNo : '-',
+               "Merk": (data[i].merk !== undefined) ? data[i].merk : '',
+               "Model": (data[i].model !== undefined) ? data[i].model : '',
+               "NoKeur": data[i].nokeur,
+               "NoMesin": data[i].nomesin,
+               "NoPolisi": data[i].nopolisi,
+               "NoRangka": data[i].norangka,
+               "NoSTNK": data[i].nostnk,
+               "Seri": (data[i].seri !== undefined) ? data[i].seri : '',
+               "Silinder": (data[i].silinder !== undefined) ? data[i].silinder : '',
+               "TaksasiGrade": data[i].nilaiIcar,
+               "Tahun": (data[i].tahun !== undefined) ? data[i].tahun : '',
+               "Transmisi": (data[i].transmisi !== undefined) ? data[i].transmisi : '',
+               "Tipe": (data[i].grade !== undefined) ? data[i].grade : '',
+               "Price": (data[i].FinalPriceItem !== undefined) ? data[i].FinalPriceItem : 0,
+               "Warna": data[i].warna
+            };
+            var json_str = JSON.stringify(compare_data);
+            var link_detail = "<?php echo site_url('detail-lelang/'); ?>"+data[i].AuctionItemId;
+            var iconFav = (data[i].thisFavorite === 0) ? '<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon empty-favicon-details" />' : '<i class="fa fa-heart"></i>';
+            var bottom_favcom = '<div class="action-bottom">'+
+                                 '<button class="btn" onclick="addFav('+data[i].AuctionItemId+', '+sessionId+', this, 2)">'+iconFav+'<span class="btnItemFooter">Favorit</span></button>'+
+                                 '<button class="btn btn-compare" onclick=\'set_compare_product('+json_str+', "'+link_detail+'")\'><i class="ic ic-Bandingkan-green"></i><span class="btnItemFooter">Bandingkan</span></button>'+
+                                 '</div>';
+            var favcom = (sessiond === 'TRUE') ? bottom_favcom : '';
+            var content =  '<div class="item col-md-4">'+
+                           '<div class="box-recommend">'+
+                           '<a href="'+link_detail+'">'+
+                           '<div class="thumbnail">'+
+                           '<div class="thumbnail-custom">'+
+                           '<img src="'+data[i].icarImage+'" />'+
+                           '</div>'+
+                           '<div class="overlay-grade">'+
+                           'Grade <span>'+data[i].nilaiIcar+'</span>'+
+                           '</div>'+
+                           '<p class="overlay-lot">LOT '+compare_data.Lot+'</p>'+
+                           '</div>'+
+                           '<h2>'+data[i].merk+' '+data[i].seri+' '+data[i].silinder+' '+data[i].grade+' '+data[i].model+' '+data[i].transmisi+'</h2>'+
+                           '<span>'+data[i].tahun+'</span> <span class="price">Rp. '+currency_format(data[i].FinalPriceItem)+'</span>'+
+                           '<p><span>Jadwal</span> <span class="fa fa-calendar"></span><span>'+datetime+'</span></p>'+
+                           '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span><span>'+location+'</span></p>'+
+                           '</a>'+
+                           favcom+
+                           '</div>'+
+                           '</div>';
+            $('#showrelated').append(content);
+         }
+         mobileSlick(data.length, classSlickNames);
+      },
+      error: function(e) {
+         var data = e.responseJSON; console.log(data);
+         if(data.status === 0 && data.data.length === 0) {
+            bootoast.toast({
+               message: data.message,
+               type: 'warning',
+               position: 'top-center',
+               timeout: 3
+            });
+         }
+         else {
+            bootoast.toast({
+               message: 'Koneksi terputus saat mengolah data produk rekomendasi',
+               type: 'warning',
+               position: 'top-center',
+               timeout: 3
+            });
+         }
+      }
+   });
 });
+
+function mobileSlick(value, classSlickNames) {
+   var vw = false;
+   if(value < 2) {
+      vw = true;
+   }
+   $(classSlickNames).slick({
+      dots: false,
+      infinite: false,
+      speed: 300,
+      variableWidth: vw,
+      slidesToShow: value,
+      slidesToScroll: value,
+      responsive: 
+      [
+         {
+            breakpoint: 1024,
+            settings: {
+               slidesToShow: 3,
+               slidesToScroll: 3,
+               infinite:false,
+               dots: true,
+               prevArrow: false,
+               nextArrow: false
+            }
+         },
+         {
+            breakpoint: 800,
+            settings: {
+               slidesToShow: 2,
+               slidesToScroll: 1,
+               dots: true,
+               prevArrow: false,
+               nextArrow: false
+            }
+         },
+         {
+            breakpoint: 600,
+            settings: {
+               slidesToShow: 1,
+               slidesToScroll: 1,
+               dots: true,
+               prevArrow: false,
+               nextArrow: false
+            }
+         }
+      ]
+   });
+
+   if(value < 2) {
+      $('#showrelated').children().children().attr('style', 'opacity:1; width:auto; transform:translate3d(0px, 0px, 0px);');
+      $('#showrelated').children().children().children().attr('style', 'opacity:1; width:auto; transform:translate3d(0px, 0px, 0px);');
+   }
+}
 </script>

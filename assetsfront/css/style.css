@@ -916,6 +916,11 @@ h2.title {
     padding: 0 10px
 }
 
+.box-recommend p.overlay-lot {
+    width: 60px !important;
+    text-align: center;
+}
+
 .section-recommend .box-recommend h2,
 .section-recommend .box-recommend p {
     padding: 0
