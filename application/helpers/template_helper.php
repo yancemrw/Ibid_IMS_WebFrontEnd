@@ -43,7 +43,7 @@ function login_status_form_mobile($userdata) {
                     </a>
                     <ul class="dropdown-menu dropdown-custom">
                         <li><p class="title-dropdown">Transaksi</p></li>
-                        <li><p id="top-transaction-mobile" class="no-notif">Tidak Ada Transaksi</p></li>
+                        <li><p id="top-transaction-mobile" class="notif">Tidak Ada Transaksi</p></li>
                         <!--li class="input-dropdown">
                             <h2>Butuh Tindakan</h2>
                             <form>
@@ -82,7 +82,7 @@ function login_status_form_mobile($userdata) {
                     </a>
                     <ul class="dropdown-menu dropdown-custom">
                         <li><p class="title-dropdown">Notifikasi</p></li>
-                        <li><p id="top-notif-mobile" class="no-notif">Tidak Ada Notifikasi</p></li>
+                        <li><p id="top-notif-mobile" class="notif">Tidak Ada Notifikasi</p></li>
                         <!--li class="clearfix">
                             <a href="#">
                                 <div class="media-image">
@@ -170,7 +170,7 @@ function login_Status_form($userdata) {
        </a>
        <ul class="dropdown-menu dropdown-custom">
           <li><p class="title-dropdown">Transaksi</p></li>
-          <li><p id="top-transaction" class="no-notif">Tidak Ada Transaksi</p></li>
+          <li><p id="top-transaction" class="notif">Tidak Ada Transaksi</p></li>
           <!--li class="input-dropdown">
              <h2>Butuh Tindakan</h2>
              <form>
@@ -209,7 +209,7 @@ function login_Status_form($userdata) {
        </a>
        <ul class="dropdown-menu dropdown-custom">
           <li><p class="title-dropdown">Notifikasi</p></li>
-          <li><p id="top-notif" class="no-notif">Tidak Ada Notifikasi</li>
+          <li><p id="top-notif" class="notif">Tidak Ada Notifikasi</li>
           <!--li class="clearfix">
              <a href="#">
                 <div class="media-image">
