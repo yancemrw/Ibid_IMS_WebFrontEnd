@@ -65,12 +65,6 @@ class Front extends CI_Controller {
 		} 
 		$data['formDinamis'] = @$dataApiDetails['formDinamis']; 
         ############################################################
-        // print_r($data['formDinamis']); 
-		// foreach($data['formDinamis'] as $row){
-			// print_r($row);
-			// echo '<hr>';
-		// }
-		// die();
 		$view = "template/front";
 		template($view, $data);
 
