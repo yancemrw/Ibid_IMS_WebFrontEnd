@@ -111,9 +111,9 @@
          <div class="col-md-12">
             <h2 class="title">Mobil Rekomendasi</h2>
          </div>
-         <div class="col-md-12 section-recommend" id="showrelated">
-            <!--div class="section-recommend clearfix">
-               <div class="item col-md-4 ">
+         <div class="col-md-12">
+            <div class="section-recommend clearfix" id="showrelated">
+               <!--div class="item col-md-4 ">
                   <div class="box-recommend">
                      <a href="javascript:void(0)">
                         <div class="thumbnail">
@@ -166,8 +166,8 @@
                         <p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span>Jakarta</span></p>
                      </a>
                   </div>
-               </div>
-            </div-->
+               </div-->
+            </div>
          </div>
          <div class="col-md-12 text-center show-more hidden-xs">
             <button class="btn btn-lg btn-green" disabled>Lihat Semua</button>
@@ -412,7 +412,7 @@ $(function() {
    $.ajax({
       type: 'GET',
       url: '<?php echo linkservice('stock')."relatedproduct/Lists"; ?>',
-      data: 'object=&merk=&price=100000000&userid=<?php echo $userdata['UserId']; ?>&top=3',
+      data: 'object=&merk=&price=150000000&userid=<?php echo $userdata['UserId']; ?>&top=3',
       beforeSend: function() {
          for(var i = 0; i < 3; i++) {
             var content =  '<div class="item col-md-4">'+
@@ -511,7 +511,7 @@ $(function() {
          mobileSlick(data.length, classSlickNames);
       },
       error: function(e) {
-         var data = e.responseJSON; console.log(data);
+         var data = e.responseJSON;
          if(data.status === 0 && data.data.length === 0) {
             bootoast.toast({
                message: data.message,
