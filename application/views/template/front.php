@@ -411,8 +411,8 @@ $(function() {
    window.classSlickNames = '.section-recommend';
    $.ajax({
       type: 'GET',
-      url: '<?php echo linkservice('stock')."relatedproduct/Lists"; ?>',
-      data: 'object=&merk=&price=150000000&userid=<?php echo $userdata['UserId']; ?>&top=3',
+      url: '<?php echo linkservice('stock')."rekomendasi/Get"; ?>',
+      data: 'top=3',
       beforeSend: function() {
          for(var i = 0; i < 3; i++) {
             var content =  '<div class="item col-md-4">'+
