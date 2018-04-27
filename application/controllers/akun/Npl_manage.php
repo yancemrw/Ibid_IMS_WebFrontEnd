@@ -24,10 +24,10 @@ class Npl_manage extends CI_Controller {
 		$data['img_link'] = base_url('assetsfront/images/icon/ic_avatar.png');
 		
 		$userdata = $this->session->userdata('userdata');
-		$url = linkservice('npl')."counter/npl/searchAll?BiodataId=".$userdata['UserId'];
+		$url = linkservice('npl')."counter/npl/searchAll?BiodataId=".@$userdata['UserId'];
 		// die();
 		$method = 'GET';
-		$responseApi = admsCurl($url, array('BiodataId' => $userdata['UserId']), $method);
+		$responseApi = admsCurl($url, array('BiodataId' => @$userdata['UserId']), $method);
 		$listNpl = curlGenerate($responseApi);
 
 		// print_r($responseApi); die();

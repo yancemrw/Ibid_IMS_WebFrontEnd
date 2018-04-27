@@ -28,6 +28,7 @@ class Register extends CI_Controller {
 			'form_auth'			=> login_Status_form($this->userdata)
 		);
 		$view = "auth/register";
+	// print_r($data); die();
 		template($view, $data);		
 	}
 

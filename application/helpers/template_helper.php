@@ -35,6 +35,8 @@ function template($view = '', $data = '') {
 function login_status_form_mobile($userdata) {
   $pp = base_url('assetsfront/images/icon/ic_avatar.png');
   $profile_name = @(strlen($userdata['namefront']) > 10) ? substr($userdata['namefront'], 0, 10).'...' : $userdata['namefront'];
+  $email_name = @(strlen($userdata['emailfront']) > 10) ? substr($userdata['emailfront'], 0, 30).'...' : $userdata['emailfront'];
+
   if(count(@$userdata['UserId']) > 0) {
     $html = '<ul class="user-nav clearfix">
                 <li class="dropdown">
@@ -162,6 +164,7 @@ function login_status_form_mobile($userdata) {
 function login_Status_form($userdata) {
 	$pp = base_url('assetsfront/images/icon/ic_avatar.png');
   $profile_name = @(strlen($userdata['namefront']) > 10) ? substr($userdata['namefront'], 0, 10).'...' : $userdata['namefront']; 
+  $email_name = @(strlen($userdata['emailfront']) > 10) ? substr($userdata['emailfront'], 0, 30).'...' : $userdata['emailfront'];
   if(count(@$userdata['UserId']) > 0) {
 
     $html = '<li class="dropdown hidden-mob">
@@ -264,7 +267,7 @@ function login_Status_form($userdata) {
                 <div class="content-profile col-md-6">
                    <img src="'.$pp.'" alt="" title="profile">
                 </div>
-                <p class="col-md-6">'.$profile_name.'<span>'.$userdata['emailfront'].'</span></p>
+                <p class="col-md-6">'.$profile_name.'<span>'.$email_name.'</span></p>
              </a>
           </li>
           <li>
