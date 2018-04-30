@@ -82,8 +82,8 @@
                                 <table id="table-jual" class="table table-striped table-custom table-custom-transaction table-responsive-am">
                                     <thead>
                                         <tr>
-                                            <th width="3">No</th>
-                                            <th width="10">No Pol/Serial Number</th>
+                                            <th>No</th>
+                                            <th>No Pol/Serial Number</th>
                                             <th>Nama Barang</th>
                                             <th>Jenis</th>
                                             <th>Harga</th>
@@ -132,9 +132,9 @@
                                 <table id="table-beli" class="table table-striped table-custom table-custom-transaction table-responsive-am">
                                     <thead>
                                         <tr>
-                                            <th width="3">No</th>
+                                            <th>No</th>
                                             <th>NPL</th>
-                                            <th width="10">No Pol/Serial Number</th>
+                                            <th>No Pol/Serial Number</th>
                                             <th>Nama Barang</th>
                                             <th>Jenis</th>
                                             <th>Harga</th>
@@ -144,12 +144,6 @@
                                     </thead>
                                     <tbody></tbody>
                                 </table>
-                            </div>
-                            <div class="table-responsive table-container table-transaction content-empty">
-                                <div class="product-empty">
-                                    <img src="<?php echo base_url('assetsfront/images/icon/ic-transaction-empty.png'); ?>" alt="" title="">
-                                </div>
-                                <p>Oops.... <span>Data Belum Tersedia.</span></p>
                             </div>
                         </div>
                     </div>
@@ -165,7 +159,6 @@
         url: "<?php echo linkservice('stock').'winner/get'; ?>",
         data: {
 			pemilik: '<?php echo $userdata['UserId'] ?>'
-			// "type=2&UserId=<?php echo $userdata['UserId'] ?>",
 		},
         beforeSend: function() {
             $('#table-jual tbody').html('<tr><td colspan="7"><b class="text-shadows">Memuat Data...</b></td></tr>');
@@ -186,7 +179,6 @@
 						
 					}
 				}
-				
 				
                 rows += '<tr>'+
                         '<td></td>'+
@@ -218,7 +210,8 @@
 			// }, 1000);
 			
 		},
-        error: function() {
+        error: function(e) {
+            $('#table-jual tbody tr').replaceWith('<tr><td colspan="7"><b class="text-shadows">Tidak Ada Penjualan / Titip Lelang</b></td></tr>');
             bootoast.toast({
                 message: "Gagal Mengambil Data",
                 type: 'warning',
@@ -287,6 +280,7 @@
 			
 		},
         error: function() {
+            $('#table-beli tbody tr').replaceWith('<tr><td colspan="7"><b class="text-shadows">Tidak Ada Pembelian</b></td></tr>');
             bootoast.toast({
                 message: "Gagal Mengambil Data",
                 type: 'warning',
