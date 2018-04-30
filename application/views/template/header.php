@@ -123,6 +123,12 @@
                   case 'procedure' : $('#procedure_menu').addClass('active'); break;
                   case 'home' : deleteActiveMenu('active_menu'); break;
                   case 'akun' : deleteActiveMenu('active_menu'); break;
+                  case 'notification' : deleteActiveMenu('active_menu'); break;
+                  case 'transaction' : deleteActiveMenu('active_menu'); break;
+                  case 'npl_dashboard' : deleteActiveMenu('active_menu'); break;
+                  case 'dashboard' : deleteActiveMenu('active_menu'); break;
+                  case 'favorite' : deleteActiveMenu('active_menu'); break;
+                  case 'basic-price' : deleteActiveMenu('active_menu'); break;
                   default : deleteActiveMenu('active_menu'); break;
                }
             }, 1000);

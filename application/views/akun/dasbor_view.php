@@ -15,27 +15,27 @@
                </div>
                <ul>
                   <li class="acc_notif">
-                     <a href="<?php echo site_url('notification'); ?>">
+                     <a href="<?php echo site_url('notification'); ?>" onclick="setActiveMenu('notification')">
                      <span class="ic_menu"><i ></i></span> Notifikasi <!--span>10</span--></a>
                   </li>
                   <li class="acc_transaction">
-                     <a href="<?php echo site_url('transaction'); ?>">
+                     <a href="<?php echo site_url('transaction'); ?>" onclick="setActiveMenu('transaction')">
                      <span class="ic_menu"><i ></i></span> Transaksi</a>
                   </li>
                   <li class="acc_npl">
-                     <a href="<?php echo site_url('npl_dashboard'); ?>">
+                     <a href="<?php echo site_url('npl_dashboard'); ?>" onclick="setActiveMenu('npl_dashboard')">
                      <span class="ic_menu"><i ></i></span> Manajemen NPL</a>
                   </li>
                   <li class="acc_setting active">
-                     <a href="<?php echo site_url('dashboard'); ?>">
+                     <a href="<?php echo site_url('dashboard'); ?>" onclick="setActiveMenu('dashboard')">
                      <span class="ic_menu"><i ></i></span> Pengaturan</a>
                   </li>
                   <li class="acc_favorite">
-                     <a href="<?php echo site_url('favorite'); ?>">
+                     <a href="<?php echo site_url('favorite'); ?>" onclick="setActiveMenu('favorite')">
                      <span class="ic_menu"><i ></i></span> Favorit</a>
                   </li>
                   <li class="acc_price">
-                     <a href="<?php echo site_url('basic-price'); ?>">
+                     <a href="<?php echo site_url('basic-price'); ?>" onclick="setActiveMenu('basic-price')">
                      <span class="ic_menu"><i ></i></span> Harga Dasar</a>
                   </li>
                </ul>
@@ -229,11 +229,14 @@
             return false;
          }
          else {
-            $('#btn-update').attr('disabled', true);
             $.ajax({
                type: 'POST',
                url: '<?php echo site_url('akun/dasbor/confirm_dashboard'); ?>',
                data: $("#form-dashboard").serializeArray(),
+               beforeSend: function() {
+                  $('#btn-reset').attr('disabled', true);
+                  $('#btn-update').html('<i class="fa fa-lg fa-spin fa-refresh"></i>').attr('disabled', true);
+               },
                success: function(data) {
                   var data = JSON.parse(data);
                   if(data.status === 1) {
@@ -267,7 +270,8 @@
                               });
                               setTimeout(function() {
                                  location.href = '<?php echo site_url(); ?>/'+data.redirect;
-                                 $('#btn-kirim').attr('disabled', false);
+                                 $('#btn-reset').attr('disabled', false);
+                                 $('#btn-update').html('Simpan').attr('disabled', false);
                               }, 1500);
                            }
                            else if(data.status === 11) {
@@ -279,7 +283,8 @@
                               });
                            }
                            else {
-                              $('#btn-kirim').attr('disabled', false);
+                              $('#btn-reset').attr('disabled', false);
+                              $('#btn-update').html('Simpan').attr('disabled', false);
                               bootoast.toast({
                                  message: data.messages,
                                  type: 'warning',
@@ -290,6 +295,7 @@
                            }
                         },
                         error: function() {
+                           $('#btn-reset').attr('disabled', false);
                            $('#btn-kirim').attr('disabled', false);
                            bootoast.toast({
                               message: 'Terjadi Error Pada Server',
@@ -301,7 +307,8 @@
                      });
                   }
                   else {
-                     $('#btn-update').attr('disabled', false);
+                     $('#btn-reset').attr('disabled', false);
+                     $('#btn-update').html('Simpan').attr('disabled', false);
                      bootoast.toast({
                         message: data.messages,
                         type: 'warning',
@@ -312,7 +319,8 @@
                   }
                },
                error: function() {
-                  $('#btn-update').attr('disabled', false);
+                  $('#btn-reset').attr('disabled', false);
+                  $('#btn-update').html('Simpan').attr('disabled', false);
                   bootoast.toast({
                      message: 'Terjadi Error Pada Server',
                      type: 'warning',
