@@ -12,14 +12,14 @@ class Get_schedule extends CI_Controller {
 	public function index() {
 		// http://ibid-ams-schedule.stagingapps.net/api/schedulelist?company_id=2&startdate=2017-01-03&enddate=2017-12-22&
 		// print_r($_REQUEST);
-		$startdate = date('Y-m-d', @$_REQUEST['start']);
-		$enddate = date('Y-m-d', @$_REQUEST['end']);
-		$company_id = @$_REQUEST['thisCabang'];
+		$startdate = date('Y-m-d', @$_GET['start']);
+		$enddate = date('Y-m-d', @$_GET['end']);
+		$company_id = @$_GET['thisCabang'];
 		
-		$cbCar = @$_REQUEST['cbCar'];
-		$cbMtr = @$_REQUEST['cbMtr'];
-		$cbHve = @$_REQUEST['cbHve'];
-		$cbGad = @$_REQUEST['cbGad'];
+		$cbCar = @$_GET['cbCar'];
+		$cbMtr = @$_GET['cbMtr'];
+		$cbHve = @$_GET['cbHve'];
+		$cbGad = @$_GET['cbGad'];
 		
 		if ($cbCar == '' && $cbMtr == '' && $cbHve == '' && $cbGad == '' ){
 			$cbCar = 1;
