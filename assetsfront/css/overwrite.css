@@ -246,6 +246,14 @@ a.delete-compare {
     line-height: 1.4em;
 }
 
+.loading-schedule {
+    text-align: center;
+    width: 200px;
+    height: 100px;
+    vertical-align: middle;
+    display: table-cell;
+}
+
 .loadFavSide {
     text-align: center;
     top: 50%;
@@ -1122,6 +1130,13 @@ a.delete-compare {
     .modal-login .modal-dialog {
         max-width: 800px;
         width: 96%;
+    }
+    .loading-schedule {
+        text-align: center;
+        width: 200px;
+        height: 60px;
+        vertical-align: middle;
+        display: table-cell;
     }
 }
 
