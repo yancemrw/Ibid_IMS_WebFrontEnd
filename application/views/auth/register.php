@@ -214,11 +214,13 @@
                     return false;
                 }
                 else {
-                    $('#btn-daftar').attr('disabled', true);
                     $.ajax({
                         type: 'POST',
                         url: '<?php echo site_url('auth/register/create_user'); ?>',
                         data: $("#form-reg").serializeArray(),
+                        beforeSend: function() {
+                            $('#btn-daftar').html('Daftar <i class="fa fa-spin fa-refresh" style="position:absolute; margin-top:3px; right:87px; z-index:1;"></i>').attr('disabled', true);
+                        },
                         success: function(data) {
                             var data = JSON.parse(data);
                             if(data.status === 1) {
@@ -230,24 +232,23 @@
                                 });
                                 setTimeout(function() {
                                     location.href = data.redirect;
-                                    $('#btn-update').attr('disabled', false);
                                 }, 1500);
                             }
                             else {
-                                $('#btn-update').attr('disabled', false);
+                                $('#btn-daftar').html('Daftar').attr('disabled', false);
                                 bootoast.toast({
                                     message: data.messages,
                                     type: 'warning',
                                     position: 'top-center',
                                     timeout: 4
                                 });
-                                if(data.redirect !== '') location.href = data.redirect;
+                                //if(data.redirect !== '') location.href = data.redirect;
                             }
                         },
                         error: function() {
-                            $('#btn-update').attr('disabled', false);
+                            $('#btn-daftar').html('Daftar').attr('disabled', false);
                             bootoast.toast({
-                                message: 'Terjadi Error Pada Server',
+                                message: 'Terjadi Kendala Saat Koneksi ke Server',
                                 type: 'warning',
                                 position: 'top-center',
                                 timeout: 4

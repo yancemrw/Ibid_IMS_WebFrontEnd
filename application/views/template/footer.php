@@ -554,7 +554,7 @@ $(function(){
 // get notification
 var getTopLocaleStore = JSON.parse(localStorage.getItem("NotifReload")); // cek timestamp from localstorage
 var nowsTime = new Date();
-if(nowsTime.getTime() <= getTopLocaleStore.timestamp) {
+/*if(nowsTime.getTime() <= getTopLocaleStore.timestamp) {
   var data = getTopLocaleStore.data, html = '';
   if(data.length > 0) {
     for(var i = 0; i < data.length; i++) {
@@ -579,7 +579,7 @@ if(nowsTime.getTime() <= getTopLocaleStore.timestamp) {
   $('#top-transaction').html(html);
   $('#top-transaction-mobile').html(html);
 }
-else {
+else {*/
   var TopUserId = '<?php echo $this->session->userdata('userdata')['UserId'] ?>';
   if(TopUserId !== '') {
     $.ajax({
@@ -624,7 +624,7 @@ else {
       }
     });
   }
-}
+//}
 </script>
 </body>
 </html>

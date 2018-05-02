@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/datatables/datatables.css'); ?>">
+<script type="text/javascript" src="<?php echo base_url('assetsfront/datatables/datatables.js'); ?>"></script>
 <section>
     <div class="container-fluid">
         <div class="row position-repative">
@@ -49,7 +51,7 @@
                             <div class="filter-table">
                                 <form class="form-inline" id="transaksiPenjualan">
                                     <div class="form-group">
-                                        <input type="text" name="" class="form-control input-custom" placeholder="Search">
+                                        <input type="text" name="filterJual" class="form-control input-custom" placeholder="Search">
                                         <i class="fa fa-search"></i>
                                     </div>
                                     <div class="filter-right">
@@ -99,7 +101,7 @@
 							<div class="filter-table">
                                 <form class="form-inline" id="transaksiPembelian">
                                     <div class="form-group">
-                                        <input type="text" name="" class="form-control input-custom" placeholder="Search">
+                                        <input type="text" name="filterBeli" class="form-control input-custom" placeholder="Search">
                                         <i class="fa fa-search"></i>
                                     </div>
                                     <div class="filter-right">
@@ -154,6 +156,26 @@
 </section>
 
 <script>
+    var tableJual = $('#table-jual').DataTable({
+        "dom": 'rt<"bottom"ip><"clear">',
+        pageLength: 20
+    });
+    var tableBeli = $('#table-beli').DataTable({
+        "dom": 'rt<"bottom"ip><"clear">',
+        pageLength: 20
+    });
+    $('input[name="filterJual"]').keypress(function(e) {
+        if(e.which == 13) {
+            e.preventDefault();
+            tableJual.draw();
+        }
+    });
+    $('input[name="filterBeli"]').keypress(function(e) {
+        if(e.which == 13) {
+            e.preventDefault();
+            tableBeli.draw();
+        }
+    });
     $.ajax({
         type: 'GET',
         url: "<?php echo linkservice('stock').'winner/get'; ?>",
@@ -212,12 +234,12 @@
 		},
         error: function(e) {
             $('#table-jual tbody tr').replaceWith('<tr><td colspan="7"><b class="text-shadows">Tidak Ada Penjualan / Titip Lelang</b></td></tr>');
-            bootoast.toast({
+            /*bootoast.toast({
                 message: "Gagal Mengambil Data",
                 type: 'warning',
                 position: 'top-center',
                 timeout: 4
-            });
+            });*/
         }
     });
 	
@@ -246,7 +268,6 @@
 						
 					}
 				}
-				
 				
                 rows += '<tr>'+
                         '<td></td>'+
@@ -280,13 +301,13 @@
 			
 		},
         error: function() {
-            $('#table-beli tbody tr').replaceWith('<tr><td colspan="7"><b class="text-shadows">Tidak Ada Pembelian</b></td></tr>');
-            bootoast.toast({
+            $('#table-beli tbody tr').replaceWith('<tr><td colspan="8"><b class="text-shadows">Tidak Ada Pembelian</b></td></tr>');
+            /*bootoast.toast({
                 message: "Gagal Mengambil Data",
                 type: 'warning',
                 position: 'top-center',
                 timeout: 4
-            });
+            });*/
         }
     });
 
