@@ -139,11 +139,11 @@ class Checkout extends CI_Controller {
 							$_SESSION['userdata']['nilaiTransaksi'] = $Total;
 							$_SESSION['userdata']['va'] = 'bca';
 
-						## update VA mandiri
+						## update VA BCA
 							$postTransaksi['whereData'] = array('CodeTransactionNPL' => $kodeTransaksi);
 							$postTransaksi['updateData'] = array(
 								'VANumber' => $dataApiDetail['data']['va_mandiri'], 
-								'VABank' => 'Mandiri'
+								'VABank' => 'BCA'
 							);
 							$url = linkservice('npl') .'counter/transaksi/edit';
 							$method = 'POST';
@@ -190,7 +190,7 @@ class Checkout extends CI_Controller {
 							$postTransaksi['whereData'] = array('CodeTransactionNPL' => $kodeTransaksi);
 							$postTransaksi['updateData'] = array(
 								'VANumber' => $dataApiDetail['data']['va_bca'], 
-								'VABank' => 'BCA'
+								'VABank' => 'mandiri'
 							);
 							$url = linkservice('npl') .'counter/transaksi/edit';
 							$method = 'POST';
