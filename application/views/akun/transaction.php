@@ -71,7 +71,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Show</label>
-                                            <select class="form-control select-custom">
+                                            <select class="form-control select-custom" name="changeJual" id="changeJual">
                                                 <option>10</option>
                                                 <option>15</option>
                                                 <option>20</option>
@@ -121,7 +121,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Show</label>
-                                            <select class="form-control select-custom">
+                                            <select class="form-control select-custom" name="changeBeli" id="changeBeli">
                                                 <option>10</option>
                                                 <option>15</option>
                                                 <option>20</option>
@@ -156,13 +156,26 @@
 </section>
 
 <script>
+    // source https://stackoverflow.com/a/23645737
     var tableJual = $('#table-jual').DataTable({
         "dom": 'rt<"bottom"ip><"clear">',
-        pageLength: 20
+        "bLengthChange": false,
+        "fnServerParams": function ( aoData ) {
+            aoData.push( {"name":"changeJual", "value":$('#changeJual').val()} );
+        },
+        "language": {
+            'emptyTable': '<b class="text-shadows">Tidak Ada Penjualan / Titip Lelang</b>'
+        }
     });
     var tableBeli = $('#table-beli').DataTable({
         "dom": 'rt<"bottom"ip><"clear">',
-        pageLength: 20
+        "bLengthChange": false,
+        "fnServerParams": function ( aoData ) {
+            aoData.push( {"name":"changeBeli", "value":$('#changeBeli').val()} );
+        },
+        "language": {
+            'emptyTable': '<b class="text-shadows">Tidak Ada Pembelian</b>'
+        }
     });
     $('input[name="filterJual"]').keypress(function(e) {
         if(e.which == 13) {
