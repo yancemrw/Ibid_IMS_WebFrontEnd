@@ -61,42 +61,7 @@
          </div>
          <div class="modal-body" align="center">
             <ul class="clearfix" id="thisObjTglLelang">
-               <li >
-                  <a href="" class="car-event"> <span>JKT T</span></a>
-               </li>
-               <li >
-                  <a href="" class="car-event"> <span>JKT T</span></a>
-               </li>
-               <!-- li >
-                  <a href="" class="car-event"> <span>JKT T</span></a>
-               </li -->
-               <li>
-                  <a href="" class="motor-event"> <span>JKT T</span></a>
-               </li>
-               <li>
-                  <a href="" class="motor-event"> <span>JKT T</span></a>
-               </li>
-               <li>
-                  <a href="" class="motor-event"> <span>JKT T</span></a>
-               </li>
-               <li>
-                  <a href="" class="hve-event"> <span>JKT T</span></a>
-               </li>
-               <li>
-                  <a href="" class="hve-event"> <span>JKT T</span></a>
-               </li>
-               <li>
-                  <a href="" class="hve-event"> <span>JKT T</span></a>
-               </li>
-               <li>
-                  <a href="" class="gadget-event"> <span>JKT T</span></a>
-               </li>
-               <li>
-                  <a href="" class="gadget-event"> <span>JKT T</span></a>
-               </li>
-               <li>
-                  <a href="" class="gadget-event"> <span>JKT T</span></a>
-               </li>
+               <!-- Memuat Data -->
             </ul>
          </div>
       </div>
@@ -118,14 +83,15 @@ function getDates(startDate, endDate) {
    return dates;
 }
 
-function getCalendar(){
+function getCalendar() {
+   window.countCell = true;
 	$('#calendar').fullCalendar({
       header: {
          left: 'prev,next today',
          center: 'title',
          right: 'month,agendaWeek,agendaDay,listMonth'
       },
-	  monthNames:['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+      monthNames:['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
       height:'auto',
       defaultDate: '<?php echo date('Y-m-d'); ?>', //'2017-11-12',
       // defaultDate: '2017-11-12',
@@ -134,14 +100,20 @@ function getCalendar(){
       editable: false,
       // events: even_cal,
       dayRender: function(date, cell) {
-		  thisCabang = $('#thisCabang').val()
+         if(countCell === true) {
+            countCell = false;
+            //$('#calendar').append('<div class="loading-schedule"><i class="fa fa-lg fa-spin fa-refresh" style="margin:0 auto;"></i></div>');
+            $('.fc-day').append('<div class="loading-schedule"><i class="fa fa-lg fa-spin fa-refresh" style="margin:0 auto;"></i></div>');
+         }
+         thisCabang = $('#thisCabang').val();
          var parseDate = moment(cell.attr("data-date")).format('e');
-		 var thisHari = arrHari[parseDate];
-         $("td.fc-day-top[data-date='" + cell.attr("data-date") + "']").append("<span>" + thisHari + "</span>");
-         $("td.fc-day-top[data-date='" + cell.attr("data-date") + "']").append("<a class='link cursor-pointer thisDate' data-toggle='modal' data-target='#modal-jadwal' thisDate='" + cell.attr("data-date") + "' onclick='cobaSini(\""+thisCabang+"\", \"" + cell.attr("data-date") + "\", \""+thisHari+"\")'>Selengkapnya</a>");
-         $("td.fc-day.fc-widget-content[data-date='" + cell.attr("data-date") + "']").append("<a class='link cursor-pointer' data-toggle='modal' data-target='#modal-jadwal'>Selengkapnya</a>")
+         var thisHari = arrHari[parseDate];
+         $("td.fc-day-top[data-date='"+cell.attr("data-date")+"']").append("<span>"+thisHari+"</span>");
+         $("td.fc-day-top[data-date='"+cell.attr("data-date")+"']").append("<a class='link cursor-pointer' data-toggle='modal' data-target='#modal-jadwal' thisDate='"+cell.attr("data-date")+"' onclick='cobaSini(\""+thisCabang+"\", \""+cell.attr("data-date")+"\", \""+thisHari+"\")'>Selengkapnya</a>");
+         $("td.fc-day.fc-widget-content[data-date='"+cell.attr("data-date")+"']").append("<a class='link cursor-pointer' data-toggle='modal' data-target='#modal-jadwal' thisDate='"+cell.attr("data-date")+"' onclick='cobaSini(\""+thisCabang+"\", \""+cell.attr("data-date")+"\", \""+thisHari+"\")'>Selengkapnya</a>");
       },
       eventRender: function(event, element) {
+         $('.fc-day > div.loading-schedule').remove();
          element.attr('title', event.tip);
          var dataToFind = moment(event.start).format('YYYY-MM-DD');
          $("td[data-date='" + dataToFind + "']").append(element);
@@ -150,11 +122,11 @@ function getCalendar(){
          $("td.fc-event-container").find("a").remove()
       },
       events: function(start, end, timezone, callback) {
-        $.ajax({
-          // url: '<?php echo linkservice('FRONTEND') ."auction/Get_schedule"; ?>',
-          url: '<?php echo site_url("auction/Get_schedule"); ?>',
-          dataType: 'json',
-          data: {
+         $.ajax({
+            // url: '<?php echo linkservice('FRONTEND') ."auction/Get_schedule"; ?>',
+            url: '<?php echo site_url("auction/Get_schedule"); ?>',
+            dataType: 'json',
+            data: {
             start: start.unix(),
             end: end.unix(),
             thisCabang: $('#thisCabang').val(),
@@ -162,27 +134,26 @@ function getCalendar(){
             cbMtr: $('#cbMtr:checked').val(),
             cbHve: $('#cbHve:checked').val(),
             cbGad: $('#cbGad:checked').val(),
-          },
-          success: function(doc) {
+         },
+         success: function(doc) {
             var events = [];
-            for(var i=0; i<doc.length; i++){
-              // console.log(doc[i]);
-              events.push({
-                title: doc[i].title,
-                start: doc[i].start,
-                end: doc[i].end,
-                allDay: false,
-                className: doc[i].className,
-              });
+            for(var i=0; i<doc.length; i++) {
+               events.push({
+                  title: doc[i].title,
+                  start: doc[i].start,
+                  end: doc[i].end,
+                  allDay: false,
+                  className: doc[i].className,
+               });
             }
             callback(events);
-          },
-		  beforeSend: function(){
-			  // console.log('masuk sini');
-		  },
-		  complete: function(){
-			  // console.log('masuk sana');
-		  },
+         },
+         beforeSend: function() {
+            // console.log();
+         },
+         complete: function() {
+            // console.log('masuk sana');
+         },
         });
       }
    });
@@ -323,8 +294,7 @@ $(document).ready(function() {
       minimumResultsForSearch: -1
    });
    
-   $('.thisDate').click(function(){
-	   console.log(this);
+   $('.thisDate').click(function() {
 	   thisDate = $(this).attr('thisDate');
 	   $('#myModalLabel').html(thisDate+' sanusi masuk sini');
 	   // return false;
@@ -355,7 +325,7 @@ function cobaSini(thisCabang, thisDate, thisHari){
 			company_id: thisCabang
 		},
 		beforeSend: function(){
-			$('#thisObjTglLelang').html('');
+			$('#thisObjTglLelang').html('<li style="padding:10px; width:100%"><b class="text-shadows">Sedang Memuat Data...</b></li>');
 		},
 		success: function(doc) {
 			thisHtmlAppend = '';
@@ -372,11 +342,10 @@ function cobaSini(thisCabang, thisDate, thisHari){
 						thisHtmlAppend += '<li><a href="<?php echo site_url('cari-lelang'); ?>?tipe-object=12" class="gadget-event"> <span>'+arrKota[thisData.company_id]+'</span></a></li>';
 				}
 			}
+         else {
+            thisHtmlAppend = '<div style="padding:10px; width:100%"><b class="text-shadows">Data Tidak Ada</b></div>';
+         }
 			$('#thisObjTglLelang').html(thisHtmlAppend);
-			console.log(thisHtmlAppend);
-		},
-		beforeSend: function(){
-			// console.log('masuk sini');
 		},
 		complete: function(){
 			// console.log('masuk sana');
