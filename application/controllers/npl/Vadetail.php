@@ -41,6 +41,29 @@ class Vadetail extends CI_Controller {
 			$method = 'POST';
 			$responseApi = admsCurl($url, $postTransaksi, $method);
 			
+			
+			######################
+			### insert/update cmd config
+			######################
+			$userdata = $this->session->userdata('userdata');
+			$BiodataId = $userdata['UserId'];
+			$url = linkservice('account')."users/details/".$BiodataId;
+			$method = 'GET';
+			$responseApi = admsCurl($url, array(), $method);
+			if ($responseApi['err']) { 
+				echo "<hr>cURL Error #:" . $responseApi['err']; 
+			} else {
+				$dataApi = json_decode($responseApi['response'],true);
+				$detailUsers = $dataApi['data']['users'];
+				
+				// kondisi cek SAPCmdBuyer 
+				if ($detailUsers['SAPCmdBuyer'] == null) $indct = 1;
+				else $indct = 2;
+				
+				$url = linkservice('account')."sap/Account/buyer?cmd=".$BiodataId."&indct=".$indct;
+				$responseApi = admsCurl($url, array(), 'GET');
+			}
+			
 			unset($_SESSION['userdata']['TransactionId']);
 		}
 		
