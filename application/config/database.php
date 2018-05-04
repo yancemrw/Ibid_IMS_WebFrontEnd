@@ -87,7 +87,7 @@ Serasi123
 // end
 
 $db['default'] = array(
-	'hostname' => '10.200.10.33',
+	'hostname' => '10.201.10.28',
 	'username' => 'SA',
 	'password' => 'sera12345#@',
 	'database' => 'Account', 
