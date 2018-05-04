@@ -393,15 +393,29 @@
    var lotDataRef    = lotRef.child('lotData');
    var durationRef   = lotDataRef.child('duration');
    var allowRef      = lotRef.child('allowBid');
-   var duration = 1;
-   
-   var bidderRef           = dbRef.ref('bidder/ongoing');
-   var bidderTop           = dbRef.ref('bidder/top');
+   var duration      = 1;
+
+   var bidderRef     = dbRef.ref('bidder/ongoing');
+   var bidderTop     = dbRef.ref('bidder/top');
    
    <?php if($data[0]->StatusStok === 1 && $schedule_id > 0) { // 0 = Live Auction, 1 = Online ?>
    var countDownDate = new Date(<?php echo @$date[0].",".(@$date[1]-1).",".(int)@$date[2].",".@$time[0].",".@$time[1].",0,0"; ?>).getTime();
    var now = new Date(<?php echo "$serverdate[0],".((int)$serverdate[1]-1).",".(int)$serverdate[2].",$serverdate[3],$serverdate[4],".(int)$serverdate[4].",".(int)$serverdate[4]; ?>).getTime();
    
+	// cek connection firebase
+	companyRef.onDisconnect().update({
+		onlineState: false,
+		status: firebasePrint('Firebase Commpany ID Tidak Terhubung')
+	});
+	bidderRef.onDisconnect().update({
+		onlineState: false,
+		status: firebasePrint('Firebase Bidder Tidak Terhubung')
+	});
+	bidderTop.onDisconnect().update({
+		onlineState: false,
+		status: firebasePrint('Firebase Top Bidder Tidak Terhubung')
+	});
+
    var eligibleNpl = [];
 
       $('#used-npl option').each(function () {
@@ -930,6 +944,10 @@ $(document).ready(function() {
       }
    });
 });
+
+function firebasePrint(value) {
+	alert(value);
+}
 
 function mobileSlick(value, classSlickNames) {
    var vw = false;
