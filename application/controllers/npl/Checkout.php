@@ -134,7 +134,7 @@ class Checkout extends CI_Controller {
 						} 
 						else {
 							$dataApiDetail = json_decode($responseApi['response'], true); 
-							$_SESSION['userdata']['thisVa'] = @$dataApiDetail['data']['va_mandiri'];
+							$_SESSION['userdata']['thisVa'] = @$dataApiDetail['data']['va_bca'];
 							$_SESSION['userdata']['kodeTransaksi'] = @$kodeTransaksi;
 							$_SESSION['userdata']['nilaiTransaksi'] = $Total;
 							$_SESSION['userdata']['va'] = 'bca';
@@ -142,7 +142,7 @@ class Checkout extends CI_Controller {
 						## update VA BCA
 							$postTransaksi['whereData'] = array('CodeTransactionNPL' => $kodeTransaksi);
 							$postTransaksi['updateData'] = array(
-								'VANumber' => $dataApiDetail['data']['va_mandiri'], 
+								'VANumber' => $dataApiDetail['data']['va_bca'], 
 								'VABank' => 'BCA'
 							);
 							$url = linkservice('npl') .'counter/transaksi/edit';
@@ -181,7 +181,7 @@ class Checkout extends CI_Controller {
 						} 
 						else {
 							$dataApiDetail = json_decode($responseApi['response'], true); 
-							$_SESSION['userdata']['thisVa'] = @$dataApiDetail['data']['va_bca'];
+							$_SESSION['userdata']['thisVa'] = @$dataApiDetail['data']['va_mandiri'];
 							$_SESSION['userdata']['kodeTransaksi'] = @$kodeTransaksi;
 							$_SESSION['userdata']['nilaiTransaksi'] = $Total;
 							$_SESSION['userdata']['va'] = 'mandiri';
@@ -189,8 +189,8 @@ class Checkout extends CI_Controller {
 						## update VA mandiri
 							$postTransaksi['whereData'] = array('CodeTransactionNPL' => $kodeTransaksi);
 							$postTransaksi['updateData'] = array(
-								'VANumber' => $dataApiDetail['data']['va_bca'], 
-								'VABank' => 'mandiri'
+								'VANumber' => $dataApiDetail['data']['va_mandiri'], 
+								'VABank' => 'Mandiri'
 							);
 							$url = linkservice('npl') .'counter/transaksi/edit';
 							$method = 'POST';
