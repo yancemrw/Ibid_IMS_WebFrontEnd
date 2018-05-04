@@ -22,7 +22,12 @@ class Find_unit extends CI_Controller {
 
 		// handle post method from home searching
 		if(@$this->input->post()) {
-			$data['home_input'] = json_encode($this->input->post());
+			$data['parsing_post'] = json_encode($this->input->post());
+		}
+
+		// handle get method
+		if(@$this->input->get()) {
+			$data['parsing_get'] = $this->input->get();
 		}
 		
 		$itemAttr1 = @$_GET['itemAttr1'];

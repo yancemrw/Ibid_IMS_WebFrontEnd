@@ -170,7 +170,7 @@
             </div>
          </div>
          <div class="col-md-12 text-center show-more hidden-xs">
-            <button class="btn btn-lg btn-green" disabled>Lihat Semua</button>
+            <button class="btn btn-lg btn-green" onclick="location.href='<?php echo site_url('cari-lelang?unit_rec=3'); ?>';" disabled>Lihat Semua</button>
          </div>
       </div>
    </div>

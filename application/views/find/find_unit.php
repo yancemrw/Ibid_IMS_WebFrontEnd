@@ -18,13 +18,13 @@
                <h1><span class="fa fa-filter"></span> Filters</h1>
                <?php if($this->session->userdata('userdata') !== null) { ?>
                <div class="form-group">
-                  <input type="radio" id="test1" name="radio-group" value="1" checked>
-                  <label for="test1" class="view-filter">Tampilkan Favorit</label>
+                  <input type="radio" id="favoriteId" name="filter_type" value="1" checked>
+                  <label for="favoriteId" class="view-filter">Tampilkan Favorit</label>
                </div>
                <?php } ?>
                <div class="form-group">
-                  <input type="radio" id="test2" name="radio-group" value="2" <?php echo ($this->session->userdata('userdata') === null) ? 'checked' : ''; ?>>
-                  <label for="test2" class="view-filter">Mobil Rekomendasi</label>
+                  <input type="radio" id="RecommendId" name="filter_type" value="2" <?php echo ($this->session->userdata('userdata') === null) ? 'checked' : ''; ?>>
+                  <label for="RecommendId" class="view-filter">Mobil Rekomendasi</label>
                </div>
                <h2>Tipe Lelang</h2>
                <div class="form-group">
@@ -351,7 +351,7 @@ $(document).ready(function() {
    })
 
    // handle searching from home
-   var arrPost = '<?php echo $home_input; ?>', thisFormInput;
+   var arrPost = '<?php echo $parsing_post; ?>', arrGet = '<?php echo $parsing_get['unit_rec']; ?>', thisFormInput;
    if(arrPost !== '') {
       var thisFormInputs = jsonSerialize(JSON.parse(arrPost));
       window.countTotal = 0;
@@ -359,6 +359,9 @@ $(document).ready(function() {
       actionTotalData = 0;
       $('#loadlist').html('');
       loadContainer(0, 6, linked, 'tipe-object='+thisFormInputs.obj+thisFormInputs.data, 1);
+   }
+   else if(arrGet !== '') {
+      $('input[name="filter_type"][value="2"]').prop("checked", true);
    }
    else {
       loadContainer(0, 6, linked, '', 1);
