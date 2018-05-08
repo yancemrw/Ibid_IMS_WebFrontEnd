@@ -552,7 +552,8 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
             timeout: 3
          });
       },
-      complete: function() {
+      complete: function(e) {
+         //console.log(e.responseJSON.data.data);
          $('#btnFilter').attr('disabled', false);
          $('#searching').removeAttr("disabled").removeAttr("style");
       }
