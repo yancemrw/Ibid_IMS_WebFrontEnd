@@ -917,7 +917,7 @@ h2.title {
 }
 
 .box-recommend p.overlay-lot {
-    width: 60px !important;
+    min-width: 60px !important;
     text-align: center;
 }
 
