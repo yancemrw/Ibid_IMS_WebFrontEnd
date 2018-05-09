@@ -76,13 +76,12 @@
    <script src="<?php echo base_url('assetsfront/js/jquery.sticky-kit.min.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/js/jquery.scrollto.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/js/jquery.flipster.min.js'); ?>"></script>
+   <script src="<?php echo base_url('assetsfront/js/jquery.slimscroll.min.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/js/prettify.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/js/lightgallery.min.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/js/lg-thumbnail.min.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/bootoast/bootoast.js'); ?>"></script>
-   <script src="<?php echo base_url('assetsfront/js/jquery.slimscroll.min.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/js/compare_product.js'); ?>"></script>
-
    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
    <script>
       // Initialize Firebase

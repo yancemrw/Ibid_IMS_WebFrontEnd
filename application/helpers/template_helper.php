@@ -51,81 +51,16 @@ function login_status_form_mobile($userdata) {
                     <ul class="dropdown-menu dropdown-custom dropdown-transaksi">
                         <li><p class="title-dropdown">Transaksi</p></li>
                         <li><p id="top-transaction-mobile" class="notif">Tidak Ada Transaksi</p></li>
-                        <!--li class="input-dropdown">
-                            <h2>Butuh Tindakan</h2>
-                            <form>
-                                <div class="form-group floating-label">
-                                    <input type="name" name="" class="form-control" placeholder="">
-                                    <label class="label-schedule">Harga Dasar</label>
-                                </div>
-                                <div class="form-group floating-label">
-                                    <input type="name" name="" class="form-control" placeholder="">
-                                    <label class="label-schedule">Harga Dasar</label>
-                                </div>
-                                <div class="form-group floating-label">
-                                    <input type="name" name="" class="form-control" placeholder="">
-                                    <label class="label-schedule">Harga Dasar</label>
-                                </div>
-                            </form>
-                            <h2>Transaksi Terakhir</h2>
-                            <a href="">
-                                <div class="transaction-image">
-                                    <img src="'.base_url('assetsfront/images/background/3.jpg').'" alt="" title="">
-                                </div>
-                                <div class="transaction-content">
-                                    <h2>DAIHATSU LUXIO 1.5 X MINIBUS AT 2014</h2>
-                                    <p>No. NPL #002 <span>Rp. 418,000,000</span></p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="text-center">
-                            <a href="" class="viewall-dropdown">Lihat Semua Transaksi</a>
-                        </li-->
+                        <li class="text-center"><a href="" class="viewall-dropdown">Lihat Semua Transaksi</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <p><img src="'.base_url('assetsfront/images/icon/Notifikasi.png').'" alt="" title="" width="" height=""><!--span class="notification">10</span--></p>
+                        <p><img src="'.base_url('assetsfront/images/icon/Notifikasi.png').'" alt="" title="" width="" height=""><span class="notification notif-count">10</span></p>
                     </a>
-                    <ul class="dropdown-menu dropdown-custom dropdown-bell">
+                    <ul class="dropdown-menu dropdown-custom dropdown-bell notif-content-mobile">
                         <li><p class="title-dropdown">Notifikasi</p></li>
-                        <li><p id="top-notif-mobile" class="notif">Tidak Ada Notifikasi</p></li>
-                        <!--li class="clearfix">
-                            <a href="#">
-                                <div class="media-image">
-                                    <img src="'.base_url('assetsfront/images/icon/ic_notif_1.png').'" alt="" title="">
-                                </div>
-                                <div class="media-content">
-                                    <h2>1 Pesan Email</h2>
-                                    <p>Lorem Ipsum is simply dummy text of the printing <span>09/26/2017</span></p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="clearfix">
-                            <a href="#">
-                                <div class="media-image">
-                                    <img src="'.base_url('assetsfront/images/icon/ic_notif_2.png').'" alt="" title="">
-                                </div>
-                                <div class="media-content">
-                                    <h2>1 Pesan Email</h2>
-                                    <p>Lorem Ipsum is simply dummy text of the printing <span>09/26/2017</span></p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="clearfix">
-                            <a href="#">
-                                <div class="media-image">
-                                    <img src="'.base_url('assetsfront/images/icon/ic_notif_3.png').'" alt="" title="">
-                                </div>
-                                <div class="media-content">
-                                    <h2>1 Pesan Email</h2>
-                                    <p>Lorem Ipsum is simply dummy text of the printing <span>09/26/2017</span></p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="text-center">
-                            <a href="" class="viewall-dropdown">Lihat Semua Transaksi</a>
-                        </li-->
+                        <li id="top-notif-mobile"><p class="notif">Tidak Ada Notifikasi</p></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -177,45 +112,18 @@ function login_Status_form($userdata) {
           <p><img src="'.base_url('assetsfront/images/icon/ic_transaction.png').'" alt="" title="" width="16px" height="22px"> <img src="'.base_url('assetsfront/images/icon/Transaksi.png').'" alt="" title="" width="" height="" class="ic_fixed"></p>
        </a>
        <ul class="dropdown-menu dropdown-custom">
+        <div class="scroll-dropdown">
           <li><p class="title-dropdown">Transaksi</p></li>
           <li><p id="top-transaction" class="notif">Tidak Ada Transaksi</p></li>
-          <!--li class="input-dropdown">
-             <h2>Butuh Tindakan</h2>
-             <form>
-                <div class="form-group floating-label">
-                   <input type="name" name="" class="form-control" placeholder="">
-                   <label class="label-schedule">Harga Dasar</label>
-                </div>
-                <div class="form-group floating-label">
-                   <input type="name" name="" class="form-control" placeholder="">
-                   <label class="label-schedule">Harga Dasar</label>
-                </div>
-                <div class="form-group floating-label">
-                   <input type="name" name="" class="form-control" placeholder="">
-                   <label class="label-schedule">Harga Dasar</label>
-                </div>
-             </form>
-             <h2>Transaksi Terakhir</h2>
-             <a href="">
-                <div class="transaction-image">
-                   <img src="'.base_url('assetsfront/images/background/3.jpg').'" alt="" title="">
-                </div>
-                <div class="transaction-content">
-                   <h2>DAIHATSU LUXIO 1.5 X MINIBUS AT 2014</h2>
-                   <p>No. NPL #002 <span>Rp. 418,000,000</span></p>
-                </div>
-             </a>
-          </li>
-          <li class="text-center">
-             <a href="" class="viewall-dropdown">Lihat Semua Transaksi</a>
-          </li-->
+          <li class="text-center"><a href="" class="viewall-dropdown">Lihat Semua Transaksi</a></li>
+        </div>
        </ul>
     </li>
     <li class="dropdown hidden-mob">
        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <p><img src="'.base_url('assetsfront/images/icon/bell.png').'" alt="" title="" width="16px" height="22px"><img src="'.base_url('assetsfront/images/icon/Notifikasi.png').'" alt="" title="" width="" height="" class="ic_fixed"><!--span class="notification">10</span--></p>
+          <p><img src="'.base_url('assetsfront/images/icon/bell.png').'" alt="" title="" width="16px" height="22px"><img src="'.base_url('assetsfront/images/icon/Notifikasi.png').'" alt="" title="" width="" height="" class="ic_fixed"><span class="notification notif-count"></span></p>
        </a>
-       <ul id="notif-content" class="dropdown-menu dropdown-custom">
+       <ul class="dropdown-menu dropdown-custom notif-content">
         <div class="scroll-dropdown">
           <li><p class="title-dropdown">Notifikasi</p></li>
           <li><p class="notif">Tidak Ada Notifikasi</p></li>

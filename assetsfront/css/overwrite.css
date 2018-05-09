@@ -368,7 +368,6 @@ a.delete-compare {
 	font-size: 12px;
 	margin: 15px 0;
 	text-align: center;
-    overflow-y: scroll;
 }
 
 .object-type.object-npl label p {

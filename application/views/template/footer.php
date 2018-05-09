@@ -627,36 +627,43 @@ else {*/
 //}
 
 $('.scroll-dropdown').slimscroll({ allowPageScroll: true });
-
+var UserId    = '<?php echo $this->session->userdata('userdata')['UserId']; ?>';
 var dbRef     = firebase.database();
-var notifRef  = dbRef.ref('notifications/penitip/12345');
+var notifRef  = dbRef.ref('notifications/penitip/'+UserId);
 notifRef.on('value', function(snapshot) {
-  var val = snapshot.val(),
-  data = '';
-  object_key = Object.values(val).reverse();
-  for(var i = 0; i < object_key.length; i++) {
-    data += '<li class="clearfix">'+
-            '<a href="#">'+
-            '<div class="media-image">'+
-            '<img src="" alt="" title="">'+
-            '</div>'+
-            '<div class="media-content">'+
-            '<h2>1 Pesan Email</h2>'+
-            '<p>Lorem Ipsum is simply dummy text of the printing <span>09/26/2017</span></p>'+
-            '</div>'+
-            '</a>'+
-            '</li>';
+  if(snapshot.val() !== null) {
+    var val = snapshot.val(),
+    data = '',
+    object_key = Object.values(val).reverse();
+    for(var i = 0; i < object_key.length; i++) {
+      var img_src;
+      switch(object_key[i].type) {
+        case 'email': img_src = '<?php echo base_url('assetsfront/images/icon/ic_notif_1.png'); ?>'; break;
+        case 'cc': img_src = '<?php echo base_url('assetsfront/images/icon/ic_notif_2.png'); ?>'; break;
+        case 'pay': img_src = ''; break;
+      }
+      data += '<li class="clearfix">'+
+              '<a href="'+object_key[i].link+'">'+
+              '<div class="media-image">'+
+              '<img src="'+img_src+'" alt="" title="">'+
+              '</div>'+
+              '<div class="media-content">'+
+              '<h2>1 Pesan Email</h2>'+
+              '<p>'+object_key[i].text+'<span>'+object_key[i].date+'</span></p>'+
+              '</div>'+
+              '</a>'+
+              '</li>';
+    }
+    data += '<li class="text-center"><a href="" class="viewall-dropdown">Lihat Semua Notifikasi</a></li>';
+    $('.notif-count').html(object_key.length);
+    $('.notif-content').children().children().children('li:last').replaceWith(data);
+    $('.notif-content-mobile').children('#top-notif-mobile').replaceWith(data);
   }
-  $('#notif-content').children().children().after().replaceWith(data);
+  else {
+    $('.notif-count').html('');
+    $('.notif-count').removeClass('notification');
+  }
 });
-
-function sortObjKey(obj) {
-  return Object.keys(obj).sort().reduce(
-    (r, k) => {
-      r[k] = obj[k];
-      return r;
-    }, {});
-}
 </script>
 </body>
 </html>
