@@ -135,18 +135,24 @@ function getCalendar() {
             cbHve: $('#cbHve:checked').val(),
             cbGad: $('#cbGad:checked').val(),
          },
-         success: function(doc) {
-            var events = [];
-            for(var i=0; i<doc.length; i++) {
-               events.push({
-                  title: doc[i].title,
-                  start: doc[i].start,
-                  end: doc[i].end,
-                  allDay: false,
-                  className: doc[i].className,
-               });
+         success: function(doc) {console.log(doc);
+            if(doc.length > 0) {
+               var events = [];
+               for(var i=0; i<doc.length; i++) {
+                  events.push({
+                     title: doc[i].title,
+                     start: doc[i].start,
+                     end: doc[i].end,
+                     allDay: false,
+                     className: doc[i].className,
+                  });
+               }
+               callback(events);
             }
-            callback(events);
+            else {
+               $('.fc-day > div.loading-schedule').remove();
+               alert('Tidak Ada Jadwal di Bulan ini.');
+            }
          },
          beforeSend: function() {
             // console.log();
