@@ -80,6 +80,7 @@
    <script src="<?php echo base_url('assetsfront/js/lightgallery.min.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/js/lg-thumbnail.min.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/bootoast/bootoast.js'); ?>"></script>
+   <script src="<?php echo base_url('assetsfront/js/jquery.slimscroll.min.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/js/compare_product.js'); ?>"></script>
 
    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
@@ -233,7 +234,7 @@
    <?php echo ($this->uri->segment(1) != "akun") ? '<div id="content">' : ''; ?>
 
       <!-- <header> -->
-         <?php echo ($this->uri->segment(1) == "" || $this->uri->segment(1) == "front") ? '<header>' : ''; ?>
+         <?php echo ($this->uri->segment(1) == "" || $this->uri->segment(1) == "front") ? '<header style="background: url('.$bgheader.')no-repeat">' : ''; ?>
 
             <nav class="navbar navbar-custom <?php echo @$header_white; ?>">
                <div class="top-navbar text-right">

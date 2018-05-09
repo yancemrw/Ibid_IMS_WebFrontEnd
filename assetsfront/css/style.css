@@ -6844,6 +6844,22 @@ input.input-custom.empty {
     display: none;
 }
 
+/*scroll dropdown menu*/
+.slimScrollDiv,
+.scroll-dropdown {
+    max-height: 450px!important;
+    height: 100%!important;
+    padding-bottom: 20px;
+}
+.scroll-dropdown a {
+    padding: 0 10px;
+    text-decoration: none;
+    transition: all 0.2s
+}
+.scroll-dropdown a:hover {
+    background-color: #eee
+}
+
 /*FAQ*/
 .content-help {
     padding-top: 15px;

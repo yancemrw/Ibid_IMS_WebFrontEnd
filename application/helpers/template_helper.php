@@ -2,6 +2,11 @@
 
 function template($view = '', $data = '') {
   // get logo site
+  $url_bg = linkservice('cms')."api/home";
+  $method_bg = 'GET';
+  $res_bg = admsCurl($url_bg, array(), $method_bg);
+  $home_bg = curlGenerate($res_bg);
+
   $url = linkservice('cms')."api/logo";
   $method = 'GET';
   $res = admsCurl($url, array(), $method);
@@ -22,7 +27,7 @@ function template($view = '', $data = '') {
     $data['class_header'] = 'header-aboutus';
   }
   else {
-    $data['bgheader'] = '';
+    $data['bgheader'] = base_url('backend/dapur/uploads/contents/'.$home_bg->tagline->Photo);
     $data['class_header'] = '';
   }
   
@@ -210,45 +215,11 @@ function login_Status_form($userdata) {
        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           <p><img src="'.base_url('assetsfront/images/icon/bell.png').'" alt="" title="" width="16px" height="22px"><img src="'.base_url('assetsfront/images/icon/Notifikasi.png').'" alt="" title="" width="" height="" class="ic_fixed"><!--span class="notification">10</span--></p>
        </a>
-       <ul class="dropdown-menu dropdown-custom">
+       <ul id="notif-content" class="dropdown-menu dropdown-custom">
+        <div class="scroll-dropdown">
           <li><p class="title-dropdown">Notifikasi</p></li>
-          <li><p id="top-notif" class="notif">Tidak Ada Notifikasi</li>
-          <!--li class="clearfix">
-             <a href="#">
-                <div class="media-image">
-                   <img src="'.base_url('assetsfront/images/icon/ic_notif_1.png').'" alt="" title="">
-                </div>
-                <div class="media-content">
-                   <h2>1 Pesan Email</h2>
-                   <p>Lorem Ipsum is simply dummy text of the printing <span>09/26/2017</span></p>
-                </div>
-             </a>
-          </li>
-          <li class="clearfix">
-             <a href="#">
-                <div class="media-image">
-                   <img src="'.base_url('assetsfront/images/icon/ic_notif_2.png').'" alt="" title="">
-                </div>
-                <div class="media-content">
-                   <h2>1 Pesan Email</h2>
-                   <p>Lorem Ipsum is simply dummy text of the printing <span>09/26/2017</span></p>
-                </div>
-             </a>
-          </li>
-          <li class="clearfix">
-             <a href="#">
-                <div class="media-image">
-                   <img src="'.base_url('assetsfront/images/icon/ic_notif_3.png').'" alt="" title="">
-                </div>
-                <div class="media-content">
-                   <h2>1 Pesan Email</h2>
-                   <p>Lorem Ipsum is simply dummy text of the printing <span>09/26/2017</span></p>
-                </div>
-             </a>
-          </li>
-          <li class="text-center">
-             <a href="" class="viewall-dropdown">Lihat Semua Transaksi</a>
-          </li-->
+          <li><p class="notif">Tidak Ada Notifikasi</p></li>
+        </div>
        </ul>
     </li>
     <li class="dropdown hidden-mob">

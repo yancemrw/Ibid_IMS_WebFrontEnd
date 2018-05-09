@@ -339,6 +339,10 @@ a.delete-compare {
     margin-right: 30px !important;
 }
 
+.max-height-300px {
+    max-height: 300px;
+}
+
 .minimal-height {
     min-height: 230px;
 }
@@ -402,6 +406,9 @@ a.delete-compare {
     top: 0;
     right: 0;
     left: 0;
+}
+.overflow-x {
+    overflow-x: scroll;
 }
 .overlay-lot {
     line-height: 20px;

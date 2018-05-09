@@ -625,6 +625,38 @@ else {*/
     });
   }
 //}
+
+$('.scroll-dropdown').slimscroll({ allowPageScroll: true });
+
+var dbRef     = firebase.database();
+var notifRef  = dbRef.ref('notifications/penitip/12345');
+notifRef.on('value', function(snapshot) {
+  var val = snapshot.val(),
+  data = '';
+  object_key = Object.values(val).reverse();
+  for(var i = 0; i < object_key.length; i++) {
+    data += '<li class="clearfix">'+
+            '<a href="#">'+
+            '<div class="media-image">'+
+            '<img src="" alt="" title="">'+
+            '</div>'+
+            '<div class="media-content">'+
+            '<h2>1 Pesan Email</h2>'+
+            '<p>Lorem Ipsum is simply dummy text of the printing <span>09/26/2017</span></p>'+
+            '</div>'+
+            '</a>'+
+            '</li>';
+  }
+  $('#notif-content').children().children().after().replaceWith(data);
+});
+
+function sortObjKey(obj) {
+  return Object.keys(obj).sort().reduce(
+    (r, k) => {
+      r[k] = obj[k];
+      return r;
+    }, {});
+}
 </script>
 </body>
 </html>
