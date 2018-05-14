@@ -250,14 +250,12 @@
                         <li><a href="javascript:void(0)"><span class="ic ic-Check-FAQ "></span> <span>Chat Out <br>Our FAQ</span></a></li>
                      </ul>
                   </div>
-                  <?php if($this->session->userdata('userdata') !== null) { ?>
-                  <button class="btn btn-orange" id="btn-favorit" onclick="addFav(<?php echo $data[0]->AuctionItemId; ?>, <?php echo $userdata['UserId'] ?>, this, 1)">
+                  <button class="btn btn-orange" id="btn-favorit" onclick="addFav(<?php echo $data[0]->AuctionItemId; ?>, '<?php echo $userdata['UserId'] ?>', this, 1)">
                      <?php echo ($favAction->status === 1) ? '<i class="fa fa-heart"></i>' : ''; ?> Tambah ke Favorit
                   </button>
                   <button class="btn btn-green <?php echo ($this->session->userdata('userdata') === null) ? 'btn-bandingkan' : ''; ?>" onclick="compare_action('<?php echo site_url('list-compare'); ?>')" type="button">
                      <i class="ic ic-Bandingkan"></i> Bandingkan
                   </button>
-                  <?php } ?>
                </div>
             </div>
          </div>
@@ -892,10 +890,10 @@ $(document).ready(function() {
             var link_detail = "<?php echo site_url('detail-lelang/'); ?>"+data[i].AuctionItemId;
             var iconFav = (data[i].thisFavorite === 0) ? '<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon empty-favicon-details" />' : '<i class="fa fa-heart"></i>';
             var bottom_favcom = '<div class="action-bottom">'+
-                                 '<button class="btn" onclick="addFav('+data[i].AuctionItemId+', '+sessionId+', this, 2)">'+iconFav+'<span class="btnItemFooter">Favorit</span></button>'+
+                                 '<button class="btn" onclick="addFav('+data[i].AuctionItemId+', \''+sessionId+'\', this, 2)">'+iconFav+'<span class="btnItemFooter">Favorit</span></button>'+
                                  '<button class="btn btn-compare" onclick=\'set_compare_product('+json_str+', "'+link_detail+'")\'><i class="ic ic-Bandingkan-green"></i><span class="btnItemFooter">Bandingkan</span></button>'+
                                  '</div>';
-            var favcom = (sessiond === 'TRUE') ? bottom_favcom : '';
+            //var favcom = (sessiond === 'TRUE') ? bottom_favcom : '';
             var content =  '<div class="col-md-3">'+
                            '<div class="list-product box-recommend">'+
                            '<a href="'+link_detail+'">'+
@@ -913,7 +911,7 @@ $(document).ready(function() {
                            '<p><span>Jadwal</span> <span class="fa fa-calendar"></span><span>'+datetime+'</span></p>'+
                            '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span><span>'+location+'</span></p>'+
                            '</a>'+
-                           favcom+
+                           bottom_favcom+
                            '</div>'+
                            '</div>';
             $('#showrelated').append(content);
@@ -1009,80 +1007,85 @@ function mobileSlick(value, classSlickNames) {
 
 // handle favorit function
 function addFav(aucid, id, ele, type) {
-   $.ajax({
-      type: 'POST',
-      url: '<?php echo linkservice('stock')."favorite/Checked"; ?>',
-      data: 'userid='+id+'&auctionid='+aucid,
-      success: function(data) {
-         if(data.status === 0) {
-            var d = new Date(), 
-            dateformat = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds();
-            $.ajax({
-               type: 'POST',
-               url: '<?php echo linkservice('stock')."favorite/Add"; ?>',
-               data: 'AuctionItemId='+aucid+'&CreateDate='+dateformat+'&CreateUserId='+id+'&StsDeleted=1',
-               success: function(data) {
-                  if(type === 2) {
-                     var prevEle = ele.children[0];
-                     $(prevEle).replaceWith('<i class="fa fa-heart"></i>');
+   if(id !== '') {
+      $.ajax({
+         type: 'POST',
+         url: '<?php echo linkservice('stock')."favorite/Checked"; ?>',
+         data: 'userid='+id+'&auctionid='+aucid,
+         success: function(data) {
+            if(data.status === 0) {
+               var d = new Date(), 
+               dateformat = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds();
+               $.ajax({
+                  type: 'POST',
+                  url: '<?php echo linkservice('stock')."favorite/Add"; ?>',
+                  data: 'AuctionItemId='+aucid+'&CreateDate='+dateformat+'&CreateUserId='+id+'&StsDeleted=1',
+                  success: function(data) {
+                     if(type === 2) {
+                        var prevEle = ele.children[0];
+                        $(prevEle).replaceWith('<i class="fa fa-heart"></i>');
+                     }
+                     else {
+                        var prevEle = ele;
+                        $(prevEle).html('<i class="fa fa-heart"></i> Tambah KE FAVORIT');
+                     }
+                     bootoast.toast({
+                        message: 'Unit sudah ditambahkan ke daftar favorit kamu',
+                        type: 'success',
+                        position: 'top-center',
+                        timeout: 3
+                     });
+                  },
+                  error: function(e) {
+                     bootoast.toast({
+                        message: 'Koneksi terputus saat menambahkan favorit',
+                        type: 'warning',
+                        position: 'top-center',
+                        timeout: 3
+                     });
                   }
-                  else {
-                     var prevEle = ele;
-                     $(prevEle).html('<i class="fa fa-heart"></i> Tambah KE FAVORIT');
+               });
+            }
+            else {
+               $.ajax({
+                  type: 'POST',
+                  url: '<?php echo linkservice('stock')."favorite/Delete"; ?>',
+                  data: 'auctionid='+aucid+'&userid='+id,
+                  success: function(data) {
+                     if(type === 2) {
+                        var prevEle = ele.children[0];
+                        $(prevEle).replaceWith('<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon" />');
+                     }
+                     else {
+                        var prevEle = ele.children[0];
+                        $(prevEle).replaceWith('');
+                     }
+                     bootoast.toast({
+                        message: 'Unit sudah dihapus dari daftar favorit kamu',
+                        type: 'warning',
+                        position: 'top-center',
+                        timeout: 3
+                     });
+                  },
+                  error: function(e) {
+                     bootoast.toast({
+                        message: e,
+                        type: 'warning',
+                        position: 'top-center',
+                        timeout: 3
+                     });
                   }
-                  bootoast.toast({
-                     message: 'Unit sudah ditambahkan ke daftar favorit kamu',
-                     type: 'success',
-                     position: 'top-center',
-                     timeout: 3
-                  });
-               },
-               error: function(e) {
-                  bootoast.toast({
-                     message: 'Koneksi terputus saat menambahkan favorit',
-                     type: 'warning',
-                     position: 'top-center',
-                     timeout: 3
-                  });
-               }
-            });
+               });
+            }
+         },
+         error: function(e) {
+            console.log(e);
          }
-         else {
-            $.ajax({
-               type: 'POST',
-               url: '<?php echo linkservice('stock')."favorite/Delete"; ?>',
-               data: 'auctionid='+aucid+'&userid='+id,
-               success: function(data) {
-                  if(type === 2) {
-                     var prevEle = ele.children[0];
-                     $(prevEle).replaceWith('<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon" />');
-                  }
-                  else {
-                     var prevEle = ele.children[0];
-                     $(prevEle).replaceWith('');
-                  }
-                  bootoast.toast({
-                     message: 'Unit sudah dihapus dari daftar favorit kamu',
-                     type: 'warning',
-                     position: 'top-center',
-                     timeout: 3
-                  });
-               },
-               error: function(e) {
-                  bootoast.toast({
-                     message: e,
-                     type: 'warning',
-                     position: 'top-center',
-                     timeout: 3
-                  });
-               }
-            });
-         }
-      },
-      error: function(e) {
-         console.log(e);
-      }
-   });
+      });
+   }
+   else {
+      $('#login').modal('show');
+   }
 }
 
 function compare_action(linked) {

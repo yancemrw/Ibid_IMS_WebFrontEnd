@@ -667,7 +667,7 @@ notifRef.on('value', function(snapshot) {
     }).promise().done(function() {
       $('.notif-content').children().children().children('#header-notif').nextAll().replaceWith(data);
     });
-    console.log($('.notif-content-mobile').children().children().children('#header-notif-mobile').nextAll());
+    
     $('.notif-content-mobile').children().children().children('#header-notif-mobile').nextAll().each(function(x) {console.log(x);
       if($(this).children().hasClass('notif') === false) {
         if(x > 0) {
