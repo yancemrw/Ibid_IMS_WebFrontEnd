@@ -274,6 +274,8 @@
 				imgStep_2 = '<?php echo base_url('assetsfront/images/icon/ic_transaction_step_2_grey.png'); ?>';
 				imgStep_3 = '<?php echo base_url('assetsfront/images/icon/ic_transaction_step_3_grey.png'); ?>';
 				imgStep_4 = '<?php echo base_url('assetsfront/images/icon/ic_transaction_step_4_grey.png'); ?>';
+				
+				
 				if (data[i].IsPaid == 1){
 					imgStep_1 = '<?php echo base_url('assetsfront/images/icon/ic_transaction_step_1.png'); ?>';
 					keteranganStatus = '';
@@ -281,6 +283,14 @@
 						
 					}
 				}
+				
+				if (data[i].IsTakeOutSPPU == 1){
+					keteranganStatus = keteranganStatus + '<br>Unit Sudah diambil';
+				} else {
+					keteranganStatus = keteranganStatus + '<br>Unit Belum diambil';
+				}
+				
+				keteranganStatus = keteranganStatus + '<br>Dokumen Belum diambil';
 				
                 rows += '<tr>'+
                         '<td></td>'+
@@ -292,13 +302,14 @@
                         '<td>'+data[i].ScheduleAuctionWinnerCompany+'<br>'+data[i].ScheduleAuctionWinnerDate+'</td>'+
                         '<td>'+
 						'<a href="" class="step-transaction">'+
-						'<ul>'+
-						'<li><img class="imgSrcStep-1-'+data[i].AuctionItemId+'" src="'+imgStep_1+'" alt=""></li>'+
-						'<li><img class="imgSrcStep-2-'+data[i].AuctionItemId+'" src="<?php echo base_url('assetsfront/images/icon/ic_transaction_step_2_grey.png'); ?>" alt=""></li>'+
-						'<li><img class="imgSrcStep-3-'+data[i].AuctionItemId+'" src="<?php echo base_url('assetsfront/images/icon/ic_transaction_step_3_grey.png'); ?>" alt=""></li>'+
-						'<li><img class="imgSrcStep-4-'+data[i].AuctionItemId+'" src="<?php echo base_url('assetsfront/images/icon/ic_transaction_step_4_grey.png'); ?>" alt=""></li>'+
-						'<p>Serah Terima Kendaraan Kepada Pemenang</p>'+
-						'</ul>'+
+						'<p>'+keteranganStatus+'</p>'+
+						// '<ul>'+
+						// '<li><img class="imgSrcStep-1-'+data[i].AuctionItemId+'" src="'+imgStep_1+'" alt=""></li>'+
+						// '<li><img class="imgSrcStep-2-'+data[i].AuctionItemId+'" src="'+imgStep_2+'" alt=""></li>'+
+						// '<li><img class="imgSrcStep-3-'+data[i].AuctionItemId+'" src="'+imgStep_3+'" alt=""></li>'+
+						// '<li><img class="imgSrcStep-4-'+data[i].AuctionItemId+'" src="'+imgStep_4+'" alt=""></li>'+
+						// '</ul>'+
+						// '<p>Serah Terima Kendaraan Kepada Pemenang</p>'+
 						'</a>'+
 						'</td>'+
                         '</tr>';
