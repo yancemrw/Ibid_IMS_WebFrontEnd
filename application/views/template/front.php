@@ -332,7 +332,35 @@
    </div>
 </section>
 
+<!-- line modal -->
+<div class="modal fade" id="modalTemp" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <!-- content goes here -->
+            <div class="modalTemporary">
+               <img src="assetsfront/images/background/luarjakarta.png">
+               <h3>Selamat datang di website IBID,</h3>
+               <p>Temukan kendaraan yang Anda inginkan</p>
+               <div> 
+                  <a class="btn btn-big btn-success" data-dismiss="modal" onclick="location.href='<?php echo site_url('cari-lelang?kota=jakarta'); ?>';">Area Jabodetabek</a>
+                  <a class="btn btn-default" data-dismiss="modal" href="javascript:void(0)">Area lainnya</a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
 <script>
+// MODAL POPUP TEMPORARY
+$(window).on('load',function(){
+   setTimeout(function(){
+      $('#modalTemp').modal('show');
+   }, 1000);   
+});
+
 // set active menu if to homepage
 setActiveMenu('home');
 

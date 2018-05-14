@@ -114,18 +114,18 @@ function login_Status_form($userdata) {
        <ul class="dropdown-menu dropdown-custom">
         <div class="scroll-dropdown">
           <li><p class="title-dropdown">Transaksi</p></li>
-          <li><p id="top-transaction" class="notif">Tidak Ada Transaksi</p></li>
+          <li class="input-dropdown"><p id="top-transaction" class="notif">Tidak Ada Transaksi</p></li>
           <li class="text-center"><a href="" class="viewall-dropdown">Lihat Semua Transaksi</a></li>
         </div>
        </ul>
     </li>
     <li class="dropdown hidden-mob">
        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <p><img src="'.base_url('assetsfront/images/icon/bell.png').'" alt="" title="" width="16px" height="22px"><img src="'.base_url('assetsfront/images/icon/Notifikasi.png').'" alt="" title="" width="" height="" class="ic_fixed"><span class="notification notif-count"></span></p>
+          <p><img src="'.base_url('assetsfront/images/icon/bell.png').'" alt="" title="" width="16px" height="22px"><img src="'.base_url('assetsfront/images/icon/Notifikasi.png').'" alt="" title="" width="" height="" class="ic_fixed"><span class="notif-count"></span></p>
        </a>
        <ul class="dropdown-menu dropdown-custom notif-content">
         <div class="scroll-dropdown">
-          <li><p class="title-dropdown">Notifikasi</p></li>
+          <li id="header-notif"><p class="title-dropdown">Notifikasi</p></li>
           <li><p class="notif">Tidak Ada Notifikasi</p></li>
         </div>
        </ul>

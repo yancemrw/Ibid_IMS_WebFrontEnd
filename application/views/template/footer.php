@@ -655,8 +655,9 @@ notifRef.on('value', function(snapshot) {
               '</li>';
     }
     data += '<li class="text-center"><a href="" class="viewall-dropdown">Lihat Semua Notifikasi</a></li>';
+    $('.notif-count').addClass('notification');
     $('.notif-count').html(object_key.length);
-    $('.notif-content').children().children().children('li:last').replaceWith(data);
+    $('.notif-content').children().children().children('#header-notif').nextAll().replaceWith(data);
     $('.notif-content-mobile').children('#top-notif-mobile').replaceWith(data);
   }
   else {

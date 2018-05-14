@@ -345,13 +345,14 @@ $(document).ready(function() {
 
    $('.filter-btn-mobile').click(function () {
       $('.form-filter').toggleClass('open')
-   })
+   });
    $('.filter-close').click(function () {
       $('.form-filter').toggleClass('open')
-   })
+   });
 
    // handle searching from home
-   var arrPost = '<?php echo $parsing_post; ?>', arrGet = '<?php echo $parsing_get['unit_rec']; ?>', thisFormInput;
+   var arrPost = '<?php echo $parsing_post; ?>', arrGet = '<?php echo $parsing_get['unit_rec']; ?>', arrKota = '<?php echo $parsing_get['kota']; ?>', thisFormInput;
+   console.log(arrPost+':'+arrGet+':'+arrKota);
    if(arrPost !== '') {
       var thisFormInputs = jsonSerialize(JSON.parse(arrPost));
       window.countTotal = 0;
@@ -363,11 +364,18 @@ $(document).ready(function() {
    else if(arrGet !== '') {
       $('input[name="filter_type"][value="2"]').prop("checked", true);
    }
+   else if(arrKota !== '') { // handle popup home
+      if(arrKota.toLowerCase() === 'jakarta') {
+         $('select[name="thisKota"]').val('2').trigger('change.select2');
+         var thisFormInputs = '&filter_type=1&tipeLelang=&thisKota=2&ScheduleId=&6_merk=&6_seri=&6_silinder=&6_grade=&6_transmisi=&6_tahun=&7_merk=&7_seri=&7_silinder=&14_kategori=&14_merk=&12_kategori=&12_merk=';
+         loadContainer(0, 6, linked, thisFormInputs, 1);
+      }
+   }
    else {
       loadContainer(0, 6, linked, '', 1);
    }
 
-   // handling top searching
+   // handle top searching
    $('#searching').keypress(function(e) {
       var charCode = (e.which) ? e.which : e.keyCode;
       var value = $('#searching').val();
@@ -412,6 +420,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
    var initUserId = '<?php echo (@$this->session->userdata('userdata')['UserId']) ? '&userId='.$this->session->userdata('userdata')['UserId'] : ''; ?>';
    var formData = 'offset='+offset+'&limit='+limit+initUserId+'&'+dataForm;
    var urlForm = (type === 1) ? '<?php echo linkservice('stock')."itemstock/Getfrontend"; ?>' : '<?php echo linkservice('stock')."itemstock/Getfrontendsearch"; ?>';
+   var defaultImg = '<?php echo base_url('assetsfront/images/background/default.png') ?>';
    $.ajax({
       type: 'GET',
       url: urlForm,
@@ -442,7 +451,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
                var compare_data = {
                   "AuctionItemId": dataz.AuctionItemId,
                   "BahanBakar": dataz.bahanbakar,
-                  "Image": (imgData[i][0] !== undefined) ? imgData[i][0].ImagePath : '<?php echo base_url('assetsfront/images/background/default.png') ?>',
+                  "Image": (imgData[i][0] !== undefined) ? imgData[i][0].ImagePath : defaultImg,
                   //"Image": '//img.ibid.astra.co.id/item/12415/d8404a531ea286d733aa7c35bfbdc83c.jpg',
                   "Kilometer": dataz.km,
                   "Lot" : (dataz.thisLotNo !== undefined && dataz.thisLotNo !== null) ? dataz.thisLotNo : '-',
@@ -564,6 +573,7 @@ function loadContainerPaging(offset, limit, linked, dataForm = '', type = 1) {
    var initUserId = '<?php echo (@$this->session->userdata('userdata')['UserId']) ? '&userId='.$this->session->userdata('userdata')['UserId'] : ''; ?>';
    var formData = 'offset='+offset+'&limit='+limit+initUserId+'&'+dataForm;
    var urlForm = (type === 1) ? '<?php echo linkservice('stock')."itemstock/Getfrontend"; ?>' : '<?php echo linkservice('stock')."itemstock/Getfrontendsearch"; ?>';
+   var defaultImg = '<?php echo base_url('assetsfront/images/background/default.png') ?>';
    $.ajax({
       type: 'GET',
       url: urlForm,
@@ -595,7 +605,7 @@ function loadContainerPaging(offset, limit, linked, dataForm = '', type = 1) {
                var compare_data = {
                   "AuctionItemId": dataz.AuctionItemId,
                   "BahanBakar": dataz.bahanbakar,
-                  "Image": (imgData[i][0] !== undefined) ? imgData[i][0].ImagePath : '<?php echo base_url('assetsfront/images/background/default.png') ?>',
+                  "Image": (imgData[i][0] !== undefined) ? imgData[i][0].ImagePath : defaultImg,
                   "Kilometer": dataz.km,
                   "Lot" : (dataz.thisLotNo !== undefined && dataz.thisLotNo !== null) ? dataz.thisLotNo : '-',
                   "Merk": (dataz.merk !== undefined) ? dataz.merk : '',

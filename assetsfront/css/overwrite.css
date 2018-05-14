@@ -2014,6 +2014,27 @@ a.delete-compare {
     color: #81BE2A!important;
 }
 
+#modalTemp .modalTemporary img {
+    max-width: 100%;
+    padding: 0 20%;
+}
+
+#modalTemp .close {
+    right: 0;
+    top: 0;
+    padding: 10px !important;
+    position: absolute;
+}
+
+.modalTemporary {
+    text-align: center;
+}
+
+.modalTemporary p,
+.modalTemporary div {
+    margin-bottom: 30px;
+}
+
 /* add by suvi sanusi */
 .box-success span {
     font-size: 14px !important;

@@ -6849,15 +6849,15 @@ input.input-custom.empty {
 .scroll-dropdown {
     max-height: 450px!important;
     height: 100%!important;
-    padding-bottom: 20px;
+    /*padding-bottom: 20px;*/
 }
 .scroll-dropdown a {
-    padding: 0 10px;
+    margin: 0 15px;
     text-decoration: none;
-    transition: all 0.2s
+    transition: all 0.2s;
 }
 .scroll-dropdown a:hover {
-    background-color: #eee
+    background-color: #eee;
 }
 
 /*FAQ*/
