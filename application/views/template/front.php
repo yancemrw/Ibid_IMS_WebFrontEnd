@@ -20,9 +20,10 @@
             <form class="form-inline clearfix">
                <div class="form-group">
                   <select class="select-custom form-control" id="thisCabang">
-                     <?php foreach($cabang as $row){ ?>
+					<option value="2" ><?php echo ucwords(substr(strtolower('IBID JAKARTA'), 4)); ?></option>
+                     <?php foreach($cabang as $row){ if ($row['CompanyId'] != 2){ ?>
                      <option value="<?php echo $row['CompanyId']; ?>" ><?php echo ucwords(substr(strtolower($row['CompanyName']), 4)); ?></option>
-                     <?php } ?>
+                     <?php } } ?>
                   </select>
                   <label>Kota</label>
                </div>
