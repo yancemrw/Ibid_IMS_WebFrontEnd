@@ -627,6 +627,7 @@ else {*/
 //}
 
 $('.scroll-dropdown').slimscroll({ allowPageScroll: true });
+$('.scroll-dropdown-mobile').slimscroll({ allowPageScroll: true });
 var UserId    = '<?php echo $this->session->userdata('userdata')['UserId']; ?>';
 var dbRef     = firebase.database();
 var notifRef  = dbRef.ref('notifications/penitip/'+UserId);
@@ -656,9 +657,8 @@ notifRef.on('value', function(snapshot) {
     }
     data += '<li class="text-center"><a href="" class="viewall-dropdown">Lihat Semua Notifikasi</a></li>';
     $('.notif-count').addClass('notification');
-    $('.notif-count').html(object_key.length);//console.log($('.notif-content').children().children().children('#header-notif').nextAll());
+    $('.notif-count').html(object_key.length);
     $('.notif-content').children().children().children('#header-notif').nextAll().each(function(x) {
-      console.log(x);
       if($(this).children().hasClass('notif') === false) {
         if(x > 0) {
           this.remove();
@@ -667,7 +667,16 @@ notifRef.on('value', function(snapshot) {
     }).promise().done(function() {
       $('.notif-content').children().children().children('#header-notif').nextAll().replaceWith(data);
     });
-    $('.notif-content-mobile').children('#top-notif-mobile').replaceWith(data);
+    console.log($('.notif-content-mobile').children().children().children('#header-notif-mobile').nextAll());
+    $('.notif-content-mobile').children().children().children('#header-notif-mobile').nextAll().each(function(x) {console.log(x);
+      if($(this).children().hasClass('notif') === false) {
+        if(x > 0) {
+          this.remove();
+        }
+      }
+    }).promise().done(function() {
+      $('.notif-content-mobile').children().children().children('#header-notif-mobile').nextAll().replaceWith(data);
+    });
   }
   else {
     $('.notif-count').html('');

@@ -352,7 +352,6 @@ $(document).ready(function() {
 
    // handle searching from home
    var arrPost = '<?php echo $parsing_post; ?>', arrGet = '<?php echo $parsing_get['unit_rec']; ?>', arrKota = '<?php echo $parsing_get['kota']; ?>', thisFormInput;
-   console.log(arrPost+':'+arrGet+':'+arrKota);
    if(arrPost !== '') {
       var thisFormInputs = jsonSerialize(JSON.parse(arrPost));
       window.countTotal = 0;

@@ -21,13 +21,15 @@
                </a>
             </div>
             <?php
-            for ($i = 1; $i < count($dataphoto); $i++) { 
-               if($dataphoto[$i]->ImagePath !== '') {
-                  echo '<div class="col-md-4 stickys" data-src="'.$dataphoto[$i]->ImagePath.'">
-                           <a href="javascript:void(0)" class="image-header" >
-                              <img src="'.$dataphoto[$i]->ImagePath.'" alt="Gambar '.$i.'">
-                           </a>
-                        </div>';
+            for ($i = 1; $i < count($dataphoto); $i++) {
+               if($i < 3) {
+                  if($dataphoto[$i]->ImagePath !== '') {
+                     echo '<div class="col-md-4 stickys" data-src="'.$dataphoto[$i]->ImagePath.'">
+                              <a href="javascript:void(0)" class="image-header" >
+                                 <img src="'.$dataphoto[$i]->ImagePath.'" alt="Gambar '.$i.'">
+                              </a>
+                           </div>';
+                  }
                }
             }
             ?>

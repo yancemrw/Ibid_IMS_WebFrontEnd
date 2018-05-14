@@ -6860,6 +6860,20 @@ input.input-custom.empty {
     background-color: #eee;
 }
 
+.scroll-dropdown-mobile {
+    max-height: 450px !important;
+    height: 100% !important;
+    overflow: scroll !important;
+}
+.scroll-dropdown-mobile a {
+    margin: 0 15px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+.scroll-dropdown-mobile a:hover {
+    background-color: #eee;
+}
+
 /*FAQ*/
 .content-help {
     padding-top: 15px;

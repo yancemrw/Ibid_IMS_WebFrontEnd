@@ -56,11 +56,13 @@ function login_status_form_mobile($userdata) {
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <p><img src="'.base_url('assetsfront/images/icon/Notifikasi.png').'" alt="" title="" width="" height=""><span class="notification notif-count">10</span></p>
+                        <p><img src="'.base_url('assetsfront/images/icon/Notifikasi.png').'" alt="" title="" width="" height=""><span class="notif-count"></span></p>
                     </a>
                     <ul class="dropdown-menu dropdown-custom dropdown-bell notif-content-mobile">
-                        <li><p class="title-dropdown">Notifikasi</p></li>
-                        <li id="top-notif-mobile"><p class="notif">Tidak Ada Notifikasi</p></li>
+                      <div class="scroll-dropdown-mobile">
+                        <li id="header-notif-mobile"><p class="title-dropdown">Notifikasi</p></li>
+                        <li><p class="notif">Tidak Ada Notifikasi</p></li>
+                      </div>
                     </ul>
                 </li>
                 <li class="dropdown">
