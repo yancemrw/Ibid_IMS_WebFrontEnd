@@ -656,8 +656,17 @@ notifRef.on('value', function(snapshot) {
     }
     data += '<li class="text-center"><a href="" class="viewall-dropdown">Lihat Semua Notifikasi</a></li>';
     $('.notif-count').addClass('notification');
-    $('.notif-count').html(object_key.length);
-    $('.notif-content').children().children().children('#header-notif').nextAll().replaceWith(data);
+    $('.notif-count').html(object_key.length);//console.log($('.notif-content').children().children().children('#header-notif').nextAll());
+    $('.notif-content').children().children().children('#header-notif').nextAll().each(function(x) {
+      console.log(x);
+      if($(this).children().hasClass('notif') === false) {
+        if(x > 0) {
+          this.remove();
+        }
+      }
+    }).promise().done(function() {
+      $('.notif-content').children().children().children('#header-notif').nextAll().replaceWith(data);
+    });
     $('.notif-content-mobile').children('#top-notif-mobile').replaceWith(data);
   }
   else {
