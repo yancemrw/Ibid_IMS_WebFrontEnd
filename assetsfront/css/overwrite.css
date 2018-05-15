@@ -190,6 +190,12 @@ a.delete-compare {
     margin-top: 1px !important;
 }
 
+header {
+    background-size: cover !important;
+    background-position: top center !important;
+    background-attachment: fixed !important;
+}
+
 .header-white {
     border-bottom: 1px solid #81be2a !important;
 }
@@ -558,9 +564,6 @@ a.delete-compare {
 }
 
 @media(max-width: 1024px) {
-    header {
-        background-size: contain !important;
-    }
     .btn-green, 
     .btn-green:hover, 
     .btn-green:focus {
@@ -599,6 +602,12 @@ a.delete-compare {
         width: 80% !important;
         height: 35px;
         min-height: 20px;
+    }
+
+    header {
+        background-size: contain !important;
+        background-position: top center !important;
+        background-attachment: fixed !important;
     }
     .header-white .nav>li>a:hover {
         padding-bottom: 0;
