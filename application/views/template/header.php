@@ -51,15 +51,15 @@
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/font-awesome/css/font-awesome.min.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/select2.min.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/fullcalendar.min.css') ?>">
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/style.css?alpha2') ?>">
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/responsive.css?alpha2') ?>">
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/style.css?alpha3') ?>">
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/responsive.css?alpha3') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/slick.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/lightgallery.min.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/image-sprite-style.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/prettify.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/jquery.flipster.min.css'); ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/bootoast/bootoast.css'); ?>">
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/overwrite.css?alpha2'); ?>">
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/overwrite.css?alpha3'); ?>">
 
    <!-- Header Js -->
    <script>var img_empty = "<?php echo base_url('assetsfront/images/background/management-empty.png'); ?>";</script>
