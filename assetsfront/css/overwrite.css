@@ -967,6 +967,11 @@ header {
 }
 
 @media (max-width: 640px) {
+    header {
+        background-size: cover !important;
+        background-position: top center !important;
+        background-attachment: fixed !important;
+    }
     .btn-lg, .btn-green, .btn-search {
         font-size: 14px;
     }
@@ -1505,6 +1510,11 @@ header {
 }
 
 @media (max-width: 360px) {
+    header {
+        background-size: contain !important;
+        background-position: top center !important;
+        background-attachment: fixed !important;
+    }
     .btn-lg, .btn-green, .btn-search {
         font-size: 14px;
     }
