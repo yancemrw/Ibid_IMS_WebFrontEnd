@@ -40,11 +40,13 @@
             <div class="col-md-9 col-sm-9 am-right">
                 <div class="main-management">
                     <h2>Notifikasi</h2>
-                    <div class="table-responsive table-container table-transaction content-empty">
-                        <div class="product-empty">
-                            <img src="<?php echo base_url('assetsfront/images/icon/ic-transaction-empty.png'); ?>" alt="" title="">
+                    <div id="notif-dashboard">
+                        <div class="table-responsive table-container table-transaction content-empty">
+                            <div class="product-empty">
+                                <img src="<?php echo base_url('assetsfront/images/icon/ic-transaction-empty.png'); ?>" width="300">
+                            </div>
+                            <p>Oops.... <span>Data Tidak Ada.</span></p>
                         </div>
-                        <p>Oops.... <span>Data Belum Tersedia.</span></p>
                     </div>
                 </div>
             </div>

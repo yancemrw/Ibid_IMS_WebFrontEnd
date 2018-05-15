@@ -27,7 +27,7 @@ function template($view = '', $data = '') {
     $data['class_header'] = 'header-aboutus';
   }
   else {
-    $data['bgheader'] = base_url('backend/dapur/uploads/contents/'.$home_bg->tagline->Photo);
+    $data['bgheader'] = linkservice('cms').'uploads/contents/'.$home_bg->tagline->Photo;
     $data['class_header'] = '';
   }
   

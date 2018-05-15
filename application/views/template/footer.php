@@ -634,7 +634,7 @@ var notifRef  = dbRef.ref('notifications/penitip/'+UserId);
 notifRef.on('value', function(snapshot) {
   if(snapshot.val() !== null) {
     var val = snapshot.val(),
-    data = '',
+    data = '', data_notif = '<ul class="notification">',
     object_key = Object.values(val).reverse();
     for(var i = 0; i < object_key.length; i++) {
       var img_src;
@@ -654,7 +654,15 @@ notifRef.on('value', function(snapshot) {
               '</div>'+
               '</a>'+
               '</li>';
+      data_notif += '<li>'+
+                    '<div class="notif-image"><img src="'+img_src+'" alt=""></div>'+
+                    '<div class="notif-desc">'+
+                    '<h3>1 Pesan Email <span>'+object_key[i].date+'</span></h3>'+
+                    '<p>'+object_key[i].text+'</p>'+
+                    '</div>'+
+                    '</li>';
     }
+    data_notif += '</ul>';
     data += '<li class="text-center"><a href="" class="viewall-dropdown">Lihat Semua Notifikasi</a></li>';
     $('.notif-count').addClass('notification');
     $('.notif-count').html(object_key.length);
@@ -677,6 +685,9 @@ notifRef.on('value', function(snapshot) {
     }).promise().done(function() {
       $('.notif-content-mobile').children().children().children('#header-notif-mobile').nextAll().replaceWith(data);
     });
+
+    // set for content notification
+    $('#notif-dashboard').children().replaceWith(data_notif);
   }
   else {
     $('.notif-count').html('');
