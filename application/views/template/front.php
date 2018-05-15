@@ -342,11 +342,11 @@
             <!-- content goes here -->
             <div class="modalTemporary">
                <img src="assetsfront/images/background/luarjakarta.png">
-               <h3>Selamat datang di website IBID,</h3>
-               <p>Temukan kendaraan yang Anda inginkan</p>
+               <h3>Selamat datang di website baru IBID,</h3>
+               <p>Website ini baru mencakup wilayah Jakarta dan Sekitarnya, untuk wilayah di luar JABODETABEK dapat klik tombol "Area lainnya"</p>
                <div> 
-                  <a class="btn btn-big btn-success" data-dismiss="modal" onclick="location.href='<?php echo site_url('cari-lelang?kota=jakarta'); ?>';">Area Jabodetabek</a>
-                  <a class="btn btn-default" data-dismiss="modal" href="javascript:void(0)">Area lainnya</a>
+                  <a class="btn btn-big btn-success" data-dismiss="modal" href="javascript:void(0)">Area Jabodetabek</a>
+                  <a class="btn btn-default" data-dismiss="modal" href="javascript:void(0)" onclick="location.href='ext.ibid.astra.co.id'">Area lainnya</a>
                </div>
             </div>
          </div>
