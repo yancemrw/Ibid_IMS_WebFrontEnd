@@ -105,7 +105,7 @@ function login_status_form_mobile($userdata) {
 
 function login_Status_form($userdata) {
 	$pp = base_url('assetsfront/images/icon/ic_avatar.png');
-  $profile_name = @(strlen($userdata['namefront']) > 10) ? substr($userdata['namefront'], 0, 10).'...' : $userdata['namefront']; 
+  $profile_name = @(strlen($userdata['namefront']) > 8) ? substr($userdata['namefront'], 0, 10).'...' : $userdata['namefront']; 
   $email_name = @(strlen($userdata['emailfront']) > 10) ? substr($userdata['emailfront'], 0, 30).'...' : $userdata['emailfront'];
   if(count(@$userdata['UserId']) > 0) {
 

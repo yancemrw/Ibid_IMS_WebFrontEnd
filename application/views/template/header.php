@@ -233,7 +233,7 @@
    <?php echo ($this->uri->segment(1) != "akun") ? '<div id="content">' : ''; ?>
 
       <!-- <header> -->
-         <?php echo ($this->uri->segment(1) == "" || $this->uri->segment(1) == "front") ? '<header class="headers" style="background: url('.$bgheader.') no-repeat;' : ''; ?>
+         <?php echo ($this->uri->segment(1) == "" || $this->uri->segment(1) == "front") ? '<header style="background: url('.$bgheader.') no-repeat;">' : ''; ?>
 
             <nav class="navbar navbar-custom <?php echo @$header_white; ?>">
                <div class="top-navbar text-right">
