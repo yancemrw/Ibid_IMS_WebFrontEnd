@@ -552,6 +552,14 @@ header {
 }
 
 @media(max-width: 1366px) {
+    header {
+        background-size: contain !important;
+        background-position: top center !important;
+        background-attachment: fixed !important;
+    }
+    .live-auction {
+        background-size: contain;
+    }
     #lightgallery .slick-track {
         height: 340px;
     }
@@ -604,11 +612,6 @@ header {
         min-height: 20px;
     }
 
-    header {
-        background-size: contain !important;
-        background-position: top center !important;
-        background-attachment: fixed !important;
-    }
     .header-white .nav>li>a:hover {
         padding-bottom: 0;
     }
@@ -971,6 +974,9 @@ header {
         background-size: cover !important;
         background-position: top center !important;
         background-attachment: fixed !important;
+    }
+    .live-auction {
+        background-size: cover !important;
     }
     .btn-lg, .btn-green, .btn-search {
         font-size: 14px;
