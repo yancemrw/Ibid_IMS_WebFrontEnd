@@ -346,7 +346,7 @@
                <p>Website ini baru mencakup wilayah Jakarta dan Sekitarnya, untuk wilayah di luar JABODETABEK dapat klik tombol "Area lainnya"</p>
                <div> 
                   <a class="btn btn-big btn-success" data-dismiss="modal" href="javascript:void(0)">Area Jabodetabek</a>
-                  <a class="btn btn-default" data-dismiss="modal" href="javascript:void(0)" onclick="location.href='ext.ibid.astra.co.id'">Area lainnya</a>
+                  <a class="btn btn-default" data-dismiss="modal" href="javascript:void(0)" onclick="location.href='http://ext.ibid.astra.co.id'">Area lainnya</a>
                </div>
             </div>
          </div>

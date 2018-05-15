@@ -190,6 +190,12 @@ a.delete-compare {
     margin-top: 1px !important;
 }
 
+.headers {
+    background-size: cover !important;
+    background-position: top center !important;
+    background-attachment: fixed !important;
+}
+
 .header-white {
     border-bottom: 1px solid #81be2a !important;
 }
@@ -597,6 +603,9 @@ a.delete-compare {
         height: 35px;
         min-height: 20px;
     }
+    .headers {
+        background-size: contain !important;
+    }
     .header-white .nav>li>a:hover {
         padding-bottom: 0;
     }
@@ -662,6 +671,9 @@ a.delete-compare {
         width: 100%;
         padding: 10px;
         text-align: left;
+    }
+    .navbar-custom .nav>li>a {
+        margin: 0px 3px;
     }
 }
 
