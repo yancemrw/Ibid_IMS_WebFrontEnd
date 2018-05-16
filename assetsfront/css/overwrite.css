@@ -561,9 +561,6 @@ header {
 }
 
 @media(max-width: 1024px) {
-    header {
-        background-size: contain !important;
-    }
     .btn-green, 
     .btn-green:hover, 
     .btn-green:focus {
@@ -750,10 +747,6 @@ header {
 }
 
 @media(max-width: 800px) {
-    .live-auction {
-        background: url(../images/background/bg-live-auction-mobile.jpg) no-repeat fixed !important;
-        background-size: cover !important;
-    }
     .minimal-height {
         min-height: 268px;
     }
@@ -963,12 +956,6 @@ header {
         width: 1px;
         height: 373px;
     }
-	.container-fluid-blog {
-		margin-right: auto;
-		margin-left: auto;
-		padding-left: 15px;
-		padding-right: 15px;
-	}
 }
 
 @media (max-width: 640px) {
@@ -976,6 +963,9 @@ header {
         background-size: cover !important;
         background-position: top center !important;
         background-attachment: fixed !important;
+    }
+    .live-auction {
+        background-size: cover !important;
     }
     .btn-lg, .btn-green, .btn-search {
         font-size: 14px;
@@ -1068,16 +1058,6 @@ header {
 }
 
 @media (max-width: 600px) {
-    header {
-        background-size: contain !important;
-    }
-    .live-auction {
-        margin: 0;
-    }
-    .container-fluid {
-        padding-left: 0;
-        padding-right: 0;
-    }
     .btn-lg, .btn-green, .btn-search {
         font-size: 14px;
     }
@@ -1190,12 +1170,6 @@ header {
         height: 60px;
         vertical-align: middle;
         display: table-cell;
-    }
-    .image-new {
-        height: 230px;
-    }
-    .image-new img {
-        width: 100%;
     }
 }
 
@@ -1480,18 +1454,9 @@ header {
         position: relative;
         right: -50px;
     }
-    .image-new {
-        height: 200px;
-    }
-    .image-new img {
-        width: 100%;
-    }
 }
 
 @media (max-width: 375px) {
-    header {
-        background-size: contain !important;
-    }
     .favorite {
         left: 0;
         padding: 10px;
@@ -1632,12 +1597,6 @@ header {
     .bidder ul {
         max-width: 96%;
     }
-    .image-new {
-        height: 180px;
-    }
-    .image-new img {
-        width: 100%;
-    }
 }
 
 @media(max-width: 320px) {
@@ -1682,12 +1641,6 @@ header {
         max-width: 800px;
         width: 100%;
     }
-    .image-new {
-        height: 150px;
-    }
-    .image-new img {
-        width: 100%;
-    }
 }
 
 // css by iqdam
@@ -1721,6 +1674,7 @@ header {
 }
 
 /* Tentang Ibid Jaringan kami */
+
 .ibid-network {
     position: relative;
 }
