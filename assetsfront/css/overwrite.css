@@ -191,7 +191,7 @@ a.delete-compare {
 }
 
 header {
-    background-size: cover !important;
+    background-size: 100% auto !important;
     background-position: top center !important;
     background-attachment: fixed !important;
 }
@@ -747,6 +747,13 @@ header {
 }
 
 @media(max-width: 800px) {
+    header {
+        background-position: 0 40px !important;
+    }
+    .live-auction {
+        background: url(../../assetsfront/images/background/bg-live-auction-mobile.jpg) no-repeat fixed;
+        background-size: cover !important;
+    }
     .minimal-height {
         min-height: 268px;
     }
@@ -960,12 +967,10 @@ header {
 
 @media (max-width: 640px) {
     header {
-        background-size: cover !important;
-        background-position: top center !important;
-        background-attachment: fixed !important;
+        background-position: 0 20px !important;
     }
-    .live-auction {
-        background-size: cover !important;
+    .live-auction, .auction-left, .auction-right {
+        margin: 0;
     }
     .btn-lg, .btn-green, .btn-search {
         font-size: 14px;
@@ -1058,6 +1063,9 @@ header {
 }
 
 @media (max-width: 600px) {
+    header {
+        background-position: 0 20px !important;
+    }
     .btn-lg, .btn-green, .btn-search {
         font-size: 14px;
     }
@@ -1250,6 +1258,9 @@ header {
 }
 
 @media (max-width: 414px) {
+    header {
+        background-position: 0 50px !important;
+    }
     .favorite {
         left: 0;
         padding: 10px;
@@ -1307,6 +1318,9 @@ header {
 }
 
 @media (max-width: 412px) {
+    header {
+        background-position: 0 40px !important;
+    }
     .favorite {
         left: 0;
         padding: 10px;
@@ -1387,6 +1401,9 @@ header {
 }
 
 @media (max-width: 384px) {
+    header {
+        background-position: 0 50px !important;
+    }
     .favorite {
         left: 0;
         padding: 10px;
@@ -1506,9 +1523,7 @@ header {
 
 @media (max-width: 360px) {
     header {
-        background-size: contain !important;
-        background-position: top center !important;
-        background-attachment: fixed !important;
+        background-position: 0 50px !important;
     }
     .btn-lg, .btn-green, .btn-search {
         font-size: 14px;
@@ -1600,6 +1615,9 @@ header {
 }
 
 @media(max-width: 320px) {
+    header {
+        background-position: 0 50px !important;
+    }
     .btn-lg, .btn-green, .btn-search {
         font-size: 14px;
     }
