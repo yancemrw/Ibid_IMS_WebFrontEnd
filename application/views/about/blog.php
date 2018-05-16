@@ -1,4 +1,4 @@
-<section class="slide-section">
+<section class="slide-section blog">
 	<div class="blog-slide">
 		<div class="item active">
 			<div class="slide-image">
@@ -18,7 +18,7 @@
 	</div>
 </section>
 <section class="section-blog">
-	<div class="container-fluid">
+	<div class="container-fluid-blog">
 		<div class="row">
 			<h2 class="title-blog">News</h2>
 			<div class="col-md-4 col-sm-6 pl-0">
@@ -105,62 +105,22 @@
 			<h2 class="title-blog">Testimoni</h2>
 			<div class="col-md-12">
 				<div class="testimoni-slide">
+					<?php foreach($content->testimoni as $keyTesti => $valTesti) { ?>
 					<div class="item clearfix active">
 						<div class="content-testimoni">
-							<a href="#">
-								<div class="box-img-slide">
-									<img alt="" src="<?php echo base_url('assetsfront/images/background/slide-1.jpg'); ?>" class="img-responsive">
-								</div>
-								<h2>Tangkas <span>IBID</span></h2>
-								<p>
-									<span>3 November 2017</span>
-									“Dengan adanya IBID Lelang online, aku tak perlu susah-susah mengunjungi lokasi. Tinggal buka laptop, daftar, beli NPL, lihat jadwal lelang, dan langsung deh mulai mengikuti lelang. Mantep deh IBID”
-								</p>
-							</a>
+						<a href="#">
+							<div class="box-img-slide">
+								<img src="<?php echo linkservice('cms').'uploads/contents/'.$valTesti->Photo; ?>" class="img-responsive">
+							</div>
+							<h2><?php echo $valTesti->Title; ?></h2>
+							<p class="text-align-left">
+								<span><?php echo $valTesti->Subtitle; ?></span>
+								<?php echo $valTesti->Content; ?>
+							</p>
+						</a>
 						</div>
 					</div>
-					<div class="item clearfix">
-						<div class="content-testimoni">
-							<a href="#">
-								<div class="box-img-slide">
-									<img alt="" src="<?php echo base_url('assetsfront/images/background/slide-2.jpg'); ?>" class="img-responsive">
-								</div>
-								<h2>Tangkas <span>IBID</span></h2>
-								<p>
-									<span>3 November 2017</span>
-									“Dengan adanya IBID Lelang online, aku tak perlu susah-susah mengunjungi lokasi. Tinggal buka laptop, daftar, beli NPL, lihat jadwal lelang, dan langsung deh mulai mengikuti lelang. Mantep deh IBID”
-								</p>
-							</a>
-						</div>
-					</div>
-					<div class="item clearfix">
-						<div class="content-testimoni">
-							<a href="#">
-								<div class="box-img-slide">
-									<img alt="" src="<?php echo base_url('assetsfront/images/background/slide-3.jpg'); ?>" class="img-responsive">
-								</div>
-								<h2>Tangkas <span>IBID</span></h2>
-								<p>
-									<span>3 November 2017</span>
-									“Dengan adanya IBID Lelang online, aku tak perlu susah-susah mengunjungi lokasi. Tinggal buka laptop, daftar, beli NPL, lihat jadwal lelang, dan langsung deh mulai mengikuti lelang. Mantep deh IBID”
-								</p>
-							</a>
-						</div>
-					</div>
-					<div class="item clearfix">
-						<div class="content-testimoni">
-							<a href="#">
-								<div class="box-img-slide">
-									<img alt="" src="<?php echo base_url('assetsfront/images/background/slide-1.jpg'); ?>" class="img-responsive">
-								</div>
-								<h2>Tangkas <span>IBID</span></h2>
-								<p>
-									<span>3 November 2017</span>
-									“Dengan adanya IBID Lelang online, aku tak perlu susah-susah mengunjungi lokasi. Tinggal buka laptop, daftar, beli NPL, lihat jadwal lelang, dan langsung deh mulai mengikuti lelang. Mantep deh IBID”
-								</p>
-							</a>
-						</div>
-					</div>
+					<?php } ?>
 				</div>
 			</div>
 		</div>
