@@ -402,6 +402,9 @@ header {
     height: 100%;
     max-width: none;
 }
+.theblog .slick-slide img {
+    width: 100% !important;
+}
 .thumbnail-custom-favorite {
     width: 100%;
     height: 56%;
@@ -963,6 +966,13 @@ header {
         width: 1px;
         height: 373px;
     }
+    .container-fluid-blog {
+        margin-right: auto;
+        margin-left: auto;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
 }
 
 @media (max-width: 640px) {
