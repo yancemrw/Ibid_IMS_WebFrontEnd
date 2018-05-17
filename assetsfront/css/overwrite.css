@@ -101,6 +101,15 @@ a.delete-compare {
     color: #eee;
 }
 
+.content-detail-blog .related-article ul.slick-dots li {
+    margin: 0 6px;
+    margin-right: 6px;
+}
+
+.content-detail-blog .related-article ul.slick-dots li button {
+    margin-right: 0;
+}
+
 .cursor-pointer {
     cursor: pointer !important;
 }
@@ -131,6 +140,10 @@ a.delete-compare {
 
 .display-block {
     display: block !important;
+}
+
+.display-inline-block {
+    display: inline-block !important;
 }
 
 .empty-fav-icon {
@@ -209,6 +222,10 @@ header {
     height: 50px !important;
 }
 
+.height-130px {
+    height: 130px !important;
+}
+
 .height-200px {
     height: 200px !important;
 }
@@ -223,6 +240,10 @@ header {
 
 .ic-Mobil {
     height: 20px !important;
+}
+
+.image-new {
+    height: 180px;
 }
 
 .lelang-online ul li span.price {
@@ -453,6 +474,14 @@ header {
     float: none;
 }
 
+.padding-3px {
+    padding: 3px !important;
+}
+
+.padding-5px {
+    padding: 5px !important;
+}
+
 .padding-10px {
     padding: 10px !important;
 }
@@ -509,6 +538,14 @@ header {
     position: relative;
     padding-left: 80px;
     margin-top: -19px;
+}
+
+.section-blog .container {
+    margin-bottom: 15px;
+}
+
+.section-blog-detail .container {
+    margin-bottom: 15px;
 }
 
 .slick-track {
@@ -673,6 +710,21 @@ header {
     .navbar-custom .nav>li>a {
         margin: 0px 3px;
     }
+    .container-fluid-blog {
+        margin-right: auto;
+        margin-left: auto;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .section-blog-detail .box-new {
+        min-height: 350px;
+    }
+    .section-blog-detail .box-new p {
+        padding: 0 10px 0 10px;
+    }
+    .section-blog-detail .image-new {
+        height: 180px;
+    }
 }
 
 @media(max-width: 980px) {
@@ -754,7 +806,7 @@ header {
         background-position: 0 40px !important;
     }
     .live-auction {
-        background: url(../../assetsfront/images/background/bg-live-auction-mobile.jpg) no-repeat fixed;
+        background: url(../images/background/bg-live-auction-mobile.jpg) no-repeat fixed;
         background-size: cover !important;
     }
     .minimal-height {
@@ -835,6 +887,15 @@ header {
     }
     .login-socialmedia {
         padding-left: 0;
+    }
+    .box-new {
+        min-height: 380px;
+    }
+    .box-new p {
+        padding: 0 10px 0 10px;
+    }
+    .section-blog-detail .image-new {
+        height: 130px;
     }
 }
 
@@ -969,10 +1030,22 @@ header {
     .container-fluid-blog {
         margin-right: auto;
         margin-left: auto;
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 25px;
+        padding-right: 25px;
     }
+    .box-new {
+        min-height: 400px;
+    }
+    .section-blog-detail .image-new {
+        height: 170px;
+    }
+}
 
+@media only screen and (min-width: 600px) and (max-width: 640px) {
+    .col-custom {
+        float: left;
+        width: 50% !important;
+    }
 }
 
 @media (max-width: 640px) {
@@ -1069,6 +1142,22 @@ header {
         right: 0;
         width: 100%;
         height: 1px;
+    }
+    .box-new h2 {
+        font-size: 20px;
+    }
+    .box-new h2 span {
+        font-size: 14px;
+    }
+    .section-blog-detail .box-new {
+        height: 340px;
+        min-height: 300px;
+    }
+    .section-blog-detail .box-new p {
+        padding: 0 10px 0 10px;
+    }
+    .section-blog-detail .image-new {
+        height: 150px;
     }
 }
 
@@ -1189,6 +1278,21 @@ header {
         vertical-align: middle;
         display: table-cell;
     }
+    .box-new {
+        min-height: 400px;
+    }
+    .image-new {
+        height: 180px;
+    }
+    .section-blog-detail .box-new {
+        min-height: 200px;
+    }
+    .section-blog-detail .box-new p {
+        padding: 0 10px 0 10px;
+    }
+    .section-blog-detail .image-new {
+        height: 140px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1235,6 +1339,18 @@ header {
     .modal-login .modal-dialog {
         max-width: 800px;
         width: 96%;
+    }
+    .box-new {
+        min-height: 430px;
+    }
+    .box-new p {
+        padding: 0 10px 0 10px;
+    }
+    .image-new {
+        height: 240px;
+    }
+    .section-blog-detail .image-new {
+        height: 120px;
     }
 }
 
@@ -1325,6 +1441,15 @@ header {
         position: relative;
         right: -90px;
     }
+    .section-blog-detail .box-new {
+        min-height: 360px;
+    }
+    .section-blog-detail .box-new p {
+        padding: 0 10px 0 10px;
+    }
+    .section-blog-detail .image-new {
+        height: 170px;
+    }
 }
 
 @media (max-width: 412px) {
@@ -1394,6 +1519,15 @@ header {
     .bidder ul li span {
         position: relative;
         right: -90px;
+    }
+    .section-blog-detail .box-new {
+        min-height: 360px;
+    }
+    .section-blog-detail .box-new p {
+        padding: 0 10px 0 10px;
+    }
+    .section-blog-detail .image-new {
+        height: 170px;
     }
 }
 
@@ -1480,6 +1614,24 @@ header {
     .bidder ul li span {
         position: relative;
         right: -50px;
+    }
+    .section-blog-detail .box-new {
+        min-height: 360px;
+    }
+    .section-blog-detail .box-new p {
+        padding: 0 10px 0 10px;
+    }
+    .section-blog-detail .image-new {
+        height: 160px;
+    }
+    .image-new {
+        height: 180px;
+    }
+    .box-new h2 {
+        font-size: 20px;
+    }
+    .box-new h2 span {
+        font-size: 16px;
     }
 }
 
@@ -1622,6 +1774,21 @@ header {
     .bidder ul {
         max-width: 96%;
     }
+    .section-blog-detail .box-new {
+        min-height: 370px;
+    }
+    .section-blog-detail .box-new p {
+        padding: 0 10px 0 10px;
+    }
+    .section-blog-detail .image-new {
+        height: 150px;
+    }
+    .box-new {
+        min-height: 400px;
+    }
+    .image-new {
+        height: 200px;
+    }
 }
 
 @media(max-width: 320px) {
@@ -1668,6 +1835,22 @@ header {
     .modal-login .modal-dialog {
         max-width: 800px;
         width: 100%;
+    }
+    .section-blog-detail .image-new {
+        height: 140px;
+    }
+    .box-new {
+        height: 330px;
+        min-height: 330px;
+    }
+    .box-new h2 {
+        font-size: 18px;
+    }
+    .box-new h2 span {
+        font-size: 14px;
+    }
+    .image-new {
+        height: 140px;
     }
 }
 

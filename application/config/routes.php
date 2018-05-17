@@ -54,6 +54,7 @@ $route['default_controller'] = 'front';
 // about
 $route['about'] = 'about/me';
 $route['blog'] = 'about/blog';
+$route['blog_details'] = 'about/blog_details';
 $route['faq'] = 'about/ours/faq';
 $route['ourloc'] = 'about/ours/ourloc';
 $route['contactus'] = 'about/ours/contactus';

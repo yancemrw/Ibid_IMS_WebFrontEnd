@@ -262,7 +262,7 @@
             </div>
          </div>
          <div class="col-md-12 text-center show-more">
-            <button class="btn btn-lg btn-green" disabled>Info Detail</button>
+            <button class="btn btn-lg btn-green" onclick="location.href='<?php echo site_url('panduan-lelang'); ?>';">Info Detail</button>
          </div>
       </div>
    </div>
@@ -356,10 +356,14 @@
 
 <script>
 // MODAL POPUP TEMPORARY
-$(window).on('load',function(){
-   setTimeout(function(){
-      $('#modalTemp').modal('show');
-   }, 1000);   
+$(window).on('load',function() {
+   var pophm = localStorage.getItem('POPHM');
+   if(pophm === null || pophm === 'false') {
+      localStorage.setItem('POPHM', true);
+      setTimeout(function(){
+         $('#modalTemp').modal('show');
+      }, 1000);  
+   } 
 });
 
 // set active menu if to homepage
