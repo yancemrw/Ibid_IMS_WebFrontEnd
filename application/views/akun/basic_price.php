@@ -1,5 +1,5 @@
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/datatables/datatables.css'); ?>">
-<script type="text/javascript" src="<?php echo base_url('assetsfront/datatables/datatables.js'); ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/datatables/css/jquery.dataTables.css'); ?>" />
+<script type="text/javascript" src="<?php echo base_url('assetsfront/datatables/js/jquery.dataTables.js'); ?>"></script>
 <section>
     <div class="container-fluid">
         <div class="row position-repative">
@@ -90,24 +90,7 @@
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <?php
-                                foreach($datatable as $key => $values) {
-                                    $nama_barang = $values->merk.' '.$values->seri.' '.$values->silinder.' '.$values->grade.' '.$values->model;
-                                    $harga = ($values->FinalPriceItem !== null) ? $values->FinalPriceItem : '0';
-                                    $num = $key + 1;
-                                ?>
-                                    <tr>
-                                        <td><?php echo $num; ?></td>
-                                        <td><?php echo $values->nopolisi; ?></td>
-                                        <td><?php echo $nama_barang; ?></td>
-                                        <td><?php echo $dataItem[$values->ItemId]; ?></td>
-                                        <td><?php echo $values->CreateDate; ?></td>
-                                        <td><?php echo $harga; ?></td>
-                                        <td><a href="javascript:void(0)" class="edit-price" onclick="changed(this, '<?php echo $values->AuctionItemId; ?>')"><i class="fa fa-pencil"></i></a></td>
-                                    </tr>
-                                <?php } ?>
-                            </tbody>
+                            <tbody></tbody>
                         </table>
                     </div>
                 </div>
@@ -124,13 +107,14 @@
             aoData.push( {"name":"changeMaxRows", "value":$('#changeMaxRows').val()} );
         },
         "language": {
-            'emptyTable': '<b class="text-shadows">Data Tidak Ada</b>'
-        }
+            'emptyTable': 'Data Tidak Ada'
+        },
+        "ajax": "<?php echo linkservice('frontend').'akun/Basic_price/getHargaDasarDatatables'; ?>"
     });
     $('input[name="filterBasicPrice"]').keypress(function(e) {
         if(e.which == 13) {
             e.preventDefault();
-            hargaDasar.draw();
+            hargaDasar.search(this.value).draw();
         }
     });
 

@@ -588,7 +588,7 @@ header {
 }
 
 .width-100 {
-    width: 100%;
+    width: 100% !important;
 }
 #lightgallery .slick-track {
     height: 340px;
