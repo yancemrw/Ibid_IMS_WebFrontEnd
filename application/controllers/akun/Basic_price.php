@@ -25,6 +25,13 @@ class Basic_price extends CI_Controller {
 		$methodItem = 'GET';
 		$resApiItem = admsCurl($urlItem, array(), $methodItem);
 		$getItem = curlGenerate($resApiItem);
+
+		// get data cabang ibid
+		$urlCabang = linkservice('master')."cabang/Get";
+		$methodCabang = 'GET';
+		$resCabang = admsCurl($urlCabang, array(), $methodCabang);
+		$getCabang = curlGenerate($resCabang);
+
 		$arrItem = array();
 		foreach ($getItem as $key => $value) {
 			$arrItem[$value->ItemId] = $value->ItemName;
@@ -37,7 +44,8 @@ class Basic_price extends CI_Controller {
 			'form_auth_mobile'	=> login_status_form_mobile($this->userdata),
 			'form_auth'			=> login_Status_form($this->userdata),
 			'datatable'			=> $get,
-			'dataItem'			=> $arrItem
+			'dataItem'			=> $arrItem,
+			'cabang'			=> $getCabang
 		);
 		$data['img_link'] = base_url('assetsfront/images/icon/ic_avatar.png');
 		$view = "akun/basic_price";

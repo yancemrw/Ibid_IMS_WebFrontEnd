@@ -51,16 +51,19 @@
                             <div class="filter-right">
                                 <div class="form-group">
                                     <select class="form-control select-custom">
-                                        <option>Filter by jadwal</option>
-                                        <option>jakarta timur</option>
-                                        <option>jakarta timur</option>
+                                        <option>Filter Cabang</option>
+                                        <?php
+                                            foreach ($cabang as $keyCabang => $valueCabang) {
+                                                echo '<option value="'.$valueCabang->CompanyId.'">'.$valueCabang->CompanyName.'</option>';
+                                            }
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <select class="form-control select-custom">
                                         <option>Jenis lelang</option>
-                                        <option>Hybrid</option>
-                                        <option>Hybrid</option>
+                                        <option>Live</option>
+                                        <option>Online</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -127,7 +130,7 @@
     $('input[name="filterBasicPrice"]').keypress(function(e) {
         if(e.which == 13) {
             e.preventDefault();
-            tableJual.draw();
+            hargaDasar.draw();
         }
     });
 
@@ -205,4 +208,6 @@
         }
         objek.value = c;
     }
+
+    $('#table-basic-price > thead > tr > th').removeClass('sorting').removeClass('sorting_asc');
 </script>

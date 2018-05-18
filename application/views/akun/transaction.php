@@ -51,22 +51,24 @@
                             <div class="filter-table">
                                 <form class="form-inline" id="transaksiPenjualan">
                                     <div class="form-group">
-                                        <input type="text" name="filterJual" class="form-control input-custom" placeholder="Search">
-                                        <i class="fa fa-search"></i>
+                                        <input type="text" name="filterJual" class="form-control input-custom" placeholder="Search"><i class="fa fa-search"></i>
                                     </div>
                                     <div class="filter-right">
                                         <div class="form-group">
                                             <select class="form-control select-custom">
-                                                <option>Filter by jadwal</option>
-                                                <option>jakarta timur</option>
-                                                <option>jakarta timur</option>
+                                                <option value="">Filter Cabang</option>
+                                                <?php
+                                                    foreach ($cabang as $keyCabang => $valueCabang) {
+                                                        echo '<option value="'.$valueCabang->CompanyId.'">'.$valueCabang->CompanyName.'</option>';
+                                                    }
+                                                ?>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <select class="form-control select-custom">
                                                 <option>Jenis lelang</option>
-                                                <option>Hybrid</option>
-                                                <option>Hybrid</option>
+                                                <option>Live</option>
+                                                <option>Online</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
@@ -101,22 +103,24 @@
 							<div class="filter-table">
                                 <form class="form-inline" id="transaksiPembelian">
                                     <div class="form-group">
-                                        <input type="text" name="filterBeli" class="form-control input-custom" placeholder="Search">
-                                        <i class="fa fa-search"></i>
+                                        <input type="text" name="filterBeli" class="form-control input-custom" placeholder="Search"><i class="fa fa-search"></i>
                                     </div>
                                     <div class="filter-right">
                                         <div class="form-group">
                                             <select class="form-control select-custom">
-                                                <option>Filter by jadwal</option>
-                                                <option>jakarta timur</option>
-                                                <option>jakarta timur</option>
+                                                <option value="">Filter Cabang</option>
+                                                <?php
+                                                    foreach ($cabang as $keyCabang => $valueCabang) {
+                                                        echo '<option value="'.$$valueCabang->CompanyId.'">'.$valueCabang->CompanyName.'</option>';
+                                                    }
+                                                ?>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <select class="form-control select-custom">
                                                 <option>Jenis lelang</option>
-                                                <option>Hybrid</option>
-                                                <option>Hybrid</option>
+                                                <option>Live</option>
+                                                <option>Online</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
@@ -160,6 +164,7 @@
     var tableJual = $('#table-jual').DataTable({
         "dom": 'rt<"bottom"ip><"clear">',
         "bLengthChange": false,
+        "bFilter": true,
         "fnServerParams": function ( aoData ) {
             aoData.push( {"name":"changeJual", "value":$('#changeJual').val()} );
         },
@@ -170,6 +175,7 @@
     var tableBeli = $('#table-beli').DataTable({
         "dom": 'rt<"bottom"ip><"clear">',
         "bLengthChange": false,
+        "bFilter": true,
         "fnServerParams": function ( aoData ) {
             aoData.push( {"name":"changeBeli", "value":$('#changeBeli').val()} );
         },
@@ -180,13 +186,13 @@
     $('input[name="filterJual"]').keypress(function(e) {
         if(e.which == 13) {
             e.preventDefault();
-            tableJual.draw();
+            tableJual.search(this.value).draw();
         }
     });
     $('input[name="filterBeli"]').keypress(function(e) {
         if(e.which == 13) {
             e.preventDefault();
-            tableBeli.draw();
+            tableBeli.search(this.value).draw();
         }
     });
     $.ajax({
@@ -335,4 +341,6 @@
         }
     });
 
+    $('#table-jual > thead > tr > th').removeClass('sorting').removeClass('sorting_asc');
+    $('#table-beli > thead > tr > th').removeClass('sorting').removeClass('sorting_asc');
 </script>
