@@ -144,7 +144,7 @@ function login_Status_form($userdata) {
        </a>
        <ul class="dropdown-menu dropdown-profile">
           <li class="clearfix">
-             <a href="'.site_url('akun/dasbor').'" class="clearfix">
+             <a href="'.site_url('dashboard').'" class="clearfix">
                 <div class="content-profile col-md-6">
                    <img src="'.$pp.'" alt="" title="profile">
                 </div>
