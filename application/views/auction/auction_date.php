@@ -67,9 +67,30 @@
       </div>
    </div>
 </div>
+
+<style>
+   .select2 {
+      margin-top: 9px;
+      top: -5px;
+   }
+</style>
+
 <script>
 var arrHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
 var arrKota = <?php echo json_encode($arrKota); ?>;
+
+// get parameter from front
+var arrPost = '<?php echo $parsing_post ?>';
+if(arrPost !== '') {
+   var arrVal = JSON.parse(arrPost);
+   $("#thisCabang").val(arrVal.thisCabang).trigger('change');
+   switch(arrVal.thisItem) {
+      case 'car-type': $('#cbCar').trigger('click'); break;
+      case 'motorcycle-type': $('#cbMtr').trigger('click'); break;
+      case 'hve-type': $('#cbHve').trigger('click'); break;
+      case 'gadget-type': $('#cbGad').trigger('click'); break;
+   }
+}
 
 function getDates(startDate, endDate) {
    var now = startDate,
@@ -135,7 +156,7 @@ function getCalendar() {
             cbHve: $('#cbHve:checked').val(),
             cbGad: $('#cbGad:checked').val(),
          },
-         success: function(doc) {console.log(doc);
+         success: function(doc) {
             if(doc.length > 0) {
                var events = [];
                for(var i=0; i<doc.length; i++) {

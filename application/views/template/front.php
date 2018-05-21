@@ -17,10 +17,11 @@
             </form>
          </div>
          <div role="tabpanel" class="tab-pane" id="tab-mobile-2">
-            <form class="form-inline clearfix">
+            <form id="search-jadwal" class="form-inline clearfix" action="<?php echo site_url('auction/Auction_date'); ?>" method="POST" data-provide="validation">
                <div class="form-group">
-                  <select class="select-custom form-control" id="thisCabang">
-					<option value="2" ><?php echo ucwords(substr(strtolower('IBID JAKARTA'), 4)); ?></option>
+                  <select class="select-custom form-control" name="thisCabang" id="thisCabang">
+                     <option value="">Pilih Kota</option>
+                     <option value="2"><?php echo ucwords(substr(strtolower('IBID JAKARTA'), 4)); ?></option>
                      <?php foreach($cabang as $row){ if ($row['CompanyId'] != 2){ ?>
                      <option value="<?php echo $row['CompanyId']; ?>" ><?php echo ucwords(substr(strtolower($row['CompanyName']), 4)); ?></option>
                      <?php } } ?>
@@ -28,7 +29,7 @@
                   <label>Kota</label>
                </div>
                <div class="form-group clearfix">
-                  <select class="select-custom form-control select-type" id="thisItem">
+                  <select class="select-custom form-control select-type" name="thisItem" id="thisItem">
                      <option value="car-type"></option>
                      <option value="hve-type"></option>
                      <option value="motorcycle-type"></option>
@@ -36,15 +37,13 @@
                   </select>
                </div>
                <div class="form-group">
-                  <select class="select-custom form-control select-address" id="thisDate">
-                     <option value ="" ></option>
-                     <!-- option value ="" >Jakarta Barat, Jl. Bintaro Mulia, 14/09</option>
-                     <option value ="" >Jakarta Barat, Jl. Bintaro Mulia, 14/09</option -->
+                  <select class="select-custom form-control select-address" name="thisDate" id="thisDate">
+                     <option value="">Pilih Jadwal</option>
                   </select>
                   <label>Jadwal</label>
                </div>
                <div class="form-group">
-                  <button class="btn btn-lg btn-green btn-search" disabled>Cari</button>
+                  <button id="cari-jadwal" class="btn btn-lg btn-green btn-search">Cari</button>
                </div>
             </form>
          </div>
@@ -381,45 +380,44 @@ Number.prototype.padLeft = function(base,chr){
 }
    
 $(function() {
-   $('.filterJadwal').change(function(){
-     thisCabang = $('#thisCabang').val();
-     thisItem = $('#thisItem').val();
-     
-     if (thisItem == 'car-type') item = 6;
-     else if (thisItem == 'motorcycle-type') item = 7;
-     else if (thisItem == 'gadget-type') item = 12;
-     else if (thisItem == 'hve-type') item = 14;
-     else item = 0;
-     
-     d = new Date();
-     dformat = [d.getFullYear(), (d.getMonth()+1).padLeft(), d.getDate().padLeft()].join('-');
-     // dformat = '2018-01-01';
-     
-     if (thisCabang != '' && item > 0){
-         $.ajax({
-             // url: 'http://ibid-ams-schedule.stagingapps.net/api/schedulelist',
-             url: '<?php echo linkservice('AMSSCHEDULE') .'schedulelist/'; ?>',
-             dataType: 'json',
-             method: 'GET',
-             data: {
-                 item: item,
-                 company_id: thisCabang,
-                 startdate: dformat,
-             },
-             success: function(doc) {
-                 html = "";
-                 thisOption = doc.data;
-                 for(i=0; i<thisOption.length; i++){
-                     html = html + '<option value="'+thisOption[i].id+'">'+thisOption[i].date+' '+(thisOption[i].waktu).substring(0, 8);+'</option>';
-                 }
-                 $('#thisDate').html(html);
-             }
-         });
-     }
-     
-   }); 
+   $('#thisCabang').change(function() {
+      thisCabang = $(this).val();
+      thisItem = $('#thisItem').val();
 
-   $('.filterJadwal').change();
+      if (thisItem == 'car-type') item = 6;
+      else if (thisItem == 'motorcycle-type') item = 7;
+      else if (thisItem == 'gadget-type') item = 12;
+      else if (thisItem == 'hve-type') item = 14;
+      else item = 0;
+
+      d = new Date();
+      dformat = [d.getFullYear(), (d.getMonth()+1).padLeft(), d.getDate().padLeft()].join('-');
+      // dformat = '2018-01-01';
+
+      if (thisCabang != '' && item > 0) {
+         $.ajax({
+            url: '<?php echo linkservice('AMSSCHEDULE') .'schedulelist'; ?>',
+            dataType: 'JSON',
+            method: 'GET',
+            success: function(doc) {
+               var html;
+               if(doc.data.length > 0) {
+                  html = '<option value="">Pilih Jadwal</option>';
+                  for(var y = 0; y < doc.data.length; y++) {
+                     thisOption = doc.data[y];
+                     if(thisCabang == thisOption.company_id) {
+                        html += '<option value="'+thisOption.id+'">'+thisOption.date+' '+(thisOption.waktu).substring(0, 5);+'</option>';
+                     }
+                  }
+               }
+               else {
+                  html = '<option value="">Tidak Ada Jadwal</option>';
+               }
+               $('#thisDate').html(html);
+            }
+         });
+      }
+   });
 
    // handle filter cari kendaraan
    $('#cari-object').click(function(e) {
@@ -437,6 +435,31 @@ $(function() {
          $(this).attr('disabled', true);
          $('#cari-object').html('cari <i class="fa fa-spin fa-refresh" style="position:absolute; top:18px; right:80px;"></i>');
          ele.submit();
+      }
+   });
+
+   // handle filter cari jadwal lelang
+   $('#search-jadwal').submit(function(e) {
+      if($('#thisCabang').val() === '') {
+         bootoast.toast({
+            message: "Pilih Cabang",
+            type: 'warning',
+            position: 'top-center',
+            timeout: 3
+         });
+         e.preventDefault();
+      }
+      else if($('#thisDate').val() === '') {
+         bootoast.toast({
+            message: "Pilih Jadwal",
+            type: 'warning',
+            position: 'top-center',
+            timeout: 3
+         });
+         e.preventDefault();
+      }
+      else {
+         $('#cari-jadwal').html('cari <i class="fa fa-spin fa-refresh" style="position:absolute; top:18px; right:80px;"></i>').attr('disabled', true);
       }
    });
 

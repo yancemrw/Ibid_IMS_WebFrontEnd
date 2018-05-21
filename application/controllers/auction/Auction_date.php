@@ -31,6 +31,11 @@ class Auction_date extends CI_Controller {
         }
         $data['cabang'] = @$cabang;
         ############################################################
+
+        // get data from front
+		if(@$this->input->post()) {
+			$data['parsing_post'] = json_encode($this->input->post());
+		}
 		
 		$view = "auction/auction_date";
 		template($view, $data);

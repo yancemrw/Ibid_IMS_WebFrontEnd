@@ -63,8 +63,27 @@ class Front extends CI_Controller {
 		if ($responseApi['err']) { echo "<hr>cURL Error #:" . $responseApi['err']; } else { 
 			$dataApiDetails = json_decode($responseApi['response'],true); 
 		} 
-		$data['formDinamis'] = @$dataApiDetails['formDinamis']; 
+		$data['formDinamis'] = @$dataApiDetails['formDinamis'];
         ############################################################
+
+        ############################################################
+        $lotUrl = linkservice('AMSSCHEDULE').'schedulelist';
+        $lotRes = admsCurl($lotUrl, array());
+		$lotData = curlGenerate($lotRes);
+		if($lotData[0] !== null) {
+			$arrLot = array();
+			foreach($lotData as $key => $value) {
+				$arrLot[$key]['id'] = $value->id;
+				$arrLot[$key]['date'] = $value->date;
+				$arrLot[$key]['company_id'] = $value->company_id;
+				$arrLot[$key]['name'] = $value->CompanyName;
+			}
+			$data['schedule'] = $arrLot;
+		}
+		else {
+			$data['schedule'] = array(array('id'=>'', 'date'=>'Tidak Ada Jadwal Lelang Bulan Ini'));
+		}
+		############################################################
 		$view = "template/front";
 		template($view, $data);
 
