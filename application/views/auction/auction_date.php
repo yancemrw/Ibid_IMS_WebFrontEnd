@@ -69,7 +69,7 @@
 </div>
 
 <style>
-   .select2 {
+   #thisFormCalendar > div > span.select2 {
       margin-top: 9px;
       top: -5px;
    }
