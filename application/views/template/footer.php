@@ -591,6 +591,7 @@ else {*/
         $('#top-transaction-mobile').html('<img src="<?php echo base_url('assetsfront/images/loader/formloader.gif'); ?>" width="24">');
       },
       success: function(data) {
+        var site_url = '<?php echo site_url(); ?>';
         var data = data.data, html = '';
         var tenMinutesLater = new Date();
         tenMinutesLater.setMinutes(tenMinutesLater.getMinutes() + 10)
@@ -615,7 +616,7 @@ else {*/
                     '</a>'+
                     '</li>';
           }
-          html += '<li class="text-center"><a href="" class="viewall-dropdown">Lihat Semua Transaksi</a></li>';
+          html += '<li class="input-dropdown"><a href="'+site_url+'transaction" class="viewall-dropdown">Lihat Semua Transaksi</a></li>';
         }
         else {
           html = 'Tidak Ada Transaksi';
@@ -633,6 +634,7 @@ var UserId    = '<?php echo $this->session->userdata('userdata')['UserId']; ?>';
 var dbRef     = firebase.database();
 var notifRef  = dbRef.ref('notifications/penitip/'+UserId);
 notifRef.on('value', function(snapshot) {
+  var site_url = '<?php echo site_url(); ?>';
   if(snapshot.val() !== null) {
     var val = snapshot.val(),
     data = '', data_notif = '<ul class="notification">',
@@ -664,7 +666,7 @@ notifRef.on('value', function(snapshot) {
                     '</li>';
     }
     data_notif += '</ul>';
-    data += '<li class="text-center"><a href="" class="viewall-dropdown">Lihat Semua Notifikasi</a></li>';
+    data += '<li class="text-center"><a href="'+site_url+'notification" class="viewall-dropdown">Lihat Semua Notifikasi</a></li>';
     $('.notif-count').addClass('notification');
     $('.notif-count').html(object_key.length);
     $('.notif-content').children().children().children('#header-notif').nextAll().each(function(x) {
