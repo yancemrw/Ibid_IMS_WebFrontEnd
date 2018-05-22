@@ -310,6 +310,10 @@ header {
     margin: 10px;
 }
 
+.margin-0-3px {
+    margin: 0 3px;
+}
+
 .margin-left-10px {
 	margin-left: 10px;
 }
@@ -376,6 +380,10 @@ header {
 
 .min-width-833px {
     min-width: 833px;
+}
+
+.min-width-100p {
+    min-width: 100%;
 }
 
 .modal360 {

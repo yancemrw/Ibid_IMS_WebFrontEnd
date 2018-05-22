@@ -650,7 +650,7 @@ notifRef.on('value', function(snapshot) {
               '</div>'+
               '<div class="media-content">'+
               '<h2>1 Pesan Email</h2>'+
-              '<p>'+object_key[i].text+'<span>'+object_key[i].date+'</span></p>'+
+              '<p>'+object_key[i].text+'<span>'+(object_key[i].date).substring(0, (object_key[i].date).length - 3)+'</span></p>'+
               '</div>'+
               '</a>'+
               '</li>';

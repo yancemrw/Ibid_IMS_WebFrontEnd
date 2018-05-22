@@ -1509,6 +1509,10 @@ footer p {
     margin-bottom: 30px
 }
 
+.step-transaction p {
+    color: #81be2a;
+}
+
 form.form-filter {
     background-color: #fff;
     margin: 0;

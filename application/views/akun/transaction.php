@@ -83,16 +83,16 @@
                                 </form>
                             </div>
                             <div class="table-responsive table-container table-transaction">
-                                <table id="table-jual" class="table table-striped table-custom table-custom-transaction table-responsive-am">
+                                <table id="table-jual" class="table table-striped table-custom table-custom-transaction table-responsive-am min-width-100p">
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>No Pol/Serial Number</th>
-                                            <th>Nama Barang</th>
-                                            <th>Jenis</th>
-                                            <th>Harga</th>
-                                            <th>Tanggal</th>
-                                            <th>Status</th>
+                                            <th width="50">No Pol/Serial Number</th>
+                                            <th width="200">Nama Barang</th>
+                                            <th width="50">Jenis</th>
+                                            <th width="100">Harga</th>
+                                            <th width="100">Tanggal</th>
+                                            <th width="250">Status</th>
                                         </tr>
                                     </thead>
                                     <tbody></tbody>
@@ -135,17 +135,17 @@
                                 </form>
                             </div>
                             <div class="table-responsive table-container table-transaction">
-                                <table id="table-beli" class="table table-striped table-custom table-custom-transaction table-responsive-am width-100">
+                                <table id="table-beli" class="table table-striped table-custom table-custom-transaction table-responsive-am min-width-100p">
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>NPL</th>
-                                            <th>No Pol/Serial Number</th>
-                                            <th>Nama Barang</th>
-                                            <th>Jenis</th>
-                                            <th>Harga</th>
-                                            <th>Tanggal</th>
-                                            <th>Status</th>
+                                            <th width="50">NPL</th>
+                                            <th width="80">No Pol/Serial Number</th>
+                                            <th width="200">Nama Barang</th>
+                                            <th width="50">Jenis</th>
+                                            <th width="100">Harga</th>
+                                            <th width="100">Tanggal</th>
+                                            <th width="250">Status</th>
                                         </tr>
                                     </thead>
                                     <tbody></tbody>
@@ -170,7 +170,11 @@
         "language": {
             'emptyTable': 'Tidak Ada Penjualan / Titip Lelang'
         },
-        "ajax": "<?php echo linkservice('frontend').'akun/Transaction/getWinnerDatatables/jual'; ?>"
+        "ajax": "<?php echo linkservice('frontend').'akun/Transaction/getWinnerDatatables/jual'; ?>",
+        "initComplete": function(settings, json) {
+            $('#table-jual > thead > tr > th').removeClass('sorting').removeClass('sorting_asc');
+            $('#table-beli > thead > tr > th').removeClass('sorting').removeClass('sorting_asc');
+        }
     });
     var tableBeli = $('#table-beli').DataTable({
         "dom": 'rt<"bottom"ip><"clear">',
@@ -181,7 +185,11 @@
         "language": {
             'emptyTable': 'Tidak Ada Pembelian'
         },
-        "ajax": "<?php echo linkservice('frontend').'akun/transaction/getWinnerDatatables/beli'; ?>"
+        "ajax": "<?php echo linkservice('frontend').'akun/transaction/getWinnerDatatables/beli'; ?>",
+        "initComplete": function(settings, json) {
+            $('#table-jual > thead > tr > th').removeClass('sorting').removeClass('sorting_asc');
+            $('#table-beli > thead > tr > th').removeClass('sorting').removeClass('sorting_asc');
+        }
     });
     $('input[name="filterJual"]').keypress(function(e) {
         if(e.which == 13) {
@@ -195,7 +203,4 @@
             tableBeli.search(this.value).draw();
         }
     });
-
-    $('#table-jual > thead > tr > th').removeClass('sorting').removeClass('sorting_asc');
-    $('#table-beli > thead > tr > th').removeClass('sorting').removeClass('sorting_asc');
 </script>
