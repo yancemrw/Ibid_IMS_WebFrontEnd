@@ -50,8 +50,7 @@ function login_status_form_mobile($userdata) {
                     </a>
                     <ul class="dropdown-menu dropdown-custom dropdown-transaksi">
                         <li><p class="title-dropdown">Transaksi</p></li>
-                        <li><p id="top-transaction-mobile" class="notif">Tidak Ada Transaksi</p></li>
-                        <li class="text-center"><a href="" class="viewall-dropdown">Lihat Semua Transaksi</a></li>
+                        <li><p id="top-transaction-mobile" class="notif margin-0">Tidak Ada Transaksi</p></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -116,8 +115,7 @@ function login_Status_form($userdata) {
        <ul class="dropdown-menu dropdown-custom">
         <div class="scroll-dropdown">
           <li><p class="title-dropdown">Transaksi</p></li>
-          <li class="input-dropdown"><p id="top-transaction" class="notif">Tidak Ada Transaksi</p></li>
-          <li class="text-center"><a href="" class="viewall-dropdown">Lihat Semua Transaksi</a></li>
+          <li class="input-dropdown"><p id="top-transaction" class="notif margin-0">Tidak Ada Transaksi</p></li>
         </div>
        </ul>
     </li>

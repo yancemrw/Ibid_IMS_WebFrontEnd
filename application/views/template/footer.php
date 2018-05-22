@@ -615,6 +615,7 @@ else {*/
                     '</a>'+
                     '</li>';
           }
+          html += '<li class="text-center"><a href="" class="viewall-dropdown">Lihat Semua Transaksi</a></li>';
         }
         else {
           html = 'Tidak Ada Transaksi';

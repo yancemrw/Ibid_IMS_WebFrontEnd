@@ -25,6 +25,23 @@
     background-color: #fff;
 }
 
+p#top-transaction {
+    display: inline-block;
+    margin: 0;
+    width: 100%;
+}
+
+p#top-transaction li.input-dropdown {
+    display: inline-block;
+    margin: 1px !important;
+    width: 100%;
+}
+
+p#top-transaction li.input-dropdown a {
+    margin: 0 !important;
+    padding: 5px 1px;
+}
+
 a.delete-compare {
     top: -5px !important;
     right: -3px !important;
@@ -304,6 +321,10 @@ header {
 
 .main-management .box-recommend .thumbnail {
     height: calc(100% - 100px);
+}
+
+.margin-0 {
+    margin: 0;
 }
 
 .margin-10px {
