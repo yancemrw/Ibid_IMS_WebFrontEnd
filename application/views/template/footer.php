@@ -638,37 +638,48 @@ notifRef.on('value', function(snapshot) {
   if(snapshot.val() !== null) {
     var val = snapshot.val(),
     data = '', data_notif = '<ul class="notification">',
-    object_key = Object.values(val).reverse();
-    for(var i = 0; i < object_key.length; i++) {
-      var img_src;
-      switch(object_key[i].type) {
-        case 'email': img_src = '<?php echo base_url('assetsfront/images/icon/ic_notif_1.png'); ?>'; break;
-        case 'cc': img_src = '<?php echo base_url('assetsfront/images/icon/ic_notif_2.png'); ?>'; break;
-        case 'pay': img_src = ''; break;
+    object_val = Object.values(val).reverse();
+    object_key = Object.keys(val).reverse();
+    var count_notif = 0;
+    for(var i = 0; i < object_val.length; i++) {
+      if(object_val[i].isread === '0') {
+        var img_src;
+        switch(object_val[i].type) {
+          case 'email': img_src = '<?php echo base_url('assetsfront/images/icon/ic_notif_1.png'); ?>'; break;
+          case 'cc': img_src = '<?php echo base_url('assetsfront/images/icon/ic_notif_2.png'); ?>'; break;
+          case 'pay': img_src = '<?php echo base_url('assetsfront/images/icon/ic_notif_3.png'); ?>'; break;
+        }
+        data += '<li class="clearfix">'+
+                '<a href="javascript:void(0)" onclick="isread('+UserId+', \''+object_key[i]+'\')">'+
+                '<div class="media-image">'+
+                '<img src="'+img_src+'" alt="" title="">'+
+                '</div>'+
+                '<div class="media-content">'+
+                '<h2>'+object_val[i].title+'</h2>'+
+                '<p>'+object_val[i].text+'<span>'+(object_val[i].date).substring(0, (object_val[i].date).length - 3)+'</span></p>'+
+                '</div>'+
+                '</a>'+
+                '</li>';
+        data_notif += '<li onclick="isread('+UserId+', \''+object_key[i]+'\')">'+
+                      '<div class="notif-image"><img src="'+img_src+'" alt=""></div>'+
+                      '<div class="notif-desc">'+
+                      '<h3>'+object_val[i].title+'<span>'+object_val[i].date+'</span></h3>'+
+                      '<p>'+object_val[i].text+'</p>'+
+                      '</div>'+
+                      '</li>';
+        count_notif++;
       }
-      data += '<li class="clearfix">'+
-              '<a href="'+object_key[i].link+'">'+
-              '<div class="media-image">'+
-              '<img src="'+img_src+'" alt="" title="">'+
-              '</div>'+
-              '<div class="media-content">'+
-              '<h2>1 Pesan Email</h2>'+
-              '<p>'+object_key[i].text+'<span>'+(object_key[i].date).substring(0, (object_key[i].date).length - 3)+'</span></p>'+
-              '</div>'+
-              '</a>'+
-              '</li>';
-      data_notif += '<li>'+
-                    '<div class="notif-image"><img src="'+img_src+'" alt=""></div>'+
-                    '<div class="notif-desc">'+
-                    '<h3>1 Pesan Email <span>'+object_key[i].date+'</span></h3>'+
-                    '<p>'+object_key[i].text+'</p>'+
-                    '</div>'+
-                    '</li>';
     }
     data_notif += '</ul>';
     data += '<li class="text-center"><a href="'+site_url+'notification" class="viewall-dropdown">Lihat Semua Notifikasi</a></li>';
-    $('.notif-count').addClass('notification');
-    $('.notif-count').html(object_key.length);
+    if(count_notif > 0) {
+      $('.notif-count').html(count_notif);
+      $('.notif-count').addClass('notification');
+    }
+    else {
+      $('.notif-count').html('');
+      $('.notif-count').removeClass('notification');
+    }
     $('.notif-content').children().children().children('#header-notif').nextAll().each(function(x) {
       if($(this).children().hasClass('notif') === false) {
         if(x > 0) {
@@ -697,6 +708,14 @@ notifRef.on('value', function(snapshot) {
     $('.notif-count').removeClass('notification');
   }
 });
+
+function isread(UserId, key) {
+  var dbRef     = firebase.database();
+  var notifRef  = dbRef.ref('notifications/penitip/'+UserId+'/'+key);
+  notifRef.update({
+    isread: '1'
+  });
+}
 </script>
 </body>
 </html>
