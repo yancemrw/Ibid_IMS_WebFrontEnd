@@ -13,25 +13,25 @@ function linkservice($services) {
 	$MASTER 	= ('MASTER' == strtoupper($services)) ? $return = 'http://ibidadmsdevservicemasterdata.azurewebsites.net/index.php/' : '';
 	$FINANCE 	= ('FINANCE' === strtoupper($services)) ? $return = 'http://ibidadmsdevservicefinance.azurewebsites.net/index.php/' : '';
 	$NPL  		= ('NPL' === strtoupper($services)) ? $return = 'http://ibidadmsdevservicenpl.azurewebsites.net/index.php/' : '';
-	$CMS		= ('CMS' === strtoupper($services)) ? $return = 'http://alpha.ibid.astra.co.id/backend/dapur/' : '';
+	$CMS		= ('CMS' === strtoupper($services)) ? $return = 'http://192.168.123.10/backend/dapur/' : '';
 	*/
 
-	$BACKEND   = ('BACKEND' == strtoupper($services)) ? $return = 'http://alpha.ibid.astra.co.id/backend/adms/' : ''; 
-	$ACCOUNT = ('ACCOUNT' == strtoupper($services)) ? $return = 'http://alpha.ibid.astra.co.id/backend/service/akun/' : '';  
-	$NOTIF     = ('NOTIF' == strtoupper($services)) ? $return = 'http://alpha.ibid.astra.co.id/backend/service/notif/' : '';  
-	$TAKSASI   =  ('TAKSASI' == strtoupper($services)) ? $return = 'http://alpha.ibid.astra.co.id/backend/service/taksasi/' : '';  
-	$FRONTEND   = ('FRONTEND' == strtoupper($services)) ? $return = 'http://alpha.ibid.astra.co.id/' : ''; 
-	$HANDOVER   = ('HANDOVER' == strtoupper($services)) ? $return = 'http://alpha.ibid.astra.co.id/backend/service/handover/' : ''; 
-	$STOCK     = ('STOCK' == strtoupper($services)) ? $return = 'http://alpha.ibid.astra.co.id/backend/service/stok/' : ''; 
-	$MASTER   = ('MASTER' == strtoupper($services)) ? $return = 'http://alpha.ibid.astra.co.id/backend/service/masterdata/' : ''; 
-	$FINANCE   = ('FINANCE' === strtoupper($services)) ? $return = 'http://alpha.ibid.astra.co.id/backend/service/finance/' : ''; 
-	$NPL      = ('NPL' === strtoupper($services)) ? $return = 'http://alpha.ibid.astra.co.id/backend/service/npl/' : ''; 
-	$CMS    = ('CMS' === strtoupper($services)) ? $return = 'http://alpha.ibid.astra.co.id/backend/dapur/' : ''; 
+	$BACKEND   = ('BACKEND' == strtoupper($services)) ? $return = 'http://192.168.123.10/backend/adms/' : ''; 
+	$ACCOUNT = ('ACCOUNT' == strtoupper($services)) ? $return = 'http://192.168.123.10/backend/service/akun/' : '';  
+	$NOTIF     = ('NOTIF' == strtoupper($services)) ? $return = 'http://192.168.123.10/backend/service/notif/' : '';  
+	$TAKSASI   =  ('TAKSASI' == strtoupper($services)) ? $return = 'http://192.168.123.10/backend/service/taksasi/' : '';  
+	$FRONTEND   = ('FRONTEND' == strtoupper($services)) ? $return = 'http://192.168.123.10/' : ''; 
+	$HANDOVER   = ('HANDOVER' == strtoupper($services)) ? $return = 'http://192.168.123.10/backend/service/handover/' : ''; 
+	$STOCK     = ('STOCK' == strtoupper($services)) ? $return = 'http://192.168.123.10/backend/service/stok/' : ''; 
+	$MASTER   = ('MASTER' == strtoupper($services)) ? $return = 'http://192.168.123.10/backend/service/masterdata/' : ''; 
+	$FINANCE   = ('FINANCE' === strtoupper($services)) ? $return = 'http://192.168.123.10/backend/service/finance/' : ''; 
+	$NPL      = ('NPL' === strtoupper($services)) ? $return = 'http://192.168.123.10/backend/service/npl/' : ''; 
+	$CMS    = ('CMS' === strtoupper($services)) ? $return = 'http://192.168.123.10/backend/dapur/' : ''; 
 	
-	$AMSSCHEDULE    = ('AMSSCHEDULE' === strtoupper($services)) ? $return = 'http://alpha.ibid.astra.co.id/backend/serviceams/schedule/api/' : ''; 
-	$AMSSTOCK    = ('AMSSTOCK' === strtoupper($services)) ? $return = 'http://alpha.ibid.astra.co.id/backend/serviceams/stock/api/' : ''; 
-	$AMSAUTOBID    = ('AMSAUTOBID' === strtoupper($services)) ? $return = 'http://alpha.ibid.astra.co.id/backend/serviceams/autobid/api/' : '';
-	$AMSAUCTION    = ('AMSAUCTION' === strtoupper($services)) ? $return = 'http://alpha.ibid.astra.co.id/backend/serviceams/auction/api/' : '';
+	$AMSSCHEDULE    = ('AMSSCHEDULE' === strtoupper($services)) ? $return = 'http://192.168.123.10/backend/serviceams/schedule/api/' : ''; 
+	$AMSSTOCK    = ('AMSSTOCK' === strtoupper($services)) ? $return = 'http://192.168.123.10/backend/serviceams/stock/api/' : ''; 
+	$AMSAUTOBID    = ('AMSAUTOBID' === strtoupper($services)) ? $return = 'http://192.168.123.10/backend/serviceams/autobid/api/' : '';
+	$AMSAUCTION    = ('AMSAUCTION' === strtoupper($services)) ? $return = 'http://192.168.123.10/backend/serviceams/auction/api/' : '';
 	
 	return $return;
 }
