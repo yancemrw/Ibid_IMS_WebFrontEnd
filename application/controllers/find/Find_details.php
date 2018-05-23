@@ -45,7 +45,7 @@ class Find_details extends CI_Controller {
 		$method1 = 'GET';
 		$res1 = admsCurl($url1, array(), $method1);
 		$detailGetSchedule = curlGenerate($res1);
-		if (count(@$detailGetSchedule) > 0){
+		if (count(@$detailGetSchedule) > 0) {
 			$schedule = $detailGetSchedule[0]->thisSchedule;
 			$lot = $detailGetSchedule[0]->LotNo;
 		}
@@ -55,8 +55,8 @@ class Find_details extends CI_Controller {
 			// $lot = 1; // hardcode
 		// }
 		
-		if ($schedule > 0){
-			$url = "http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/getLotDataOnline?schedule=$schedule&lot=$lot";
+		if ($schedule > 0) {
+			$url = linkservice('amslot')."getLotDataOnline?schedule=$schedule&lot=$lot";
 			$datalot = admsCurl($url, array(), 'GET');
 			$datalot = json_decode(@$datalot['response']);
 			$date = explode('-',@$datalot->schedule->date);
