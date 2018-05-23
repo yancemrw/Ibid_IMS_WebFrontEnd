@@ -290,7 +290,7 @@ class Guide extends CI_Controller {
 				        		<img src="'.base_url('assetsfront/images/background/img-prosedure-8.png').'">
 				        	</div>
 				        	<h2>Registrasi & beli Nomor Peserta Lelang (NPL)</h2>
-				        	<p>Isi data diri dan lakukan pembelian NPL secara online di website IBID. Pembayaran NPL bisa melalui Virtual Account, kartu kredit, atau mesin EDC.</span></p>
+				        	<p>Isi data diri dan lakukan pembelian NPL secara online di website IBID. Pembayaran NPL bisa melalui Virtual Account.</span></p>
 				        </div>
 			        </div>
 			        <div id="rules-4" class="rules-procedure">

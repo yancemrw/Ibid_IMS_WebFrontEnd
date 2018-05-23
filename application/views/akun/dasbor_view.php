@@ -93,7 +93,7 @@
                         </div>
                         <div class="form-group floating-label">
                            <input type="number" id="npwp" name="npwp" class="border-radius-none form-control floating-handle only-number" 
-                                    value="<?php echo @$content->users->NpwpNumber; ?>" oninput="checkey(this, event, 16)" 
+                                    value="<?php echo @$content->users->NpwpNumber; ?>" onkeyup="checkOnlyNumber(this, event, 15)" 
                                     onkeypress="setCustomValidity('')" />
                            <label class="label-schedule">NPWP</label>
                         </div>
