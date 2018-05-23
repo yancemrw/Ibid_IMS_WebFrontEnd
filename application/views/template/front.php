@@ -181,7 +181,7 @@
          <div class="overlay-live-auction">
             <h2>Live Auction</h2>
             <p>Berhalangan hadir di lokasi lelang? <span>Manfaatkan opsi Live Auction untuk mengikuti lelang dari mana saja melalui gadget secara real time.</span></p>
-            <button class="btn btn-lg btn-outline" disabled>Informasi Detail</button>
+            <button class="btn btn-lg btn-outline" onclick="location.href='<?php echo site_url('panduan-lelang/live'); ?>';">Informasi Detail</button>
          </div>
       </div>
    </div>
