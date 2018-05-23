@@ -98,7 +98,7 @@
                            <label class="label-schedule">NPWP</label>
                         </div>
                         <div class="form-group floating-label">
-                           <input type="text" name="idcard" id="idcard" class="border-radius-none form-control floating-handle" 
+                           <input type="text" name="idcard" id="idcard" class="border-radius-none form-control floating-handle" maxlength="19" 
                                     value="<?php echo @$content->users->MemberCardTMP; ?>" title="Hanya diisi bila memiliki kartu anggota IBID" />
                            <label class="label-schedule">Nomor Kartu Anggota</label>
                            <div class="help-info">
@@ -242,7 +242,7 @@
                   if(data.status === 1) {
                      bootoast.toast({
                         message: data.messages,
-                        type: 'warning',
+                        type: 'success',
                         position: 'top-center',
                         timeout: 4
                      });
@@ -264,7 +264,7 @@
                            if(data.status === 1) {
                               bootoast.toast({
                                  message: data.messages,
-                                 type: 'warning',
+                                 type: 'success',
                                  position: 'top-center',
                                  timeout: 3
                               });
@@ -277,7 +277,7 @@
                            else if(data.status === 11) {
                               bootoast.toast({
                                  message: data.messages,
-                                 type: 'warning',
+                                 type: 'success',
                                  position: 'top-center',
                                  timeout: 3
                               });
@@ -311,7 +311,7 @@
                      $('#btn-update').html('Simpan').attr('disabled', false);
                      bootoast.toast({
                         message: data.messages,
-                        type: 'warning',
+                        type: 'success',
                         position: 'top-center',
                         timeout: 4
                      });
