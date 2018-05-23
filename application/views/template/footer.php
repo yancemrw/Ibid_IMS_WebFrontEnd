@@ -650,7 +650,7 @@ notifRef.on('value', function(snapshot) {
           case 'pay': img_src = '<?php echo base_url('assetsfront/images/icon/ic_notif_3.png'); ?>'; break;
         }
         data += '<li class="clearfix">'+
-                '<a href="javascript:void(0)" onclick="isread('+UserId+', \''+object_key[i]+'\')">'+
+                '<a href="javascript:void(0)" onclick="isread('+UserId+', \''+object_key[i]+'\')" />'+
                 '<div class="media-image">'+
                 '<img src="'+img_src+'" alt="" title="">'+
                 '</div>'+
@@ -660,7 +660,7 @@ notifRef.on('value', function(snapshot) {
                 '</div>'+
                 '</a>'+
                 '</li>';
-        data_notif += '<li onclick="isread('+UserId+', \''+object_key[i]+'\')">'+
+        data_notif += '<li onclick="isreadpage(this, '+UserId+', \''+object_key[i]+'\')" class="cursor-pointer">'+
                       '<div class="notif-image"><img src="'+img_src+'" alt=""></div>'+
                       '<div class="notif-desc">'+
                       '<h3>'+object_val[i].title+'<span>'+object_val[i].date+'</span></h3>'+
@@ -668,6 +668,15 @@ notifRef.on('value', function(snapshot) {
                       '</div>'+
                       '</li>';
         count_notif++;
+      }
+      else {
+        data_notif += '<li onclick="isreadpage(this, '+UserId+', \''+object_key[i]+'\')" class="cursor-pointer">'+
+                      '<div class="notif-image"><img src="<?php echo base_url('assetsfront/images/icon/ic_notif_0.png'); ?>" alt="" /></div>'+
+                      '<div class="notif-desc">'+
+                      '<h3>'+object_val[i].title+'<span>'+object_val[i].date+'</span></h3>'+
+                      '<p>'+object_val[i].text+'</p>'+
+                      '</div>'+
+                      '</li>';
       }
     }
     data_notif += '</ul>';
@@ -715,6 +724,15 @@ function isread(UserId, key) {
   notifRef.update({
     isread: '1'
   });
+}
+
+function isreadpage(ele, UserId, key) {
+  var dbRef     = firebase.database();
+  var notifRef  = dbRef.ref('notifications/penitip/'+UserId+'/'+key);
+  notifRef.update({
+    isread: '1'
+  });
+  $(ele).children('div:first').children().replaceWith('<img src="<?php echo base_url('assetsfront/images/icon/ic_notif_0.png'); ?>" alt="">');
 }
 </script>
 </body>
