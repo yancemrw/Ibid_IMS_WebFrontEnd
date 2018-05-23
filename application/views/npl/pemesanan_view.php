@@ -5,6 +5,20 @@
                 <h2>Keuntungan Beli NPL di IBID?</h2>
                 <ul class="auction-info clearfix">
                     <li class="item">
+                        <div class="form-info ic ic-Npl"></div>
+                        <div class="content-media">
+                            <h2>Apa itu NPL ?</h2>
+                            <p>NPL adalah Nomor Peserta Lelang  yang digunakan peserta untuk melakukan penawaran atau bidding atas kendaraan yang dipilih saat pelelangan. NPL diperlukan untuk berpartisipasi dalam lelang Onsite, Online, dan Live Auction. IBID sendiri menyediakan dua jenis NPL, yaitu NPL Unlimited dan Reguler.</p>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="form-info ic ic-No-NPL"></div>
+                        <div class="content-media">
+                            <h2>Nomor Peserta Lelang (NPL) Unlimited</h2>
+                            <p>Nikmati kemudahan lebih dengan menggunakan NPL Unlimited. Cukup membeli satu NPL yang dapat digunakan untuk mengikuti berbagai jadwal lelang bahkan secara bersamaan dan menawar kendaraan tanpa batasan maksimal.</p>
+                        </div>
+                    </li>
+                    <li class="item">
                         <div class="form-info ic ic-Mudah"></div>
                         <div class="content-media">
                             <h2>Proses Mudah dan Aman</h2>
@@ -16,13 +30,6 @@
                         <div class="content-media">
                             <h2>Deposit 100% Aman & Terjamin</h2>
                             <p>Jika Anda tidak menang lelang Uang deposit dari pembelian NPL akan dikembalikan 100% tanpa potongan apapun.</p>
-                        </div>
-                    </li>
-                    <li class="item">
-                        <div class="form-info ic ic-No-NPL"></div>
-                        <div class="content-media">
-                            <h2>Nomor Peserta Lelang (NPL) Unlimited</h2>
-                            <p>Nikmati kemudahan lebih dengan menggunakan NPL Unlimited. Cukup membeli satu NPL yang dapat digunakan untuk mengikuti berbagai jadwal lelang bahkan secara bersamaan dan menawar kendaraan tanpa batasan maksimal.</p>
                         </div>
                     </li>
                 </ul>

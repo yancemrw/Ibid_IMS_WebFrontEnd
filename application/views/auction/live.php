@@ -3,7 +3,7 @@
 		<div class="row header-live-auction">
 			<div class="col-md-6 col-sm-6">
 				<h2>Live Auction</h2>
-				<p>Pilih Jadwal Lelang Yang Ingin Anda Ikuti Maksimal 4</p>
+				<p>Pilih maksimum 4 jadwal lelang yang ingin Anda ikuti</p>
 			</div>
 			<div class="col-md-6 col-sm-6">
 				<select id="thisSelectItem" class="form-control select-custom">

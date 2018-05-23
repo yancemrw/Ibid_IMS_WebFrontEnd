@@ -4,7 +4,7 @@
          <div class="col-md-12">
             <form>
                <div class="form-group search-product">
-                  <input type="text" class="form-control" id="searching" placeholder="Cari berdasarkan merek, tipe, atau kata kunci lain, contoh: acura sedan">
+                  <input type="text" class="form-control" id="searching" placeholder="Cari berdasarkan merek, seri, tahun, atau kata kunci lain, contoh: Toyota Avanza">
                   <i class="fa fa-search"></i>
                </div>
             </form>
@@ -512,7 +512,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
                            '<div class="boxright-mobile">'+
                            '<span class="'+classStatus+'">'+statusStock+'</span>'+
                            '<h2>'+compare_data.Merk+' '+compare_data.Seri+' '+compare_data.Silinder+' '+compare_data.Tipe+' '+compare_data.Transmisi+'</h2>'+
-                           '<span>'+compare_data.Tahun+'</span> <span class="price">Rp. '+currency_format(compare_data.Price)+'</span>'+
+                           '<span>'+compare_data.Tahun+'</span> <span class="price">Rp '+currency_format(compare_data.Price)+'</span>'+
                            '<p><span>Jadwal</span><span class="fa fa-calendar"></span><span class="wkt'+dataz.thisScheduleId+'">'+waktu+'</span></p>'+
                            '<p><span>Lokasi</span><span class="fa fa-map-marker"></span><span class="sch'+dataz.thisScheduleId+'">'+thisCabang[dataz.CompanyId]+'</span></p>'+
                            '</div>'+
@@ -664,7 +664,7 @@ function loadContainerPaging(offset, limit, linked, dataForm = '', type = 1) {
                               '<div class="boxright-mobile">'+
                               '<span class="'+classStatus+'">'+statusStock+'</span>'+
                               '<h2>'+compare_data.Merk+' '+compare_data.Seri+' '+compare_data.Silinder+' '+compare_data.Tipe+' '+compare_data.Transmisi+'</h2>'+
-                              '<span>'+compare_data.Tahun+'</span> <span class="price">Rp. '+currency_format(compare_data.Price)+'</span>'+
+                              '<span>'+compare_data.Tahun+'</span> <span class="price">Rp '+currency_format(compare_data.Price)+'</span>'+
                               '<p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span class="wkt'+dataz.thisScheduleId+'">'+waktu+'</span></p>'+
                               '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span class="sch'+dataz.thisScheduleId+'">'+thisCabang[dataz.CompanyId]+'</span></p>'+
                               '</div>'+

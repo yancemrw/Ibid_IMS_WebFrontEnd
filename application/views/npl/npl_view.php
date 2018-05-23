@@ -26,24 +26,31 @@
                 <h2>Keuntungan Beli NPL di IBID?</h2>
                 <ul class="auction-info clearfix">
                     <li class="item">
-                        <div class="form-info ic ic-Mudah display-block"></div>
+                        <div class="form-info ic ic-Npl"></div>
                         <div class="content-media">
-                            <h2>Proses Mudah dan Aman</h2>
-                            <p>Proses pembelian dan pembayaran Nomor Peserta Lelang (NPL) dilakukan secara online lewat website IBID. Pilihan metode pembayaran kami pun telah terverifikasi sehingga menjamin privasi dan keamanan transaksi Anda.</p>
+                            <h2>Apa itu NPL ?</h2>
+                            <p>NPL adalah Nomor Peserta Lelang  yang digunakan peserta untuk melakukan penawaran atau bidding atas kendaraan yang dipilih saat pelelangan. NPL diperlukan untuk berpartisipasi dalam lelang Onsite, Online, dan Live Auction. IBID sendiri menyediakan dua jenis NPL, yaitu NPL Unlimited dan Reguler.</p>
                         </div>
                     </li>
                     <li class="item">
-                        <div class="form-info ic ic-Deposit-100_ display-block"></div>
-                        <div class="content-media">
-                            <h2>Deposit 100% Aman & Terjamin</h2>
-                            <p>Jika Anda belum berhasil membeli objek lelang, uang deposit dari pembelian NPL akan kembali 100%, tanpa potongan apapun</p>
-                        </div>
-                    </li>
-                    <li class="item">
-                        <div class="form-info ic ic-No-NPL display-block"></div>
+                        <div class="form-info ic ic-No-NPL"></div>
                         <div class="content-media">
                             <h2>Nomor Peserta Lelang (NPL) Unlimited</h2>
-                            <p>Lelang menjadi lebih mudah dengan NPL Unlimited. Satu NPL dapat Anda gunakan untuk berpartisipasi di semua jadwal lelang, bahkan secara bersamaan! Tawar kendaraan favorit Anda tanpa batas maksimal.</p>
+                            <p>Nikmati kemudahan lebih dengan menggunakan NPL Unlimited. Cukup membeli satu NPL yang dapat digunakan untuk mengikuti berbagai jadwal lelang bahkan secara bersamaan dan menawar kendaraan tanpa batasan maksimal.</p>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="form-info ic ic-Mudah"></div>
+                        <div class="content-media">
+                            <h2>Proses Mudah dan Aman</h2>
+                            <p>Proses pembelian nomor peserta lelang (NPL) dan pembayaran dilakukan secara online di Website IBID dengan berbagai pilihan metode pembayaran yang yang terotentikasi menjamin privasi dan keamanan transaksi online Anda</p>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="form-info ic ic-Deposit-100_"></div>
+                        <div class="content-media">
+                            <h2>Deposit 100% Aman & Terjamin</h2>
+                            <p>Jika Anda tidak menang lelang Uang deposit dari pembelian NPL akan dikembalikan 100% tanpa potongan apapun.</p>
                         </div>
                     </li>
                 </ul>

@@ -15,7 +15,7 @@
                      </select>
                   </div>
                   <div class="form-group">
-                     <label>Jenis Barang </label>
+                     <label>Jenis Objek Lelang</label>
                      <div class=" select-auctCategory">
                         <label class="car-type ">
                            <div class="ic ic-Mobil">
