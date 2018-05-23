@@ -5,8 +5,8 @@ class Checkout extends CI_Controller {
 
 	function __construct() {
 		parent::__construct();
-		$this->link = 'http://beta.ibid.astra.co.id/backend/service/akun/email/logo2.jpg';
-		$this->biayaAdm = 5000;
+		$this->link = linkservice('account').'email/logo2.jpg';
+		$this->biayaAdm = 0;
 	}
 
 	function index(){
@@ -782,7 +782,7 @@ class Checkout extends CI_Controller {
 			'attachment' => []
 		);  
 
-		$url 			= "http://alpha.ibid.astra.co.id/backend/service/notif/api/notification";
+		$url 			= linkservice('notif')."api/notification";
 		$method 		= 'POST';
 		$responseApi 	= admsCurl($url, $dataInsert, $method);
 		###############################
