@@ -335,6 +335,10 @@ header {
     margin: 0 3px;
 }
 
+.margin-10px-0 {
+    margin: 10px 0;
+}
+
 .margin-left-10px {
 	margin-left: 10px;
 }
