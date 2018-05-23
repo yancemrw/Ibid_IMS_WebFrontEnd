@@ -442,7 +442,7 @@ $(function() {
    $('#search-jadwal').submit(function(e) {
       if($('#thisCabang').val() === '') {
          bootoast.toast({
-            message: "Pilih Cabang",
+            message: "Pilih Kota",
             type: 'warning',
             position: 'top-center',
             timeout: 3
