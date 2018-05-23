@@ -32,6 +32,7 @@ function linkservice($services) {
 	$AMSSTOCK    = ('AMSSTOCK' === strtoupper($services)) ? $return = 'http://alpha.ibid.astra.co.id/backend/serviceams/stock/api/' : ''; 
 	$AMSAUTOBID    = ('AMSAUTOBID' === strtoupper($services)) ? $return = 'http://alpha.ibid.astra.co.id/backend/serviceams/autobid/api/' : '';
 	$AMSAUCTION    = ('AMSAUCTION' === strtoupper($services)) ? $return = 'http://alpha.ibid.astra.co.id/backend/serviceams/auction/api/' : '';
+	$AMSLOT    = ('AMSLOT' === strtoupper($services)) ? $return = 'http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/' : '';
 	
 	return $return;
 }

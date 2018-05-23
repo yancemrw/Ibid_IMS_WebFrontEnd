@@ -619,7 +619,7 @@ else {*/
           html += '<li class="input-dropdown"><a href="'+site_url+'transaction" class="viewall-dropdown">Lihat Semua Transaksi</a></li>';
         }
         else {
-          html = 'Tidak Ada Transaksi';
+          html = '<div class="margin-10px-0">Tidak Ada Transaksi</div>';
         }
         $('#top-transaction').html(html);
         $('#top-transaction-mobile').html(html);
@@ -650,7 +650,7 @@ notifRef.on('value', function(snapshot) {
           case 'pay': img_src = '<?php echo base_url('assetsfront/images/icon/ic_notif_3.png'); ?>'; break;
         }
         data += '<li class="clearfix">'+
-                '<a href="javascript:void(0)" onclick="isread('+UserId+', \''+object_key[i]+'\')" />'+
+                '<a href="javascript:void(0)" onclick="isread('+UserId+', \''+object_key[i]+'\')">'+
                 '<div class="media-image">'+
                 '<img src="'+img_src+'" alt="" title="">'+
                 '</div>'+
