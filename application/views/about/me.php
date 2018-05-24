@@ -287,7 +287,7 @@
 			<h2>Keunggulan Kami</h2>
 			<?php foreach ($content->keunggulan as $keyUnggul => $valueUnggul) { ?>
 			<div class="col-md-6">
-				<img src="<?php echo base_url('assetsfront/images/icon/about-live-auction.png'); ?>" alt="" title="">
+				<img src="<?php echo linkservice('cms').'uploads/contents/'.$valueUnggul->Photo; ?>" alt="" title="">
 				<h3><?php echo $valueUnggul->Title; ?></h3>
 				<?php echo $valueUnggul->Content; ?>
 			</div>
