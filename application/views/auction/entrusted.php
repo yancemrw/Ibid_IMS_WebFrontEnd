@@ -30,28 +30,28 @@
 						<div class="form-info ic ic-Cepat display-block"></div>
 						<div class="content-media">
 							<h2>Cepat</h2>
-							<p>Setelah melalui proses inspeksi, apapun kendaraan Anda dapat langsung ikut dilelang pada jadwal lelang terdekat </p>
+							<p>Setelah proses inspeksi selesai, kendaraan Anda dapat langsung ikut pada jadwal lelang terdekat.</p>
 						</div>
 					</li>
 					<li class="item">
 						<div class="form-info ic ic-Harga-Jual-Optimal display-block"></div>
 						<div class="content-media">
-							<h2>Harga Jual Option</h2>
-							<p>Setelah melalui proses inspeksi, apapun kendaraan Anda dapat langsung ikut dilelang pada jadwal lelang terdekat </p>
+							<h2>Harga Jual Optimal</h2>
+							<p>Inspeksi kendaraan menggunakan Astra Car Valuation yang merupakan metode saintifik. Rekomendasi harga pun lebih sesuai dan optimal.</p>
 						</div>
 					</li>
 					<li class="item">
 						<div class="form-info ic ic-Cepat-Terjual display-block"></div>
 						<div class="content-media">
 							<h2>Cepat Terjual</h2>
-							<p>Setelah melalui proses inspeksi, apapun kendaraan Anda dapat langsung ikut dilelang pada jadwal lelang terdekat </p>
+							<p>IBID menggelar lelang dengan frekuensi tinggi secara rutin di banyak kota di Indonesia. Sistem lelang berbasis teknologi membuka kesempatan bagi semua orang untuk mengikuti lelang tanpa datang ke lokasi. Potensi kendaraan Anda terjual cepat pun jauh lebih tinggi.</p>
 						</div>
 					</li>
 					<li class="item">
 						<div class="form-info ic ic-Solusi-Jual-Aset display-block"></div>
 						<div class="content-media">
 							<h2>Solusi Jual Asset Kendaraan Perusahaan</h2>
-							<p>erusahaan ingin menjual asset kendaraan? Titip jual saja via lelang. Mudah, aman & efisien. <a href="">Hubungi kami sekarang</a>, tim kami siap membantu.</p>
+							<p>Perusahaan ingin menjual aset kendaraan? Titip jual saja via lelang. Mudah, aman & efisien. Hubungi kami sekarang, tim kami siap membantu.</p>
 						</div>
 					</li>
 				</ul>
