@@ -74,17 +74,28 @@
 								<tr>
 									<th>No</th>
 									<th>NPLNumber</th>
-									<th>Obj Lelang</th>
+									<th>Objek Lelang</th>
 									<th>Jenis NPL</th>
 									<th>Tanggal</th>
 									<th>Status</th>
-									<th></th>
+									<!--th></th-->
 								</tr>
 							</thead>
 							<tbody>
-								<?php foreach($listNpl as $row){ ?>
+								<?php 
+                                foreach($listNpl as $key => $row) {
+                                    if($row->Active === 1 && $row->IsUsed === null) {
+                                        $stat = 'Tersedia';
+                                    }
+                                    else if($row->Active === 0 && $row->IsUsed === 1) {
+                                        $stat = 'Menang';
+                                    }
+                                    else if($row->Active === 1 && $row->IsUsed === 0) {
+                                        $stat = 'Kalah';
+                                    }
+                                ?>
 								<tr>
-									<td><?php echo $row->NPLId; ?></td>
+									<td><?php echo ($key + 1); ?></td>
 									<td><?php echo $row->NPLNumber; ?></td>
 									<td><?php echo @$detailItem[$row->ItemId]['ItemName']; ?></td>
 									<td><?php echo $row->NPLType; ?></td>
@@ -95,8 +106,8 @@
 										}
 										// echo $row->ScheduleId; 
 									?></td>
-									<td><?php echo $row->IsUsed; ?></td>
-									<td><?php echo $row->NPLId; ?></td>
+									<td class="status"><?php echo $stat; ?></td>
+									<!--td><?php echo $row->NPLId; ?></td-->
 								</tr>
 								<?php } ?>
 							</tbody>
