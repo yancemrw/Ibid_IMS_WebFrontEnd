@@ -30,8 +30,7 @@ class Npl_manage extends CI_Controller {
 		$responseApi = admsCurl($url, array('BiodataId' => @$userdata['UserId']), $method);
 		$listNpl = curlGenerate($responseApi);
 
-		// print_r($responseApi); die();
-		
+		//echo "<pre>"; print_r($listNpl); exit();
 		
 		$arrScheduleId = array();
 		$arrItemId = array();
