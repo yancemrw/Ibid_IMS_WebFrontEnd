@@ -114,6 +114,7 @@
     background-image: url(../images/icon/icon-ibid.png);
     background-repeat: no-repeat;
     vertical-align: middle;
+	display: inline-flex;
 }
 
 .ic-360 {

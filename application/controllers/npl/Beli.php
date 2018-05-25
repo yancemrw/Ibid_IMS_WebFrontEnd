@@ -29,6 +29,12 @@ class Beli extends CI_Controller {
 			'form_auth'			=> login_Status_form($userdata)
 		);
 
+		// get cms data
+		$url = linkservice('cms')."api/belinpl";
+		$method = 'GET';
+		$res = admsCurl($url, array(), $method);
+		$data['cms'] = curlGenerate($res); //echo "<pre>"; print_r($data['cms']); exit;
+
 		### diambil dari frontend lama
 		$this->load->library('cart');
 		$data['message'] = $this->session->flashdata('message');
