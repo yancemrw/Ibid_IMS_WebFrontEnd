@@ -216,6 +216,14 @@
     }
   });
 
+  function alert_bootoast(value) {
+    bootoast.toast({
+      message: value,
+      type: 'warning',
+      position: 'top-center'
+    });
+  }
+
   function showContent() {
     if(document.getElementById('content') !== null) {
       document.getElementById('preloader').style.display = 'none';
