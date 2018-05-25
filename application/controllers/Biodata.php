@@ -190,6 +190,12 @@ class Biodata extends CI_Controller {
 
 		$data['title']	= 'Pembelian NPL';
 		$userdata = $this->session->userdata('userdata');
+
+		// get cms data
+		$url = linkservice('cms')."api/belinpl";
+		$method = 'GET';
+		$res = admsCurl($url, array(), $method);
+
 		$data = array (
 			// header white untuk selain home, karena menggunakan header yang berwarna putih
 			'header_white'		=> "header-white",
@@ -197,7 +203,8 @@ class Biodata extends CI_Controller {
 			'title'				=> 'Beli Nomor Peserta Lelang ( NPL )',
 			'form_auth_mobile'	=> login_status_form_mobile($userdata),
 			'form_auth'			=> login_Status_form($userdata),
-			'phone'				=> (@$this->session->userdata('Phone')) ? $this->session->userdata('Phone') : ''
+			'phone'				=> (@$this->session->userdata('Phone')) ? $this->session->userdata('Phone') : '',
+			'cms'				=> curlGenerate($res)
 		);
 		$view	= 'npl/npl_otp_view';  
 		template($view , $data);
