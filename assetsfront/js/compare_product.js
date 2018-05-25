@@ -126,16 +126,33 @@ function setComparePage(img_empty) {
    $('#loadContent').html(content);
 }
 
+function check_exists(obj1, obj2) {
+   var exists = false;
+   for(var i = 0; i < obj2.length; i++) {
+      if(obj1.AuctionItemId === obj2[i].AuctionItemId) {
+         exists = true;
+      }
+   }
+   return exists;
+}
+
 function set_compare_product(object, linked) {
-   if(localStorage.getItem("CP") === null) {
-      localStorage.setItem("CP", JSON.stringify([object]));
-      document.getElementById('addcompare').style.display = 'block';
+   var getStorage = localStorage.getItem("CP");
+   check_exists(object, JSON.parse(getStorage));
+   if(check_exists(object, JSON.parse(getStorage)) === true) {
+      alert_bootoast('Objek sudah ditambahkan di Perbandingkan Produk, Silahkan pilih objek yang lain');
    }
-   else if(JSON.parse(localStorage.getItem("CP")).length >= 1 && JSON.parse(localStorage.getItem("CP")).length < 4) {
-      var rep = appendObjTo(JSON.parse(localStorage.getItem("CP")), object);
-      localStorage.setItem("CP", JSON.stringify(rep));
+   else {
+      if(getStorage === null) {
+         localStorage.setItem("CP", JSON.stringify([object]));
+         document.getElementById('addcompare').style.display = 'block';
+      }
+      else if(JSON.parse(localStorage.getItem("CP")).length >= 1 && JSON.parse(localStorage.getItem("CP")).length < 4) {
+         var rep = appendObjTo(JSON.parse(localStorage.getItem("CP")), object);
+         localStorage.setItem("CP", JSON.stringify(rep));
+      }
+      setCompare(linked);
    }
-   setCompare(linked);
 }
 
 // function for add object into array
