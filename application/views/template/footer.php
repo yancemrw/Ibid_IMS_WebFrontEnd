@@ -685,14 +685,15 @@ notifRef.on('value', function(snapshot) {
       }
     }
     data_notif += '</ul>';
-    data += '<li class="text-center"><a href="'+site_url+'notification" class="viewall-dropdown">Lihat Semua Notifikasi</a></li>';
     if(count_notif > 0) {
       $('.notif-count').html(count_notif);
       $('.notif-count').addClass('notification');
+      data += '<li class="text-center"><a href="'+site_url+'notification" class="viewall-dropdown">Lihat Semua Notifikasi</a></li>';
     }
     else {
       $('.notif-count').html('');
       $('.notif-count').removeClass('notification');
+      data += '<li><p class="notif">Tidak Ada Notifikasi</p></li>';
     }
     $('.notif-content').children().children().children('#header-notif').nextAll().each(function(x) {
       if($(this).children().hasClass('notif') === false) {
