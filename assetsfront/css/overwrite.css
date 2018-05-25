@@ -738,7 +738,7 @@ header {
     #top-transaction-mobile > li.input-dropdown a {
         width: 100%;
         padding: 10px;
-        text-align: left;
+        text-align: center;
     }
     .navbar-custom .nav>li>a {
         margin: 0px 3px;

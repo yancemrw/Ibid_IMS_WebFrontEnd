@@ -216,6 +216,14 @@
     }
   });
 
+  function alert_bootoast(value) {
+    bootoast.toast({
+      message: value,
+      type: 'warning',
+      position: 'top-center'
+    });
+  }
+
   function showContent() {
     if(document.getElementById('content') !== null) {
       document.getElementById('preloader').style.display = 'none';
@@ -641,13 +649,13 @@ notifRef.on('value', function(snapshot) {
     object_val = Object.values(val).reverse();
     object_key = Object.keys(val).reverse();
     var count_notif = 0;
+    var img_src;
     for(var i = 0; i < object_val.length; i++) {
       if(object_val[i].isread === '0') {
-        var img_src;
         switch(object_val[i].type) {
-          case 'email': img_src = '<?php echo base_url('assetsfront/images/icon/ic_notif_1.png'); ?>'; break;
-          case 'cc': img_src = '<?php echo base_url('assetsfront/images/icon/ic_notif_2.png'); ?>'; break;
-          case 'pay': img_src = '<?php echo base_url('assetsfront/images/icon/ic_notif_3.png'); ?>'; break;
+          case 'email': img_src = '<?php echo base_url('assetsfront/images/icon/ic_notif_1_on.png'); ?>'; break;
+          case 'cc': img_src = '<?php echo base_url('assetsfront/images/icon/ic_notif_2_on.png'); ?>'; break;
+          case 'pay': img_src = '<?php echo base_url('assetsfront/images/icon/ic_notif_3_on.png'); ?>'; break;
         }
         data += '<li class="clearfix">'+
                 '<a href="javascript:void(0)" onclick="isread('+UserId+', \''+object_key[i]+'\')">'+
@@ -670,8 +678,13 @@ notifRef.on('value', function(snapshot) {
         count_notif++;
       }
       else {
+        switch(object_val[i].type) {
+          case 'email': img_src = '<?php echo base_url('assetsfront/images/icon/ic_notif_1_off.png'); ?>'; break;
+          case 'cc': img_src = '<?php echo base_url('assetsfront/images/icon/ic_notif_2_off.png'); ?>'; break;
+          case 'pay': img_src = '<?php echo base_url('assetsfront/images/icon/ic_notif_3_off.png'); ?>'; break;
+        }
         data_notif += '<li onclick="isreadpage(this, '+UserId+', \''+object_key[i]+'\')" class="cursor-pointer">'+
-                      '<div class="notif-image"><img src="<?php echo base_url('assetsfront/images/icon/ic_notif_0.png'); ?>" alt="" /></div>'+
+                      '<div class="notif-image"><img src="'+img_src+'" alt="" /></div>'+
                       '<div class="notif-desc">'+
                       '<h3>'+object_val[i].title+'<span>'+object_val[i].date+'</span></h3>'+
                       '<p>'+object_val[i].text+'</p>'+
@@ -680,14 +693,15 @@ notifRef.on('value', function(snapshot) {
       }
     }
     data_notif += '</ul>';
-    data += '<li class="text-center"><a href="'+site_url+'notification" class="viewall-dropdown">Lihat Semua Notifikasi</a></li>';
     if(count_notif > 0) {
       $('.notif-count').html(count_notif);
       $('.notif-count').addClass('notification');
+      data += '<li class="text-center"><a href="'+site_url+'notification" class="viewall-dropdown">Lihat Semua Notifikasi</a></li>';
     }
     else {
       $('.notif-count').html('');
       $('.notif-count').removeClass('notification');
+      data += '<li><p class="notif">Tidak Ada Notifikasi</p></li>';
     }
     $('.notif-content').children().children().children('#header-notif').nextAll().each(function(x) {
       if($(this).children().hasClass('notif') === false) {

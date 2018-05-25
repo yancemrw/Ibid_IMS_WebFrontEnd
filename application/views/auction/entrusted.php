@@ -19,41 +19,15 @@
 			<div class="col-md-7 col-sm-6">
 				<h2>Keuntungan Titip lelang di IBID?</h2>
 				<ul class="auction-info clearfix">
-					<li class="item">
-						<div class="form-info ic ic-Mudah display-block"></div>
-						<div class="content-media">
-							<h2>Mudah</h2>
-							<p>Proses registrasi dan pemilihan jadwal inspeksi kendaraan cukup dengan mengisi form via website.</p>
-						</div>
-					</li>
-					<li class="item">
-						<div class="form-info ic ic-Cepat display-block"></div>
-						<div class="content-media">
-							<h2>Cepat</h2>
-							<p>Setelah melalui proses inspeksi, apapun kendaraan Anda dapat langsung ikut dilelang pada jadwal lelang terdekat </p>
-						</div>
-					</li>
-					<li class="item">
-						<div class="form-info ic ic-Harga-Jual-Optimal display-block"></div>
-						<div class="content-media">
-							<h2>Harga Jual Option</h2>
-							<p>Setelah melalui proses inspeksi, apapun kendaraan Anda dapat langsung ikut dilelang pada jadwal lelang terdekat </p>
-						</div>
-					</li>
-					<li class="item">
-						<div class="form-info ic ic-Cepat-Terjual display-block"></div>
-						<div class="content-media">
-							<h2>Cepat Terjual</h2>
-							<p>Setelah melalui proses inspeksi, apapun kendaraan Anda dapat langsung ikut dilelang pada jadwal lelang terdekat </p>
-						</div>
-					</li>
-					<li class="item">
-						<div class="form-info ic ic-Solusi-Jual-Aset display-block"></div>
-						<div class="content-media">
-							<h2>Solusi Jual Asset Kendaraan Perusahaan</h2>
-							<p>erusahaan ingin menjual asset kendaraan? Titip jual saja via lelang. Mudah, aman & efisien. <a href="">Hubungi kami sekarang</a>, tim kami siap membantu.</p>
-						</div>
-					</li>
+					<?php foreach($cms->titip as $keyCms => $valueCms) { ?>
+                    <li class="item">
+                        <div class="form-info display-block ic <?php echo $valueCms->ClassName; ?>"></div>
+                        <div class="content-media">
+                            <h2><?php echo $valueCms->Title; ?></h2>
+                            <p><?php echo $valueCms->Content; ?></p>
+                        </div>
+                    </li>
+                    <?php } ?>
 				</ul>
 			</div>
 			<div class="col-md-5 col-sm-6">
@@ -153,14 +127,15 @@
 </div>
 
 <script>
+var count_slide = '<?php echo count($cms->titip); ?>';
 $('.auction-info').slick({
 	dots: false,
 	infinite: false,
 	speed: 300,
 	prevArrow: false,
 	nextArrow: false,
-	slidesToShow: 5,
-	slidesToScroll: 5,
+	slidesToShow: count_slide,
+	slidesToScroll: count_slide,
 	responsive: [
 		{
 			breakpoint: 768,

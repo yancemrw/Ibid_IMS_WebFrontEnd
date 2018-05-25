@@ -28,6 +28,12 @@ class Entrusted extends CI_Controller {
 			'form_auth'		=> login_Status_form($this->userdata)
 		);
 
+		// get cms data
+		$url = linkservice('cms')."api/titiplelang";
+		$method = 'GET';
+		$res = admsCurl($url, array(), $method);
+		$data['cms'] = curlGenerate($res);
+
 		## get detail users
 		$id = trim(@$this->session->userdata('userdata')['UserId']);
 		$url = linkservice('account') ."users/details/".$id;
@@ -50,7 +56,6 @@ class Entrusted extends CI_Controller {
 			redirect('titip-lelang-booking');
 		}
 		else {
-			$data['title']	= 'Titip Lelang';
 			$data['page'] 	= 'pembelian/add';
 			$data['detailBiodata'] = $detailBiodata;
 			

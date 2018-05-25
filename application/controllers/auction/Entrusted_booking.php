@@ -27,6 +27,12 @@ class Entrusted_booking extends CI_Controller {
 			'form_auth_mobile' => login_status_form_mobile($this->userdata),
 			'form_auth'		=> login_Status_form($this->userdata)
 		);
+
+		// get cms data
+		$url = linkservice('cms')."api/titiplelang";
+		$method = 'GET';
+		$res = admsCurl($url, array(), $method);
+		$data['cms'] = curlGenerate($res);
 		
 		##################################
 		## form dinamis booking taksasi ##

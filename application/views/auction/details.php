@@ -334,7 +334,7 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
         console.log('----------------');
 
               $.ajax({
-                url: "http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/nextPrev/"+val<?php echo $key+1; ?>.NoLot+"/"+val<?php echo $key+1; ?>.ScheduleId, 
+                url: "<?php echo linkservice('AMSLOT'); ?>nextPrev/"+val<?php echo $key+1; ?>.NoLot+"/"+val<?php echo $key+1; ?>.ScheduleId, 
                 success: function(result){
                   if (result.status) {
                     data = result.data;

@@ -32,7 +32,8 @@ function linkservice($services) {
 	$AMSSTOCK    = ('AMSSTOCK' === strtoupper($services)) ? $return = 'http://charlie.ibid.astra.co.id/backend/serviceams/stock/api/' : ''; 
 	$AMSAUTOBID    = ('AMSAUTOBID' === strtoupper($services)) ? $return = 'http://charlie.ibid.astra.co.id/backend/serviceams/autobid/api/' : '';
 	$AMSAUCTION    = ('AMSAUCTION' === strtoupper($services)) ? $return = 'http://charlie.ibid.astra.co.id/backend/serviceams/auction/api/' : '';
-	$AMSAUCTION    = ('AMSLOT' === strtoupper($services)) ? $return = 'http://charlie.ibid.astra.co.id/backend/serviceams/lot/api/' : '';
+	$AMSLOT    = ('AMSLOT' === strtoupper($services)) ? $return = 'http://charlie.ibid.astra.co.id/backend/serviceams/lot/api/' : '';
+	$IMG_PATH = ('IMGS' === strtoupper($services)) ? $return = 'http://img.ibid.astra.co.id/uploads/upload360/' : '';
 	
 	return $return;
 }
