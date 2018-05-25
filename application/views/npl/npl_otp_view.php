@@ -5,27 +5,15 @@
             <div class="col-md-7">
                 <h2>Keuntungan Beli NPL di IBID?</h2>
                 <ul class="auction-info clearfix">
+                    <?php foreach($cms->titip as $keyCms => $valueCms) { ?>
                     <li class="item">
-                        <div class="form-info ic ic-Mudah display-block"></div>
+                        <div class="form-info display-block ic <?php echo $valueCms->ClassName; ?>"></div>
                         <div class="content-media">
-                            <h2>Proses Mudah dan Aman</h2>
-                            <p>Proses pembelian nomor peserta lelang (NPL) dan pembayaran dilakukan secara online di Website IBID dengan berbagai pilihan metode pembayaran yang yang terotentikasi menjamin privasi dan keamanan transaksi online Anda</p>
+                            <h2><?php echo $valueCms->Title; ?></h2>
+                            <p><?php echo $valueCms->Content; ?></p>
                         </div>
                     </li>
-                    <li class="item">
-                        <div class="form-info ic ic-Deposit-100_ display-block"></div>
-                        <div class="content-media">
-                            <h2>Deposit 100% Aman & Terjamin</h2>
-                            <p>Jika Anda tidak menang lelang Uang deposit dari pembelian NPL akan dikembalikan 100% tanpa potongan apapun.</p>
-                        </div>
-                    </li>
-                    <li class="item">
-                        <div class="form-info ic ic-No-NPL display-block"></div>
-                        <div class="content-media">
-                            <h2>Nomor Peserta Lelang (NPL) Unlimited</h2>
-                            <p>Nikmati kemudahan lebih dengan menggunakan NPL Unlimited. Cukup membeli satu NPL yang dapat digunakan untuk mengikuti berbagai jadwal lelang bahkan secara bersamaan dan menawar kendaraan tanpa batasan maksimal.</p>
-                        </div>
-                    </li>
+                    <?php } ?>
                 </ul>
             </div> 
             <div class="col-md-5 col-sm-6">      
@@ -65,12 +53,13 @@
 </section>
 
 <script>
+var count_slide = '<?php echo count($cms->titip); ?>';
 $('.auction-info').slick({
     dots: false,
     infinite: false,
     speed: 300,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToShow: count_slide,
+    slidesToScroll: count_slide,
     responsive: [
         {
                 breakpoint: 768,
@@ -146,7 +135,7 @@ function reload() {
 }
 
 function refresh_button() {
-    var arrOTP = new Array(), checkField = false;
+    var arrOTP = new Array(), checkField = false, checknumber = false;
     $('input[name^="otp"]').each(function() {
         arrOTP.push($(this).val());
 
@@ -154,11 +143,25 @@ function refresh_button() {
             checkField = true;
             return false;
         }
+
+        if(numberOnly($(this).val()) === false) {
+            checknumber = true;
+            return false;
+        }
     });
 
     if(checkField === true) {
         bootoast.toast({
             message: 'Lengkapi Kode Verifikasi',
+            type: 'warning',
+            position: 'top-center',
+            timeout: 3
+        });
+        return false;
+    }
+    else if(checknumber === true) {
+        bootoast.toast({
+            message: 'Format pengisian harus angka',
             type: 'warning',
             position: 'top-center',
             timeout: 3
