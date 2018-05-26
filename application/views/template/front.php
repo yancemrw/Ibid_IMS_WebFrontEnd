@@ -17,7 +17,7 @@
             </form>
          </div>
          <div role="tabpanel" class="tab-pane" id="tab-mobile-2">
-            <form id="search-jadwal" class="form-inline clearfix" action="<?php echo site_url('auction/Auction_date'); ?>" method="POST" data-provide="validation">
+            <form id="search-jadwal" class="form-inline clearfix" action="<?php echo site_url('cari-lelang'); ?>" method="POST" data-provide="validation">
                <div class="form-group">
                   <select class="select-custom form-control" name="thisCabang" id="thisCabang">
                      <option value="">Pilih Kota</option>
