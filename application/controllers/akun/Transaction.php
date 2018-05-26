@@ -88,7 +88,7 @@ class Transaction extends CI_Controller {
 					$arr[$key][] = $arrItem[$value->ItemId];
 					$arr[$key][] = 'Rp. '.$this->number_formated($value->Billing);
 					$arr[$key][] = $value->ScheduleAuctionWinnerCompany.'<br>'.$value->ScheduleAuctionWinnerDate;
-					$arr[$key][] = '<a href="#" class="step-transaction">'.$images1.$images2.$images3.$images4.'<p>'.$status.'</p></a>';
+					//$arr[$key][] = '<a href="#" class="step-transaction">'.$images1.$images2.$images3.$images4.'<p>'.$status.'</p></a>';
 				}
 				$arrData['data'] = $arr;
 				echo json_encode($arrData);

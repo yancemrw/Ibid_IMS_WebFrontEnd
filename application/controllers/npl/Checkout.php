@@ -11,7 +11,8 @@ class Checkout extends CI_Controller {
 
 	function index(){
 		$this->load->library('cart');
-		$methodeBayar = $_POST['tipe_methode'];
+		//$methodeBayar = $_POST['tipe_methode'];
+		$methodeBayar = 4;
 		
 		$BiodataId = @$_SESSION['userdata']['UserId'];
 		$Total = $this->cart->total() + $this->biayaAdm;
@@ -100,7 +101,7 @@ class Checkout extends CI_Controller {
 						$this->cart->destroy();
 						die();
 					}
-					else if ($methodeBayar == 3){
+					/*else if ($methodeBayar == 3){
 					// pembayaran via cc
 						$_SESSION['userdata']['TransactionId'] = @$TransactionId;
 						$arr = array(
@@ -210,7 +211,7 @@ class Checkout extends CI_Controller {
 						echo json_encode($arr);
 						$this->cart->destroy();
 						die();
-					}
+					}*/
 
 				} else if ($responseApiInsert['status'] == 0){ 
 

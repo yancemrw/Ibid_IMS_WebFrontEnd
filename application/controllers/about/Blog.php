@@ -10,10 +10,25 @@ class Blog extends CI_Controller {
 	}
 
 	public function index() {
-		$url = linkservice('cms')."api/home";
-		$method = 'GET';
-		$res = admsCurl($url, array(), $method);
-		$generate = curlGenerate($res);
+		$urlTesti = linkservice('cms')."api/home";
+		$methodTesti = 'GET';
+		$resTesti = admsCurl($urlTesti, array(), $methodTesti);
+		$cmsTesti = curlGenerate($resTesti);
+
+		$urlBanner = linkservice('cms')."api/banner";
+		$methodBanner = 'GET';
+		$resBanner = admsCurl($urlBanner, array(), $methodBanner);
+		$cmsBanner = curlGenerate($resBanner);
+
+		$urlNews = linkservice('cms')."api/news?bahasa=id&kategori=news";
+		$methodNews = 'GET';
+		$resNews = admsCurl($urlNews, array(), $methodNews);
+		$cmsNews = curlGenerate($resNews);
+
+		$urlInfo = linkservice('cms')."api/news?bahasa=id&kategori=info-tips";
+		$methodInfo = 'GET';
+		$resInfo = admsCurl($urlInfo, array(), $methodInfo);
+		$cmsInfo = curlGenerate($resInfo);
 
 		$data = array(
 			'header_white'		=> "header-white",
@@ -21,7 +36,10 @@ class Blog extends CI_Controller {
 			'title'				=> 'Tentang IBID',
 			'form_auth_mobile'	=> login_status_form_mobile($userdata),
 			'form_auth'			=> login_Status_form($userdata),
-			'content'			=> $generate
+			'content'			=> $cmsTesti,
+			'banner'			=> $cmsBanner,
+			'news'				=> $cmsNews,
+			'info'				=> $cmsInfo
 		);
 		$view = "about/blog";
 		template($view, $data);

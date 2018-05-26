@@ -1,98 +1,62 @@
 <section class="slide-section theblog">
 	<div class="blog-slide">
-		<div class="item active">
-			<div class="slide-image">
-				<img src="<?php echo base_url('assetsfront/images/background/bg-blog.png'); ?>" alt="">
-			</div>
-		</div>
+		<?php foreach($banner->banner as $keyBanner => $valueBanner) { ?>
 		<div class="item">
 			<div class="slide-image">
-				<img src="<?php echo base_url('assetsfront/images/background/bg-blog.png'); ?>" alt="">
+				<img src="<?php echo linkservice('cms').'uploads/contents/'.$valueBanner->Photo; ?>" />
 			</div>
 		</div>
-		<div class="item">
-			<div class="slide-image">
-				<img src="<?php echo base_url('assetsfront/images/background/bg-blog.png'); ?>" alt="">
-			</div>
-		</div>
+		<?php } ?>
 	</div>
 </section>
 <section class="section-blog">
 	<div class="container-fluid-blog">
 		<div class="row">
 			<h2 class="title-blog">News</h2>
-			<div class="col-md-4 col-sm-6 col-custom pl-0">
-				<div class="box-new">
-					<a href="<?php echo site_url('blog_details'); ?>">
-						<div class="image-new">
-							<img src="<?php echo base_url('assetsfront/images/background/image-news.png'); ?>" alt="" class="img-responsive width-100">
-						</div>
-						<h2>Pesta Lelang Ibid 2016 <span>Jakarta</span></h2>
-						<p>Cari mobil bekas yang nggak bikin kantong jebol? Bisa beli lewat lelang loh, yuk dateng ke #PestaLelangIbid. <span>9 Oktober 2016</span></p>
-					</a>
-				</div>
-			</div>
+			<?php
+			foreach($news->news as $keyNews => $valueNews) {
+				if($keyNews < 3) {
+			?>
 			<div class="col-md-4 col-sm-6 col-custom">
 				<div class="box-new">
 					<a href="<?php echo site_url('blog_details'); ?>">
 						<div class="image-new">
-							<img src="<?php echo base_url('assetsfront/images/background/image-news-2.png'); ?>" alt="" class="img-responsive width-100">
+							<img src="<?php echo linkservice('cms').'uploads/news/'.$valueNews->gambar; ?>" class="img-responsive width-100" />
 						</div>
-						<h2>Promo Mobil 4x4 <span>Jakarta</span></h2>
-						<p>Cari mobil bekas yang nggak bikin kantong jebol? Bisa beli lewat lelang loh, yuk dateng ke #PestaLelangIbid. <span>9 Oktober 2016</span></p>
+						<h2><?php echo $valueNews->title; ?><span><?php echo $valueNews->subtitle; ?></span></h2>
+						<p><?php echo substr($valueNews->content, 0, 180); ?><span><?php echo date_format(date_create($valueNews->datepost), "d F Y"); ?></span></p>
 					</a>
 				</div>
 			</div>
-			<div class="col-md-4 col-sm-6 col-custom pr-0">
-				<div class="box-new">
-					<a href="<?php echo site_url('blog_details'); ?>">
-						<div class="image-new">
-							<img src="<?php echo base_url('assetsfront/images/background/image-news-3.png'); ?>" alt="" class="img-responsive width-100">
-						</div>
-						<h2>Ayo Segera Ikuti Lelangnya <span>Jakarta</span></h2>
-						<p>Cari mobil bekas yang nggak bikin kantong jebol? Bisa beli lewat lelang loh, yuk dateng ke #PestaLelangIbid. <span>9 Oktober 2016</span></p>
-					</a>
-				</div>
-			</div>
+			<?php
+				}
+			}
+			?>
 			<div class="col-md-12 col-sm-12 col-xs-12 text-center button-blog-section">
 				<button class="btn btn-green" disabled>Lihat Selengkapnya</button>
 			</div>
 		</div>
 		<div class="row">
 			<h2 class="title-blog">Info & Tips</h2>
-			<div class="col-md-4 col-sm-6 col-custom pl-0">
-				<div class="box-new">
-					<a href="<?php echo site_url('blog_details'); ?>">
-						<div class="image-new">
-							<img src="<?php echo base_url('assetsfront/images/background/image-news-4.png'); ?>" alt="" class="img-responsive width-100">
-						</div>
-						<h2>Cara Menang dalam Lelang <span>Jakarta</span></h2>
-						<p>Cari mobil bekas yang nggak bikin kantong jebol? Bisa beli lewat lelang loh, yuk dateng ke #PestaLelangIbid. <span>9 Oktober 2016</span></p>
-					</a>
-				</div>
-			</div>
+			<?php
+			foreach($info->news as $keyInfo => $valueInfo) {
+				if($keyInfo < 3) {
+			?>
 			<div class="col-md-4 col-sm-6 col-custom">
 				<div class="box-new">
 					<a href="<?php echo site_url('blog_details'); ?>">
 						<div class="image-new">
-							<img src="<?php echo base_url('assetsfront/images/background/image-news-5.png'); ?>" alt="" class="img-responsive width-100">
+							<img src="<?php echo linkservice('cms').'uploads/news/'.$valueNews->gambar; ?>" class="img-responsive width-100" />
 						</div>
-						<h2>Mobil Tetap Kering Saat Hujan <span>Jakarta</span></h2>
-						<p>Cari mobil bekas yang nggak bikin kantong jebol? Bisa beli lewat lelang loh, yuk dateng ke #PestaLelangIbid. <span>9 Oktober 2016</span></p>
+						<h2><?php echo $valueNews->title; ?><span><?php echo $valueNews->subtitle; ?></span></h2>
+						<p><?php echo substr($valueNews->content, 0, 180); ?><span><?php echo date_format(date_create($valueNews->datepost), "d F Y"); ?></span></p>
 					</a>
 				</div>
 			</div>
-			<div class="col-md-4 col-sm-6 col-custom pr-0">
-				<div class="box-new">
-					<a href="<?php echo site_url('blog_details'); ?>">
-						<div class="image-new">
-							<img src="<?php echo base_url('assetsfront/images/background/image-news-6.png'); ?>" alt="" class="img-responsive width-100">
-						</div>
-						<h2>Cara Cepat Ngangkat Motor <span>Jakarta</span></h2>
-						<p>Cari mobil bekas yang nggak bikin kantong jebol? Bisa beli lewat lelang loh, yuk dateng ke #PestaLelangIbid. <span>9 Oktober 2016</span></p>
-					</a>
-				</div>
-			</div>
+			<?php
+				}
+			}
+			?>
 			<div class="col-md-12 col-sm-12 col-xs-12 text-center button-blog-section">
 				<button class="btn btn-green" disabled>Lihat Selengkapnya</button>
 			</div>
