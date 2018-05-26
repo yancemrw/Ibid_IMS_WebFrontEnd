@@ -13,6 +13,7 @@ function linkservice($services) {
 	$MASTER 	= ('MASTER' == strtoupper($services)) ? $return = 'http://ibidadmsdevservicemasterdata.azurewebsites.net/index.php/' : '';
 	$FINANCE 	= ('FINANCE' === strtoupper($services)) ? $return = 'http://ibidadmsdevservicefinance.azurewebsites.net/index.php/' : '';
 	$NPL  		= ('NPL' === strtoupper($services)) ? $return = 'http://ibidadmsdevservicenpl.azurewebsites.net/index.php/' : '';
+  
 	$CMS		= ('CMS' === strtoupper($services)) ? $return = 'http://ibid.astra.co.id/backend/dapur/' : '';
 	*/
 
