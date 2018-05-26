@@ -15,6 +15,7 @@
           <li><a href="<?php echo site_url('faq'); ?>">FAQ</a></li>
           <li><a href="<?php echo site_url('blog'); ?>">Blog</a></li>
           <li><a href="javascript:void(0)" data-toggle="modal" data-target="#privacy-modal-home">Privacy Policy</a></li>
+          <!--li><a href="javascript:void(0)" onclick="location.href='http://ext.ibid.astra.co.id'">Area Lainnya</a></li-->
         </ul>
       </div>
       <div class="col-md-4 copyright">
@@ -67,16 +68,23 @@
 </div>
 
 <!-- MODAL PRIVASI -->
+<?php
+// get cms data
+$urlPrivasi = linkservice('cms')."api/home/privasi";
+$methodPrivasi = 'GET';
+$resPrivasi = admsCurl($urlPrivasi, array(), $methodPrivasi);
+$privasi = curlGenerate($resPrivasi);
+?>
 <div class="modal fade" id="privacy-modal-home" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
   <div class="modal-dialog width-80">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><i class="ic ic-Close"></i><span class="sr-only">Close</span></button>
-        <h3 class="modal-title" id="lineModalLabel">Kebijakan Privasi</h3>
+        <h3 class="modal-title" id="lineModalLabel"><?php echo $privasi[0]->Title; ?></h3>
       </div>
       <div class="modal-body clearfix">
         <div class="col-md-12 col-sm-12">
-          <?php $this->load->view('userguide/privacy_policy.html'); ?>
+          <?php $this->load->view('userguide/privacy_policy.php'); ?>
         </div>
       </div>
     </div>
@@ -480,6 +488,10 @@ function checkOnlyNumber(ele, event, max) {
   else if(charCode === 8){
     $(ele).val(val.substr(0, (val.length)));
   }
+}
+
+function numberOnly(value) {
+  return /^\d+$/.test(value);
 }
 
 // ini animasi mobil nabrak plang iBid

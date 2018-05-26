@@ -78,23 +78,22 @@
                            <label class="label-schedule">Email *</label>
                         </div>
                         <div class="form-group floating-label">
-                           <input type="number" name="upd_phone" id="upd_phone" class="form-control floating-handle input-custom only-number" 
+                           <input type="text" name="upd_phone" id="upd_phone" class="form-control floating-handle input-custom" 
                                     value="<?php echo @$content->users->Phone; ?>" title="Pastikan nomor dapat menerima SMS" 
                                     oninvalid="this.setCustomValidity('No Telepon tidak boleh kosong')" 
-                                    onkeyup="checkOnlyNumber(this, event, 13)" onkeypress="setCustomValidity('')" required />
+                                    onkeypress="setCustomValidity('')" maxlength="13" required />
                            <label class="label-schedule">No Telepon *</label>
                         </div>
                         <div class="form-group floating-label">
-                           <input type="number" name="ktp" id="ktp" class="form-control floating-handle input-custom only-number" 
+                           <input type="text" name="ktp" id="ktp" class="form-control floating-handle input-custom" 
                                     value="<?php echo @$content->users->IdentityNumber; ?>" 
                                     oninvalid="this.setCustomValidity('KTP tidak boleh kosong')" 
-                                    onkeyup="checkOnlyNumber(this, event, 16)" onkeypress="setCustomValidity('')" required />
+                                    onkeypress="setCustomValidity('')" maxlength="16" required />
                            <label class="label-schedule">No KTP *</label>
                         </div>
                         <div class="form-group floating-label">
-                           <input type="number" id="npwp" name="npwp" class="border-radius-none form-control floating-handle only-number" 
-                                    value="<?php echo @$content->users->NpwpNumber; ?>" onkeyup="checkOnlyNumber(this, event, 15)" 
-                                    onkeypress="setCustomValidity('')" />
+                           <input type="text" id="npwp" name="npwp" class="border-radius-none form-control floating-handle" 
+                                    value="<?php echo @$content->users->NpwpNumber; ?>" maxlength="15" onkeypress="setCustomValidity('')" />
                            <label class="label-schedule">NPWP</label>
                         </div>
                         <div class="form-group floating-label">
@@ -119,10 +118,10 @@
                            </select>
                         </div>
                         <div class="form-group floating-label">
-                           <input type="number" name="norek" class="form-control floating-handle input-custom only-number" 
+                           <input type="text" name="norek" class="form-control floating-handle input-custom" 
                                     value="<?php echo @$content->users->BankAccountNumber; ?>" id="norek" 
                                     oninvalid="this.setCustomValidity('Nomor rekening tidak boleh kosong')" 
-                                    onkeyup="checkOnlyNumber(this, event, 13)" onkeypress="setCustomValidity('')"
+                                    onkeypress="setCustomValidity('')" maxlength="13"
                                     title="IBID membutuhkan nomor rekening anda untuk pengembalian deposit atau transfer dana hasil lelang. Pastikan nomor rekening sudah benar" required />
                            <label class="label-schedule">Nomor Rekening *</label>
                         </div>
@@ -207,7 +206,8 @@
             ktp      = $('#ktp').val(),
             bankid   = $('#bankid').val(),
             norek    = $('#norek').val(),
-            atasnama = $('#atna').val();
+            atasnama = $('#atna').val(),
+            npwp     = ($('#npwp').val() === '') ? 0 : $('#npwp').val();
       if(firstName !== '' && notlp !== '' && ktp !== '' && norek !== '' && atasnama !== '') {
          e.preventDefault();
          if(bankid == '') {
@@ -219,9 +219,45 @@
             });
             return false;
          }
+         else if(numberOnly(notlp) === false) {
+            bootoast.toast({
+               message: 'Nomor Telepon harus angka',
+               type: 'warning',
+               position: 'top-center',
+               timeout: 3
+            });
+            return false;
+         }
+         else if(numberOnly(ktp) === false) {
+            bootoast.toast({
+               message: 'Nomor KTP harus angka',
+               type: 'warning',
+               position: 'top-center',
+               timeout: 3
+            });
+            return false;
+         }
          else if(ktp.length < 16) {
             bootoast.toast({
                message: 'No KTP harus diisi 16 angka',
+               type: 'warning',
+               position: 'top-center',
+               timeout: 3
+            });
+            return false;
+         }
+         else if(numberOnly(npwp) === false) {
+            bootoast.toast({
+               message: 'Nomor NPWP harus angka',
+               type: 'warning',
+               position: 'top-center',
+               timeout: 3
+            });
+            return false;
+         }
+         else if(numberOnly(norek) === false) {
+            bootoast.toast({
+               message: 'Nomor Rekening harus angka',
                type: 'warning',
                position: 'top-center',
                timeout: 3

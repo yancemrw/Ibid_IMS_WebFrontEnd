@@ -42,10 +42,10 @@
                     <form class="form-filter" id="beli-npl" data-provide="validation">
                         <input type="hidden" name="otpkirim" value="true">
                         <div class="form-group floating-label">
-                            <input type="number" name="Phone" id="notif-telepon" class="form-control input-custom" 
+                            <input type="text" name="Phone" id="notif-telepon" class="form-control input-custom" 
                                     value="<?php echo @$detailBiodata['Phone']; ?>"
                                     oninvalid="this.setCustomValidity('No telepon tidak boleh kosong')" 
-                                    onkeyup="checkOnlyNumber(this, event, 13)" onkeypress="setCustomValidity('')" required />
+                                    onkeypress="setCustomValidity('')" maxlength="13" required />
                             <label class="label-schedule">No Telepon *</label>
                             <div class="help-info help-info-1">
                                 <i class="fa fa-info"></i> Pastikan nomor telepon aktif
@@ -62,10 +62,10 @@
                             </select>
                         </div>
                         <div class="form-group floating-label">
-                            <input type="number" name="BankAccountNumber" id="notif-rekening" class="form-control input-custom" 
+                            <input type="text" name="BankAccountNumber" id="notif-rekening" class="form-control input-custom" 
                                     value="<?php echo @$detailBiodata['BankAccountNumber']; ?>" 
                                     oninvalid="this.setCustomValidity('Nomor rekening tidak boleh kosong')" 
-                                    onkeyup="checkOnlyNumber(this, event, 16)" onkeypress="setCustomValidity('')" required />
+                                    onkeypress="setCustomValidity('')" maxlength="16" required />
                             <label class="label-schedule">Nomor Rekening *</label>
                             <div class="help-info help-info-2">
                                 <i class="fa fa-info"></i> IBID membutuhkan nomor rekening Anda untuk pengembalian deposit. Pastikan nomor rekening sudah benar.
@@ -75,14 +75,14 @@
                             <input type="text" name="BankAccountName" class="form-control input-custom" 
                                     value="<?php echo @$detailBiodata['BankAccountName']; ?>" 
                                     oninvalid="this.setCustomValidity('Atas nama tidak boleh kosong')" 
-                                    oninput="setCustomValidity('')" required />
+                                    oninput="setCustomValidity('')" maxlength="250" required />
                             <label class="label-schedule">Atas Nama *</label>
                         </div>
                         <div class="form-group floating-label" id="ktp">
-                            <input type="number" name="IdentityNumber" class="form-control input-custom" 
+                            <input type="text" name="IdentityNumber" class="form-control input-custom" 
                                     value="<?php echo @$detailBiodata['IdentityNumber']; ?>"
                                     oninvalid="this.setCustomValidity('Nomor KTP tidak boleh kosong')" 
-                                    onkeyup="checkOnlyNumber(this, event, 16)" onkeypress="setCustomValidity('')" required />
+                                    onkeypress="setCustomValidity('')" maxlength="16" required />
                             <label class="label-schedule">Nomor KTP *</label>
                         </div>
                         <div class="g-recaptcha recaptcha" id="idrecaptcha" required></div>
@@ -227,7 +227,31 @@
           otpkirim  = $('input[name="otpkirim"]').val(),
           recaptcha = $('#e8df0fade2ce52c6a8cf8c8d2309d08a').val();
       if(phone !== '' && bankid !== '' && bankacc !== '' && bankname !== '' && ktp !== '') {
-          if(ktp.length < 16) {
+          if(numberOnly(phone) === false) {
+              bootoast.toast({
+                  message: 'Nomor Telepon harus angka',
+                  type: 'warning',
+                  position: 'top-center'
+              });
+              return false;
+          }
+          else if(numberOnly(bankacc) === false) {
+              bootoast.toast({
+                  message: 'Nomor Rekening harus angka',
+                  type: 'warning',
+                  position: 'top-center'
+              });
+              return false;
+          }
+          else if(numberOnly(ktp) === false) {
+              bootoast.toast({
+                  message: 'Nomor KTP harus angka',
+                  type: 'warning',
+                  position: 'top-center'
+              });
+              return false;
+          }
+          else if(ktp.length < 16) {
               bootoast.toast({
                   message: 'Nomor KTP harus 16 angka!',
                   type: 'warning',

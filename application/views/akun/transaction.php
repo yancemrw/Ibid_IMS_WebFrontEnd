@@ -92,7 +92,7 @@
                                             <th width="50">Jenis</th>
                                             <th width="100">Harga</th>
                                             <th width="100">Tanggal</th>
-                                            <th width="250">Status</th>
+                                            <!--th width="250">Status</th-->
                                         </tr>
                                     </thead>
                                     <tbody></tbody>
@@ -145,7 +145,7 @@
                                             <th width="50">Jenis</th>
                                             <th width="100">Harga</th>
                                             <th width="100">Tanggal</th>
-                                            <th width="250">Status</th>
+                                            <!--th width="250">Status</th-->
                                         </tr>
                                     </thead>
                                     <tbody></tbody>

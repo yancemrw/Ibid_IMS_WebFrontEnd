@@ -33,7 +33,7 @@ class Beli extends CI_Controller {
 		$url = linkservice('cms')."api/belinpl";
 		$method = 'GET';
 		$res = admsCurl($url, array(), $method);
-		$data['cms'] = curlGenerate($res); //echo "<pre>"; print_r($data['cms']); exit;
+		$data['cms'] = curlGenerate($res);
 
 		### diambil dari frontend lama
 		$this->load->library('cart');
