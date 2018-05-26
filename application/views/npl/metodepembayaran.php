@@ -13,7 +13,7 @@
                 <form class="form-methode form-filter" id="thisForm" action="#<?php // echo site_url('npl/checkout'); ?>" method="POST">
                     <div class="object-type pay-methode clearfix">
                         <div class="form-group">
-                            <input type="radio" name="tipe_methode" id="va-bca" class="input-hidden" value="2" />
+                            <input type="radio" name="tipe_methode" id="va-bca" class="input-hidden" value="2" disabled />
                             <label for="va-bca">
                                 <p>Transfer Virtual Account</p>
                                 <ul>
@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="radio" name="tipe_methode" id="va-mandiri" class="input-hidden" value="1" />
+                            <input type="radio" name="tipe_methode" id="va-mandiri" class="input-hidden" value="1" disabled />
                             <label for="va-mandiri">
                                 <p>Transfer Virtual Account</p>
                                 <ul>
@@ -51,7 +51,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="radio" name="tipe_methode" id="cc" class="input-hidden" value="3" />
+                            <input type="radio" name="tipe_methode" id="cc" class="input-hidden" value="3" disabled />
                             <label for="cc">
                                 <p>Kartu Visa / Master Card</p>
                                 <ul>
@@ -90,8 +90,8 @@
                 <h2>Ringkasan Belanja</h2>
                 <div class="shopping-history">
                     <p>Total Harga Barang <span>Rp. <?php echo number_format($this->cart->total()); ?></span></p>
-                    <p>Biaya Layanan <span>Rp. 5.000</span></p>
-                    <p class="total-shopping">Total Belanja <span>Rp. <?php echo number_format($this->cart->total() + 5000); ?></span></p>
+                    <p>Biaya Layanan <span>Rp. 0</span></p>
+                    <p class="total-shopping">Total Belanja <span>Rp. <?php echo number_format($this->cart->total()); ?></span></p>
                     <button class="btn btn-green" type="button" id="btnBayar">Bayar</button>
                 </div>
             </div>
