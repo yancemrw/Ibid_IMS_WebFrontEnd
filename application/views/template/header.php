@@ -9,7 +9,7 @@
    <link rel="icon" type="image/png" href="<?php echo base_url('assetsfront/images/icon/favicon/favicon-96x96.png'); ?>" sizes="">
    <link rel="icon" type="image/png" href="<?php echo base_url('assetsfront/images/icon/favicon/favicon-16x16.png'); ?>" sizes="">
    <link rel="icon" type="image/png" href="<?php echo base_url('assetsfront/images/icon/favicon/favicon-32x32.png'); ?>" sizes="">
-   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
    <meta name="description" content=""> 
    <meta name="title" content="">
    <meta name="image_src" content="">
