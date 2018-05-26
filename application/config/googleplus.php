@@ -11,7 +11,7 @@ $config = array(
 		'client_secret' => 'BnsMJ1yYbaXwLlycnhIQJQgZ',
 		// http://localhost:8888/ibiddevelopment/ibiddevwebapp/ibidadmsuser/ibid_webapp/index.php/omni/google/google
 		// 'redirect_uri' => 'http://localhost:55/02.JOB/ATS/IBID/Ibid_ADMS_WebBackend/index.php/omni/google/callback', 
-		'redirect_uri' => 'http://'.$_SERVER["HTTP_HOST"].str_replace(basename($_SERVER['SCRIPT_NAME']), "", $_SERVER['SCRIPT_NAME']).'index.php/omni/google/callback', 
+		'redirect_uri' => 'https://'.$_SERVER["HTTP_HOST"].str_replace(basename($_SERVER['SCRIPT_NAME']), "", $_SERVER['SCRIPT_NAME']).'index.php/omni/google/callback', 
 		'api_key' => '', 
 		'scopes' => array(), 
 		)
