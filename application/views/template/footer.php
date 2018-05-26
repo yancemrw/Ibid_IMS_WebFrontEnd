@@ -15,6 +15,7 @@
           <li><a href="<?php echo site_url('faq'); ?>">FAQ</a></li>
           <li><a href="<?php echo site_url('blog'); ?>">Blog</a></li>
           <li><a href="javascript:void(0)" data-toggle="modal" data-target="#privacy-modal-home">Privacy Policy</a></li>
+          <!--li><a href="javascript:void(0)" onclick="location.href='http://ext.ibid.astra.co.id'">Area Lainnya</a></li-->
         </ul>
       </div>
       <div class="col-md-4 copyright">
