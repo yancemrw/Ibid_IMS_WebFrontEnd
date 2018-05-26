@@ -91,7 +91,7 @@
                 <div class="shopping-history">
                     <p>Total Harga Barang <span>Rp. <?php echo number_format($this->cart->total()); ?></span></p>
                     <p>Biaya Layanan <span>Rp. 0</span></p>
-                    <p class="total-shopping">Total Belanja <span>Rp. <?php echo number_format($this->cart->total() + 5000); ?></span></p>
+                    <p class="total-shopping">Total Belanja <span>Rp. <?php echo number_format($this->cart->total()); ?></span></p>
                     <button class="btn btn-green" type="button" id="btnBayar">Bayar</button>
                 </div>
             </div>
