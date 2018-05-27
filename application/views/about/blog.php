@@ -46,10 +46,10 @@
 				<div class="box-new">
 					<a href="<?php echo site_url('blog_details'); ?>">
 						<div class="image-new">
-							<img src="<?php echo linkservice('cms').'uploads/news/'.$valueNews->gambar; ?>" class="img-responsive width-100" />
+							<img src="<?php echo linkservice('cms').'uploads/news/'.$valueInfo->gambar; ?>" class="img-responsive width-100" />
 						</div>
-						<h2><?php echo $valueNews->title; ?><span><?php echo $valueNews->subtitle; ?></span></h2>
-						<p><?php echo substr($valueNews->content, 0, 180); ?><span><?php echo date_format(date_create($valueNews->datepost), "d F Y"); ?></span></p>
+						<h2><?php echo $valueInfo->title; ?><span><?php echo $valueInfo->subtitle; ?></span></h2>
+						<p><?php echo substr($valueInfo->content, 0, 180); ?><span><?php echo date_format(date_create($valueInfo->datepost), "d F Y"); ?></span></p>
 					</a>
 				</div>
 			</div>
