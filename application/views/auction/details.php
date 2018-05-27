@@ -14,21 +14,24 @@
       <div class="col-md-12 text-right clearfix">
         <form class="clearfix form-inline">
           <div class="form-group status-auction">
-            <svg version="1.1" id="wifi" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50px" height="40px" viewBox="0 0 20 20">
-            <path id="wifi3" fill="#000" fill-opacity="0.5" d="M9.9,5C6.8,5,4,6.4,2.2,8.7l1.1,1.1c1.6-2,4-3.2,6.7-3.2c2.7,0,5.1,1.3,6.7,3.2l1.1-1.1 C15.8,6.4,13,5,9.9,5z">
-              <animate id="four" attributeName="fill-opacity" dur="500ms" values="0.5;1;0.5" calcMode="linear" begin="three.end+0.05s"/>
-            </path>
-            <path id="wifi2" fill="#000" fill-opacity="0.5" d="M9.9,8c-2.3,0-4.3,1.1-5.6,2.8l1.1,1.1c1-1.4,2.6-2.4,4.5-2.4c1.9,0,3.5,0.9,4.5,2.4l1.1-1.1 C14.2,9.1,12.2,8,9.9,8z">
-              <animate id="three" attributeName="fill-opacity" dur="500ms" values="0.5;1;0.5" calcMode="linear" begin="two.end+0.05s"/>
-            </path>
-            <path id="wifi1" fill="#000" fill-opacity="0.5" d="M9.9,11c-1.5,0-2.7,0.8-3.4,2l1.1,1.1c0.4-0.9,1.3-1.6,2.3-1.6s2,0.7,2.3,1.6l1.1-1.1 C12.6,11.8,11.4,11,9.9,11z">
-              <animate id="two" attributeName="fill-opacity" dur="500ms" values="0.5;1;0.5" calcMode="linear" begin="one.end+0.05s"/>
-            </path>
-            <circle id="dot" fill="#000" fill-opacity="0.5" cx="9.9" cy="15.3" r="1">
-              <animate id="one" attributeName="fill-opacity" dur="500ms" values="0.5;1;0.5" calcMode="linear" begin="0s;four.end+0.05s"/>
-            </circle>
-            </svg>
-            <p class="wifi">201MS</p>
+            <div class="ping-signal green" id="ping-wrapper">
+              <svg version="1.1" id="wifi" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50px" height="40px" viewBox="0 0 20 20">
+              <path id="wifi3" fill="#000" fill-opacity="0.5" d="M9.9,5C6.8,5,4,6.4,2.2,8.7l1.1,1.1c1.6-2,4-3.2,6.7-3.2c2.7,0,5.1,1.3,6.7,3.2l1.1-1.1 C15.8,6.4,13,5,9.9,5z">
+                <animate id="four" attributeName="fill-opacity" dur="500ms" values="0.5;1;0.5" calcMode="linear" begin="three.end+0.05s"/>
+              </path>
+              <path id="wifi2" fill="#000" fill-opacity="0.5" d="M9.9,8c-2.3,0-4.3,1.1-5.6,2.8l1.1,1.1c1-1.4,2.6-2.4,4.5-2.4c1.9,0,3.5,0.9,4.5,2.4l1.1-1.1 C14.2,9.1,12.2,8,9.9,8z">
+                <animate id="three" attributeName="fill-opacity" dur="500ms" values="0.5;1;0.5" calcMode="linear" begin="two.end+0.05s"/>
+              </path>
+              <path id="wifi1" fill="#000" fill-opacity="0.5" d="M9.9,11c-1.5,0-2.7,0.8-3.4,2l1.1,1.1c0.4-0.9,1.3-1.6,2.3-1.6s2,0.7,2.3,1.6l1.1-1.1 C12.6,11.8,11.4,11,9.9,11z">
+                <animate id="two" attributeName="fill-opacity" dur="500ms" values="0.5;1;0.5" calcMode="linear" begin="one.end+0.05s"/>
+              </path>
+              <circle id="dot" fill="#000" fill-opacity="0.5" cx="9.9" cy="15.3" r="1">
+                <animate id="one" attributeName="fill-opacity" dur="500ms" values="0.5;1;0.5" calcMode="linear" begin="0s;four.end+0.05s"/>
+              </circle>
+              </svg>
+            <!--p class="wifi">201MS</p-->
+              <span class="ping-text" id="ping"></span>
+            </div>
           </div>
           <div class="form-group">
             <div class="material-toggle" data-toggle="tooltip" title="Mode Tawar ON">
@@ -153,12 +156,18 @@
     color: #ff4e00 !important;
 }
 /*end of signal*/
+#ping-wrapper {
+  height: 100px;
+  width: 50px;
+}
 </style>
 
 <script>
 myFav = [];
 <?php foreach($favorite as $row){ ?>
 myFav.push(<?php echo $row->AuctionItemId; ?>);
+
+startPing();
 <?php } ?>
 
   var dbRef = firebase.database();
@@ -695,5 +704,50 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
         alert('bid is not allow bro!!');
       }
     })
+  }
+  function startPing()
+  {
+    setInterval(function(){
+      pingProcess()
+    }, 3000);
+  }
+
+  function pingProcess()
+  {
+     
+     var ping = new Date;
+     var newPing;
+     $.ajax({ 
+         type: "GET",
+         url: "<?php echo linkservice('amsauction'); ?>../",
+         data: {},
+         cache:false,
+         crossDomain : true,
+         success: function(output){ 
+             newPing = new Date - ping;
+             if (newPing >= 999) {
+              newPing = 999
+             }
+             $('#ping-wrapper').removeClass('green'); 
+             $('#ping-wrapper').removeClass('red'); 
+             $('#ping-wrapper').removeClass('yellow');
+             if (newPing < 100) {
+              $('#ping-wrapper').addClass('green');
+             } else if (newPing >=100 && newPing <= 199){
+              $('#ping-wrapper').addClass('yellow');
+             } else if (newPing >= 200){
+              $('#ping-wrapper').addClass('red');
+             }
+             $('#ping').html(newPing+'ms');
+         },
+         error: function(output){ 
+             newPing = 999;
+              $('#ping-wrapper').removeClass('green'); 
+              $('#ping-wrapper').removeClass('red'); 
+              $('#ping-wrapper').removeClass('yellow');
+             $('#ping-wrapper').addClass('red');
+             $('#ping').html(newPing+'ms');
+         }
+     });
   }
 </script>
