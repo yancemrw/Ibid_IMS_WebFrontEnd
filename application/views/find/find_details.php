@@ -866,7 +866,7 @@ $(document).ready(function() {
             var compare_data = {
                "AuctionItemId": data[i].AuctionItemId,
                "BahanBakar": data[i].bahanbakar,
-               "Image": data[i].icarImage,
+               "Image": 'http:'+data[i].icarImage,
                //"Image": '//img.ibid.astra.co.id/item/12415/d8404a531ea286d733aa7c35bfbdc83c.jpg',
                "Kilometer": data[i].km,
                "Lot": (data[i].thisLotNo !== undefined && data[i].thisLotNo !== null) ? data[i].thisLotNo : '-',
