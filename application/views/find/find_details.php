@@ -5,7 +5,7 @@
          <div id="lightgallery">
             <div class="col-md-4 stickys" data-src="<?php echo $dataphoto[0]->ImagePath; ?>">
                <a href="javascript:void(0)" class="image-header">
-                  <img src="<?php echo $dataphoto[0]->ImagePath; ?>" alt="Gambar 1" id="img-gambar">
+                  <img src="http:<?php echo $dataphoto[0]->ImagePath; ?>" alt="Gambar 1" id="img-gambar">
                   <p class="photo-amount">
                      <?php
                      $count_imgsx = 0; 
@@ -158,7 +158,7 @@
                                  </div>';
                         }
                         else if($imgs->ImagePath !== '') {
-                           echo '<div class="item-slide cursor-pointer" data-src="'.$imgs->ImagePath.'"><img src="'.$imgs->ImagePath.'" /></div>';
+                           echo '<div class="item-slide cursor-pointer" data-src="'.$imgs->ImagePath.'"><img src="http:'.$imgs->ImagePath.'" /></div>';
                         }
                      } ?>                     
                   </div>
@@ -899,7 +899,7 @@ $(document).ready(function() {
                            '<a href="'+link_detail+'">'+
                            '<div class="thumbnail">'+
                            '<div class="thumbnail-custom">'+
-                           '<img src="'+data[i].icarImage+'" />'+
+                           '<img src="http:'+data[i].icarImage+'" />'+
                            '</div>'+
                            '<div class="overlay-grade">'+
                            'Grade <span>'+data[i].nilaiIcar+'</span>'+
