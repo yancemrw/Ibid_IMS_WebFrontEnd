@@ -554,7 +554,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
       },
       error: function() {
          bootoast.toast({
-            message: 'Koneksi terputus saat mengolah data pencaraian',
+            message: 'Koneksi terputus saat mengolah data pencarian',
             type: 'warning',
             position: 'top-center',
             timeout: 3
@@ -701,7 +701,7 @@ function loadContainerPaging(offset, limit, linked, dataForm = '', type = 1) {
       },
       error: function() {
          bootoast.toast({
-            message: 'Koneksi terputus saat mengolah data pencaraian',
+            message: 'Koneksi terputus saat mengolah data pencarian',
             type: 'warning',
             position: 'top-center',
             timeout: 3
