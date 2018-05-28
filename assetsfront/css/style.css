@@ -4326,13 +4326,13 @@ h3.header-compare span {
 
 .acc_favorite:hover i,
 .active.acc_favorite i {
-    background: url('../images/icon/ic_management_sprite.png') no-repeat 0 -45px;
+    background: url('../images/icon/ic_management_sprite.png') no-repeat -3px -46px;
     width: 25px;
     height: 24px;
 }
 
 .acc_notif i {
-    background: url('../images/icon/ic_management_sprite.png') no-repeat -157px 0;
+    background: url('../images/icon/ic_management_sprite.png') no-repeat -159px -1px;
     width: 25px;
     height: 27px;
 }
@@ -4365,7 +4365,7 @@ h3.header-compare span {
 
 .acc_transaction:hover i,
 .active.acc_transaction i {
-    background: url('../images/icon/ic_management_sprite.png') no-repeat -83px -45px;
+    background: url('../images/icon/ic_management_sprite.png') no-repeat -81px -44px;
     width: 25px;
     height: 27px;
 }
@@ -4384,7 +4384,7 @@ h3.header-compare span {
 }
 
 .acc_npl i {
-    background: url('../images/icon/ic_management_sprite.png') no-repeat -124px -2px;
+    background: url('../images/icon/ic_management_sprite.png') no-repeat -126px -2px;
     width: 20px;
     height: 27px;
 }

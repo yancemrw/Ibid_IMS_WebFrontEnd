@@ -82,7 +82,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>No Polisi / Serial Number</th>
+                                    <th>No Polisi / No. Seri</th>
                                     <th>Nama Barang</th>
                                     <th>Jenis</th>
                                     <th>Jadwal</th>
