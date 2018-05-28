@@ -549,7 +549,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
          }
          else {
             $('#btnFilter').attr('disabled', false);
-            $('#loadings').replaceWith('<div id="loadings" class="table-responsive table-container content-empty"><div class="product-empty"><img src="<?php echo base_url('assetsfront/images/background/management-empty.png'); ?>" alt="Loading" width="400px" /></div><p>Oops.... <span>Data Tidak Ditemukan.</span></p></div>');
+            $('#loadings').replaceWith('<div id="loadings" class="table-responsive table-container content-empty"><div class="product-empty"><img src="<?php echo base_url('assetsfront/images/icon/empty-product.png'); ?>" alt="Loading" width="400px" /></div><p>Oops.... <span>Data Tidak Ditemukan.</span></p></div>');
          }
       },
       error: function() {

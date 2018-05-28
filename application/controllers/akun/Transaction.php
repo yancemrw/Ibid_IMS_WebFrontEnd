@@ -23,7 +23,7 @@ class Transaction extends CI_Controller {
 		$data = array(
 			'header_white'		=> "header-white",
 			'userdata'			=> $this->userdata,
-			'title'				=> 'Data Diri',
+			'title'				=> 'Transaksi',
 			'form_auth_mobile'	=> login_status_form_mobile($this->userdata),
 			'form_auth'			=> login_Status_form($this->userdata),
 			'cabang'			=> $getCabang
