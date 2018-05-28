@@ -158,7 +158,7 @@
                                  </div>';
                         }
                         else if($imgs->ImagePath !== '') {
-                           echo '<div class="item-slide cursor-pointer" data-src="'.$imgs->ImagePath.'"><img src="'.$imgs->ImagePath.'" /></div>';
+                           echo '<div class="item-slide cursor-pointer" data-src="'.$imgs->ImagePath.'"><img src="http:'.$imgs->ImagePath.'" /></div>';
                         }
                      } ?>                     
                   </div>
@@ -899,7 +899,7 @@ $(document).ready(function() {
                            '<a href="'+link_detail+'">'+
                            '<div class="thumbnail">'+
                            '<div class="thumbnail-custom">'+
-                           '<img src="'+data[i].icarImage+'" />'+
+                           '<img src="http:'+data[i].icarImage+'" />'+
                            '</div>'+
                            '<div class="overlay-grade">'+
                            'Grade <span>'+data[i].nilaiIcar+'</span>'+
