@@ -77,7 +77,7 @@
 							<thead>
 								<tr>
 									<th>No</th>
-									<th>NPLNumber</th>
+									<th>Nomor NPL</th>
 									<th>Objek Lelang</th>
 									<th>Jenis NPL</th>
 									<th>Tanggal</th>

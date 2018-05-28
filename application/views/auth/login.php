@@ -13,7 +13,7 @@
                         <div class="form-group floating-label">
                             <input type="password" id="password" name="password" class="form-control input-custom is-invalid" 
                                     oninvalid="this.setCustomValidity('Password tidak boleh kosong')" oninput="setCustomValidity('')" required />
-                            <label class="label-schedule">Password</label>
+                            <label class="label-schedule">Kata Sandi</label>
                         </div>
                         <div class="form-group text-right">
                             <button class="btn btn-green" id="btn-login">Masuk</button>
