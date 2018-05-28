@@ -26,7 +26,7 @@
                   if($dataphoto[$i]->ImagePath !== '') {
                      echo '<div class="col-md-4 stickys" data-src="'.$dataphoto[$i]->ImagePath.'">
                               <a href="javascript:void(0)" class="image-header" >
-                                 <img src="'.$dataphoto[$i]->ImagePath.'" alt="Gambar '.$i.'">
+                                 <img src="http:'.$dataphoto[$i]->ImagePath.'" alt="Gambar '.$i.'">
                               </a>
                            </div>';
                   }
@@ -153,7 +153,7 @@
                            echo '<div class="cursor-pointer">
                                     <a id="show360" href="'.site_url('welcome/d360/'.$imgs->AuctionItemId).'" target="_blank" class="thirty-link">
                                        <input id="hidden360" type="hidden" value="'.site_url('welcome/d360').'" />
-                                       <img src="'.$imgs->ImagePath.'" />
+                                       <img src="http:'.$imgs->ImagePath.'" />
                                     </a>
                                  </div>';
                         }
@@ -167,7 +167,7 @@
                <div class="slider-nav-thumbnails">
                   <?php foreach($dataphoto as $key => $imgsclick) {
                      if($imgsclick->ImagePath !== '') {
-                        echo '<div class="cursor-pointer"><img src="'.$imgsclick->ImagePath.'" /></div>';
+                        echo '<div class="cursor-pointer"><img src="http:'.$imgsclick->ImagePath.'" /></div>';
                      }
                   } ?>
                </div>
@@ -866,7 +866,7 @@ $(document).ready(function() {
             var compare_data = {
                "AuctionItemId": data[i].AuctionItemId,
                "BahanBakar": data[i].bahanbakar,
-               "Image": 'http:'+data[i].icarImage,
+               "Image": data[i].icarImage,
                //"Image": '//img.ibid.astra.co.id/item/12415/d8404a531ea286d733aa7c35bfbdc83c.jpg',
                "Kilometer": data[i].km,
                "Lot": (data[i].thisLotNo !== undefined && data[i].thisLotNo !== null) ? data[i].thisLotNo : '-',
