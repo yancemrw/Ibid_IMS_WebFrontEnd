@@ -5,7 +5,7 @@
          <div id="lightgallery">
             <div class="col-md-4 stickys" data-src="<?php echo $dataphoto[0]->ImagePath; ?>">
                <a href="javascript:void(0)" class="image-header">
-                  <img src="<?php echo $dataphoto[0]->ImagePath; ?>" alt="Gambar 1" id="img-gambar">
+                  <img src="http:<?php echo $dataphoto[0]->ImagePath; ?>" alt="Gambar 1" id="img-gambar">
                   <p class="photo-amount">
                      <?php
                      $count_imgsx = 0; 
