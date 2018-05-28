@@ -450,7 +450,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
                var compare_data = {
                   "AuctionItemId": dataz.AuctionItemId,
                   "BahanBakar": dataz.bahanbakar,
-                  "Image": (imgData[i][0] !== undefined) ? 'http:'.imgData[i][0].ImagePath : defaultImg,
+                  "Image": (imgData[i][0] !== undefined) ? 'http:'+imgData[i][0].ImagePath : defaultImg,
                   //"Image": '//img.ibid.astra.co.id/item/12415/d8404a531ea286d733aa7c35bfbdc83c.jpg',
                   "Kilometer": dataz.km,
                   "Lot" : (dataz.thisLotNo !== undefined && dataz.thisLotNo !== null) ? dataz.thisLotNo : '-',
@@ -604,7 +604,7 @@ function loadContainerPaging(offset, limit, linked, dataForm = '', type = 1) {
                var compare_data = {
                   "AuctionItemId": dataz.AuctionItemId,
                   "BahanBakar": dataz.bahanbakar,
-                  "Image": (imgData[i][0] !== undefined) ? 'http:'.imgData[i][0].ImagePath : defaultImg,
+                  "Image": (imgData[i][0] !== undefined) ? 'http:'+imgData[i][0].ImagePath : defaultImg,
                   "Kilometer": dataz.km,
                   "Lot" : (dataz.thisLotNo !== undefined && dataz.thisLotNo !== null) ? dataz.thisLotNo : '-',
                   "Merk": (dataz.merk !== undefined) ? dataz.merk : '',
