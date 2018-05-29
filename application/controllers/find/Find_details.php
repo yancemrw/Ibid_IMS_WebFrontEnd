@@ -24,6 +24,11 @@ class Find_details extends CI_Controller {
 		$method2 = 'GET';
 		$res2 = admsCurl($url2, array(), $method2);
 		$detailphoto = curlGenerate($res2);
+		if(!@$detailphoto) {
+			$detailphoto[0]->ImagePath = 'http:'.base_url('assetsfront/images/background/default.png');
+			$detailphoto[1]->ImagePath = 'http:'.base_url('assetsfront/images/background/default.png');
+			$detailphoto[2]->ImagePath = 'http:'.base_url('assetsfront/images/background/default.png');
+		}
 
 		// get grade item
 		$url3 = linkservice('taksasi')."nilaiicar/detail?AuctionItemId=".$id;
@@ -61,7 +66,6 @@ class Find_details extends CI_Controller {
 			$datalot = json_decode(@$datalot['response']);
 			$date = explode('-',@$datalot->schedule->date);
 			$time = explode(':',@$datalot->schedule->waktu);
-			
 		}
 
 		// cek favorit
@@ -73,7 +77,6 @@ class Find_details extends CI_Controller {
 		$methodFav = 'POST';
 		$resFav = admsCurl($urlFav, $arrFav, $methodFav);
 		$jsonFav = json_decode($resFav['response']);
-
 		
 		// get NPL
 		$thisNpl = array();
@@ -87,8 +90,7 @@ class Find_details extends CI_Controller {
 			}
 		}
 		// echo '<pre>'; print_r($thisNpl); die();
-		
-// print_r($datalot); die();
+
 		$data = array(
 			'header_white' => "header-white",
 			'userdata'	=> $this->userdata,
@@ -96,7 +98,7 @@ class Find_details extends CI_Controller {
 			'form_auth_mobile' => login_status_form_mobile($this->userdata),
 			'form_auth'	=> login_Status_form($this->userdata),
 			'data'	=> @$detail,
-			'dataphoto' => @$detailphoto,
+			'dataphoto' => $detailphoto,
 			'dataharga' => @$this->currency_format($detail[0]->FinalPriceItem),
 			'grade' => @$detailgrade->TotalEvaluationResult,
 			'gradeinternal' => @$detailicar,
