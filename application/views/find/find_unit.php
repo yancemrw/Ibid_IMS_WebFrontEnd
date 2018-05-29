@@ -450,7 +450,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
                var compare_data = {
                   "AuctionItemId": dataz.AuctionItemId,
                   "BahanBakar": dataz.bahanbakar,
-                  "Image": (imgData[i][0] !== undefined) ? imgData[i][0].ImagePath : defaultImg,
+                  "Image": (imgData[i][0] !== undefined) ? 'http:'+imgData[i][0].ImagePath : defaultImg,
                   //"Image": '//img.ibid.astra.co.id/item/12415/d8404a531ea286d733aa7c35bfbdc83c.jpg',
                   "Kilometer": dataz.km,
                   "Lot" : (dataz.thisLotNo !== undefined && dataz.thisLotNo !== null) ? dataz.thisLotNo : '-',
@@ -463,8 +463,8 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
                   "NoSTNK": dataz.nostnk,
                   "Seri": (dataz.seri !== undefined) ? dataz.seri : '',
                   "Silinder": (dataz.silinder !== undefined) ? dataz.silinder : '',
-                  "TaksasiGrade": icarData[i].TotalEvaluationResult,
-                  "Tahun": (dataz.tahun !== undefined) ? dataz.tahun : '',
+                  "TaksasiGrade": (icarData[i].TotalEvaluationResult !== undefined) ? icarData[i].TotalEvaluationResult : '-',
+                  "Tahun": (dataz.tahun !== undefined) ? dataz.tahun : '-',
                   "Transmisi": (dataz.transmisi !== undefined) ? dataz.transmisi : '',
                   "Tipe": (dataz.grade !== undefined) ? dataz.grade : '',
                   "Price": (dataz.FinalPriceItem !== undefined) ? dataz.FinalPriceItem : 0,
@@ -549,12 +549,12 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
          }
          else {
             $('#btnFilter').attr('disabled', false);
-            $('#loadings').replaceWith('<div id="loadings" class="table-responsive table-container content-empty"><div class="product-empty"><img src="<?php echo base_url('assetsfront/images/background/management-empty.png'); ?>" alt="Loading" width="400px" /></div><p>Oops.... <span>Data Tidak Ditemukan.</span></p></div>');
+            $('#loadings').replaceWith('<div id="loadings" class="table-responsive table-container content-empty"><div class="product-empty"><img src="<?php echo base_url('assetsfront/images/icon/empty-product.png'); ?>" alt="Loading" width="400px" /></div><p>Oops.... <span>Data Tidak Ditemukan.</span></p></div>');
          }
       },
       error: function() {
          bootoast.toast({
-            message: 'Koneksi terputus saat mengolah data pencaraian',
+            message: 'Koneksi terputus saat mengolah data pencarian',
             type: 'warning',
             position: 'top-center',
             timeout: 3
@@ -604,7 +604,7 @@ function loadContainerPaging(offset, limit, linked, dataForm = '', type = 1) {
                var compare_data = {
                   "AuctionItemId": dataz.AuctionItemId,
                   "BahanBakar": dataz.bahanbakar,
-                  "Image": (imgData[i][0] !== undefined) ? imgData[i][0].ImagePath : defaultImg,
+                  "Image": (imgData[i][0] !== undefined) ? 'http:'+imgData[i][0].ImagePath : defaultImg,
                   "Kilometer": dataz.km,
                   "Lot" : (dataz.thisLotNo !== undefined && dataz.thisLotNo !== null) ? dataz.thisLotNo : '-',
                   "Merk": (dataz.merk !== undefined) ? dataz.merk : '',
@@ -616,8 +616,8 @@ function loadContainerPaging(offset, limit, linked, dataForm = '', type = 1) {
                   "NoSTNK": dataz.nostnk,
                   "Seri": (dataz.seri !== undefined) ? dataz.seri : '',
                   "Silinder": (dataz.silinder !== undefined) ? dataz.silinder : '',
-                  "TaksasiGrade": icarData[i].TotalEvaluationResult,
-                  "Tahun": (dataz.tahun !== undefined) ? dataz.tahun : '',
+                  "TaksasiGrade": (icarData[i].TotalEvaluationResult !== undefined) ? icarData[i].TotalEvaluationResult : '-',
+                  "Tahun": (dataz.tahun !== undefined) ? dataz.tahun : '-',
                   "Transmisi": (dataz.transmisi !== undefined) ? dataz.transmisi : '',
                   "Tipe": (dataz.grade !== undefined) ? dataz.grade : '',
                   "Price": (dataz.FinalPriceItem !== undefined) ? dataz.FinalPriceItem : 0,
@@ -701,7 +701,7 @@ function loadContainerPaging(offset, limit, linked, dataForm = '', type = 1) {
       },
       error: function() {
          bootoast.toast({
-            message: 'Koneksi terputus saat mengolah data pencaraian',
+            message: 'Koneksi terputus saat mengolah data pencarian',
             type: 'warning',
             position: 'top-center',
             timeout: 3

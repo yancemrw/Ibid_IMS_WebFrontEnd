@@ -106,3 +106,5 @@ $route['translate_uri_dashes'] = FALSE;
 
 // Check otp
 $route['otp/(:any)'] = 'otp/index/$1';
+
+$route['cara-lelang-mobil-bekas'] = 'landing';

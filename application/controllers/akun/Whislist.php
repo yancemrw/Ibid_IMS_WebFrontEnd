@@ -72,7 +72,7 @@ class Whislist extends CI_Controller {
 		$datax = array(
 			'header_white'		=> "header-white",
 			'userdata'		=> $this->userdata,
-			'title'			=> 'Data Diri',
+			'title'			=> 'Favorit',
 			'form_auth_mobile'	=> login_status_form_mobile($this->userdata),
 			'form_auth'		=> login_Status_form($this->userdata),
 			'data'			=> $data,

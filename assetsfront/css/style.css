@@ -4319,40 +4319,40 @@ h3.header-compare span {
 }
 
 .acc_favorite i {
-    background: url('../images/icon/ic_management_sprite.png') no-repeat 0 -4px;
+    background: url('../images/icon/ic_management_sprite.png') no-repeat -3px -4px;
     width: 25px;
     height: 24px;
 }
 
 .acc_favorite:hover i,
 .active.acc_favorite i {
-    background: url('../images/icon/ic_management_sprite.png') no-repeat 0 -45px;
+    background: url('../images/icon/ic_management_sprite.png') no-repeat -3px -46px;
     width: 25px;
     height: 24px;
 }
 
 .acc_notif i {
-    background: url('../images/icon/ic_management_sprite.png') no-repeat -157px 0;
+    background: url('../images/icon/ic_management_sprite.png') no-repeat -159px -1px;
     width: 25px;
     height: 27px;
 }
 
 .acc_notif:hover i,
 .active.acc_notif i {
-    background: url('../images/icon/ic_management_sprite.png') no-repeat -157px -42px;
+    background: url('../images/icon/ic_management_sprite.png') no-repeat -159px -43px;
     width: 25px;
     height: 27px;
 }
 
 .acc_setting i {
-    background: url('../images/icon/ic_management_sprite.png') no-repeat -38px -2px;
+    background: url('../images/icon/ic_management_sprite.png') no-repeat -40px -3px;
     width: 25px;
     height: 27px;
 }
 
 .acc_setting:hover i,
 .active.acc_setting i {
-    background: url('../images/icon/ic_management_sprite.png') no-repeat -38px -43px;
+    background: url('../images/icon/ic_management_sprite.png') no-repeat -40px -45px;
     width: 25px;
     height: 27px;
 }
@@ -4365,7 +4365,7 @@ h3.header-compare span {
 
 .acc_transaction:hover i,
 .active.acc_transaction i {
-    background: url('../images/icon/ic_management_sprite.png') no-repeat -81px -43px;
+    background: url('../images/icon/ic_management_sprite.png') no-repeat -81px -44px;
     width: 25px;
     height: 27px;
 }
@@ -4384,14 +4384,14 @@ h3.header-compare span {
 }
 
 .acc_npl i {
-    background: url('../images/icon/ic_management_sprite.png') no-repeat -124px -2px;
+    background: url('../images/icon/ic_management_sprite.png') no-repeat -126px -2px;
     width: 20px;
     height: 27px;
 }
 
 .acc_npl:hover i,
 .active.acc_npl i {
-    background: url('../images/icon/ic_management_sprite.png') no-repeat -124px -43px;
+    background: url('../images/icon/ic_management_sprite.png') no-repeat -126px -43px;
     width: 20px;
     height: 27px;
 }
@@ -6363,7 +6363,7 @@ li.input-dropdown a {
 
 .product-empty {
     max-width: 480px;
-    height: 345px;
+    height: 230px;
     margin: auto;
     overflow: hidden;
 }

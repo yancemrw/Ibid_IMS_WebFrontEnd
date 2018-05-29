@@ -11,7 +11,7 @@
       </div>
       <div class="col-md-4 footer-link text-center">
         <ul>
-          <li><a href="<?php echo site_url('about'); ?>">Tentang Ibid</a></li>
+          <li><a href="<?php echo site_url('about'); ?>">Tentang IBID</a></li>
           <li><a href="<?php echo site_url('faq'); ?>">FAQ</a></li>
           <li><a href="<?php echo site_url('blog'); ?>">Blog</a></li>
           <li><a href="javascript:void(0)" data-toggle="modal" data-target="#privacy-modal-home">Privacy Policy</a></li>
@@ -19,7 +19,7 @@
         </ul>
       </div>
       <div class="col-md-4 copyright">
-        <p>PT BALAI LELANG SERASI &copy; 2017</p>
+        <p>PT BALAI LELANG SERASI &copy; 2018</p>
       </div>
     </div>
   </div>
@@ -44,7 +44,7 @@
             <div class="form-group floating-label">
               <input type="password" class="form-control floating-handle input-custom is-invalid" id="passwordx" name="password" 
                       oninvalid="this.setCustomValidity('Password tidak boleh kosong')" oninput="setCustomValidity('')" required />
-              <label for="">Password</label>
+              <label for="">Kata Sandi</label>
             </div>
             <div class="forgot"><a href="<?php echo site_url('forgot'); ?>">Lupa kata sandi?</a></div>
             <div class="form-group text-right">

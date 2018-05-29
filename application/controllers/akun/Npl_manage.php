@@ -23,84 +23,10 @@ class Npl_manage extends CI_Controller {
 		);
 		$data['img_link'] = base_url('assetsfront/images/icon/ic_avatar.png');
 		
-		$userdata = $this->session->userdata('userdata');
-		$url = linkservice('npl')."counter/npl/searchAll?BiodataId=".@$userdata['UserId'];
-		// die();
-		$method = 'GET';
-		$responseApi = admsCurl($url, array('BiodataId' => @$userdata['UserId']), $method);
-		$listNpl = curlGenerate($responseApi);
-
-		//echo "<pre>"; print_r($listNpl); exit();
-		
-		$arrScheduleId = array();
-		$arrItemId = array();
-		$arrCompanyId = array();
-		$allListNpl = array();
-		foreach($listNpl as $row){
-			if ($row->Active != ''){
-				
-				if (!in_array($row->ScheduleId, $arrScheduleId))
-					$arrScheduleId[] = $row->ScheduleId;
-				
-				if (!in_array($row->ItemId, $arrItemId))
-					$arrItemId[] = $row->ItemId;
-				
-				if (!in_array($row->CompanyId, $arrCompanyId))
-					$arrCompanyId[] = $row->CompanyId;
-				$allListNpl[] = $row;
-			}
-			
-		}
-		$data['listNpl'] = $allListNpl;
-		
 		// print_r(@$arrScheduleId);
 		// print_r(@$arrItemId);
 		// print_r(@$arrCompanyId);
 		// die();
-		
-		
-		############################################################
-		## detailJadwal
-		$schedule = array();
-		$listJadwal = array();
-		for($i=0; $i<count($arrScheduleId); $i++){
-			$ScheduleId = $arrScheduleId[$i];
-			
-			$url = linkservice('AMSSCHEDULE')."scheduledetail/".$ScheduleId;
-			$method = 'GET';
-			$responseApi = amsCurl($url, array(), $method);
-			if ($responseApi['err']) { 
-				echo "<hr>cURL Error schedule #:" . $responseApi['err']; 
-			} else {
-				$dataApi = json_decode($responseApi['response'],true);
-				$listJadwal[] = $dataApi['data'];
-			}
-		}
-		
-		foreach($listJadwal as $row)
-			$schedule[$row['id']] = $row;
-		
-		$data['schedule'] = @$schedule;
-		############################################################
-		
-		
-		############################################################
-		## detailItem
-		$detailItem = array();
-		$url = linkservice('master')."item/get";
-		$method = 'GET';
-		$responseApi = admsCurl($url, array(), $method);
-		if ($responseApi['err']) { 
-			echo "<hr>cURL Error master item #:" . $responseApi['err']; 
-		} else {
-			$dataApi = json_decode($responseApi['response'],true);
-			$allItem = $dataApi['data'];
-			foreach($allItem as $row)
-				$detailItem[$row['ItemId']] = $row;
-			
-		}
-		$data['detailItem'] = @$detailItem;
-		############################################################
 		
 		############################################################
 		## detailCabang
@@ -126,6 +52,95 @@ class Npl_manage extends CI_Controller {
 		
 		$view = "akun/npl_manage";
 		template($view, $data);
+	}
+
+	function loadTable() {
+		/* Start - DetailItem */
+		$detailItem = array();
+		$url = linkservice('master')."item/get";
+		$method = 'GET';
+		$responseApi = admsCurl($url, array(), $method);
+		if ($responseApi['err']) { 
+			echo "<hr>cURL Error master item #:" . $responseApi['err']; 
+		}
+		else {
+			$dataApi = json_decode($responseApi['response'],true);
+			$allItem = $dataApi['data'];
+			foreach($allItem as $row) {
+				$detailItem[$row['ItemId']] = $row;
+			}
+		}
+		/* End */
+
+		$id = $this->input->get('id');
+		$url = linkservice('npl')."counter/npl/searchAll?BiodataId=".$id;
+		$method = 'GET';
+		$responseApi = admsCurl($url, array('BiodataId' => @$userdata['UserId']), $method);
+		$listNpl = curlGenerate($responseApi); //echo "<pre>"; print_r($listNpl); exit;
+
+		/* Start - DetailJadwal */
+		$arrScheduleId = array();
+		$arrItemId = array();
+		$arrCompanyId = array();
+		$allListNpl = array();
+		foreach($listNpl as $row) {
+			if($row->Active != '') {
+				if(!in_array($row->ScheduleId, $arrScheduleId)) $arrScheduleId[] = $row->ScheduleId;
+				if(!in_array($row->ItemId, $arrItemId)) $arrItemId[] = $row->ItemId;
+				if(!in_array($row->CompanyId, $arrCompanyId)) $arrCompanyId[] = $row->CompanyId;
+				$allListNpl[] = $row;
+			}
+		}
+
+		$schedule = array();
+		$listJadwal = array();
+		for($i = 0; $i < count($arrScheduleId); $i++) {
+			$ScheduleId = $arrScheduleId[$i];
+			$url = linkservice('AMSSCHEDULE')."scheduledetail/".$ScheduleId;
+			$method = 'GET';
+			$responseApi = amsCurl($url, array(), $method);
+			if($responseApi['err']) { 
+				$listJadwal[] = "<hr>cURL Error schedule #:" . $responseApi['err']; 
+			}
+			else {
+				$dataApi = json_decode($responseApi['response'],true);
+				$listJadwal[] = $dataApi['data'];
+			}
+		}
+		foreach($listJadwal as $row) {
+			$schedule[$row['id']] = $row;
+		}
+		/* End */
+
+		$arr = array();
+		foreach($listNpl as $key => $value) {
+			if($value->Active === 1 && $value->IsUsed === null) {
+				$stat = 'Tersedia';
+			}
+			else if($value->Active === 0 && $value->IsUsed === 1) {
+				$stat = 'Menang';
+			}
+			else if($value->Active === 1 && $value->IsUsed === 0) {
+				$stat = 'Kalah';
+			}
+
+			$date = '';
+			if($value->ScheduleId > 0) {
+				$cek_schedule = (@$schedule[$value->ScheduleId]['waktu']) ? ', '.@$schedule[$value->ScheduleId]['waktu'] : '';
+				$cek_company = (@$schedule[$value->ScheduleId]['CompanyName']) ? @$schedule[$value->ScheduleId]['CompanyName'].'<br />' : '';
+				$date .= $cek_company;
+				$date .= date('d F Y',strtotime(@$schedule[$value->ScheduleId]['date'])).$cek_schedule;
+			}
+
+			$arr[$key][] = ($key + 1);
+			$arr[$key][] = $value->NPLNumber;
+			$arr[$key][] = @$detailItem[$value->ItemId]['ItemName'];
+			$arr[$key][] = $value->NPLType;
+			$arr[$key][] = $date;
+			$arr[$key][] = $stat;
+		}
+		$arrData['data'] = $arr;
+		echo json_encode($arrData);
 	}
 
 }

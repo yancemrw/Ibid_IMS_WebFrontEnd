@@ -190,12 +190,12 @@
    <div class="container-fluid">
       <div class="row">
          <div class="col-md-12">
-            <h2 class="title">Cara Ikut Lelang & Titip Jual</h2>
+            <h2 class="title">Cara Ikut Lelang & Titip Lelang</h2>
          </div>
          <div class="tab-lelang">
             <ul class="nav nav-tabs" role="tablist">
                <li role="presentation" class="active"><a href="#tab-lelang-1" aria-controls="tab-lelang-1" role="tab" data-toggle="tab">Cara Ikut Lelang</a></li>
-               <li role="presentation"><a href="#tab-lelang-2" aria-controls="tab-lelang-2" role="tab" data-toggle="tab">Cara Titip Jual</a></li>
+               <li role="presentation"><a href="#tab-lelang-2" aria-controls="tab-lelang-2" role="tab" data-toggle="tab">Cara Titip Lelang</a></li>
             </ul>
             <div class="tab-content clearfix">
                <div role="tabpanel" class="tab-pane active clearfix" id="tab-lelang-1">

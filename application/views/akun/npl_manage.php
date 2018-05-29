@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/datatables/css/jquery.dataTables.css'); ?>" />
+<script type="text/javascript" src="<?php echo base_url('assetsfront/datatables/js/jquery.dataTables.js'); ?>"></script>
 <section>
     <div class="container-fluid">
         <div class="row bg-white">
@@ -43,23 +45,25 @@
                     <div class="filter-table">
                         <form class="form-inline">
                             <div class="form-group">
-                                <input type="text" name="" class="form-control input-custom" placeholder="Search">
+                                <input type="text" name="filterNPL" class="form-control input-custom" placeholder="Search">
                                 <i class="fa fa-search"></i>
                             </div>
                             <div class="filter-right">
                                 <div class="form-group">
                                     <select class="form-control select-custom">
-                                        <option>Filter by jadwal</option>
+                                        <option>Filter by Cabang</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <select class="form-control select-custom">
                                         <option>Jenis lelang</option>
+                                        <option>Live</option>
+                                        <option>Online</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Show</label>
-                                    <select class="form-control select-custom">
+                                    <select class="form-control select-custom" id="changeNPL">
                                         <option>10</option>
                                         <option>15</option>
                                         <option>20</option>
@@ -68,12 +72,12 @@
                             </div>
                         </form>
                     </div>
-                    <div class="table-responsive table-container">
-						<table class="table table-striped table-custom">
+                    <div class="table-responsive table-container margin-bottom-20px">
+						<table class="table table-striped table-custom" id="table-npl">
 							<thead>
 								<tr>
 									<th>No</th>
-									<th>NPLNumber</th>
+									<th>Nomor NPL</th>
 									<th>Objek Lelang</th>
 									<th>Jenis NPL</th>
 									<th>Tanggal</th>
@@ -81,36 +85,7 @@
 									<!--th></th-->
 								</tr>
 							</thead>
-							<tbody>
-								<?php 
-                                foreach($listNpl as $key => $row) {
-                                    if($row->Active === 1 && $row->IsUsed === null) {
-                                        $stat = 'Tersedia';
-                                    }
-                                    else if($row->Active === 0 && $row->IsUsed === 1) {
-                                        $stat = 'Menang';
-                                    }
-                                    else if($row->Active === 1 && $row->IsUsed === 0) {
-                                        $stat = 'Kalah';
-                                    }
-                                ?>
-								<tr>
-									<td><?php echo ($key + 1); ?></td>
-									<td><?php echo $row->NPLNumber; ?></td>
-									<td><?php echo @$detailItem[$row->ItemId]['ItemName']; ?></td>
-									<td><?php echo $row->NPLType; ?></td>
-									<td><?php if ($row->ScheduleId > 0){
-											echo @$schedule[$row->ScheduleId]['CompanyName'];
-											echo '<br>';
-											echo date('d F Y',strtotime(@$schedule[$row->ScheduleId]['date'])).', '.@$schedule[$row->ScheduleId]['waktu'];
-										}
-										// echo $row->ScheduleId; 
-									?></td>
-									<td class="status"><?php echo $stat; ?></td>
-									<!--td><?php echo $row->NPLId; ?></td-->
-								</tr>
-								<?php } ?>
-							</tbody>
+							<tbody></tbody>
 						</table>
 						<?php // print_r(@$listNpl); ?>
                     </div>
@@ -125,3 +100,27 @@
         </div>
     </div>
 </section>
+
+<script>
+    var tableNPL = $('#table-npl').DataTable({
+        "dom": 'rt<"bottom"ip><"clear">',
+        "bLengthChange": false,
+        "fnServerParams": function (aoData) {
+            aoData.push( {"name":"changeNPL", "value":$('#changeNPL').val()} );
+        },
+        "language": {
+            'emptyTable': 'Tidak Ada NPL'
+        },
+        "ajax": "<?php echo linkservice('frontend').'akun/Npl_manage/loadTable?userid='.$userdata['UserId']; ?>",
+        "initComplete": function(settings, json) {
+            $('#table-jual > thead > tr > th').removeClass('sorting').removeClass('sorting_asc');
+            $('#table-beli > thead > tr > th').removeClass('sorting').removeClass('sorting_asc');
+        }
+    });
+    $('input[name="filterNPL"]').keypress(function(e) {
+        if(e.which == 13) {
+            e.preventDefault();
+            tableNPL.search(this.value).draw();
+        }
+    });
+</script>
