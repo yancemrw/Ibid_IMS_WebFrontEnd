@@ -399,6 +399,10 @@ $(function() {
             url: '<?php echo linkservice('AMSSCHEDULE') .'schedulelist'; ?>',
             dataType: 'JSON',
             method: 'GET',
+            data: {
+              'startdate' : '<?php echo date('Y-m-d'); ?>',
+              'notFinished' : 1,
+            },
             success: function(doc) {
                var html;
                if(doc.data.length > 0) {
