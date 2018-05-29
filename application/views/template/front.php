@@ -321,8 +321,8 @@
          <div class="content-autobid clearfix">
             <div class="col-md-7">
                <h2><?php echo $content->autobid->Title; ?></h2>
-               <p><?php echo $content->autobid->Content; ?> <span>Download sekarang!</span></p>
-               <a href="javascript:void(0)" class="icn icn-google-play link-disabled"></a>
+               <p><?php echo $content->autobid->Content; ?><!--span>Download sekarang!</span--></p>
+               <!--a href="javascript:void(0)" class="icn icn-google-play link-disabled"></a-->
             </div>
             <div class="col-md-5">
                <img alt="" src="<?php echo base_url('assetsfront/images/background/bg-hand.png'); ?>" class="image-footer img-responsive" />
