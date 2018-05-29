@@ -581,7 +581,7 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
           var jsonData = {
             "AuctionItemId" : (datax[i].AuctionItemId !== undefined) ? datax[i].AuctionItemId : '',
             "BahanBakar"    : datax[i].bahanbakar,
-            "Image"         : (imgData[i][0].ImagePath !== undefined) ? imgData[i][0].ImagePath : '<?php echo base_url('assetsfront/images/background/default.png') ?>',
+            "Image"         : (imgData[i][0] !== undefined) ? imgData[i][0].ImagePath : '<?php echo base_url('assetsfront/images/background/default.png') ?>',
             "Kilometer"     : datax[i].km,
             "Lot"           : (datax[i].thisLotNo !== undefined && datax[i].thisLotNo !== null) ? datax[i].thisLotNo : '-',
             "Merk"          : (datax[i].merk !== undefined) ? datax[i].merk : '',
