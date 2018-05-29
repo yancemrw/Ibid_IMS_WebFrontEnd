@@ -94,7 +94,7 @@
                         <p>Bahan Bakar <span id="span-bahanbakar">: <?php echo $data[0]->bahanbakar; ?></span></p>
                      </li>
                      <li>
-                        <p>Kilometer <span id="span-kilometer">: <?php echo ($data[0]->km === '0') ? 'Data Tidak Valid' : $data[0]->km ; ?></span></p>
+                        <p>Kilometer <span id="span-kilometer">: <?php echo ($data[0]->km === '0') ? '-' : $data[0]->km ; ?></span></p>
                         <input type="hidden" id="span-lot" value="<?php echo (@$data[0]->thisLotNo) ? $data[0]->thisLotNo : null ; ?>" />
                      </li>
                   </ul>
