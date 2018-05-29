@@ -294,6 +294,7 @@ function getJadwalAms() {
 				item: itemLelang,
 				company_id: cabangId,
 				startdate: startdate,
+				notFinished : 1,
 			},
 			beforeSend: function( ) {
 				// $('#ScheduleId').css('display','none');
