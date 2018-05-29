@@ -24,7 +24,12 @@ class Find_details extends CI_Controller {
 		$method2 = 'GET';
 		$res2 = admsCurl($url2, array(), $method2);
 		$detailphoto = curlGenerate($res2);
-		if(!@$detailphoto) {
+		if(@$detailphoto) {
+			foreach($detailphoto as $key => $value) {
+				$detailphoto[$key]->ImagePath = 'http:'.$detailphoto[$key]->ImagePath;
+			}
+		}
+		else {
 			$detailphoto[0]->ImagePath = 'http:'.base_url('assetsfront/images/background/default.png');
 			$detailphoto[1]->ImagePath = 'http:'.base_url('assetsfront/images/background/default.png');
 			$detailphoto[2]->ImagePath = 'http:'.base_url('assetsfront/images/background/default.png');
