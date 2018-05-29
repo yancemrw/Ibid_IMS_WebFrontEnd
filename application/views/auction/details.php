@@ -166,9 +166,55 @@
 myFav = [];
 <?php foreach($favorite as $row){ ?>
 myFav.push(<?php echo $row->AuctionItemId; ?>);
-
-startPing();
 <?php } ?>
+  
+  startPing();
+
+  function startPing()
+  {
+    setInterval(function(){
+      pingProcess()
+    }, 3000);
+  }
+
+  function pingProcess()
+  {
+     
+     var ping = new Date;
+     var newPing;
+     $.ajax({ 
+         type: "GET",
+         url: "<?php echo linkservice('amsauction'); ?>../",
+         data: {},
+         cache:false,
+         crossDomain : true,
+         success: function(output){ 
+             newPing = new Date - ping;
+             if (newPing >= 999) {
+              newPing = 999
+             }
+             $('#ping-wrapper').removeClass('green'); 
+             $('#ping-wrapper').removeClass('red'); 
+             $('#ping-wrapper').removeClass('yellow');
+             if (newPing < 100) {
+              $('#ping-wrapper').addClass('green');
+             } else if (newPing >=100 && newPing <= 199){
+              $('#ping-wrapper').addClass('yellow');
+             } else if (newPing >= 200){
+              $('#ping-wrapper').addClass('red');
+             }
+             $('#ping').html(newPing+'ms');
+         },
+         error: function(output){ 
+             newPing = 999;
+              $('#ping-wrapper').removeClass('green'); 
+              $('#ping-wrapper').removeClass('red'); 
+              $('#ping-wrapper').removeClass('yellow');
+             $('#ping-wrapper').addClass('red');
+             $('#ping').html(newPing+'ms');
+         }
+     });
+  }
 
   var dbRef = firebase.database();
   var activeCompany = [];
@@ -704,50 +750,5 @@ startPing();
         alert('bid is not allow bro!!');
       }
     })
-  }
-  function startPing()
-  {
-    setInterval(function(){
-      pingProcess()
-    }, 3000);
-  }
-
-  function pingProcess()
-  {
-     
-     var ping = new Date;
-     var newPing;
-     $.ajax({ 
-         type: "GET",
-         url: "<?php echo linkservice('amsauction'); ?>../",
-         data: {},
-         cache:false,
-         crossDomain : true,
-         success: function(output){ 
-             newPing = new Date - ping;
-             if (newPing >= 999) {
-              newPing = 999
-             }
-             $('#ping-wrapper').removeClass('green'); 
-             $('#ping-wrapper').removeClass('red'); 
-             $('#ping-wrapper').removeClass('yellow');
-             if (newPing < 100) {
-              $('#ping-wrapper').addClass('green');
-             } else if (newPing >=100 && newPing <= 199){
-              $('#ping-wrapper').addClass('yellow');
-             } else if (newPing >= 200){
-              $('#ping-wrapper').addClass('red');
-             }
-             $('#ping').html(newPing+'ms');
-         },
-         error: function(output){ 
-             newPing = 999;
-              $('#ping-wrapper').removeClass('green'); 
-              $('#ping-wrapper').removeClass('red'); 
-              $('#ping-wrapper').removeClass('yellow');
-             $('#ping-wrapper').addClass('red');
-             $('#ping').html(newPing+'ms');
-         }
-     });
   }
 </script>
