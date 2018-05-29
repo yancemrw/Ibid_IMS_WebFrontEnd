@@ -5,7 +5,7 @@
          <div id="lightgallery">
             <div class="col-md-4 stickys" data-src="<?php echo $dataphoto[0]->ImagePath; ?>">
                <a href="javascript:void(0)" class="image-header">
-                  <img src="http:<?php echo $dataphoto[0]->ImagePath; ?>" alt="Gambar 1" id="img-gambar">
+                  <img src="<?php echo $dataphoto[0]->ImagePath; ?>" alt="Gambar 1" id="img-gambar">
                   <p class="photo-amount">
                      <?php
                      $count_imgsx = 0; 
@@ -26,7 +26,7 @@
                   if($dataphoto[$i]->ImagePath !== '') {
                      echo '<div class="col-md-4 stickys" data-src="'.$dataphoto[$i]->ImagePath.'">
                               <a href="javascript:void(0)" class="image-header" >
-                                 <img src="http:'.$dataphoto[$i]->ImagePath.'" alt="Gambar '.$i.'">
+                                 <img src="'.$dataphoto[$i]->ImagePath.'" alt="Gambar '.$i.'">
                               </a>
                            </div>';
                   }
@@ -153,12 +153,12 @@
                            echo '<div class="cursor-pointer">
                                     <a id="show360" href="'.site_url('welcome/d360/'.$imgs->AuctionItemId).'" target="_blank" class="thirty-link">
                                        <input id="hidden360" type="hidden" value="'.site_url('welcome/d360').'" />
-                                       <img src="http:'.$imgs->ImagePath.'" />
+                                       <img src="'.$imgs->ImagePath.'" />
                                     </a>
                                  </div>';
                         }
                         else if($imgs->ImagePath !== '') {
-                           echo '<div class="item-slide cursor-pointer" data-src="'.$imgs->ImagePath.'"><img src="http:'.$imgs->ImagePath.'" /></div>';
+                           echo '<div class="item-slide cursor-pointer" data-src="'.$imgs->ImagePath.'"><img src="'.$imgs->ImagePath.'" /></div>';
                         }
                      } ?>                     
                   </div>
@@ -167,7 +167,7 @@
                <div class="slider-nav-thumbnails">
                   <?php foreach($dataphoto as $key => $imgsclick) {
                      if($imgsclick->ImagePath !== '') {
-                        echo '<div class="cursor-pointer"><img src="http:'.$imgsclick->ImagePath.'" /></div>';
+                        echo '<div class="cursor-pointer"><img src="'.$imgsclick->ImagePath.'" /></div>';
                      }
                   } ?>
                </div>
@@ -899,7 +899,7 @@ $(document).ready(function() {
                            '<a href="'+link_detail+'">'+
                            '<div class="thumbnail">'+
                            '<div class="thumbnail-custom">'+
-                           '<img src="http:'+data[i].icarImage+'" />'+
+                           '<img src="'+data[i].icarImage+'" />'+
                            '</div>'+
                            '<div class="overlay-grade">'+
                            'Grade <span>'+data[i].nilaiIcar+'</span>'+
