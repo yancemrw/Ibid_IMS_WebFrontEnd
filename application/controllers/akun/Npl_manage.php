@@ -103,7 +103,7 @@ class Npl_manage extends CI_Controller {
 		}
 		/* End */
 
-		$id = $this->input->get('UserId');
+		$id = $this->input->get('userid');
 		$url = linkservice('npl')."counter/npl/searchAll?BiodataId=".$id;
 		$method = 'GET';
 		$responseApi = admsCurl($url, array('BiodataId' => @$userdata['UserId']), $method);
