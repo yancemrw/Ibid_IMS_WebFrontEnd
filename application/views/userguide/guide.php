@@ -1,6 +1,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<aside class="col-xs-3 side-menu-procedure">
+            <a href="javascript:void(0)" class="toggle-aside">MENU PROSEDUR</a>
 			<?php echo $side_menu; ?>
 		</aside>
 		<div class="col-xs-9 bg-grey content-menu-procedure">
@@ -31,8 +32,10 @@
 	    $(".select-custom").select2({
 	    	minimumResultsForSearch: -1
 	    });
-	    
-		//$(".side-menu-procedure").stick_in_parent({offset_top: 80});
+
+        $('.toggle-aside').click(function () {
+            $('.side-menu-procedure ul').toggleClass('open')
+        });
 
         $(window).scroll(function() {
             var window_top = $(window).scrollTop() + 300;
