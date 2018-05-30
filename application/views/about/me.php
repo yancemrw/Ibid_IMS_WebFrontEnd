@@ -275,7 +275,7 @@
 			<?php foreach ($content->kenapaibid as $keyWhy => $valueWhy) { ?>
 			<div class="col-md-4">
 				<div class="box-section">
-					<div class="box-image icn icn-car-valuation"></div>
+					<div class="<?php echo $valueWhy->ClassName; ?>"></div>
 					<h3><?php echo $valueWhy->Title; ?></h3>
 					<?php echo $valueWhy->Content; ?>
 					<button class="btn btn-green btn-me-daftar" disabled>Info Detail</button>
