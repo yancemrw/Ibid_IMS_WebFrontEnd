@@ -110,7 +110,7 @@ class Find_details extends CI_Controller {
 			'data'	=> @$detail,
 			'dataphoto' => $detailphoto,
 			'dataharga' => @$this->currency_format($detail[0]->FinalPriceItem),
-			'grade' => @$detailgrade->TotalEvaluationResult,
+			'grade' => (@$detailgrade->TotalEvaluationResult) ? $detailgrade->TotalEvaluationResult : '-',
 			'gradeinternal' => @$detailicar,
 			'link_detail' => @base_url('index.php/detail_lelang'),
 			'img_rec' => @$detailphoto[3]->ImagePath,
