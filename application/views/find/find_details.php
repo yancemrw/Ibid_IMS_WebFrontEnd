@@ -123,6 +123,7 @@
                      </li>
                   </ul>
                </div>
+               <?php if(count($gradeinternal) > 0) { ?>
                <div class="desc-row clearfix">
                   <ul>
                      <li>
@@ -141,6 +142,7 @@
                      </li>
                   </ul>
                </div>
+               <?php } ?>
             </div>
             <div class="photo-transport">
                <h2>Photo Kendaraan</h2>
@@ -197,8 +199,8 @@
                         <li class="clearfix">
                            Harga Awal <span class="price">Rp. <?php echo $dataharga; ?></span>
                            <input type="hidden" id="hide-hargafinal" value="<?php echo $data[0]->FinalPriceItem ?>"></li>
-                        <li>Jadwal <span><?php echo @$datalot->schedule->date != '' ? date('d F Y',strtotime($datalot->schedule->date)) : '-'; ?></span></li>
-                        <li>Lokasi <span><?php echo @$datalot->schedule->CompanyName; ?></span></li>
+                        <li>Jadwal <span><?php echo (@$datalot->schedule->date != '') ? date('d F Y',strtotime($datalot->schedule->date)) : 'Belum Tersedia'; ?></span></li>
+                        <li>Lokasi <span><?php echo (@$datalot->schedule->CompanyName) ? $datalot->schedule->CompanyName : 'Belum Tersedia'; ?></span></li>
                      </ul>
                      <?php if($data[0]->StatusStok === 1) { // 0 = Live Auction, 1 = Online ?>
                      <ul class="mobile-info">
@@ -879,7 +881,7 @@ $(document).ready(function() {
                "NoSTNK": data[i].nostnk,
                "Seri": (data[i].seri !== undefined) ? data[i].seri : '',
                "Silinder": (data[i].silinder !== undefined) ? data[i].silinder : '',
-               "TaksasiGrade": data[i].nilaiIcar,
+               "TaksasiGrade": (data[i].nilaiIcar !== '0' && data[i].nilaiIcar !== undefined) ? data[i].nilaiIcar : '-',
                "Tahun": (data[i].tahun !== undefined) ? data[i].tahun : '',
                "Transmisi": (data[i].transmisi !== undefined) ? data[i].transmisi : '',
                "Tipe": (data[i].grade !== undefined) ? data[i].grade : '',
