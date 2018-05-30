@@ -23,6 +23,37 @@ class Npl_manage extends CI_Controller {
 		);
 		$data['img_link'] = base_url('assetsfront/images/icon/ic_avatar.png');
 		
+		$userdata = $this->session->userdata('userdata');
+		$userid_login = isset($userdata['UserId']) ? $userdata['UserId'] : 0;
+		$url = linkservice('npl')."counter/npl/searchAll?BiodataId=".$userid_login;
+		// die();
+		$method = 'GET';
+		$responseApi = admsCurl($url, array('BiodataId' => @$userdata['UserId']), $method);
+		$listNpl = curlGenerate($responseApi);
+
+		//echo "<pre>"; print_r($listNpl); exit();
+		
+		$arrScheduleId = array();
+		$arrItemId = array();
+		$arrCompanyId = array();
+		$allListNpl = array();
+		foreach($listNpl as $row){
+			if ($row->Active != ''){
+				
+				if (!in_array($row->ScheduleId, $arrScheduleId))
+					$arrScheduleId[] = $row->ScheduleId;
+				
+				if (!in_array($row->ItemId, $arrItemId))
+					$arrItemId[] = $row->ItemId;
+				
+				if (!in_array($row->CompanyId, $arrCompanyId))
+					$arrCompanyId[] = $row->CompanyId;
+				$allListNpl[] = $row;
+			}
+			
+		}
+		$data['listNpl'] = $allListNpl;
+		
 		// print_r(@$arrScheduleId);
 		// print_r(@$arrItemId);
 		// print_r(@$arrCompanyId);
