@@ -24,7 +24,7 @@ class Npl_manage extends CI_Controller {
 		$data['img_link'] = base_url('assetsfront/images/icon/ic_avatar.png');
 		
 		$userdata = $this->session->userdata('userdata');
-		$userid_login = isset($userdata['UserId']) ? $userdata['UserId'] : 0;
+		$userid_login = isset($userdata['UserId']) ? $userdata['UserId'] : 10000000;
 		$url = linkservice('npl')."counter/npl/searchAll?BiodataId=".$userid_login;
 		// die();
 		$method = 'GET';
