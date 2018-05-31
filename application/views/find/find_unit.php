@@ -493,14 +493,16 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
                   case null: statusStock = 'Live'; classStatus = 'overlay-status-live'; break;
                }
 
-               if(dataz.schedule.status !== false) {
-                  var dateSplit = (dataz.schedule.schedule.date).split('-');
-                  waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + dataz.schedule.schedule.waktu;
-               }	   
-			   /*if (schedule > 0) {
-				   var dateSplit = dataz.date.split('-');
-				   waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + dataz.waktu;
-			   }*/
+               if(dataz.schedule !== undefined) {
+                  if(dataz.schedule.status !== false) {
+                     var dateSplit = (dataz.schedule.schedule.date).split('-');
+                     waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + dataz.schedule.schedule.waktu;
+                  }
+               }   
+   			   /*if (schedule > 0) {
+   				   var dateSplit = dataz.date.split('-');
+   				   waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + dataz.waktu;
+   			   }*/
  
 			      content = '<div class="col-md-4" id="this'+dataz.AuctionItemId+'">'+
                            '<div class="list-product box-recommend">'+
@@ -646,14 +648,16 @@ function loadContainerPaging(offset, limit, linked, dataForm = '', type = 1) {
                   case null: statusStock = 'Live'; classStatus = 'overlay-status-live'; break;
                }
 
-               if(dataz.schedule.status !== false) {
-                  var dateSplit = (dataz.schedule.schedule.date).split('-');
-                  waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + dataz.schedule.schedule.waktu;
+               if(dataz.schedule !== undefined) {
+                  if(dataz.schedule.status !== false) {
+                     var dateSplit = (dataz.schedule.schedule.date).split('-');
+                     waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + dataz.schedule.schedule.waktu;
+                  }
                }
-			   /*if (schedule > 0) {
-				   var dateSplit = dataz.date.split('-');
-				   waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + dataz.waktu;
-			   }*/
+   			   /*if (schedule > 0) {
+   				   var dateSplit = dataz.date.split('-');
+   				   waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + dataz.waktu;
+   			   }*/
                content = '<div class="col-md-4" id="this'+dataz.AuctionItemId+'">'+
                               '<div class="list-product box-recommend">'+
                               '<a href="<?php echo $link_detail; ?>/'+dataz.AuctionItemId+'">'+
