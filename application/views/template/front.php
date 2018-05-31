@@ -200,63 +200,25 @@
             <div class="tab-content clearfix">
                <div role="tabpanel" class="tab-pane active clearfix" id="tab-lelang-1">
                   <div class="howTo-bid">
+                     <?php foreach($content->cara_lelang as $keyLelang => $valLelang) { ?>
                      <div class="item col-md-2">
                         <div class="box-section">
-                           <div class="box-image icn icn-check-jadwal"></div>
-                           <h2>Cari kendaraan dan cek jadwal lelang</h2>
+                           <div class="<?php echo $valLelang->Subtitle; ?>"></div>
+                           <h2><?php echo $valLelang->Content; ?></h2>
                         </div>
                      </div>
-                     <div class="item col-md-2">
-                        <div class="box-section">
-                           <div class="box-image icn icn-check-detail"></div>
-                           <h2>Cek detail kendaraan</h2>
-                        </div>
-                     </div>
-                     <div class="item col-md-2">
-                        <div class="box-section">
-                           <div class="box-image icn icn-pay-registration"></div>
-                           <h2>Registrasi & Beli Nomor Peserta Lelang (NPL)</h2>
-                        </div>
-                     </div>
-                     <div class="item col-md-2">
-                        <div class="box-section">
-                           <div class="box-image icn icn-ikut-lelang"></div>
-                           <h2>Ikut Lelang</h2>
-                        </div>
-                     </div>
-                     <div class="item col-md-2">
-                        <div class="box-section">
-                           <div class="box-image icn icn-pelunasan"></div>
-                           <h2>Pelunasan atau Pengembalian deposit</h2>
-                        </div>
-                     </div>
-                     <div class="item col-md-2">
-                        <div class="box-section">
-                           <div class="box-image icn icn-pengambilan-kendaraan"></div>
-                           <h2>Pengembalian unit yang dimenangkan</h2>
-                        </div>
-                     </div>
+                     <?php } ?>
                   </div>
                </div>
                <div role="tabpanel" class="tab-pane clearfix" id="tab-lelang-2">
+                  <?php foreach($content->cara_titip as $keyTitip => $valTitip) { ?>
                   <div class="col-md-2">
                      <div class="box-section">
-                        <div class="box-image icn icn-regis-login"></div>
-                        <h2>Registrasi atau login</h2>
+                        <div class="<?php echo $valTitip->Subtitle; ?>"></div>
+                        <h2><?php echo $valTitip->Content; ?></h2>
                      </div>
                   </div>
-                  <div class="col-md-2">
-                     <div class="box-section">
-                        <div class="box-image icn icn-check-jadwal"></div>
-                        <h2>Daftarkan kendaraan dan pilih jadwal inspeksi</h2>
-                     </div>
-                  </div>
-                  <div class="col-md-2">
-                     <div class="box-section">
-                        <div class="box-image icn icn-bawa-mobil-dokumen"></div>
-                        <h2>Bawa unit dan dokumen ke IBID</h2>
-                     </div>
-                  </div>
+                  <?php } ?>
                </div>
             </div>
          </div>
