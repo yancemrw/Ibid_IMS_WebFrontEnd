@@ -87,11 +87,11 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th width="50">No Pol/Serial Number</th>
-                                            <th width="200">Nama Barang</th>
-                                            <th width="50">Jenis</th>
-                                            <th width="100">Harga</th>
-                                            <th width="100">Tanggal</th>
+                                            <th>No Pol/Serial Number</th>
+                                            <th>Nama Barang</th>
+                                            <th>Jenis</th>
+                                            <th>Harga</th>
+                                            <th>Tanggal</th>
                                             <!--th width="250">Status</th-->
                                         </tr>
                                     </thead>
@@ -139,12 +139,12 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th width="50">NPL</th>
-                                            <th width="80">No Pol/Serial Number</th>
-                                            <th width="200">Nama Barang</th>
-                                            <th width="50">Jenis</th>
-                                            <th width="100">Harga</th>
-                                            <th width="100">Tanggal</th>
+                                            <th>NPL</th>
+                                            <th>No Pol/Serial Number</th>
+                                            <th>Nama Barang</th>
+                                            <th>Jenis</th>
+                                            <th>Harga</th>
+                                            <th>Tanggal</th>
                                             <!--th width="250">Status</th-->
                                         </tr>
                                     </thead>
@@ -173,8 +173,15 @@
         "ajax": "<?php echo linkservice('frontend').'akun/Transaction/getWinnerDatatables/jual'; ?>",
         "initComplete": function(settings, json) {
             $('#table-jual > thead > tr > th').removeClass('sorting').removeClass('sorting_asc');
-            $('#table-beli > thead > tr > th').removeClass('sorting').removeClass('sorting_asc');
-        }
+        },
+        "columnDefs": [
+            { "width": "5%", "targets": 0 },
+            { "width": "20%", "targets": 1 },
+            { "width": "20%", "targets": 2 },
+            { "width": "10%", "targets": 3 },
+            { "width": "10%", "targets": 4 },
+            { "width": "20%", "targets": 5 }
+        ]
     });
     var tableBeli = $('#table-beli').DataTable({
         "dom": 'rt<"bottom"ip><"clear">',
@@ -187,9 +194,17 @@
         },
         "ajax": "<?php echo linkservice('frontend').'akun/transaction/getWinnerDatatables/beli'; ?>",
         "initComplete": function(settings, json) {
-            $('#table-jual > thead > tr > th').removeClass('sorting').removeClass('sorting_asc');
             $('#table-beli > thead > tr > th').removeClass('sorting').removeClass('sorting_asc');
-        }
+        },
+        "columnDefs": [
+            { "width": "5%", "targets": 0 },
+            { "width": "10%", "targets": 1 },
+            { "width": "10%", "targets": 2 },
+            { "width": "20%", "targets": 3 },
+            { "width": "10%", "targets": 4 },
+            { "width": "10%", "targets": 5 },
+            { "width": "10%", "targets": 6 }
+        ]
     });
     $('input[name="filterJual"]').keypress(function(e) {
         if(e.which == 13) {
