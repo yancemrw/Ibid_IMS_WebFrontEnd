@@ -9,7 +9,8 @@
    <link rel="icon" type="image/png" href="<?php echo base_url('assetsfront/images/icon/favicon/favicon-96x96.png'); ?>" sizes="">
    <link rel="icon" type="image/png" href="<?php echo base_url('assetsfront/images/icon/favicon/favicon-16x16.png'); ?>" sizes="">
    <link rel="icon" type="image/png" href="<?php echo base_url('assetsfront/images/icon/favicon/favicon-32x32.png'); ?>" sizes=""-->
-   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+   <meta name="google-site-verification" content="1rLrJT8LW6ij_EkyB3J9F3ta0wPfBWxwxsiRvYE8DY8" />
+   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
    <meta name="description" content=""> 
    <meta name="title" content="">
    <meta name="image_src" content="">
@@ -83,6 +84,14 @@
    <script src="<?php echo base_url('assetsfront/bootoast/bootoast.js'); ?>"></script>
    <script src="<?php echo base_url('assetsfront/js/compare_product.js'); ?>"></script>
    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-84488212-1"></script>
+
+   <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-84488212-1');
+   </script>
    <script>
       // Initialize Firebase
       /* var config = {
