@@ -61,9 +61,9 @@
                                         <div class="boxright-mobile">
                                             <h2><?php echo $value->merk.' '.$value->seri.' '.$value->silinder.' '.$value->grade.' '.$value->model.' '.$value->transmisi ?></h2>
                                             <span><?php echo $value->tahun ?></span>
-                                            <span class="price">Rp. <?php echo $value->dataPrice; ?></span>
-                                            <p><span>Jadwal</span> <span class="fa fa-calendar"></span> <span><?php echo date('d F Y',strtotime($value->date)). ' '.$value->waktu; ?></span></p>
-                                            <p><span>Lokasi</span> <span class="fa fa-map-marker"></span> <span><?php echo $value->thisScheduleName; ?></span></p>
+                                            <span class="price">Rp <?php echo $value->dataPrice; ?></span>
+                                            <p><span>Jadwal</span> <span class="fa fa-calendar"></span><span><?php echo $value->datetime; ?></span></p>
+                                            <p><span>Lokasi</span> <span class="fa fa-map-marker"></span><span><?php echo $value->Company; ?></span></p>
                                         </div>
                                     </a>
                                     <div class="action-wishlist-favorite">
