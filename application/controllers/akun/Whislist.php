@@ -14,6 +14,16 @@ class Whislist extends CI_Controller {
 	}
 
 	public function index() {
+		// get cabang
+		$urlCabang = linkservice('master')."cabang/get";  
+        $methodCabang = 'GET';
+        $responseApiCabang = admsCurl($urlCabang, array('tipePengambilan'=>'dropdownlist'), $methodCabang);
+        $dataCabang = curlGenerate($responseApiCabang);
+        $arrCabang = array();
+        foreach ($dataCabang as $keyCabang => $valueCabang) {
+        	$arrCabang[$valueCabang->CompanyId] = $valueCabang->CompanyName;
+        }
+
 		// get data favorite
 		$url = linkservice('stock')."favorite/Lists";
 		$method = 'POST';
@@ -36,12 +46,13 @@ class Whislist extends CI_Controller {
 				$methodTaksasi = 'GET';
 				$resTaksasi = admsCurl($urlTaksasi, array('userid' => $this->userdata['UserId']), $methodTaksasi);
 				$dataTaksasi = curlGenerate($resTaksasi);
-				$data[$key]->TotalEvaluationResult = @$dataTaksasi->TotalEvaluationResult ? $dataTaksasi->TotalEvaluationResult : '?';
+				$data[$key]->TotalEvaluationResult = @$dataTaksasi->TotalEvaluationResult ? $dataTaksasi->TotalEvaluationResult : '-';
 
-				$data[$key]->dataPrice = @$row->FinalPriceItem ? $this->currency_format($row->FinalPriceItem) : 'Belum Tersedia';
-				$data[$key]->Lot = @$row->thisLotNo ? $row->thisLotNo : '???';
+				$data[$key]->dataPrice = @$row->FinalPriceItem ? $this->currency_format($row->FinalPriceItem) : '0';
+				$data[$key]->Lot = @$row->thisLotNo ? $row->thisLotNo : '-';
 
-				$data[$key]->thisScheduleName = strlen($row->thisScheduleName)>0 ? $row->thisScheduleName : 'Belum Tersedia';
+				$data[$key]->Company = (@$row->CompanyId) ? $arrCabang[$row->CompanyId] : 'Belum Tersedia';
+				$data[$key]->datetime = (@$data[$key]->date) ? date('d F Y',strtotime($value->date)).' '.$value->waktu : 'Belum Tersedia';
 
 				// set json for data compare
 				$jsonCompare = new stdClass();
@@ -84,7 +95,7 @@ class Whislist extends CI_Controller {
 	}
 	
 	function currency_format($value) {
-		return number_format($value, 2, ",", ".");
+		return number_format($value, 0, ",", ".");
 	}
 
 }
