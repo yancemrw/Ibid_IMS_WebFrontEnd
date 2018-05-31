@@ -113,8 +113,7 @@
         },
         "ajax": "<?php echo linkservice('frontend').'akun/Npl_manage/loadTable?userid='.$userdata['UserId']; ?>",
         "initComplete": function(settings, json) {
-            $('#table-jual > thead > tr > th').removeClass('sorting').removeClass('sorting_asc');
-            $('#table-beli > thead > tr > th').removeClass('sorting').removeClass('sorting_asc');
+            $('#table-npl > thead > tr > th').removeClass('sorting').removeClass('sorting_asc');
         }
     });
     $('input[name="filterNPL"]').keypress(function(e) {

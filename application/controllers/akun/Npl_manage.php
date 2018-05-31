@@ -106,8 +106,8 @@ class Npl_manage extends CI_Controller {
 		$id = $this->input->get('userid');
 		$url = linkservice('npl')."counter/npl/searchAll?BiodataId=".$id;
 		$method = 'GET';
-		$responseApi = admsCurl($url, array('BiodataId' => @$userdata['UserId']), $method);
-		$listNpl = curlGenerate($responseApi); //echo "<pre>"; print_r($listNpl); exit;
+		$responseApi = admsCurl($url, array('BiodataId' => @$id), $method);
+		$listNpl = curlGenerate($responseApi);
 
 		/* Start - DetailJadwal */
 		$arrScheduleId = array();
