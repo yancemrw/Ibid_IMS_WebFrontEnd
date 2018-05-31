@@ -23,9 +23,12 @@
 						<div class="image-new">
 							<img src="<?php echo linkservice('cms').'uploads/news/'.$valueNews->gambar; ?>" class="img-responsive width-100" />
 						</div>
-						<h2><?php echo $valueNews->title; ?> <span><?php echo $valueNews->subtitle; ?></span></h2>
-						<?php echo substr($valueNews->content, 0, 180); ?>
-						<p><?php echo date_format(date_create($valueNews->datepost), "d F Y"); ?></p>
+						<h2>
+							<?php echo (strlen($valueNews->title) < 80) ? $valueNews->title : substr($valueNews->title, 0, 80).'...'; ?>
+							<span><?php echo (strlen($valueNews->subtitle) < 25) ? $valueNews->subtitle : substr($valueNews->subtitle, 0, 25).'...'; ?></span>
+						</h2>
+						<div class="content"><?php echo (strlen($valueNews->content) < 180) ? $valueNews->content : substr($valueNews->content, 0, 180).'...'; ?></div>
+						<div class="date"><?php echo date_format(date_create($valueNews->datepost), "d F Y"); ?></div>
 					</a>
 				</div>
 			</div>
@@ -49,9 +52,12 @@
 						<div class="image-new">
 							<img src="<?php echo linkservice('cms').'uploads/news/'.$valueInfo->gambar; ?>" class="img-responsive width-100" />
 						</div>
-						<h2><?php echo $valueInfo->title; ?> <span><?php echo $valueInfo->subtitle; ?></span></h2>
-						<?php echo substr($valueInfo->content, 0, 180); ?>
-						<p><?php echo date_format(date_create($valueInfo->datepost), "d F Y"); ?></p>
+						<h2>
+							<?php echo (strlen($valueInfo->title) < 80) ? $valueInfo->title : substr($valueInfo->title, 0, 80).'...'; ?>
+							<span><?php echo (strlen($valueInfo->subtitle) < 25) ? $valueInfo->subtitle : substr($valueInfo->subtitle, 0, 25).'...'; ?></span>
+						</h2>
+						<div class="content"><?php echo (strlen($valueInfo->content) < 180) ? $valueInfo->content : substr($valueInfo->content, 0, 180).'...'; ?></div>
+						<div class="date"><?php echo date_format(date_create($valueInfo->datepost), "d F Y"); ?></div>
 					</a>
 				</div>
 			</div>
