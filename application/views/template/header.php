@@ -10,7 +10,7 @@
    <link rel="icon" type="image/png" href="<?php echo base_url('assetsfront/images/icon/favicon/favicon-16x16.png'); ?>" sizes="">
    <link rel="icon" type="image/png" href="<?php echo base_url('assetsfront/images/icon/favicon/favicon-32x32.png'); ?>" sizes=""-->
    <meta name="google-site-verification" content="1rLrJT8LW6ij_EkyB3J9F3ta0wPfBWxwxsiRvYE8DY8" />
-   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
    <meta name="description" content=""> 
    <meta name="title" content="">
    <meta name="image_src" content="">
