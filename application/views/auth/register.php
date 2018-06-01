@@ -58,7 +58,7 @@
                                 <i class="fa fa-info"></i> Hanya diisi bila memiliki kartu anggota IBID
                             </div>
                         </div>
-                        <div class="g-recaptcha recaptcha" id="idrecaptcha" required></div>
+                        <!-- <div class="g-recaptcha recaptcha" id="idrecaptcha" required></div> -->
                         <div class="form-group text-right">
                             <button class="btn btn-green btn-register" id="btn-daftar" disabled>Daftar</button>
                             <a href="<?php echo site_url('login'); ?>">Sudah punya akun?</a>
@@ -94,19 +94,19 @@
             minimumResultsForSearch: -1
         });
          
-		$('.lang-mob a').click(function() {
-			$('.help-mob ul').removeClass('open');
-			$(this).toggleClass('opened');
-			$(this).siblings('ul').toggleClass('open');
-		});
+        $('.lang-mob a').click(function() {
+            $('.help-mob ul').removeClass('open');
+            $(this).toggleClass('opened');
+            $(this).siblings('ul').toggleClass('open');
+        });
 
-		$('.help-mob a').click(function() {
-			$('.lang-mob ul').removeClass('open');
-			$(this).toggleClass('opened');
-			$(this).siblings('ul').toggleClass('open');
-		});
+        $('.help-mob a').click(function() {
+            $('.lang-mob ul').removeClass('open');
+            $(this).toggleClass('opened');
+            $(this).siblings('ul').toggleClass('open');
+        });
 
-		$('input').blur(function() {
+        $('input').blur(function() {
             tmpval = $(this).val();
             if(tmpval == '') {
                 $(this).addClass('empty');
@@ -125,7 +125,7 @@
             if(name !== '' && mail !== '' && pass !== '' && repass !== '') {
                 $('#btn-daftar').prop('disabled', false);
             }
-		});
+        });
 
         // check password length and match password
         $('#pass').blur(function() {
@@ -195,15 +195,15 @@
                     });
                     return false;
                 }
-                else if(recaptcha === '') {
-                    bootoast.toast({
-                        message: 'Mohon klik CAPTCHA untuk melanjutkan',
-                        type: 'warning',
-                        position: 'top-center',
-                        timeout: 4
-                    });
-                    return false;
-                }
+                // else if(recaptcha === '') {
+                //     bootoast.toast({
+                //         message: 'Mohon klik CAPTCHA untuk melanjutkan',
+                //         type: 'warning',
+                //         position: 'top-center',
+                //         timeout: 4
+                //     });
+                //     return false;
+                // }
                 else if(pass !== repass) {
                     bootoast.toast({
                         message: 'Kata sandi dan ulangi kata sandi tidak sama',
