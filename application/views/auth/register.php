@@ -58,7 +58,7 @@
                                 <i class="fa fa-info"></i> Hanya diisi bila memiliki kartu anggota IBID
                             </div>
                         </div>
-                        <div class="g-recaptcha recaptcha" id="idrecaptcha" required></div>
+                        <!-- <div class="g-recaptcha recaptcha" id="idrecaptcha" required></div> -->
                         <div class="form-group text-right">
                             <button class="btn btn-green btn-register" id="btn-daftar" disabled>Daftar</button>
                             <a href="<?php echo site_url('login'); ?>">Sudah punya akun?</a>
@@ -195,15 +195,15 @@
                     });
                     return false;
                 }
-                else if(recaptcha === '') {
-                    bootoast.toast({
-                        message: 'Mohon klik CAPTCHA untuk melanjutkan',
-                        type: 'warning',
-                        position: 'top-center',
-                        timeout: 4
-                    });
-                    return false;
-                }
+                // else if(recaptcha === '') {
+                //     bootoast.toast({
+                //         message: 'Mohon klik CAPTCHA untuk melanjutkan',
+                //         type: 'warning',
+                //         position: 'top-center',
+                //         timeout: 4
+                //     });
+                //     return false;
+                // }
                 else if(pass !== repass) {
                     bootoast.toast({
                         message: 'Kata sandi dan ulangi kata sandi tidak sama',
