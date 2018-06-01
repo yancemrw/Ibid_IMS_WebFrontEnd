@@ -10,7 +10,7 @@
    <link rel="icon" type="image/png" href="<?php echo base_url('assetsfront/images/icon/favicon/favicon-16x16.png'); ?>" sizes="">
    <link rel="icon" type="image/png" href="<?php echo base_url('assetsfront/images/icon/favicon/favicon-32x32.png'); ?>" sizes=""-->
    <meta name="google-site-verification" content="1rLrJT8LW6ij_EkyB3J9F3ta0wPfBWxwxsiRvYE8DY8" />
-   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
    <meta name="description" content=""> 
    <meta name="title" content="">
    <meta name="image_src" content="">
@@ -52,15 +52,15 @@
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/font-awesome/css/font-awesome.min.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/select2.min.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/fullcalendar.min.css') ?>">
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/style.css?v1') ?>">
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/responsive.css?v1') ?>">
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/style.css?v2') ?>">
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/responsive.css?v2') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/slick.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/lightgallery.min.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/image-sprite-style.css?v1') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/prettify.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/jquery.flipster.min.css'); ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/bootoast/bootoast.css'); ?>">
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/overwrite.css?v1'); ?>">
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/overwrite.css?v2'); ?>">
 
    <!-- Header Js -->
    <script>var img_empty = "<?php echo base_url('assetsfront/images/background/management-empty.png'); ?>";</script>

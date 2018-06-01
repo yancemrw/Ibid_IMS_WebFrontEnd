@@ -58,8 +58,8 @@
                                 <i class="fa fa-info"></i> Hanya diisi bila memiliki kartu anggota IBID
                             </div>
                         </div>
-                        <div>
-                          <input type="text" name="captchaText" class="captchaClass margin-bottom-20px" size="7" maxlength="5" style="width:unset !important" />
+                        <div class="margin-bottom-20px">
+                          <input type="text" name="captchaText" class="captchaClass" size="7" maxlength="5" style="width:unset !important" />
                           <img id="idrecaptcha" src="" />
                           <img src="<?php echo base_url('assetsfront/images/icon/refresh_captcha.jpg'); ?>" class="cursor-pointer" width="25" onclick="getCaptcha()" />
                         </div>
