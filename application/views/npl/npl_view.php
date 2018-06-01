@@ -282,7 +282,7 @@
               return false;
           }
           else {
-              var checking = checkCaptcha(recaptcha); console.log(checking);
+              var checking = checkCaptcha(recaptcha);
               if(checking === 'false') {
                   bootoast.toast({
                       message: 'Captcha yang anda ketik salah, silahkan coba kembali',
