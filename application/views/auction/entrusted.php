@@ -80,7 +80,7 @@
                             <label class="label-schedule">Nomor KTP *</label>
                         </div>
                         <div>
-                          <input type="text" name="captchaText" class="captchaClass" size="10" maxlength="5" />
+                          <input type="text" name="captchaText" class="captchaClass" size="7" maxlength="5" />
                           <img id="idrecaptcha" src="" />
                           <img src="<?php echo base_url('assetsfront/images/icon/refresh_captcha.jpg'); ?>" class="cursor-pointer" width="25" onclick="getCaptcha()" />
                         </div>
