@@ -23,7 +23,7 @@
                      <option value="">Pilih Kota</option>
                      <option value="2"><?php echo ucwords(substr(strtolower('IBID JAKARTA'), 4)); ?></option>
                      <?php foreach($cabang as $row){ if ($row['CompanyId'] != 2){ ?>
-                     <option value="<?php echo $row['CompanyId']; ?>" ><?php echo ucwords(substr(strtolower($row['CompanyName']), 4)); ?></option>
+                     <!-- option value="<?php echo $row['CompanyId']; ?>" ><?php echo ucwords(substr(strtolower($row['CompanyName']), 4)); ?></option -->
                      <?php } } ?>
                   </select>
                   <label>Kota</label>
@@ -58,48 +58,15 @@
          </div>
          <div class="col-md-12">
             <div class="why-ibid">
-               <div class="item active">
-                  <div class="box-section">
-                     <div class="box-image icn icn-frekwensi"></div>
-                     <h2>Frekuensi Lelang</h2>
-                     <p>Lebih dari 50 kali lelang perbulan</p>
-                  </div>
-               </div>
+               <?php foreach($content->kenapa_ibid as $keyWhy => $valWhy) { ?>
                <div class="item">
                   <div class="box-section">
-                     <div class="box-image icn icn-jaringan-lelang"></div>
-                     <h2>Jaringan Lelang</h2>
-                     <p>Lebih dari 30 kota</p>
+                     <div class="<?php echo $valWhy->Subtitle; ?>"></div>
+                     <h2><?php echo $valWhy->Title; ?></h2>
+                     <p><?php echo $valWhy->Content; ?></p>
                   </div>
                </div>
-               <div class="item">
-                  <div class="box-section">
-                     <div class="box-image icn icn-opsi-lelang"></div>
-                     <h2>Opsi Lelang</h2>
-                     <p>Onsite, Live & Online Auction</p>
-                  </div>
-               </div>
-               <div class="item">
-                  <div class="box-section">
-                     <div class="box-image icn icn-car-valuation"></div>
-                     <h2>Astra Car Valuation</h2>
-                     <p>Inspeksi kendaraan secara saintifik</p>
-                  </div>
-               </div>
-               <div class="item ">
-                  <div class="box-section">
-                     <div class="box-image icn icn-map"></div>
-                     <h2>MAP (Market Auction Price)</h2>
-                     <p>Acuan harga pasar</p>
-                  </div>
-               </div>
-               <div class="item ">
-                  <div class="box-section">
-                     <div class="box-image icn icn-auto-bid"></div>
-                     <h2>Auto BID</h2>
-                     <p>Tawar harga secara otomatis</p>
-                  </div>
-               </div>
+               <?php } ?>
             </div>
          </div>
       </div>
@@ -200,63 +167,25 @@
             <div class="tab-content clearfix">
                <div role="tabpanel" class="tab-pane active clearfix" id="tab-lelang-1">
                   <div class="howTo-bid">
+                     <?php foreach($content->cara_lelang as $keyLelang => $valLelang) { ?>
                      <div class="item col-md-2">
                         <div class="box-section">
-                           <div class="box-image icn icn-check-jadwal"></div>
-                           <h2>Cari kendaraan dan cek jadwal lelang</h2>
+                           <div class="<?php echo $valLelang->Subtitle; ?>"></div>
+                           <h2><?php echo $valLelang->Content; ?></h2>
                         </div>
                      </div>
-                     <div class="item col-md-2">
-                        <div class="box-section">
-                           <div class="box-image icn icn-check-detail"></div>
-                           <h2>Cek detail kendaraan</h2>
-                        </div>
-                     </div>
-                     <div class="item col-md-2">
-                        <div class="box-section">
-                           <div class="box-image icn icn-pay-registration"></div>
-                           <h2>Registrasi & Beli Nomor Peserta Lelang (NPL)</h2>
-                        </div>
-                     </div>
-                     <div class="item col-md-2">
-                        <div class="box-section">
-                           <div class="box-image icn icn-ikut-lelang"></div>
-                           <h2>Ikut Lelang</h2>
-                        </div>
-                     </div>
-                     <div class="item col-md-2">
-                        <div class="box-section">
-                           <div class="box-image icn icn-pelunasan"></div>
-                           <h2>Pelunasan atau Pengembalian deposit</h2>
-                        </div>
-                     </div>
-                     <div class="item col-md-2">
-                        <div class="box-section">
-                           <div class="box-image icn icn-pengambilan-kendaraan"></div>
-                           <h2>Pengembalian unit yang dimenangkan</h2>
-                        </div>
-                     </div>
+                     <?php } ?>
                   </div>
                </div>
                <div role="tabpanel" class="tab-pane clearfix" id="tab-lelang-2">
+                  <?php foreach($content->cara_titip as $keyTitip => $valTitip) { ?>
                   <div class="col-md-2">
                      <div class="box-section">
-                        <div class="box-image icn icn-regis-login"></div>
-                        <h2>Registrasi atau login</h2>
+                        <div class="<?php echo $valTitip->Subtitle; ?>"></div>
+                        <h2><?php echo $valTitip->Content; ?></h2>
                      </div>
                   </div>
-                  <div class="col-md-2">
-                     <div class="box-section">
-                        <div class="box-image icn icn-check-jadwal"></div>
-                        <h2>Daftarkan kendaraan dan pilih jadwal inspeksi</h2>
-                     </div>
-                  </div>
-                  <div class="col-md-2">
-                     <div class="box-section">
-                        <div class="box-image icn icn-bawa-mobil-dokumen"></div>
-                        <h2>Bawa unit dan dokumen ke IBID</h2>
-                     </div>
-                  </div>
+                  <?php } ?>
                </div>
             </div>
          </div>
@@ -321,8 +250,8 @@
          <div class="content-autobid clearfix">
             <div class="col-md-7">
                <h2><?php echo $content->autobid->Title; ?></h2>
-               <p><?php echo $content->autobid->Content; ?> <span>Download sekarang!</span></p>
-               <a href="javascript:void(0)" class="icn icn-google-play link-disabled"></a>
+               <p><?php echo $content->autobid->Content; ?><!--span>Download sekarang!</span--></p>
+               <!--a href="javascript:void(0)" class="icn icn-google-play link-disabled"></a-->
             </div>
             <div class="col-md-5">
                <img alt="" src="<?php echo base_url('assetsfront/images/background/bg-hand.png'); ?>" class="image-footer img-responsive" />
