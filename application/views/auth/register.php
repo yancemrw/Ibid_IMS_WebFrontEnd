@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="<?php echo base_url('assetsfront/strength/strength.css'); ?>">
-<script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit' async defer></script>
 <script src="<?php echo base_url('assetsfront/strength/strength.js'); ?>"></script>
+<!--script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit' async defer></script>
 <script>
     var verifyCallback = function(response) {
         $('#e8df0fade2ce52c6a8cf8c8d2309d08a').val(response);
@@ -12,7 +12,7 @@
             'theme'     : 'light'
         });
     };
-</script>
+</script-->
 
 <section class="section-register">
     <input type="hidden" id="e8df0fade2ce52c6a8cf8c8d2309d08a" />
@@ -58,7 +58,11 @@
                                 <i class="fa fa-info"></i> Hanya diisi bila memiliki kartu anggota IBID
                             </div>
                         </div>
-                        <div class="g-recaptcha recaptcha" id="idrecaptcha" required></div>
+                        <div class="margin-bottom-20px">
+                          <input type="text" name="captchaText" class="captchaClass" size="7" maxlength="5" style="width:unset !important" />
+                          <img id="idrecaptcha" src="" />
+                          <img src="<?php echo base_url('assetsfront/images/icon/refresh_captcha.jpg'); ?>" class="cursor-pointer" width="25" onclick="getCaptcha()" />
+                        </div>
                         <div class="form-group text-right">
                             <button class="btn btn-green btn-register" id="btn-daftar" disabled>Daftar</button>
                             <a href="<?php echo site_url('login'); ?>">Sudah punya akun?</a>
@@ -80,6 +84,8 @@
 </section>
 
 <script>
+    var return_captcha = '';
+    getCaptcha();
     $(document).ready(function() {
         var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
         $("nav").sticky({
@@ -178,12 +184,12 @@
 
         // button submit
         $('#btn-daftar').click(function(e) {
-            var name = $('#name').val(), 
-                mail = $('#email').val(), 
-                pass = $('#pass').val(), 
-                repass = $('#repass').val(),
-                recaptcha = $('#e8df0fade2ce52c6a8cf8c8d2309d08a').val(),
-                letters = /^[0-9a-zA-Z]+$/;
+            var name        = $('#name').val(), 
+                mail        = $('#email').val(), 
+                pass        = $('#pass').val(), 
+                repass      = $('#repass').val(),
+                recaptcha   = $('input[name="captchaText"]').val(),
+                letters     = /^[0-9a-zA-Z]+$/;
             if(name !== '' && mail !== '' && pass !== '' && repass !== '') {
                 e.preventDefault();
                 if(!pass.match(letters)) {
@@ -197,7 +203,7 @@
                 }
                 else if(recaptcha === '') {
                     bootoast.toast({
-                        message: 'Mohon klik CAPTCHA untuk melanjutkan',
+                        message: 'Mohon ketik CAPTCHA untuk melanjutkan',
                         type: 'warning',
                         position: 'top-center',
                         timeout: 4
@@ -214,48 +220,59 @@
                     return false;
                 }
                 else {
-                    $.ajax({
-                        type: 'POST',
-                        url: '<?php echo site_url('auth/register/create_user'); ?>',
-                        data: $("#form-reg").serializeArray(),
-                        beforeSend: function() {
-                            $('#btn-daftar').html('Daftar <i class="fa fa-spin fa-refresh" style="position:absolute; margin-top:3px; right:87px; z-index:1;"></i>').attr('disabled', true);
-                        },
-                        success: function(data) {
-                            var data = JSON.parse(data);
-                            if(data.status === 1) {
-                                bootoast.toast({
-                                    message: data.messages,
-                                    type: 'warning',
-                                    position: 'top-center',
-                                    timeout: 0
-                                });
-                                setTimeout(function() {
-                                    location.href = data.redirect;
-                                }, 1500);
-                            }
-                            else {
+                    var checking = checkCaptcha(recaptcha);
+                    if(checking === 'false') {
+                        bootoast.toast({
+                            message: 'Captcha yang anda ketik salah, silahkan coba kembali',
+                            type: 'warning',
+                            position: 'top-center'
+                        });
+                        return false;
+                    }
+                    else {
+                        $.ajax({
+                            type: 'POST',
+                            url: '<?php echo site_url('auth/register/create_user'); ?>',
+                            data: $("#form-reg").serializeArray(),
+                            beforeSend: function() {
+                                $('#btn-daftar').html('Daftar <i class="fa fa-spin fa-refresh" style="position:absolute; margin-top:3px; right:87px; z-index:1;"></i>').attr('disabled', true);
+                            },
+                            success: function(data) {
+                                var data = JSON.parse(data);
+                                if(data.status === 1) {
+                                    bootoast.toast({
+                                        message: data.messages,
+                                        type: 'warning',
+                                        position: 'top-center',
+                                        timeout: 0
+                                    });
+                                    setTimeout(function() {
+                                        location.href = data.redirect;
+                                    }, 1500);
+                                }
+                                else {
+                                    $('#btn-daftar').html('Daftar').attr('disabled', false);
+                                    bootoast.toast({
+                                        message: data.messages,
+                                        type: 'warning',
+                                        position: 'top-center',
+                                        timeout: 4
+                                    });
+                                    //if(data.redirect !== '') location.href = data.redirect;
+                                }
+                            },
+                            error: function() {
                                 $('#btn-daftar').html('Daftar').attr('disabled', false);
                                 bootoast.toast({
-                                    message: data.messages,
+                                    message: 'Terjadi Kendala Saat Koneksi ke Server',
                                     type: 'warning',
                                     position: 'top-center',
                                     timeout: 4
                                 });
-                                //if(data.redirect !== '') location.href = data.redirect;
                             }
-                        },
-                        error: function() {
-                            $('#btn-daftar').html('Daftar').attr('disabled', false);
-                            bootoast.toast({
-                                message: 'Terjadi Kendala Saat Koneksi ke Server',
-                                type: 'warning',
-                                position: 'top-center',
-                                timeout: 4
-                            });
-                        }
-                    });
-                    return false;
+                        });
+                        return false;
+                    }
                 }
             }
         });
@@ -282,4 +299,26 @@
             }
         });
     });
+
+    function getCaptcha() {
+        $('#idrecaptcha').attr({
+            src:'<?php echo base_url('captcha/newCaptcha'); ?>?rnd='+Math.random()
+        });
+    }
+
+    function checkCaptcha(value) {
+        $.ajax({
+            url: '<?php echo base_url('captcha/checkCaptcha'); ?>',
+            type: 'GET',
+            data: 'code='+value,
+            async: false,
+            beforeSend: function() {
+                console.log('Checking Captcha...');
+            },
+            success: function(data) {
+                return_captcha = data;
+            }
+        });
+        return return_captcha;
+    }
 </script>

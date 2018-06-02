@@ -1,6 +1,6 @@
-<script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit' async defer></script>
+<!--script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit' async defer></script-->
 <script>
-  var verifyCallback = function(response) {
+  /*var verifyCallback = function(response) {
     $('#e8df0fade2ce52c6a8cf8c8d2309d08a').val(response);
   };
   var onloadCallback = function() {
@@ -9,7 +9,7 @@
       'callback'  : verifyCallback,
       'theme'     : 'light'
     });
-  };
+  };*/
 
   // load mobil nabrak plang iBid
   document.addEventListener("DOMContentLoaded", function () {
@@ -85,7 +85,11 @@
                                     onkeypress="setCustomValidity('')" maxlength="16" required />
                             <label class="label-schedule">Nomor KTP *</label>
                         </div>
-                        <div class="g-recaptcha recaptcha" id="idrecaptcha" required></div>
+                        <div>
+                          <input type="text" name="captchaText" class="captchaClass" size="7" maxlength="5" />
+                          <img id="idrecaptcha" src="" />
+                          <img src="<?php echo base_url('assetsfront/images/icon/refresh_captcha.jpg'); ?>" class="cursor-pointer" width="25" onclick="getCaptcha()" />
+                        </div>
                         <div class="input-group agree-required">
                             <input type="checkbox" name="checkbox" id="agree-required" class="cursor-pointer">
                             <label for="agree-required">Dengan melakukan pendaftaran, saya setuju dengan <a href="javascript:void(0)" data-toggle="modal" data-target="#privacy-modal">Kebijakan Privasi</a> dan <a href="javascript:void(0)" data-toggle="modal" data-target="#bijak-modal">Syarat & Ketentuan</a> IBID.</label>
@@ -133,6 +137,8 @@
 </div>
 
 <script>
+  var return_captcha = '';
+  getCaptcha();
   var count_slide = '<?php echo count($cms->titip); ?>';
   $('.auction-info').slick({
     dots: false,
@@ -225,7 +231,7 @@
           bankname  = $('input[name="BankAccountName"]').val(),
           ktp       = $('input[name="IdentityNumber"]').val(),
           otpkirim  = $('input[name="otpkirim"]').val(),
-          recaptcha = $('#e8df0fade2ce52c6a8cf8c8d2309d08a').val();
+          recaptcha = $('input[name="captchaText"]').val();
       if(phone !== '' && bankid !== '' && bankacc !== '' && bankname !== '' && ktp !== '') {
           if(numberOnly(phone) === false) {
               bootoast.toast({
@@ -261,7 +267,7 @@
           }
           else if(recaptcha === '') {
               bootoast.toast({
-                  message: 'Mohon klik CAPTCHA untuk melanjutkan',
+                  message: 'Mohon ketik CAPTCHA untuk melanjutkan',
                   type: 'warning',
                   position: 'top-center'
               });
@@ -276,49 +282,60 @@
               return false;
           }
           else {
-              $.ajax({
-                type: 'POST',
-                url: '<?php echo site_url("biodata/otp"); ?>',
-                data: 'Phone='+phone+'&BankId='+bankid+'&BankAccountNumber='+bankacc+'&BankAccountName='+bankname+'&IdentityNumber='+ktp+'&otpkirim='+otpkirim+'&otpsource=npl',
-                beforeSend: function() {
-                  $('#btn-kirim').attr('disabled', true).html('Kirim <i class="fa fa-spin fa-refresh" style="position:absolute; margin-top:3px; right:87px; z-index:1;"></i>');
-                },
-                success: function(data) {
-                  var data = JSON.parse(data);
-                  if(data.status === 1) {
-                    bootoast.toast({
-                      message: data.messages,
-                      type: 'warning',
-                      position: 'top-center',
-                      timeout: 3
-                    });
-                    setTimeout(function() {
-                      location.href = data.redirect;
-                    }, 1500);
-                  }
-                  else {
-                    $('#btn-kirim').attr('disabled', false).html('Kirim');
-                    bootoast.toast({
-                      message: data.messages,
-                      type: 'warning',
-                      position: 'top-center',
-                      timeout: 4
-                    });
-                    if(data.redirect !== 'ktp') location.href = data.redirect;
-                  }
-                },
-                error: function() {
-                  $('#btn-kirim').attr('disabled', false).html('Kirim');
+              var checking = checkCaptcha(recaptcha);
+              if(checking === 'false') {
                   bootoast.toast({
-                    message: 'Terjadi kesalahan saat koneksi ke server',
-                    type: 'warning',
-                    position: 'top-center',
-                    timeout: 3
+                      message: 'Captcha yang anda ketik salah, silahkan coba kembali',
+                      type: 'warning',
+                      position: 'top-center'
                   });
-                }
-              });
-              //$('#beli-npl').submit();
-              return false;
+                  return false;
+              }
+              else {
+                  $.ajax({
+                    type: 'POST',
+                    url: '<?php echo site_url("biodata/otp"); ?>',
+                    data: 'Phone='+phone+'&BankId='+bankid+'&BankAccountNumber='+bankacc+'&BankAccountName='+bankname+'&IdentityNumber='+ktp+'&otpkirim='+otpkirim+'&otpsource=npl',
+                    beforeSend: function() {
+                      $('#btn-kirim').attr('disabled', true).html('Kirim <i class="fa fa-spin fa-refresh" style="position:absolute; margin-top:3px; right:87px; z-index:1;"></i>');
+                    },
+                    success: function(data) {
+                      var data = JSON.parse(data);
+                      if(data.status === 1) {
+                        bootoast.toast({
+                          message: data.messages,
+                          type: 'warning',
+                          position: 'top-center',
+                          timeout: 3
+                        });
+                        setTimeout(function() {
+                          location.href = data.redirect;
+                        }, 1500);
+                      }
+                      else {
+                        $('#btn-kirim').attr('disabled', false).html('Kirim');
+                        bootoast.toast({
+                          message: data.messages,
+                          type: 'warning',
+                          position: 'top-center',
+                          timeout: 4
+                        });
+                        if(data.redirect !== 'ktp') location.href = data.redirect;
+                      }
+                    },
+                    error: function() {
+                      $('#btn-kirim').attr('disabled', false).html('Kirim');
+                      bootoast.toast({
+                        message: 'Terjadi kesalahan saat koneksi ke server',
+                        type: 'warning',
+                        position: 'top-center',
+                        timeout: 3
+                      });
+                    }
+                  });
+                  //$('#beli-npl').submit();
+                  return false;
+              }
           }
       }
   });
@@ -328,5 +345,27 @@
     if($(ele).val().length >= max) {
       $(ele).val($(ele).val().substr(0, max));
     }
+  }
+
+  function getCaptcha() {
+    $('#idrecaptcha').attr({
+      src:'<?php echo base_url('captcha/newCaptcha'); ?>?rnd='+Math.random(),
+    });
+  }
+
+  function checkCaptcha(value) {
+    $.ajax({
+      url: '<?php echo base_url('captcha/checkCaptcha'); ?>',
+      type: 'GET',
+      data: 'code='+value,
+      async: false,
+      beforeSend: function() {
+        console.log('Checking Captcha...');
+      },
+      success: function(data) {
+        return_captcha = data;
+      }
+    });
+    return return_captcha;
   }
 </script>

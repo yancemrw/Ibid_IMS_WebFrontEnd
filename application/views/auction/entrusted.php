@@ -1,4 +1,4 @@
-<script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit' async defer></script>
+<!--script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit' async defer></script>
 <script>
     var verifyCallback = function(response) {
         $('#e8df0fade2ce52c6a8cf8c8d2309d08a').val(response);
@@ -10,7 +10,7 @@
             'theme'     : 'light'
         });
     };
-</script>
+</script-->
 
 <section class="section section-auction">
 	<input type="hidden" id="e8df0fade2ce52c6a8cf8c8d2309d08a" />
@@ -36,10 +36,10 @@
 					<form class="form-filter" id="beli-npl" data-provide="validation">
 						<input type="hidden" name="otpkirim" value="true">
 						<div class="form-group floating-label">
-							<input type="number" name="Phone" id="notif-telepon" class="form-control input-custom"
+							<input type="text" name="Phone" id="notif-telepon" class="form-control input-custom"
 									value="<?php echo @$detailBiodata['Phone']; ?>" 
 									oninvalid="this.setCustomValidity('No telepon tidak boleh kosong')" 
-									onkeyup="checkOnlyNumber(this, event, 13)" onkeypress="setCustomValidity('')" required />
+									onkeypress="setCustomValidity('')" maxlength="13" required />
 							<label class="label-schedule">No Telepon *</label>
 							<div class="help-info help-info-1">
 								<i class="fa fa-info"></i> Pastikan nomor telepon aktif
@@ -56,10 +56,10 @@
                             </select>
 						</div>
 						<div class="form-group floating-label">
-							<input type="number" name="BankAccountNumber" id="notif-rekening" class="form-control input-custom" 
+							<input type="text" name="BankAccountNumber" id="notif-rekening" class="form-control input-custom" 
 									value="<?php echo @$detailBiodata['BankAccountNumber']; ?>" 
                                     oninvalid="this.setCustomValidity('Nomor rekening tidak boleh kosong')" 
-                                    onkeyup="checkOnlyNumber(this, event, 16)" onkeypress="setCustomValidity('')" required />
+                                    onkeypress="setCustomValidity('')" maxlength="16" required />
 							<label class="label-schedule">Nomor Rekening *</label>
 							<div class="help-info help-info-2">
 								<i class="fa fa-info"></i> IBID membutuhkan nomor rekening Anda untuk pengembalian deposit. Pastikan nomor rekening sudah benar.
@@ -69,17 +69,21 @@
 							<input type="text" name="BankAccountName" class="form-control input-custom"
 									value="<?php echo @$detailBiodata['BankAccountName']; ?>" 
 									oninvalid="this.setCustomValidity('Atas nama tidak boleh kosong')" 
-                                    oninput="setCustomValidity('')" required />
+                                    oninput="setCustomValidity('')" maxlength="250" required />
 							<label class="label-schedule">Atas Nama *</label>
 						</div>
 						<div class="form-group floating-label" id="ktp">
-                            <input type="number" name="IdentityNumber" id="notif-identity" class="form-control input-custom"  
+                            <input type="text" name="IdentityNumber" id="notif-identity" class="form-control input-custom"  
                                     value="<?php echo @$detailBiodata['IdentityNumber']; ?>"
                                     oninvalid="this.setCustomValidity('Nomor KTP tidak boleh kosong')" 
-                                    onkeyup="checkOnlyNumber(this, event, 16)" onkeypress="setCustomValidity('')" required />
+                                    onkeypress="setCustomValidity('')" maxlength="16" required />
                             <label class="label-schedule">Nomor KTP *</label>
                         </div>
-                        <div class="g-recaptcha recaptcha" id="idrecaptcha" required></div>
+                        <div>
+                          <input type="text" name="captchaText" class="captchaClass" size="7" maxlength="5" />
+                          <img id="idrecaptcha" src="" />
+                          <img src="<?php echo base_url('assetsfront/images/icon/refresh_captcha.jpg'); ?>" class="cursor-pointer" width="25" onclick="getCaptcha()" />
+                        </div>
                         <div class="input-group agree-required">
                             <input type="checkbox" name="checkbox" id="agree-required" class="cursor-pointer">
                             <label for="agree-required">Dengan melakukan pendaftaran, saya setuju dengan <a href="javascript:void(0)" data-toggle="modal" data-target="#privacy-modal">Kebijakan Privasi</a> dan <a href="javascript:void(0)" data-toggle="modal" data-target="#bijak-modal">Syarat & Ketentuan</a> IBID.</label>
@@ -127,6 +131,8 @@
 </div>
 
 <script>
+var return_captcha = '';
+getCaptcha();
 var count_slide = '<?php echo count($cms->titip); ?>';
 $('.auction-info').slick({
 	dots: false,
@@ -215,77 +221,133 @@ $('#btn-kirim').click(function(e) {
 		bankname  = $('input[name="BankAccountName"]').val(),
 		ktp       = $('input[name="IdentityNumber"]').val(),
 		otpkirim  = $('input[name="otpkirim"]').val(),
-		recaptcha = $('#e8df0fade2ce52c6a8cf8c8d2309d08a').val();
+		recaptcha = $('input[name="captchaText"]').val();
 	if(phone !== '' && bankid !== '' && bankacc !== '' && bankname !== '' && ktp !== '') {
-	if(ktp.length < 16) {
-		bootoast.toast({
-			message: 'Nomor KTP harus 16 angka!',
-			type: 'warning',
-			position: 'top-center'
-		});
-		return false;
-	}
-	else if(recaptcha === '') {
-		bootoast.toast({
-			message: 'Mohon klik CAPTCHA untuk melanjutkan',
-			type: 'warning',
-			position: 'top-center'
-		});
-		return false;
-	}
-	else if($('#agree-required').is(":checked") === false) {
-		bootoast.toast({
-			message: 'Silahkan centang untuk menyetujui Syarat & Ketentuan juga Kebijakan Privasi IBID',
-			type: 'warning',
-			position: 'top-center'
-		});
-		return false;
-	}
-	else {
-		$('#btn-kirim').attr('disabled', true);
-		$.ajax({
-			type: 'POST',
-			url: '<?php echo site_url("biodata/otp"); ?>',
-			data: 'Phone='+phone+'&BankId='+bankid+'&BankAccountNumber='+bankacc+'&BankAccountName='+bankname+'&IdentityNumber='+ktp+'&otpkirim='+otpkirim+'&otpsource=titip',
-			beforeSend: function() {
-				$('#btn-kirim').html('Kirim <i class="fa fa-spin fa-refresh" style="position:absolute; margin-top:3px; right:87px; z-index:1;"></i>');
-			},
-			success: function(data) {
-				var data = JSON.parse(data);
-				if(data.status === 1) {
-					bootoast.toast({
-						message: data.messages,
-						type: 'warning',
-						position: 'top-center',
-						timeout: 3
-					});
-					setTimeout(function() {
-						location.href = data.redirect;
-					}, 1500);
-				}
-				else {
-				$('#btn-kirim').attr('disabled', false).html('Kirim');
-					bootoast.toast({
-						message: data.messages,
-						type: 'warning',
-						position: 'top-center',
-						timeout: 4
-					});
-					if(data.redirect !== 'ktp') location.href = data.redirect;
-				}
-			},
-			error: function() {
-				$('#btn-kirim').attr('disabled', false).html('Kirim');
-					bootoast.toast({
-						message: 'Terjadi kesalahan saat koneksi ke server',
-						type: 'warning',
-						position: 'top-center',
-						timeout: 3
-					});
-				}
+		if(numberOnly(phone) === false) {
+			bootoast.toast({
+				message: 'Nomor Telepon harus angka',
+				type: 'warning',
+				position: 'top-center'
 			});
 			return false;
 		}
+		else if(numberOnly(bankacc) === false) {
+			bootoast.toast({
+				message: 'Nomor Rekening harus angka',
+				type: 'warning',
+				position: 'top-center'
+			});
+			return false;
+		}
+		else if(numberOnly(ktp) === false) {
+			bootoast.toast({
+				message: 'Nomor KTP harus angka',
+				type: 'warning',
+				position: 'top-center'
+			});
+			return false;
+		}
+		if(ktp.length < 16) {
+			bootoast.toast({
+				message: 'Nomor KTP harus 16 angka!',
+				type: 'warning',
+				position: 'top-center'
+			});
+			return false;
+		}
+		else if(recaptcha === '') {
+			bootoast.toast({
+				message: 'Mohon ketik CAPTCHA untuk melanjutkan',
+				type: 'warning',
+				position: 'top-center'
+			});
+			return false;
+		}
+		else if($('#agree-required').is(":checked") === false) {
+			bootoast.toast({
+				message: 'Silahkan centang untuk menyetujui Syarat & Ketentuan juga Kebijakan Privasi IBID',
+				type: 'warning',
+				position: 'top-center'
+			});
+			return false;
+		}
+		else {
+			var checking = checkCaptcha(recaptcha);
+			if(checking === 'false') {
+				bootoast.toast({
+					message: 'Captcha yang anda ketik salah, silahkan coba kembali',
+					type: 'warning',
+					position: 'top-center'
+				});
+				return false;
+			}
+			else {
+				$.ajax({
+					type: 'POST',
+					url: '<?php echo site_url("biodata/otp"); ?>',
+					data: 'Phone='+phone+'&BankId='+bankid+'&BankAccountNumber='+bankacc+'&BankAccountName='+bankname+'&IdentityNumber='+ktp+'&otpkirim='+otpkirim+'&otpsource=titip',
+					beforeSend: function() {
+						$('#btn-kirim').html('Kirim <i class="fa fa-spin fa-refresh" style="position:absolute; margin-top:3px; right:87px; z-index:1;"></i>').attr('disabled', true);
+					},
+					success: function(data) {
+						var data = JSON.parse(data);
+						if(data.status === 1) {
+							bootoast.toast({
+								message: data.messages,
+								type: 'warning',
+								position: 'top-center',
+								timeout: 3
+							});
+							setTimeout(function() {
+								location.href = data.redirect;
+							}, 1500);
+						}
+						else {
+						$('#btn-kirim').attr('disabled', false).html('Kirim');
+							bootoast.toast({
+								message: data.messages,
+								type: 'warning',
+								position: 'top-center',
+								timeout: 4
+							});
+							if(data.redirect !== 'ktp') location.href = data.redirect;
+						}
+					},
+					error: function() {
+						$('#btn-kirim').attr('disabled', false).html('Kirim');
+						bootoast.toast({
+							message: 'Terjadi kesalahan saat koneksi ke server',
+							type: 'warning',
+							position: 'top-center',
+							timeout: 3
+						});
+					}
+				});
+				return false;
+			}
+		}
 	}
 });
+
+function getCaptcha() {
+	$('#idrecaptcha').attr({
+		src:'<?php echo base_url('captcha/newCaptcha'); ?>?rnd='+Math.random()
+	});
+}
+
+function checkCaptcha(value) {
+	$.ajax({
+		url: '<?php echo base_url('captcha/checkCaptcha'); ?>',
+		type: 'GET',
+		data: 'code='+value,
+		async: false,
+		beforeSend: function() {
+			console.log('Checking Captcha...');
+		},
+		success: function(data) {
+			return_captcha = data;
+		}
+	});
+	return return_captcha;
+}
 </script>

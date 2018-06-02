@@ -5307,16 +5307,18 @@ h2.title-blog {
     color: #a3aab1;
 }
 
-.box-new p {
+.box-new div.content {
     font-size: 14px;
     color: #777;
     padding: 0 60px 0 10px
 }
 
-.box-new p span {
+.box-new div.date {
     display: block;
     color: #81be2a;
-    margin-top: 35px
+    position: absolute;
+    bottom: 10px;
+    padding: 0 10px;
 }
 
 .button-blog-section {
