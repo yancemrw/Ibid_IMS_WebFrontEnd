@@ -42,9 +42,10 @@
                <h2>Kota & Jadwal</h2>
                <div class="form-group">
                   <select class="form-control select-custom thisKota" name="thisKota">
-                     <option value="">Semua Kota</option>
+                     <option value="2"><?php echo ucwords(substr(strtolower('IBID JAKARTA'), 4)); ?></option>
+                     <!-- option value="">Semua Kota</option -->
 					 <?php foreach($cabang as $row){ ?>
-                     <option value="<?php echo $row['CompanyId']; ?>" ><?php echo ucwords(substr(strtolower($row['CompanyName']), 4)); ?></option>
+                     <!-- option value="<?php echo $row['CompanyId']; ?>" ><?php echo ucwords(substr(strtolower($row['CompanyName']), 4)); ?></option -->
                      <?php } ?>
                   </select>
                </div>

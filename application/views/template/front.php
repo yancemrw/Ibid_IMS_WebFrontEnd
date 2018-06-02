@@ -23,7 +23,7 @@
                      <option value="">Pilih Kota</option>
                      <option value="2"><?php echo ucwords(substr(strtolower('IBID JAKARTA'), 4)); ?></option>
                      <?php foreach($cabang as $row){ if ($row['CompanyId'] != 2){ ?>
-                     <option value="<?php echo $row['CompanyId']; ?>" ><?php echo ucwords(substr(strtolower($row['CompanyName']), 4)); ?></option>
+                     <!-- option value="<?php echo $row['CompanyId']; ?>" ><?php echo ucwords(substr(strtolower($row['CompanyName']), 4)); ?></option -->
                      <?php } } ?>
                   </select>
                   <label>Kota</label>
