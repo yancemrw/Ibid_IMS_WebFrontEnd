@@ -22,9 +22,9 @@
                   <select class="select-custom form-control" name="thisCabang" id="thisCabang">
                      <option value="">Pilih Kota</option>
                      <option value="2"><?php echo ucwords(substr(strtolower('IBID JAKARTA'), 4)); ?></option>
-                     <?php foreach($cabang as $row){ if ($row['CompanyId'] != 2){ ?>
-                     <!-- option value="<?php echo $row['CompanyId']; ?>" ><?php echo ucwords(substr(strtolower($row['CompanyName']), 4)); ?></option -->
-                     <?php } } ?>
+                     <?php /*foreach($cabang as $row){ if ($row['CompanyId'] != 2){ ?>
+                     <option value="<?php echo $row['CompanyId']; ?>" ><?php echo ucwords(substr(strtolower($row['CompanyName']), 4)); ?></option>
+                     <?php } }*/ ?>
                   </select>
                   <label>Kota</label>
                </div>
@@ -284,15 +284,15 @@
 
 <script>
 // MODAL POPUP TEMPORARY
-$(window).on('load',function() {
+/*$(window).on('load',function() {
    var pophm = localStorage.getItem('POPHM');
    if(pophm === null || pophm === 'false') {
-      localStorage.setItem('POPHM', true);
+      localStorage.setItem('POPHM', true);*/
       setTimeout(function(){
          $('#modalTemp').modal('show');
       }, 1000);  
-   } 
-});
+   /*} 
+});*/
 
 // set active menu if to homepage
 setActiveMenu('home');
