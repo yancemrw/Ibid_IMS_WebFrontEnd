@@ -100,19 +100,19 @@
             minimumResultsForSearch: -1
         });
          
-		$('.lang-mob a').click(function() {
-			$('.help-mob ul').removeClass('open');
-			$(this).toggleClass('opened');
-			$(this).siblings('ul').toggleClass('open');
-		});
+        $('.lang-mob a').click(function() {
+            $('.help-mob ul').removeClass('open');
+            $(this).toggleClass('opened');
+            $(this).siblings('ul').toggleClass('open');
+        });
 
-		$('.help-mob a').click(function() {
-			$('.lang-mob ul').removeClass('open');
-			$(this).toggleClass('opened');
-			$(this).siblings('ul').toggleClass('open');
-		});
+        $('.help-mob a').click(function() {
+            $('.lang-mob ul').removeClass('open');
+            $(this).toggleClass('opened');
+            $(this).siblings('ul').toggleClass('open');
+        });
 
-		$('input').blur(function() {
+        $('input').blur(function() {
             tmpval = $(this).val();
             if(tmpval == '') {
                 $(this).addClass('empty');
@@ -131,7 +131,7 @@
             if(name !== '' && mail !== '' && pass !== '' && repass !== '') {
                 $('#btn-daftar').prop('disabled', false);
             }
-		});
+        });
 
         // check password length and match password
         $('#pass').blur(function() {

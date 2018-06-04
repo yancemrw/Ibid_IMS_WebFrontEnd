@@ -87,7 +87,7 @@ Serasi123
 // end
 
 $db['default'] = array(
-	'hostname' => '127.0.0.1',
+	'hostname' => '192.168.123.11',
 	'username' => 'SA',
 	'password' => 'sera12345#@',
 	'database' => 'Account', 
