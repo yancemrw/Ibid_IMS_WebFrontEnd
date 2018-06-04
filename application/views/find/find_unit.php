@@ -612,7 +612,7 @@ function loadContainerPaging(offset, limit, linked, dataForm = '', type = 1) {
                var compare_data = {
                   "AuctionItemId": dataz.AuctionItemId,
                   "BahanBakar": dataz.bahanbakar,
-                  "Image": (imgData[i][0] !== undefined) ? 'http:'+imgData[i][0].ImagePath : defaultImg,
+                  "Image": (imgData[i][0] !== undefined && imgData[i][0] !== '') ? 'http:'+imgData[i][0].ImagePath : defaultImg,
                   "Kilometer": dataz.km,
                   "Lot" : (dataz.thisLotNo !== undefined && dataz.thisLotNo !== null) ? dataz.thisLotNo : '-',
                   "Merk": (dataz.merk !== undefined) ? dataz.merk : '',
