@@ -218,7 +218,7 @@
                  <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="nav-close"><img src="<?php echo base_url('assetsfront/images/icon/Close.png'); ?>"></li>
-                        <li class="nav-title"><span class="nav-title">Home</span></li>
+                        <li class="nav-title"><a href="<?php echo site_url(); ?>"><span class="nav-title">Home</span></a></li>
                         <li id="find_menu"><a href="<?php echo site_url('cari-lelang'); ?>" onclick="setActiveMenu('find')">Cari Kendaraan</a></li>
                         <li id="schedule_menu"><a href="<?php echo site_url('auction/Auction_date'); ?>" onclick="setActiveMenu('schedule')">Jadwal Lelang</a></li>
                         <li id="live_menu"><a href="<?php echo site_url('live-auction'); ?>" onclick="setActiveMenu('live')">Live Auction</a></li>
@@ -278,7 +278,7 @@
                   <div id="navbar" class="navbar-collapse collapse">
                      <ul class="nav navbar-nav navbar-right">
                         <li class="nav-close"><img src="<?php echo base_url('assetsfront/images/icon/Close.png'); ?>"></li>
-                        <li class="nav-title"><span class="nav-title">Home</span></li>
+                        <li class="nav-title"><a href="<?php echo site_url(); ?>"><span class="nav-title">Home</span></a></li>
                         <li id="find_menu"><a href="<?php echo site_url('cari-lelang'); ?>" onclick="setActiveMenu('find')">Cari Kendaraan</a></li>
                         <li id="schedule_menu"><a href="<?php echo site_url('auction/Auction_date'); ?>" onclick="setActiveMenu('schedule')">Jadwal Lelang</a></li>
                         <li id="live_menu"><a href="<?php echo site_url('live-auction'); ?>" onclick="setActiveMenu('live')">Live Auction</a></li>
