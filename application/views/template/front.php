@@ -284,15 +284,15 @@
 
 <script>
 // MODAL POPUP TEMPORARY
-$(window).on('load',function() {
+/*$(window).on('load',function() {
    var pophm = localStorage.getItem('POPHM');
    if(pophm === null || pophm === 'false') {
-      localStorage.setItem('POPHM', true);
+      localStorage.setItem('POPHM', true);*/
       setTimeout(function(){
          $('#modalTemp').modal('show');
       }, 1000);  
-   } 
-});
+   /*} 
+});*/
 
 // set active menu if to homepage
 setActiveMenu('home');
