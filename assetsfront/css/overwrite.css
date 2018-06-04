@@ -982,6 +982,10 @@ header {
     .section-blog-detail .image-new {
         height: 130px;
     }
+    .content-empty {
+        border: none;
+        top: 10px;
+    }
 }
 
 @media(max-width: 768px) {
