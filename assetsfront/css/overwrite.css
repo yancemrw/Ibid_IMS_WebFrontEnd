@@ -439,6 +439,10 @@ header {
     min-height: 230px;
 }
 
+.min-height-197px {
+    min-height: 197px;
+}
+
 .min-width-833px {
     min-width: 833px;
 }

@@ -868,7 +868,7 @@ $(document).ready(function() {
             var compare_data = {
                "AuctionItemId": data[i].AuctionItemId,
                "BahanBakar": data[i].bahanbakar,
-               "Image": 'http:'+data[i].icarImage,
+               "Image": (data[i] !== undefined && (data[i].icarImage).length > 0) ? 'http:'+data[i].icarImage : defaultImg,
                //"Image": '//img.ibid.astra.co.id/item/12415/d8404a531ea286d733aa7c35bfbdc83c.jpg',
                "Kilometer": data[i].km,
                "Lot": (data[i].thisLotNo !== undefined && data[i].thisLotNo !== null) ? data[i].thisLotNo : '-',
@@ -901,7 +901,7 @@ $(document).ready(function() {
                            '<a href="'+link_detail+'">'+
                            '<div class="thumbnail">'+
                            '<div class="thumbnail-custom">'+
-                           '<img src="'+compare_data.Image+'" />'+
+                           '<img src="'+compare_data.Image+'" class="min-height-197px" />'+
                            '</div>'+
                            '<div class="overlay-grade">'+
                            'Grade <span>'+compare_data.TaksasiGrade+'</span>'+
@@ -1300,4 +1300,3 @@ function push_bid(bid_status,bid,npl) {
 <script src="<?php echo base_url('assetsfront/assets360/three.min.js'); ?>"></script> 
 <script src="<?php echo base_url('assetsfront/assets360/jquery.fullscreen.js'); ?>"></script>
 <script src="<?php echo base_url('assetsfront/assets360/mousetrap.min.js'); ?>"></script>
-<!--script src="<?php echo base_url('assetsfront/assets360/360.js'); ?>"></script-->
