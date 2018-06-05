@@ -680,7 +680,7 @@ notifRef.on('value', function(snapshot) {
                 '</div>'+
                 '</a>'+
                 '</li>';
-        data_notif += '<li onclick="isreadpage(this, '+UserId+', \''+object_key[i]+'\')" class="cursor-pointer">'+
+        data_notif += '<li onclick="isreadpage(this, '+UserId+', \''+object_key[i]+'\', '+object_val[i].isread+')" class="cursor-pointer">'+
                       '<div class="notif-image"><img src="'+img_src+'" alt=""></div>'+
                       '<div class="notif-desc">'+
                       '<h3>'+object_val[i].title+'<span>'+object_val[i].date+'</span></h3>'+
@@ -695,7 +695,7 @@ notifRef.on('value', function(snapshot) {
           case 'cc': img_src = '<?php echo base_url('assetsfront/images/icon/ic_notif_2_off.png'); ?>'; break;
           case 'pay': img_src = '<?php echo base_url('assetsfront/images/icon/ic_notif_3_off.png'); ?>'; break;
         }
-        data_notif += '<li onclick="isreadpage(this, '+UserId+', \''+object_key[i]+'\')" class="cursor-pointer">'+
+        data_notif += '<li onclick="isreadpage(this, '+UserId+', \''+object_key[i]+'\', '+object_val[i].isread+')" class="cursor-pointer">'+
                       '<div class="notif-image"><img src="'+img_src+'" alt="" /></div>'+
                       '<div class="notif-desc">'+
                       '<h3>'+object_val[i].title+'<span>'+object_val[i].date+'</span></h3>'+
@@ -752,13 +752,15 @@ function isread(UserId, key) {
   });
 }
 
-function isreadpage(ele, UserId, key) {
-  var dbRef     = firebase.database();
-  var notifRef  = dbRef.ref('notifications/penitip/'+UserId+'/'+key);
-  notifRef.update({
-    isread: '1'
-  });
-  $(ele).children('div:first').children().replaceWith('<img src="<?php echo base_url('assetsfront/images/icon/ic_notif_0.png'); ?>" alt="">');
+function isreadpage(ele, UserId, key, isread) {
+  if(isread === 0) {
+    var dbRef     = firebase.database();
+    var notifRef  = dbRef.ref('notifications/penitip/'+UserId+'/'+key);
+    notifRef.update({
+      isread: '1'
+    });
+    $(ele).children('div:first').children().replaceWith('<img src="<?php echo base_url('assetsfront/images/icon/ic_notif_0.png'); ?>" alt="">');
+  }
 }
 </script>
 </body>
