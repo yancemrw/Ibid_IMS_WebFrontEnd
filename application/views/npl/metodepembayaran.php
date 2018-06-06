@@ -116,8 +116,8 @@ $(function() {
 	}
 	
 	$('#btnBayar').click(function() {
-        $('#loading-payment').css('display', 'block');
-		$(this).addClass('disabled');
+        	$('#loading-payment').css('display', 'block');
+		$(this).addClass('disabled').attr('disabled', true);
 		$('#thisForm').submit();
 	});
 
