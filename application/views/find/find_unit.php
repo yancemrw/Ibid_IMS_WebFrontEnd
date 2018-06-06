@@ -738,6 +738,7 @@ function callImg(datax) {
 }
 
 function callIcar(datay) {
+   loadIcar = Array;
    $.ajax({
       type  : 'GET',
       async : false,
