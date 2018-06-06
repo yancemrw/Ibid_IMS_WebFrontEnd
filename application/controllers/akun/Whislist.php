@@ -39,7 +39,7 @@ class Whislist extends CI_Controller {
 				$methodImg = 'GET';
 				$resImg = admsCurl($urlImg, array('userid' => $this->userdata['UserId']), $methodImg);
 				$dataImg = curlGenerate($resImg);
-				$data[$key]->ImagePath = @$dataImg[0]->ImagePath ? $dataImg[0]->ImagePath : base_url('assetsfront/images/background/default.png');
+				$data[$key]->ImagePath = @$dataImg[0]->ImagePath ? 'http:'.$dataImg[0]->ImagePath : base_url('assetsfront/images/background/default.png');
 
 				// get data taksasi
 				$urlTaksasi = linkservice('taksasi')."nilaiicar/detail?AuctionItemId=".$row->AuctionItemId;
