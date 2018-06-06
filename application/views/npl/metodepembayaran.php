@@ -116,9 +116,9 @@ $(function() {
 	}
 	
 	$('#btnBayar').click(function() {
-        $('#loading-payment').css('display', 'block');
-		$(this).addClass('disabled').attr('disabled', true);
-		$('#thisForm').submit();
+    $('#loading-payment').css('display', 'block');
+    $(this).addClass('disabled').attr('disabled', true);
+    $('#thisForm').submit();
 	});
 
     $("input[name$='tipe_methode']").click(function() {
