@@ -117,7 +117,7 @@ $(function() {
 	
 	$('#btnBayar').click(function() {
         $('#loading-payment').css('display', 'block');
-		$(this).addClass('disabled');
+		$(this).addClass('disabled').attr('disabled', true);
 		$('#thisForm').submit();
 	});
 
