@@ -1,6 +1,7 @@
 <style>
 .thumbnail-custom{
 	min-height: 210px !important;
+   max-height: 210px !important;
 }
 </style>
 <div class="section-list-product">
@@ -738,7 +739,7 @@ function callImg(datax) {
 }
 
 function callIcar(datay) {
-   loadIcar = Array;
+   loadIcar = new Array;
    $.ajax({
       type  : 'GET',
       async : false,
