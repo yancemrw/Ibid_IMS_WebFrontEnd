@@ -318,6 +318,7 @@
                                  position: 'top-center',
                                  timeout: 3
                               });
+                              sendData(cmd);
                            }
                            else {
                               $('#btn-reset').attr('disabled', false);
@@ -330,7 +331,7 @@
                               });
                               if(data.redirect !== 'ktp') location.href = '<?php echo site_url(); ?>/'+data.redirect;
                            }
-                           sendData(cmd);
+                           
                         },
                         error: function() {
                            $('#btn-reset').attr('disabled', false);
