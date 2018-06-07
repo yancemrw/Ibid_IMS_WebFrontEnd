@@ -275,7 +275,6 @@
                },
                success: function(data) {
                   var data = JSON.parse(data);
-                  var cmd  = $("input[name='UserId']").val();
                   if(data.status === 1) {
                      bootoast.toast({
                         message: data.messages,
@@ -318,7 +317,7 @@
                                  position: 'top-center',
                                  timeout: 3
                               });
-                              sendData(cmd);
+                              
                            }
                            else {
                               $('#btn-reset').attr('disabled', false);
@@ -401,18 +400,4 @@
    $('#tgl-lahir-span').click(function() {
       $('#tgl-lahir').focus();
    });
-   
-   function sendData(cmd)
-   {
-        $.ajax({
-            type: 'GET',
-            url: "<?php echo linkservice("ACCOUNT");?>sap/Account/buyer?cmd=" + cmd + "&indct=2",
-            data: data,
-            success: function(data) {
-                          
-            },
-            error: function() {
-                           
-        });
-   }
 </script>
