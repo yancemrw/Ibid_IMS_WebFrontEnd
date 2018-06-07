@@ -70,7 +70,7 @@
                                         <button class='btn btn-green' onclick='set_compare_product(<?php echo $jsonCompare[$key]; ?>, "<?php echo site_url('list-compare'); ?>")'>
                                             <i class="fa fa-files-o"></i> Bandingkan
                                         </button>
-                                        <!--a href="javascript:void(0)" class="delete-favorite">Hapus Favorit</a-->
+                                        <a href="javascript:void(0)" class="delete-favorite" onclick="deleteFav(<?php echo $value->AuctionItemId; ?>, <?php echo $userdata['UserId']; ?>)">Hapus Favorit</a>
                                     </div>
                                 </div>
                             </div>
@@ -129,4 +129,30 @@
     $(".close-compare").click(function() {
         $(".compare").hide(500) && $(".open-compare").show();
     });
+
+    function deleteFav(aucid, id) {
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo linkservice('stock')."favorite/Delete"; ?>',
+            data: 'auctionid='+aucid+'&userid='+id,
+            success: function(data) {
+                var prevEle = ele.children[0];
+                $(prevEle).replaceWith('<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon" />');
+                bootoast.toast({
+                    message: 'Unit sudah dihapus dari daftar favorit kamu',
+                    type: 'warning',
+                    position: 'top-center',
+                    timeout: 3
+                });
+            },
+            error: function(e) {
+                bootoast.toast({
+                    message: e,
+                    type: 'warning',
+                    position: 'top-center',
+                    timeout: 3
+                });
+            }
+        });
+    }
 </script>
