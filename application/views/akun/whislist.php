@@ -136,14 +136,13 @@
             url: '<?php echo linkservice('stock')."favorite/Delete"; ?>',
             data: 'auctionid='+aucid+'&userid='+id,
             success: function(data) {
-                var prevEle = ele.children[0];
-                $(prevEle).replaceWith('<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon" />');
                 bootoast.toast({
                     message: 'Unit sudah dihapus dari daftar favorit kamu',
                     type: 'warning',
                     position: 'top-center',
                     timeout: 3
                 });
+                location.href = '<?php echo site_url(); ?>favorite';
             },
             error: function(e) {
                 bootoast.toast({
