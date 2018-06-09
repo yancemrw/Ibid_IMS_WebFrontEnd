@@ -163,6 +163,14 @@
 </style>
 
 <script>
+// sementara
+bootoast.toast({
+	message: "Kami Mohon Maaf Karena Terdapat Kesalahan Teknis, Mohon Maaf Atas Tidak Nyaman ini",
+	type: 'warning',
+	position: 'top-center',
+	timeout: 5
+});
+	
 myFav = [];
 <?php foreach($favorite as $row){ ?>
 myFav.push(<?php echo $row->AuctionItemId; ?>);
