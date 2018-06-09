@@ -430,9 +430,9 @@
         right: 0;
         left: 0;
     }
-    .product-mob .boxright-mobile {
+    /*.product-mob .boxright-mobile {
 		width: 100% !important;
-	}
+	}*/
 	.product-mob .action-bottom, 
 	.product-mob .action-wishlist {
 		width: 100%;
