@@ -992,6 +992,9 @@ header {
         height: 150px;
         padding-bottom: 0;
     }
+    .product-mob .boxright-mobile {
+        width: 100%;
+    }
     .empty-favicon-details {
         margin-top: 5px;
     }
