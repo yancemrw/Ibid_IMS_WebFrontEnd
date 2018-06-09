@@ -242,7 +242,7 @@
 			   <?php } ?>
             </form>
          </div>
-         <div class="col-md-9 pl-0">
+         <div class="col-md-9">
             <div class="main-right">
                <div id="loadings"></div>
                <!--div class="title-header clearfix" id="loadings">
