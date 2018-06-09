@@ -861,6 +861,9 @@ header {
         float: right;
         margin-top: -40px;
     }
+    .product-mob .boxright-mobile {
+        width: 60%;
+    }
     .product-mob .box-recommend .thumbnail {
         float: left;
         width: 40% !important;
@@ -991,9 +994,6 @@ header {
     .box-recommend .thumbnail {
         height: 150px;
         padding-bottom: 0;
-    }
-    .product-mob .boxright-mobile {
-        width: 60%;
     }
     .empty-favicon-details {
         margin-top: 5px;
@@ -1154,9 +1154,6 @@ header {
     }
     .product-mob .box-recommend .overlay-lot {
         bottom: 32px;
-    }
-    .product-mob .boxright-mobile {
-        width: 60%;
     }
     .thumbnail-custom-favorite {
         width: 100%;

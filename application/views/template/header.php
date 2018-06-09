@@ -60,7 +60,7 @@
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/prettify.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/jquery.flipster.min.css'); ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/bootoast/bootoast.css'); ?>">
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/overwrite.css?v6'); ?>">
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/overwrite.css?v7'); ?>">
 
    <!-- Header Js -->
    <script>var img_empty = "<?php echo base_url('assetsfront/images/background/management-empty.png'); ?>";</script>
