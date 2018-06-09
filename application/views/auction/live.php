@@ -58,6 +58,14 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 $(document).ready(function() {
+	// sementara
+	bootoast.toast({
+		message: "Kami Mohon Maaf Karena Terdapat Kesalahan Teknis, Mohon Maaf Atas Tidak Nyaman ini",
+		type: 'warning',
+		position: 'top-center',
+		timeout: 5
+	});
+
 	$("nav").sticky({
 		topSpacing: 0
 	});
