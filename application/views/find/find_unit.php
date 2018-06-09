@@ -1,9 +1,3 @@
-<style>
-.thumbnail-custom{
-	min-height: 210px !important;
-   max-height: 210px !important;
-}
-</style>
 <div class="section-list-product">
    <div class="container">
       <div class="row">
