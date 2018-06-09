@@ -112,6 +112,13 @@ $privasi = curlGenerate($resPrivasi);
   <!-- End  -->
 
 <script type="text/javascript">
+  bootoast.toast({
+    message: "Kami Mohon Maaf Karena Terdapat Kesalahan Teknis, Mohon Maaf Atas Tidak Nyaman ini",
+    type: 'warning',
+    position: 'top-center',
+    timeout: 8
+  });
+  
   // handle login
   $('#btn-login').click(function(e) {
     var user = $('#username').val(), pass = $('#password').val();
