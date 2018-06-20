@@ -360,13 +360,13 @@ function cobaSini(thisCabang, thisDate, thisHari){
 				for(var i=0; i<doc.data.length; i++){
 					thisData = doc.data[i];
 					if (thisData.ItemName == 'MOBIL')
-						thisHtmlAppend += '<li><a href="<?php echo site_url('cari-lelang'); ?>?tipe-object=6" class="car-event"> <span>'+arrKota[thisData.company_id]+'</span></a></li>';
+						thisHtmlAppend += '<li><a href="<?php echo site_url('cari-lelang'); ?>?tipe-object=6&date='+thisData.date+'" class="car-event"> <span>'+arrKota[thisData.company_id]+'</span></a></li>';
 					else if (thisData.ItemName == 'MOTOR')
-						thisHtmlAppend += '<li><a href="<?php echo site_url('cari-lelang'); ?>?tipe-object=7" class="motor-event"> <span>'+arrKota[thisData.company_id]+'</span></a></li>';
+						thisHtmlAppend += '<li><a href="<?php echo site_url('cari-lelang'); ?>?tipe-object=7&date='+thisData.date+'" class="motor-event"> <span>'+arrKota[thisData.company_id]+'</span></a></li>';
 					else if (thisData.ItemName == 'HVE')
-						thisHtmlAppend += '<li><a href="<?php echo site_url('cari-lelang'); ?>?tipe-object=14" class="hve-event"> <span>'+arrKota[thisData.company_id]+'</span></a></li>';
+						thisHtmlAppend += '<li><a href="<?php echo site_url('cari-lelang'); ?>?tipe-object=14&date='+thisData.date+'" class="hve-event"> <span>'+arrKota[thisData.company_id]+'</span></a></li>';
 					else if (thisData.ItemName == 'GADGET')
-						thisHtmlAppend += '<li><a href="<?php echo site_url('cari-lelang'); ?>?tipe-object=12" class="gadget-event"> <span>'+arrKota[thisData.company_id]+'</span></a></li>';
+						thisHtmlAppend += '<li><a href="<?php echo site_url('cari-lelang'); ?>?tipe-object=12&date='+thisData.date+'" class="gadget-event"> <span>'+arrKota[thisData.company_id]+'</span></a></li>';
 				}
 			}
          else {
