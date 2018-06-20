@@ -278,8 +278,8 @@ function getJadwalAms() {
 	itemLelang = $('.thisItem:checked').val();
 	tipeLelang = $('.thisType:checked').val();
 	cabangId = $('.thisKota').val();
-	// startdate = '<?php echo date('Y-m-d'); ?>';
-	startdate = '2018-06-01';
+	startdate = '<?php echo date('Y-m-d'); ?>';
+	// startdate = '2018-06-01';
 	
 	if (itemLelang != '' && tipeLelang != '' && tipeLelang != null && cabangId != ''){
 		if (tipeLelang == '5') tipeLelang = '';
