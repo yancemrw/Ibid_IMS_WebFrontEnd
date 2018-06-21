@@ -17,7 +17,7 @@
     <meta property="og:image" content="">
     <meta property="og:site_name" content="ibid.astra.co.id">
    
-    <link rel="icon" type="image/ico" href="https://charlie.ibid.astra.co.id/online/favicon.ico"/>
+    <link rel="icon" type="image/ico" href="http://alpha.ibid.astra.co.id/online/favicon.ico"/>
     <link href="<?php echo base_url('landing/css/bootstrap.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('landing/css/style.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('landing/css/responsive.css'); ?>" rel="stylesheet">
@@ -285,7 +285,7 @@
 <section class="describe">
     <div class="container cta mt40">
         <div class="button text-center">
-            <a target="_blank" class="btn btn-big btn-lg btn-warning" href="https://charlie.ibid.astra.co.id"><strong>Ikut Lelang Sekarang</strong></a>
+            <a target="_blank" class="btn btn-big btn-lg btn-warning" href="http://alpha.ibid.astra.co.id"><strong>Ikut Lelang Sekarang</strong></a>
         </div>
     </div>    
 </section>
