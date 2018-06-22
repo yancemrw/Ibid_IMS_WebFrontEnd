@@ -26,32 +26,7 @@
                   <input type="radio" id="RecommendId" name="filter_type" value="2" <?php echo ($this->session->userdata('userdata') === null) ? 'checked' : ''; ?>>
                   <label for="RecommendId" class="view-filter">Mobil Rekomendasi</label>
                </div>
-               <h2>Tipe Lelang</h2>
-               <div class="form-group">
-                  <select class="form-control select-custom thisType" name="tipeLelang">
-                     <option value="">Semua Tipe Lelang</option>
-                     <option value="1">Lelang Online</option>
-                     <option value="0">Lelang Live</option>
-                  </select>
-               </div>
-               <h2>Kota & Jadwal</h2>
-               <div class="form-group">
-                  <select class="form-control select-custom thisKota" name="thisKota">
-                     <option value="2"><?php echo ucwords(substr(strtolower('IBID JAKARTA'), 4)); ?></option>
-                     <!-- option value="">Semua Kota</option -->
-                <?php foreach($cabang as $row){ ?>
-                     <!-- option value="<?php echo $row['CompanyId']; ?>" ><?php echo ucwords(substr(strtolower($row['CompanyName']), 4)); ?></option -->
-                     <?php } ?>
-                  </select>
-               </div>
-               <div class="form-group">
-            <div id="divSchedule" class="input-group-ss">
-              <select class="form-control select-custom" id="ScheduleId" name="ScheduleId">
-               <option value="">Semua Jadwal</option>
-              </select>
-              <span class="input-group-addon" style="display: none;"><i class="fa fa-spin fa-refresh"></i></span>
-            </div>
-               </div>
+
                <h2>Jenis Objek Lelang</h2>
                <div class="object-type clearfix">
                   <div class="form-group">
@@ -87,21 +62,51 @@
                      </label>
                   </div>
                </div>
+
                <div id="object6" class="desc-object">
                   <h2>Filter Mobil</h2>
                   <?php foreach($formDinamisMobil as $row){ echo $row['typeInput']; } ?>
                </div>
+
                <div id="object7" class="desc-object">
                   <h2>Filter Motor</h2>
                   <?php foreach($formDinamisMotor as $row){ echo $row['typeInput']; } ?>
                </div>
+
                <div id="object14" class="desc-object">
                   <h2>Filter Alat Berat</h2>
                   <?php foreach($formDinamisHve as $row){ echo $row['typeInput']; } ?>
                </div>
+               
                <div id="object12" class="desc-object">
                   <h2>Filter Unit Gadget</h2>
                   <?php foreach($formDinamisGadget as $row){ echo $row['typeInput']; } ?>
+               </div>
+
+               <h2>Tipe Lelang</h2>
+               <div class="form-group">
+                  <select class="form-control select-custom thisType" name="tipeLelang">
+                     <option value="">Semua Tipe Lelang</option>
+                     <option value="1">Lelang Online</option>
+                     <option value="0">Lelang Live</option>
+                  </select>
+               </div>
+               <h2>Kota & Jadwal</h2>
+               <div class="form-group">
+                  <select class="form-control select-custom thisKota" name="thisKota">
+                     <option value="2"><?php echo ucwords(substr(strtolower('IBID JAKARTA'), 4)); ?></option>
+                     <?php foreach($cabang as $row){ ?>
+                     <!-- option value="<?php echo $row['CompanyId']; ?>" ><?php echo ucwords(substr(strtolower($row['CompanyName']), 4)); ?></option -->
+                     <?php } ?>
+                  </select>
+               </div>
+               <div class="form-group">
+                  <div id="divSchedule" class="input-group-ss">
+                    <select class="form-control select-custom" id="ScheduleId" name="ScheduleId">
+                     <option value="">Semua Jadwal</option>
+                    </select>
+                    <span class="input-group-addon" style="display: none;"><i class="fa fa-spin fa-refresh"></i></span>
+                  </div>
                </div>
                <div class="form-group text-align-center">
                   <button id="btnFilter" type="submit" class="btn btn-green btn-150px">Filter</button>
@@ -119,10 +124,10 @@
                      <button class="btn width-header-btn" id="btn-top-download"><i class="fa fa-download"></i> Download</button>
                      <button class="btn width-header-btn" id="btn-view-change"><i class="fa fa-th-large"></i> Box</button>
                      <select class="form-control cursor-pointer display-inline-block width-sort-length border-radius-1px" id="view-listed">
-                        <option>6</option>
-                        <option>12</option>
-                        <option>24</option>
-                        <option>48</option>
+                        <option value="6">6</option>
+                        <option value="12">12</option>
+                        <option value="24">24</option>
+                        <option value="48">48</option>
                      </select>
                   </div>
                </div>
@@ -199,9 +204,12 @@ $(document).ready(function() {
    });
 
    // set view list total
-   if(localStorage.getItem("VTC") !== undefined) {
+   if(localStorage.getItem("VTC") !== null) {
       var getValue = localStorage.getItem("VTC");
       $('select#view-listed').val(getValue);
+   }
+   else if(localStorage.getItem("VTC") === null) {
+      $('select#view-listed').val('6');
    }
    $('#view-listed').change(function() {
       localStorage.setItem('VTC', $(this).val());
@@ -513,6 +521,11 @@ function loadContainerPaging(offset, limit, linked, dataForm = '', type = 1) {
          $('#searching').attr('disabled', 'disabled');
          //$('#mored').children().replaceWith('<img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" />');
          $('#mored').replaceWith('<div id="mored" class="margin-10px text-align-center"><img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" /></div>');
+
+         // top button
+         $('#btn-top-download').attr('disabled', true);
+         $('#btn-view-change').attr('disabled', true);
+         $('#view-listed').attr('disabled', true);
       },
       success: function(data) {
          var content = '',
@@ -606,6 +619,11 @@ function loadContainerPaging(offset, limit, linked, dataForm = '', type = 1) {
             }
             $('#mored').css('display', 'block');
             $('#data_length').html(offset+(datas.length));
+
+            // top button
+            $('#btn-top-download').attr('disabled', false);
+            $('#btn-view-change').attr('disabled', false);
+            $('#view-listed').attr('disabled', false);
             countContainer(offset, limit, linked, dataTotal, datas.length, dataForm, type);
          }
       },
