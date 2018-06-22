@@ -26,32 +26,7 @@
                   <input type="radio" id="RecommendId" name="filter_type" value="2" <?php echo ($this->session->userdata('userdata') === null) ? 'checked' : ''; ?>>
                   <label for="RecommendId" class="view-filter">Mobil Rekomendasi</label>
                </div>
-               <h2>Tipe Lelang</h2>
-               <div class="form-group">
-                  <select class="form-control select-custom thisType" name="tipeLelang">
-                     <option value="">Semua Tipe Lelang</option>
-                     <option value="1">Lelang Online</option>
-                     <option value="0">Lelang Live</option>
-                  </select>
-               </div>
-               <h2>Kota & Jadwal</h2>
-               <div class="form-group">
-                  <select class="form-control select-custom thisKota" name="thisKota">
-                     <option value="2"><?php echo ucwords(substr(strtolower('IBID JAKARTA'), 4)); ?></option>
-                     <!-- option value="">Semua Kota</option -->
-					 <?php foreach($cabang as $row){ ?>
-                     <!-- option value="<?php echo $row['CompanyId']; ?>" ><?php echo ucwords(substr(strtolower($row['CompanyName']), 4)); ?></option -->
-                     <?php } ?>
-                  </select>
-               </div>
-               <div class="form-group">
-				<div id="divSchedule" class="input-group-ss">
-				  <select class="form-control select-custom" id="ScheduleId" name="ScheduleId">
-					<option value="">Semua Jadwal</option>
-				  </select>
-				  <span class="input-group-addon" style="display: none;"><i class="fa fa-spin fa-refresh"></i></span>
-				</div>
-               </div>
+
                <h2>Jenis Objek Lelang</h2>
                <div class="object-type clearfix">
                   <div class="form-group">
@@ -89,145 +64,49 @@
                </div>
                <div id="object6" class="desc-object">
                   <h2>Filter Mobil</h2>
-				  <?php foreach($formDinamisMobil as $row){ echo $row['typeInput']; } ?>
-                  <!-- div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Nomor Polisi</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Model</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Merk</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Tipe</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Tahun</option>
-                     </select>
-                  </div -->
+                  <?php foreach($formDinamisMobil as $row){ echo $row['typeInput']; } ?>
                </div>
                <div id="object7" class="desc-object">
                   <h2>Filter Motor</h2>
-				  <?php foreach($formDinamisMotor as $row){ echo $row['typeInput']; } ?>
-                  <!-- div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Nomor Polisi</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Model</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Merk</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Tipe</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Tahun</option>
-                     </select>
-                  </div -->
+                  <?php foreach($formDinamisMotor as $row){ echo $row['typeInput']; } ?>
                </div>
                <div id="object14" class="desc-object">
                   <h2>Filter Alat Berat</h2>
-				  <?php foreach($formDinamisHve as $row){ echo $row['typeInput']; } ?>
-                  <!-- div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Serial Number</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Model</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Merk</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Tipe</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Tahun</option>
-                     </select>
-                  </div -->
+                  <?php foreach($formDinamisHve as $row){ echo $row['typeInput']; } ?>
                </div>
                <div id="object12" class="desc-object">
                   <h2>Filter Unit Gadget</h2>
-				  <?php foreach($formDinamisGadget as $row){ echo $row['typeInput']; } ?>
-                  <!-- div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Serial Number</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Model</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Merk</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Tipe</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Processor</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Ram</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>HDD</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Screen</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Operating System</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Tahun</option>
-                     </select>
-                  </div -->
+                  <?php foreach($formDinamisGadget as $row){ echo $row['typeInput']; } ?>
                </div>
+
+               <h2>Tipe Lelang</h2>
+               <div class="form-group">
+                  <select class="form-control select-custom thisType" name="tipeLelang">
+                     <option value="">Semua Tipe Lelang</option>
+                     <option value="1">Lelang Online</option>
+                     <option value="0">Lelang Live</option>
+                  </select>
+               </div>
+
+               <h2>Kota & Jadwal</h2>
+               <div class="form-group">
+                  <select class="form-control select-custom thisKota" name="thisKota">
+                     <option value="2"><?php echo ucwords(substr(strtolower('IBID JAKARTA'), 4)); ?></option>
+                     <!-- option value="">Semua Kota</option -->
+                     <?php foreach($cabang as $row){ ?>
+                     <!-- option value="<?php echo $row['CompanyId']; ?>" ><?php echo ucwords(substr(strtolower($row['CompanyName']), 4)); ?></option -->
+                     <?php } ?>
+                  </select>
+               </div>
+               <div class="form-group">
+               <div id="divSchedule" class="input-group-ss">
+                  <select class="form-control select-custom" id="ScheduleId" name="ScheduleId">
+                     <option value="">Semua Jadwal</option>
+                  </select>
+                  <span class="input-group-addon" style="display: none;"><i class="fa fa-spin fa-refresh"></i></span>
+               </div>
+               </div>
+
                <div class="form-group text-align-center">
                   <button id="btnFilter" type="submit" class="btn btn-green btn-150px">Filter</button>
                </div>
