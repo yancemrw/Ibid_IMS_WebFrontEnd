@@ -666,6 +666,15 @@ header {
     width: 80%;
 }
 
+.width-header-btn {
+    width: 90px;
+    padding: 6px 0;
+}
+
+.width-sort-length {
+    width: 80px;
+}
+
 .width-unset {
     width: unset !important;
 }
@@ -1228,6 +1237,13 @@ header {
 @media (max-width: 640px) {
     header {
         background-position: 0 20px !important;
+    }
+    .width-header-btn {
+        width: 32%;
+    }
+
+    .width-sort-length {
+        width: 28%;
     }
     .live-auction, .auction-left, .auction-right {
         margin: 0;
