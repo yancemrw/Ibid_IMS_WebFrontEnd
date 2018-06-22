@@ -26,32 +26,7 @@
                   <input type="radio" id="RecommendId" name="filter_type" value="2" <?php echo ($this->session->userdata('userdata') === null) ? 'checked' : ''; ?>>
                   <label for="RecommendId" class="view-filter">Mobil Rekomendasi</label>
                </div>
-               <h2>Tipe Lelang</h2>
-               <div class="form-group">
-                  <select class="form-control select-custom thisType" name="tipeLelang">
-                     <option value="">Semua Tipe Lelang</option>
-                     <option value="1">Lelang Online</option>
-                     <option value="0">Lelang Live</option>
-                  </select>
-               </div>
-               <h2>Kota & Jadwal</h2>
-               <div class="form-group">
-                  <select class="form-control select-custom thisKota" name="thisKota">
-                     <option value="2"><?php echo ucwords(substr(strtolower('IBID JAKARTA'), 4)); ?></option>
-                     <!-- option value="">Semua Kota</option -->
-					 <?php foreach($cabang as $row){ ?>
-                     <!-- option value="<?php echo $row['CompanyId']; ?>" ><?php echo ucwords(substr(strtolower($row['CompanyName']), 4)); ?></option -->
-                     <?php } ?>
-                  </select>
-               </div>
-               <div class="form-group">
-				<div id="divSchedule" class="input-group-ss">
-				  <select class="form-control select-custom" id="ScheduleId" name="ScheduleId">
-					<option value="">Semua Jadwal</option>
-				  </select>
-				  <span class="input-group-addon" style="display: none;"><i class="fa fa-spin fa-refresh"></i></span>
-				</div>
-               </div>
+
                <h2>Jenis Objek Lelang</h2>
                <div class="object-type clearfix">
                   <div class="form-group">
@@ -87,172 +62,83 @@
                      </label>
                   </div>
                </div>
+
                <div id="object6" class="desc-object">
                   <h2>Filter Mobil</h2>
-				  <?php foreach($formDinamisMobil as $row){ echo $row['typeInput']; } ?>
-                  <!-- div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Nomor Polisi</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Model</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Merk</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Tipe</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Tahun</option>
-                     </select>
-                  </div -->
+                  <?php foreach($formDinamisMobil as $row){ echo $row['typeInput']; } ?>
                </div>
+
                <div id="object7" class="desc-object">
                   <h2>Filter Motor</h2>
-				  <?php foreach($formDinamisMotor as $row){ echo $row['typeInput']; } ?>
-                  <!-- div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Nomor Polisi</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Model</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Merk</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Tipe</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Tahun</option>
-                     </select>
-                  </div -->
+                  <?php foreach($formDinamisMotor as $row){ echo $row['typeInput']; } ?>
                </div>
+
                <div id="object14" class="desc-object">
                   <h2>Filter Alat Berat</h2>
-				  <?php foreach($formDinamisHve as $row){ echo $row['typeInput']; } ?>
-                  <!-- div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Serial Number</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Model</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Merk</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Tipe</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Tahun</option>
-                     </select>
-                  </div -->
+                  <?php foreach($formDinamisHve as $row){ echo $row['typeInput']; } ?>
                </div>
+               
                <div id="object12" class="desc-object">
                   <h2>Filter Unit Gadget</h2>
-				  <?php foreach($formDinamisGadget as $row){ echo $row['typeInput']; } ?>
-                  <!-- div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Serial Number</option>
-                     </select>
+                  <?php foreach($formDinamisGadget as $row){ echo $row['typeInput']; } ?>
+               </div>
+
+               <h2>Tipe Lelang</h2>
+               <div class="form-group">
+                  <select class="form-control select-custom thisType" name="tipeLelang">
+                     <option value="">Semua Tipe Lelang</option>
+                     <option value="1">Lelang Online</option>
+                     <option value="0">Lelang Live</option>
+                  </select>
+               </div>
+               <h2>Kota & Jadwal</h2>
+               <div class="form-group">
+                  <select class="form-control select-custom thisKota" name="thisKota">
+                     <option value="2"><?php echo ucwords(substr(strtolower('IBID JAKARTA'), 4)); ?></option>
+                     <?php foreach($cabang as $row){ ?>
+                     <!-- option value="<?php echo $row['CompanyId']; ?>" ><?php echo ucwords(substr(strtolower($row['CompanyName']), 4)); ?></option -->
+                     <?php } ?>
+                  </select>
+               </div>
+               <div class="form-group">
+                  <div id="divSchedule" class="input-group-ss">
+                    <select class="form-control select-custom" id="ScheduleId" name="ScheduleId">
+                     <option value="">Semua Jadwal</option>
+                    </select>
+                    <span class="input-group-addon" style="display: none;"><i class="fa fa-spin fa-refresh"></i></span>
                   </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Model</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Merk</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Tipe</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Processor</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Ram</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>HDD</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Screen</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Operating System</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <select class="form-control select-custom">
-                        <option>Tahun</option>
-                     </select>
-                  </div -->
                </div>
                <div class="form-group text-align-center">
                   <button id="btnFilter" type="submit" class="btn btn-green btn-150px">Filter</button>
                </div>
-			   <?php if (@$this->session->userdata('userdata')['UserId']){ ?>
-			   <input type="hidden" name="userId" value="<?php echo $this->session->userdata('userdata')['UserId']; ?>">
-			   <?php } ?>
+            <?php if (@$this->session->userdata('userdata')['UserId']){ ?>
+            <input type="hidden" name="userId" value="<?php echo $this->session->userdata('userdata')['UserId']; ?>">
+            <?php } ?>
             </form>
          </div>
          <div class="col-md-9">
             <div class="main-right">
-               <div id="loadings"></div>
-               <!--div class="title-header clearfix" id="loadings">
-                  <p>Menampilkan <span>2.240</span> objek lelang untuk “<b>acura sedan</b>” ( <b>1-9</b> dari <b>2.240</b> )</p>
-                  <div class="action-header">
-                     <button class="btn"><i class="fa fa-download"></i> Download</button>
-                     <button class="btn"><i class="fa fa-sort"></i> Sort</button>
+               <div class="title-header clearfix">
+                  <p><span id="strTotalData"></span> <span id="setForm"></span></p>
+                  <div class="action-header form-group margin-7px-0" id="form-sort">
+                     <button class="btn width-header-btn" id="btn-top-download"><i class="fa fa-download"></i> Download</button>
+                     <button class="btn width-header-btn" id="btn-view-change"><i class="fa fa-th-large"></i> Box</button>
+                     <select class="form-control cursor-pointer display-inline-block width-sort-length border-radius-1px" id="view-listed">
+                        <option value="6">6</option>
+                        <option value="12">12</option>
+                        <option value="24">24</option>
+                        <option value="48">48</option>
+                     </select>
                   </div>
-               </div-->
+               </div>
                <!--p class="notice clearfix"><span><i class="fa fa-exclamation-circle"></i> Produk telah dimasukkan ke dalam daftar perbandingan</span></p-->
+               <div id="loadings"></div>
                <div class="content-right product-mob content-load clearfix">
                   <div id="loadlist"></div>
                </div>
-               <div id="mored" class="cursor-pointer margin-top-10px text-align-center width-100">
-                  <button class="btn btn-green">Selanjutnya</button>
-                  <!--span></span-->
+               <div id="mored" class="margin-top-10px text-align-center width-100">
+                  <button class="btn btn-green cursor-pointer">Selanjutnya</button>
+                  <!--span>More</span-->
                </div>
             </div>
          </div>
@@ -284,6 +170,12 @@
    </div>
 </section>
 
+<style>
+   #form-sort > .select-custom~.select2-container {
+      width: 100px !important;
+   }
+</style>
+
 <script>
 var thisCabang = [];
 var loadFavorite = new Array, loadIcar = new Array;
@@ -298,6 +190,31 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 $(document).ready(function() {
+   // handle view list content
+   $('#btn-view-change').click(function() {
+      var eleChild = $(this).html();
+      if($(eleChild).attr('class') === 'fa fa-th-large') {
+         $(this).html('<i class="fa fa-list"></i> List');
+         localStorage.setItem("FBU", "list");
+      }
+      else if($(eleChild).attr('class') === 'fa fa-list') {
+         $(this).html('<i class="fa fa-th-large"></i> Box');
+         localStorage.setItem("FBU", "box");
+      }
+   });
+
+   // set view list total
+   if(localStorage.getItem("VTC") !== null) {
+      var getValue = localStorage.getItem("VTC");
+      $('select#view-listed').val(getValue);
+   }
+   else if(localStorage.getItem("VTC") === null) {
+      $('select#view-listed').val('6');
+   }
+   $('#view-listed').change(function() {
+      localStorage.setItem('VTC', $(this).val());
+   });
+
    //show compare element
    let linked = '<?php echo site_url('list-compare'); ?>';
    setCompare(linked);
@@ -352,27 +269,37 @@ $(document).ready(function() {
    });
 
    // handle searching from home
-   var arrPost = '<?php echo $parsing_post; ?>', arrGet = '<?php echo $parsing_get['unit_rec']; ?>', arrKota = '<?php echo $parsing_get['kota']; ?>', thisFormInput;
+   var arrPost = '<?php echo $parsing_post; ?>', arrGet = '<?php echo json_encode($parsing_get); ?>', arrGetRec = '<?php echo $parsing_get['unit_rec']; ?>', arrGetKota = '<?php echo $parsing_get['kota']; ?>', thisFormInput;
    if(arrPost !== '') {
+      var offset_change = $('#view-listed option:selected').val();
       var thisFormInputs = jsonSerialize(JSON.parse(arrPost));
       window.countTotal = 0;
       window.dataForm = '';
       actionTotalData = 0;
       $('#loadlist').html('');
-      loadContainer(0, 6, linked, 'tipe-object='+thisFormInputs.obj+thisFormInputs.data, 1);
+      loadContainer(0, offset_change, linked, 'tipe-object='+thisFormInputs.obj+thisFormInputs.data, 1);
    }
-   else if(arrGet !== '') {
+   else if(arrGetRec !== '') {
       $('input[name="filter_type"][value="2"]').prop("checked", true);
    }
-   else if(arrKota !== '') { // handle popup home
-      if(arrKota.toLowerCase() === 'jakarta') {
+   else if(arrGetKota !== '') { // handle popup home
+      if(arrGetKota.toLowerCase() === 'jakarta') {
+         var offset_change = $('#view-listed option:selected').val();
          $('select[name="thisKota"]').val('2').trigger('change.select2');
          var thisFormInputs = '&filter_type=1&tipeLelang=&thisKota=2&ScheduleId=&6_merk=&6_seri=&6_silinder=&6_grade=&6_transmisi=&6_tahun=&7_merk=&7_seri=&7_silinder=&14_kategori=&14_merk=&12_kategori=&12_merk=';
-         loadContainer(0, 6, linked, thisFormInputs, 1);
+         loadContainer(0, offset_change, linked, thisFormInputs, 1);
       }
    }
+   else if(JSON.parse(arrGet) !== null) {
+      var offset_change = $('#view-listed option:selected').val();
+      var selectCity = $('select[name="thisKota"] option:selected').val();
+      var data  = JSON.parse(arrGet), object = data.objectType, dateid = data.dateId;
+      var thisFormInputs = '&filter_type=2&tipeLelang=&thisKota='+selectCity+'&ScheduleId='+dateid+'&tipe-object='+object+'&6_merk=&6_seri=&6_silinder=&6_grade=&6_transmisi=&6_tahun=&7_merk=&7_seri=&7_silinder=&14_kategori=&14_merk=&12_kategori=&12_merk=';
+         loadContainer(0, offset_change, linked, thisFormInputs, 1);
+   }
    else {
-      loadContainer(0, 6, linked, '', 1);
+      var offset_change = $('#view-listed option:selected').val();
+      loadContainer(0, offset_change, linked, '', 1);
    }
 
    // handle top searching
@@ -380,23 +307,31 @@ $(document).ready(function() {
       var charCode = (e.which) ? e.which : e.keyCode;
       var value = $('#searching').val();
       if(charCode == 13) {
+         // set form sort
+         if($('#searching').val() !== '') {
+            $('#setForm').append('untuk "<b>'+$('#searching').val()+'</b>"');
+         }
+
+         // set search
+         var offset_change = $('#view-listed option:selected').val();
          var arrSearch = value.split(/(\s+)/).filter( function(e) { return e.trim().length > 0; } );
          $('#loadlist').html('');
-         loadContainer(0, 6, linked, 'keyWord='+arrSearch, 2);
+         loadContainer(0, offset_change, linked, 'keyWord='+arrSearch, 2);
          e.preventDefault();
       }
    });
-	
-	$('#thisFormFilter').submit(function(e) {
+   
+   $('#thisFormFilter').submit(function(e) {
       e.preventDefault();
-		thisFormInput = $(this).serialize();
+      thisFormInput = $(this).serialize();
       window.countTotal = 0;
       window.dataForm = '';
       actionTotalData = 0;
       $('#loadlist').html('');
       $('.form-filter').toggleClass('open')
-      loadContainer(0, 6, linked, thisFormInput, 1);
-	});
+      var offset_change = $('#view-listed option:selected').val();
+      loadContainer(0, offset_change, linked, thisFormInput, 1);
+   });
 
    $('input').blur(function() {
       tmpval = $(this).val();
@@ -411,8 +346,8 @@ $(document).ready(function() {
    });
    
    $('.thisItem').click(function(){ getJadwalAms(); });
-	$('.thisType').change(function(){ getJadwalAms(); });
-	$('.thisKota').change(function(){ getJadwalAms(); });
+   $('.thisType').change(function(){ getJadwalAms(); });
+   $('.thisKota').change(function(){ getJadwalAms(); });
 });
 
 // load ajax content finding
@@ -430,6 +365,12 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
          $('#searching').attr('disabled', 'disabled');
          $('#loadings').replaceWith('<div id="loadings" class="margin-10px margin-top-80px text-align-center"><img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" /></div>');
          $('#mored').css('display', 'none');
+         $('#strTotalData').replaceWith('<span id="strTotalData">Menampilkan <b>0</b> dari Total <b>0</b> objek lelang</span>');
+
+         // top button
+         $('#btn-top-download').attr('disabled', true);
+         $('#btn-view-change').attr('disabled', true);
+         $('#view-listed').attr('disabled', true);
       },
       success: function(data) {
          $('#loadings').replaceWith('<div id="loadings"></div>');
@@ -443,6 +384,18 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
          sessionId = '<?php echo ($this->session->userdata('userdata')['UserId'] !== null) ? $this->session->userdata('userdata')['UserId'] : ''; ?>';
          
          if(datas !== null && datas.length > 0) {
+            var tipe_object = new Array();
+            tipe_object['6'] = 'Mobil';
+            tipe_object['7'] = 'Motor';
+            tipe_object['12'] = 'Gadget';
+            tipe_object['14'] = 'HVE';
+            var tipe_object_lelang = $('input[name="tipe-object"]:checked').val();
+            if(tipe_object_lelang === undefined) {
+               $('#strTotalData').replaceWith('<span id="strTotalData">Menampilkan <b id="data_length">'+datas.length+'</b> dari Total <b>'+dataTotal+'</b> untuk <b>semua</b> objek lelang</span>');
+            }
+            else {
+               $('#strTotalData').replaceWith('<span id="strTotalData">Menampilkan <b id="data_length">'+datas.length+'</b> dari Total <b>'+dataTotal+'</b> untuk objek lelang <b>'+tipe_object[tipe_object_lelang]+'</b></span>');
+            }
             for (var i = 0; i < datas.length; i++) {
                var dataz = datas[i];
                imgData[i] = callImg(dataz);
@@ -495,14 +448,14 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
                      waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + dataz.schedule.schedule.waktu;
                   }
                }   
-   			   /*if (schedule > 0) {
-   				   var dateSplit = dataz.date.split('-');
-   				   waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + dataz.waktu;
-   			   }*/
+               /*if (schedule > 0) {
+                  var dateSplit = dataz.date.split('-');
+                  waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + dataz.waktu;
+               }*/
  
-			      content = '<div class="col-md-4" id="this'+dataz.AuctionItemId+'">'+
+               content = '<div class="col-md-4" id="this'+compare_data.AuctionItemId+'">'+
                            '<div class="list-product box-recommend">'+
-                           '<a href="<?php echo $link_detail; ?>/'+dataz.AuctionItemId+'">'+
+                           '<a href="<?php echo $link_detail; ?>/'+compare_data.AuctionItemId+'">'+
                            '<div class="thumbnail">'+
                            '<div class="thumbnail-custom">'+
                            '<img src="'+compare_data.Image+'" />'+
@@ -524,30 +477,14 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
                            '</div>'+
                            '</div>';
                $('#loadlist').append(content);
-               /* if(schedule > 0) {
-                  $.ajax({
-                     type: 'GET',
-                     url: 'http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/getLotDataOnline?schedule='+schedule+'&lot='+lot,
-                     success: function(sch) {
-                        if(sch.schedule !== null) {
-                           var dateSplit = sch.schedule.date.split('-');
-                           lokasi = sch.schedule.CompanyName;
-                           waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0]+' '+sch.schedule.waktu;
-                           $('.wkt'+schedule).html(waktu);
-                        }
-                        else {
-                           $('.wkt'+schedule).html('Belum Tersedia');
-                        }
-                     },
-                     error: function(e) {
-                        console.log(e);
-                     }
-                  });
-                  
-               } */
                $('#btnFilter').attr('disabled', false);
             }
             $('#mored').css('display', 'block');
+
+            // top button
+            $('#btn-top-download').attr('disabled', false);
+            $('#btn-view-change').attr('disabled', false);
+            $('#view-listed').attr('disabled', false);
             countContainer(offset, limit, linked, dataTotal, datas.length, dataForm, type);
          }
          else {
@@ -564,7 +501,6 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
          });
       },
       complete: function(e) {
-         //console.log(e.responseJSON.data.data);
          $('#btnFilter').attr('disabled', false);
          $('#searching').removeAttr("disabled").removeAttr("style");
       }
@@ -585,6 +521,11 @@ function loadContainerPaging(offset, limit, linked, dataForm = '', type = 1) {
          $('#searching').attr('disabled', 'disabled');
          //$('#mored').children().replaceWith('<img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" />');
          $('#mored').replaceWith('<div id="mored" class="margin-10px text-align-center"><img src="<?php echo base_url('assetsfront/images/loader/loading-produk.gif'); ?>" alt="Loading" width="200px" /></div>');
+
+         // top button
+         $('#btn-top-download').attr('disabled', true);
+         $('#btn-view-change').attr('disabled', true);
+         $('#view-listed').attr('disabled', true);
       },
       success: function(data) {
          var content = '',
@@ -650,13 +591,10 @@ function loadContainerPaging(offset, limit, linked, dataForm = '', type = 1) {
                      waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + dataz.schedule.schedule.waktu;
                   }
                }
-   			   /*if (schedule > 0) {
-   				   var dateSplit = dataz.date.split('-');
-   				   waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + dataz.waktu;
-   			   }*/
-               content = '<div class="col-md-4" id="this'+dataz.AuctionItemId+'">'+
+
+               content = '<div class="col-md-4" id="this'+compare_data.AuctionItemId+'">'+
                               '<div class="list-product box-recommend">'+
-                              '<a href="<?php echo $link_detail; ?>/'+dataz.AuctionItemId+'">'+
+                              '<a href="<?php echo $link_detail; ?>/'+compare_data.AuctionItemId+'">'+
                               '<div class="thumbnail">'+
                               '<div class="thumbnail-custom">'+
                               '<img src="'+compare_data.Image+'" />'+
@@ -678,29 +616,14 @@ function loadContainerPaging(offset, limit, linked, dataForm = '', type = 1) {
                               '</div>'+
                               '</div>';
                $('#loadlist').children().last().after(content);
-               /* if(schedule > 0) {
-                  $.ajax({
-                     type: 'GET',
-                     url: 'http://alpha.ibid.astra.co.id/backend/serviceams/lot/api/getLotDataOnline?schedule='+schedule+'&lot='+lot,
-                     success: function(sch) {
-                        if(sch.schedule !== null) {
-                           var dateSplit = sch.schedule.date.split('-');
-                           lokasi = sch.schedule.CompanyName;
-                           waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + sch.schedule.waktu;
-                           $('.wkt'+schedule).html(waktu);
-                        }
-                        else {
-                           $('.wkt'+schedule).html('Belum Tersedia');
-                        }
-                     },
-                     error: function(e) {
-                        console.log(e);
-                     }
-                  });
-                  
-               } */
             }
             $('#mored').css('display', 'block');
+            $('#data_length').html(offset+(datas.length));
+
+            // top button
+            $('#btn-top-download').attr('disabled', false);
+            $('#btn-view-change').attr('disabled', false);
+            $('#view-listed').attr('disabled', false);
             countContainer(offset, limit, linked, dataTotal, datas.length, dataForm, type);
          }
       },
@@ -872,49 +795,49 @@ function addFav(aucid, id, ele) {
 }
 
 function getJadwalAms(){
-	itemLelang = $('.thisItem:checked').val();
-	tipeLelang = $('.thisType').val();
-	cabangId = $('.thisKota').val();
-	startdate = '<?php echo date('Y-m-d'); ?>';
-	
-	if (itemLelang != '' && tipeLelang != '' && tipeLelang != null && cabangId != ''){}
-	$.ajax( {
-		url: "<?php echo linkservice('AMSSCHEDULE') .'schedulelist/'; ?>",
-		dataType: "json",
-		data: {
-			// thisData
-			type: tipeLelang,
-			item: itemLelang,
-			company_id: cabangId,
-			startdate: startdate,
-		},
-		beforeSend: function( ) {
-			$('#divSchedule .input-group-addon').attr("style",'');
-			$('#divSchedule').addClass('input-group');
-			$('#divSchedule').removeClass('input-group-ss');
-		},
-		success: function( data ) {
-			$('#ScheduleId option').remove();
-			$('#ScheduleId')
-				.append($("<option></option>")
-				.attr("value",'')
-				.text("Semua Jadwal"));
-			
-			thisArr = data.data;
-			for(i=0; i<thisArr.length; i++){
-				row = thisArr[i];
-				$('#ScheduleId')
-					.append($("<option></option>")
-					.attr("value",row.id)
-					.text(row.date + ' '+row.waktu.substring(0, 8)));
-			}
-		},
-		complete: function(){
-			$('#divSchedule .input-group-addon').css('display','none');
-			$('#divSchedule').removeClass('input-group');
-			$('#divSchedule').addClass('input-group-ss');
-		}
-	});
+   itemLelang = $('.thisItem:checked').val();
+   tipeLelang = $('.thisType').val();
+   cabangId = $('.thisKota').val();
+   startdate = '<?php echo date('Y-m-d'); ?>';
+   
+   if (itemLelang != '' && tipeLelang != '' && tipeLelang != null && cabangId != ''){}
+   $.ajax( {
+      url: "<?php echo linkservice('AMSSCHEDULE') .'schedulelist/'; ?>",
+      dataType: "json",
+      data: {
+         // thisData
+         type: tipeLelang,
+         item: itemLelang,
+         company_id: cabangId,
+         startdate: startdate,
+      },
+      beforeSend: function( ) {
+         $('#divSchedule .input-group-addon').attr("style",'');
+         $('#divSchedule').addClass('input-group');
+         $('#divSchedule').removeClass('input-group-ss');
+      },
+      success: function( data ) {
+         $('#ScheduleId option').remove();
+         $('#ScheduleId')
+            .append($("<option></option>")
+            .attr("value",'')
+            .text("Semua Jadwal"));
+         
+         thisArr = data.data;
+         for(i=0; i<thisArr.length; i++){
+            row = thisArr[i];
+            $('#ScheduleId')
+               .append($("<option></option>")
+               .attr("value",row.id)
+               .text(row.date + ' '+row.waktu.substring(0, 8)));
+         }
+      },
+      complete: function(){
+         $('#divSchedule .input-group-addon').css('display','none');
+         $('#divSchedule').removeClass('input-group');
+         $('#divSchedule').addClass('input-group-ss');
+      }
+   });
 }
 
 function jsonSerialize(value) {
