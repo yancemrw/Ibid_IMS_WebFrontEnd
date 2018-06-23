@@ -84,7 +84,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <ul class="choose-npl clearfix">
+                            <ul class="choose-npl clearfix font-10px">
                                 <li>
                                    
                                     <div class="form-group">
