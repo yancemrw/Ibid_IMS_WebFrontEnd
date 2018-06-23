@@ -309,7 +309,7 @@ $(document).ready(function() {
       if(charCode == 13) {
          // set form sort
          if($('#searching').val() !== '') {
-            $('#setForm').append('untuk "<b>'+$('#searching').val()+'</b>"');
+            $('#setForm').replaceWith('untuk "<b>'+$('#searching').val()+'</b>"');
          }
 
          // set search
