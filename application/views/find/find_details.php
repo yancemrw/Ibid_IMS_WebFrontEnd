@@ -829,7 +829,7 @@ $(document).ready(function() {
                            '<div class="list-product box-recommend">'+
                            '<a href="#">'+
                            '<div class="thumbnail">'+
-                           '<div class="thumbnail-custom">'+
+                           '<div class="thumbnail-custom-terkait">'+
                            '<img src="<?php echo base_url('assetsfront/images/background/default.png'); ?>" height="197px" />'+
                            '</div>'+
                            '<div class="overlay-grade">'+
@@ -900,7 +900,7 @@ $(document).ready(function() {
                            '<div class="list-product box-recommend">'+
                            '<a href="'+link_detail+'">'+
                            '<div class="thumbnail">'+
-                           '<div class="thumbnail-custom">'+
+                           '<div class="thumbnail-custom-terkait">'+
                            '<img src="'+compare_data.Image+'" class="min-height-197px" />'+
                            '</div>'+
                            '<div class="overlay-grade">'+
