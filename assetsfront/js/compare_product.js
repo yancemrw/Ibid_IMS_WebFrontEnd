@@ -138,11 +138,16 @@ function check_exists(obj1, obj2) {
 
 function set_compare_product(object, linked) {
    var getStorage = localStorage.getItem("CP");
-   check_exists(object, JSON.parse(getStorage));
-   if(check_exists(object, JSON.parse(getStorage)) === true) {
+   if(getStorage === null) {
+      localStorage.setItem("CP", JSON.stringify([object]));
+      document.getElementById('addcompare').style.display = 'block';
+      //check_exists(object, JSON.parse(getStorage));
+      setCompare(linked);
+   }
+   else if(check_exists(object, JSON.parse(getStorage)) === true) {
       alert_bootoast('Objek sudah ditambahkan di Perbandingkan Produk, Silahkan pilih objek yang lain');
    }
-   else {
+   else {console.log(getStorage);
       if(getStorage === null) {
          localStorage.setItem("CP", JSON.stringify([object]));
          document.getElementById('addcompare').style.display = 'block';
