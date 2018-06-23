@@ -90,6 +90,10 @@ a.delete-compare {
     width: unset;
 }
 
+.booking-schedule .input-custom {
+    padding-left: 7px;
+}
+
 .box-recommend a h2 {
     min-height: auto;
 }
@@ -120,6 +124,10 @@ a.delete-compare {
 .btn-150px {
     width: 150px !important;
 }
+
+.choose-npl input {
+    padding: 10px 7px;
+} 
 
 #idrecaptcha {
     width: 112px;
@@ -226,6 +234,10 @@ a.delete-compare {
     font-weight: bold !important;
 }
 
+.font-10px {
+    font-size: 10px;
+}
+ 
 .font-12px {
     font-size: 12px;
 }
@@ -876,6 +888,15 @@ header {
     }
 }
 
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .choose-npl li:first-child {
+        width: 17%;
+    }
+    .choose-npl li:nth-child(2) {
+        width: 35%;
+    } 
+}
+
 @media only screen and (min-width: 768px) and (max-width: 980px) {
     .section-list-product .product-mob .list-product.box-recommend {
         margin-bottom: 15px;
@@ -1395,6 +1416,10 @@ header {
     }
     .section-blog-detail .image-new {
         height: 150px;
+    }
+    #totalPrice {
+        font-size: 16px;
+        font-weight: 600;
     }
 }
 
