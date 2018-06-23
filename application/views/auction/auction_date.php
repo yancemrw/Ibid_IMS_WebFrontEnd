@@ -179,7 +179,7 @@ function getCalendar() {
             // console.log();
          },
          complete: function() {
-            // console.log('masuk sana');
+            $('.fc-day.fc-widget-content.fc-sat.fc-today').css('opacity', '0.6');
          },
         });
       }
