@@ -84,11 +84,11 @@
                                     </label>
                                 </div>
                             </div>
-                            <ul class="choose-npl clearfix">
+                            <ul class="choose-npl clearfix font-10px">
                                 <li>
                                    
                                     <div class="form-group">
-                                        <label>Jumlah</label>
+                                        <label>Jumlah NPL</label>
                                         <input name="qty" class="form-control input-custom" type="number" min="1">
                                     </div>
                                 </li>
