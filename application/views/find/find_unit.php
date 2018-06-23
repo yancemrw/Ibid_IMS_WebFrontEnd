@@ -309,7 +309,7 @@ $(document).ready(function() {
       if(charCode == 13) {
          // set form sort
          if($('#searching').val() !== '') {
-            $('#setForm').append('untuk "<b>'+$('#searching').val()+'</b>"');
+            $('#setForm').replaceWith('untuk "<b>'+$('#searching').val()+'</b>"');
          }
 
          // set search
@@ -447,7 +447,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
                      var dateSplit = (dataz.schedule.schedule.date).split('-');
                      waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + dataz.schedule.schedule.waktu;
                   }
-               }   
+               }
                /*if (schedule > 0) {
                   var dateSplit = dataz.date.split('-');
                   waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + dataz.waktu;

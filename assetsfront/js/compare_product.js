@@ -147,7 +147,7 @@ function set_compare_product(object, linked) {
    else if(check_exists(object, JSON.parse(getStorage)) === true) {
       alert_bootoast('Objek sudah ditambahkan di Perbandingkan Produk, Silahkan pilih objek yang lain');
    }
-   else {console.log(getStorage);
+   else {
       if(getStorage === null) {
          localStorage.setItem("CP", JSON.stringify([object]));
          document.getElementById('addcompare').style.display = 'block';
