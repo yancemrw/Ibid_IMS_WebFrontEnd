@@ -1,3 +1,14 @@
+<!--[if IE]>
+   <html>
+      <head>
+         <title>Maaf Browser Tidak Mendukung</title>
+      </head>
+      <body>
+         <div style="display:inline-block; top:50%; text-align:center; height:100px; width:100%;"><b>Maaf, Browser yang anda gunakan tidak mendukung. Silahkan menggunakan browser yang mendukung website kami.</b></div>
+      </body>
+   </html>
+<![endif]-->
+<!--[if !IE]><!-->
 <!DOCTYPE html>
 <html lang="id" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
 <head>
