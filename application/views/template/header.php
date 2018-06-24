@@ -1,3 +1,14 @@
+<!--[if IE]>
+   <html>
+      <head>
+         <title>Maaf Browser Tidak Mendukung</title>
+      </head>
+      <body>
+         <div style="display:inline-block; top:50%; text-align:center; height:100px; width:100%;"><b>Maaf, Browser yang anda gunakan tidak mendukung. Silahkan menggunakan browser yang mendukung website kami.</b></div>
+      </body>
+   </html>
+<![endif]-->
+<!--[if !IE]><!-->
 <!DOCTYPE html>
 <html lang="id" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
 <head>
@@ -46,8 +57,7 @@
    <link rel="alternate" title="" href=" " type="">
    <link rel="stylesheet" type="text/css" href="" media="all">
    <link rel="stylesheet" type="text/css" href="" media="all">
-   <link rel="stylesheet" type="text/css" href="">
-   
+   <link rel="stylesheet" type="text/css" href="">   
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/bootstrap.min.css'); ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/font-awesome/css/font-awesome.min.css') ?>">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assetsfront/css/select2.min.css') ?>">
