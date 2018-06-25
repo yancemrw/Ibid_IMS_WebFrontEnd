@@ -11,8 +11,12 @@ class Checkout extends CI_Controller {
 
 	function index(){
 		$this->load->library('cart');
-		//$methodeBayar = $_POST['tipe_methode'];
-		$methodeBayar = 4;
+		$arrMethodeBayar = array(1, 4);
+		$methodeBayar = $_POST['tipe_methode'];
+		if (in_array($methodeBayar, $arrMethodeBayar))
+			$methodeBayar = $_POST['tipe_methode'];
+		else 
+			$methodeBayar = 4;
 		
 		$BiodataId = @$_SESSION['userdata']['UserId'];
 		$Total = $this->cart->total() + $this->biayaAdm;
@@ -98,6 +102,38 @@ class Checkout extends CI_Controller {
 						echo json_encode($arr);
 					#kirim email
 						$dd = $this->sendEmail($kodeTransaksi, $thisImgBarcodePath , 4);
+						$this->cart->destroy();
+						die();
+					}
+					else if ($methodeBayar == 1){
+						$VANumber = '70016'.@$detailBiodata['Phone'];
+						
+						$_SESSION['userdata']['thisVa'] = @$dataApiDetail['data']['va_mandiri'];
+						$_SESSION['userdata']['kodeTransaksi'] = @$kodeTransaksi;
+						$_SESSION['userdata']['nilaiTransaksi'] = $Total;
+						$_SESSION['userdata']['va'] = 'mandiri';
+
+					## update VA mandiri
+						$postTransaksi['whereData'] = array('CodeTransactionNPL' => $kodeTransaksi);
+						$postTransaksi['updateData'] = array(
+							'VANumber' => $VANumber, 
+							'VABank' => 'Mandiri'
+						);
+						$url = linkservice('npl') .'counter/transaksi/edit';
+						$method = 'POST';
+						$updateVa = admsCurl($url, $postTransaksi, $method);
+						
+						$_SESSION['userdata']['TransactionId'] = @$TransactionId;
+						$arr = array(
+							'aksi'	=> 'va',
+							'url'	=> site_url('npl/vadetail'),
+							'code'	=> $kodeTransaksi,
+							'bill'	=> $Total,
+						);
+
+					#kirim email
+						$dd = $this->sendEmail($kodeTransaksi, $thisImgBarcodePath , 1);
+						echo json_encode($arr);
 						$this->cart->destroy();
 						die();
 					}
