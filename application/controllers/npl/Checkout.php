@@ -108,7 +108,7 @@ class Checkout extends CI_Controller {
 					else if ($methodeBayar == 1){
 						$VANumber = '70016'.@$detailBiodata['Phone'];
 						
-						$_SESSION['userdata']['thisVa'] = @$dataApiDetail['data']['va_mandiri'];
+						$_SESSION['userdata']['thisVa'] = @$VANumber;
 						$_SESSION['userdata']['kodeTransaksi'] = @$kodeTransaksi;
 						$_SESSION['userdata']['nilaiTransaksi'] = $Total;
 						$_SESSION['userdata']['va'] = 'mandiri';
