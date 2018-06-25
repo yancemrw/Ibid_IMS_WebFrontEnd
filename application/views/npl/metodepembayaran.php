@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="radio" name="tipe_methode" id="va-mandiri" class="input-hidden" value="1" disabled />
+                            <input type="radio" name="tipe_methode" id="va-mandiri" class="input-hidden" value="1"/>
                             <label for="va-mandiri">
                                 <p>Transfer Virtual Account</p>
                                 <ul>
