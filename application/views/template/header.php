@@ -177,7 +177,8 @@
       function deleteActiveMenu(name) {
          document.cookie = name+'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
       }
-	   
+   </script>
+	
 	<!-- Google Tag Manager -->
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -185,7 +186,6 @@
 	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 	})(window,document,'script','dataLayer','GTM-NLSP55K');</script>
 	<!-- End Google Tag Manager -->
-   </script>
 </head>
 <body class="bg-grey">
 	<!-- Google Tag Manager (noscript) -->
