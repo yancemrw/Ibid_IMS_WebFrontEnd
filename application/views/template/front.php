@@ -7,17 +7,16 @@
       <div class="tab-content">
          <div role="tabpanel" class="tab-pane search-transport active" id="tab-mobile-1">
             <form id="search-object" class="form-inline clearfix" action="<?php echo site_url('cari-lelang'); ?>" method="POST" data-provide="validation">
-
-   				<?php foreach($formDinamis as $row) { echo $row['typeInput']; } ?>
-
+   				<input type="hidden" value="find_unit" name="from_front" />
+               <?php foreach($formDinamis as $row) { echo $row['typeInput']; } ?>
    				<div class="form-group">
                   <button id="cari-object" class="btn btn-lg btn-green btn-search">Cari</button>
    				</div>
-
             </form>
          </div>
          <div role="tabpanel" class="tab-pane" id="tab-mobile-2">
             <form id="search-jadwal" class="form-inline clearfix" action="<?php echo site_url('jadwal-lelang'); ?>" method="POST" data-provide="validation">
+               <input type="hidden" value="auction_date" name="from_front" />
                <div class="form-group">
                   <select class="select-custom form-control" name="thisCabang" id="thisCabang">
                      <option value="">Pilih Kota</option>
