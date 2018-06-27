@@ -14,7 +14,7 @@ class Get_schedule extends CI_Controller {
 		// print_r($_REQUEST);
 		$startdate = date('Y-m-d', @$_GET['start']);
 		$enddate = date('Y-m-d', @$_GET['end']);
-		$company_id = @$_GET['thisCabang'];
+		$company_id = isset($_GET['thisCabang']) ? $_GET['thisCabang'] : 2;
 		
 		$cbCar = @$_GET['cbCar'];
 		$cbMtr = @$_GET['cbMtr'];
