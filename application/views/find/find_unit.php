@@ -271,13 +271,33 @@ $(document).ready(function() {
    // handle searching from home
    var arrPost = '<?php echo $parsing_post; ?>', arrGet = '<?php echo json_encode($parsing_get); ?>', arrGetRec = '<?php echo $parsing_get['unit_rec']; ?>', arrGetKota = '<?php echo $parsing_get['kota']; ?>', thisFormInput;
    if(arrPost !== '') {
-      var offset_change = $('#view-listed option:selected').val();
-      var thisFormInputs = jsonSerialize(JSON.parse(arrPost));
-      window.countTotal = 0;
-      window.dataForm = '';
-      actionTotalData = 0;
-      $('#loadlist').html('');
-      loadContainer(0, offset_change, linked, 'tipe-object='+thisFormInputs.obj+thisFormInputs.data, 1);
+      arrPostJson = JSON.parse(arrPost);
+      
+      // ini dari home tab cari kendaraan
+      if(arrPostJson.from_front === 'find_unit') {
+         delete arrPostJson.from_front;
+         var offset_change = $('#view-listed option:selected').val();
+         var thisFormInputs = jsonSerialize(arrPostJson);
+         window.countTotal = 0;
+         window.dataForm = '';
+         actionTotalData = 0;
+         $('#loadlist').html('');
+         loadContainer(0, offset_change, linked, 'tipe-object='+thisFormInputs.obj+thisFormInputs.data, 1);
+      }
+
+      // ini dari home tab jadwal lelang
+      else if(arrPostJson.from_front === 'auction_date') {
+         delete arrPostJson.from_front;
+         var arrObject = '{"car-type":"6", "motorcycle-type":"7", "hve-type":"14", "gadget-type":"17"}',
+             arrObjectParse = JSON.parse(arrObject);
+         var objArr = objToArray(arrObjectParse);
+         var offset_change = $('#view-listed option:selected').val();
+         var selectCity = $('select[name="thisKota"] option:selected').val();
+         
+         var cabang  = arrPostJson.thisCabang, object = objArr[arrPostJson.thisItem], dateid = arrPostJson.thisDate;
+         var thisFormInputs = '&filter_type=2&tipeLelang=&thisKota='+cabang+'&ScheduleId='+dateid+'&tipe-object='+object+'&6_merk=&6_seri=&6_silinder=&6_grade=&6_transmisi=&6_tahun=&7_merk=&7_seri=&7_silinder=&14_kategori=&14_merk=&12_kategori=&12_merk=';
+         loadContainer(0, offset_change, linked, thisFormInputs, 1);
+      }
    }
    else if(arrGetRec !== '') {
       $('input[name="filter_type"][value="2"]').prop("checked", true);
@@ -295,7 +315,7 @@ $(document).ready(function() {
       var selectCity = $('select[name="thisKota"] option:selected').val();
       var data  = JSON.parse(arrGet), object = data.objectType, dateid = data.dateId;
       var thisFormInputs = '&filter_type=2&tipeLelang=&thisKota='+selectCity+'&ScheduleId='+dateid+'&tipe-object='+object+'&6_merk=&6_seri=&6_silinder=&6_grade=&6_transmisi=&6_tahun=&7_merk=&7_seri=&7_silinder=&14_kategori=&14_merk=&12_kategori=&12_merk=';
-         loadContainer(0, offset_change, linked, thisFormInputs, 1);
+      loadContainer(0, offset_change, linked, thisFormInputs, 1);
    }
    else {
       var offset_change = $('#view-listed option:selected').val();
@@ -850,5 +870,15 @@ function jsonSerialize(value) {
       data: returnData
    }
    return reData;
+}
+
+function objToArray(value) {
+   var objKey = Object.keys(value);
+   var objVal = Object.values(value);
+   var returnVal = new Array();
+   for(var i = 0; i < objKey.length; i++) {
+      returnVal[objKey[i]] = objVal[i];
+   }
+   return returnVal;
 }
 </script>

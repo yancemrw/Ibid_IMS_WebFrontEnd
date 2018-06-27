@@ -80,7 +80,7 @@ var arrHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
 var arrKota = <?php echo json_encode($arrKota); ?>;
 
 // get parameter from front
-var arrPost = '<?php echo $parsing_post ?>';
+/*var arrPost = '<?php echo $parsing_post ?>';
 if(arrPost !== '') {
    var arrVal = JSON.parse(arrPost);
    $("#thisCabang").val(arrVal.thisCabang).trigger('change');
@@ -90,7 +90,7 @@ if(arrPost !== '') {
       case 'hve-type': $('#cbHve').trigger('click'); break;
       case 'gadget-type': $('#cbGad').trigger('click'); break;
    }
-}
+}*/
 
 function getDates(startDate, endDate) {
    var now = startDate,
