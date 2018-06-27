@@ -19,23 +19,23 @@ class Auction_date extends CI_Controller {
 		);
 		
 		############################################################
-        ## get cabang
-        $url = linkservice('master')."cabang/get";  
-        $method = 'GET';
-        $responseApi = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
-        if ($responseApi['err']) { 
-            echo "<hr>cURL Error #:" . $responseApi['err']; 
-        } else {
-            $dataApi = json_decode($responseApi['response'],true);
-            $cabang = $dataApi['data'];
-        }
-        $data['cabang'] = @$cabang;
-        ############################################################
-
-        // get data from front
-		if(@$this->input->post()) {
-			$data['parsing_post'] = json_encode($this->input->post());
+		## get cabang
+		$url = linkservice('master')."cabang/get";  
+		$method = 'GET';
+		$responseApi = admsCurl($url, array('tipePengambilan'=>'dropdownlist'), $method);
+		if ($responseApi['err']) { 
+		    echo "<hr>cURL Error #:" . $responseApi['err']; 
+		} else {
+		    $dataApi = json_decode($responseApi['response'],true);
+		    $cabang = $dataApi['data'];
 		}
+		$data['cabang'] = @$cabang;
+		############################################################
+
+        	// get data from front
+		/*if(@$this->input->post()) {
+			$data['parsing_post'] = json_encode($this->input->post());
+		}*/
 		
 		$view = "auction/auction_date";
 		template($view, $data);
