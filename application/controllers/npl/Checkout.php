@@ -9,6 +9,22 @@ class Checkout extends CI_Controller {
 		$this->biayaAdm = 0;
 	}
 
+	function pengecekanVa($BiodataId){
+		$url = linkservice('account') ."users/details/".$BiodataId;
+		$method = 'GET';
+		$responseApi = admsCurl($url, array('tipePengambilan' => 'dropdownlist'), $method);
+		if($responseApi['err']) { echo "<hr>cURL Error #:" . $responseApi['err']; } 
+		else { $dataApiDetail = json_decode($responseApi['response'], true); }
+		$detailBiodata = @$dataApiDetail['data']['users'];
+		$VANumber = '70016'.@$detailBiodata['Phone'];
+		
+		$url = linkservice('FINANCE')."mandiri/va/vaClosePayment?va=".$VANumber;
+		$method = 'GET';
+		$responseApiMan = admsCurl($url, array(), $method);
+		if($responseApi['err']) { echo "<hr>cURL Error #:" . $responseApi['err']; } 
+		else { $checkEnable = json_decode($responseApi['response'], true); }
+		print_r($checkEnable);
+	}
 	function index(){
 		$this->load->library('cart');
 		$arrMethodeBayar = array(1, 4);
@@ -19,6 +35,15 @@ class Checkout extends CI_Controller {
 			$methodeBayar = 4;
 		
 		$BiodataId = @$_SESSION['userdata']['UserId'];
+		
+		// pengecekan pembayaran va
+		if ($methodeBayar == 1){
+			
+		}
+		
+		
+		
+		
 		$Total = $this->cart->total() + $this->biayaAdm;
 		$arrayTransaksi = array(
 			'BiodataId' => $BiodataId,
