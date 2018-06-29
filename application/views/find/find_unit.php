@@ -313,9 +313,16 @@ $(document).ready(function() {
    else if(JSON.parse(arrGet) !== null) {
       var offset_change = $('#view-listed option:selected').val();
       var selectCity = $('select[name="thisKota"] option:selected').val();
-      var data  = JSON.parse(arrGet), object = data.objectType, dateid = data.dateId;
-      var thisFormInputs = '&filter_type=2&tipeLelang=&thisKota='+selectCity+'&ScheduleId='+dateid+'&tipe-object='+object+'&6_merk=&6_seri=&6_silinder=&6_grade=&6_transmisi=&6_tahun=&7_merk=&7_seri=&7_silinder=&14_kategori=&14_merk=&12_kategori=&12_merk=';
-      loadContainer(0, offset_change, linked, thisFormInputs, 1);
+      var data = JSON.parse(arrGet), object = data.objectType, dateid = data.dateId;
+      var thisFormInputs;
+      if(data._dt !== undefined) {
+         thisFormInputs = '&filter_type=2&tipeLelang=&thisKota=&ScheduleId=&tipe-object=&6_merk=&6_seri=&6_silinder=&6_grade=&6_transmisi=&6_tahun=&7_merk=&7_seri=&7_silinder=&14_kategori=&14_merk=&12_kategori=&12_merk=';
+         loadContainer(0, data._dt, linked, thisFormInputs, 1);
+      }
+      else {
+         thisFormInputs = '&filter_type=2&tipeLelang=&thisKota='+selectCity+'&ScheduleId='+dateid+'&tipe-object='+object+'&6_merk=&6_seri=&6_silinder=&6_grade=&6_transmisi=&6_tahun=&7_merk=&7_seri=&7_silinder=&14_kategori=&14_merk=&12_kategori=&12_merk=';
+         loadContainer(0, offset_change, linked, thisFormInputs, 1);
+      }
    }
    else {
       var offset_change = $('#view-listed option:selected').val();
@@ -475,7 +482,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
  
                content = '<div class="col-md-4" id="this'+compare_data.AuctionItemId+'">'+
                            '<div class="list-product box-recommend">'+
-                           '<a href="<?php echo $link_detail; ?>/'+compare_data.AuctionItemId+'">'+
+                           '<a href="<?php echo $link_detail; ?>/'+compare_data.AuctionItemId+'" class="link-detail-unit" onclick="window.history.pushState(\'\', \'\', this.href);">'+
                            '<div class="thumbnail">'+
                            '<div class="thumbnail-custom">'+
                            '<img src="'+compare_data.Image+'" />'+
@@ -505,6 +512,12 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
             $('#btn-top-download').attr('disabled', false);
             $('#btn-view-change').attr('disabled', false);
             $('#view-listed').attr('disabled', false);
+
+            // change total row in link
+            $('.link-detail-unit').each(function() {
+               var thelink = $(this).attr('href');
+               $(this).attr('href', thelink+'?_dt='+limit);
+            });
             countContainer(offset, limit, linked, dataTotal, datas.length, dataForm, type);
          }
          else {
@@ -614,7 +627,7 @@ function loadContainerPaging(offset, limit, linked, dataForm = '', type = 1) {
 
                content = '<div class="col-md-4" id="this'+compare_data.AuctionItemId+'">'+
                               '<div class="list-product box-recommend">'+
-                              '<a href="<?php echo $link_detail; ?>/'+compare_data.AuctionItemId+'">'+
+                              '<a href="<?php echo $link_detail; ?>/'+compare_data.AuctionItemId+'" class="link-detail-unit" onclick="window.history.pushState(\'\', \'\', this.href);">'+
                               '<div class="thumbnail">'+
                               '<div class="thumbnail-custom">'+
                               '<img src="'+compare_data.Image+'" />'+
@@ -644,6 +657,13 @@ function loadContainerPaging(offset, limit, linked, dataForm = '', type = 1) {
             $('#btn-top-download').attr('disabled', false);
             $('#btn-view-change').attr('disabled', false);
             $('#view-listed').attr('disabled', false);
+
+            // change total row in link
+            var maxOffset = offset + limit;
+            $('.link-detail-unit').each(function() {
+               var thelink = ($(this).attr('href')).split('?')[0];
+               $(this).attr('href', thelink+'?_dt='+maxOffset);
+            });
             countContainer(offset, limit, linked, dataTotal, datas.length, dataForm, type);
          }
       },

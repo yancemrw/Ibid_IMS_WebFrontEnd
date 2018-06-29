@@ -480,6 +480,12 @@ $(document).ready(function() {
    // array month
    window.arrMonth = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
 
+   // get active state history browser
+   window.addEventListener('popstate', function(event) {
+      console.log('popstate detail pencarian!');
+      location.href = "<?php site_url('find_unit'); ?>?_dt=<?php echo $get_data['_dt']; ?>";
+   });
+
    // get 360 link
    $('#show360').click(function() {
       $('#frame360').attr('src', $('#hidden360').val());
@@ -854,6 +860,7 @@ $(document).ready(function() {
          var data = data.data,
          sessiond = "<?php echo ($userdata !== null) ? 'TRUE' : 'FALSE'; ?>",
          sessionId = '<?php echo ($userdata !== null) ? $userdata['UserId'] : ''; ?>';
+         var defaultImg = '<?php echo base_url('assetsfront/images/background/default.png') ?>';
          for(var i = 0; i < data.length; i++) {
             var datetime, location;
             if(data[i].schedule.status !== false) {

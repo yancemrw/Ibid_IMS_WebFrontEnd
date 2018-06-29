@@ -99,7 +99,6 @@ class Find_details extends CI_Controller {
 				$thisNpl = $detailGetNpl;
 			}
 		}
-		// echo '<pre>'; print_r($thisNpl); die();
 
 		$data = array(
 			'header_white' => "header-white",
@@ -125,8 +124,14 @@ class Find_details extends CI_Controller {
 			'serverdate' => explode('-',date("Y-m-d-H-i-s-v")),
 			'interval' => (int)str_replace(",", "", @$datalot->schedule->interval),
 			'favAction' => $jsonFav,
-			'datalot' => @$datalot,
+			'datalot' => @$datalot
 		);
+
+		// catch get parameter
+		if(@$this->input->get()) {
+			$data['get_data'] = $this->input->get();
+		}
+
 		$view = "find/find_details";
 		template($view, $data);
 	}
