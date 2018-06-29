@@ -149,9 +149,9 @@ $(function() {
 					$("#ccPost input[name$='amount']").val(data.bill);
 					$("#ccPost input[name$='invoice']").val(data.code);
 				}
-				else if (data.aksi == 'va')
-					window.location = data.url;
-				else{
+				else if (data.aksi == 'va'){
+					// window.location = data.url;
+				}else{
 					console.log(data);
 				}
 			},
