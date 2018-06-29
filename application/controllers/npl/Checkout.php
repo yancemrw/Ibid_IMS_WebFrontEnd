@@ -18,12 +18,19 @@ class Checkout extends CI_Controller {
 		$detailBiodata = @$dataApiDetail['data']['users'];
 		$VANumber = '70016'.@$detailBiodata['Phone'];
 		
+		$enable = false;
 		$url = linkservice('FINANCE')."mandiri/va/vaClosePayment?va=".$VANumber;
 		$method = 'GET';
 		$responseApiMan = admsCurl($url, array(), $method);
-		if($responseApi['err']) { echo "<hr>cURL Error #:" . $responseApi['err']; } 
-		else { $checkEnable = json_decode($responseApi['response'], true); }
+		if($responseApiMan['err']) {
+			$enable = false;
+		} 
+		else { 
+			$checkEnable = json_decode($responseApiMan['response'], true); 
+			$enable = $checkEnable['data']['enable'];
+		}
 		print_r($checkEnable);
+		print_r($enable);
 	}
 	function index(){
 		$this->load->library('cart');
