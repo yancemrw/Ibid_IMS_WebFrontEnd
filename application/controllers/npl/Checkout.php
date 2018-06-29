@@ -9,6 +9,28 @@ class Checkout extends CI_Controller {
 		$this->biayaAdm = 0;
 	}
 
+	function pengecekanVa($BiodataId){
+		$url = linkservice('account') ."users/details/".$BiodataId;
+		$method = 'GET';
+		$responseApi = admsCurl($url, array('tipePengambilan' => 'dropdownlist'), $method);
+		if($responseApi['err']) { echo "<hr>cURL Error #:" . $responseApi['err']; } 
+		else { $dataApiDetail = json_decode($responseApi['response'], true); }
+		$detailBiodata = @$dataApiDetail['data']['users'];
+		$VANumber = '70016'.@$detailBiodata['Phone'];
+		
+		$enable = false;
+		$url = linkservice('FINANCE')."mandiri/va/vaClosePayment?va=".$VANumber;
+		$method = 'GET';
+		$responseApiMan = admsCurl($url, array(), $method);
+		if($responseApiMan['err']) {
+			$enable = false;
+		} 
+		else { 
+			$checkEnable = json_decode($responseApiMan['response'], true); 
+			$enable = $checkEnable['data']['enable'];
+		}
+		return array('VANumber' => $VANumber, 'enable' => $enable);
+	}
 	function index(){
 		$this->load->library('cart');
 		$arrMethodeBayar = array(1, 4);
@@ -19,6 +41,26 @@ class Checkout extends CI_Controller {
 			$methodeBayar = 4;
 		
 		$BiodataId = @$_SESSION['userdata']['UserId'];
+		
+		
+		
+		// pengecekan pembayaran va
+		if ($methodeBayar == 1){
+			$enableVa = $this->pengecekanVa($BiodataId);
+			if ($enableVa['enable'] === false){
+				$arr = array(
+					'status'	=> 'gagal',
+					'message'	=> 'No VA Anda, '.$enableVa['VANumber'].', Masih Tertagih',
+				);
+				$this->session->set_flashdata('message', array('warning', 'No VA Anda, '.$enableVa['VANumber'].', Masih Tertagih'));
+				echo json_encode($arr);
+				die();
+			}
+		}
+		
+		
+		
+		
 		$Total = $this->cart->total() + $this->biayaAdm;
 		$arrayTransaksi = array(
 			'BiodataId' => $BiodataId,
@@ -30,7 +72,7 @@ class Checkout extends CI_Controller {
 			'PaymentTypeId' => $methodeBayar,
 			'CreateDate' => date('Y-m-d H:i:s'),
 		);
-		
+		$totalQtyNPL = 0;
 		foreach ($this->cart->contents() as $items){
 			if ($items['options']['Tipe NPL'] == 1) @$NPLType = 'Online';
 			else if ($items['options']['Tipe NPL'] == 0) @$NPLType = 'Live';
@@ -46,6 +88,7 @@ class Checkout extends CI_Controller {
 				'CompanyId' => $items['options']['CompanyId'],
 				'ObjectId' => $items['options']['ObjectId'],
 			);
+			$totalQtyNPL += $items['qty'];
 		}
 		
 		$arrayKirim = array(
@@ -130,6 +173,22 @@ class Checkout extends CI_Controller {
 							'code'	=> $kodeTransaksi,
 							'bill'	=> $Total,
 						);
+					
+					## kirim ke finance
+					$postMandiri = array(
+						'va'		=> (string)$VANumber,
+						'cabang'	=> 'NPL',
+						'tgl_lelang'=> date('Y-m-d'),
+						'data_unit'	=> @$totalQtyNPL.' NPL',
+						'tagihan'	=> @$Total,
+						'nama'		=> @$detailBiodata['first_name'].' '.@$detailBiodata['last_name'],
+						'panggilan'	=> @$detailBiodata['first_name'],
+					);
+					// $arr['sanusi'] = $postMandiri;
+					$url = linkservice('FINANCE')."mandiri/va?winner";
+					$method = 'POST';
+					$responseApiMan = admsCurl($url, $postMandiri, $method); 
+					// $arr['sanusi_1'] = $responseApiMan;
 
 					#kirim email
 						$dd = $this->sendEmail($kodeTransaksi, $thisImgBarcodePath , 1);
