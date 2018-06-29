@@ -52,6 +52,7 @@ class Checkout extends CI_Controller {
 					'status'	=> 'gagal',
 					'message'	=> 'No VA Anda, '.$enableVa['VANumber'].', Masih Tertagih',
 				);
+				$this->session->set_flashdata('message', array('warning', 'No VA Anda, '.$enableVa['VANumber'].', Masih Tertagih'));
 				echo json_encode($arr);
 				die();
 			}

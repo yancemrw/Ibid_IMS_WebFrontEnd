@@ -151,6 +151,8 @@ $(function() {
 				}
 				else if (data.aksi == 'va'){
 					// window.location = data.url;
+				}else if(data.status == 'gagal'){
+					window.location = '<?php echo base_url('beli-npl'); ?>';
 				}else{
 					console.log(data);
 				}
