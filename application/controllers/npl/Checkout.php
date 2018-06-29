@@ -30,7 +30,7 @@ class Checkout extends CI_Controller {
 			'PaymentTypeId' => $methodeBayar,
 			'CreateDate' => date('Y-m-d H:i:s'),
 		);
-		
+		$totalQtyNPL = 0;
 		foreach ($this->cart->contents() as $items){
 			if ($items['options']['Tipe NPL'] == 1) @$NPLType = 'Online';
 			else if ($items['options']['Tipe NPL'] == 0) @$NPLType = 'Live';
@@ -46,6 +46,7 @@ class Checkout extends CI_Controller {
 				'CompanyId' => $items['options']['CompanyId'],
 				'ObjectId' => $items['options']['ObjectId'],
 			);
+			$totalQtyNPL += $items['qty'];
 		}
 		
 		$arrayKirim = array(
@@ -130,6 +131,21 @@ class Checkout extends CI_Controller {
 							'code'	=> $kodeTransaksi,
 							'bill'	=> $Total,
 						);
+					
+					## kirim ke finance
+					$postMandiri = array(
+						'va'		=> (string)$VANumber,
+						'cabang'	=> 'NPL',
+						'tgl_lelang'=> date('Y-m-d'),
+						'data_unit'	=> @$totalQtyNPL.' NPL',
+						'tagihan'	=> @$Total,
+						'nama'		=> @$detailBiodata['first_name'].' '.@$detailBiodata['last_name'],
+						'panggilan'	=> @$detailBiodata['first_name'],
+					);
+					
+					$url = linkservice('FINANCE')."mandiri/va?winner";
+					$method = 'POST';
+					$responseApiMan = admsCurl($url, $postMandiri, $method); 
 
 					#kirim email
 						$dd = $this->sendEmail($kodeTransaksi, $thisImgBarcodePath , 1);
