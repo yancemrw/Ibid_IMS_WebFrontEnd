@@ -142,10 +142,11 @@ class Checkout extends CI_Controller {
 						'nama'		=> @$detailBiodata['first_name'].' '.@$detailBiodata['last_name'],
 						'panggilan'	=> @$detailBiodata['first_name'],
 					);
-					
+					$arr['sanusi'] = $postMandiri;
 					$url = linkservice('FINANCE')."mandiri/va?winner";
 					$method = 'POST';
 					$responseApiMan = admsCurl($url, $postMandiri, $method); 
+					$arr['sanusi_1'] = $responseApiMan;
 
 					#kirim email
 						$dd = $this->sendEmail($kodeTransaksi, $thisImgBarcodePath , 1);
