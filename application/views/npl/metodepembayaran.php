@@ -150,7 +150,7 @@ $(function() {
 					$("#ccPost input[name$='invoice']").val(data.code);
 				}
 				else if (data.aksi == 'va'){
-					// window.location = data.url;
+					window.location = data.url;
 				}else if(data.status == 'gagal'){
 					window.location = '<?php echo base_url('beli-npl'); ?>';
 				}else{
