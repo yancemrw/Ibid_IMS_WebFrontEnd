@@ -29,8 +29,7 @@ class Checkout extends CI_Controller {
 			$checkEnable = json_decode($responseApiMan['response'], true); 
 			$enable = $checkEnable['data']['enable'];
 		}
-		print_r($checkEnable);
-		print_r($enable);
+		return array('VANumber' => $VANumber, 'enable' => $enable);
 	}
 	function index(){
 		$this->load->library('cart');
@@ -43,9 +42,19 @@ class Checkout extends CI_Controller {
 		
 		$BiodataId = @$_SESSION['userdata']['UserId'];
 		
+		
+		
 		// pengecekan pembayaran va
 		if ($methodeBayar == 1){
-			
+			$enableVa = $this->pengecekanVa($BiodataId);
+			if ($enableVa['enable'] === false){
+				$arr = array(
+					'status'	=> 'gagal',
+					'message'	=> 'No VA Anda, '.$enableVa['VANumber'].', Masih Tertagih',
+				);
+				echo json_encode($arr);
+				die();
+			}
 		}
 		
 		
@@ -174,11 +183,11 @@ class Checkout extends CI_Controller {
 						'nama'		=> @$detailBiodata['first_name'].' '.@$detailBiodata['last_name'],
 						'panggilan'	=> @$detailBiodata['first_name'],
 					);
-					$arr['sanusi'] = $postMandiri;
+					// $arr['sanusi'] = $postMandiri;
 					$url = linkservice('FINANCE')."mandiri/va?winner";
 					$method = 'POST';
 					$responseApiMan = admsCurl($url, $postMandiri, $method); 
-					$arr['sanusi_1'] = $responseApiMan;
+					// $arr['sanusi_1'] = $responseApiMan;
 
 					#kirim email
 						$dd = $this->sendEmail($kodeTransaksi, $thisImgBarcodePath , 1);
