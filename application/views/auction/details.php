@@ -264,6 +264,12 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
   });
 
   $(document).ready(function() {
+	bootoast.toast({
+		message: "Istirahat Sejenak Untuk Melakukan Shalat Ashar",
+		type: 'warning',
+		position: 'top-center',
+		timeout: 5
+	});
     $('.top-bidder-wrapper').css('min-height','30px');
     $('#toggle').prop('checked', false);
     $('.btn-bid').prop('disabled', true);
