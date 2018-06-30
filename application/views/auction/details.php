@@ -256,7 +256,7 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
   });
 
   $(document).ready(function() {
-	bootoast.toast({
+	/*bootoast.toast({
 		message: "Kepada pelanggan setia Ibid. "+
 "Sehubungan dengan kendala teknis di server, maka Kami menyampaikan permohonan maaf penawaran via online untuk lot selanjutnya sedang mengalami gangguan dan masih dalam proses perbaikan. "+
 "Ibid menyampaikan mohon maaf atas ketidaknyamanan yang dialami pelanggan. "+
@@ -265,7 +265,7 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
 		type: 'warning',
 		position: 'top-center',
 		timeout: 30
-	});
+	});*/
     $('.top-bidder-wrapper').css('min-height','30px');
     $('#toggle').prop('checked', false);
     $('.btn-bid').prop('disabled', true);
