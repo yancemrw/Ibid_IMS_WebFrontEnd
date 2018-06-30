@@ -265,7 +265,11 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
 
   $(document).ready(function() {
 	bootoast.toast({
-		message: "Istirahat Sejenak Untuk Melakukan Shalat Ashar",
+		message: "Kepada pelanggan setia Ibid."+
+"Sehubungan dengan kendala teknis di server, maka Kami menyampaikan permohonan maaf penawaran via online untuk lot selanjutnya sedang mengalami gangguan dan masih dalam proses perbaikan."+
+"Ibid menyampaikan mohon maaf atas ketidaknyamanan yang dialami pelanggan."+
+"Atas perhatian dan kerjasama yang diberikan Kami ucapkan terima kasih."+
+"Salam",
 		type: 'warning',
 		position: 'top-center',
 		timeout: 5
