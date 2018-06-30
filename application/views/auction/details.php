@@ -264,7 +264,7 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
 "Salam",
 		type: 'warning',
 		position: 'top-center',
-		timeout: 8
+		timeout: 30
 	});
     $('.top-bidder-wrapper').css('min-height','30px');
     $('#toggle').prop('checked', false);
