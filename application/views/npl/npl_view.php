@@ -112,7 +112,7 @@
       </div>
       <div class="modal-body clearfix">
         <div class="col-md-12 col-sm-12">
-          <?php $this->load->view('userguide/privacy_policy.html'); ?>
+          <?php $this->load->view('userguide/privacy_policy_view.php'); ?>
         </div>
       </div>
     </div>
@@ -129,7 +129,7 @@
       </div>
       <div class="modal-body clearfix">
         <div class="col-md-12 col-sm-12">
-          <?php $this->load->view('userguide/syarat_ketentuan.html'); ?>
+          <?php $this->load->view('userguide/syarat_ketentuan_view.php'); ?>
         </div>
       </div>
     </div>
