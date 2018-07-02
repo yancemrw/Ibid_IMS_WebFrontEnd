@@ -482,7 +482,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
  
                content = '<div class="col-md-4" id="this'+compare_data.AuctionItemId+'">'+
                            '<div class="list-product box-recommend">'+
-                           '<a href="<?php echo $link_detail; ?>/'+compare_data.AuctionItemId+'" class="link-detail-unit" onclick="window.history.pushState(\'\', \'\', this.href);">'+
+                           '<a href="<?php echo $link_detail; ?>/'+compare_data.AuctionItemId+'" class="link-detail-unit" onclick="window.history.pushState(\'\', \'\', this.href);" target="_blank">'+
                            '<div class="thumbnail">'+
                            '<div class="thumbnail-custom">'+
                            '<img src="'+compare_data.Image+'" />'+
@@ -627,7 +627,7 @@ function loadContainerPaging(offset, limit, linked, dataForm = '', type = 1) {
 
                content = '<div class="col-md-4" id="this'+compare_data.AuctionItemId+'">'+
                               '<div class="list-product box-recommend">'+
-                              '<a href="<?php echo $link_detail; ?>/'+compare_data.AuctionItemId+'" class="link-detail-unit" onclick="window.history.pushState(\'\', \'\', this.href);">'+
+                              '<a href="<?php echo $link_detail; ?>/'+compare_data.AuctionItemId+'" class="link-detail-unit" onclick="window.history.pushState(\'\', \'\', this.href);" target="_blank">'+
                               '<div class="thumbnail">'+
                               '<div class="thumbnail-custom">'+
                               '<img src="'+compare_data.Image+'" />'+
