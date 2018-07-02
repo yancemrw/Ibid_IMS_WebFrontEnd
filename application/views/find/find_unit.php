@@ -402,7 +402,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
  
 			      content = '<div class="col-md-4" id="this'+dataz.AuctionItemId+'">'+
                            '<div class="list-product box-recommend">'+
-                           '<a href="<?php echo $link_detail; ?>/'+dataz.AuctionItemId+'">'+
+                           '<a href="<?php echo $link_detail; ?>/'+dataz.AuctionItemId+'" target="_blank">'+
                            '<div class="thumbnail">'+
                            '<div class="thumbnail-custom">'+
                            '<img src="'+compare_data.Image+'" />'+
@@ -556,7 +556,7 @@ function loadContainerPaging(offset, limit, linked, dataForm = '', type = 1) {
    			   }*/
                content = '<div class="col-md-4" id="this'+dataz.AuctionItemId+'">'+
                               '<div class="list-product box-recommend">'+
-                              '<a href="<?php echo $link_detail; ?>/'+dataz.AuctionItemId+'">'+
+                              '<a href="<?php echo $link_detail; ?>/'+dataz.AuctionItemId+'" target="_blank">'+
                               '<div class="thumbnail">'+
                               '<div class="thumbnail-custom">'+
                               '<img src="'+compare_data.Image+'" />'+
