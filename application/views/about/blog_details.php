@@ -12,14 +12,14 @@
 					</div>
 					<div class="content-detail-blog">
 						<h2><?php echo $data[0]->title; ?></h2>
-						<p class="subtitle"><span><?php echo $data[0]->tagberita; ?></span> / <?php echo $data[0]->datepost; ?> / <i class="fa fa-view"></i> 50 / <i class="fa fa-globe"></i> Seputar iBID</p>
+						<p class="subtitle"><span><?php echo $data[0]->tagberita; ?></span> / <?php echo date_format(date_create($valueInfo->datepost), "d F Y"); ?> / <i class="fa fa-view"></i> 50 / <i class="fa fa-globe"></i> Seputar iBID</p>
 						<?php echo $data[0]->content; ?>
 						<h2>Kirim Artikelnya</h2>
 						<ul>
-							<li><a href=""><img src="<?php echo base_url('assetsfront/images/icon/ic-instagram.png'); ?>" alt=""></a></li>
-							<li><a href=""><img src="<?php echo base_url('assetsfront/images/icon/ic-twitter.png'); ?>" alt=""></a></li>
-							<li><a href=""><img src="<?php echo base_url('assetsfront/images/icon/ic-facebook.png'); ?>" alt=""></a></li>
-							<li><a href=""><img src="<?php echo base_url('assetsfront/images/icon/ic-youtube.png'); ?>" alt=""></a></li>
+							<li><a href="https://www.instagram.com/ibid_balailelangserasi/"><img src="<?php echo base_url('assetsfront/images/icon/ic-instagram.png'); ?>" alt=""></a></li> 
+							<li><a href="https://twitter.com/ibid_lelang?lang=en"><img src="<?php echo base_url('assetsfront/images/icon/ic-twitter.png'); ?>" alt=""></a></li> 
+							<li><a href="https://www.facebook.com/IbidBalaiLelangSerasi/"><img src="<?php echo base_url('assetsfront/images/icon/ic-facebook.png'); ?>" alt=""></a></li> 
+							<li><a href="https://www.youtube.com/channel/UClTIiqX7MwL7MDOK0IoKEiQ"><img src="<?php echo base_url('assetsfront/images/icon/ic-youtube.png'); ?>" alt=""></a></li>
 						</ul>
 						<div class="display-block related-article">
 							<h3>Artikel Terkait</h3>
