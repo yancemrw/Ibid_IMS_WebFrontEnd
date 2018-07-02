@@ -19,7 +19,7 @@
 			?>
 			<div class="col-md-4 col-sm-6 col-custom">
 				<div class="box-new">
-					<a href="<?php echo site_url('blog_details'); ?>">
+					<a href="<?php echo site_url('blog_details').'?id='.$valueNews->id.'&slug='.$valueNews->slugkategori; ?>">
 						<div class="image-new">
 							<img src="<?php echo linkservice('cms').'uploads/news/'.$valueNews->gambar; ?>" class="img-responsive width-100" />
 						</div>
@@ -48,7 +48,7 @@
 			?>
 			<div class="col-md-4 col-sm-6 col-custom">
 				<div class="box-new">
-					<a href="<?php echo site_url('blog_details'); ?>">
+					<a href="<?php echo site_url('blog_details').'?id='.$valueInfo->id.'&slug='.$valueInfo->slugkategori; ?>">
 						<div class="image-new">
 							<img src="<?php echo linkservice('cms').'uploads/news/'.$valueInfo->gambar; ?>" class="img-responsive width-100" />
 						</div>
