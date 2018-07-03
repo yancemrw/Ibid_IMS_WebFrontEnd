@@ -162,15 +162,7 @@
 }
 </style>
 
-<script>
-// sementara
-// bootoast.toast({
-// 	message: "Kami Mohon Maaf Karena Terdapat Kesalahan Teknis, Mohon Maaf Atas Tidak Nyaman ini",
-// 	type: 'warning',
-// 	position: 'top-center',
-// 	timeout: 5
-// });
-	
+<script>	
 myFav = [];
 <?php foreach($favorite as $row){ ?>
 myFav.push(<?php echo $row->AuctionItemId; ?>);
@@ -192,7 +184,8 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
      var newPing;
      $.ajax({ 
          type: "GET",
-         url: "<?php echo linkservice('amsauction'); ?>../",
+         url: "<?php echo site_url('README.md'); ?>",
+        //  url: "<?php echo linkservice('amsauction'); ?>../",
          data: {},
          cache:false,
          crossDomain : true,
@@ -264,6 +257,16 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
   });
 
   $(document).ready(function() {
+	/*bootoast.toast({
+		message: "Kepada pelanggan setia Ibid. "+
+"Sehubungan dengan kendala teknis di server, maka Kami menyampaikan permohonan maaf penawaran via online untuk lot selanjutnya sedang mengalami gangguan dan masih dalam proses perbaikan. "+
+"Ibid menyampaikan mohon maaf atas ketidaknyamanan yang dialami pelanggan. "+
+"Atas perhatian dan kerjasama yang diberikan Kami ucapkan terima kasih. "+
+"Salam",
+		type: 'warning',
+		position: 'top-center',
+		timeout: 30
+	});*/
     $('.top-bidder-wrapper').css('min-height','30px');
     $('#toggle').prop('checked', false);
     $('.btn-bid').prop('disabled', true);

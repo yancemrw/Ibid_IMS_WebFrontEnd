@@ -146,7 +146,11 @@ function login_Status_form($userdata) {
                 <div class="content-profile col-md-6">
                    <img src="'.$pp.'" alt="" title="profile">
                 </div>
-                <p class="col-md-6">'.$profile_name.'<span>'.$email_name.'</span></p>
+                <p class="col-md-6">
+			'.$profile_name.'
+			<span>'.$email_name.'</span>
+			<span class="font-12px margin-top-10px" style="color:#333 !important"><u>Pengaturan Akun</u></span>
+		</p>
              </a>
           </li>
           <li>

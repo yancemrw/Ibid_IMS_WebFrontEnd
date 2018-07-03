@@ -170,7 +170,7 @@
       </div>
       <div class="modal-body clearfix">
         <div class="col-md-12 col-sm-12">
-          <?php $this->load->view('userguide/syarat_ketentuan_penitip.html'); ?>
+          <?php $this->load->view('userguide/syarat_ketentuan_penitip_view.php'); ?>
         </div>
       </div>
     </div>
