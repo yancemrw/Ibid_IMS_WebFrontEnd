@@ -118,19 +118,6 @@
          </div>
          <div class="col-md-9">
             <div class="main-right">
-               <div class="title-header clearfix">
-                  <p><span id="strTotalData"></span> <span id="setForm"></span></p>
-                  <div class="action-header form-group margin-7px-0" id="form-sort">
-                     <button class="btn width-header-btn" id="btn-top-download"><i class="fa fa-download"></i> Download</button>
-                     <button class="btn width-header-btn" id="btn-view-change"><i class="fa fa-th-large"></i> Box</button>
-                     <select class="form-control cursor-pointer display-inline-block width-sort-length border-radius-1px" id="view-listed">
-                        <option value="6">6</option>
-                        <option value="12">12</option>
-                        <option value="24">24</option>
-                        <option value="48">48</option>
-                     </select>
-                  </div>
-               </div>
                <!--p class="notice clearfix"><span><i class="fa fa-exclamation-circle"></i> Produk telah dimasukkan ke dalam daftar perbandingan</span></p-->
                <div id="loadings"></div>
                <div class="content-right product-mob content-load clearfix">
