@@ -1,6 +1,6 @@
 <?php
 // get cms data
-$urlPrivacy = linkservice('cms')."api/home/privasi";
+$urlPrivacy = linkservice('cms')."api/modalpopup/privasi";
 $methodPrivacy = 'GET';
 $resPrivacy = admsCurl($urlPrivacy, array(), $methodPrivacy);
 $privacy = curlGenerate($resPrivacy);
