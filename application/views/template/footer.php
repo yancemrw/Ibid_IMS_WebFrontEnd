@@ -70,7 +70,7 @@
 <!-- MODAL PRIVASI -->
 <?php
 // get cms data
-$urlPrivasi = linkservice('cms')."api/home/privasi";
+$urlPrivasi = linkservice('cms')."api/modalpopup/privasi";
 $methodPrivasi = 'GET';
 $resPrivasi = admsCurl($urlPrivasi, array(), $methodPrivasi);
 $privasi = curlGenerate($resPrivasi);
@@ -84,7 +84,7 @@ $privasi = curlGenerate($resPrivasi);
       </div>
       <div class="modal-body clearfix">
         <div class="col-md-12 col-sm-12">
-          <?php $this->load->view('userguide/privacy_policy.php'); ?>
+          <?php $this->load->view('userguide/privacy_policy_view.php'); ?>
         </div>
       </div>
     </div>
