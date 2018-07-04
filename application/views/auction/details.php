@@ -192,7 +192,7 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
      var newPing;
      $.ajax({ 
          type: "GET",
-         url: "<?php echo site_url('README.md'); ?>",
+         url: "<?php echo site_url('ping.fl'); ?>",
         //  url: "<?php echo linkservice('amsauction'); ?>../",
          data: {},
          cache:false,
