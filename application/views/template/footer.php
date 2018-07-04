@@ -70,13 +70,13 @@
 <!-- MODAL PRIVASI -->
 <?php
 // get cms data
-$urlPrivasi = linkservice('cms')."api/home/privasi";
+$urlPrivasi = linkservice('cms')."api/modalpopup/privasi";
 $methodPrivasi = 'GET';
 $resPrivasi = admsCurl($urlPrivasi, array(), $methodPrivasi);
 $privasi = curlGenerate($resPrivasi);
 ?>
 <div class="modal fade" id="privacy-modal-home" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-  <div class="modal-dialog width-80">
+  <div class="modal-dialog width-60">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><i class="ic ic-Close"></i><span class="sr-only">Close</span></button>
@@ -84,7 +84,7 @@ $privasi = curlGenerate($resPrivasi);
       </div>
       <div class="modal-body clearfix">
         <div class="col-md-12 col-sm-12">
-          <?php $this->load->view('userguide/privacy_policy.php'); ?>
+          <?php $this->load->view('userguide/privacy_policy_view.php'); ?>
         </div>
       </div>
     </div>
@@ -761,6 +761,40 @@ function isreadpage(ele, UserId, key, isread) {
     });
     $(ele).children('div:first').children().replaceWith('<img src="<?php echo base_url('assetsfront/images/icon/ic_notif_0.png'); ?>" alt="">');
   }
+}
+
+var version = detectIE();
+if (version === false) {
+  console.log('Browser Compatible');
+} else if (version >= 12) {
+  console.log('Browser Edge');
+} else {
+  console.log('Browser IE');
+}
+
+function detectIE() {
+  var ua = window.navigator.userAgent;
+  var msie = ua.indexOf('MSIE ');
+  if (msie > 0) {
+    // IE 10 or older => return version number
+    return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+  }
+
+  var trident = ua.indexOf('Trident/');
+  if (trident > 0) {
+    // IE 11 => return version number
+    var rv = ua.indexOf('rv:');
+    return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+  }
+
+  var edge = ua.indexOf('Edge/');
+  if (edge > 0) {
+    // Edge (IE 12+) => return version number
+    return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+  }
+
+  // other browser
+  return false;
 }
 </script>
 </body>
