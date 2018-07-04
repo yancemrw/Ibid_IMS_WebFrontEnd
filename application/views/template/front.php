@@ -309,12 +309,12 @@ Number.prototype.padLeft = function(base,chr){
    
 $(function() {
    // add notice
-   bootoast.toast({
-            message: "30 menit ke depan akan ada maintenance sistem. Terima kasih atas perhatiannya",
-            type: 'warning',
-            position: 'top-center',
-            timeout: 25
-   });
+  //  bootoast.toast({
+  //           message: "30 menit ke depan akan ada maintenance sistem. Terima kasih atas perhatiannya",
+  //           type: 'warning',
+  //           position: 'top-center',
+  //           timeout: 25
+  //  });
    
    $('#thisCabang').change(function() {
       thisCabang = $(this).val();
