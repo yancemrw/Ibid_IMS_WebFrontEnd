@@ -385,7 +385,7 @@ function cobaSini(thisCabang, thisDate, thisHari){
                   success: function(data) {
                      var data = JSON.parse(data.data);
                      if(data.length > 0) {
-                        fileName = 'uploads/physic_lot/'+data[0].FileName;
+                        fileName = '<?php echo linkservice('BACKEND'); ?>uploads/physic_lot/'+data[0].FileName;
                      }
                      else {
                         fileName = '#';
