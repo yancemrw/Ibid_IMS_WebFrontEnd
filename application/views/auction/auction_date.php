@@ -73,6 +73,25 @@
       margin-top: 9px;
       top: -5px;
    }
+   .ico-down {
+      position: absolute;
+      bottom: 0;
+      margin-left: 10px;
+      width: auto;
+      cursor: pointer;
+   }
+   .ico-down i, span {
+      color: #fff;
+   }
+
+   #modal-jadwal .modal-body ul li a {
+      height: 100px !important;
+   }
+
+   #modal-jadwal .modal-body ul li a.link-down {
+      height: 20px !important;
+      padding: 0 !important;
+   }
 </style>
 
 <script>
@@ -355,18 +374,44 @@ function cobaSini(thisCabang, thisDate, thisHari){
 			$('#thisObjTglLelang').html('<li style="padding:10px; width:100%"><b class="text-shadows">Sedang Memuat Data...</b></li>');
 		},
 		success: function(doc) {
-			thisHtmlAppend = '';
+			var thisHtmlAppend = '', fileName = '';
 			if (doc.data.length > 0){
 				for(var i=0; i<doc.data.length; i++){
 					var thisData = doc.data[i];
-					if (thisData.ItemName == 'MOBIL')
-						thisHtmlAppend += '<li><a href="<?php echo site_url('cari-lelang'); ?>?objectType=6&dateId='+thisData.id+'" class="car-event"> <span>'+arrKota[thisData.company_id]+'</span></a></li>';
-					else if (thisData.ItemName == 'MOTOR')
-						thisHtmlAppend += '<li><a href="<?php echo site_url('cari-lelang'); ?>?objectType=7&dateId='+thisData.id+'" class="motor-event"> <span>'+arrKota[thisData.company_id]+'</span></a></li>';
-					else if (thisData.ItemName == 'HVE')
-						thisHtmlAppend += '<li><a href="<?php echo site_url('cari-lelang'); ?>?objectType=14&dateId='+thisData.id+'" class="hve-event"> <span>'+arrKota[thisData.company_id]+'</span></a></li>';
-					else if (thisData.ItemName == 'GADGET')
-						thisHtmlAppend += '<li><a href="<?php echo site_url('cari-lelang'); ?>?objectType=12&dateId='+thisData.id+'" class="gadget-event"> <span>'+arrKota[thisData.company_id]+'</span></a></li>';
+               $.ajax({
+                  url: '<?php echo linkservice('STOCK'); ?>physicLot/lists/get?sid='+thisData.id,
+                  type: 'GET',
+                  async : false,
+                  success: function(data) {
+                     var data = JSON.parse(data.data);
+                     if(data.length > 0) {
+                        fileName = 'uploads/physic_lot/'+data[0].FileName;
+                     }
+                     else {
+                        fileName = '#';
+                     }
+                  },
+                  error: function(e) {
+                     bootoast.toast({
+                        message: 'Gagal Mengambil Data Lot Fisik',
+                        type: 'warning',
+                        position: 'top-center',
+                        timeout: 4
+                     });
+                  }
+               });
+               if (thisData.ItemName == 'MOBIL') {
+                  thisHtmlAppend += '<li><a href="<?php echo site_url('cari-lelang'); ?>?objectType=6&dateId='+thisData.id+'" class="car-event"> <span>'+arrKota[thisData.company_id]+'</span></a><div class="ico-down" title="Download Daftar Lot Fisik"><a class="link-down" href="'+fileName+'"><i class="fa fa-download"></i>&nbsp;<span>Download</span></a></div></li>';
+               }
+               else if (thisData.ItemName == 'MOTOR') {
+                  thisHtmlAppend += '<li><a href="<?php echo site_url('cari-lelang'); ?>?objectType=7&dateId='+thisData.id+'" class="motor-event"> <span>'+arrKota[thisData.company_id]+'</span></a><div class="ico-down" title="Download Daftar Lot Fisik"><a class="link-down" href="'+fileName+'"><i class="fa fa-download"></i>&nbsp;<span>Download</span></a></div></li>';
+               }
+               else if (thisData.ItemName == 'HVE') {
+                  thisHtmlAppend += '<li><a href="<?php echo site_url('cari-lelang'); ?>?objectType=14&dateId='+thisData.id+'" class="hve-event"> <span>'+arrKota[thisData.company_id]+'</span></a><div class="ico-down" title="Download Daftar Lot Fisik"><a class="link-down" href="'+fileName+'"><i class="fa fa-download"></i>&nbsp;<span>Download</span></a></div></li>';
+               }
+               else if (thisData.ItemName == 'GADGET') {
+                  thisHtmlAppend += '<li><a href="<?php echo site_url('cari-lelang'); ?>?objectType=12&dateId='+thisData.id+'" class="gadget-event"> <span>'+arrKota[thisData.company_id]+'</span></a><div class="ico-down" title="Download Daftar Lot Fisik"><a class="link-down" href="'+fileName+'"><i class="fa fa-download"></i>&nbsp;<span>Download</span></a></div></li>';
+               }
 				}
 			}
          else {
