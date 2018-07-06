@@ -2615,6 +2615,117 @@ header {
     margin-bottom: 30px;
 }
 
+/* list view */
+.list-view-right {
+    font-size: 16px;
+    padding: 0;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+}
+
+.list-view-right li {
+    list-style: none;
+    width: 100%;
+    border-bottom: 1px solid #efefef;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.list-view-right .ls-property {
+    font-family: "OpenSansBold", Helvetica, Sans-serif;
+}
+
+.list-view-right .ls-property h3{
+    background-color: #ffffff;
+    text-transform: uppercase;
+    color:#903e98;
+    border-radius: 20px;
+    display: inline-block;
+    font-size: 12px;
+    padding: 5px 10px;
+    margin:0 0 10px 0;
+}
+.list-view-right li{
+    padding: 5px;
+}
+.list-view-right li button {
+    background-color: transparent;
+    padding:20px 10px;
+    display: inline-block;
+}
+
+.list-view-right li:nth-child(even) {
+    background-color: #ffffff;
+}
+.list-view-right li:nth-child(odd) {
+    background-color: #fafafa;
+}
+
+.list-view-right .ls-property h2{
+    font-size: 14px;
+    margin: 0 0 5px 0;
+}
+.list-view-right .ls-property h2 a{
+    color: inherit;
+}
+
+.list-view-right .ls-property h2 a:hover {
+    color: #0581d0;
+    text-decoration: none;
+}
+
+.list-view-right .ls-property h2 span {
+    padding: 0 10px;
+    color: #81be2a;
+}
+
+.list-view-right .ls-property h4{
+    font-size: 12px;
+    margin: 0;
+    color: #81be2a;
+}
+.list-view-right .ls-property .grade {
+    background-color: #903e98;
+    color: #ffffff;
+    font-weight: 100;
+}
+.list-view-right .ls-property .grade span{
+    font-size: 8px;
+    opacity: 0.8;
+    padding:0 5px 5px 0;
+}
+.list-view-right .ls-property .status {
+    background-color:transparent;
+    font-size: 9px;
+    padding: 6px;
+    color: #903e98;
+    border:1px solid #903e98;
+    font-weight: 100;
+}
+
+.list-view-right .ls-additional {
+    font-size: 11px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+}
+.list-view-right .ls-additional p:first-child {
+    margin:8px 0;
+    font-weight: 100;
+}
+.list-view-right .ls-additional p {
+    margin: 0;
+    font-weight: 900;
+}
+
+.list-view-right .ls-price h2{
+    font-size: 18px;
+    font-family: "OpenSansBold", Helvetica, Sans-serif;
+    color: #903e98;
+}  
+
+/* tabbing */
 .photos-sort {
     margin:20px 0 10px 0;
     display: block;

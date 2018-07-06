@@ -135,6 +135,7 @@
                <div id="loadings"></div>
                <div class="content-right product-mob content-load clearfix">
                   <div id="loadlist"></div>
+                  <div id="loadListMode" style="display:none"></div>
                </div>
                <div id="mored" class="margin-top-10px text-align-center width-100">
                   <button class="btn btn-green cursor-pointer">Selanjutnya</button>
@@ -191,14 +192,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
 $(document).ready(function() {
    // handle view list content
+   if(localStorage.getItem("FBU") !== undefined || localStorage.getItem("FBU") !== null) {
+      if(localStorage.getItem("FBU") === "box") {
+         $('#btn-view-change').html('<i class="fa fa-th-large"></i> Box');
+         $('#loadlist').css('display', 'block');
+         $('#loadListMode').css('display', 'none');
+      }
+      else if(localStorage.getItem("FBU") === "list") {
+         $('#btn-view-change').html('<i class="fa fa-list"></i> List');
+         $('#loadlist').css('display', 'none');
+         $('#loadListMode').css('display', 'block');
+      }
+   }
+
    $('#btn-view-change').click(function() {
       var eleChild = $(this).html();
       if($(eleChild).attr('class') === 'fa fa-th-large') {
          $(this).html('<i class="fa fa-list"></i> List');
+         $('#loadlist').css('display', 'none');
+         $('#loadListMode').css('display', 'block');
          localStorage.setItem("FBU", "list");
       }
       else if($(eleChild).attr('class') === 'fa fa-list') {
          $(this).html('<i class="fa fa-th-large"></i> Box');
+         $('#loadlist').css('display', 'block');
+         $('#loadListMode').css('display', 'none');
          localStorage.setItem("FBU", "box");
       }
    });
@@ -401,7 +419,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
       },
       success: function(data) {
          $('#loadings').replaceWith('<div id="loadings"></div>');
-         var content = '',
+         var content = '', content2 = '',
          data = data.data,
          datas = data.data,
          dataTotal = data.total,
@@ -423,6 +441,8 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
             else {
                $('#strTotalData').replaceWith('<span id="strTotalData">Menampilkan <b id="data_length">'+datas.length+'</b> dari Total <b>'+dataTotal+'</b> untuk objek lelang <b>'+tipe_object[tipe_object_lelang]+'</b></span>');
             }
+
+            content2 = '<div class="col-md-12 content-right-row"><ul class="list-view-right">';
             for (var i = 0; i < datas.length; i++) {
                var dataz = datas[i];
                imgData[i] = callImg(dataz);
@@ -453,10 +473,13 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
                };
                var json_str = JSON.stringify(compare_data);
                var iconFav = (dataz.thisFavorite === 0) ? '<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon" />' : '<i class="fa fa-heart"></i>';
+               var iconFavList = (dataz.thisFavorite === 0) ? '<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon-list" width="15px" />' : '<i class="fa fa-heart"></i>';
                var bottom_favcom = '<div class="action-bottom">'+
-                                    '<button class="btn" onclick="addFav('+dataz.AuctionItemId+', \''+sessionId+'\', this)">'+iconFav+'<span>Favorit</span></button>'+
+                                    '<button class="btn" onclick="addFav('+dataz.AuctionItemId+', \''+sessionId+'\', this, \'box\')">'+iconFav+'<span>Favorit</span></button>'+
                                     '<button class="btn btn-compare" onclick=\'set_compare_product('+json_str+', "'+linked+'")\'><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>'+
                                     '</div>';
+               var bottom_favcom_list = '<button class="btn" onclick="addFav('+dataz.AuctionItemId+', \''+sessionId+'\', this, \'list\')">'+iconFavList+'</button>'+
+                                        '<button class="btn btn-compare" onclick=\'set_compare_product('+json_str+', "'+linked+'")\'><i class="ic ic-Bandingkan-green"></i></button>';
                //var favcom = (sessiond === 'TRUE') ? bottom_favcom : '';
                var lot = (dataz.thisLotNo !== null && dataz.thisLotNo !== undefined) ? dataz.thisLotNo : '-' ;
                var schedule = (dataz.thisScheduleId !== null) ? dataz.thisScheduleId : 0;
@@ -480,7 +503,7 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
                   waktu = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + dataz.waktu;
                }*/
  
-               content = '<div class="col-md-4" id="this'+compare_data.AuctionItemId+'">'+
+               content =   '<div class="col-md-4" id="this'+compare_data.AuctionItemId+'">'+
                            '<div class="list-product box-recommend">'+
                            '<a href="<?php echo $link_detail; ?>/'+compare_data.AuctionItemId+'" class="link-detail-unit" onclick="window.history.pushState(\'\', \'\', this.href);" target="_blank">'+
                            '<div class="thumbnail">'+
@@ -503,9 +526,37 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
                            bottom_favcom+
                            '</div>'+
                            '</div>';
+
+               content2 += '<li>'+
+                           '<div class="col-md-2 col-sm-2 col-xs-4 hidden-xs">'+
+                           '<a href=""><img src="'+compare_data.Image+'" alt="" title="" class="img-responsive"></a>'+
+                           '</div>'+
+                           '<div class="col-md-3 col-sm-3 col-xs-12 ls-property">'+
+                           '<span><h3>Lot 201</h3></span>'+
+                           '<span><h3 class="grade">A</h3></span>'+
+                           '<span><h3 class="status">Live</h3></span>'+
+                           '<h2><a href="#">'+compare_data.Merk+' '+compare_data.Seri+' '+compare_data.Silinder+' '+compare_data.Tipe+' '+compare_data.Transmisi+'<span>'+compare_data.Tahun+'</span></a></h2>'+
+                           '</div>'+
+                           '<div class="col-md-2 col-sm-2 col-xs-4 ls-additional text-center">'+
+                           '<p class="hidden-xs">Tanggal dan lokasi</p>'+
+                           '<p class="wkt'+dataz.thisScheduleId+'">'+waktu+'</p>'+
+                           '<p class="sch'+dataz.thisScheduleId+'">'+thisCabang[dataz.CompanyId]+'</p>'+
+                           '</div>'+
+                           '<div class="col-md-3 col-sm-3 col-xs-5 text-center ls-price">'+
+                           '<h2>Rp '+currency_format(compare_data.Price)+'</h2>'+
+                           '</div>'+
+                           '<div class="col-md-2 col-sm-3 col-xs-3 text-center act-list">'+
+                           bottom_favcom_list+
+                           '</div>'+
+                           '</li>';
                $('#loadlist').append(content);
                $('#btnFilter').attr('disabled', false);
             }
+
+            // append for list mode
+            content2 += '</ul></div>';
+            $('#loadListMode').html(content2);
+
             $('#mored').css('display', 'block');
 
             // top button
@@ -519,6 +570,11 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
                $(this).attr('href', thelink+'?_dt='+limit);
             });
             countContainer(offset, limit, linked, dataTotal, datas.length, dataForm, type);
+
+            //cek resolution for mobile and execute sticky sidebar
+            if(window.screen.availWidth > 1024) {
+               loadSidebar();
+            }
          }
          else {
             $('#btnFilter').attr('disabled', false);
@@ -561,7 +617,7 @@ function loadContainerPaging(offset, limit, linked, dataForm = '', type = 1) {
          $('#view-listed').attr('disabled', true);
       },
       success: function(data) {
-         var content = '',
+         var content = '', content2 = '',
          data = data.data, 
          datas = data.data,
          dataTotal = data.total,
@@ -602,10 +658,13 @@ function loadContainerPaging(offset, limit, linked, dataForm = '', type = 1) {
                };
                var json_str = JSON.stringify(compare_data);
                var iconFav = (dataz.thisFavorite === 0) ? '<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon" />' : '<i class="fa fa-heart"></i>';
+               var iconFavList = (dataz.thisFavorite === 0) ? '<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon-list" width="15px" />' : '<i class="fa fa-heart"></i>';
                var bottom_favcom = '<div class="action-bottom">'+
-                                    '<button class="btn" onclick="addFav('+dataz.AuctionItemId+', \''+sessionId+'\', this)">'+iconFav+'<span>Favorit</span></button>'+
+                                    '<button class="btn" onclick="addFav('+dataz.AuctionItemId+', \''+sessionId+'\', this, \'box\')">'+iconFav+'<span>Favorit</span></button>'+
                                     '<button class="btn btn-compare" onclick=\'set_compare_product('+json_str+', "'+linked+'")\'><i class="ic ic-Bandingkan-green"></i> <span>Bandingkan</span></button>'+
                                     '</div>';
+               var bottom_favcom_list = '<button class="btn" onclick="addFav('+dataz.AuctionItemId+', \''+sessionId+'\', this, \'list\')">'+iconFavList+'</button>'+
+                                        '<button class="btn btn-compare" onclick=\'set_compare_product('+json_str+', "'+linked+'")\'><i class="ic ic-Bandingkan-green"></i></button>';
                //var favcom = (sessiond === 'TRUE') ? bottom_favcom : '';
                var lot = (dataz.thisLotNo !== null && dataz.thisLotNo !== undefined) ? dataz.thisLotNo : '-' ;
                var schedule = (dataz.thisScheduleId !== null) ? dataz.thisScheduleId : 0 ;
@@ -648,8 +707,36 @@ function loadContainerPaging(offset, limit, linked, dataForm = '', type = 1) {
                               bottom_favcom+
                               '</div>'+
                               '</div>';
+
+               content2 =  '<li>'+
+                           '<div class="col-md-2 col-sm-2 col-xs-4 hidden-xs">'+
+                           '<a href=""><img src="'+compare_data.Image+'" alt="" title="" class="img-responsive"></a>'+
+                           '</div>'+
+                           '<div class="col-md-3 col-sm-3 col-xs-12 ls-property">'+
+                           '<span><h3>Lot 201</h3></span>'+
+                           '<span><h3 class="grade">A</h3></span>'+
+                           '<span><h3 class="status">Live</h3></span>'+
+                           '<h2><a href="#">'+compare_data.Merk+' '+compare_data.Seri+' '+compare_data.Silinder+' '+compare_data.Tipe+' '+compare_data.Transmisi+'<span>'+compare_data.Tahun+'</span></a></h2>'+
+                           '</div>'+
+                           '<div class="col-md-2 col-sm-2 col-xs-4 ls-additional text-center">'+
+                           '<p class="hidden-xs">Tanggal dan lokasi</p>'+
+                           '<p class="wkt'+dataz.thisScheduleId+'">'+waktu+'</p>'+
+                           '<p class="sch'+dataz.thisScheduleId+'">'+thisCabang[dataz.CompanyId]+'</p>'+
+                           '</div>'+
+                           '<div class="col-md-3 col-sm-3 col-xs-5 text-center ls-price">'+
+                           '<h2>Rp '+currency_format(compare_data.Price)+'</h2>'+
+                           '</div>'+
+                           '<div class="col-md-2 col-sm-3 col-xs-3 text-center act-list">'+
+                           bottom_favcom_list+
+                           '</div>'+
+                           '</li>';
+
                $('#loadlist').children().last().after(content);
+
+               // append for list mode
+               $('#loadListMode').children().children().children().last().after(content2);
             }
+
             $('#mored').css('display', 'block');
             $('#data_length').html(offset+(datas.length));
 
@@ -665,6 +752,11 @@ function loadContainerPaging(offset, limit, linked, dataForm = '', type = 1) {
                $(this).attr('href', thelink+'?_dt='+maxOffset);
             });
             countContainer(offset, limit, linked, dataTotal, datas.length, dataForm, type);
+
+            //cek resolution for mobile and execute sticky sidebar
+            /*if(window.screen.availWidth > 1024) {
+               loadSidebar(800);
+            }*/
          }
       },
       error: function() {
@@ -764,7 +856,7 @@ function hasDuplicate(arr) {
    return false;
 }
 
-function addFav(aucid, id, ele) {
+function addFav(aucid, id, ele, mode) {
    if(id !== '') {
       $.ajax({
          type: 'POST',
@@ -779,8 +871,15 @@ function addFav(aucid, id, ele) {
                   url: '<?php echo linkservice('stock')."favorite/Add"; ?>',
                   data: 'AuctionItemId='+aucid+'&CreateDate='+dateformat+'&CreateUserId='+id+'&StsDeleted=1',
                   success: function(data) {
-                     var prevEle = ele.children[0];
-                     $(prevEle).replaceWith('<i class="fa fa-heart"></i>');
+                     var prevEle;
+                     if(mode === 'box') {
+                        prevEle = ele.children[0];
+                        $(prevEle).replaceWith('<i class="fa fa-heart"></i>');
+                     }
+                     else if(mode === 'list') {
+                        prevEle = ele.children[0];
+                        $(prevEle).replaceWith('<i class="fa fa-heart"></i>');
+                     }
                      bootoast.toast({
                         message: 'Unit sudah ditambahkan ke daftar favorit kamu',
                         type: 'success',
@@ -804,8 +903,15 @@ function addFav(aucid, id, ele) {
                   url: '<?php echo linkservice('stock')."favorite/Delete"; ?>',
                   data: 'auctionid='+aucid+'&userid='+id,
                   success: function(data) {
-                     var prevEle = ele.children[0];
-                     $(prevEle).replaceWith('<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon" />');
+                     var prevEle;
+                     if(mode === 'box') {
+                        prevEle = ele.children[0];
+                        $(prevEle).replaceWith('<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon" />');
+                     }
+                     else if(mode === 'list') {
+                        prevEle = ele.children[0];
+                        $(prevEle).replaceWith('<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon-list" width="15px" />');
+                     }
                      bootoast.toast({
                         message: 'Unit sudah dihapus dari daftar favorit kamu',
                         type: 'warning',
