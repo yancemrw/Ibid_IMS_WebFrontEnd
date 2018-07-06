@@ -78,7 +78,8 @@ class Checkout extends CI_Controller {
 			else if ($items['options']['Tipe NPL'] == 0) @$NPLType = 'Live';
 			else if ($items['options']['Tipe NPL'] == 5) $NPLType = 'Unlimited';
 			$arrayTransaksiDetail[] = array(
-				'ScheduleId' => $items['id'],
+				// 'ScheduleId' => $items['id'],
+				'ScheduleId' => $items['options']['ScheduleId'],
 				'ItemId' => $items['options']['ItemId'],
 				'NPLType' => $NPLType,
 				'tipeLelangId' => $items['options']['tipeLelangId'],
