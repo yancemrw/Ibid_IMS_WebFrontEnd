@@ -144,34 +144,57 @@
                </div>
                <?php } ?>
             </div>
-            <div class="photo-transport">
+            <div class="photo-transport mt30">
                <h2>Photo Kendaraan</h2>
-               <!-- MAIN SLIDES -->
-               <div class="overlay-slide">
-                  <div class="slider" id="lightgallery2">
-                     <?php foreach($dataphoto as $key => $imgs) {
-                        if($key === 4) {
-                           // Tambahkan di sini untuk gambar 360
-                           echo '<div class="cursor-pointer">
-                                    <a id="show360" href="'.site_url('welcome/d360/'.$imgs->AuctionItemId).'" target="_blank" class="thirty-link">
-                                       <input id="hidden360" type="hidden" value="'.site_url('welcome/d360').'" />
-                                       <img src="'.$imgs->ImagePath.'" />
-                                    </a>
-                                 </div>';
-                        }
-                        else if($imgs->ImagePath !== '') {
-                           echo '<div class="item-slide cursor-pointer" data-src="'.$imgs->ImagePath.'"><img src="'.$imgs->ImagePath.'" /></div>';
-                        }
-                     } ?>                     
+               <div class="tabbable-panel">
+                  <div class="tabbable-line">
+                     <ul class="nav nav-tabs photos-sort">
+                        <li class="active">
+                           <a href="#photos-ob-auction" data-toggle="tab">Photo</a>
+                        </li>
+                        <li>
+                           <a href="#photos-acv-auction" data-toggle="tab">ACV</a>
+                        </li>
+                        <li>
+                           <a href="#photos-360-auction" data-toggle="tab">360&deg;</a>
+                        </li>
+                     </ul>
+                     <div class="tab-content">
+                        <div class="tab-pane active" id="photos-ob-auction">
+                           <!-- MAIN SLIDES -->
+                           <div class="overlay-slide">
+                              <div class="slider" id="lightgallery2">
+                                 <?php 
+                                 foreach($dataphoto as $key => $imgs) {
+                                    if($imgs->ImagePath !== '') {
+                                       echo '<div class="item-slide cursor-pointer" data-src="'.$imgs->ImagePath.'"><img src="'.$imgs->ImagePath.'" /></div>';
+                                    }
+                                 } 
+                                 ?>                     
+                              </div>
+                           </div>
+                           <!-- THUMBNAILS -->
+                           <div class="slider-nav-thumbnails">
+                              <?php foreach($dataphoto as $key => $imgsclick) {
+                                 if($imgsclick->ImagePath !== '') {
+                                    echo '<div class="cursor-pointer"><img src="'.$imgsclick->ImagePath.'" /></div>';
+                                 }
+                              } ?>
+                           </div>
+                        </div>
+                        <div class="tab-pane" id="photos-acv-auction">
+                           <img src="<?php echo base_url('assetsfront/images/background/default.png'); ?>" />
+                        </div>
+                        <div class="tab-pane" id="photos-360-auction">
+                           <div class="cursor-pointer">
+                              <a id="show360" href="<?php echo site_url('welcome/d360/'.$imgs->AuctionItemId); ?>" target="_blank" class="thirty-link">
+                                 <input id="hidden360" type="hidden" value="<?php echo site_url('welcome/d360'); ?>" />
+                                 <img src="<?php echo $imgs->ImagePath; ?>" />
+                              </a>
+                           </div>
+                        </div>
+                     </div>
                   </div>
-               </div>
-               <!-- THUMBNAILS -->
-               <div class="slider-nav-thumbnails">
-                  <?php foreach($dataphoto as $key => $imgsclick) {
-                     if($imgsclick->ImagePath !== '') {
-                        echo '<div class="cursor-pointer"><img src="'.$imgsclick->ImagePath.'" /></div>';
-                     }
-                  } ?>
                </div>
             </div>
             <div class="graphic-lelang">
@@ -407,15 +430,15 @@
 	// cek connection firebase
 	companyRef.onDisconnect().update({
 		onlineState: false,
-		status: firebasePrint('Firebase Commpany ID Tidak Terhubung')
+		status: firebasePrint('Firebase Data Perusahaan Tidak Terhubung!')
 	});
 	bidderRef.onDisconnect().update({
 		onlineState: false,
-		status: firebasePrint('Firebase Bidder Tidak Terhubung')
+		status: firebasePrint('Firebase Data Bidder Tidak Terhubung!')
 	});
 	bidderTop.onDisconnect().update({
 		onlineState: false,
-		status: firebasePrint('Firebase Top Bidder Tidak Terhubung')
+		status: firebasePrint('Firebase Data Top Bidder Tidak Terhubung!')
 	});
 
    var eligibleNpl = [];
