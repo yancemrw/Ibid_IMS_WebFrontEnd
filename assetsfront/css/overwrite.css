@@ -730,6 +730,15 @@ header {
     width: 300px;
 }
 
+@media only screen and (width: 1024px) {
+    .tab-search .select-custom~.select2-container {
+        width: 222px !important;
+    }
+    .tab-search .form-group:nth-child(3) {
+        width: 16%;
+    }
+}
+
 @media(max-width: 1024px) {
     .btn-green, 
     .btn-green:hover, 
@@ -1115,6 +1124,10 @@ header {
     .content-empty {
         border: none;
         top: 10px;
+    }
+    .tab-search .form-group:nth-child(3) {
+        margin-left: 1px;
+        width: calc(50% - 1px);
     }
 }
 
