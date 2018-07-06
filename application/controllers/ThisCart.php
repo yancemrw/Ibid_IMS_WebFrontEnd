@@ -66,6 +66,7 @@ class ThisCart extends CI_Controller {
 				'CompanyId' => @$CompanyId,
 				'ObjectId' => @$ObjectId,
 				'thisDate'    => @$thisDate,
+				'ScheduleId'    => @$ScheduleId,
 			),
 		);
 		// insert to cart
