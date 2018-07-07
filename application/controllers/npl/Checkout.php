@@ -539,6 +539,9 @@ class Checkout extends CI_Controller {
 
 		}
 		// end 
+		
+		// set wording in email
+		$wording = ($TipePembayaran == 4) ? 'Loket' : 'Virtual Account';
 
 		$isiemail .="
 		<tr>
@@ -551,10 +554,10 @@ class Checkout extends CI_Controller {
 		<tbody>
 		<tr>
 		<td data-color='text' data-size='size text' data-min='10' data-max='26' data-link-color='link text color' data-link-style='font-weight:bold; text-decoration:underline; color:#40aceb;' align='left' style='font:14px/29px Arial, Helvetica, sans-serif; color:#666; padding:0 0 21px;'>
-		<p>Agar Anda dapat segera melakukan penawaran atau bidding untuk objek lelang favorit, silahkan lakukan pembayaran tagihan Nomor Pokok Lelang (NPL) lewat Virtual Account Anda sebelum tanggal <span style='font-weight:900;'>".date('d F Y', strtotime(date('Y-m-d', strtotime('+2 days')))).", 00:00 WIB.</span></p>
+		<p>Agar Anda dapat segera melakukan penawaran atau bidding untuk objek lelang favorit, silahkan lakukan pembayaran tagihan Nomor Pokok Lelang (NPL) lewat ".$wording." Anda sebelum tanggal <span style='font-weight:900;'>".date('d F Y', strtotime(date('Y-m-d', strtotime('+2 days')))).", 00:00 WIB.</span></p>
 		</td>
 		</tr>
-		<tr>
+		<!--tr>
 		<td height='15'><img style='display:block' src='' alt='' class='CToWUd' width='20' height='15' border='0'></td>
 		</tr>      
 		<tr>
@@ -567,7 +570,7 @@ class Checkout extends CI_Controller {
 		</tbody>
 		</table>
 		</td>
-		</tr> 
+		</tr--> 
 		</tbody>
 		</table>
 		</td>
