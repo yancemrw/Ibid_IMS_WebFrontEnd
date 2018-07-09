@@ -294,6 +294,11 @@
    /*} 
 });*/
 
+var theCabang = new Array;
+<?php foreach($cabang as $row){ ?>
+theCabang[<?php echo $row['CompanyId']; ?>] = "<?php echo (($row['CompanyName'])); ?>";
+<?php } ?>
+
 // set active menu if to homepage
 setActiveMenu('home');
 
@@ -400,8 +405,7 @@ $(function() {
    window.classSlickNames = '.section-recommend';
    $.ajax({
       type: 'GET',
-      url: '<?php echo linkservice('stock')."rekomendasi/Get"; ?>',
-      data: 'top=3',
+      url: '<?php echo linkservice('stock')."rekomendasi/Get"; ?>?top=3',
       beforeSend: function() {
          for(var i = 0; i < 3; i++) {
             var content =  '<div class="item col-md-4">'+
@@ -428,76 +432,78 @@ $(function() {
          mobileSlick(3, classSlickNames);
       },
       success: function(data) {
-         $(classSlickNames).slick('unslick');
-         $('#showrelated').children().remove();
-         var data = data.data,
-         sessiond = "<?php echo ($userdata !== null) ? 'TRUE' : 'FALSE'; ?>",
-         sessionId = '<?php echo ($userdata !== null) ? $userdata['UserId'] : ''; ?>';
-         for(var i = 0; i < data.length; i++) {
-            var datetime, location;
-            if(data[i].schedule.status !== false) {
-               var dateSplit = (data[i].schedule.schedule.date).split('-');
-               datetime = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + data[i].schedule.schedule.waktu;
-               location = data[i].schedule.schedule.CompanyName;
+         var data = data.data;
+         if(data.length > 0 || data.length < 3) {
+            $(classSlickNames).slick('unslick');
+            $('#showrelated').children().remove();
+            var sessiond = "<?php echo ($userdata !== null) ? 'TRUE' : 'FALSE'; ?>",
+            sessionId = '<?php echo ($userdata !== null) ? $userdata['UserId'] : ''; ?>';
+            for(var i = 0; i < data.length; i++) {
+               var datetime, location;
+               if(data[i].schedule.status !== false) {
+                  var dateSplit = (data[i].schedule.schedule.date).split('-');
+                  datetime = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + data[i].schedule.schedule.waktu;
+                  location = data[i].schedule.schedule.CompanyName;
+               }
+               else {
+                  datetime = 'Belum Tersedia';
+                  location = 'Belum Tersedia';
+               }
+               var compare_data = {
+                  "AuctionItemId": data[i].AuctionItemId,
+                  "BahanBakar": data[i].bahanbakar,
+                  "Image": data[i].icarImage,
+                  //"Image": '//img.ibid.astra.co.id/item/12415/d8404a531ea286d733aa7c35bfbdc83c.jpg',
+                  "Kilometer": data[i].km,
+                  "Lot": (data[i].thisLotNo !== undefined && data[i].thisLotNo !== null) ? data[i].thisLotNo : '-',
+                  "Merk": (data[i].merk !== undefined) ? data[i].merk : '',
+                  "Model": (data[i].model !== undefined) ? data[i].model : '',
+                  "NoKeur": data[i].nokeur,
+                  "NoMesin": data[i].nomesin,
+                  "NoPolisi": data[i].nopolisi,
+                  "NoRangka": data[i].norangka,
+                  "NoSTNK": data[i].nostnk,
+                  "Seri": (data[i].seri !== undefined) ? data[i].seri : '',
+                  "Silinder": (data[i].silinder !== undefined) ? data[i].silinder : '',
+                  "TaksasiGrade": (data[i].nilaiIcar !== '0' && data[i].nilaiIcar !== undefined) ? data[i].nilaiIcar : '-',
+                  "Tahun": (data[i].tahun !== undefined) ? data[i].tahun : '',
+                  "Transmisi": (data[i].transmisi !== undefined) ? data[i].transmisi : '',
+                  "Tipe": (data[i].grade !== undefined) ? data[i].grade : '',
+                  "Price": (data[i].FinalPriceItem !== undefined) ? data[i].FinalPriceItem : 0,
+                  "Warna": data[i].warna
+               };
+               var json_str = JSON.stringify(compare_data);
+               var link_detail = "<?php echo site_url('detail-lelang/'); ?>"+compare_data.AuctionItemId;
+               var iconFav = (data[i].thisFavorite === 0) ? '<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon empty-favicon-details" />' : '<i class="fa fa-heart"></i>';
+               var bottom_favcom = '<div class="action-bottom">'+
+                                    '<button class="btn" onclick="addFav('+compare_data.AuctionItemId+', '+sessionId+', this, 2)">'+iconFav+'<span class="btnItemFooter">Favorit</span></button>'+
+                                    '<button class="btn btn-compare" onclick=\'set_compare_product('+json_str+', "'+link_detail+'")\'><i class="ic ic-Bandingkan-green"></i><span class="btnItemFooter">Bandingkan</span></button>'+
+                                    '</div>';
+               var favcom = (sessiond === 'TRUE') ? bottom_favcom : '';
+               var content =  '<div class="item col-md-4">'+
+                              '<div class="box-recommend">'+
+                              '<a href="'+link_detail+'">'+
+                              '<div class="thumbnail">'+
+                              '<div class="thumbnail-custom">'+
+                              '<img src="'+compare_data.Image+'" />'+
+                              '</div>'+
+                              '<div class="overlay-grade">'+
+                              'Grade <span>'+compare_data.TaksasiGrade+'</span>'+
+                              '</div>'+
+                              '<p class="overlay-lot">LOT '+compare_data.Lot+'</p>'+
+                              '</div>'+
+                              '<h2>'+compare_data.Merk+' '+compare_data.Seri+' '+compare_data.Silinder+' '+compare_data.Tipe+' '+compare_data.Model+' '+compare_data.Transmisi+'</h2>'+
+                              '<span>'+compare_data.Tahun+'</span> <span class="price">Rp. '+currency_format(compare_data.Price)+'</span>'+
+                              '<p><span>Jadwal</span> <span class="fa fa-calendar"></span><span>'+datetime+'</span></p>'+
+                              '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span><span class="sch'+data[i].thisScheduleId+'">'+theCabang[data[i].CompanyId]+'</span></p>'+
+                              '</a>'+
+                              favcom+
+                              '</div>'+
+                              '</div>';
+               $('#showrelated').append(content);
             }
-            else {
-               datetime = 'Belum Tersedia';
-               location = 'Belum Tersedia';
-            }
-            var compare_data = {
-               "AuctionItemId": data[i].AuctionItemId,
-               "BahanBakar": data[i].bahanbakar,
-               "Image": data[i].icarImage,
-               //"Image": '//img.ibid.astra.co.id/item/12415/d8404a531ea286d733aa7c35bfbdc83c.jpg',
-               "Kilometer": data[i].km,
-               "Lot": (data[i].thisLotNo !== undefined && data[i].thisLotNo !== null) ? data[i].thisLotNo : '-',
-               "Merk": (data[i].merk !== undefined) ? data[i].merk : '',
-               "Model": (data[i].model !== undefined) ? data[i].model : '',
-               "NoKeur": data[i].nokeur,
-               "NoMesin": data[i].nomesin,
-               "NoPolisi": data[i].nopolisi,
-               "NoRangka": data[i].norangka,
-               "NoSTNK": data[i].nostnk,
-               "Seri": (data[i].seri !== undefined) ? data[i].seri : '',
-               "Silinder": (data[i].silinder !== undefined) ? data[i].silinder : '',
-               "TaksasiGrade": data[i].nilaiIcar,
-               "Tahun": (data[i].tahun !== undefined) ? data[i].tahun : '',
-               "Transmisi": (data[i].transmisi !== undefined) ? data[i].transmisi : '',
-               "Tipe": (data[i].grade !== undefined) ? data[i].grade : '',
-               "Price": (data[i].FinalPriceItem !== undefined) ? data[i].FinalPriceItem : 0,
-               "Warna": data[i].warna
-            };
-            var json_str = JSON.stringify(compare_data);
-            var link_detail = "<?php echo site_url('detail-lelang/'); ?>"+data[i].AuctionItemId;
-            var iconFav = (data[i].thisFavorite === 0) ? '<img src="<?php echo base_url('assetsfront/images/icon/ic_favorite.png'); ?>" class="empty-fav-icon empty-favicon-details" />' : '<i class="fa fa-heart"></i>';
-            var bottom_favcom = '<div class="action-bottom">'+
-                                 '<button class="btn" onclick="addFav('+data[i].AuctionItemId+', '+sessionId+', this, 2)">'+iconFav+'<span class="btnItemFooter">Favorit</span></button>'+
-                                 '<button class="btn btn-compare" onclick=\'set_compare_product('+json_str+', "'+link_detail+'")\'><i class="ic ic-Bandingkan-green"></i><span class="btnItemFooter">Bandingkan</span></button>'+
-                                 '</div>';
-            var favcom = (sessiond === 'TRUE') ? bottom_favcom : '';
-            var content =  '<div class="item col-md-4">'+
-                           '<div class="box-recommend">'+
-                           '<a href="'+link_detail+'">'+
-                           '<div class="thumbnail">'+
-                           '<div class="thumbnail-custom">'+
-                           '<img src="'+data[i].icarImage+'" />'+
-                           '</div>'+
-                           '<div class="overlay-grade">'+
-                           'Grade <span>'+data[i].nilaiIcar+'</span>'+
-                           '</div>'+
-                           '<p class="overlay-lot">LOT '+compare_data.Lot+'</p>'+
-                           '</div>'+
-                           '<h2>'+data[i].merk+' '+data[i].seri+' '+data[i].silinder+' '+data[i].grade+' '+data[i].model+' '+data[i].transmisi+'</h2>'+
-                           '<span>'+data[i].tahun+'</span> <span class="price">Rp. '+currency_format(data[i].FinalPriceItem)+'</span>'+
-                           '<p><span>Jadwal</span> <span class="fa fa-calendar"></span><span>'+datetime+'</span></p>'+
-                           '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span><span>'+location+'</span></p>'+
-                           '</a>'+
-                           favcom+
-                           '</div>'+
-                           '</div>';
-            $('#showrelated').append(content);
+            mobileSlick(data.length, classSlickNames);
          }
-         mobileSlick(data.length, classSlickNames);
       },
       error: function(e) {
          var data = e.responseJSON;
