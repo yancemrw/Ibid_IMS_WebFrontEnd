@@ -231,6 +231,7 @@ $(document).ready(function() {
    }
    $('#view-listed').change(function() {
       localStorage.setItem('VTC', $(this).val());
+      $('#btnFilter').trigger('click');
    });
 
    //show compare element
@@ -416,6 +417,9 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
          $('#btn-top-download').attr('disabled', true);
          $('#btn-view-change').attr('disabled', true);
          $('#view-listed').attr('disabled', true);
+
+         // list mode
+         $('#loadListMode').html('');
       },
       success: function(data) {
          $('#loadings').replaceWith('<div id="loadings"></div>');
