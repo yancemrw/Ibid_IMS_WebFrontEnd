@@ -536,9 +536,9 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
                            '<a href=""><img src="'+compare_data.Image+'" alt="" title="" class="img-responsive"></a>'+
                            '</div>'+
                            '<div class="col-md-3 col-sm-3 col-xs-12 ls-property">'+
-                           '<span><h3>Lot 201</h3></span>'+
-                           '<span><h3 class="grade">A</h3></span>'+
-                           '<span><h3 class="status">Live</h3></span>'+
+                           '<span><h3>Lot '+compare_data.Lot+'</h3></span>'+
+                           '<span><h3 class="grade">'+compare_data.TaksasiGrade+'</h3></span>'+
+                           '<span><h3 class="status">'+statusStock+'</h3></span>'+
                            '<h2><a href="#">'+compare_data.Merk+' '+compare_data.Seri+' '+compare_data.Silinder+' '+compare_data.Tipe+' '+compare_data.Transmisi+'<span>'+compare_data.Tahun+'</span></a></h2>'+
                            '</div>'+
                            '<div class="col-md-2 col-sm-2 col-xs-4 ls-additional text-center">'+
@@ -717,9 +717,9 @@ function loadContainerPaging(offset, limit, linked, dataForm = '', type = 1) {
                            '<a href=""><img src="'+compare_data.Image+'" alt="" title="" class="img-responsive"></a>'+
                            '</div>'+
                            '<div class="col-md-3 col-sm-3 col-xs-12 ls-property">'+
-                           '<span><h3>Lot 201</h3></span>'+
-                           '<span><h3 class="grade">A</h3></span>'+
-                           '<span><h3 class="status">Live</h3></span>'+
+                           '<span><h3>Lot '+compare_data.Lot+'</h3></span>'+
+                           '<span><h3 class="grade">'+compare_data.TaksasiGrade+'</h3></span>'+
+                           '<span><h3 class="status">'+statusStock+'</h3></span>'+
                            '<h2><a href="#">'+compare_data.Merk+' '+compare_data.Seri+' '+compare_data.Silinder+' '+compare_data.Tipe+' '+compare_data.Transmisi+'<span>'+compare_data.Tahun+'</span></a></h2>'+
                            '</div>'+
                            '<div class="col-md-2 col-sm-2 col-xs-4 ls-additional text-center">'+
