@@ -271,8 +271,18 @@
                      <h2>IBID - Balai Lelang Serasi</h2>
                      <p>Jl. Bintaro Mulia I No.3 Bintaro Pesanggrahan - Jakarta Selatan 12250 <span>(62-21) 7355999</span></p>
                      <ul>
-                        <li><a href="javascript:void(0)"><span class="ic ic-Chat-With"></span> <span>Chat With <br>Us</span></a></li>
-                        <li><a href="javascript:void(0)"><span class="ic ic-Check-FAQ "></span> <span>Chat Out <br>Our FAQ</span></a></li>
+                        <li>
+                           <a href="javascript:void(0)">
+                              <span class="ic ic-Chat-With"></span>
+                              <span>Chat With <br>Us</span>
+                           </a>
+                        </li>
+                        <li>
+                           <a href="javascript:void(0)" onclick="location.href='<?php echo site_url('faq'); ?>'">
+                              <span class="ic ic-Check-FAQ "></span>
+                              <span>Check Out <br>Our FAQ</span>
+                           </a>
+                        </li>
                      </ul>
                   </div>
                   <button class="btn btn-orange" id="btn-favorit" onclick="addFav(<?php echo $data[0]->AuctionItemId; ?>, '<?php echo $userdata['UserId'] ?>', this, 1)">
