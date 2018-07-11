@@ -167,7 +167,7 @@
                                  <?php 
                                  foreach($dataphoto as $key => $imgs) {
                                     if($imgs->ImagePath !== '') {
-                                       echo '<div class="item-slide cursor-pointer" data-src="'.$imgs->ImagePath.'"><img src="'.$imgs->ImagePath.'" /></div>';
+                                       echo '<div class="item-slide cursor-pointer" data-src="'.$imgs->ImagePath.'"><img src="'.$imgs->ImagePath.'" class="img-responsive" /></div>';
                                     }
                                  } 
                                  ?>                     
@@ -177,19 +177,23 @@
                            <div class="slider-nav-thumbnails">
                               <?php foreach($dataphoto as $key => $imgsclick) {
                                  if($imgsclick->ImagePath !== '') {
-                                    echo '<div class="cursor-pointer"><img src="'.$imgsclick->ImagePath.'" /></div>';
+                                    echo '<div class="cursor-pointer"><img src="'.$imgsclick->ImagePath.'" class="img-responsive" /></div>';
                                  }
                               } ?>
                            </div>
                         </div>
                         <div class="tab-pane" id="photos-acv-auction">
-                           <img src="<?php echo base_url('assetsfront/images/background/default.png'); ?>" />
+                           <div class="overlay-slide">
+                              <div class="slider" id="lightgallery3">
+                                 <img src="<?php echo base_url('assetsfront/images/background/default.png'); ?>" class="img-responsive" />
+                              </div>
+                           </div>
                         </div>
                         <div class="tab-pane" id="photos-360-auction">
                            <div class="cursor-pointer">
                               <a id="show360" href="<?php echo site_url('welcome/d360/'.$imgs->AuctionItemId); ?>" target="_blank" class="thirty-link">
                                  <input id="hidden360" type="hidden" value="<?php echo site_url('welcome/d360'); ?>" />
-                                 <img src="<?php echo $imgs->ImagePath; ?>" />
+                                 <img src="<?php echo $imgs->ImagePath; ?>" class="img-responsive" />
                               </a>
                            </div>
                         </div>
@@ -845,6 +849,9 @@ $(document).ready(function() {
    $("#lightgallery2").lightGallery({
       thumbnail: true,
       selector: ".item-slide"
+   });
+   $("#lightgallery3").lightGallery({
+      thumbnail: true
    });
 
    // toggle menu action

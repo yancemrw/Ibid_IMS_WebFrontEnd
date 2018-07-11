@@ -2742,6 +2742,11 @@ header {
     font-family: 'OpenSansBold';
     font-size: 14px;
 }
+
+.photos-sort li img{
+    width: 100%;
+}
+
 .photos-sort li a {
     color: #a2a3a3;
     border-color: none;
@@ -2764,6 +2769,14 @@ header {
     padding-right: 5px;
 }
 
+.sidebar-stickybid {
+    position: -webkit-sticky;
+    position: sticky;
+    z-index: 9 !important;
+    top: 95px;
+    margin-bottom: 30px;
+}
+
 @media only screen and (min-width: 140px) and (max-width: 600px) {
    .photos-sort li {width: 33.333% !important;}
    .photos-sort {font-size: 11px}
@@ -2772,7 +2785,7 @@ header {
    .list-view-right .ls-additional {text-align: left;font-size: 10px !important;}
    .list-view-right .act-list button{padding: 0;float: left !important;width:50% !important;}
    .list-view-right li div {padding-left: 5px;padding-right: 5px;}
-} 
+}
 
 /* add by suvi sanusi */
 .box-success span {
