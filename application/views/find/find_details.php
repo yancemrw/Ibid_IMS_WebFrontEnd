@@ -127,18 +127,18 @@
                <div class="desc-row clearfix">
                   <ul>
                      <li>
-                        <p><?php echo @$gradeinternal[1]->DamageName; ?> <span>: <?php echo @$gradeinternal[1]->TotalEvaluationResult; ?></span></p>
+                        <p><?php echo @$gradeinternal[1]->DamageName; ?> <span>: <?php echo @$gradeinternal[1]->Evaluation; ?></span></p>
                      </li>
                      <li>
-                        <p><?php echo @$gradeinternal[3]->DamageName; ?> <span>: <?php echo @$gradeinternal[3]->TotalEvaluationResult; ?></span></p>
+                        <p><?php echo @$gradeinternal[3]->DamageName; ?> <span>: <?php echo @$gradeinternal[3]->Evaluation; ?></span></p>
                      </li>
                   </ul>
                   <ul>
                      <li>
-                        <p><?php echo @$gradeinternal[0]->DamageName; ?> <span>: <?php echo @$gradeinternal[0]->TotalEvaluationResult; ?></span></p>
+                        <p><?php echo @$gradeinternal[0]->DamageName; ?> <span>: <?php echo @$gradeinternal[0]->Evaluation; ?></span></p>
                      </li>
                      <li>
-                        <p><?php echo @$gradeinternal[2]->DamageName; ?> <span>: <?php echo @$gradeinternal[2]->TotalEvaluationResult; ?></span></p>
+                        <p><?php echo @$gradeinternal[2]->DamageName; ?> <span>: <?php echo @$gradeinternal[2]->Evaluation; ?></span></p>
                      </li>
                   </ul>
                </div>
