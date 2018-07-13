@@ -33,7 +33,7 @@ class Blog extends CI_Controller {
 		$data = array(
 			'header_white'		=> "header-white",
 			'userdata'			=> $this->userdata,
-			'title'				=> 'Tentang IBID',
+			'title'				=> 'Blog IBID',
 			'form_auth_mobile'	=> login_status_form_mobile($userdata),
 			'form_auth'			=> login_Status_form($userdata),
 			'content'			=> $cmsTesti,

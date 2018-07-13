@@ -191,10 +191,13 @@
                         </div>
                         <div class="tab-pane" id="photos-360-auction">
                            <div class="cursor-pointer">
-                              <a id="show360" href="<?php echo site_url('welcome/d360/'.$imgs->AuctionItemId); ?>" target="_blank" class="thirty-link">
+                              <?php if($dataphoto[0]->AuctionItemId !== null) { ?>
+                              <iframe src="<?php echo site_url('welcome/d360/'.$imgs->AuctionItemId); ?>" id="iframe-360"></iframe>
+                              <!--a id="show360" href="<?php echo site_url('welcome/d360/'.$imgs->AuctionItemId); ?>" target="_blank" class="thirty-link">
                                  <input id="hidden360" type="hidden" value="<?php echo site_url('welcome/d360'); ?>" />
                                  <img src="<?php echo $imgs->ImagePath; ?>" class="img-responsive" />
-                              </a>
+                              </a-->
+                              <?php } ?>
                            </div>
                         </div>
                      </div>

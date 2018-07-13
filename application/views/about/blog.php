@@ -37,7 +37,7 @@
 			}
 			?>
 			<div class="col-md-12 col-sm-12 col-xs-12 text-center button-blog-section">
-				<button class="btn btn-green" disabled>Lihat Selengkapnya</button>
+				<button class="btn btn-green" onclick="location.href='<?php echo site_url('blog_lists').'?type='.$news->news[0]->slugkategori; ?>'">Lihat Selengkapnya</button>
 			</div>
 		</div>
 		<div class="row">
@@ -66,7 +66,7 @@
 			}
 			?>
 			<div class="col-md-12 col-sm-12 col-xs-12 text-center button-blog-section">
-				<button class="btn btn-green" disabled>Lihat Selengkapnya</button>
+				<button class="btn btn-green" onclick="location.href='<?php echo site_url('blog_lists').'?type='.$info->news[0]->slugkategori; ?>'">Lihat Selengkapnya</button>
 			</div>
 		</div>
 	</div>
