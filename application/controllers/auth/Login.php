@@ -78,6 +78,16 @@ class Login extends CI_Controller {
 				echo "<hr>cURL Error #:".$responseApi['err'];
 			}
 			else {
+				// insert log login into account api 
+				$log_login = array(
+					'userid'		=> $res->UserId, 
+					'browser'		=> $this->input->user_agent()
+				);
+				$url_log_login = linkservice('account')."auth/loglogin";
+				$method = 'POST';
+				$responseApi_loglogin = admsCurl($url_log_login, $log_login, $method);
+				// end log login
+
 				// response from oauth2
 				$res = json_decode($responseApi['response']);
 				if(isset($res->error)) {
@@ -92,6 +102,7 @@ class Login extends CI_Controller {
 					$this->session->set_userdata('namefront', $res->Name);
 					$this->session->set_userdata('emailfront', $res->username);
 					$this->session->set_userdata('groupnamefront', $res->GroupName);
+					$this->session->set_userdata('browser', $this->input->user_agent());
 					$this->AccessApi->setAccess('in',(array)$res);
 
 					$callback = new stdClass();
