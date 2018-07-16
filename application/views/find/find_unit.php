@@ -12,7 +12,7 @@
                <button class="btn btn-green filter-btn-mobile"><i class="fa fa-filter"></i> Filter</button>
             </div>
          </div>
-         <div class="col-md-3">
+         <div class="col-md-3 sidebar-stickybid">
             <form id="thisFormFilter" class="form-filter search-transport clearfix">
                <a href="javascript:;" class="filter-close"><img src="<?php echo base_url('assetsfront/images/icon/Close.png'); ?>" /></a>
                <h1><span class="fa fa-filter"></span> Filters</h1>
