@@ -22,9 +22,9 @@
 					</li>
 					<?php } ?>
 				</ul>
-				<div class="col-md-12 col-sm-12 col-xs-12 text-center button-blog-section mb40">
+				<!--div class="col-md-12 col-sm-12 col-xs-12 text-center button-blog-section mb40">
 					<button class="btn btn-green">Selanjutnya</button>
-				</div>   
+				</div-->   
 			</div>
 		</div>
 	</div>
