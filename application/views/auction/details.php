@@ -604,7 +604,7 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
             "NoSTNK"        : datax[i].nostnk,
             "Seri"          : (datax[i].seri !== undefined) ? datax[i].seri : '',
             "Silinder"      : (datax[i].silinder !== undefined) ? datax[i].silinder : '',
-            "TaksasiGrade"  : icarData[i].TotalEvaluationResult,
+            "TaksasiGrade"  : (icarData[i].TotalEvaluationResult !== undefined) ? icarData[i].TotalEvaluationResult : '-',
             "Tahun"         : (datax[i].tahun !== undefined) ? datax[i].tahun : '',
             "Transmisi"     : (datax[i].transmisi !== undefined) ? datax[i].transmisi : '',
             "Tipe"          : (datax[i].grade !== undefined) ? datax[i].grade : '',
@@ -630,7 +630,7 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
                         '<img alt="" src="'+jsonData.Image+'">'+
                         '</div>'+
                         '<div class="overlay-grade">'+
-                        'Grade <span>'+icarData[i].TotalEvaluationResult+'</span>'+
+                        'Grade <span>'+jsonData.TaksasiGrade+'</span>'+
                         '</div>'+
                         '<p class="overlay-lot">LOT '+lot+'</p>'+
                         '</div>'+
