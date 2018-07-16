@@ -68,6 +68,12 @@ a {
     background: #fff
 }
 
+.box-new p { 
+    font-size: 14px; 
+    color: #777; 
+    padding: 0 60px 0 10px; 
+}
+
 .color-car {
     font-family: "OpenSansBold", Helvetica, Sans-serif;
     color: #4c79a3
