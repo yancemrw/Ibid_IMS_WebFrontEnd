@@ -7,11 +7,11 @@ class Callback extends CI_Controller {
         parent::__construct();
         $this->load->helper(array('global'));
         $this->AccessApi = new AccessApi(array_merge($this->config->item('Oauth'),array('username' => 'rendhy.wijayanto@sera.astra.co.id')));
-	}
+    }
 
-	public function index()
-	{
-		$this->load->library('googleplus');
+    public function index()
+    {
+      $this->load->library('googleplus');
 		/*
 		* ini adalah callback dari oauth facebook. 
 		* jika digunakan di front end harus ada treathment khusus.
@@ -49,11 +49,22 @@ class Callback extends CI_Controller {
                     $dataLogin = array_merge($dataLogin, array('action'=>'register', 'GroupId' => 9, 'Active' => 1));
                     $responseApi = admsCurl($url, $dataLogin, $method);
                     $res =  json_decode($responseApi['response'],true);
+                    
+                    // insert log login into account api 
+                    $log_login = array(
+                        'userid'        => $res->UserId, 
+                        'browser'       => $this->input->user_agent()
+                    );
+                    $url_log_login = linkservice('account')."auth/loglogin";
+                    $method = 'POST';
+                    $responseApi_loglogin = admsCurl($url_log_login, $log_login, $method);
+                    // end log login
+
                     if(!isset($res['error'])){
                         $this->AccessApi->setAccess('in',(array)$res);
                         redirect(site_url(),'refresh');
                     } else
-                        redirect('auth/login','refresh');
+                    redirect('auth/login','refresh');
                     
                 } else {
                     $this->AccessApi->setAccess('in',$resp);
@@ -63,12 +74,12 @@ class Callback extends CI_Controller {
                 redirect(site_url(),'refresh');
             }
 
-		} else {
+        } else {
 			//mengembalikan ke auth register
-			redirect('auth/register','refresh');
-		}
-		
-	}
+         redirect('auth/register','refresh');
+     }
+
+ }
 
 }
 
