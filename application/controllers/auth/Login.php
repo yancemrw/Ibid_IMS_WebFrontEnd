@@ -78,6 +78,9 @@ class Login extends CI_Controller {
 				echo "<hr>cURL Error #:".$responseApi['err'];
 			}
 			else {
+				// response from oauth2
+				$res = json_decode($responseApi['response']);
+				
 				// insert log login into account api 
 				$log_login = array(
 					'userid'		=> $res->UserId, 
@@ -88,8 +91,7 @@ class Login extends CI_Controller {
 				$responseApi_loglogin = admsCurl($url_log_login, $log_login, $method);
 				// end log login
 
-				// response from oauth2
-				$res = json_decode($responseApi['response']);
+				
 				if(isset($res->error)) {
 					$callback = new stdClass();
 					$callback->status = 0;
