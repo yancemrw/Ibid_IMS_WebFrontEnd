@@ -951,7 +951,7 @@ $(document).ready(function() {
                            '<a href="'+link_detail+'">'+
                            '<div class="thumbnail">'+
                            '<div class="thumbnail-custom-terkait">'+
-                           '<img src="'+compare_data.Image+'" class="min-height-197px" />'+
+                           '<img src="'+((compare_data.Image.indexOf('http:') !== -1 || compare_data.Image.indexOf('https:') !== -1)?compare_data.Image:('http:'+compare_data.Image))+'" class="min-height-197px" />'+
                            '</div>'+
                            '<div class="overlay-grade">'+
                            'Grade <span>'+compare_data.TaksasiGrade+'</span>'+
