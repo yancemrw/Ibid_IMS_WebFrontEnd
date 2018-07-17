@@ -486,7 +486,7 @@ $(function() {
                                  '<a href="'+link_detail+'">'+
                                  '<div class="thumbnail">'+
                                  '<div class="thumbnail-custom">'+
-                                 '<img src="'+compare_data.Image+'" />'+
+                                 '<img src="'+((compare_data.Image.indexOf('http:') !== -1 || compare_data.Image.indexOf('https:') !== -1)?compare_data.Image:('http:'+compare_data.Image))+'" />'+
                                  '</div>'+
                                  '<div class="overlay-grade">'+
                                  'Grade <span>'+compare_data.TaksasiGrade+'</span>'+
