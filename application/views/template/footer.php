@@ -762,6 +762,10 @@ function isreadpage(ele, UserId, key, isread) {
     $(ele).children('div:first').children().replaceWith('<img src="<?php echo base_url('assetsfront/images/icon/ic_notif_0.png'); ?>" alt="">');
   }
 }
+
+function detectProtocol(url) {
+  return (location.protocol === "https:") ? "https:"+url : "http:"+url;
+}
 </script>
 </body>
 </html>
