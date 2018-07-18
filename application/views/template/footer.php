@@ -764,7 +764,7 @@ function isreadpage(ele, UserId, key, isread) {
 }
 
 function detectProtocol(url) {
-  return (location.protocol === "https:") ? "https:"+url : "http:"+url;
+  return "http:"+url;
 }
 </script>
 </body>
