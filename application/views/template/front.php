@@ -447,16 +447,14 @@ $(function() {
             sessionId = '<?php echo ($userdata !== null) ? $userdata['UserId'] : ''; ?>';
             for(var i = 0; i < data.length; i++) {
                if(i < 3) {
-                  var datetime, location;
-                  if(data[i].schedule.status !== false) {
-                     var dateSplit = (data[i].schedule.schedule.date).split('-');
-                     datetime = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + data[i].schedule.schedule.waktu;
-                     location = data[i].schedule.schedule.CompanyName;
+                  var datetime;
+                  if(data[i].schedule !== undefined) {
+                     if(data[i].schedule.status !== false) {
+                        var dateSplit = (data[i].schedule.schedule.date).split('-');
+                        datetime = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + data[i].schedule.schedule.waktu;
+                     }
                   }
-                  else {
-                     datetime = 'Belum Tersedia';
-                     location = 'Belum Tersedia';
-                  }
+                  
                   var compare_data = {
                      "AuctionItemId": data[i].AuctionItemId,
                      "BahanBakar": data[i].bahanbakar,
@@ -472,7 +470,7 @@ $(function() {
                      "NoSTNK": data[i].nostnk,
                      "Seri": (data[i].seri !== undefined) ? data[i].seri : '',
                      "Silinder": (data[i].silinder !== undefined) ? data[i].silinder : '',
-                     "TaksasiGrade": data[i].nilaiIcar,
+                     "TaksasiGrade": (data[i].nilaiIcar !== '0' && data[i].nilaiIcar !== undefined) ? data[i].nilaiIcar : '-',
                      "Tahun": (data[i].tahun !== undefined) ? data[i].tahun : '',
                      "Transmisi": (data[i].transmisi !== undefined) ? data[i].transmisi : '',
                      "Tipe": (data[i].grade !== undefined) ? data[i].grade : '',
@@ -501,7 +499,7 @@ $(function() {
                                  '</div>'+
                                  '<h2>'+compare_data.Merk+' '+compare_data.Seri+' '+compare_data.Silinder+' '+compare_data.Tipe+' '+compare_data.Model+' '+compare_data.Transmisi+'</h2>'+
                                  '<span>'+compare_data.Tahun+'</span> <span class="price">Rp '+currency_format(compare_data.Price)+'</span>'+
-                                 '<p><span>Jadwal</span> <span class="fa fa-calendar"></span><span>'+datetime+'</span></p>'+
+                                 '<p><span>Jadwal</span> <span class="fa fa-calendar"></span><span class="wkt'+data[i].thisScheduleId+'">'+datetime+'</span></p>'+
                                  '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span><span class="sch'+data[i].thisScheduleId+'">'+theCabang[data[i].CompanyId]+'</span></p>'+
                                  '</a>'+
                                  favcom+
