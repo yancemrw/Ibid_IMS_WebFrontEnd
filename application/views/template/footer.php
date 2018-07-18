@@ -13,7 +13,7 @@
         <ul>
           <li><a href="<?php echo site_url('about'); ?>">Tentang IBID</a></li>
           <li><a href="<?php echo site_url('faq'); ?>">FAQ</a></li>
-          <li><a href="<?php echo site_url('blog'); ?>">Blog</a></li>
+          <li><a href="<?php echo site_url('blog'); ?>" onclick="setActiveMenu('blog')">Blog</a></li>
           <li><a href="javascript:void(0)" data-toggle="modal" data-target="#privacy-modal-home">Privacy Policy</a></li>
           <!--li><a href="javascript:void(0)" onclick="location.href='http://ext.ibid.astra.co.id'">Area Lainnya</a></li-->
         </ul>
@@ -111,7 +111,7 @@ $privasi = curlGenerate($resPrivasi);
   <?php } ?>
   <!-- End  -->
 
-<script type="text/javascript">  
+<script type="text/javascript">
   // handle login
   $('#btn-login').click(function(e) {
     var user = $('#username').val(), pass = $('#password').val();
@@ -795,6 +795,10 @@ function detectIE() {
 
   // other browser
   return false;
+}
+
+function detectProtocol(url) {
+  return "http:"+url;
 }
 </script>
 </body>

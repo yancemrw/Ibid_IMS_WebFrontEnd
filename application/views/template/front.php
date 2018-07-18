@@ -453,7 +453,7 @@ $(function() {
                   var compare_data = {
                      "AuctionItemId": data[i].AuctionItemId,
                      "BahanBakar": data[i].bahanbakar,
-                     "Image": data[i].icarImage,
+                     "Image": detectProtocol(data[i].icarImage),
                      //"Image": '//img.ibid.astra.co.id/item/12415/d8404a531ea286d733aa7c35bfbdc83c.jpg',
                      "Kilometer": data[i].km,
                      "Lot": (data[i].thisLotNo !== undefined && data[i].thisLotNo !== null) ? data[i].thisLotNo : '-',
@@ -494,8 +494,8 @@ $(function() {
                                  '<p class="overlay-lot">LOT '+compare_data.Lot+'</p>'+
                                  '</div>'+
                                  '<h2>'+compare_data.Merk+' '+compare_data.Seri+' '+compare_data.Silinder+' '+compare_data.Tipe+' '+compare_data.Model+' '+compare_data.Transmisi+'</h2>'+
-                                 '<span>'+compare_data.Tahun+'</span> <span class="price">Rp. '+currency_format(compare_data.Price)+'</span>'+
-                                 '<p><span>Jadwal</span> <span class="fa fa-calendar"></span><span>'+datetime+'</span></p>'+
+                                 '<span>'+compare_data.Tahun+'</span> <span class="price">Rp '+currency_format(compare_data.Price)+'</span>'+
+                                 '<p><span>Jadwal</span> <span class="fa fa-calendar"></span><span class="wkt'+data[i].thisScheduleId+'">'+datetime+'</span></p>'+
                                  '<p><span>Lokasi</span> <span class="fa fa-map-marker"></span><span class="sch'+data[i].thisScheduleId+'">'+theCabang[data[i].CompanyId]+'</span></p>'+
                                  '</a>'+
                                  favcom+

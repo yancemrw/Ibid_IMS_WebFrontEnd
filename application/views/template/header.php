@@ -149,6 +149,7 @@
                   case 'dashboard' : deleteActiveMenu('active_menu'); break;
                   case 'favorite' : deleteActiveMenu('active_menu'); break;
                   case 'basic-price' : deleteActiveMenu('active_menu'); break;
+                  case 'blog' : deleteActiveMenu('active_menu'); break;
                   default : deleteActiveMenu('active_menu'); break;
                }
             }, 1000);
