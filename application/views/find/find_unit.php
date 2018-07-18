@@ -574,11 +574,6 @@ function loadContainer(offset = 0, limit = 6, linked = '', dataForm = '', type =
                $(this).attr('href', thelink+'?_dt='+limit);
             });
             countContainer(offset, limit, linked, dataTotal, datas.length, dataForm, type);
-
-            //cek resolution for mobile and execute sticky sidebar
-            if(window.screen.availWidth > 1024) {
-               loadSidebar();
-            }
          }
          else {
             $('#btnFilter').attr('disabled', false);
@@ -756,11 +751,6 @@ function loadContainerPaging(offset, limit, linked, dataForm = '', type = 1) {
                $(this).attr('href', thelink+'?_dt='+maxOffset);
             });
             countContainer(offset, limit, linked, dataTotal, datas.length, dataForm, type);
-
-            //cek resolution for mobile and execute sticky sidebar
-            /*if(window.screen.availWidth > 1024) {
-               loadSidebar(800);
-            }*/
          }
       },
       error: function() {

@@ -299,6 +299,8 @@ var theCabang = new Array;
 theCabang[<?php echo $row['CompanyId']; ?>] = "<?php echo (($row['CompanyName'])); ?>";
 <?php } ?>
 
+window.arrMonth = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+
 // set active menu if to homepage
 setActiveMenu('home');
 
@@ -440,16 +442,14 @@ $(function() {
             sessionId = '<?php echo ($userdata !== null) ? $userdata['UserId'] : ''; ?>';
             for(var i = 0; i < data.length; i++) {
                if(i < 3) {
-                  var datetime, location;
-                  if(data[i].schedule.status !== false) {
-                     var dateSplit = (data[i].schedule.schedule.date).split('-');
-                     datetime = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + data[i].schedule.schedule.waktu;
-                     location = data[i].schedule.schedule.CompanyName;
+                  var datetime;
+                  if(data[i].schedule !== undefined) {
+                     if(data[i].schedule.status !== false) {
+                        var dateSplit = (data[i].schedule.schedule.date).split('-');
+                        datetime = dateSplit[2]+' '+arrMonth[dateSplit[1]-1]+' '+dateSplit[0] + ' ' + data[i].schedule.schedule.waktu;
+                     }
                   }
-                  else {
-                     datetime = 'Belum Tersedia';
-                     location = 'Belum Tersedia';
-                  }
+
                   var compare_data = {
                      "AuctionItemId": data[i].AuctionItemId,
                      "BahanBakar": data[i].bahanbakar,
@@ -470,7 +470,7 @@ $(function() {
                      "Tahun": (data[i].tahun !== undefined) ? data[i].tahun : '',
                      "Transmisi": (data[i].transmisi !== undefined) ? data[i].transmisi : '',
                      "Tipe": (data[i].grade !== undefined) ? data[i].grade : '',
-                     "Price": (data[i].FinalPriceItem !== undefined) ? data[i].FinalPriceItem : 0,
+                     "Price": (data[i].FinalPriceItem !== undefined) ? data[i].FinalPriceItem : '-',
                      "Warna": data[i].warna
                   };
                   var json_str = JSON.stringify(compare_data);
@@ -486,7 +486,7 @@ $(function() {
                                  '<a href="'+link_detail+'">'+
                                  '<div class="thumbnail">'+
                                  '<div class="thumbnail-custom">'+
-                                 '<img src="'+((compare_data.Image.indexOf('http:') !== -1 || compare_data.Image.indexOf('https:') !== -1)?compare_data.Image:('http:'+compare_data.Image))+'" />'+
+                                 '<img src="'+compare_data.Image+'" />'+
                                  '</div>'+
                                  '<div class="overlay-grade">'+
                                  'Grade <span>'+compare_data.TaksasiGrade+'</span>'+
