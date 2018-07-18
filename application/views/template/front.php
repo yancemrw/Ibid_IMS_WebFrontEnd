@@ -298,6 +298,8 @@ var theCabang = new Array;
 theCabang[<?php echo $row['CompanyId']; ?>] = "<?php echo (($row['CompanyName'])); ?>";
 <?php } ?>
 
+window.arrMonth = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+
 // set active menu if to homepage
 setActiveMenu('home');
 
