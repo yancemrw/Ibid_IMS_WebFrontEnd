@@ -751,7 +751,7 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
           } else{
             newbid = parseInt(lastBid) + parseInt(lotDataSnap.val().Interval);
           }
-          thisNpl = $('#used-npl'+key);
+          thisNpl = $('#used-npl'+key).val();
           if (thisNpl != ''){
             tasksRef[key].push({
               bid: newbid,
