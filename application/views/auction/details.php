@@ -751,11 +751,14 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
           } else{
             newbid = parseInt(lastBid) + parseInt(lotDataSnap.val().Interval);
           }
-          tasksRef[key].push({
-            bid: newbid,
-            npl: $('#used-npl'+key).val(),
-            type: 'Online',
-          });
+          thisNpl = $('#used-npl'+key);
+          if (thisNpl != ''){
+            tasksRef[key].push({
+              bid: newbid,
+              npl: $('#used-npl'+key).val(),
+              type: 'Online',
+            });
+          }
         });
       }else{
         alert('bid is not allow bro!!');
