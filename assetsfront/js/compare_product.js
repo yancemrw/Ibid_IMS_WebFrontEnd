@@ -83,7 +83,7 @@ function setComparePage(img_empty) {
             var Lot = (getLocalStorage[i].Lot != null) ? getLocalStorage[i].Lot : '???';
             var Warna = (getLocalStorage[i].Warna != null) ? getLocalStorage[i].Warna : 'Tidak Diketahui';
             var Stnk = (getLocalStorage[i].NoSTNK != '0') ? getLocalStorage[i].NoSTNK : 'Tidak Diketahui';
-            content += '<div class="col-md-3 item width-100">'+
+            content += '<div class="col-md-3 item">'+
                      '<div class="list-product box-recommend list-compare">'+
                      '<a href="javascript:void(0);">'+
                      '<div class="thumbnail">'+
