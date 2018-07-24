@@ -300,7 +300,7 @@ $(document).ready(function() {
    else if(JSON.parse(arrGet) !== null) {
       var offset_change = $('#view-listed option:selected').val();
       var selectCity = $('select[name="thisKota"] option:selected').val();
-      var data = JSON.parse(arrGet), object = data.objectType, dateid = data.dateId;
+      var data = JSON.parse(arrGet), object = (typeof data.objectType !== "undefined"?data.objectType:(typeof data['tipe-object'] !== "undefined"?data['tipe-object']:'')), dateid = typeof data.dateId !== "undefined"?data.dateid:'';
       var thisFormInputs;
       if(data._dt !== undefined) {
          thisFormInputs = '&filter_type=2&tipeLelang=&thisKota=&ScheduleId=&tipe-object=&6_merk=&6_seri=&6_silinder=&6_grade=&6_transmisi=&6_tahun=&7_merk=&7_seri=&7_silinder=&14_kategori=&14_merk=&12_kategori=&12_merk=';
