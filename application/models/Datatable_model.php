@@ -58,8 +58,12 @@ class Datatable_model extends CI_Model {
         return $query->num_rows();
     }
     function count_all($table){
-        $this->db->from($table);
-        return $this->db->count_all_results();
+        $res = $this->db->query('select count(*) as num_row from '.$table)->row();
+        // validate query
+        $res = is_null($res) && !is_object($res)?0:(isset($res->num_row)?$res->num_row:0);
+
+        return (empty($res)?0:$res);
+
     }	
 
 }
