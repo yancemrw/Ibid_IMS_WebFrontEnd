@@ -519,8 +519,10 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
 		cekAwal = thisArr_<?php echo $key+1; ?>.length;
 		console.log(cekAwal);
 		console.log('---masukSini---');
-		if (cekAwal < 1){
+		if (cekAwal == 0){
 			bid(<?php echo $key+1; ?>);
+		} else {
+			console.log('---masukSono---'+cekAwal);
 		}
 		// tambahkan setiap kali click
 		cekAwal = cekAwal + 1;
