@@ -335,6 +335,9 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
     });
 
     <?php foreach($auctionsData as $key => $value): ?>
+	// setting array hitung awal
+	var thisArr_<?php echo $key+1; ?> = [];
+
     var eligibleNpl<?php echo $key+1; ?> = [];
 
     $('#used-npl<?php echo $key+1; ?> option').each(function () {
@@ -464,6 +467,9 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
                 $('#lastbid<?php echo $key+1;?>').val(snap<?php echo $key+1; ?>.val().bid);
               }
             });
+			
+			// setting array to null
+			thisArr_<?php echo $key+1; ?> = [];
 
             $('#bidding-log<?php echo $key+1;?> li').removeClass('active');
             $('#bidding-log<?php echo $key+1;?>').prepend(logHtmlFromObject(logVal));
@@ -506,7 +512,12 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
     });
 
     $('#bid<?php echo $key+1; ?>').on('click', function(){
-      bid(<?php echo $key+1; ?>);
+		cekAwal = thisArr_<?php echo $key+1; ?>.length;
+		if (cekAwal < 1){
+			bid(<?php echo $key+1; ?>);
+		}
+		cekAwal = cekAwal + 1;
+		thisArr_<?php echo $key+1; ?>.push(cekAwal);
     });
     <?php endforeach; ?>
 
