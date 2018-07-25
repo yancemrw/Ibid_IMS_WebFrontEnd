@@ -517,6 +517,8 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
     $('#bid<?php echo $key+1; ?>').on('click', function(){
 		// pengecekan awal array click
 		cekAwal = thisArr_<?php echo $key+1; ?>.length;
+		console.log(cekAwal);
+		console.log('---masukSini---');
 		if (cekAwal < 1){
 			bid(<?php echo $key+1; ?>);
 		}
