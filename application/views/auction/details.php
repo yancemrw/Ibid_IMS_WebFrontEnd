@@ -519,7 +519,7 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
 		}
 		// tambahkan setiap kali click
 		cekAwal = cekAwal + 1;
-		thisArr_1.push(cekAwal);
+		thisArr_<?php echo $key+1; ?>.push(cekAwal);
     });
     <?php endforeach; ?>
 
