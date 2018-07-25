@@ -760,6 +760,10 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
     const allowed = allowBid[key];
     const lastBid = $('#lastbid'+key).val();
 
+	console.log('bidedLotData |'+bidedLotData);
+	console.log('allowed |'+allowed);
+	console.log('lastBid |'+lastBid);
+	
     allowed.once('value', function(allowedSnap){
       if (allowedSnap.val()) {    
         bidedLotData.once('value', function(lotDataSnap){
@@ -776,7 +780,9 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
               npl: $('#used-npl'+key).val(),
               type: 'Online',
             });
-          }
+          } else{
+			  console.log('gagal bid |'+thisNpl+'|');
+		  }
         });
       }else{
         alert('bid is not allow bro!!');
