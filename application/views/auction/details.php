@@ -163,6 +163,11 @@
 </style>
 
 <script>	
+<?php foreach($auctionsData as $key => $value): ?>
+// setting array hitung awal
+var thisArr_<?php echo $key+1; ?> = [];
+<?php endforeach; ?>
+
 myFav = [];
 <?php foreach($favorite as $row){ ?>
 myFav.push(<?php echo $row->AuctionItemId; ?>);
@@ -337,8 +342,6 @@ myFav.push(<?php echo $row->AuctionItemId; ?>);
     });
 
     <?php foreach($auctionsData as $key => $value): ?>
-	// setting array hitung awal
-	var thisArr_<?php echo $key+1; ?> = [];
     var eligibleNpl<?php echo $key+1; ?> = [];
 
     $('#used-npl<?php echo $key+1; ?> option').each(function () {
